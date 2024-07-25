@@ -1,0 +1,16 @@
+for level in "${HWCAPS[@]}" ; do
+	for flag in CFLAGS CPPFLAGS LDFLAGS ; do
+		var="${flag}_HWCAPS_${level//-/_}[@]"
+		export "$flag"="${!var}"
+	done
+	abinfo "($level) Cleaning up ..."
+	make clean
+
+	abinfo "($level) Building zstd ..."
+	make
+
+	abinfo "($level) Installing zstd ..."
+	make install \
+	    DESTDIR="$SRCDIR"/dist-"$level" \
+	    PREFIX=/usr
+done

@@ -1,0 +1,11 @@
+abinfo "Harvesting shared libraries ..."
+for level in "${HWCAPS[@]}" ; do
+	abinfo "Installing files for $level ..."
+	for f in \
+		libzstd.so \
+		libzstd.so.1 \
+		libzstd.so.1.5.6 ; do
+		install -Dvm755 -t "$HWCAPSDIR"/"$level" \
+			"$SRCDIR"/dist-"$level"/usr/lib/"$f"
+	done
+done

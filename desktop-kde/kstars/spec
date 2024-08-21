@@ -1,4 +1,5 @@
 VER=3.7.3
+REL=1
 SRCS="tbl::https://download.kde.org/stable/kstars/$VER/kstars-$VER.tar.xz"
 CHKSUMS="sha256::d3a469ad8068ceaa47fb145f90bc0818a8162a0545e15e424c00ddf0ac3f588d"
 CHKUPDATE="anitya::id=229035"

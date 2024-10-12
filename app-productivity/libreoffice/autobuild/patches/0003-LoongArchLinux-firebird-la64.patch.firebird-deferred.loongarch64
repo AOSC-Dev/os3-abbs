@@ -1,7 +1,7 @@
-Index: libreoffice-7.3.0.3/workdir/UnpackedTarball/firebird/src/common/common.h
+Index: libreoffice-24.8.4.2/workdir/UnpackedTarball/firebird/src/common/common.h
 ===================================================================
---- libreoffice-7.3.0.3.orig/workdir/UnpackedTarball/firebird/src/common/common.h
-+++ libreoffice-7.3.0.3/workdir/UnpackedTarball/firebird/src/common/common.h
+--- libreoffice-24.8.4.2.orig/workdir/UnpackedTarball/firebird/src/common/common.h
++++ libreoffice-24.8.4.2/workdir/UnpackedTarball/firebird/src/common/common.h
 @@ -140,6 +140,10 @@
  #define RISC_ALIGNMENT
  #endif /* sparc */
@@ -13,10 +13,10 @@ Index: libreoffice-7.3.0.3/workdir/UnpackedTarball/firebird/src/common/common.h
  #ifdef MIPSEL
  #define FB_CPU CpuMipsel
  #endif /* mipsel */
-Index: libreoffice-7.3.0.3/workdir/UnpackedTarball/firebird/src/common/classes/DbImplementation.cpp
+Index: libreoffice-24.8.4.2/workdir/UnpackedTarball/firebird/src/common/classes/DbImplementation.cpp
 ===================================================================
---- libreoffice-7.3.0.3.orig/workdir/UnpackedTarball/firebird/src/common/classes/DbImplementation.cpp
-+++ libreoffice-7.3.0.3/workdir/UnpackedTarball/firebird/src/common/classes/DbImplementation.cpp
+--- libreoffice-24.8.4.2.orig/workdir/UnpackedTarball/firebird/src/common/classes/DbImplementation.cpp
++++ libreoffice-24.8.4.2/workdir/UnpackedTarball/firebird/src/common/classes/DbImplementation.cpp
 @@ -49,6 +49,7 @@ static const UCHAR CpuAlpha = 14;
  static const UCHAR CpuArm64 = 15;
  static const UCHAR CpuPowerPc64el = 16;

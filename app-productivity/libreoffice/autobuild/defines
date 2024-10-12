@@ -11,7 +11,6 @@ PKGDEP="boost bsh clucene coinmp cups curl dbus-glib desktop-file-utils glew glu
         libzmf lpsolve mariadb mythes neon nspr nss openjdk pango poppler postgresql \
         python-3 redland sane-backends serf shared-mime-info unixodbc xmlsec \
         libnumbertext lxml vulkan abseil-cpp zxing-cpp"
-PKGDEP__LOONGSON3="${PKGDEP/openjdk/openjdk-8}"
 BUILDDEP="abseil-cpp apache-ant apr bluez cppunit dejavu-fonts doxygen gdb glm \
           gobject-introspection gperf icu liberation-fonts mdds \
           perl-archive-zip rxvt-unicode unzip zip rpmextract \
@@ -24,3 +23,6 @@ PKGBREAK="libreoffice-help<=6.4.1.2 libreoffice-i18n<=5.0.4"
 # FIXME: configure: error: Your gcc is not -fvisibility=hidden safe. This is
 # no longer supported.
 NOLTO__AMD64=1
+# FIXME: sw/source/core/text/inftxt.cxx:320:(.text+0xa7be14):
+# relocation truncated to fit: R_MIPS_TLS_LDM against `pNoteURL'
+NOLTO__LOONGSON3=1

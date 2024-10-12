@@ -93,6 +93,7 @@ abinfo "Autogen-ing ..."
              --without-system-box2d \
              --without-system-dragonbox \
              --without-system-libfixmath \
+             --without-system-rhino \
              --with-gdrive-client-id="1006183841565.apps.googleusercontent.com" \
              --with-gdrive-client-secret="XN6oYWBv7O7w_heXB8TVuldr" \
              --disable-dependency-tracking \

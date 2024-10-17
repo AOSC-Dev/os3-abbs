@@ -1,0 +1,14 @@
+PKGNAME=nodejs-22
+PKGSEC=devel
+PKGDEP="icu openssl python-2 zlib"
+BUILDDEP__LOONGSON3="${BUILDDEP} llvm"
+PKGDES="A JavaScript runtime built on the V8 JavaScript engine (LTS branch 22.x)"
+
+# https://github.com/nodejs/node/issues/44195#issuecomment-1545966528
+NOLTO=1
+
+# FIXME: mksnapshot SIGBUS when built with GCC 13.2.0.
+USECLANG__LOONGSON3=1
+
+PKGREP="nodejs<=2:20.18.0-1 pnpm<=9.7.0 yarn<=1.22.22-1"
+PKGBREAK="$PKGREP"

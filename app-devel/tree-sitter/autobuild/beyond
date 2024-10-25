@@ -1,0 +1,6 @@
+abinfo "Building the executable ..."
+cd "$SRCDIR"/cli
+cargo build --release
+
+abinfo "Installing the executable ..."
+install -Dv "$SRCDIR"/target/release/tree-sitter -t "$PKGDIR"/usr/bin

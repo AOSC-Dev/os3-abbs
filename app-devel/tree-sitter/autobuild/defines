@@ -1,7 +1,8 @@
 PKGNAME=tree-sitter
-PKGSEC=libs
+PKGSEC=devel
 PKGDES="An incremental parsing system for programming tools"
 
-BUILDDEP="rustc"
+BUILDDEP="rustc llvm"
 
 ABTYPE=plainmake
+NOLTO=1

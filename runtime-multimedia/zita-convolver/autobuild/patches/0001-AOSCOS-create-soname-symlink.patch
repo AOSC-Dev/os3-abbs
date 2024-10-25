@@ -1,0 +1,11 @@
+diff -Naur source.old/Makefile source/Makefile
+--- source.old/Makefile	2024-10-25 13:56:25.336596776 +0800
++++ source/Makefile	2024-10-25 13:56:14.573063372 +0800
+@@ -58,6 +58,7 @@
+ 	install -m 755 $(ZITA-CONVOLVER_MIN) $(DESTDIR)$(LIBDIR)
+ 	ldconfig
+ 	ln -sf $(ZITA-CONVOLVER_MIN) $(DESTDIR)$(LIBDIR)/$(ZITA-CONVOLVER_SO)
++	ln -sf $(ZITA-CONVOLVER_MIN) $(DESTDIR)$(LIBDIR)/$(ZITA-CONVOLVER_MAJ)
+ 
+ uninstall:
+ 	rm -rf $(DESTDIR)$(INCDIR)/$(ZITA-CONVOLVER_H)

@@ -1,0 +1,4 @@
+PKGNAME=zita-convolver
+PKGDES="A library provides real-time FFT-based convolution"
+PKGSEC=libs
+PKGDEP="fftw"

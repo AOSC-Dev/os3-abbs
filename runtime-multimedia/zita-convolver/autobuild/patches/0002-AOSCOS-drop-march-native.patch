@@ -1,0 +1,11 @@
+diff -Naur source.old/Makefile source/Makefile
+--- source.old/Makefile	2024-10-25 14:28:43.542449929 +0800
++++ source/Makefile	2024-10-25 14:28:48.478687388 +0800
+@@ -34,7 +34,6 @@
+ CPPFLAGS += -I. -D_REENTRANT -D_POSIX_PTHREAD_SEMANTICS
+ CPPFLAGS += -DENABLE_VECTOR_MODE 
+ CXXFLAGS += -fPIC -Wall -ffast-math -funroll-loops -O2
+-CXXFLAGS += -march=native
+ LDLFAGS += 
+ LDLIBS +=
+ 

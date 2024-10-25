@@ -1,0 +1,5 @@
+abinfo "Building ..."
+make PREFIX=/usr LIBDIR=/usr/lib
+
+abinfo "Installing ..."
+make PREFIX=/usr LIBDIR=/usr/lib DESTDIR="$PKGDIR" install

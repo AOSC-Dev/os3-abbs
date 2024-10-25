@@ -1,0 +1,10 @@
+PKGNAME=easyeffects
+PKGDES="Audio effects for PipeWire"
+PKGSEC=sound
+PKGDEP="pipewire zita-convolver tbb rnnoise libportal pipewire gtk-4 \
+        libadwaita libsigc++-3.0 lilv lv2 libbs2b libsndfile fftw \
+        libsamplerate libebur128 soundtouch speex nlohmann-json fmt gsl"
+PKGRECOM="calf lsp-plugins"
+BUILDDEP="appstream-glib itstool ladspa-sdk gtk-update-icon-cache desktop-file-utils"
+
+ABTYPE=meson

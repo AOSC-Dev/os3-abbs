@@ -1,0 +1,8 @@
+abinfo "Configuring moonlight-qt"
+qmake-qt6 PREFIX="$PKGDIR"/usr moonlight-qt.pro
+
+abinfo "Building moonlight-qt"
+make
+
+abinfo "Installing moonlight-qt"
+make install

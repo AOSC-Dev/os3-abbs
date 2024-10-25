@@ -1,0 +1,6 @@
+PKGNAME=calf
+PKGDES="A suite of LV2 audio plugins"
+PKGDEP="jack lv2 sord fluidsynth gtk-2 lash"
+PKGSEC=sound
+
+ABTYPE=autotools

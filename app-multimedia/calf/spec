@@ -1,0 +1,4 @@
+VER=0.90.3
+SRCS="tbl::http://calf-studio-gear.org/files/calf-${VER}.tar.gz"
+CHKSUMS="sha256::e32bc23fb68f88729bdef361614fd9ac38627c774c35cd3c4eb611fca887a49f"
+CHKUPDATE="anitya::id=9082"

@@ -1,0 +1,7 @@
+PKGNAME=tree-sitter-vim
+PKGSEC=libs
+PKGDES="Vimscript grammar for tree-sitter"
+
+PKGDEP="tree-sitter"
+
+ABTYPE=plainmake

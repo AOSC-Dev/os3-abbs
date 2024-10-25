@@ -1,0 +1,2 @@
+abinfo "Symlinking tree-sitter parsers for Neovim to detect ..."
+ln -sv /usr/lib/tree_sitter "$PKGDIR"/usr/share/nvim/runtime/parser

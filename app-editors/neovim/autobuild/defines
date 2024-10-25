@@ -4,7 +4,7 @@ PKGDES="Vim-fork focused on extensibility and usability"
 
 PKGEPOCH=1
 
-PKGDEP="luajit msgpack-c tree-sitter unibilium libvterm libuv libtermkey libluv lpeg"
+PKGDEP="luajit msgpack-c tree-sitter tree-sitter-c tree-sitter-lua tree-sitter-markdown tree-sitter-query tree-sitter-vim tree-sitter-vimdoc unibilium libvterm libuv libtermkey libluv lpeg"
 BUILDDEP="lua-mpack"
 
 CMAKE_AFTER="-DUSE_BUNDLED=OFF"

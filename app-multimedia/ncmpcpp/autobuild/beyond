@@ -1,0 +1,8 @@
+abinfo "Building artist_to_albumartist ..."
+make -C "$SRCDIR"/extras CXXFLAGS="${CXXFLAGS}" \
+                         CPPFLAGS="${CPPFLAGS} `taglib-config --cflags`" \
+                         LDFLAGS="${LDFLAGS} `taglib-config --libs`"
+
+abinfo "Installing artist_to_albumartist ..."
+install -Dvm755 "$SRCDIR"/extras/artist_to_albumartist \
+                "$PKGDIR"/usr/bin/artist_to_albumartist

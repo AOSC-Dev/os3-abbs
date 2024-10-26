@@ -3,4 +3,9 @@ PKGSEC=sound
 PKGDEP="ncurses libmpdclient boost readline curl fftw taglib"
 PKGDES="Fully featured MPD client using ncurses (Plus Plus)"
 
-ABSHADOW=no
+AUTOTOOLS_AFTER="--enable-clock \
+                 --enable-outputs \
+                 --enable-visualizer \
+                 --with-fftw \
+                 --with-lto \
+                 --with-taglib"

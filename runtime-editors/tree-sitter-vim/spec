@@ -1,4 +1,4 @@
 VER=0.4.0
 SRCS="git::commit=tags/v$VER::https://github.com/tree-sitter-grammars/tree-sitter-vim"
 CHKSUMS="SKIP"
-CHKUPDATE="github::repo=tree-sitter-grammars/tree-sitter-vim"
+CHKUPDATE="anitya::id=375138"

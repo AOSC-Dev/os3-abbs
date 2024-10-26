@@ -1,7 +1,7 @@
 PKGNAME=itsdangerous
 PKGSEC=python
-PKGDEP="python-2 python-3"
+PKGDEP="python-3"
+BUILDDEP="flit-core"
 PKGDES="Various helpers to pass trusted data to untrusted environments"
 
-ABTYPE=python
 ABHOST=noarch

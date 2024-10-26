@@ -1,5 +1,4 @@
-VER=0.14
-REL=3
-SRCS="tbl::https://pypi.io/packages/source/F/Flask-WTF/Flask-WTF-$VER.tar.gz"
-CHKSUMS="sha256::a938bfabc450b61e2d76f8b32288b65d0cd43ce33c2de496e1b28152c5d141cf"
+VER=1.2.2
+SRCS="pypi::version=$VER::flask_wtf"
+CHKSUMS="sha256::79d2ee1e436cf570bccb7d916533fa18757a2f18c290accffab1b9a0b684666b"
 CHKUPDATE="anitya::id=70870"

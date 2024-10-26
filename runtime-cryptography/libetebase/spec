@@ -1,5 +1,4 @@
-VER=0.5.4
-REL=1
-SRCS="https://github.com/etesync/libetebase/archive/refs/tags/v$VER.tar.gz"
-CHKSUMS="sha256::ba0d6740d39d7d09cdf2dda4e73716a3c05502770a40b8087582570bd1c31752"
+VER=0.5.6
+SRCS="git::commit=tags/v${VER}::https://github.com/etesync/libetebase.git"
+CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=235050"

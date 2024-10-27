@@ -1,7 +1,7 @@
 PKGNAME=minetest
 PKGDES="A sandbox game inspired by Minecraft"
 PKGSEC=games
-PKGDEP="openal-soft libvorbis libogg luajit zstd"
+PKGDEP="openal-soft libvorbis libogg luajit postgresql zstd"
 # FIXME: LuaJIT not available on these architectures.
 PKGDEP__LOONGARCH64="${PKGDEP/luajit/lua}"
 PKGDEP__MIPS64R6EL="${PKGDEP/luajit/lua}"

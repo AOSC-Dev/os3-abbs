@@ -12,6 +12,5 @@ PKGDEP__POWERPC="${PKGDEP__RETRO}"
 PKGDEP__PPC64="${PKGDEP__RETRO}"
 PKGSEC=utils
 
-AUTOTOOLS_AFTER="--datadir=/usr/share/hwdata"
-
+ABTYPE=meson
 PKGPROV="lsusb"

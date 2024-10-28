@@ -1,25 +1,28 @@
+abinfo "Setting environment variables ..."
 export PATH=/opt/32/bin:$PATH
 export CFLAGS+=" -O3 -fomit-frame-pointer -malign-double -fstrict-aliasing -ffast-math"
 
-
-CONFIGURE="./configure F77=gfortran --prefix=/opt/32 \
-           --host=i686-pc-linux-gnu --build=i686-pc-linux-gnu --target=i686-pc-linux-gnu \
+CONFIGURE="./configure F77=i686-aosc-linux-gnu-gfortran --prefix=/opt/32 \
+           --host=i686-aosc-linux-gnu --target=i686-aosc-linux-gnu \
            --enable-shared --enable-threads \
            --enable-openmp"
 
 pushd fftw-3.3.4-double
+abinfo "Building double variant ..."
 $CONFIGURE --enable-sse2 --enable-avx
 make
 make install DESTDIR="$PKGDIR"
 popd
 
 pushd fftw-3.3.4-long-double
+abinfo "Building long double variant ..."
 $CONFIGURE --enable-long-double
 make 
 make install DESTDIR="$PKGDIR"
 popd
 
 pushd fftw-3.3.4-single
+abinfo "Building single variant ..."
 $CONFIGURE --enable-float --enable-sse --enable-avx
 make
 make install DESTDIR="$PKGDIR"

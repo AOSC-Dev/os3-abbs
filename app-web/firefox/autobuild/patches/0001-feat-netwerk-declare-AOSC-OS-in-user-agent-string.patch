@@ -1,4 +1,4 @@
-From c05e8cec4bb814d60352df11ded2a8d2af93c070 Mon Sep 17 00:00:00 2001
+From c583fe32fb950218f8ad2de52c6fc34e4f51946e Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Fri, 5 Apr 2024 22:52:21 +0800
 Subject: [PATCH 01/11] feat(netwerk): declare AOSC OS in user agent string
@@ -8,10 +8,10 @@ Subject: [PATCH 01/11] feat(netwerk): declare AOSC OS in user agent string
  1 file changed, 2 insertions(+)
 
 diff --git a/netwerk/protocol/http/nsHttpHandler.cpp b/netwerk/protocol/http/nsHttpHandler.cpp
-index 42b2021e2cba..da58d038d327 100644
+index 470c6cb918..a17736e102 100644
 --- a/netwerk/protocol/http/nsHttpHandler.cpp
 +++ b/netwerk/protocol/http/nsHttpHandler.cpp
-@@ -874,6 +874,7 @@ void nsHttpHandler::BuildUserAgent() {
+@@ -940,6 +940,7 @@ void nsHttpHandler::BuildUserAgent() {
    mUserAgent.SetCapacity(mLegacyAppName.Length() + mLegacyAppVersion.Length() +
  #ifndef UA_SPARE_PLATFORM
                           mPlatform.Length() +
@@ -19,7 +19,7 @@ index 42b2021e2cba..da58d038d327 100644
  #endif
                           mOscpu.Length() + mMisc.Length() + mProduct.Length() +
                           mProductSub.Length() + mAppName.Length() +
-@@ -892,6 +893,7 @@ void nsHttpHandler::BuildUserAgent() {
+@@ -958,6 +959,7 @@ void nsHttpHandler::BuildUserAgent() {
    if (!mPlatform.IsEmpty()) {
      mUserAgent += mPlatform;
      mUserAgent.AppendLiteral("; ");

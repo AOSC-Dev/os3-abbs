@@ -1,4 +1,4 @@
-VER=1.11.1
+VER=1.13.1
 SRCS="tbl::https://taglib.github.io/releases/taglib-$VER.tar.gz"
-CHKSUMS="sha256::b6d1a5a610aae6ff39d93de5efd0fdc787aa9e9dc1e7026fa4c961b26563526b"
+CHKSUMS="sha256::c8da2b10f1bfec2cd7dbfcd33f4a2338db0765d851a50583d410bacf055cfd0b"
 CHKUPDATE="anitya::id=1982"

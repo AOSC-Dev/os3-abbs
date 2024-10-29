@@ -1,7 +1,7 @@
 PKGNAME=taglib
 PKGDES="Library for reading and editing the meta-data of several popular audio formats"
 PKGSEC=libs
-PKGDEP="zlib"
+PKGDEP="zlib utfcpp"
 BUILDDEP="cmake"
 
 CMAKE_AFTER="-DWITH_MP4=ON -DWITH_ASF=ON \

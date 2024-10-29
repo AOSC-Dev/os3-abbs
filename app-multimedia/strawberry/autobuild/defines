@@ -1,7 +1,7 @@
 PKGNAME=strawberry
 PKGSEC=sound
 PKGDEP="chromaprint dbus fftw gstreamer glib gnutls libcdio libgpod libmtp \
-        protobuf pulseaudio qt-6 sqlite taglib tagparser
+        protobuf pulseaudio qt-6 sqlite taglib tagparser"
 BUILDDEP="boost"
 PKGDES="A music player and library organizer"
 

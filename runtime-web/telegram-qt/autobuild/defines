@@ -1,4 +1,0 @@
-PKGNAME=telegram-qt
-PKGSEC=libs
-PKGDEP="qt-5"
-PKGDES="Qt bindings for the Telegram/MTProto protocol"

@@ -1,8 +1,8 @@
-VER=1.94.2
+VER=1.95.0
 SRCS__AMD64="file::https://update.code.visualstudio.com/${VER}/linux-deb-x64/stable"
 SRCS__ARM64="file::https://update.code.visualstudio.com/${VER}/linux-deb-arm64/stable"
-CHKSUMS__AMD64="sha256::dd67b44062197e067a8b241240e70b4be42ffa9a27eee147541f70d8cd8710b6"
-CHKSUMS__ARM64="sha256::6c9f727e617a902140577006cbad0c177b6af3274adb790a5310bdc536762045"
+CHKSUMS__AMD64="sha256::f7aebec8a01756cbbbeca044b8b696289193b5647efa7c3b30047423d49c3046"
+CHKSUMS__ARM64="sha256::5763a842e0d30be16199a4266baf7a3662a0764514a7ce695b05faa1f84d2b40"
 __SHA256SUM_AMD64="${CHKSUMS__AMD64}"
 __SHA256SUM_ARM64="${CHKSUMS__ARM64}"
 CHKUPDATE="anitya::id=243355"

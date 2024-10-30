@@ -1,7 +1,7 @@
-From 9a8b8ae9b796543fdf72cfe5300252dcd0cf54a9 Mon Sep 17 00:00:00 2001
+From 5c1585f201bc1b75eea3416ea7cff441509be526 Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Fri, 30 Aug 2024 14:18:25 +0800
-Subject: [PATCH 3/4] hw/xfree86: re-calculate the clock and refresh rate
+Subject: [PATCH 3/5] hw/xfree86: re-calculate the clock and refresh rate
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -29,7 +29,7 @@ Ref: https://gitlab.freedesktop.org/xorg/xserver/-/commit/f59871587ea678d4c49887
  3 files changed, 15 insertions(+), 1 deletion(-)
 
 diff --git a/hw/xfree86/common/xf86Mode.c b/hw/xfree86/common/xf86Mode.c
-index ef3be84c3..b275ce9d8 100644
+index eb0885571..fec60a957 100644
 --- a/hw/xfree86/common/xf86Mode.c
 +++ b/hw/xfree86/common/xf86Mode.c
 @@ -230,6 +230,8 @@ xf86ModeStatusToString(ModeStatus status)
@@ -85,5 +85,5 @@ index ad01b87ec..561087717 100644
      MODE_ERROR = -1             /* error condition */
  } ModeStatus;
 -- 
-2.46.0.windows.1
+2.47.0
 

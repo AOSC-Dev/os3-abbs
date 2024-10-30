@@ -2,6 +2,6 @@ PKGNAME=iniparser
 PKGDES="A free standalone .ini file parsing library written in portable ANSI C"
 PKGSEC=libs
 PKGDEP="glibc"
-BUILDDEP="chrpath"
+BUILDDEP="doxygen"
 
-PKGBREAK="samba<=4.8.2"
+PKGBREAK="samba<=4.17.2-4"

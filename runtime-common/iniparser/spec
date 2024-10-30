@@ -1,4 +1,4 @@
-VER=4.1
-SRCS="tbl::https://github.com/ndevilla/iniparser/archive/v$VER.tar.gz"
-CHKSUMS="sha256::960daa800dd31d70ba1bacf3ea2d22e8ddfc2906534bf328319495966443f3ae"
+VER=4.2.4
+SRCS="git::commit=tags/v$VER::https://github.com/ndevilla/iniparser"
+CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=1380"

@@ -1,0 +1,12 @@
+PKGNAME=quodlibet
+PKGSEC=sound
+PKGDEP="python-3 pygobject-3 pycairo mutagen gtk-3 libsoup-3 feedparser sgmllib3k \
+	gstreamer dbus-python keybinder-3.0 gtksourceview-4 libmodplug \
+	notification-daemon rygel python-musicbrainzngs"
+BUILDDEP="setuptools python-build python-installer poetry-core \
+        wheel gettext sphinx"
+PKGDES="Music player and music library manager"
+
+ABHOST=noarch
+ABTYPE=pep517
+NOPYTHON2=1

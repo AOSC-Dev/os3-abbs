@@ -1,0 +1,8 @@
+PKGNAME=sgmllib3k
+PKGSEC=python
+PKGDEP="python-3"
+BUILDDEP="setuptools"
+PKGDES="Python 3 SGML praser module"
+
+ABTYPE=python
+ABHOST=noarch

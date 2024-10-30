@@ -1,5 +1,4 @@
-VER=4.4
-REL=3
+VER=5.1
 SRCS="tbl::https://www.sourceware.org/pub/systemtap/releases/systemtap-$VER.tar.gz"
-CHKSUMS="sha256::ca70b6107537162ce401f8965a7e315950c1292c02ea50a490e77bd6fde5638c"
+CHKSUMS="sha256::1db8c1d65bb13b65bc3f30e4cee2f7e174d517e908d994bb0fcde0051f181b40"
 CHKUPDATE="anitya::id=4934"

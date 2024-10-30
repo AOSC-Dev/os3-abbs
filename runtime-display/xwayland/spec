@@ -1,4 +1,4 @@
-VER=24.1.1
+VER=24.1.4
 SRCS="tbl::https://xorg.freedesktop.org/archive/individual/xserver/xwayland-$VER.tar.xz"
-CHKSUMS="sha256::7125bee0b10335805d7f5ba57dfaa359a7850af1a68524f1d97b362741a51832"
+CHKSUMS="sha256::d96a78dbab819f55750173444444995b5031ebdcc15b77afebbd8dbc02af34f4"
 CHKUPDATE="anitya::id=180949"

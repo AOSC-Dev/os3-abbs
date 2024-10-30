@@ -1,4 +1,4 @@
-PKG_FILENAME=$(ls | grep -oP 'l_BaseKit_p_.+(?=\.sh)')
+PKG_FILENAME=$(ls | grep -oP 'intel-oneapi-base-toolkit-.+(?=\.sh)')
 
 abinfo "Extracting Intel oneAPI Base Toolkit package ..."
 sh "${SRCDIR}"/"${PKG_FILENAME}".sh \

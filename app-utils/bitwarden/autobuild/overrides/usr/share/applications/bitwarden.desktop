@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=Bitwarden
-Comment=A music player client for self-hosted streaming services
+Comment=Client for the Bitwarden password manager
 Comment[zh_CN]=Bitwarden 密码管理器客户端
 Comment[zh_TW]=Bitwarden 密碼管理器用户端
 Exec=/usr/bin/bitwarden %U

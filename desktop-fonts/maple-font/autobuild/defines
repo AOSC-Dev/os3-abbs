@@ -1,0 +1,6 @@
+PKGNAME="maple-font"
+PKGDES="Monospace font with round corner, ligatures, and nerd-font integration"
+PKGDEP="fontconfig"
+PKGSEC="fonts"
+
+ABHOST="noarch"

@@ -1,0 +1,32 @@
+From a6ab7259ea459b008b64dac463a4068039fac2f1 Mon Sep 17 00:00:00 2001
+From: Kexy Biscuit <kexybiscuit@aosc.io>
+Date: Thu, 31 Oct 2024 15:52:53 +0800
+Subject: [PATCH 01/12] AOSCOS: Revert "Makefile: error out of 'install' if
+ COPYOPTS is set"
+
+This reverts commit 4f397306dcbac9739472a3e7bb1f9f009728c256.
+
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ Makefile | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 3f51b4eff1f5..033e3fb671d3 100644
+--- a/Makefile
++++ b/Makefile
+@@ -30,11 +30,6 @@ dedup:
+ 	./dedup-firmware.sh $(DESTDIR)$(FIRMWAREDIR)
+ 
+ install:
+-	@if [ -n "${COPYOPTS}" ]; then \
+-		echo "COPYOPTS is not used since linux-firmware-20241017!"; \
+-		echo "You may want to use install{-xz,-zst} and dedup targets instead"; \
+-		false; \
+-	fi
+ 	install -d $(DESTDIR)$(FIRMWAREDIR)
+ 	./copy-firmware.sh $(DESTDIR)$(FIRMWAREDIR)
+ 	@echo "Now run \"make dedup\" to de-duplicate any firmware files"
+-- 
+2.47.0
+

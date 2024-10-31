@@ -1,0 +1,44 @@
+From 0d6903537c3a16d02a0b1a66e45a20c5dc030cdb Mon Sep 17 00:00:00 2001
+From: Kexy Biscuit <kexybiscuit@aosc.io>
+Date: Thu, 31 Oct 2024 15:53:03 +0800
+Subject: [PATCH 03/12] AOSCOS: Revert "copy-firmware.sh: rename variables in
+ symlink hanlding"
+
+This reverts commit a89349c33c603beeef553163341b01f2c1b30cf9.
+
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ copy-firmware.sh | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/copy-firmware.sh b/copy-firmware.sh
+index dcb3b92c7229..66c8d83a3020 100755
+--- a/copy-firmware.sh
++++ b/copy-firmware.sh
+@@ -81,16 +81,16 @@ grep -E '^(RawFile|File):' WHENCE | sed -E -e 's/^(RawFile|File): */\1 /;s/"//g'
+ done
+ 
+ # shellcheck disable=SC2162 # file/folder name can include escaped symbols
+-grep -E '^Link:' WHENCE | sed -e 's/^Link: *//g;s/-> //g' | while read l t; do
+-    directory="$destdir/$(dirname "$l")"
++grep -E '^Link:' WHENCE | sed -e 's/^Link: *//g;s/-> //g' | while read f d; do
++    directory="$destdir/$(dirname "$f")"
+     install -d "$directory"
+-    target="$(cd "$directory" && realpath -m -s "$t")"
++    target="$(cd "$directory" && realpath -m -s "$d")"
+     if test -e "$target"; then
+-        $verbose "creating link $l -> $t"
+-        ln -s "$t" "$destdir/$l"
++        $verbose "creating link $f -> $d"
++        ln -s "$d" "$destdir/$f"
+     else
+-        $verbose "creating link $l$compext -> $t$compext"
+-        ln -s "$t$compext" "$destdir/$l$compext"
++        $verbose "creating link $f$compext -> $d$compext"
++        ln -s "$d$compext" "$destdir/$f$compext"
+     fi
+ done
+ 
+-- 
+2.47.0
+

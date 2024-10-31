@@ -1,0 +1,42 @@
+From 685b5644852551e779cfbe87b643ee37525532e0 Mon Sep 17 00:00:00 2001
+From: Kexy Biscuit <kexybiscuit@aosc.io>
+Date: Thu, 31 Oct 2024 15:53:12 +0800
+Subject: [PATCH 07/12] AOSCOS: Revert "copy-firmware.sh: warn if the
+ destination folder is not empty"
+
+This reverts commit 32f71d6d456e0a0cd89f9fa03c62d984f3afa05d.
+
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ copy-firmware.sh | 8 --------
+ 1 file changed, 8 deletions(-)
+
+diff --git a/copy-firmware.sh b/copy-firmware.sh
+index fa83492ee042..381bde291f19 100755
+--- a/copy-firmware.sh
++++ b/copy-firmware.sh
+@@ -16,10 +16,6 @@ err() {
+     exit 1
+ }
+ 
+-warn() {
+-    printf "WARNING: %s\n" "$*"
+-}
+-
+ while test $# -gt 0; do
+     case $1 in
+         -v | --verbose)
+@@ -67,10 +63,6 @@ if test -z "$destdir"; then
+     err "destination directory was not specified"
+ fi
+ 
+-if test -d "$destdir"; then
+-    find "$destdir" -type d -empty >/dev/null || warn "destination folder is not empty."
+-fi
+-
+ # shellcheck disable=SC2162 # file/folder name can include escaped symbols
+ grep -E '^(RawFile|File):' WHENCE | sed -E -e 's/^(RawFile|File): */\1 /;s/"//g' | while read k f; do
+     test -f "$f" || continue
+-- 
+2.47.0
+

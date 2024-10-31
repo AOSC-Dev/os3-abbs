@@ -1,0 +1,88 @@
+From 1655e6fc8c9ab9480fc020177d82db0dd736674e Mon Sep 17 00:00:00 2001
+From: Kexy Biscuit <kexybiscuit@aosc.io>
+Date: Thu, 31 Oct 2024 15:53:07 +0800
+Subject: [PATCH 04/12] AOSCOS: Revert "copy-firmware.sh: remove no longer
+ reachable test -L"
+
+This reverts commit 9ce7dac098621af796ee59ff3177b37d70c96dc5.
+
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ copy-firmware.sh | 46 ++++++++++++++++++++++++++++++++++++++--------
+ 1 file changed, 38 insertions(+), 8 deletions(-)
+
+diff --git a/copy-firmware.sh b/copy-firmware.sh
+index 66c8d83a3020..da3d9620c9db 100755
+--- a/copy-firmware.sh
++++ b/copy-firmware.sh
+@@ -5,6 +5,7 @@
+ #
+ 
+ verbose=:
++prune=no
+ # shellcheck disable=SC2209
+ compress=cat
+ compext=
+@@ -27,6 +28,11 @@ while test $# -gt 0; do
+             shift
+             ;;
+ 
++        -P | --prune)
++            prune=yes
++            shift
++            ;;
++
+         --xz)
+             if test "$compext" = ".zst"; then
+                 err "cannot mix XZ and ZSTD compression"
+@@ -82,15 +88,39 @@ done
+ 
+ # shellcheck disable=SC2162 # file/folder name can include escaped symbols
+ grep -E '^Link:' WHENCE | sed -e 's/^Link: *//g;s/-> //g' | while read f d; do
+-    directory="$destdir/$(dirname "$f")"
+-    install -d "$directory"
+-    target="$(cd "$directory" && realpath -m -s "$d")"
+-    if test -e "$target"; then
+-        $verbose "creating link $f -> $d"
+-        ln -s "$d" "$destdir/$f"
++    if test -L "$f$compext"; then
++        test -f "$destdir/$f$compext" && continue
++        $verbose "copying link $f$compext"
++        install -d "$destdir/$(dirname "$f")"
++        cp -d "$f$compext" "$destdir/$f$compext"
++
++        if test "x$d" != "x"; then
++            target="$(readlink "$f")"
++
++            if test "x$target" != "x$d"; then
++                $verbose "WARNING: inconsistent symlink target: $target != $d"
++            else
++                if test "x$prune" != "xyes"; then
++                    $verbose "WARNING: unneeded symlink detected: $f"
++                else
++                    $verbose "WARNING: pruning unneeded symlink $f"
++                    rm -f "$f$compext"
++                fi
++            fi
++        else
++            $verbose "WARNING: missing target for symlink $f"
++        fi
+     else
+-        $verbose "creating link $f$compext -> $d$compext"
+-        ln -s "$d$compext" "$destdir/$f$compext"
++        directory="$destdir/$(dirname "$f")"
++        install -d "$directory"
++        target="$(cd "$directory" && realpath -m -s "$d")"
++        if test -e "$target"; then
++            $verbose "creating link $f -> $d"
++            ln -s "$d" "$destdir/$f"
++        else
++            $verbose "creating link $f$compext -> $d$compext"
++            ln -s "$d$compext" "$destdir/$f$compext"
++        fi
+     fi
+ done
+ 
+-- 
+2.47.0
+

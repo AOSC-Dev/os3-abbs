@@ -1,0 +1,30 @@
+From 602d455ec8cc6f942b272a2e0af4725be8747478 Mon Sep 17 00:00:00 2001
+From: Kexy Biscuit <kexybiscuit@aosc.io>
+Date: Thu, 31 Oct 2024 15:53:11 +0800
+Subject: [PATCH 06/12] AOSCOS: Revert "copy-firmware.sh: call
+ ./check_whence.py before parsing the file"
+
+This reverts commit 6edd0fd36acb93c8075bbd700ad91f53fc810c0e.
+
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ copy-firmware.sh | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/copy-firmware.sh b/copy-firmware.sh
+index 0f21022a7707..fa83492ee042 100755
+--- a/copy-firmware.sh
++++ b/copy-firmware.sh
+@@ -71,9 +71,6 @@ if test -d "$destdir"; then
+     find "$destdir" -type d -empty >/dev/null || warn "destination folder is not empty."
+ fi
+ 
+-$verbose "Checking that WHENCE file is formatted properly"
+-./check_whence.py || err "check_whence.py has detected errors."
+-
+ # shellcheck disable=SC2162 # file/folder name can include escaped symbols
+ grep -E '^(RawFile|File):' WHENCE | sed -E -e 's/^(RawFile|File): */\1 /;s/"//g' | while read k f; do
+     test -f "$f" || continue
+-- 
+2.47.0
+

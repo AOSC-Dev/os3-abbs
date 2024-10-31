@@ -1,0 +1,35 @@
+From 8f6619353d748c5854b59c61ac8c9d85a15eaf85 Mon Sep 17 00:00:00 2001
+From: Kexy Biscuit <kexybiscuit@aosc.io>
+Date: Thu, 31 Oct 2024 15:53:19 +0800
+Subject: [PATCH 11/12] AOSCOS: Reapply "copy-firmware: Support additional
+ compressor options"
+
+This reverts commit e8f8537768aaa8d991477155ac00f7826457515e.
+
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ copy-firmware.sh | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/copy-firmware.sh b/copy-firmware.sh
+index 21ed20d5886f..344f478db74a 100755
+--- a/copy-firmware.sh
++++ b/copy-firmware.sh
+@@ -44,6 +44,14 @@ while test $# -gt 0; do
+             shift
+             ;;
+ 
++        -*)
++            if test "$compress" = "cat"; then
++                echo "ERROR: unknown command-line option: $1"
++                exit 1
++            fi
++            compress="$compress $1"
++            shift
++            ;;
+         *)
+             if test "x$destdir" != "x"; then
+                 echo "ERROR: unknown command-line options: $*"
+-- 
+2.47.0
+

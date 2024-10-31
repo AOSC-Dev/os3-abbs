@@ -1,0 +1,48 @@
+From 3903eee338200f8444ac69ee3abcea1c60d6c40b Mon Sep 17 00:00:00 2001
+From: Kexy Biscuit <kexybiscuit@aosc.io>
+Date: Thu, 31 Oct 2024 15:53:01 +0800
+Subject: [PATCH 02/12] AOSCOS: Revert "make: separate installation and
+ de-duplication targets"
+
+This reverts commit 515022675f815d454ac95e60fd0587887f5ad1a6.
+
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ Makefile | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 033e3fb671d3..216dd4885b5b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -26,23 +26,22 @@ deb:
+ rpm:
+ 	./build_packages.py --rpm
+ 
+-dedup:
++install: install-nodedup
+ 	./dedup-firmware.sh $(DESTDIR)$(FIRMWAREDIR)
+ 
+-install:
++install-nodedup:
+ 	install -d $(DESTDIR)$(FIRMWAREDIR)
+ 	./copy-firmware.sh $(DESTDIR)$(FIRMWAREDIR)
+-	@echo "Now run \"make dedup\" to de-duplicate any firmware files"
+ 
+ install-xz:
+ 	install -d $(DESTDIR)$(FIRMWAREDIR)
+ 	./copy-firmware.sh --xz $(DESTDIR)$(FIRMWAREDIR)
+-	@echo "Now run \"make dedup\" to de-duplicate any firmware files"
++	./dedup-firmware.sh $(DESTDIR)$(FIRMWAREDIR)
+ 
+ install-zst:
+ 	install -d $(DESTDIR)$(FIRMWAREDIR)
+ 	./copy-firmware.sh --zstd $(DESTDIR)$(FIRMWAREDIR)
+-	@echo "Now run \"make dedup\" to de-duplicate any firmware files"
++	./dedup-firmware.sh $(DESTDIR)$(FIRMWAREDIR)
+ 
+ clean:
+ 	rm -rf release dist
+-- 
+2.47.0
+

@@ -1,0 +1,28 @@
+From 7a57151bca76cf507bbc9057eb2e53da59e3f07e Mon Sep 17 00:00:00 2001
+From: Kexy Biscuit <kexybiscuit@aosc.io>
+Date: Thu, 31 Oct 2024 15:53:09 +0800
+Subject: [PATCH 05/12] AOSCOS: Revert "copy-firmware.sh: remove no longer
+ reachable test -f"
+
+This reverts commit 25d5e6352ba5dd8d8d75cb80fc905f65b13c4c44.
+
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ copy-firmware.sh | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/copy-firmware.sh b/copy-firmware.sh
+index da3d9620c9db..0f21022a7707 100755
+--- a/copy-firmware.sh
++++ b/copy-firmware.sh
+@@ -76,6 +76,7 @@ $verbose "Checking that WHENCE file is formatted properly"
+ 
+ # shellcheck disable=SC2162 # file/folder name can include escaped symbols
+ grep -E '^(RawFile|File):' WHENCE | sed -E -e 's/^(RawFile|File): */\1 /;s/"//g' | while read k f; do
++    test -f "$f" || continue
+     install -d "$destdir/$(dirname "$f")"
+     $verbose "copying/compressing file $f$compext"
+     if test "$compress" != "cat" && test "$k" = "RawFile"; then
+-- 
+2.47.0
+

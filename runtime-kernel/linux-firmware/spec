@@ -1,9 +1,9 @@
-UPSTREAM_VER=20241004
-DEBIANVER=20240909-1
+UPSTREAM_VER=20241029
+DEBIANVER=20240909-2
 VER=${UPSTREAM_VER}+debian${DEBIANVER/-/+}
 # When using a stable tag.
-# SRCS="git::commit=tags/${UPSTREAM_VER}::https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git \
-SRCS="git::commit=919f79f9fb5536c1928a15ac82a2e53183b213cf::https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git \
+# SRCS="git::commit=tags/${UPSTREAM_VER}::https://gitlab.com/kernel-firmware/linux-firmware.git \
+SRCS="git::commit=3c9f887a81aea0a69a3ec141602fef15603b56f4::https://gitlab.com/kernel-firmware/linux-firmware.git \
       file::rename=brcmfmac43456-sdio.bin::https://github.com/RPi-Distro/firmware-nonfree/raw/4b356e134e8333d073bd3802d767a825adec3807/debian/config/brcm80211/brcm/brcmfmac43456-sdio.bin \
       file::rename=brcmfmac43456-sdio.clm_blob::https://github.com/RPi-Distro/firmware-nonfree/raw/4b356e134e8333d073bd3802d767a825adec3807/debian/config/brcm80211/brcm/brcmfmac43456-sdio.clm_blob \
       file::rename=brcmfmac43456-sdio.AP6256.txt::https://github.com/armbian/firmware/raw/8e7c8a855f0a91d3a34c1e37086d5aa894b2011e/brcm/nvram_ap6256.txt \
@@ -14,6 +14,6 @@ CHKSUMS="SKIP \
          sha256::2dbd7d22fc9af0eb560ceab45b19646d211bc7b34a1dd00c6bfac5dd6ba25e8a \
          sha256::588430b4c2c167ca035f17da7478bec3d4922487152610d385d5ccb8f7c0a75f \
          sha256::f67164f0eda8d4ca96305e177a61542bf8b470f2f1c456b66fe8c660650f1c7a \
-         sha256::29f592003e89e8fdb2d82ac9e07d6a0d53111509f78bb1285ad179e69c8551dc"
+         sha256::6e0aeaae6b726785c3a9dafb4372da09eaf351a8cfab85f86699349bc83b5aa6"
 CHKUPDATE="anitya::id=141464"
 SUBDIR="linux-firmware"

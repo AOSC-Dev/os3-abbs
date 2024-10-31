@@ -1,0 +1,5 @@
+abinfo "Installing config file to /etc ..."
+install -D -m 644 -v "$SRCDIR"/minidlna.conf -t "$PKGDIR"/etc/
+abinfo "Installing manual files..."
+install -D -m 644 -v "$SRCDIR"/minidlna.conf.5 -t "$PKGDIR"/usr/share/man/man5/
+install -D -m 644 -v "$SRCDIR"/minidlnad.8 -t "$PKGDIR"/usr/share/man/man8/

@@ -1,0 +1,6 @@
+PKGNAME=readymedia
+PKGSEC=sound
+PKGDEP="ffmpeg libexif"
+PKGDES="A DLNA media server formerly known as minidlna"
+
+ABSHADOW=0

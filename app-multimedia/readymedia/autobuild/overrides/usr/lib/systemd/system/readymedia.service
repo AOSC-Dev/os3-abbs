@@ -1,0 +1,13 @@
+[Unit]
+Description=ReadyMedia DLNA/UPnP-AV server
+After=network-online.target syslog.target local-fs.target
+Wants=network-online.target
+
+[Service]
+User=readymedia
+Group=readymedia
+Type=simple
+ExecStart=/usr/bin/minidlnad -S
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,3 @@
+abinfo "Installing conplay ..."
+install -Dvm755 "$SRCDIR"/scripts/conplay \
+    "$PKGDIR"/usr/bin/conplay

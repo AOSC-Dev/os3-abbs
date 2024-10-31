@@ -1,7 +1,63 @@
 PKGNAME=mpg123+32
+PKGSEC=sound
 PKGDES="A console-based MP3 player (optenv32)"
-PKGSEC=libs
-PKGDEP="glibc+32 alsa-lib+32"
+PKGDEP="alsa-lib+32 libtool+32 pulseaudio+32"
 BUILDDEP="32subsystem"
-NOLTO=1
-ABHOST=noarch
+
+ABHOST=optenv32
+
+# Note:
+#
+# --with-seektable=1000: <size> choose size of seek index table
+# (0 disables it), default 1000
+#
+# --disable-runtime-tables: calculate tables at runtime saving size at the
+# expense of additional computation at load time
+#
+# --enable-portable: *only* enable portable (as in devices) APIs.
+AUTOTOOLS_AFTER=(
+    '--enable-modules'
+    '--enable-libmpg123'
+    '--enable-libout123'
+    '--enable-libout123-modules'
+    '--enable-libsyn123'
+    '--disable-debug'
+    '--disable-xdebug'
+    '--disable-nagging'
+    '--enable-gapless'
+    '--enable-fifo'
+    '--enable-id3v2'
+    '--enable-string'
+    '--enable-icy'
+    '--enable-ntom'
+    '--enable-downsample'
+    '--enable-feeder'
+    '--enable-moreinfo'
+    '--enable-messages'
+    '--disable-runtime-tables'
+    '--enable-new-huffman'
+    '--enable-int-quality'
+    '--enable-16bit'
+    '--enable-8bit'
+    '--enable-32bit'
+    '--enable-real'
+    '--enable-equalizer'
+    '--enable-ieeefloat'
+    '--enable-cases'
+    '--enable-buffer'
+    '--enable-newoldwritesample'
+    '--enable-layer1'
+    '--enable-layer2'
+    '--enable-layer3'
+    '--disable-portable'
+    '--enable-largefile'
+    '--enable-feature_report'
+    '--enable-ipv6'
+    '--enable-network'
+    '--with-audio=alsa,pulse'
+    '--with-default-audio=pulse'
+    '--with-optimization=2'
+    '--with-seektable=1000'
+    '--with-network=auto'
+    '--with-cpu=generic'
+)

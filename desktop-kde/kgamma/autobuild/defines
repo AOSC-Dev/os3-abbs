@@ -13,3 +13,5 @@ CMAKE_AFTER="-DBUILD_COVERAGE=OFF \
 
 PKGPROV="kgamma5"
 PKGEPOCH=1
+
+PKGFTR="graphical-environment-kde"

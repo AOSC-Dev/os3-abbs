@@ -16,3 +16,5 @@ CMAKE_AFTER="-DBUILD_COVERAGE=OFF \
              -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
              -DWITH_GDB12=ON \
              -DWITH_SENTRY=OFF"
+
+PKGFTR="graphical-environment-kde"

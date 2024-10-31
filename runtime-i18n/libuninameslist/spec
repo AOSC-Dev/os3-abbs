@@ -1,4 +1,4 @@
-VER=20190701
+VER=20240910
 SRCS="tbl::https://github.com/fontforge/libuninameslist/releases/download/$VER/libuninameslist-dist-$VER.tar.gz"
-CHKSUMS="sha256::168b0d0877f275c1622fd075e6a1d072c52113dcf5da530536a2f2803ebb89a1"
+CHKSUMS="sha256::e59aab324ca0a3a713fe85c09a56c40c680a8458438d90624597920b3ef0be26"
 CHKUPDATE="anitya::id=1746"

@@ -18,3 +18,5 @@ CMAKE_AFTER="-DBUILD_COVERAGE=OFF \
 
 PKGCONFL="about-distro tde-i18n"
 PKGPROV="about-distro"
+
+PKGFTR="graphical-environment-kde"

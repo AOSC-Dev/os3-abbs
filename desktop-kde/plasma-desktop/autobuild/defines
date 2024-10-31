@@ -52,3 +52,5 @@ PKGBREAK="kdeplasma-addons<=5.25.5"
 PKGREP="kdeplasma-addons<=5.25.5"
 
 PKGFTR="graphical-environment-kde"
+
+PKGFTR="graphical-environment-kde"

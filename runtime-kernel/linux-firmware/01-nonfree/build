@@ -3,6 +3,11 @@ make install-xz \
     DESTDIR="$PKGDIR" \
     FIRMWAREDIR=/usr/lib/firmware
 
+abinfo "De-duplicating firmware ..."
+make dedup \
+    DESTDIR="$PKGDIR" \
+    FIRMWAREDIR=/usr/lib/firmware
+
 abinfo "Correcting amd-ucode README location ..."
 # FIXME: Dracut cat's amd-ucode/* when generating AuthenticAMD.bin for early
 # microcode loading. Oops.

@@ -1,4 +1,4 @@
-VER=1.2.10
+VER=1.2.12
 SRCS="tbl::https://download.gnome.org/sources/NetworkManager-pptp/${VER%.*}/NetworkManager-pptp-$VER.tar.xz"
-CHKSUMS="sha256::548cb1f87de81935e559ca3732d38fa4ca1eab077a17ba4f7a6cc5b0f94f0943"
+CHKSUMS="sha256::e5fa59fe46117f0ee86e9ca62c6943bc063884b04dd2396ccec38a2d1f414982"
 CHKUPDATE="anitya::id=230980"

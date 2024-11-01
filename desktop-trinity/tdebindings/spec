@@ -1,4 +1,4 @@
-VER=14.1.2
+VER=14.1.3
 SRCS="tbl::https://mirror.ppa.trinitydesktop.org/trinity/releases/R$VER/main/core/tdebindings-trinity-$VER.tar.xz"
-CHKSUMS="sha256::132c13f67b274756f3eb9361f47dbbc65fb6b69dcaf001a0979963b17bb0fec3"
+CHKSUMS="sha256::708632dd2bed730e3c9b7dcaa2fedf6fff74462e1d071e4805626facdab1a6e2"
 CHKUPDATE="anitya::id=16065"

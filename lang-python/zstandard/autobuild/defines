@@ -4,5 +4,8 @@ PKGDES="Zstandard binding for Python"
 PKGDEP="python-3"
 BUILDDEP="setuptools cffi"
 
-ABTYPE=pep517
+# FIXME: https://github.com/indygreg/python-zstandard/blob/e27f2f49f187f5f698e0a6004bee2aed80fe39e3/pyproject.toml#L5
+# https://github.com/pypa/pip/issues/11859#issuecomment-2132287974
+#ABTYPE=pep517
+ABTYPE=python
 NOPYTHON2=1

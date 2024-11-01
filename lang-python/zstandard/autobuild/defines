@@ -4,5 +4,5 @@ PKGDES="Zstandard binding for Python"
 PKGDEP="python-3"
 BUILDDEP="setuptools cffi"
 
+ABTYPE=pep517
 NOPYTHON2=1
-ABTYPE=python

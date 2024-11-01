@@ -1,6 +1,6 @@
-VER=22.10.0
+VER=22.11.0
 SRCS="tbl::https://nodejs.org/dist/v$VER/node-v$VER.tar.xz"
-CHKSUMS="sha256::3180710d3130ad9df01466abf010e408d41b374be54301d1480d10eca73558e0"
+CHKSUMS="sha256::bbf0297761d53aefda9d7855c57c7d2c272b83a7b5bad4fea9cb29006d8e1d35"
 CHKUPDATE="anitya::id=374342"
 # Note: Node.js currently requires large memory to build. 
 #       Prefer 3C5000 (or faster) build hosts.

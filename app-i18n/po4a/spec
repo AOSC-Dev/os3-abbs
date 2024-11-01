@@ -1,5 +1,4 @@
-VER=0.63
-REL=1
+VER=0.73
 SRCS="tbl::https://github.com/mquinson/po4a/releases/download/v$VER/po4a-$VER.tar.gz"
-CHKSUMS="sha256::e21be3ee545444bae2fe6a44aeb9d320604708cc2e4c601bcb3cc440db75b4ce"
+CHKSUMS="sha256::6f18f82d8cb2a377394137ea396cc3e8195d6cd6e454fe0218aa0f0e36038ea0"
 CHKUPDATE="anitya::id=3675"

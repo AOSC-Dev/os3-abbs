@@ -1,4 +1,4 @@
-VER=3.3.120
+VER=3.3.121
 SRCS="tbl::https://gtkwave.sourceforge.net/gtkwave-$VER.tar.gz"
-CHKSUMS="sha256::803a1893b473132b2672beac30e90f13333534d0b2a1078979fd965a6dc1de8d"
+CHKSUMS="sha256::5b05b6469bca675d9c9de60cf7ce8ad33afe13ef71aa29777898ced2ffe88397"
 CHKUPDATE="anitya::id=8813"

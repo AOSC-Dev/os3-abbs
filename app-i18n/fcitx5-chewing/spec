@@ -1,4 +1,4 @@
-VER=5.1.5
-SRCS="tbl::https://github.com/fcitx/fcitx5-chewing/archive/$VER.tar.gz"
-CHKSUMS="sha256::252c5662fd1fb543cfd4f99b467766f235b1ddc0fe60839c10af900337a047c8"
+VER=5.1.6
+SRCS="git::commit=tags/$VER::https://github.com/fcitx/fcitx5-chewing"
+CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=138243"

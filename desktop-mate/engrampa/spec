@@ -1,4 +1,4 @@
-VER=1.28.1
+VER=1.28.2
 SRCS="tbl::https://pub.mate-desktop.org/releases/${VER:0:4}/engrampa-$VER.tar.xz"
-CHKSUMS="sha256::9c5c4c9bcf8b08eeaa8f275538d24b4c955089d58aec0331e89c02b84d85386a"
+CHKSUMS="sha256::1e9977c23745bf8843a37f315171d9af97814a0971aeac3d774f017650ac09ef"
 CHKUPDATE="anitya::id=230601"

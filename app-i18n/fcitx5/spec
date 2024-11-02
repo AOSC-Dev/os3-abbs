@@ -1,8 +1,7 @@
-VER=5.1.10
-REL=1
-SRCS="tbl::https://github.com/fcitx/fcitx5/archive/$VER.tar.gz \
+VER=5.1.11
+SRCS="git::commit=tags/$VER::https://github.com/fcitx/fcitx5 \
       tbl::https://download.fcitx-im.org/fcitx5/fcitx5/fcitx5-${VER}_dict.tar.zst"
-CHKSUMS="sha256::a33f71e60a840b37fed7b04d2dcc7544a89bda78e4f4b2df7946ff358032a903 \
-         sha256::1aff414eeb244a7f9aa4af480f3b97420db5fff258fe70580f49885a6c21aae9"
+CHKSUMS="SKIP \
+         sha256::6d16ce1eea7a86eacbb8e738329b924469c93fee954e8851ec58aed906577d89"
 CHKUPDATE="anitya::id=138232"
 SUBDIR="fcitx5-$VER"

@@ -1,4 +1,4 @@
-VER=5.1.4
-SRCS="tbl::https://github.com/fcitx/fcitx5-hangul/archive/$VER.tar.gz"
-CHKSUMS="sha256::49404de5de38f4b182e487e7a51a4a68fdb5b8acef531d27ba328aca552b9009"
+VER=5.1.5
+SRCS="git::commit=tags/$VER::https://github.com/fcitx/fcitx5-hangul"
+CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=174360"

@@ -1,10 +1,3 @@
-abinfo "Applying deferred patches to Telegram forked WebRTC ..."
-for i in autobuild/patches/*.patch.deferred; do
-  abinfo "Applying ${i} ..."
-  patch -Np1 -d "../tg_owt" -i "$(readlink -f $i)"
-done
-
-
 abinfo "Making tg_owt..."
 cd "$SRCDIR"/../tg_owt
 cmake -G Ninja \

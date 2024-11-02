@@ -1,7 +1,7 @@
-From 6989404582c4d940393dd906ec28097322edd0bd Mon Sep 17 00:00:00 2001
+From 76aa32955a51bb2b4abfaf57c7b91b0b7665e93a Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 9 Apr 2024 22:02:32 +0800
-Subject: [PATCH 3/6] fix(ui): fix build with Qt 5
+Subject: [PATCH 03/10] fix(ui): fix build with Qt 5
 
 Co-authored-by: Henry Chen <chenx97@aosc.io>
 ---
@@ -12,10 +12,10 @@ Co-authored-by: Henry Chen <chenx97@aosc.io>
  4 files changed, 8 insertions(+)
 
 diff --git a/Telegram/lib_ui/ui/text/text_entity.cpp b/Telegram/lib_ui/ui/text/text_entity.cpp
-index 2e0fc109..2e766088 100644
+index 8c1e7932..a4d9872a 100644
 --- a/Telegram/lib_ui/ui/text/text_entity.cpp
 +++ b/Telegram/lib_ui/ui/text/text_entity.cpp
-@@ -2404,6 +2404,8 @@ EntityInText::EntityInText(
+@@ -2413,6 +2413,8 @@ EntityInText::EntityInText(
  , _data(data) {
  }
  
@@ -25,7 +25,7 @@ index 2e0fc109..2e766088 100644
  		const EntitiesInText &entities,
  		int textLength) {
 diff --git a/Telegram/lib_ui/ui/text/text_entity.h b/Telegram/lib_ui/ui/text/text_entity.h
-index f6ba110c..0961743e 100644
+index e5b7a690..80dda845 100644
 --- a/Telegram/lib_ui/ui/text/text_entity.h
 +++ b/Telegram/lib_ui/ui/text/text_entity.h
 @@ -71,6 +71,8 @@ public:
@@ -38,7 +38,7 @@ index f6ba110c..0961743e 100644
  		return _type;
  	}
 diff --git a/Telegram/lib_webview/CMakeLists.txt b/Telegram/lib_webview/CMakeLists.txt
-index 1bd7385f..98d623aa 100644
+index f4e0bb84..eeed27c7 100644
 --- a/Telegram/lib_webview/CMakeLists.txt
 +++ b/Telegram/lib_webview/CMakeLists.txt
 @@ -7,6 +7,7 @@
@@ -50,10 +50,10 @@ index 1bd7385f..98d623aa 100644
  get_filename_component(src_loc . REALPATH)
  
 diff --git a/Telegram/lib_webview/webview/platform/linux/webview_linux_compositor.cpp b/Telegram/lib_webview/webview/platform/linux/webview_linux_compositor.cpp
-index 0e2ee879..99a54ede 100644
+index 24274c37..a57c4fab 100644
 --- a/Telegram/lib_webview/webview/platform/linux/webview_linux_compositor.cpp
 +++ b/Telegram/lib_webview/webview/platform/linux/webview_linux_compositor.cpp
-@@ -53,6 +53,7 @@ private:
+@@ -54,6 +54,7 @@ private:
  };
  
  class Compositor::Output : public QWaylandQuickOutput {
@@ -61,12 +61,12 @@ index 0e2ee879..99a54ede 100644
  public:
  	Output(Compositor *compositor, QObject *parent = nullptr)
  	: _xdg(this, &compositor->_private->xdgOutput) {
-@@ -302,3 +303,5 @@ void Compositor::setWidget(QQuickWidget *widget) {
- }
+@@ -304,3 +305,5 @@ void Compositor::setWidget(QQuickWidget *widget) {
  
  } // namespace Webview
+ #endif // DESKTOP_APP_WEBVIEW_WAYLAND_COMPOSITOR
 +
 +#include "webview_linux_compositor.moc"
 -- 
-2.46.0
+2.47.0
 

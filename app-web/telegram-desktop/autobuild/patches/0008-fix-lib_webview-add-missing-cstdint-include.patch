@@ -1,0 +1,25 @@
+From cf311e631852efc2d84b75df542d0d8494e90acd Mon Sep 17 00:00:00 2001
+From: Kaiyang Wu <self@origincode.me>
+Date: Fri, 1 Nov 2024 23:28:52 -0700
+Subject: [PATCH 08/10] fix(lib_webview): add missing cstdint include
+
+Signed-off-by: Kaiyang Wu <self@origincode.me>
+---
+ Telegram/lib_webview/webview/webview_interface.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Telegram/lib_webview/webview/webview_interface.h b/Telegram/lib_webview/webview/webview_interface.h
+index d19d2534..660e5b27 100644
+--- a/Telegram/lib_webview/webview/webview_interface.h
++++ b/Telegram/lib_webview/webview/webview_interface.h
+@@ -12,6 +12,7 @@
+ #include <string>
+ #include <optional>
+ #include <functional>
++#include <cstdint>
+ 
+ #include <rpl/never.h>
+ #include <rpl/producer.h>
+-- 
+2.47.0
+

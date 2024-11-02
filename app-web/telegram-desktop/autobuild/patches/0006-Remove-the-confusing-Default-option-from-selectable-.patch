@@ -1,7 +1,7 @@
-From e16870c68b906350fc364a3b160ca808a98cb583 Mon Sep 17 00:00:00 2001
+From 1d9f98e85ea9ae2a692896286f5eab8b8fdeb2f9 Mon Sep 17 00:00:00 2001
 From: Jiangjin Wang <kaymw@aosc.io>
 Date: Mon, 6 May 2024 17:15:17 -0700
-Subject: [PATCH 6/6] Remove the confusing "Default" option from selectable
+Subject: [PATCH 06/10] Remove the confusing "Default" option from selectable
  fonts
 
 ---
@@ -45,5 +45,5 @@ index becdc962..550ac863 100644
  		std::swap(result[2], *nowIt);
  		++skip;
 -- 
-2.46.0
+2.47.0
 

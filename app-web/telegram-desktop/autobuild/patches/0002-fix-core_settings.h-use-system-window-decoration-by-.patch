@@ -1,7 +1,7 @@
-From c0cb72768f2c100c1a81d51396fb471cac9e5e08 Mon Sep 17 00:00:00 2001
+From 58b565d712fe52d08207057d382937d3fa34afd0 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 9 Apr 2024 17:43:49 +0800
-Subject: [PATCH 2/6] fix(core_settings.h): use system window decoration by
+Subject: [PATCH 02/10] fix(core_settings.h): use system window decoration by
  default
 
 ---
@@ -9,10 +9,10 @@ Subject: [PATCH 2/6] fix(core_settings.h): use system window decoration by
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/Telegram/SourceFiles/core/core_settings.h b/Telegram/SourceFiles/core/core_settings.h
-index 06f7475e..6c1ba990 100644
+index 3838463f..87210991 100644
 --- a/Telegram/SourceFiles/core/core_settings.h
 +++ b/Telegram/SourceFiles/core/core_settings.h
-@@ -1005,7 +1005,7 @@ private:
+@@ -1030,7 +1030,7 @@ private:
  	rpl::variable<float64> _dialogsNoChatWidthRatio; // per-window
  	rpl::variable<int> _thirdColumnWidth = kDefaultThirdColumnWidth; // p-w
  	bool _notifyFromAll = true;
@@ -22,5 +22,5 @@ index 06f7475e..6c1ba990 100644
  	rpl::variable<bool> _systemDarkModeEnabled = false;
  	rpl::variable<WindowTitleContent> _windowTitleContent;
 -- 
-2.46.0
+2.47.0
 

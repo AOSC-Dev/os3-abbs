@@ -1,4 +1,4 @@
-VER=5.1.4
-SRCS="tbl::https://github.com/fcitx/fcitx5-kkc/archive/$VER.tar.gz"
-CHKSUMS="sha256::63552fa94dd81a929c3f562b4ecec99e12022147979afdbd49790625c141db44"
+VER=5.1.5
+SRCS="git::commit=tags/$VER::https://github.com/fcitx/fcitx5-kkc"
+CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=138241"

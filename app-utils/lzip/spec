@@ -1,4 +1,4 @@
-VER=1.23
+VER=1.24.1
 SRCS="tbl::https://download.savannah.gnu.org/releases/lzip/lzip-$VER.tar.gz"
-CHKSUMS="sha256::4792c047ddf15ef29d55ba8e68a1a21e0cb7692d87ecdf7204419864582f280d"
+CHKSUMS="sha256::30c9cb6a0605f479c496c376eb629a48b0a1696d167e3c1e090c5defa481b162"
 CHKUPDATE="anitya::id=1866"

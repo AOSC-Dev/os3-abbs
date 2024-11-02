@@ -1,4 +1,4 @@
-VER=5.1.8
-SRCS="tbl::https://github.com/fcitx/fcitx5-rime/archive/$VER.tar.gz"
-CHKSUMS="sha256::773db664e7aeb12bf376cfa755fba0f65470af4c9884b1dc7fb64bfd0c0a4864"
+VER=5.1.9
+SRCS="git::commit=tags/$VER::https://github.com/fcitx/fcitx5-rime"
+CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=138239"

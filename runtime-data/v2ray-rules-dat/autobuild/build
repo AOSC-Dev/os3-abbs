@@ -1,0 +1,3 @@
+abinfo "Installing geofile..."
+install -Dvm644 "$SRCDIR"/{geosite.dat,geoip.dat} \
+    -t "$PKGDIR"/usr/share/"$PKGNAME"

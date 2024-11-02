@@ -1,0 +1,7 @@
+PKGNAME="v2ray-rules-dat"
+PKGSEC=misc
+PKGDEP=""
+PKGDES="Enhanced edition of V2Ray rules dat files"
+
+ABSPLITDBG=0
+ABHOST=noarch

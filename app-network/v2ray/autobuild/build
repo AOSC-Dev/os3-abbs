@@ -20,3 +20,8 @@ install -Dvm644 "$SRCDIR"/release/config/*.json \
 abinfo "Installing V2Ray executables ..."
 install -Dvm755 "$SRCDIR"/v2ray \
     -t "$PKGDIR"/usr/bin/
+
+abinfo "Linking to geofile directory ..."
+install -dv "$PKGDIR"/usr/share/v2ray
+ln -sv /usr/share/v2ray-rules-dat/{geoip.dat,geosite.dat} \
+    "$PKGDIR"/usr/share/v2ray/

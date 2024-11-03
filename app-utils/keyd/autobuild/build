@@ -1,0 +1,5 @@
+abinfo "Building keyd"
+make PREFIX=/usr
+
+abinfo "Installing keyd"
+make PREFIX=/usr DESTDIR="$PKGDIR" install

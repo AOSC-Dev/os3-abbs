@@ -1,0 +1,19 @@
+abinfo "Installing shell completion"
+install -vDm644 \
+  "$SRCDIR"/etc/completion/completion.bash \
+  "$PKGDIR"/usr/share/bash-completion/completions/delta
+install -vDm644 \
+  "$SRCDIR"/etc/completion/completion.zsh \
+  "$PKGDIR"/usr/share/zsh/site-functions/delta
+install -vDm644 \
+  "$SRCDIR"/etc/completion/completion.fish \
+  "$PKGDIR"/usr/share/fish/vendor_completions.d/delta.fish
+
+cd "$SRCDIR"/manual
+
+abinfo "Building documentation"
+mdbook build --dest-dir html
+
+abinfo "Installing documentation"
+mkdir -v -p "$PKGDIR"/usr/share/doc/git-delta
+cp -v -r "$SRCDIR"/manual/html "$PKGDIR"/usr/share/doc/git-delta

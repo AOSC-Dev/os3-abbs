@@ -1,0 +1,13 @@
+PKGNAME=delta
+PKGPROV=git-delta
+PKGSEC=devel
+PKGDEP="glibc libgit2 zlib gcc-runtime onig"
+BUILDDEP="cargo pkg-config llvm mdbook"
+
+PKGDES="A syntax-highlighting pager for git, diff, grep, and blame output"
+
+# FIXME: linker errors while building serde
+# "ld.lld: error: relocation R_MIPS_64 cannot be used against local symbol; recompile with -fPIC"
+NOLTO__LOONGSON3=1
+ABTYPE=rust
+CARGO_AFTER="--all-features"

@@ -1,0 +1,3 @@
+# By default onig-sys tries to use bundled onig and the linking fails
+# This flag instructs it to use system library
+export RUSTONIG_SYSTEM_LIBONIG=1

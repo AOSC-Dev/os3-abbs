@@ -1,0 +1,7 @@
+PKGNAME=keyd
+PKGSEC=utils
+PKGDEP="perl"
+PKGRECOM="python-3 python-xlib dbus-python"
+PKGDES="A low-level key remapping daemon for linux"
+
+ABTYPE=self

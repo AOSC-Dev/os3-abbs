@@ -1,7 +1,7 @@
 PKGNAME="xray"
 PKGSEC=net
 PKGDES="V2Ray with XTLS support"
-PKGDEP="gcc-runtime"
+PKGDEP="gcc-runtime v2ray-rules-dat"
 BUILDDEP="go"
 
 ABSPLITDBG=0

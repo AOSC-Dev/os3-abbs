@@ -1,4 +1,4 @@
-VER=31.9.1
+VER=32.0.1
 SRCS="tbl::https://github.com/be5invis/Iosevka/releases/download/v$VER/SuperTTC-Iosevka-${VER}.zip \
       tbl::https://github.com/be5invis/Iosevka/releases/download/v$VER/SuperTTC-IosevkaAile-${VER}.zip \
       tbl::https://github.com/be5invis/Iosevka/releases/download/v$VER/SuperTTC-IosevkaCurly-${VER}.zip \
@@ -24,30 +24,30 @@ SRCS="tbl::https://github.com/be5invis/Iosevka/releases/download/v$VER/SuperTTC-
       tbl::https://github.com/be5invis/Iosevka/releases/download/v$VER/SuperTTC-IosevkaSS17-${VER}.zip \
       tbl::https://github.com/be5invis/Iosevka/releases/download/v$VER/SuperTTC-IosevkaSS18-${VER}.zip \
       git::commit=tags/v$VER::https://github.com/be5invis/Iosevka"
-CHKSUMS="sha256::fab599f41be6a3931812b4da4876f6c9032e7b5bc5fdf7704a7662f707bcd151 \
-         sha256::7c2720875cc7e9a0224ffadd4ff17bb2a0e71037479a05ae35bd6115bc369522 \
-         sha256::a1622aa363a64718f75db19df9d34727b4d3596fee47564fcf94048d857b05d0 \
-         sha256::948ff6ccf75834e8630b4a827fb75320b9b0cca6978adb4a99b0d96ea49dacb0 \
-         sha256::fdf7f4ee2499b53ecde53927ca4c34a9d0aa72823165dba54a1283df1ffa2609 \
-         sha256::4beabd9bc6e496fe47c26e6b6d4b1a7588502383c1662dd062eab001227addb5 \
-         sha256::07c89a857c08f8620e33f3e76e51b13358c0474561f05be63dae3b1db46a0fe2 \
-         sha256::b4f5e9c122ad4cedd062398009145f72f32636d586bc03ef599f7dd5dbc11c10 \
-         sha256::6167c5c2b9fa9a3f0471fb4349b0451fb406e6e34377f88edc83bd21eb0baac6 \
-         sha256::a7a0ebd86f1e825a148a43ef12ed695d5689cb735613c2c0c95ee7d44e622f3a \
-         sha256::bbc38c978b49b4720a63c6362642179173455398f2d62d754abd9e54af61764e \
-         sha256::dee2299547448de222f6772cb5a397aff8e2b725cbe2c9588ffb200b4fdf2c25 \
-         sha256::414f20b2db21aeff8edb8858e48ea4c586622b1c27c65d3a4d35eabf898e8d2d \
-         sha256::31647d2bde55e17a1f33eacfbd7db359d3c485c5824f6ff75b95299530dffdd8 \
-         sha256::678489161cfb4edee128b809a13a1bbb11f9359dfbd0049effa7c415edf38056 \
-         sha256::035ce15a0ae08d8697ea716bd5fc5414430aef0be33ce42457bb029bbade4a8f \
-         sha256::610a5652c7ca172551e9b56ea4652eeffcd0ae328d9666919745e20ebf94ab2e \
-         sha256::338371fdff3cb9f5faf7b9e3f2a5863093e8a998f2d743eb45be113b5a956d1e \
-         sha256::f5ad65107259644a1e8d549ecca0bad23ae0e58d16d5d6d060ed9cb32e079799 \
-         sha256::40a0f92fa401dd2e8d40833e414179c8f96e38745121119d620aee93015cab14 \
-         sha256::405e784b355706ddeddeda8d5726d010f8fe81a213d08aea060ac22e7129224b \
-         sha256::71f6cfdab8af2b37e9e965cea03cf27cee3c363a47e82fa0340d7caa84f5f22c \
-         sha256::cf7da1ddec77286ad506baf96ad4ce648ea4a5ed31133043f4d840ce8274a43f \
-         sha256::82659495e411d1bbd8123c76d9162e678b62394952fbafe4174076ecbd87763d \
+CHKSUMS="sha256::46751fddd9ea49ccb8c49c1f4d246fd2c78f4b68aa9850967db872cce783c0d3 \
+         sha256::7f176cc9e3b6a823ea4d61b911877cde8595b42385cfbbaa774fcb1f7dce9eb2 \
+         sha256::364ce1594ca461f76e17294bf5077246eefca089b8b8427ae08e2260b1872c8f \
+         sha256::07836e1fd197170e7b4d6cafdfad0c4405069cb9819f864b82115ba137b765ab \
+         sha256::0bcc729736862d1e0a20911adf2431cba9bbcf3a8c1aad874ef0b1127d2ad58e \
+         sha256::60523ae1ae4a721fe42c7665d4e4c3e0e34d9fa5653d3b8af48da2d3daf8eddf \
+         sha256::3da4a23b65d07b79392b9964b86c6d9e757147c7fb0773e893e1be1d607218e1 \
+         sha256::e51721c7414783a9fc31aa8555933afca35ff453dc3a73f6d368c6545ab90c1f \
+         sha256::2c1af852da5a0f57a015e4723e8055c692f12e3ebd1b1419e3504c0078cc06f0 \
+         sha256::e4d7433b2dcb2c336f6b6a9cdf45415bf0c8b4c300c4ec0b8cbabc658158ad40 \
+         sha256::f74c67a310f52f99a6c8d17803a000149ddc37043d9921a2f549c13633726032 \
+         sha256::cbfd7dc0c372612f444b1b8872693ab2571ed61029baf02b7eb51ef8895e8f28 \
+         sha256::e73f336fb49c86bca34f919f19ef201107de174ca65e4b21afdeed4cd7bc5245 \
+         sha256::01ac8bad48cc78ec9e789d610514b8e2d77aa3341774443e34f558b89adeb577 \
+         sha256::c9cfdd05ef51fc39ee8638c1dd7df606075ab4745aae6aed3280e72ea05e7108 \
+         sha256::9509d8ceded85e8b143d43e933950d0971f9fd9172e347e039b69c68beee8184 \
+         sha256::5244a97fc24343fd6058ef76e18caf986901c53afd144b2d167cf0af2242f821 \
+         sha256::c52841a622df6246f6258a5f7442abf71b405439e56edc08dbe196d6769ceccd \
+         sha256::76656f8044ae7a2e7cb9bd78f2afb2fbbf7e2ba92414539a862f23d419e0bb7d \
+         sha256::aba1473e65334a1194cae2c76b7e42df321e6501ce3628ed9a2a5f5a1f85bece \
+         sha256::d357cdd67b0752bb71f62904b837b521ce24bd7c994c8c2df19b1af03868a295 \
+         sha256::2bf36bd79a115943d3d4b9fb969329a22ec27deb2c57098ce09e0f6243e2378d \
+         sha256::0bed8bbaae1903bc3b5eb52d14ae0e42c948efc3a67c06256efab6e9acc1247d \
+         sha256::b10e758c192a5d2aa7a5d2839e584746dadf0b5b79d91c0c8dbafb752942e519 \
          SKIP"
 SUBDIR=.
 CHKUPDATE="anitya::id=227585"

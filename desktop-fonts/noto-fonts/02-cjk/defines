@@ -4,8 +4,8 @@ PKGSEC=fonts
 PKGDEP="fontconfig"
 PKGDES="A font family aiming to support all languages with a harmonious look (Pan-CJK fonts)"
 
-PKGREP="fonts-noto-cjk fonts-noto"
-PKGPROV="ttf-noto-cjk"
+PKGREP="fonts-noto"
+PKGPROV="fonts-noto-cjk ttf-noto-cjk"
 
 ABHOST=noarch
 

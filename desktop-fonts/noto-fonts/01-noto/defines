@@ -4,7 +4,7 @@ PKGSEC=fonts
 PKGDEP="adobe-source-code-pro"
 PKGDES="A font family aiming to support all languages with a harmonious look"
 
-PKGREP="fonts-noto-cjk fonts-noto"
+PKGREP="fonts-noto"
 PKGPROV="ttf-noto"
 
 ABHOST=noarch

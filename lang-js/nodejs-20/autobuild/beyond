@@ -10,7 +10,7 @@ done
 
 cat <<EOF >"$SRCDIR/autobuild/postrm"
 if [ "\$1" != "upgrade" ]; then
-    update-alternatives --remove-all node $NODE_SUFFIX || true
+    update-alternatives --remove-all node$NODE_SUFFIX || true
 fi
 EOF
 

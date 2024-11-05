@@ -46,6 +46,7 @@ export GOBUILDTAGS="${BUILDTAGS}"
 
 abinfo "docker-cli: Building ..."
 # FIXME: go build does not allow absolute paths
+. ./scripts/build/.variables
 go build \
     -o ../moby/abbuild/bin/docker \
     github.com/docker/cli/cmd/docker

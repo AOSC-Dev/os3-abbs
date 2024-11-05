@@ -47,11 +47,15 @@ export GOBUILDTAGS="${BUILDTAGS}"
 abinfo "docker-cli: Building ..."
 . ./scripts/build/.variables
 # The variables script does `set -u`, which is incompatibbe with Autobuild4, revert it.
-# https://github.com/docker/cli/blob/9eb7b52189c4c233f7e7cee0ce8c1bcaf68f3c36/scripts/build/.variables#L2C1-L2C8
+# https://github.com/docker/cli/blob/9eb7b52189c4c233f7e7cee0ce8c1bcaf68f3c36/scripts/build/.variables#L2
 set +u
+# https://github.com/docker/cli/blob/9eb7b52189c4c233f7e7cee0ce8c1bcaf68f3c36/scripts/build/binary#L27
 # FIXME: go build does not allow absolute paths
 go build \
     -o ../moby/abbuild/bin/docker \
+    -tags "${GO_BUILDTAGS}" \
+    -ldflags "${GO_LDFLAGS}" \
+    ${GO_BUILDMODE} \
     github.com/docker/cli/cmd/docker
 
 #abinfo "docker-cli: Building man pages ..."

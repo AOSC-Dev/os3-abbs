@@ -2,7 +2,7 @@ VER=1.201
 SRCS="file::rename=LxgwFasmartGothic.ttf::https://github.com/lxgw/LxgwFasmartGothic/releases/download/v$VER/LXGWFasmartGothic.ttf \
       file::rename=LxgwFasmartGothicCL.ttf::https://github.com/lxgw/LxgwFasmartGothic/releases/download/v$VER/LXGWFasmartGothicCL.ttf \
       file::rename=LxgwFasmartGothicMN.ttf::https://github.com/lxgw/LxgwFasmartGothic/releases/download/v$VER/LXGWFasmartGothicMN.ttf \
-      git::commit=v$VER::https://github.com/lxgw/LxgwFasmartGothic.git"
+      git::commit=tags/v$VER::https://github.com/lxgw/LxgwFasmartGothic.git"
 CHKSUMS="sha256::46c06f85c75aa55b4450fa02c37a35f0f8a4efe8058ffcb6e48b9e2eccd764eb \
          sha256::ff0284d5a62b7bf0df6ab09f7dcab38cc2bf8a5bd03b705ca2d363c6a77ee8c0 \
          sha256::09584acb149fd6590296810ec3c9beb34c74f1dec56e1fdb4a6db6daf3772bd6 \

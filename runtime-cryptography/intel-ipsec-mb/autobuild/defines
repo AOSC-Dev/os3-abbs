@@ -7,3 +7,5 @@ PKGDES="Software implementations of the core cryptographic processing for IPsec 
 ABTYPE=cmakeninja
 
 FAIL_ARCH="!(amd64)"
+
+PKGBREAK="stress-ng<=0.18.04"

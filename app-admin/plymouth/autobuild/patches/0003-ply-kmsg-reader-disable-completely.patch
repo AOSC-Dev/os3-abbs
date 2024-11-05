@@ -1,0 +1,126 @@
+From 2ca060a481ccccb7cda5aa2e1743e68e531e9e8e Mon Sep 17 00:00:00 2001
+From: Cyan <cyan@cyano.uk>
+Date: Tue, 5 Nov 2024 15:03:52 +0800
+Subject: [PATCH] ply-kmsg-reader: disable completely
+
+Currently it does nothing useful, since we already have kernel message
+printed to the console. It spams the terminal if kernel log level is
+verbose.
+---
+ src/libply-splash-core/meson.build            |  2 --
+ .../ply-console-viewer.c                      |  1 -
+ src/main.c                                    | 31 -------------------
+ 3 files changed, 34 deletions(-)
+
+diff --git a/src/libply-splash-core/meson.build b/src/libply-splash-core/meson.build
+index cd22345c..0a7a6c5b 100644
+--- a/src/libply-splash-core/meson.build
++++ b/src/libply-splash-core/meson.build
+@@ -2,7 +2,6 @@ libply_splash_core_sources = files(
+   'ply-boot-splash.c',
+   'ply-device-manager.c',
+   'ply-input-device.c',
+-  'ply-kmsg-reader.c',
+   'ply-keyboard.c',
+   'ply-pixel-buffer.c',
+   'ply-pixel-display.c',
+@@ -57,7 +56,6 @@ libply_splash_core_headers = files(
+   'ply-boot-splash.h',
+   'ply-device-manager.h',
+   'ply-input-device.h',
+-  'ply-kmsg-reader.h',
+   'ply-keyboard.h',
+   'ply-pixel-buffer.h',
+   'ply-pixel-display.h',
+diff --git a/src/libply-splash-graphics/ply-console-viewer.c b/src/libply-splash-graphics/ply-console-viewer.c
+index fe25089d..d8453465 100644
+--- a/src/libply-splash-graphics/ply-console-viewer.c
++++ b/src/libply-splash-graphics/ply-console-viewer.c
+@@ -25,7 +25,6 @@
+ #include "ply-array.h"
+ #include "ply-pixel-display.h"
+ #include "ply-image.h"
+-#include "ply-kmsg-reader.h"
+ #include "ply-console-viewer.h"
+ #include "ply-rich-text.h"
+ 
+diff --git a/src/main.c b/src/main.c
+index 44486ac3..c2a7c6c6 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -54,7 +54,6 @@
+ #include "ply-trigger.h"
+ #include "ply-utils.h"
+ #include "ply-progress.h"
+-#include "ply-kmsg-reader.h"
+ 
+ #define BOOT_DURATION_FILE     PLYMOUTH_TIME_DIRECTORY "/boot-duration"
+ #define SHUTDOWN_DURATION_FILE PLYMOUTH_TIME_DIRECTORY "/shutdown-duration"
+@@ -81,7 +80,6 @@ typedef struct
+         ply_event_loop_t       *loop;
+         ply_boot_server_t      *boot_server;
+         ply_boot_splash_t      *boot_splash;
+-        ply_kmsg_reader_t      *kmsg_reader;
+         ply_terminal_session_t *session;
+         ply_buffer_t           *boot_buffer;
+         ply_progress_t         *progress;
+@@ -161,8 +159,6 @@ static void on_backspace (state_t *state);
+ static void on_quit (state_t       *state,
+                      bool           retain_splash,
+                      ply_trigger_t *quit_trigger);
+-static void on_new_kmsg_message (state_t        *state,
+-                                 kmsg_message_t *kmsg_message);
+ static bool sh_is_init (state_t *state);
+ static void cancel_pending_delayed_show (state_t *state);
+ static void prepare_logging (state_t *state);
+@@ -1465,18 +1461,6 @@ on_quit (state_t       *state,
+         }
+ }
+ 
+-void
+-on_new_kmsg_message (state_t        *state,
+-                     kmsg_message_t *kmsg_message)
+-{
+-        ply_buffer_append (state->boot_buffer, "%s\n", kmsg_message->message);
+-
+-        if (state->boot_splash != NULL) {
+-                ply_boot_splash_update_output (state->boot_splash, kmsg_message->message, strlen (kmsg_message->message));
+-                ply_boot_splash_update_output (state->boot_splash, "\n", 1);
+-        }
+-}
+-
+ static bool
+ on_has_active_vt (state_t *state)
+ {
+@@ -1903,18 +1887,6 @@ attach_to_running_session (state_t *state)
+                 return false;
+         }
+ 
+-        if (state->kmsg_reader == NULL) {
+-                ply_trace ("Creating new kmsg reader");
+-                state->kmsg_reader = ply_kmsg_reader_new ();
+-
+-                ply_kmsg_reader_watch_for_messages (state->kmsg_reader,
+-                                                    (ply_kmsg_reader_message_handler_t)
+-                                                    on_new_kmsg_message,
+-                                                    state);
+-        }
+-
+-        ply_kmsg_reader_start (state->kmsg_reader);
+-
+ #ifdef PLY_ENABLE_SYSTEMD_INTEGRATION
+         tell_systemd_to_print_details (state);
+ #endif
+@@ -1939,9 +1911,6 @@ detach_from_running_session (state_t *state)
+         tell_systemd_to_stop_printing_details (state);
+ #endif
+ 
+-        ply_trace ("stopping kmsg reader");
+-        ply_kmsg_reader_stop (state->kmsg_reader);
+-
+         ply_trace ("detaching from terminal session");
+         ply_terminal_session_detach (state->session);
+         state->is_redirected = false;
+-- 
+2.47.0
+

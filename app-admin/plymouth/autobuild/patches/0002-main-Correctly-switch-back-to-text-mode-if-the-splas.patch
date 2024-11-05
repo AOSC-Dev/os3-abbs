@@ -1,7 +1,7 @@
 From 5323b33eb5073cfeb0086939993129bac14fd1a9 Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Sun, 1 Sep 2024 00:16:10 +0800
-Subject: [PATCH 2/2] main: Correctly switch back to text mode if the splash is
+Subject: [PATCH 2/3] main: Correctly switch back to text mode if the splash is
  requested, but never shown
 
 Co-authored-by: filip-hejsek
@@ -12,7 +12,7 @@ Ref: https://gitlab.freedesktop.org/plymouth/plymouth/-/commit/1e206268df99d28e9
  1 file changed, 4 insertions(+)
 
 diff --git a/src/main.c b/src/main.c
-index 5916ddc..44486ac 100644
+index 5916ddcd..44486ac3 100644
 --- a/src/main.c
 +++ b/src/main.c
 @@ -1457,6 +1457,10 @@ on_quit (state_t       *state,
@@ -27,5 +27,5 @@ index 5916ddc..44486ac 100644
          }
  }
 -- 
-2.46.0.windows.1
+2.47.0
 

@@ -1,0 +1,5 @@
+abinfo "Installing manpage and LICENSE ..."
+install -Dm644 "$SRCDIR"/pngquant.1 \
+        "$PKGDIR"/usr/share/man/man1/pngquant.1
+install -Dm644 "$SRCDIR"/COPYRIGHT \
+        "$PKGDIR"/usr/share/licenses/pngquant/LICENSE

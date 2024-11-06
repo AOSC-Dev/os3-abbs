@@ -1,4 +1,4 @@
-VER=2.18.0
+VER=3.0.3
 SRCS="git::commit=tags/$VER::https://github.com/kornelski/pngquant"
 CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=3674"

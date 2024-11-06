@@ -1,0 +1,8 @@
+PKGNAME=libqapt
+PKGSEC=kde
+PKGDEP="apt debconf-kde glib kauth kcoreaddons ki18n kiconthemes kio krunner \
+        ktextwidgets kwidgetsaddons kwindowsystem polkit-qt-1 xapian-core"
+BUILDDEP="extra-cmake-modules"
+PKGDES="Qt frontend library and utilities for APT"
+
+CMAKE_AFTER="-DBUILD_WITH_QT6=OFF"

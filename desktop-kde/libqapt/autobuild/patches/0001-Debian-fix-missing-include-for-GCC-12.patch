@@ -1,0 +1,38 @@
+From 3fa82bf348c4ec749858fb5f112d03b014b9eb02 Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.io>
+Date: Wed, 21 Feb 2024 21:40:07 +0800
+Subject: [PATCH] [Debian] fix missing include for GCC >= 12
+
+---
+ src/worker/aptlock.cpp   | 2 ++
+ src/worker/aptworker.cpp | 1 +
+ 2 files changed, 3 insertions(+)
+
+diff --git a/src/worker/aptlock.cpp b/src/worker/aptlock.cpp
+index 93b4f6b..7a90a17 100644
+--- a/src/worker/aptlock.cpp
++++ b/src/worker/aptlock.cpp
+@@ -23,6 +23,8 @@
+ #include <apt-pkg/error.h>
+ #include <QDebug>
+ 
++#include <unistd.h>
++
+ AptLock::AptLock(const QString &path)
+     : m_path(path.toUtf8())
+     , m_fd(-1)
+diff --git a/src/worker/aptworker.cpp b/src/worker/aptworker.cpp
+index e08c993..d9ead49 100644
+--- a/src/worker/aptworker.cpp
++++ b/src/worker/aptworker.cpp
+@@ -47,6 +47,7 @@
+ // System includes
+ #include <sys/statvfs.h>
+ #include <sys/statfs.h>
++#include <unistd.h>
+ #define RAMFS_MAGIC     0x858458f6
+ 
+ // Own includes
+-- 
+2.47.0
+

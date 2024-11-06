@@ -1,0 +1,13 @@
+VER=3.0.5
+# FIXME: Upstream released but never tagged v3.0.5.
+#
+#   Author: Harald Sitter <sitter@kde.org>
+#   Date:   Wed Apr 1 14:26:44 2020 +0200
+#
+#      bump version to 3.0.5
+#    
+#      in preparation of release
+#
+SRCS="git::commit=3f73b48371fa2a7faf3d0555ea90bcbb66097ed0::https://github.com/KDE/libqapt"
+CHKSUMS="SKIP"
+CHKUPDATE="anitya::id=371536"

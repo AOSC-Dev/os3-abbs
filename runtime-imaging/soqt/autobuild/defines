@@ -1,0 +1,10 @@
+PKGNAME=soqt
+PKGDES="The glue between Coin and Qt"
+PKGSEC=libs
+PKGDEP="coin qt-6"
+BUILDDEP="extra-cmake-modules"
+ABTYPE=cmake
+
+CMAKE_AFTER="-DCMAKE_INSTALL_PREFIX=/usr \
+             -DSOQT_BUILD_DOC_MAN=ON \
+             -DSOQT_BUILD_DOC_CHM=OFF"

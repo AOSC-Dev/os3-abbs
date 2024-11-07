@@ -6,6 +6,9 @@ PKGSEC=libs
 MESON_AFTER="-Dudev=true \
              -Dintel=enabled \
              -Dvalgrind=disabled"
+MESON_AFTER__LOONGARCH64=" \
+             ${MESON_AFTER} \
+             -Dgsgpu=enabled"
 MESON_AFTER__ARM=" \
              ${MESON_AFTER} \
              -Domap=enabled \

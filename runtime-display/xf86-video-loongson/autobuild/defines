@@ -1,0 +1,7 @@
+PKGNAME=xf86-video-loongson
+PKGDES="XF86 driver for LS7A1000/2000 GPUs"
+PKGDEP="xorg-server libdrm"
+PKGSEC=x11
+
+AB_FLAGS_RRO=0
+AB_FLAGS_NOW=0

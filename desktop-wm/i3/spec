@@ -1,5 +1,4 @@
-VER=4.23
-REL=1
+VER=4.24
 SRCS="tbl::https://i3wm.org/downloads/i3-$VER.tar.xz"
-CHKSUMS="sha256::61026a7196c9139d0f3aadd27197e8b320c576e3a450e01d74c1aca484044c46"
+CHKSUMS="sha256::5baefd0e5e78f1bafb7ac85deea42bcd3cbfe65f1279aa96f7e49661637ac981"
 CHKUPDATE="anitya::id=1348"

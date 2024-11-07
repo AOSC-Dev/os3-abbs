@@ -1,16 +1,11 @@
-cd "$BLDDIR"
-
-abinfo "Fetching go modules..."
-go get "${SRCDIR}"
-
-abinfo "Building exec binary..."
+abinfo "Building exec binary ..."
 go build -v \
-    -ldflags "-s -w -extldflags '-Wl,-z,relro -Wl,-z,now -specs=/usr/lib/autobuild3/specs/hardened-ld' -X 'github.com/sagernet/sing-box/constant.Version=$PKGVER'" \
+    -ldflags "-s -w -buildid= -linkmode=external -X 'github.com/sagernet/sing-box/constant.Version=$PKGVER'" \
     -tags "with_gvisor,with_quic,with_wireguard,with_grpc,with_ech,with_utls,with_reality_server,with_acme,with_dhcp,with_clash_api,with_v2ray_api" \
-    ../cmd/sing-box
+    ./cmd/sing-box
 
 abinfo "Installing sing-box executables ..."
-install -Dvm755 "$BLDDIR"/sing-box \
+install -Dvm755 "$SRCDIR"/sing-box \
     -t "$PKGDIR"/usr/bin/
 
 abinfo "Installing systemd services..."
@@ -20,3 +15,11 @@ install -Dvm644 "$SRCDIR"/release/config/sing-box@.service \
     -t "$PKGDIR"/usr/lib/systemd/system
 install -Dvm644 "$SRCDIR"/release/config/config.json \
     -t "$PKGDIR"/etc/sing-box
+
+abinfo "Installing completion files ..."
+install -Dvm644 "$SRCDIR"/release/completions/sing-box.bash \
+    -T "$PKGDIR"/usr/share/bash-completion/completions/sing-box
+install -Dvm644 "$SRCDIR"/release/completions/sing-box.zsh \
+    -T "$PKGDIR"/usr/share/zsh/site-functions/_sing-box
+install -Dvm644 "$SRCDIR"/release/completions/sing-box.fish \
+    -T "$PKGDIR"/usr/share/fish/vendor_completions.d/sing-box.fish

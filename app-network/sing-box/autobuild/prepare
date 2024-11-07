@@ -1,4 +1,10 @@
-abinfo "Setting up build environment..."
-export GOPATH="$SRCDIR"/abgopath
-mkdir -v "$BLDDIR"
-mkdir -v "$GOPATH"
+abinfo "Enabling trimpath for a reproducible build ..."
+export GOFLAGS="${GOFLAGS} -trimpath"
+
+abinfo "Setting other GOFLAGS ..."
+export GOFLAGS="${GOFLAGS} -mod=readonly -modcacherw"
+
+if ! ab_match_arch loongson3; then
+    abinfo "Enabling buildmode=pie ..."
+    export GOFLAGS="${GOFLAGS} -buildmode=pie"
+fi

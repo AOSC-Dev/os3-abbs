@@ -1,0 +1,25 @@
+From 8f7e47a91c13d3192eade0f591525b308b19ac76 Mon Sep 17 00:00:00 2001
+From: Kexy Biscuit <kexybiscuit@aosc.io>
+Date: Sat, 9 Nov 2024 03:58:55 +0800
+Subject: [PATCH 2/2] loongarch: match vpx_quantize_b_lsx's signature with rtcd
+
+---
+ vpx_dsp/loongarch/quantize_lsx.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/vpx_dsp/loongarch/quantize_lsx.c b/vpx_dsp/loongarch/quantize_lsx.c
+index c88ab20cb..73c228941 100644
+--- a/vpx_dsp/loongarch/quantize_lsx.c
++++ b/vpx_dsp/loongarch/quantize_lsx.c
+@@ -89,7 +89,7 @@ static INLINE int16_t accumulate_eob(__m128i eob) {
+   return res_m;
+ }
+ 
+-void vpx_quantize_b_lsx(const int16_t *coeff_ptr, intptr_t n_coeffs,
++void vpx_quantize_b_lsx(const tran_low_t *coeff_ptr, intptr_t n_coeffs,
+                         const struct macroblock_plane *const mb_plane,
+                         tran_low_t *qcoeff_ptr, tran_low_t *dqcoeff_ptr,
+                         const int16_t *dequant_ptr, uint16_t *eob_ptr,
+-- 
+2.47.0.windows.2
+

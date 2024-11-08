@@ -1,0 +1,30 @@
+From 0b0142f385f80d02d01cf5ebfea96d92e2850a48 Mon Sep 17 00:00:00 2001
+From: Kexy Biscuit <kexybiscuit@aosc.io>
+Date: Sat, 9 Nov 2024 03:39:38 +0800
+Subject: [PATCH] loongarch: build vpx_quantize_b{,_32x32}_lsx unconditionally
+
+---
+ vpx_dsp/loongarch/quantize_lsx.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/vpx_dsp/loongarch/quantize_lsx.c b/vpx_dsp/loongarch/quantize_lsx.c
+index 9bb1691e2..c88ab20cb 100644
+--- a/vpx_dsp/loongarch/quantize_lsx.c
++++ b/vpx_dsp/loongarch/quantize_lsx.c
+@@ -89,8 +89,6 @@ static INLINE int16_t accumulate_eob(__m128i eob) {
+   return res_m;
+ }
+ 
+-#if !CONFIG_VP9_HIGHBITDEPTH
+-
+ void vpx_quantize_b_lsx(const int16_t *coeff_ptr, intptr_t n_coeffs,
+                         const struct macroblock_plane *const mb_plane,
+                         tran_low_t *qcoeff_ptr, tran_low_t *dqcoeff_ptr,
+@@ -241,4 +239,3 @@ void vpx_quantize_b_32x32_lsx(const tran_low_t *coeff_ptr,
+ 
+   *eob_ptr = accumulate_eob(eob);
+ }
+-#endif
+-- 
+2.47.0.windows.2
+

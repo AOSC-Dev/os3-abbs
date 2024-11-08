@@ -1,5 +1,4 @@
-VER=3.5.9.257
-SRCS="git::commit=tags/v$VER::https://github.com/HMCL-dev/HMCL"
-CHKSUMS=SKIP
+VER=3.5.10
+SRCS="git::commit=tags/release-$VER::https://github.com/HMCL-dev/HMCL"
 CHKUPDATE="anitya::id=371893"
 CHKSUMS="SKIP"

@@ -8,3 +8,4 @@ CHKSUMS="sha256::872e7a42b41f8558abbf887f1bdc7aac932bb88b2764d07cbce270cab57e3b5
          sha256::54c25c941678198b0baf78f5e4cf468b990fd625ec4e7b231cf1e8a6bace3d1a \
          sha256::80c91d35742f68217cf47b13e5b50d53f54c22c485bacce41ad7fdc321649e61"
 CHKUPDATE="anitya::id=14449"
+REL=1

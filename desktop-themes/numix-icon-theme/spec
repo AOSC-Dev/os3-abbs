@@ -1,4 +1,4 @@
-VER=20190917
-SRCS="git::commit=cfef86f11d224fc01abad6449eb0bc9ff9928093::https://github.com/numixproject/numix-icon-theme"
+VER=24.09.18
+SRCS="git::commit=tags/$VER;copy-repo=true::https://github.com/numixproject/numix-icon-theme.git"
 CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=10909"

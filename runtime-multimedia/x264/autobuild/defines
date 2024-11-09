@@ -3,7 +3,7 @@ PKGSEC=libs
 PKGDEP="glibc"
 BUILDDEP__AMD64="${BUILDDEP} nasm"
 BUILDDEP__I486="nasm"
-PKGDES="H264 encoding library"
+PKGDES="An H.264 encoder"
 
 AUTOTOOLS_AFTER="--enable-shared \
                  --enable-pic"

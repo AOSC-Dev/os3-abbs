@@ -1,9 +1,9 @@
-VER=20241009
+VER=20241109
 SRCS="file::rename=moegirl.dict::https://github.com/outloudvi/mw2fcitx/releases/download/$VER/moegirl.dict \
       file::rename=moegirl.dict.yaml::https://github.com/outloudvi/mw2fcitx/releases/download/$VER/moegirl.dict.yaml \
       file::rename=LICENSE::https://github.com/outloudvi/mw2fcitx/raw/pkg-moegirl/LICENSE.content"
-CHKSUMS="sha256::b5bf99ee36bac86ee7e837314af74584cab6c5336cea627aa5d3df10a791530c \
-         sha256::1bde8120ba2b3162fa417b790d89f2299885fbd547acc542a8de2ba85250dbfa \
+CHKSUMS="sha256::560d4ac7fee6d603442407b76e1c68228817b0d57c234358ca11adf52bea7cce \
+         sha256::067a6fee2a933d13674a267a669cdc4172d991b15b6749d0830d9df88c9364e4 \
          sha256::95f13d3047233ade320b4fce712d1b17de395649d6958c4254f1c21148cc7de8"
 CHKUPDATE="anitya::id=228871"
 SUBDIR=.

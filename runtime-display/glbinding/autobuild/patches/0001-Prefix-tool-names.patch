@@ -1,0 +1,106 @@
+From ff2ff7a7aad77b907a67bd5962d6e11a4f9c699e Mon Sep 17 00:00:00 2001
+From: Willy Scheibel <willy.scheibel@hpi.de>
+Date: Mon, 13 Feb 2023 13:58:54 +0100
+Subject: [PATCH] Prefix tool names (refs #155, #341)
+
+---
+ source/tools/glcontexts/CMakeLists.txt     | 2 +-
+ source/tools/glescontexts/CMakeLists.txt   | 2 +-
+ source/tools/glfunctions/CMakeLists.txt    | 2 +-
+ source/tools/glinfo/CMakeLists.txt         | 2 +-
+ source/tools/glisdeprecated/CMakeLists.txt | 2 +-
+ source/tools/glmeta/CMakeLists.txt         | 2 +-
+ source/tools/glqueries/CMakeLists.txt      | 2 +-
+ 7 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/source/tools/glcontexts/CMakeLists.txt b/source/tools/glcontexts/CMakeLists.txt
+index 0b44314b..8c55261a 100644
+--- a/source/tools/glcontexts/CMakeLists.txt
++++ b/source/tools/glcontexts/CMakeLists.txt
+@@ -11,7 +11,7 @@ find_package(glfw3 QUIET)
+ # 
+ 
+ # Target name
+-set(target glcontexts)
++set(target ${META_PROJECT_NAME}-glcontexts)
+ 
+ # Exit here if required dependencies are not met
+ if (NOT glfw3_FOUND)
+diff --git a/source/tools/glescontexts/CMakeLists.txt b/source/tools/glescontexts/CMakeLists.txt
+index 02b921ff..889ae9a7 100644
+--- a/source/tools/glescontexts/CMakeLists.txt
++++ b/source/tools/glescontexts/CMakeLists.txt
+@@ -11,7 +11,7 @@ find_package(glfw3 QUIET)
+ # 
+ 
+ # Target name
+-set(target glescontexts)
++set(target ${META_PROJECT_NAME}-glescontexts)
+ 
+ # Exit here if required dependencies are not met
+ if (NOT glfw3_FOUND)
+diff --git a/source/tools/glfunctions/CMakeLists.txt b/source/tools/glfunctions/CMakeLists.txt
+index 18e5fc5a..e2c1e051 100644
+--- a/source/tools/glfunctions/CMakeLists.txt
++++ b/source/tools/glfunctions/CMakeLists.txt
+@@ -11,7 +11,7 @@ find_package(glfw3 QUIET)
+ # 
+ 
+ # Target name
+-set(target glfunctions)
++set(target ${META_PROJECT_NAME}-glfunctions)
+ 
+ # Exit here if required dependencies are not met
+ if (NOT glfw3_FOUND)
+diff --git a/source/tools/glinfo/CMakeLists.txt b/source/tools/glinfo/CMakeLists.txt
+index fd3efc99..e0eb1952 100644
+--- a/source/tools/glinfo/CMakeLists.txt
++++ b/source/tools/glinfo/CMakeLists.txt
+@@ -11,7 +11,7 @@ find_package(glfw3 QUIET)
+ # 
+ 
+ # Target name
+-set(target glinfo)
++set(target ${META_PROJECT_NAME}-glinfo)
+ 
+ # Exit here if required dependencies are not met
+ if (NOT glfw3_FOUND)
+diff --git a/source/tools/glisdeprecated/CMakeLists.txt b/source/tools/glisdeprecated/CMakeLists.txt
+index cd86b7fd..3fec10b9 100644
+--- a/source/tools/glisdeprecated/CMakeLists.txt
++++ b/source/tools/glisdeprecated/CMakeLists.txt
+@@ -11,7 +11,7 @@ find_package(glfw3 QUIET)
+ # 
+ 
+ # Target name
+-set(target glisdeprecated)
++set(target ${META_PROJECT_NAME}-glisdeprecated)
+ 
+ # Exit here if required dependencies are not met
+ if (NOT glfw3_FOUND)
+diff --git a/source/tools/glmeta/CMakeLists.txt b/source/tools/glmeta/CMakeLists.txt
+index ded869b9..24979249 100644
+--- a/source/tools/glmeta/CMakeLists.txt
++++ b/source/tools/glmeta/CMakeLists.txt
+@@ -11,7 +11,7 @@
+ # 
+ 
+ # Target name
+-set(target glmeta)
++set(target ${META_PROJECT_NAME}-glmeta)
+ 
+ message(STATUS "Tool ${target}")
+ 
+diff --git a/source/tools/glqueries/CMakeLists.txt b/source/tools/glqueries/CMakeLists.txt
+index 5dc9ab81..34c2ea3b 100644
+--- a/source/tools/glqueries/CMakeLists.txt
++++ b/source/tools/glqueries/CMakeLists.txt
+@@ -11,7 +11,7 @@ find_package(glfw3 QUIET)
+ # 
+ 
+ # Target name
+-set(target glqueries)
++set(target ${META_PROJECT_NAME}-glqueries)
+ 
+ # Exit here if required dependencies are not met
+ if (NOT glfw3_FOUND)

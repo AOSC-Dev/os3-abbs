@@ -1,0 +1,15 @@
+PKGNAME=glbinding
+PKGSEC=libs
+PKGDEP="glfw"
+BUILDDEP="cmake doxygen"
+PKGDES="A cross-platform C++ binding for the OpenGL API"
+
+ABTYPE=cmake
+CMAKE_AFTER=" \
+    -DBUILD_SHARED_LIBS=ON \
+    -DOPTION_USE_GIT_INFORMATION=OFF \
+    -DOPTION_BUILD_DOCS=ON \
+    -DOPTION_BUILD_TOOLS=ON \
+    -DOPTION_BUILD_EXAMPLES=OFF \
+    -DOPTION_BUILD_CHECK=ON \
+"

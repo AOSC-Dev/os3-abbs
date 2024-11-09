@@ -1,0 +1,13 @@
+PKGNAME="dae"
+PKGSEC=net
+PKGDES="Transparent proxy solution based on eBPF"
+PKGDEP="gcc-runtime v2ray-rules-dat"
+PKGCONFL="daed"
+BUILDDEP="go llvm"
+
+# FIXME: Autobuild does not yet support splitting debug symbols from Go executables.
+ABSPLITDBG=0
+# Go module "github.com/sirupsen/logrus" does not support loongson3 and loongarch64
+# and build error on ppc64el and riscv64.
+# See: https://github.com/daeuniverse/dae/issues/696
+FAIL_ARCH="!(amd64|arm64)"

@@ -1,0 +1,23 @@
+abinfo "Building dae ..."
+make VERSION="$PKGVER"
+
+abinfo "Installing dae ..."
+install -Dvm755 "$SRCDIR"/dae -t "$PKGDIR"/usr/bin
+install -Dvm644 "$SRCDIR"/install/dae.service -t "$PKGDIR"/usr/lib/systemd/system
+# Should be set to 640 or 600.
+# See: https://github.com/daeuniverse/dae/blob/d3ab0b25e705399d7e610d6f09453623674e20d3/common/subscription/subscription.go#L119
+install -Dvm640 "$SRCDIR"/install/empty.dae "$PKGDIR"/etc/dae/config.dae
+install -Dvm644 "$SRCDIR"/example.dae "$PKGDIR"/etc/dae/config.dae.example
+
+abinfo "Linking to geofile directory ..."
+install -dv "$PKGDIR"/usr/share/dae
+ln -sv /usr/share/v2ray-rules-dat/{geoip.dat,geosite.dat} \
+    "$PKGDIR"/usr/share/dae
+
+abinfo "Installing completion files ..."
+install -Dvm644 "$SRCDIR"/install/shell-completion/dae.bash \
+    "$PKGDIR"/usr/share/bash-completion/completions/dae
+install -Dvm644 "$SRCDIR"/install/shell-completion/dae.zsh \
+    "$PKGDIR"/usr/share/zsh/site-functions/_dae
+install -Dvm644 "$SRCDIR"/install/shell-completion/dae.fish \
+    "$PKGDIR"/usr/share/fish/vendor_completions.d/dae.fish

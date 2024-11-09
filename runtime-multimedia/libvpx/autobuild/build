@@ -7,7 +7,6 @@ export VPX_OPTIONS=" \
     --enable-vp8 \
     --enable-vp9-decoder \
     --enable-vp9-encoder \
-    --enable-vp9-highbitdepth \
     --enable-vp9-temporal-denoising \
     --enable-postproc \
     --enable-experimental \

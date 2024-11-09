@@ -14,4 +14,5 @@ ABTYPE=cmakeninja
 CMAKE_AFTER="-DCMAKE_BUILD_TYPE=Release \
              -DCMAKE_INSTALL_PREFIX=/usr \
              -DCMAKE_INSTALL_DATAROOTDIR=/usr/lib/cmake \
+             -DGLM_BUILD_LIBRARY=OFF \
              -W no-dev"

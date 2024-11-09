@@ -1,8 +1,17 @@
-From d2dbe89266591f7625a8c52a10cf51aafb4c57f9 Mon Sep 17 00:00:00 2001
+From 306d50c04e17ae30a59455782773ce34884a603e Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Sat, 9 Nov 2024 03:58:55 +0800
-Subject: [PATCH 1/2] loongarch: match vpx_quantize_b_lsx's signature with rtcd
+Subject: [PATCH 2/2] GERRIT: loongarch: match vpx_quantize_b_lsx's signature
+ with rtcd
 
+The signature of vpx_quantize_b_lsx in the source code doesn't match the RTCD script.
+
+Changing the signature in the source code to match the RTCD script.
+
+Change-Id: I76012150d0954e51b21ec5a230f1ccf79ee90a2d
+
+Link: https://chromium-review.googlesource.com/c/webm/libvpx/+/6008941
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
 ---
  vpx_dsp/loongarch/quantize_lsx.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)

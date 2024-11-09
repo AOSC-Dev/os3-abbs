@@ -18,6 +18,3 @@ PKGBREAK="avidemux<=2.8.1-2 ffmpeg<=7.1-1 gstreamer<=1.24.7-1 \
           handbrake<=1.8.2 libopenglrecorder<=0.1.0-5 \
           toxcore<=1:0.2.18 virtualbox<=7.1.4 \
           vlc<=3.0.21-3 xine-lib<=1.2.13-2 xpra<=6.1.2"
-
-# FIXME: lto1: fatal error: target specific builtin not available
-NOLTO__LOONGARCH64=1

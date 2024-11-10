@@ -1,4 +1,4 @@
-VER=1.28
+VER=1.29
 SRCS="tbl::https://www.x.org/archive/individual/app/igt-gpu-tools-$VER.tar.xz"
-CHKSUMS="sha256::ffcbdf61bd495803d9ae9dfa83e2fe04b8f583a2296fe059c1d5dd135a8a3b15"
+CHKSUMS="sha256::e0fe0d0f088cb50090b212f28b8960fb1e6160c681f5bea0654973aaa9909d8f"
 CHKUPDATE="anitya::id=12378"

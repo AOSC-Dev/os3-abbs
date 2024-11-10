@@ -1,0 +1,6 @@
+abinfo "Setting GOFLAGS ..."
+export GOFLAGS="-trimpath -mod=readonly -modcacherw -buildmode=pie -ldflags=-linkmode=external"
+
+abinfo "Setting other environment variables ..."
+export CFLAGS="-fno-stack-protector"
+export CGO_ENABLED=1

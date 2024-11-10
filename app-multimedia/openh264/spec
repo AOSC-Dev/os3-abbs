@@ -1,4 +1,4 @@
-UPSTREAM_VER=2.4.1
+UPSTREAM_VER=2.5.0
 GMPVER=114_2
 VER=${UPSTREAM_VER}+gmp${GMPVER/_/+}
 SRCS="git::commit=tags/v${UPSTREAM_VER}::https://github.com/cisco/openh264 \

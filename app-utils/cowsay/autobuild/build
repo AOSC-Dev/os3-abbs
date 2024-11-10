@@ -1,1 +1,4 @@
-make install DESTDIR="$PKGDIR" prefix=/usr
+make install DESTDIR="$PKGDIR" \
+    prefix=/ \
+    exec_prefix=/usr \
+    datarootdir=/usr/share

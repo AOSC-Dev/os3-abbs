@@ -1,0 +1,65 @@
+From 114d7a040780e9598022db3904f6f99ce54e6e8d Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.io>
+Date: Fri, 15 Nov 2024 20:28:35 +0800
+Subject: [PATCH 1/2] build: add static_library targets for libpam, libpam_misc
+
+Previously with Autotools, it was possible to build libpam and libpam_misc
+as static libraries. This was useful for Busybox to link against and
+Debian is also likely to need them (as part of libpam-dev).
+
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ libpam/meson.build      | 15 +++++++++++++++
+ libpam_misc/meson.build | 10 ++++++++++
+ 2 files changed, 25 insertions(+)
+
+diff --git a/libpam/meson.build b/libpam/meson.build
+index 3e8a531c..1e768cb1 100644
+--- a/libpam/meson.build
++++ b/libpam/meson.build
+@@ -58,6 +58,21 @@ libpam = shared_library(
+   install: true,
+ )
+ 
++libpam = static_library(
++  'pam',
++  sources: libpam_src,
++  include_directories: [libpam_inc],
++  c_args: [
++    '-DDEFAULT_MODULE_PATH="@0@/"'.format(securedir),
++    '-DLIBPAM_COMPILE',
++  ],
++  dependencies: [libpam_internal_dep, libaudit, libeconf, libdl, libintl],
++  link_depends: libpam_link_deps,
++  link_args: libpam_link_args,
++  install: true,
++)
++
++
+ libpam_dep = declare_dependency(
+   include_directories: [libpam_inc],
+   link_with: [libpam],
+diff --git a/libpam_misc/meson.build b/libpam_misc/meson.build
+index e0bb30f5..4a701e43 100644
+--- a/libpam_misc/meson.build
++++ b/libpam_misc/meson.build
+@@ -25,6 +25,16 @@ libpam_misc = shared_library(
+   install: true,
+ )
+ 
++libpam_misc = static_library(
++  'pam_misc',
++  sources: libpam_misc_src,
++  include_directories: [libpam_misc_inc, libpamc_inc],
++  dependencies: [libpam_internal_dep, libpam_dep],
++  link_depends: libpam_misc_link_deps,
++  link_args: libpam_misc_link_args,
++  install: true,
++)
++
+ libpam_misc_dep = declare_dependency(
+   include_directories: [libpam_misc_inc],
+   link_with: [libpam_misc],
+-- 
+2.47.0
+

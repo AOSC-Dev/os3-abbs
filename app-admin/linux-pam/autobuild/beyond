@@ -1,14 +1,3 @@
-abinfo "Tweaking /etc/security/limits.conf ..."
-sed -e 's|# End of file||' \
-    -i "$PKGDIR"/etc/security/limits.conf
-cat >> "$PKGDIR"/etc/security/limits.conf <<_EOT
-*               -       rtprio          0
-*               -       nice            0
-@audio          -       rtprio          65
-@audio          -       nice           -10
-@audio          -       memlock         40000
-_EOT
-
 abinfo "Installing symlinks against pam_unix.so ..."
 for i in acct auth passwd session; do
     ln -sv pam_unix.so \

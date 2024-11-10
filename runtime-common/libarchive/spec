@@ -1,4 +1,4 @@
-VER=3.7.6
+VER=3.7.7
 SRCS="tbl::https://www.libarchive.org/downloads/libarchive-$VER.tar.gz"
-CHKSUMS="sha256::b4071807367b15b72777c2eaac80f42c8ea2d20212ab279514a19fe1f6f96ef4"
+CHKSUMS="sha256::4cc540a3e9a1eebdefa1045d2e4184831100667e6d7d5b315bb1cbc951f8ddff"
 CHKUPDATE="anitya::id=1558"

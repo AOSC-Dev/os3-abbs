@@ -1,4 +1,4 @@
-VER=2.0.1
+VER=2.0.3
 SRCS="tbl::https://github.com/mstorsjo/fdk-aac/archive/v$VER.tar.gz"
-CHKSUMS="sha256::a4142815d8d52d0e798212a5adea54ecf42bcd4eec8092b37a8cb615ace91dc6"
+CHKSUMS="sha256::e25671cd96b10bad896aa42ab91a695a9e573395262baed4e4a2ff178d6a3a78"
 CHKUPDATE="anitya::id=16208"

@@ -9,7 +9,8 @@ PKGDES="A Matrix messaging client for GNOME"
 USECLANG=1
 ABTYPE=meson
 MESON_AFTER="-Dprofile=default \
-    -Dsandboxed=false"
+	     -Dsandboxed-build=false \
+             -Ddisable-glycin-sandbox=false"
 
 # FIXME: FTBFS with LTO on loongson3 and riscv64
 NOLTO__LOONGSON3=1

@@ -1,5 +1,4 @@
-VER=1.9.5
-REL=3
+VER=1.9.7
 SRCS="tbl::http://download.camlcity.org/download/findlib-$VER.tar.gz"
-CHKSUMS="sha256::0d4704e60caf313c1bb4565d8690d503ce51fb93c2ea50e22b2e9812243a2571"
+CHKSUMS="sha256::ccd822008f1b87abd56a12ff7f4af195a0cda2e3bc0113921779a205c9791e29"
 CHKUPDATE="anitya::id=16991"

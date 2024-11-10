@@ -1,4 +1,4 @@
-VER=1.10.0
+VER=1.12.0
 SRCS="tbl::https://releases.pagure.org/libosinfo/libosinfo-$VER.tar.xz"
-CHKSUMS="sha256::a252e00fc580deb21da0da8c0aa03b8c31e8440b8448c8b98143fab477d32305"
+CHKSUMS="sha256::ad8557ece26793da43d26de565e3d68ce2ee6bfb8d0113b7cc7dfe07f6bfc6b6"
 CHKUPDATE="anitya::id=155460"

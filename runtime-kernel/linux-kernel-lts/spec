@@ -1,10 +1,10 @@
-VER=6.6.57
+VER=6.6.60
 
 # Note: For use inside autobuild/.
 __VER="${VER}"
 
 # Use this for stable releases.
-REL=1
+#REL=1
 # Note: In specific cases, `www.kernel.org` is faster than `cdn.kernel.org`. Change the host when appropriate.
 SRCS="tbl::https://cdn.kernel.org/pub/linux/kernel/v${VER:0:1}.x/linux-${VER/.0/}.tar.xz"
 
@@ -15,5 +15,5 @@ SRCS="tbl::https://cdn.kernel.org/pub/linux/kernel/v${VER:0:1}.x/linux-${VER/.0/
 #COMMIT="a3810192966c3144d8cf988e8a13fc18a2dde677"
 #SRCS="tbl::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git/snapshot/linux-stable-rc-${COMMIT}.tar.gz"
 
-CHKSUMS="sha256::66ce426ef96f99b8e1ef7ac72e780c730ef8b970f7aa5708501c4274d7abb7b3"
+CHKSUMS="sha256::52f9e32d5082ab94253447fd66670d0c3bb765cfcb99b0bf61d1b8eae25952ef"
 CHKUPDATE="anitya::id=6501"

@@ -1,4 +1,4 @@
-VER=1.9.0
+VER=1.10.0
 SRCS="tbl::http://www.sndio.org/sndio-$VER.tar.gz"
-CHKSUMS="sha256::f30826fc9c07e369d3924d5fcedf6a0a53c0df4ae1f5ab50fe9cf280540f699a"
+CHKSUMS="sha256::bebd3bfd01c50c9376cf3e7814b9379bed9e17d0393b5113b7eb7a3d0d038c54"
 CHKUPDATE="anitya::id=230954"

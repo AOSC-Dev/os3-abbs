@@ -1,10 +1,13 @@
 PKGNAME=libportal
 PKGSEC=libs
 PKGDEP="glibc glib"
-BUILDDEP="gi-docgen gobject-introspection gtk-3 gtk-4 gtk-doc qt-5 vala"
+BUILDDEP="gi-docgen gobject-introspection gtk-3 gtk-4 gtk-doc qt-5 qt-6 vala"
 PKGDES="A library for GIO-style async APIs for Flatpak portals"
 
-MESON_AFTER="-Dbackends=gtk3,gtk4,qt5 \
+MESON_AFTER="-Dbackend-gtk3=enabled \
+             -Dbackend-gtk4=enabled \
+             -Dbackend-qt5=enabled \
+             -Dbackend-qt6=enabled \
              -Dportal-tests=false \
              -Dintrospection=true \
              -Dvapi=true \

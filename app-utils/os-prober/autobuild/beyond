@@ -1,0 +1,2 @@
+abinfo "Creating /var/lib/os-prober ..."
+mkdir -pv "$PKGDIR"/var/lib/os-prober

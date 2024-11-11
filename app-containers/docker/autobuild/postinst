@@ -6,6 +6,7 @@ if [[ "$1" = "install" ]]; then
 fi
 
 # Remove /etc/conf.d/docker 
+# Before 27.3.1+tini0.19.0-1, we shipped an systemd environment file (/etc/conf.d/docker) which rendered custom Docker configurations unusable. We removed this file in its next revision. Do not change this version.
 if dpkg-maintscript-helper supports rm_conffile 2>/dev/null; then
-    dpkg-maintscript-helper rm_conffile /etc/conf.d/docker 27.3.1+tini0.19.0~ -- "$@"
+    dpkg-maintscript-helper rm_conffile /etc/conf.d/docker 27.3.1+tini0.19.0-1~ -- "$@"
 fi

@@ -1,4 +1,4 @@
-VER=24.11.5
+VER=24.11.11
 SRCS="git::commit=v$VER;copy-repo=true::https://github.com/XTLS/Xray-core"
 CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=231005"

@@ -1,0 +1,4 @@
+VER=0.4.4
+SRCS="git::commit=tags/$VER::https://github.com/pwmt/zathura-pdf-mupdf"
+CHKSUMS="SKIP"
+CHKUPDATE="anitya::id=14847"

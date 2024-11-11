@@ -1,0 +1,6 @@
+PKGNAME=zathura-pdf-mupdf
+PKGSEC=doc
+PKGDEP="mupdf zathura girara"
+PKGDES="MuPDF PDF backend support for Zathura"
+
+ABTYPE=meson

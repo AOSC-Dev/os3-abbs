@@ -1,4 +1,4 @@
 # Remove /etc/conf.d/docker 
 if dpkg-maintscript-helper supports rm_conffile 2>/dev/null; then
-    dpkg-maintscript-helper rm_conffile /etc/conf.d/docker 27.3.1+tini0.19.0~ -- "$@"
+    dpkg-maintscript-helper rm_conffile /etc/conf.d/docker 27.3.1+tini0.19.0-1~ -- "$@"
 fi

@@ -1,7 +1,8 @@
 PKGNAME=geant4
 PKGDES="A toolkit for the simulation of the passage of particles through matter"
 PKGSEC=utils
-PKGDEP="cmake make llvm xerces-c zlib expat motif coin soqt qt-6 python-3 boost"
+PKGDEP="xerces-c zlib expat motif coin soqt qt-6 python-3 boost"
+PKGSUG="cmake make llvm"
 BUILDDEP="extra-cmake-modules"
 ABTYPE=cmake
 

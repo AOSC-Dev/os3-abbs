@@ -1,0 +1,7 @@
+PKGNAME=libei
+PKGDES="Library for handling Emulated Input (EI)"
+PKGSEC=libs
+PKGDEP="glibc libxkbcommon libevdev systemd"
+BUILDDEP="attrs jinja2"
+
+MESON_AFTER="-Dsd-bus-provider=libsystemd -Dliboeffis=enabled"

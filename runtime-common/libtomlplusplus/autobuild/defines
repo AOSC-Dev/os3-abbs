@@ -1,0 +1,7 @@
+PKGNAME=libtomlplusplus
+PKGSEC=libs
+PKGDES="Header-only TOML config file parser and serializer library for C++17"
+PKGDEP="glibc"
+
+ABTYPE=meson
+MESON_AFTER="-Dbuild_lib=true"

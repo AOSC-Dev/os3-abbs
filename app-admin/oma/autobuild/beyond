@@ -41,4 +41,4 @@ install -Dvm644 "$SRCDIR"/data/apt.conf.d/50oma.conf \
 
 abinfo "Installing D-Bus config file ..."
 install -Dvm644 "$SRCDIR"/data/dbus/oma-dbus.conf \
-	-t "$PKGDIR"/usr/share/dbus-1/
+	-t "$PKGDIR"/usr/share/dbus-1/system.d

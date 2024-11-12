@@ -4,6 +4,8 @@ PKGDEP="openssl libnice srtp usrsctp glib"
 BUILDDEP="cmake nlohmann-json plog"
 PKGDES="A C/C++ WebRTC network library"
 
+PKGBREAK="obs-studio<=30.2.3-1"
+
 ABTYPE=cmake
 CMAKE_AFTER="-DUSE_GNUTLS=ON \
             -DUSE_NICE=ON \

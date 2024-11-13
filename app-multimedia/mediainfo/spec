@@ -1,5 +1,5 @@
-VER=24.06
+VER=24.11
 SRCS="https://mediaarea.net/download/source/mediainfo/$VER/mediainfo_$VER.tar.xz"
-CHKSUMS="sha256::32f4a82a31e386e177fdf6e4c237053e475b501089269ab2c729452a09313520"
+CHKSUMS="sha256::876a63a69d79dd1db6b6e69077a8a630421247751460b964381e3483835670fc"
 CHKUPDATE="anitya::id=8240"
 SUBDIR="MediaInfo/Project/GNU/CLI"

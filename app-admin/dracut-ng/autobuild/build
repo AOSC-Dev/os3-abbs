@@ -15,6 +15,7 @@ abinfo "Configuring..."
     ${CONFIG_OPTS}
 
 abinfo "Making..."
+export enable_test=no
 make $ABMK
 
 abinfo "Installing..."

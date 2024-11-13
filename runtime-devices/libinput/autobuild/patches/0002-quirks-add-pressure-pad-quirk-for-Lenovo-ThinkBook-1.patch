@@ -1,0 +1,36 @@
+From 6258cef9b0b8157231606957477dc607ad9936cf Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.io>
+Date: Tue, 12 Nov 2024 11:29:27 +0800
+Subject: [PATCH 2/2] quirks: add pressure pad quirk for Lenovo ThinkBook 14
+ G7+ ASP
+
+Some Lenovo ThinkBook 14 G7+ ASP models ship with pressure pads (nominally
+"Force Pad"). However, they do not appear to be declared as such by the
+firmware.
+
+Add a quirk to make them work.
+
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ quirks/50-system-lenovo.quirks | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/quirks/50-system-lenovo.quirks b/quirks/50-system-lenovo.quirks
+index 852eba01..15825426 100644
+--- a/quirks/50-system-lenovo.quirks
++++ b/quirks/50-system-lenovo.quirks
+@@ -376,3 +376,11 @@ MatchName=ITE Tech. Inc. ITE Device(8910) Keyboard
+ MatchUdevType=keyboard
+ MatchDMIModalias=dmi:*svnLENOVO:*
+ AttrKeyboardIntegration=internal
++
++# Some ThinkBook 14 G7+ ASP models come with pressure pads that were not
++# correctly declared as such.
++[Lenovo ThinkBook 14 G7+ ASP touchpad]
++MatchName=*GXTP5100*
++MatchDMIModalias=dmi:*svnLENOVO:*pvrThinkBook14G7+ASP*:*
++MatchUdevType=touchpad
++ModelPressurePad=1
+-- 
+2.47.0
+

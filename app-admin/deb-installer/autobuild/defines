@@ -1,0 +1,8 @@
+PKGNAME=deb-installer
+PKGSEC=admin
+PKGDEP="apt debconf-kde openssl qt-5"
+BUILDDEP="rustc llvm"
+PKGDES="Graphical .deb package installation wizard"
+
+# FIXME: LTO causes mysterious failure in proc-macro.
+NOLTO=1

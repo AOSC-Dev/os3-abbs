@@ -1,0 +1,18 @@
+abinfo "Installing D-Bus service file ..."
+install -Dvm644 "$SRCDIR"/data/io.aosc.deb_installer.conf \
+    "$PKGDIR"/usr/share/dbus-1/system.d/io.aosc.deb_installer.conf
+
+abinfo "Installing icon files ..."
+install -Dvm644 \
+    "$SRCDIR"/data/io.aosc.deb_installer.png \
+    "$SRCDIR"/data/io.aosc.deb_installer.svg \
+    -t "$SRCDIR"/usr/share/pixmaps/
+
+abinfo "Installing .desktop entry ..."
+install -Dvm644 "$SRCDIR"/data/io.aosc.deb_installer.desktop \
+    "$PKGDIR"/usr/share/applications/io.aosc.deb_installer.desktop
+
+abinfo "Installing localisation data ..."
+mkdir -pv "$PKGDIR"/usr/share/locale/
+cp -av "$SRCDIR"/mo/* \
+    "$PKGDIR"/usr/share/locale/

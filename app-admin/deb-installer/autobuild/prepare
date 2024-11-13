@@ -1,0 +1,2 @@
+abinfo "Enabling Gettext catalog generation ..."
+export GEN_GETTEXT=1

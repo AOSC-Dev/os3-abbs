@@ -1,5 +1,5 @@
-VER=0.4.38
-SRCS="tbl::https://old.mediaarea.net/download/source/libzen/$VER/libzen_$VER.tar.xz"
-CHKSUMS="sha256::b8825b3190b3a31d8d362547cfa26a3c10e8c063df2d87e4a05758d6b756c8ab"
+VER=0.4.41
+SRCS="tbl::https://mediaarea.net/download/source/libzen/$VER/libzen_$VER.tar.xz"
+CHKSUMS="sha256::933bad3b7ecd29dc6bdc88a83645c83dfd098c15b0b90d6177a37fa1536704e8"
 CHKUPDATE="anitya::id=1810"
 SUBDIR="ZenLib/Project/GNU/Library"

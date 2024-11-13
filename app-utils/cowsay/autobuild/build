@@ -1,3 +1,4 @@
+abinfo "Building and installing cowsay ..."
 make install DESTDIR="$PKGDIR" \
     prefix=/ \
     exec_prefix=/usr \

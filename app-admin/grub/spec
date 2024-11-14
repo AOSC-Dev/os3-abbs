@@ -2,13 +2,12 @@ UPSTREAM_VER=2.12
 # Note: For use inside autobuild/.
 # Note: 2.12-rc1+unifont15.1.04 => 2.12~rc1+unifont15.1.04
 __GRUBVER=${UPSTREAM_VER/\-/~}
-__UNIFONTVER=15.1.04
+__UNIFONTVER=16.0.01
 # Note: Please check for translation updates each time updating GRUB at:
 # https://translationproject.org/domain/grub.html
 LINGUAS_VER=2.12-rc1
 
 VER=${__GRUBVER}+unifont${__UNIFONTVER}
-REL=8
 RETROFONTVER=20200402
 
 SRCS="git::commit=tags/grub-${UPSTREAM_VER};rename=grub-${UPSTREAM_VER}::https://git.savannah.gnu.org/git/grub.git \
@@ -50,7 +49,7 @@ SRCS="git::commit=tags/grub-${UPSTREAM_VER};rename=grub-${UPSTREAM_VER}::https:/
       file::rename=zh_CN.po::https://translationproject.org/PO-files/zh_CN/grub-$LINGUAS_VER.zh_CN.po \
       file::rename=zh_TW.po::https://translationproject.org/PO-files/zh_TW/grub-$LINGUAS_VER.zh_TW.po"
 CHKSUMS="SKIP \
-         sha256::88e00954b10528407e62e97ce6eaa88c847ebfd9a464cafde6bf55c7e4eeed54 \
+         sha256::230a0959aa50778b68239c88ad3c2d53abde58be0932b14a379a3869118aca33 \
          sha256::1609e64c2672c1895808852a272a41a1d0a02084b86ad82a22edc9207a4f63fa \
          sha256::306bc5f0175565eaa07428e742e287ede3ebc0710ad30fd402bb9df1f30fab56 \
          sha256::0cf00da56eaaf01359e1966c7826bc117f331493a3f7060243a9ed437631bcb0 \

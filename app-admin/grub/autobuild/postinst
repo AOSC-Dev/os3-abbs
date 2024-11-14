@@ -92,20 +92,25 @@ notify_esp_mount() {
 # For some incomplete EFI implementations, such as EFI provided by Das
 # U-Boot. On some platforms the EFI variable store is read only, that
 # grub-install might fail. The only option is to install GRUB with
-# --removable flag.
+# --force-extra-removable flag.
+#
 # XXX: What about --no-nvram?
-# - No. GRUB installs as grub$ARCH.efi if --no-nvram is set. --removable
-# makes GRUB installs as the generic name BOOT$ARCH.EFI.
+#
+# No. GRUB installs as grub$ARCH.efi if --no-nvram is set.
+#
+# --force-extra-removable makes GRUB installs a generic BOOT$ARCH.EFI
+# in addition to the standard grub$ARCH.efi (along with a customisable
+# bootloader entry).
 efi_removable_quirk() {
 	if ! [ -w /sys/firmware/efi/efivars ] ; then
-		echo "--removable"
+		echo "--force-extra-removable"
 		return
 	fi
 	# Ported from DeployKit - On some architectures broken efivars are
 	# more common than working ones.
 	case "$ARCH" in
 		arm64|loongarch64|loongson3|riscv64)
-			echo "--removable"
+			echo "--force-extra-removable"
 			;;
 		*)
 			echo ""

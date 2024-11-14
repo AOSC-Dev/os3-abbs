@@ -1,0 +1,82 @@
+From f797b3c4326951c0226107d888696b0d56b3d508 Mon Sep 17 00:00:00 2001
+From: Frederic Weisbecker <frederic@kernel.org>
+Date: Tue, 12 Nov 2024 13:50:40 +0100
+Subject: [PATCH 068/122] FROMLIST: wifi problems since tg3 started throwing
+ rcu stall warnings
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Le Fri, Nov 08, 2024 at 07:14:41AM -0800, Paul E. McKenney a écrit :
+> On Fri, Nov 08, 2024 at 02:46:16PM +0100, Frederic Weisbecker wrote:
+> > Le Fri, Nov 08, 2024 at 12:29:40AM +0800, Mingcong Bai a écrit :
+> > > Hi Frederic,
+> > >
+> > > <snip>
+> > >
+> > > > Sorry for the lag, I still don't understand how this specific commit
+> > > > can produce this issue. Can you please retry with and without this
+> > > > commit
+> > > > reverted?
+> > >
+> > > Just tested v6.12-rc6 with and without the revert. Without the revert, the
+> > > touchpad and the wireless adapter both stopped working, whereas with the
+> > > revert, both devices functions as normal.
+> > >
+> > > I have attached the dmesg for both kernels below. Unlike the log we got last
+> > > time, there is no direct reference to tg3 any more, but the NMI backtrace
+> > > still pointed to NetworkManager and net/netlink-related functions (perhaps a
+> > > debug kernel would be more helpful?). Here's a snippet:
+> > >
+> > > [   10.337720] rcu: INFO: rcu_preempt detected expedited stalls on
+> > > CPUs/tasks: { P683 } 21 jiffies s: 781 root: 0x0/T
+> > > [   10.339168] rcu: blocking rcu_node structures (internal RCU debug):
+> > > [   10.591480] loop0: detected capacity change from 0 to 8
+> > > [   11.777733] rcu: INFO: rcu_preempt detected expedited stalls on
+> > > CPUs/tasks: { 3-.... } 21 jiffies s: 1077 root: 0x8/.
+> > > [   11.779210] rcu: blocking rcu_node structures (internal RCU debug):
+> > > [   11.780630] Sending NMI from CPU 1 to CPUs 3:
+> > > [   11.780659] NMI backtrace for cpu 3
+> > > [   11.780663] CPU: 3 UID: 0 PID: 1027 Comm: NetworkManager Not tainted
+> > > 6.12.0-aosc-main #1
+> >
+> > Funny, this happens on bootup and no CPU has ever gone offline, so the path
+> > modified by this patch shouldn't have been taken. And yet this commit has
+> > an influence to the point of reliably triggering that stall.
+> >
+> > I'm running off of ideas, Paul any clue?
+>
+> Here is one straw to grasp at...
+>
+> Is it possible that one of the CPUs had a problem coming online at boot,
+> and therefore backed out of the online process, thus appearing to at
+> least some of the CPU-hotplug notifiers to have gone offline?
+
+I looked for it in the dmesg and there are indeed rejected CPUs but very early,
+before secondary boot-up.
+
+Just in case, Mingcong Bai can you test the following patch without the
+revert and see if it triggers something?
+
+Signed-off-by: Frederic Weisbecker <frederic@kernel.org>
+Link: https://lore.kernel.org/all/ZzNPIOR8aaxfrLE2@localhost.localdomain/
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ kernel/rcu/tree.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/kernel/rcu/tree.c b/kernel/rcu/tree.c
+index b1f883fcd918..440e4d1dd8ae 100644
+--- a/kernel/rcu/tree.c
++++ b/kernel/rcu/tree.c
+@@ -5224,6 +5224,7 @@ void rcutree_migrate_callbacks(int cpu)
+ 	struct rcu_data *rdp = per_cpu_ptr(&rcu_data, cpu);
+ 	bool needwake;
+ 
++	WARN_ON_ONCE(1);
+ 	if (rcu_rdp_is_offloaded(rdp))
+ 		return;
+ 
+-- 
+2.47.0
+

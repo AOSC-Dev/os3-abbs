@@ -1,7 +1,7 @@
 From 6258cef9b0b8157231606957477dc607ad9936cf Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 12 Nov 2024 11:29:27 +0800
-Subject: [PATCH 2/2] quirks: add pressure pad quirk for Lenovo ThinkBook 14
+Subject: [PATCH 2/3] quirks: add pressure pad quirk for Lenovo ThinkBook 14
  G7+ ASP
 
 Some Lenovo ThinkBook 14 G7+ ASP models ship with pressure pads (nominally

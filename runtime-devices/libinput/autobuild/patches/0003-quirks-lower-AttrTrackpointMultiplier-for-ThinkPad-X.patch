@@ -1,0 +1,46 @@
+From e6db1131ac58ab7056c82c44d14b71be584dece9 Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.io>
+Date: Thu, 14 Nov 2024 21:57:52 +0800
+Subject: [PATCH 3/3] quirks: lower AttrTrackpointMultiplier for ThinkPad
+ X200/201 to 0.25
+
+Upstream commit 43cd2cbf83e0 ("data: add the dell trackpoint multipliers")
+broke the default acceleration profile on Lenovo ThinkPad X200/201, where
+the cursor speeds became so quick that it was practically impossible to
+control. Merely dragging on the TrackPoint lightly would result in the
+cursor flying from corner-to-corner.
+
+I have tested on a Lenovo ThinkPad X201 to find
+`AttrTrackpointMultiplier=0.25' the most reasonable and closest to the
+default behaviour on Windows 7 with Lenovo's driver.
+
+Not sure about ThinkPad X200s/201s, but I suspect that they would have
+similar issues (with the multiplier set to 1.25). I have just ordered both
+models to experiment with and will report back with another patch if I
+find similar issue.
+
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ quirks/50-system-lenovo.quirks | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/quirks/50-system-lenovo.quirks b/quirks/50-system-lenovo.quirks
+index 15825426..6abbd368 100644
+--- a/quirks/50-system-lenovo.quirks
++++ b/quirks/50-system-lenovo.quirks
+@@ -62,10 +62,10 @@ MatchName=Elan Touchpad
+ MatchDMIModalias=dmi:*svnLENOVO:*:pvrThinkPadL380*
+ AttrInputProp=+INPUT_PROP_BUTTONPAD
+ 
+-[Lenovo X200 Trackpoint]
++[Lenovo X200/201 Trackpoint]
+ MatchName=*TPPS/2 IBM TrackPoint
+ MatchDMIModalias=dmi:*svnLENOVO:*pvrThinkPadX20?:*
+-AttrTrackpointMultiplier=1.25
++AttrTrackpointMultiplier=0.25
+ 
+ [Lenovo X200x Trackpoint]
+ MatchName=*TPPS/2 IBM TrackPoint
+-- 
+2.47.0
+

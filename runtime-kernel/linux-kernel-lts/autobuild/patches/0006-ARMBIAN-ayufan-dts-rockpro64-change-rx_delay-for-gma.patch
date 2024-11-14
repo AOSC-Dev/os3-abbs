@@ -1,4 +1,4 @@
-From b3f8a8deafe52f468da78fa83230efcbbb60a6af Mon Sep 17 00:00:00 2001
+From 055be91092ff5ef223000747a2b8da8e28003004 Mon Sep 17 00:00:00 2001
 From: Ayufan <ayufan@ayufan.eu>
 Date: Sun, 30 Dec 2018 13:32:47 +0100
 Subject: [PATCH 06/37] ARMBIAN: ayufan: dts: rockpro64: change rx_delay for

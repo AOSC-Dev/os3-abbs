@@ -1,4 +1,4 @@
-From f93f280401a7a0ccb30571afc42bda5a01051956 Mon Sep 17 00:00:00 2001
+From ff3012316980e5da4c3b4d858736680317bf4dc5 Mon Sep 17 00:00:00 2001
 From: Cyan <cyanoxygen@aosc.io>
 Date: Wed, 10 Apr 2024 16:44:01 +0800
 Subject: [PATCH 37/37] LOONGARCH64: OBSOLETE: AOSCOS: HACK(drm/amdgpu):

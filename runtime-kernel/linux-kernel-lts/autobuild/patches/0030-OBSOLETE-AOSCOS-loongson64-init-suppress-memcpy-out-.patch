@@ -1,4 +1,4 @@
-From 56b4be97716e377b631cc4df295e27ee3547c5d2 Mon Sep 17 00:00:00 2001
+From efbc9c00b50ec8c4e4ad24d5bb64f048e9164032 Mon Sep 17 00:00:00 2001
 From: Tianhao Chai <cth451@gmail.com>
 Date: Wed, 24 Aug 2022 03:54:11 +0000
 Subject: [PATCH 30/37] OBSOLETE: AOSCOS: loongson64/init: suppress memcpy

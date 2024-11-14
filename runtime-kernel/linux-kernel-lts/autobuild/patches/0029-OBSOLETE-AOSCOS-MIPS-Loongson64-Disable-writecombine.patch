@@ -1,4 +1,4 @@
-From 8d96e8307a671336210b9271d06d4f941738258c Mon Sep 17 00:00:00 2001
+From 84e78ead02f18623203b9e9a6c8972cf61bebc6b Mon Sep 17 00:00:00 2001
 From: Jiaxun Yang <jiaxun.yang@flygoat.com>
 Date: Mon, 12 Oct 2020 13:32:23 +0800
 Subject: [PATCH 29/37] OBSOLETE: AOSCOS: MIPS: Loongson64: Disable

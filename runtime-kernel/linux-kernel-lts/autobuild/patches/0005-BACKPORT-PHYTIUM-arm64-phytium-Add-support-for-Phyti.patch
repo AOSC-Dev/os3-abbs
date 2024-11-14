@@ -1,4 +1,4 @@
-From 86d87173d71ea40abaf61a6dc515c9916476cb57 Mon Sep 17 00:00:00 2001
+From df1ee2306a0d37015c80d86e7d649cc2f704409f Mon Sep 17 00:00:00 2001
 From: Chen Baozi <chenbaozi@phytium.com.cn>
 Date: Fri, 14 Jul 2023 08:33:58 +0800
 Subject: [PATCH 05/37] BACKPORT: PHYTIUM: arm64: phytium: Add support for

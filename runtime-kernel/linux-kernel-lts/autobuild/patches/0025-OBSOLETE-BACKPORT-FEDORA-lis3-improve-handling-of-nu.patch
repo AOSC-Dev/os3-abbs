@@ -1,4 +1,4 @@
-From a0fead4e7665b2a23792bfdb15656466f6d7055b Mon Sep 17 00:00:00 2001
+From 2606163ee4730cf947087aa114a5c192568095ab Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?=C3=89ric=20Piel?= <eric.piel@tremplin-utc.net>
 Date: Thu, 3 Nov 2011 16:22:40 +0100
 Subject: [PATCH 25/37] OBSOLETE: BACKPORT: FEDORA: lis3: improve handling of

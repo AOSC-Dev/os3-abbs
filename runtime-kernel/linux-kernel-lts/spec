@@ -1,4 +1,4 @@
-VER=6.6.60
+VER=6.6.61
 
 # Note: For use inside autobuild/.
 __VER="${VER}"
@@ -15,5 +15,5 @@ SRCS="tbl::https://cdn.kernel.org/pub/linux/kernel/v${VER:0:1}.x/linux-${VER/.0/
 #COMMIT="a3810192966c3144d8cf988e8a13fc18a2dde677"
 #SRCS="tbl::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git/snapshot/linux-stable-rc-${COMMIT}.tar.gz"
 
-CHKSUMS="sha256::52f9e32d5082ab94253447fd66670d0c3bb765cfcb99b0bf61d1b8eae25952ef"
+CHKSUMS="sha256::418fc24df9190f1c3ed9906dc3b7651c2a2eae5c1cb9ab4a6348e20faf047c0b"
 CHKUPDATE="anitya::id=6501"

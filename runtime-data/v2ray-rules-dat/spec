@@ -1,6 +1,6 @@
-VER=202411122211
+VER=202411132211
 SRCS="file::rename=geoip.dat::https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/$VER/geoip.dat \
       file::rename=geosite.dat::https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/$VER/geosite.dat"
 CHKSUMS="sha256::224a9b8a3c8296478231a28e1eb8f8bdcba49af81a0873ed556fa1d9cdd59128 \
-         sha256::c9b5247dfeb581b37ffa43646d505182bdebc8c851d22ada97c85d87d2c845a7"
+         sha256::7b5a174685f3bb0c711076057db95691054ef16435f1371937e02ae7bf972f12"
 CHKUPDATE="anitya::id=375331"

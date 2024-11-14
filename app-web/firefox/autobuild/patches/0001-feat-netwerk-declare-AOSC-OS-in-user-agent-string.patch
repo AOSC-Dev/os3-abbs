@@ -1,4 +1,4 @@
-From c583fe32fb950218f8ad2de52c6fc34e4f51946e Mon Sep 17 00:00:00 2001
+From 5cb997dc836b20a355af5c3aed481585807706c7 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Fri, 5 Apr 2024 22:52:21 +0800
 Subject: [PATCH 01/11] feat(netwerk): declare AOSC OS in user agent string
@@ -28,5 +28,5 @@ index 470c6cb918..a17736e102 100644
  #endif
    if (!mCompatDevice.IsEmpty()) {
 -- 
-2.47.0
+2.47.0.windows.2
 

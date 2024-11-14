@@ -1,4 +1,4 @@
-From a8f14ac09da09e4f4b13ac031f98eb8d852ab3b1 Mon Sep 17 00:00:00 2001
+From 30441664cc9c8122989501d7a7e508cbf839df9f Mon Sep 17 00:00:00 2001
 From: WANG Xuerui <xen0n@gentoo.org>
 Date: Wed, 4 Sep 2024 16:50:54 +0800
 Subject: [PATCH 09/11] Vendor missing loongarch files of libpng
@@ -501,5 +501,5 @@ index 0000000000..2c80fe81b6
 +#endif /* PNG_LOONGARCH_LSX_IMPLEMENTATION == 1 */
 +#endif /* PNG_READ_SUPPORTED */
 -- 
-2.47.0
+2.47.0.windows.2
 

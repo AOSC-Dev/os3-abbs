@@ -1,4 +1,4 @@
-From f243519f255090f49a653452066b678cca537950 Mon Sep 17 00:00:00 2001
+From 8c3a45180973975905e26ce609e36fa65c7e5ace Mon Sep 17 00:00:00 2001
 From: WANG Xuerui <xen0n@gentoo.org>
 Date: Tue, 3 Sep 2024 15:46:09 +0800
 Subject: [PATCH 05/11] Re-generate libwebrtc moz.build files
@@ -7578,5 +7578,5 @@ index 0a5908916a..4ba08802c6 100644
  
      DEFINES["MIPS32_LE"] = True
 -- 
-2.47.0
+2.47.0.windows.2
 

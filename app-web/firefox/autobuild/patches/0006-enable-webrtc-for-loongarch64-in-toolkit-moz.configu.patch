@@ -1,4 +1,4 @@
-From 759016fbc007ca7c8e68d45de58aca2cae3f1ebb Mon Sep 17 00:00:00 2001
+From e9e2e9ddf4919762dce60ae43a92108fb925c4c3 Mon Sep 17 00:00:00 2001
 From: WANG Xuerui <xen0n@gentoo.org>
 Date: Tue, 3 Sep 2024 15:39:18 +0800
 Subject: [PATCH 06/11] enable webrtc for loongarch64 in toolkit/moz.configure
@@ -21,5 +21,5 @@ index 06281a55f4..ae3ea8a87f 100644
          "mips64",
          "ppc",
 -- 
-2.47.0
+2.47.0.windows.2
 

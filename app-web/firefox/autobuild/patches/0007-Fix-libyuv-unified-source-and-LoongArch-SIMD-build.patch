@@ -1,4 +1,4 @@
-From 71660f582bbc6fcd84f68366515badc1c171fcea Mon Sep 17 00:00:00 2001
+From 31880de124c0a2f9337f5e02471ebf620e5f06d9 Mon Sep 17 00:00:00 2001
 From: WANG Xuerui <xen0n@gentoo.org>
 Date: Tue, 3 Sep 2024 15:47:26 +0800
 Subject: [PATCH 07/11] Fix libyuv unified-source and LoongArch SIMD build
@@ -126,5 +126,5 @@ index fa088c9e78..c32c718c78 100644
  }  // extern "C"
  }  // namespace libyuv
 -- 
-2.47.0
+2.47.0.windows.2
 

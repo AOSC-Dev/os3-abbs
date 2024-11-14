@@ -1,4 +1,4 @@
-From 8e83d1e4ebc92fb0ffc889d51c4ae38530f306fd Mon Sep 17 00:00:00 2001
+From 11aa4c4ec6b679fd2e6bf98093a2400075dc7dff Mon Sep 17 00:00:00 2001
 From: Jiangjin Wang <kaymw@aosc.io>
 Date: Tue, 14 Nov 2023 18:14:20 -0800
 Subject: [PATCH 02/11] Enable VA-API support for AMD GPUs
@@ -27,5 +27,5 @@ index ca0eb790a9..92396669c4 100644
      // FEATURE_HW_DECODED_VIDEO_ZERO_COPY - ALLOWLIST
      APPEND_TO_DRIVER_BLOCKLIST2(OperatingSystem::Linux, DeviceFamily::All,
 -- 
-2.47.0
+2.47.0.windows.2
 

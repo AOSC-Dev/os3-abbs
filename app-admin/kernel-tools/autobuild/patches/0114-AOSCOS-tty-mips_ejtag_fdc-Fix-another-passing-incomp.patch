@@ -1,4 +1,4 @@
-From 3c98a612e69b4fae89f289a23a362ce4835489cf Mon Sep 17 00:00:00 2001
+From eb9d545bad5f0dfe95043a5f36c53ddea3c65404 Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Thu, 17 Oct 2024 22:45:51 +0800
 Subject: [PATCH 114/122] AOSCOS: tty: mips_ejtag_fdc: Fix another passing

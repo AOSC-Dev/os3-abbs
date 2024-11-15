@@ -11,3 +11,4 @@ app-network/xpra
 runtime-desktop/qt-5
 app-web/telegram-desktop
 app-web/thunderbird
+app-web/firefox

@@ -1,7 +1,7 @@
 From e9222a3bb9feafe398ff4f2ba7d1f74a1b7ce011 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Sun, 19 May 2024 15:24:44 -0500
-Subject: [PATCH 066/137] FROMLIST: selftests: ntsync: Add some tests for
+Subject: [PATCH 066/154] FROMLIST: selftests: ntsync: Add some tests for
  wakeup signaling with WINESYNC_IOC_WAIT_ANY.
 
 Test contended "wait-for-any" waits, to make sure that scheduling and wakeup

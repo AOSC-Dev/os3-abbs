@@ -1,7 +1,7 @@
 From e2d325a7f7fd5135a2bddd25487fd768b19170fa Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Sun, 19 May 2024 15:24:35 -0500
-Subject: [PATCH 057/137] FROMLIST: ntsync: Introduce NTSYNC_IOC_EVENT_PULSE.
+Subject: [PATCH 057/154] FROMLIST: ntsync: Introduce NTSYNC_IOC_EVENT_PULSE.
 
 This corresponds to the NT syscall NtPulseEvent().
 

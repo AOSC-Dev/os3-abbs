@@ -1,7 +1,7 @@
 From 693814433925b67156dec8eeb35c7724d08f1f25 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <baimingcong@uniontech.com>
 Date: Fri, 28 Jun 2024 14:08:40 +0800
-Subject: [PATCH 104/137] DEEPIN: net: ethernet: fix phytmac on 6.9
+Subject: [PATCH 104/154] DEEPIN: net: ethernet: fix phytmac on 6.9
 
 Declare multiple functions as static functions to suppress warnings about
 missing prototypes.

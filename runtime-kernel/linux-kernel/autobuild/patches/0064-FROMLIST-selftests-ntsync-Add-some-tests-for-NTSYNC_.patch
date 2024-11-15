@@ -1,7 +1,7 @@
 From 608d130b780d484f2806d0457a8e99d1c9d125af Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Sun, 19 May 2024 15:24:42 -0500
-Subject: [PATCH 064/137] FROMLIST: selftests: ntsync: Add some tests for
+Subject: [PATCH 064/154] FROMLIST: selftests: ntsync: Add some tests for
  NTSYNC_IOC_WAIT_ANY.
 
 Test basic synchronous functionality of NTSYNC_IOC_WAIT_ANY, when objects are

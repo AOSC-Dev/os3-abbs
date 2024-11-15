@@ -39,14 +39,12 @@ MESON_AFTER="-Ddri-drivers-path=/usr/lib/xorg/modules/dri \
              -Dplatforms=x11,wayland \
              -Degl-native-platform=x11 \
              -Dvulkan-layers=device-select,overlay \
-             -Ddri3=enabled \
              -Degl=enabled \
              -Dexpat=enabled \
              -Dgallium-extra-hud=true \
              -Dgallium-nine=true \
              -Dgallium-opencl=icd \
              -Dgallium-rusticl=true \
-             -Dgallium-omx=disabled \
              -Dgallium-va=enabled \
              -Dgallium-vdpau=enabled \
              -Dgallium-xa=enabled \
@@ -89,7 +87,7 @@ MESON_AFTER__X86=" \
 MESON_AFTER__ARM=" \
              ${MESON_AFTER} \
              -Dgallium-drivers=r300,r600,radeonsi,nouveau,iris,virgl,swrast,lima,panfrost,freedreno,tegra,vc4,v3d,etnaviv,d3d12,zink,asahi \
-             -Dvulkan-drivers=amd,intel,broadcom,freedreno,panfrost,swrast,virtio"
+             -Dvulkan-drivers=amd,asahi,intel,broadcom,freedreno,panfrost,swrast,virtio"
 MESON_AFTER__OTHER=" \
              ${MESON_AFTER} \
              -Dgallium-drivers=r300,r600,radeonsi,nouveau,iris,virgl,swrast,zink \
@@ -101,7 +99,8 @@ MESON_AFTER__AMD64=" \
              -Dsse2=true"
 MESON_AFTER__ARM64=" \
              ${MESON_AFTER__ARM} \
-             -Dlibunwind=disabled"
+             -Dlibunwind=disabled \
+             -Dgallium-rusticl-enable-drivers=asahi"
 MESON_AFTER__LOONGARCH64=" \
              ${MESON_AFTER__OTHER} \
              -Dlibunwind=enabled \
@@ -125,7 +124,6 @@ MESON_AFTER__RETRO=" \
              -Db_ndebug=true \
              -Dplatforms=x11 \
              -Dvulkan-overlay-layer=false \
-             -Ddri3=true \
              -Degl=true \
              -Dgallium-extra-hud=false \
              -Dgallium-nine=false \
@@ -152,7 +150,6 @@ MESON_AFTER__I486=" \
              -Dvulkan-drivers="
 MESON_AFTER__RETRO_ARM=" \
              ${MESON_AFTER__RETRO} \
-             -Ddri3=true \
              -Ddri-drivers= \
              -Dgallium-drivers=freedreno,tegra,vc4,nouveau,virgl,lima,swrast,panfrost \
              -Dvulkan-drivers="

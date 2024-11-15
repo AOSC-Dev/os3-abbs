@@ -1,7 +1,7 @@
-From a1c324aae6e5722009d3a2b412b686fe0cdb795f Mon Sep 17 00:00:00 2001
+From 1e25438b5c721c5173704f285fa14fd06c012397 Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Wed, 11 Sep 2024 19:30:18 +0800
-Subject: [PATCH 4/5] Revert "dril: also create double-buffered configs in
+Subject: [PATCH 3/4] Revert "dril: also create double-buffered configs in
  swrast fallback"
 
 This reverts commit 56ac37845487b62f495428b0f20d145489f621e2.
@@ -13,10 +13,10 @@ Ref: https://gitlab.freedesktop.org/mesa/mesa/-/issues/11840
  1 file changed, 2 insertions(+), 9 deletions(-)
 
 diff --git a/src/gallium/targets/dril/dril_target.c b/src/gallium/targets/dril/dril_target.c
-index a94ab09858f..0caa3514dde 100644
+index 583728e4093..95007e22674 100644
 --- a/src/gallium/targets/dril/dril_target.c
 +++ b/src/gallium/targets/dril/dril_target.c
-@@ -437,16 +437,9 @@ drilCreateNewScreen(int scrn, int fd,
+@@ -455,16 +455,9 @@ drilCreateNewScreen(int scrn, int fd,
     const __DRIconfig **configs = init_dri2_configs(fd);
     if (!configs && fd == -1) {
        // otherwise set configs to point to our config list
@@ -36,5 +36,5 @@ index a94ab09858f..0caa3514dde 100644
     }
  
 -- 
-2.46.0.windows.1
+2.47.0
 

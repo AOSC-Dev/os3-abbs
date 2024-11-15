@@ -8,4 +8,6 @@ app-multimedia/handbrake
 app-multimedia/vlc
 app-web/toxcore
 app-network/xpra
+runtime-desktop/qt-5
 app-web/telegram-desktop
+app-web/thunderbird

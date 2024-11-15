@@ -1,0 +1,7 @@
+abinfo "Building xxHash ..."
+make
+
+abinfo "Installing xxhash ..."
+make install \
+    DESTDIR="$PKGDIR" \
+    PREFIX=/usr

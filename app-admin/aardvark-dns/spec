@@ -1,4 +1,4 @@
-VER=1.9.0
-SRCS="https://github.com/containers/aardvark-dns/archive/refs/tags/v${VER}.tar.gz"
-CHKSUMS="sha256::d6b51743d334c42ec98ff229be044b5b2a5fedf8da45a005447809c4c1e9beea"
+VER=1.13.1
+SRCS="git::commit=tags/v${VER}::https://github.com/containers/aardvark-dns.git"
+CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=327111"

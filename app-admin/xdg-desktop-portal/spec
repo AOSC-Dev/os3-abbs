@@ -1,5 +1,4 @@
-VER=1.16.0
-REL=1
+VER=1.18.4
 SRCS="tbl::https://github.com/flatpak/xdg-desktop-portal/releases/download/$VER/xdg-desktop-portal-$VER.tar.xz"
-CHKSUMS="sha256::5b41a5915c11851493d8c33b9783f147a0a6f419db80ad760e84cd3420fd8c19"
+CHKSUMS="sha256::b858aa1e74e80c862790dbb912906e6eab8b1e4db9339cd759473af62b461e65"
 CHKUPDATE="anitya::id=11089"

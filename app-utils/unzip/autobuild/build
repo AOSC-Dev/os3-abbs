@@ -12,5 +12,5 @@ abinfo "Installing unzip ..."
 make install \
      -f "$SRCDIR"/unix/Makefile \
      BINDIR="$PKGDIR"/usr/bin \
-     MANDIR="$PKGDIR"/usr/share/man \
+     MANDIR="$PKGDIR"/usr/share/man/man1 \
      STRIP=/usr/bin/true

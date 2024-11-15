@@ -1,0 +1,12 @@
+# Note: Leverage UNAME=Darwin to make sure `progress' links to -lncurses.
+#
+# From the Makefile:
+#
+#   ifeq ($(UNAME), Darwin)
+#	  override LDFLAGS += -lncurses
+#   endif
+abinfo "Installing progress ..."
+make install \
+    DESTDIR="$PKGDIR" \
+    PREFIX=/usr \
+    UNAME=Darwin

@@ -2,6 +2,3 @@ PKGNAME=progress
 PKGSEC=utils
 PKGDEP="glibc"
 PKGDES="A tool to show progress for various command-line programs"
-
-ABTYPE=plainmake
-MAKE_AFTER="UNAME=Darwin"

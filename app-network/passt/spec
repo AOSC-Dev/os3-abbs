@@ -1,8 +1,8 @@
-UPSTREAM_VER=2024_09_06.6b38f07
+UPSTREAM_VER=2024_10_30.ee7d0b6
 # update this manually
 # if there are two releases in one day, add .1 suffix to version
-VER=2024.09.06
+VER=2024.10.30
 # FIXME: using Git sources causes passt.top network issues
 SRCS="tbl::https://passt.top/passt/snapshot/passt-${UPSTREAM_VER}.tar.zst"
-CHKSUMS="sha256::e724ff79ef3c6431cd1a20803006851abbd2c3df090aad6c236250b158a6c5cc"
+CHKSUMS="sha256::f35147d1473d44bb06cd1b77c57f4691a3a2ddc6d64f93d127d2d9732b8e85e9"
 CHKUPDATE="anitya::id=372091"

@@ -1,0 +1,26 @@
+From ecb167807fb30b90f57da84f1c963c24609aa53a Mon Sep 17 00:00:00 2001
+From: Kaiyang Wu <self@origincode.me>
+Date: Sat, 16 Nov 2024 04:05:36 -0800
+Subject: [PATCH] bump hardcoded version to 0.10.3
+
+Signed-off-by: Kaiyang Wu <self@origincode.me>
+---
+ autogen.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/autogen.sh b/autogen.sh
+index 8ae8635..aa31c60 100755
+--- a/autogen.sh
++++ b/autogen.sh
+@@ -3,7 +3,7 @@
+ if [ -d .git ]; then
+   git describe --always --tags --dirty > version # get version from git
+ else
+-  echo 0.10.2 > version # hard coded versions
++  echo 0.10.3 > version # hard coded versions
+ fi
+ 
+ libtoolize
+-- 
+2.47.0
+

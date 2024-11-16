@@ -1,7 +1,7 @@
 From e4beb231ba77c3cd3a0afa182c707d8cce1197ff Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Thu, 14 Nov 2024 19:33:38 +0800
-Subject: [PATCH 41/41] menu: add GRUB_RIGHT_TO_SELECT to toggle
+Subject: [PATCH 41/46] menu: add GRUB_RIGHT_TO_SELECT to toggle
  select-by-right-arrow-key
 
 Normally, GRUB allows using a combination of the Return/Enter (`\n' and

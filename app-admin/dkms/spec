@@ -1,4 +1,4 @@
-VER=3.0.13
-SRCS="tbl::https://github.com/dell/dkms/archive/v$VER.tar.gz"
-CHKSUMS="sha256::ceb5bbb89ece7310ee96952a56c926faa51c4486f7e5e43c8589585056e45bb5"
+VER=3.1.1
+SRCS="git::commit=tags/v${VER}::https://github.com/dell/dkms.git"
+CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=440"

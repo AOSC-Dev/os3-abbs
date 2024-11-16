@@ -1,4 +1,5 @@
 VER=0.3
+REL=1
 SRCS="tbl::https://github.com/thezbyg/gpick/releases/download/v$VER/gpick-$VER.tar.gz"
 CHKSUMS="sha256::90b03ce10d2f3e211a3f37d262596e4ae40d05cbd633aa0560d0891562c93474"
 CHKUPDATE="anitya::id=1240"

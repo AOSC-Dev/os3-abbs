@@ -1,4 +1,5 @@
 VER=4.12
+REL=1
 SRCS="tbl::http://www.andre-simon.de/zip/highlight-$VER.tar.bz2"
 CHKSUMS="sha256::0f7d03362d74dddfb3bc8419fb8198bf8c9b4a5788dec491a00cd43acdf07f1e"
 CHKUPDATE="anitya::id=14752"

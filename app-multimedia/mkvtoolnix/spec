@@ -1,4 +1,5 @@
 VER=87.0
+REL=1
 SRCS="tbl::https://www.bunkus.org/videotools/mkvtoolnix/sources/mkvtoolnix-$VER.tar.xz"
 CHKSUMS="sha256::01cdfcbe01d9a771da4d475ed44d882a97695d08b6939684cebf56231bdee820"
 CHKUPDATE="anitya::id=1991"

@@ -1,4 +1,5 @@
 VER=14.1.2
+REL=1
 SRCS="https://mirror.ppa.trinitydesktop.org/trinity/releases/R$VER/main/core/tdepim-trinity-$VER.tar.xz"
 CHKSUMS="sha256::c858f4fadc5a0c224faa3123b457f0b17e8ae34c7120deed8c0cbd77cef1fa19"
 CHKUPDATE="anitya::id=16065"

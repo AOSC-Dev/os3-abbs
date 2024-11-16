@@ -1,5 +1,5 @@
 VER=1.5.1
-REL=1
+REL=2
 SRCS="git::commit=tags/v$VER::https://github.com/synfig/synfig"
 CHKSUMS="sha256::9f68872e8db746288a0e8ca2105a9d2f98c043bd8d067902472dab97daae40dd"
 CHKUPDATE="anitya::id=4924"

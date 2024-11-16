@@ -1,4 +1,5 @@
 VER=42.1
+REL=1
 SRCS="https://download.gnome.org/sources/gnote/${VER%%.*}/gnote-$VER.tar.xz"
 CHKSUMS="sha256::6c20c47b24ed9c03a0de64742dd121f2e7cee05ec6a06158c3cd1265d31e5539"
 CHKUPDATE="anitya::id=1200"

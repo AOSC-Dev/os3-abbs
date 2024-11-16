@@ -1,6 +1,8 @@
 PKGNAME=termcolor
+PKGSEC=python
+PKGDEP="python-3"
+BUILDDEP="hatch-vcs hatchling python-build python-installer wheel"
 PKGDES="ANSII Color formatting for output in terminal"
-BUILDDEP="python-3 python-2"
-PKGSEC="python"
 
+ABTYPE=pep517
 ABHOST=noarch

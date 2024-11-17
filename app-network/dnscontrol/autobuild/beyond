@@ -1,0 +1,7 @@
+abinfo "Generating shell completions ..."
+mkdir -vp "$PKGDIR"/usr/share/bash-completion/completions
+"$PKGDIR"/usr/bin/dnscontrol shell-completion bash \
+    >"$PKGDIR"/usr/share/bash-completion/completions/dnscontrol
+mkdir -vp "$PKGDIR"/usr/share/zsh/site-functions
+"$PKGDIR"/usr/bin/dnscontrol shell-completion zsh \
+    >"$PKGDIR"/usr/share/zsh/site-functions/_dnscontrol

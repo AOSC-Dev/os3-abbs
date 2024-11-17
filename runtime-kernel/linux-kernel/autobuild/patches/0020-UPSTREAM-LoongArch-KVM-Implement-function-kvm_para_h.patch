@@ -1,7 +1,7 @@
 From ae058ae99b29a9d20b2d61ea5c41bcedfe8aeefd Mon Sep 17 00:00:00 2001
 From: Bibo Mao <maobibo@loongson.cn>
 Date: Thu, 12 Sep 2024 22:56:14 +0800
-Subject: [PATCH 020/155] UPSTREAM: LoongArch: KVM: Implement function
+Subject: [PATCH 020/156] UPSTREAM: LoongArch: KVM: Implement function
  kvm_para_has_feature()
 
 Implement function kvm_para_has_feature() to detect supported paravirt

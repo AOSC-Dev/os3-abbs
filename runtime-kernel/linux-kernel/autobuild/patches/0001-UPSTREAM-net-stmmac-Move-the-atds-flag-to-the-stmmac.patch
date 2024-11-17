@@ -1,7 +1,7 @@
 From 76e2687b779f5ebbb85208f3c6d4ac017032483e Mon Sep 17 00:00:00 2001
 From: Yanteng Si <siyanteng@loongson.cn>
 Date: Wed, 7 Aug 2024 21:45:28 +0800
-Subject: [PATCH 001/155] UPSTREAM: net: stmmac: Move the atds flag to the
+Subject: [PATCH 001/156] UPSTREAM: net: stmmac: Move the atds flag to the
  stmmac_dma_cfg structure
 
 ATDS (Alternate Descriptor Size) is a part of the DMA Bus Mode configs

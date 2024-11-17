@@ -1,7 +1,7 @@
 From 7c75261d52ebb3b2d6953044d43b73cc4bb8a320 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Thu, 15 Aug 2024 19:26:07 +0800
-Subject: [PATCH 025/155] UPSTREAM: irqchip/loongson-pch-msi: Switch to MSI
+Subject: [PATCH 025/156] UPSTREAM: irqchip/loongson-pch-msi: Switch to MSI
  parent domains
 
 Remove the global PCI/MSI irqdomain implementation and provide the

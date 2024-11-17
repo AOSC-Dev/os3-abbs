@@ -1,7 +1,7 @@
 From b2b9fad21e0dbce8aed3f3cccddee1fb52647848 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Tue, 17 Sep 2024 22:23:22 +0800
-Subject: [PATCH 043/155] UPSTREAM: Docs/LoongArch: Add advanced extended IRQ
+Subject: [PATCH 043/156] UPSTREAM: Docs/LoongArch: Add advanced extended IRQ
  model description
 
 Introduce the advanced extended interrupt controllers (AVECINTC). This

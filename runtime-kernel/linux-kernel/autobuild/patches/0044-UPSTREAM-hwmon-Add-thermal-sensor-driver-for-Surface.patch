@@ -1,7 +1,7 @@
 From 83387410868a7ea7c626845fbcc0e8c2c0816c64 Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Sun, 11 Aug 2024 02:14:41 +0200
-Subject: [PATCH 044/155] UPSTREAM: hwmon: Add thermal sensor driver for
+Subject: [PATCH 044/156] UPSTREAM: hwmon: Add thermal sensor driver for
  Surface Aggregator Module
 
 Some of the newer Microsoft Surface devices (such as the Surface Book

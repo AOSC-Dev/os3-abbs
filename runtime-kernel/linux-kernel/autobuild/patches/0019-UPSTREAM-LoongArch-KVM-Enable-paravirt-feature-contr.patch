@@ -1,7 +1,7 @@
 From f8b4f3474d5d50c87cdbb283512b5ec34247084a Mon Sep 17 00:00:00 2001
 From: Bibo Mao <maobibo@loongson.cn>
 Date: Thu, 12 Sep 2024 20:53:40 +0800
-Subject: [PATCH 019/155] UPSTREAM: LoongArch: KVM: Enable paravirt feature
+Subject: [PATCH 019/156] UPSTREAM: LoongArch: KVM: Enable paravirt feature
  control from VMM
 
 Export kernel paravirt features to user space, so that VMM can control

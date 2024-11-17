@@ -1,7 +1,7 @@
 From 2b9847a3d238bcc879be726657d0aebf00e9f2a5 Mon Sep 17 00:00:00 2001
 From: Yanteng Si <siyanteng@loongson.cn>
 Date: Wed, 7 Aug 2024 21:47:07 +0800
-Subject: [PATCH 004/155] UPSTREAM: net: stmmac: dwmac-loongson: Drop
+Subject: [PATCH 004/156] UPSTREAM: net: stmmac: dwmac-loongson: Drop
  duplicated hash-based filter size init
 
 The plat_stmmacenet_data::multicast_filter_bins field is twice

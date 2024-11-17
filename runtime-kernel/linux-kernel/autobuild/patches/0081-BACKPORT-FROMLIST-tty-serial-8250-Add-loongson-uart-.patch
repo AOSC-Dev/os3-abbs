@@ -1,7 +1,7 @@
 From aa2a59e14d6e5be5a16ca158331864780f6ba1e3 Mon Sep 17 00:00:00 2001
 From: Haowei Zheng <zhenghaowei@loongson.cn>
 Date: Mon, 26 Aug 2024 10:47:04 +0800
-Subject: [PATCH 081/155] BACKPORT: FROMLIST: tty: serial: 8250: Add loongson
+Subject: [PATCH 081/156] BACKPORT: FROMLIST: tty: serial: 8250: Add loongson
  uart driver support
 
 Due to certain hardware design challenges, we have opted to

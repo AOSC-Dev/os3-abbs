@@ -1,7 +1,7 @@
 From bb5e4c46110fb9b0918c2f09feff906089a2e925 Mon Sep 17 00:00:00 2001
 From: Jiaxun Yang <jiaxun.yang@flygoat.com>
 Date: Tue, 16 Jul 2024 22:14:59 +0800
-Subject: [PATCH 024/155] UPSTREAM: cpu/hotplug: Provide weak fallback for
+Subject: [PATCH 024/156] UPSTREAM: cpu/hotplug: Provide weak fallback for
  arch_cpuhp_init_parallel_bringup()
 
 CONFIG_HOTPLUG_PARALLEL expects the architecture to implement

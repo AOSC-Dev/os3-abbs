@@ -1,7 +1,7 @@
 From 7806069f31443732f75a30cad8f0c251aac5e716 Mon Sep 17 00:00:00 2001
 From: Jiaxun Yang <jiaxun.yang@flygoat.com>
 Date: Tue, 16 Jul 2024 22:15:00 +0800
-Subject: [PATCH 079/155] FROMLIST: LoongArch: SMP: Implement parallel CPU
+Subject: [PATCH 079/156] FROMLIST: LoongArch: SMP: Implement parallel CPU
  bring up
 
 Implement parallel CPU bring up for LoongArch to reduce

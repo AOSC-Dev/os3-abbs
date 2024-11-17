@@ -1,7 +1,7 @@
 From 3a85a395f299b89ae0d93da136a3a1de8a1c7379 Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Mon, 14 Oct 2024 06:58:21 +0800
-Subject: [PATCH 155/155] LOONGARCH64: AOSCOS: more fixes for Xe on LoongArch
+Subject: [PATCH 155/156] LOONGARCH64: AOSCOS: more fixes for Xe on LoongArch
 
 More fixes based on the previous patch.
 

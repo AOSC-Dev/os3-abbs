@@ -1,7 +1,7 @@
 From 6db57299ca1004b74bfc829e1fd1cb686ca5c119 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <baimingcong@uniontech.com>
 Date: Thu, 27 Jun 2024 14:37:53 +0800
-Subject: [PATCH 101/155] DEEPIN: net: stmmac: fix dwmac-phytium build on 6.9
+Subject: [PATCH 101/156] DEEPIN: net: stmmac: fix dwmac-phytium build on 6.9
 
 Declare phytium_dwmac_remove() as a static function to resolve a missing
 prototype warning.

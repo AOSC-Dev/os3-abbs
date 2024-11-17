@@ -1,7 +1,7 @@
 From 83ac05a24d3ff53d5f68debf8e4e27aad06b3efd Mon Sep 17 00:00:00 2001
 From: Jiaxun Yang <jiaxun.yang@flygoat.com>
 Date: Tue, 16 Jul 2024 22:14:58 +0800
-Subject: [PATCH 023/155] UPSTREAM: cpu/hotplug: Make HOTPLUG_PARALLEL
+Subject: [PATCH 023/156] UPSTREAM: cpu/hotplug: Make HOTPLUG_PARALLEL
  independent of HOTPLUG_SMT
 
 Provide stub functions for SMT related parallel bring up functions so that

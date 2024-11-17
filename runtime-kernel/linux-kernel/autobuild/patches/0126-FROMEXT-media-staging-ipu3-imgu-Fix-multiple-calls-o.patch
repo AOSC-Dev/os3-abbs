@@ -1,7 +1,7 @@
 From 0393c0b33816c961e4f3ebb6d4005b49da09a313 Mon Sep 17 00:00:00 2001
 From: mojyack <mojyack@gmail.com>
 Date: Sat, 3 Feb 2024 12:59:53 +0900
-Subject: [PATCH 126/155] FROMEXT: media: staging: ipu3-imgu: Fix multiple
+Subject: [PATCH 126/156] FROMEXT: media: staging: ipu3-imgu: Fix multiple
  calls of s_stream on stream stop
 
 Adapt to 009905e "media: v4l2-subdev: Document and enforce .s_stream() requirements"

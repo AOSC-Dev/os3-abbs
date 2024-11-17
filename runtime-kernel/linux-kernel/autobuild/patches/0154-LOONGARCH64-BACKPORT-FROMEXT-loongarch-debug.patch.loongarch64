@@ -1,7 +1,7 @@
 From a4ae3527ff2064d3eebc27451a9bccf5475a7609 Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Tue, 15 Oct 2024 19:35:34 +0800
-Subject: [PATCH 154/155] LOONGARCH64: BACKPORT: FROMEXT: loongarch debug
+Subject: [PATCH 154/156] LOONGARCH64: BACKPORT: FROMEXT: loongarch debug
 
 drm/xe: fix build on non-4K kernels
 

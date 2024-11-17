@@ -1,7 +1,7 @@
 From 65105fd2f6c9810a274c55074187a1ec618bd00f Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Wed, 23 Oct 2024 16:38:05 +0800
-Subject: [PATCH 084/155] FROMLIST: Input: Add driver for PixArt PS/2 touchpad
+Subject: [PATCH 084/156] FROMLIST: Input: Add driver for PixArt PS/2 touchpad
 
 This patch introduces a driver for the PixArt PS/2 touchpad, which
 supports both clickpad and touchpad types.

@@ -1,7 +1,7 @@
 From 883fba49772e9f267fcd2eba09e5f12ab96ced54 Mon Sep 17 00:00:00 2001
 From: Bibo Mao <maobibo@loongson.cn>
 Date: Tue, 24 Sep 2024 15:32:06 +0800
-Subject: [PATCH 036/155] UPSTREAM: LoongArch: Enable ACPI BGRT handling
+Subject: [PATCH 036/156] UPSTREAM: LoongArch: Enable ACPI BGRT handling
 
 Add ACPI BGRT support on LoongArch so it can display image provied by
 acpi table at boot stage and switch to graphical UI smoothly.

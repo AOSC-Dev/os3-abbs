@@ -1,7 +1,7 @@
 From a2212ed94d984824c266b21974f405b164e89a2c Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Tue, 24 Sep 2024 15:32:20 +0800
-Subject: [PATCH 040/155] UPSTREAM: LoongArch: Improve hardware page table
+Subject: [PATCH 040/156] UPSTREAM: LoongArch: Improve hardware page table
  walker
 
 LoongArch has similar problems explained in commit 7f0b1bf04511348995d6

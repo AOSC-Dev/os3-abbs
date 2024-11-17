@@ -1,7 +1,7 @@
 From 5d200790a06f27176875c105816d75e1d452a35c Mon Sep 17 00:00:00 2001
 From: Yanteng Si <siyanteng@loongson.cn>
 Date: Wed, 7 Aug 2024 21:48:03 +0800
-Subject: [PATCH 008/155] UPSTREAM: net: stmmac: dwmac-loongson: Add
+Subject: [PATCH 008/156] UPSTREAM: net: stmmac: dwmac-loongson: Add
  phy_interface for Loongson GMAC
 
 PHY-interface of the Loongson GMAC device is RGMII with no internal

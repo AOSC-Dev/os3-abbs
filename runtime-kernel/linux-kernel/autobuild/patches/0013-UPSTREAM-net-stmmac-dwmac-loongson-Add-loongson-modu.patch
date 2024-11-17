@@ -1,7 +1,7 @@
 From 0ba38e82ad1aa11d6fca0cf2fd3865a36693965d Mon Sep 17 00:00:00 2001
 From: Yanteng Si <siyanteng@loongson.cn>
 Date: Wed, 7 Aug 2024 21:48:56 +0800
-Subject: [PATCH 013/155] UPSTREAM: net: stmmac: dwmac-loongson: Add loongson
+Subject: [PATCH 013/156] UPSTREAM: net: stmmac: dwmac-loongson: Add loongson
  module author
 
 Add Yanteng Si as MODULE_AUTHOR of Loongson DWMAC PCI driver.

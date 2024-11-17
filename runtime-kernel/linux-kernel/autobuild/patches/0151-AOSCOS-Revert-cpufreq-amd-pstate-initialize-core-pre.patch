@@ -1,7 +1,7 @@
 From 0e1dc9c335bf216d924683342b18570cb6b4b3d8 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 15 Oct 2024 18:37:52 +0800
-Subject: [PATCH 151/155] AOSCOS: Revert "cpufreq: amd-pstate: initialize core
+Subject: [PATCH 151/156] AOSCOS: Revert "cpufreq: amd-pstate: initialize core
  precision boost state"
 
 This commit, introduced as part of AMD P-State's updates for 6.11, breaks

@@ -1,7 +1,7 @@
 From 6ea5941aa5a3c50a4340ba975c2850d3fd8ab714 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Fri, 26 Jul 2024 17:29:11 +0800
-Subject: [PATCH 031/155] UPSTREAM: PCI/ACPI: Increase Loongson max PCI hosts
+Subject: [PATCH 031/156] UPSTREAM: PCI/ACPI: Increase Loongson max PCI hosts
  to 8
 
 Beginning with Loongson-3C6000, there can be up to 8 PCI hosts for

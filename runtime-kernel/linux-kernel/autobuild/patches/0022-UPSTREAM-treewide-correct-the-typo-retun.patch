@@ -1,7 +1,7 @@
 From 413c6aba0ff447490bb63a1af69bde1175543a4d Mon Sep 17 00:00:00 2001
 From: WangYuli <wangyuli@uniontech.com>
 Date: Fri, 6 Sep 2024 13:40:08 +0800
-Subject: [PATCH 022/155] UPSTREAM: treewide: correct the typo 'retun'
+Subject: [PATCH 022/156] UPSTREAM: treewide: correct the typo 'retun'
 
 There are some spelling mistakes of 'retun' in comments which
 should be instead of 'return'.

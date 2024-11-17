@@ -1,7 +1,7 @@
 From c85800276fd87f85f5c6ef7f1b92ce0eead1fbc6 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Sun, 19 May 2024 15:24:53 -0500
-Subject: [PATCH 076/155] FROMLIST: docs: ntsync: Add documentation for the
+Subject: [PATCH 076/156] FROMLIST: docs: ntsync: Add documentation for the
  ntsync uAPI.
 
 Add an overall explanation of the driver architecture, and complete and precise

@@ -1,0 +1,4 @@
+VER=0.42.0
+SRCS="tbl::https://github.com/lfortran/lfortran/releases/download/v$VER/lfortran-$VER.tar.gz"
+CHKSUMS="sha256::3144abce88da2bcfd39e2c5c655b1bc977c429f3e7dae58afbe45c0237f07298"
+CHKUPDATE="anitya::id=370998"

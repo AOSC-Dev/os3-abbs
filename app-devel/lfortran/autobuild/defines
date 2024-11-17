@@ -1,0 +1,23 @@
+PKGNAME=lfortran
+PKGSEC=devel
+PKGDEP="gcc-runtime glibc llvm ncurses python-3"
+BUILDDEP="fmt llvm python-3 re2c zlib-static zstd-static"
+PKGDES="Interactive LLVM-based Fortran compiler"
+
+ABTYPE=cmakeninja
+CMAKE_AFTER=" \
+    -DBUILD_SHARED_LIBS=ON \
+    -DWITH_FMT=ON \
+    -DWITH_LLVM=ON \
+    -DWITH_RUNTIME_LIBRARY=ON \
+    -DWITH_RUNTIME_STACKTRACE=ON
+    -DWITH_STACKTRACE=ON \
+    -DWITH_TARGET_WASM=OFF \
+    -DWITH_UNWIND=ON \
+    -DWITH_WHEREAMI=ON \
+    -DWITH_ZLIB=ON \
+"
+
+# FIXME: operations on real data type may cause segfault or incorrect results on loongarch64.
+# GitHub issue link: https://github.com/lfortran/lfortran/issues/5405
+FAIL_ARCH="loongarch64"

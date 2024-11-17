@@ -3,7 +3,7 @@ PKGSEC=gnome
 PKGDEP="appstream appstream-glib desktop-file-utils flatpak gnome-desktop \
         gnome-online-accounts gsettings-desktop-schemas gtk-4 gspell \
         gtkspell3 gnome-desktop libgudev libadwaita liboauth libsecret libsoup \
-        libxmlb limba malcontent packagekit sysprof yaml"
+        libxmlb malcontent packagekit sysprof yaml"
 PKGDEP__AMD64="${PKGDEP} fwupd"
 PKGDEP__ARM64="${PKGDEP} fwupd"
 PKGDEP__LOONGARCH64="${PKGDEP} fwupd"

@@ -4,3 +4,4 @@ SRCS="git::commit=tags/$VER::https://github.com/flatpak/flatpak \
 CHKSUMS="SKIP \
          sha256::3371dd250e61d9e1633630073fefda153cd4426f72f4afa0c3373ae2e8fea03a"
 CHKUPDATE="anitya::id=6377"
+REL=1

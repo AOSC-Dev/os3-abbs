@@ -6,7 +6,7 @@ abinfo "Installing icon files ..."
 install -Dvm644 \
     "$SRCDIR"/data/io.aosc.deb_installer.png \
     "$SRCDIR"/data/io.aosc.deb_installer.svg \
-    -t "$SRCDIR"/usr/share/pixmaps/
+    -t "$PKGDIR"/usr/share/pixmaps/
 
 abinfo "Installing .desktop entry ..."
 install -Dvm644 "$SRCDIR"/data/io.aosc.deb_installer.desktop \

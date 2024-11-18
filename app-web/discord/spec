@@ -1,5 +1,5 @@
-VER=0.0.74
+VER=0.0.75
 SRCS="tbl::https://dl.discordapp.net/apps/linux/$VER/discord-$VER.tar.gz"
-CHKSUMS="sha256::c9fda02ef0e0cc5d77720a4a1628821c661547ea7b8d9380477ecbd45e8c66f7"
+CHKSUMS="sha256::9a4ab273d0a8f229de2fa75c24a691243e13546d516228fffce833321fed2c30"
 SUBDIR=.
 CHKUPDATE="anitya::id=372593"

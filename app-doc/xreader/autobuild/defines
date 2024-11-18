@@ -1,7 +1,7 @@
 PKGNAME=xreader
 PKGSEC=doc
 PKGDEP="djvulibre gtk-3 libgxps poppler libsecret libspectre webkit2gtk \
-        mathjax"
+        mathjax xapps"
 BUILDDEP="caja gobject-introspection libxslt mate-common nemo texlive \
           yelp-tools"
 PKGDES="A generic Document Reader"

@@ -1,7 +1,7 @@
-From 1d9f98e85ea9ae2a692896286f5eab8b8fdeb2f9 Mon Sep 17 00:00:00 2001
+From b3819cd8acaf120f9256fd3c605a7f30b18cc66d Mon Sep 17 00:00:00 2001
 From: Jiangjin Wang <kaymw@aosc.io>
 Date: Mon, 6 May 2024 17:15:17 -0700
-Subject: [PATCH 06/10] Remove the confusing "Default" option from selectable
+Subject: [PATCH 6/8] Remove the confusing "Default" option from selectable
  fonts
 
 ---

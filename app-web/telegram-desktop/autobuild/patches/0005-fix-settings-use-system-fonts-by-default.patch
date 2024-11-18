@@ -1,14 +1,14 @@
-From 541b0de4b087631a8a6e7dce0371f133dc405e4f Mon Sep 17 00:00:00 2001
+From 007d25ee4f4bed41bed945a3be463e2cd0426d54 Mon Sep 17 00:00:00 2001
 From: Jiangjin Wang <kaymw@aosc.io>
 Date: Mon, 6 May 2024 00:06:32 -0700
-Subject: [PATCH 05/10] fix(settings): use system fonts by default
+Subject: [PATCH 5/8] fix(settings): use system fonts by default
 
 ---
  Telegram/SourceFiles/core/core_settings.h | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/Telegram/SourceFiles/core/core_settings.h b/Telegram/SourceFiles/core/core_settings.h
-index 87210991..a6cc632c 100644
+index 6e879b7e..241ef95e 100644
 --- a/Telegram/SourceFiles/core/core_settings.h
 +++ b/Telegram/SourceFiles/core/core_settings.h
 @@ -11,6 +11,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
@@ -19,7 +19,7 @@ index 87210991..a6cc632c 100644
  #include "base/flags.h"
  #include "emoji.h"
  
-@@ -1064,7 +1065,7 @@ private:
+@@ -1068,7 +1069,7 @@ private:
  	rpl::variable<bool> _storiesClickTooltipHidden = false;
  	rpl::variable<bool> _ttlVoiceClickTooltipHidden = false;
  	WindowPosition _ivPosition;

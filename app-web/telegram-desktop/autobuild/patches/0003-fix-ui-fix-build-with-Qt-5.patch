@@ -1,7 +1,7 @@
-From 76aa32955a51bb2b4abfaf57c7b91b0b7665e93a Mon Sep 17 00:00:00 2001
+From b3a36159c5dfa3b857d826d2570313f9110ccc4b Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 9 Apr 2024 22:02:32 +0800
-Subject: [PATCH 03/10] fix(ui): fix build with Qt 5
+Subject: [PATCH 3/8] fix(ui): fix build with Qt 5
 
 Co-authored-by: Henry Chen <chenx97@aosc.io>
 ---

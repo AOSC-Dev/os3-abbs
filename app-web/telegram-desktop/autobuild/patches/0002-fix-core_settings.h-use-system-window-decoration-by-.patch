@@ -1,7 +1,7 @@
-From 58b565d712fe52d08207057d382937d3fa34afd0 Mon Sep 17 00:00:00 2001
+From 0c51e807d250d06ac46449a9a25a39f5bd9d3295 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 9 Apr 2024 17:43:49 +0800
-Subject: [PATCH 02/10] fix(core_settings.h): use system window decoration by
+Subject: [PATCH 2/8] fix(core_settings.h): use system window decoration by
  default
 
 ---
@@ -9,17 +9,17 @@ Subject: [PATCH 02/10] fix(core_settings.h): use system window decoration by
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/Telegram/SourceFiles/core/core_settings.h b/Telegram/SourceFiles/core/core_settings.h
-index 3838463f..87210991 100644
+index 87fb383f..6e879b7e 100644
 --- a/Telegram/SourceFiles/core/core_settings.h
 +++ b/Telegram/SourceFiles/core/core_settings.h
-@@ -1030,7 +1030,7 @@ private:
+@@ -1034,7 +1034,7 @@ private:
  	rpl::variable<float64> _dialogsNoChatWidthRatio; // per-window
  	rpl::variable<int> _thirdColumnWidth = kDefaultThirdColumnWidth; // p-w
  	bool _notifyFromAll = true;
 -	rpl::variable<bool> _nativeWindowFrame = false;
 +	rpl::variable<bool> _nativeWindowFrame = true;
  	rpl::variable<std::optional<bool>> _systemDarkMode = std::nullopt;
- 	rpl::variable<bool> _systemDarkModeEnabled = false;
+ 	rpl::variable<bool> _systemDarkModeEnabled = true;
  	rpl::variable<WindowTitleContent> _windowTitleContent;
 -- 
 2.47.0

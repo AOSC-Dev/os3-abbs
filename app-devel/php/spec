@@ -1,4 +1,4 @@
-VER=8.3.11
+VER=8.3.13
 SRCS="tbl::https://www.php.net/distributions/php-$VER.tar.xz"
-CHKSUMS="sha256::b862b098a08ab9bf4b36ed12c7d0d9f65353656b36fb0e3c5344093aceb35802"
+CHKSUMS="sha256::89adb978cca209124fe53fd6327bc4966ca21213a7fa2e9504f854e340873018"
 CHKUPDATE="anitya::id=3627"

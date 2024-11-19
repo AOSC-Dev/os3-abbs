@@ -1,0 +1,9 @@
+PKGNAME=docker-buildx
+PKGDES="Docker CLI plugin for extended build capabilities"
+PKGSEC=admin
+PKGDEP="docker"
+BUILDDEP="go"
+
+# FIXME: Missing criu support
+FAIL_ARCH="!(amd64|arm64|loongarch64|ppc64el)"
+ABSPLITDBG=0

@@ -89,33 +89,50 @@ notify_esp_mount() {
 	echo $"-- Proceeding."
 }
 
-# For some incomplete EFI implementations, such as EFI provided by Das
-# U-Boot. On some platforms the EFI variable store is read only, that
-# grub-install might fail. The only option is to install GRUB with
-# --force-extra-removable flag.
+# Quirk for incomplete (U)EFI implementations (such as EFI implemented by
+# U-Boot and some vendor firmware). With these implementations, the firmware
+# may fail to save boot entries, or that the EFI variable store was made
+# read-only.
 #
-# XXX: What about --no-nvram?
+# Installing GRUB with the --force-extra-removable or --removable flags will
+# help workaround unbootable systems, though the former is not an option when
+# the variable store is read-only.
 #
-# No. GRUB installs as grub$ARCH.efi if --no-nvram is set.
+# > What about --no-nvram?
 #
-# --force-extra-removable makes GRUB installs a generic BOOT$ARCH.EFI
-# in addition to the standard grub$ARCH.efi (along with a customisable
-# bootloader entry).
+# No. GRUB still installs the EFI image as grub$ARCH.efi if --no-nvram is set,
+# but for systems without writable variable or boot entry stores, the firmware
+# would fail to discover and boot from a non-removable path.
+#
+# > The workaround.
+#
+# * --force-extra-removable makes GRUB install a generic BOOT$ARCH.EFI in
+#   addition to the standard grub$ARCH.efi (along with an EFI boot entry).
+# * --removable makes GRUB install *only a generic BOOT$ARCH.EFI, it also
+#   prompts GRUB to skip writing to the EFI variable store.
 efi_removable_quirk() {
 	if ! [ -w /sys/firmware/efi/efivars ] ; then
-		echo "--force-extra-removable"
-		return
+		read_only_efivar=1
 	fi
-	# Ported from DeployKit - On some architectures broken efivars are
-	# more common than working ones.
 	case "$ARCH" in
+		# From DeployKit: Flawed EFI implementations are quite common
+		# on these architectures.
 		arm64|loongarch64|loongson3|riscv64)
-			echo "--force-extra-removable"
+			flawed_efi=1
 			;;
 		*)
+			flawed_efi=0
 			echo ""
 			;;
 	esac
+
+	# Evaluate: If flawed, use --force-extra-removable; if read-only EFI
+	# variable, short circuit to --removable (even worse).
+	if [[ "$read_only_efivar" = "1" ]]; then
+		echo "--removable"
+	elif [[ "$flawed_efi" = "1" ]]; then
+		echo "--force-extra-removable"
+	fi
 }
 
 # Sorry, but the only path we do mount the ESP to is /efi.

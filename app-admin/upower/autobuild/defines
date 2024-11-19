@@ -18,6 +18,7 @@ MESON_AFTER="-Dman=true \
              -Dintrospection=enabled \
              -Dos_backend=linux \
              -Didevice=enabled \
+             -Dpolkit=enabled \
              -Dinstalled_tests=false"
 MESON_AFTER__RETRO=" \
              ${MESON_AFTER} \

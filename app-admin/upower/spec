@@ -1,5 +1,4 @@
-VER=1.90.4
-REL=1
+VER=1.90.6
 SRCS="tbl::https://gitlab.freedesktop.org/upower/upower/-/archive/v$VER/upower-v$VER.tar.gz"
-CHKSUMS="sha256::cd194dd278bd8d058b4728efd1d0a91cdf017378f025b558beb6f60a86af4781"
+CHKSUMS="sha256::7e367c2619ca0f26d5bfc085b46bad9657b2774cc3eaffbf310b607df6e21377"
 CHKUPDATE="anitya::id=5056"

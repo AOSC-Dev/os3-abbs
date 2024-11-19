@@ -1,12 +1,11 @@
 PKGNAME=lutris
 PKGSEC=contrib/games
-PKGDEP="pygobject-3 pyyaml python-evdev gtk-3 glib psmisc cabextract unrar unzip \
-        p7zip curl x11-app gnome-desktop requests pillow webkit2gtk"
-BUILDDEP="setuptools"
-PKGDES="Open Gaming Platform"
+PKGDEP="pygobject-3 pyyaml python-evdev gtk-3 glib psmisc cabextract unrar \
+        unzip p7zip curl x11-app gnome-desktop requests pillow webkit2gtk"
+BUILDDEP="python-build python-installer wheel"
+PKGDES="Game emulation and compatibility runtime manager and launcher"
 
-ABTYPE=python
-NOPYTHON2=1
+ABTYPE=pep517
 
 # It downloads blobs at runtime, so restrict architectural support
 FAIL_ARCH="!(amd64)"

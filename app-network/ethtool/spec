@@ -1,4 +1,4 @@
-VER=6.9
+VER=6.11
 SRCS="tbl::https://www.kernel.org/pub/software/network/ethtool/ethtool-$VER.tar.xz"
-CHKSUMS="sha256::a71b0354010661c5cf178bc606ed50fcb91805cf1897ad0eb2818387a5fd0cd9"
+CHKSUMS="sha256::8d91f5c72ae3f25b7e88d4781279dcb320f71e30058914370b1c574c96b31202"
 CHKUPDATE="anitya::id=763"

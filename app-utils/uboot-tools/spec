@@ -1,5 +1,4 @@
-VER=2022.10
+VER=2024.10
 SRCS="tbl::https://ftp.denx.de/pub/u-boot/u-boot-$VER.tar.bz2"
-CHKSUMS="sha256::50b4482a505bc281ba8470c399a3c26e145e29b23500bc35c50debd7fa46bdf8"
+CHKSUMS="sha256::b28daf4ac17e43156363078bf510297584137f6df50fced9b12df34f61a92fb0"
 CHKUPDATE="anitya::id=5022"
-REL=1

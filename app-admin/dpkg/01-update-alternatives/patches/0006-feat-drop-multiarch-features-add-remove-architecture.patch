@@ -1,7 +1,7 @@
-From 73c78ce29d409fa2c765bde066201473de8b1d3b Mon Sep 17 00:00:00 2001
+From 0989dde2a112d9652c7757cd4a835c827bd79eed Mon Sep 17 00:00:00 2001
 From: eatradish <sakiiily@aosc.io>
 Date: Sun, 5 May 2024 16:06:18 +0800
-Subject: [PATCH 6/8] feat: drop multiarch features
+Subject: [PATCH 6/9] feat: drop multiarch features
  (--{add,remove}-architectures)
 
 AOSC OS does not offer multiarch or any way to install foreign-architecture
@@ -18,7 +18,7 @@ Co-authored-by: Mingcong Bai <jeffbai@aosc.io>
  1 file changed, 4 insertions(+), 60 deletions(-)
 
 diff --git a/src/main/main.c b/src/main/main.c
-index ecaed5f3..1bc5eb6c 100644
+index ecaed5f32..1bc5eb6c4 100644
 --- a/src/main/main.c
 +++ b/src/main/main.c
 @@ -456,73 +456,17 @@ run_status_loggers(struct invoke_list *hook_list)
@@ -100,5 +100,5 @@ index ecaed5f3..1bc5eb6c 100644
  
  int execbackend(const char *const *argv) DPKG_ATTR_NORET;
 -- 
-2.45.2
+2.48.1
 

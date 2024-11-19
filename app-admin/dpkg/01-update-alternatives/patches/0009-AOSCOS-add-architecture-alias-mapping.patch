@@ -1,0 +1,64 @@
+From 8eea17eb1da6da755eb19033c56bc633c7664314 Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.io>
+Date: Sun, 19 Jan 2025 23:25:59 +0800
+Subject: [PATCH 9/9] AOSCOS: add architecture alias mapping
+
+With AOSC OS, we use a few architecture names that are different to what
+dpkg defines internally:
+
+- LoongArch ("new-world" ABI 2.0): we use loongarch64 (old-world naming),
+  whereas Debian uses loong64.
+- MIPS Loongson ports (for 2F and 3-series): we use loongson2f/loongson3
+  to reflect the fact that we do introduce LoongISA optimisation, but
+  Debian (and most software vendors) uses mips64el for at least the latter
+  (most Loongson 2F targetted distros were 32-bit to "save on RAM").
+- 80486: We use i486 whereas Debian uses i386 (when in fact the binaries
+  targetted i686).
+- ARMv4T: We use armv4 whereas Debian uses armel (for v4T, v5, and soft-
+  float v6).
+- ARMv6, Hard-Float: We use armv6hf whereas Debian uses armv6hf.
+- ARMv7, Hard-Float, NEON: We use armv7hf whereas Debian uses armv7hf.
+
+Introduce alias mapping, as inspired by how Loongnix 25 marked loongarch64
+packages as compatible via their abi-compat infrastructure.
+
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ lib/dpkg/arch.c | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
+
+diff --git a/lib/dpkg/arch.c b/lib/dpkg/arch.c
+index 9409f5a5e..06d713668 100644
+--- a/lib/dpkg/arch.c
++++ b/lib/dpkg/arch.c
+@@ -146,6 +146,27 @@ dpkg_arch_find(const char *name)
+ 	for (arch = arch_head; arch; arch = arch->next) {
+ 		if (strcmp(arch->name, name) == 0)
+ 			return arch;
++		if (strcmp(arch->name, "loongarch64") == 0 &&
++		    strcmp(name, "loong64") == 0)
++			return arch;
++		if (strcmp(arch->name, "loongson3") == 0 &&
++		    strcmp(name, "mips64el") == 0)
++			return arch;
++		if (strcmp(arch->name, "armv4") == 0 &&
++		    strcmp(name, "armel") == 0)
++			return arch;
++		if (strcmp(arch->name, "armv6hf") == 0 &&
++		    strcmp(name, "armhf") == 0)
++			return arch;
++		if (strcmp(arch->name, "armv7hf") == 0 &&
++		    strcmp(name, "armhf") == 0)
++			return arch;
++		if (strcmp(arch->name, "i486") == 0 &&
++		    strcmp(name, "i386") == 0)
++			return arch;
++		if (strcmp(arch->name, "loongson2f") == 0 &&
++		   strcmp(name, "mips64el") == 0)
++			return arch;
+ 		last_arch = arch;
+ 	}
+ 
+-- 
+2.48.1
+

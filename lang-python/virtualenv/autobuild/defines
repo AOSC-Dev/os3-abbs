@@ -5,6 +5,4 @@ BUILDDEP="python-build python-installer wheel tomli hatch-vcs"
 PKGDES="A tool to create isolated Python environments"
 
 ABHOST=noarch
-
-NOPYTHON2=1
 ABTYPE=pep517

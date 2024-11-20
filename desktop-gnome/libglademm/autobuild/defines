@@ -1,6 +1,0 @@
-PKGNAME=libglademm
-PKGSEC=gnome
-PKGDEP="libglade gtkmm"
-PKGDES="C++ bindings for libglade"
-
-RECONF=0

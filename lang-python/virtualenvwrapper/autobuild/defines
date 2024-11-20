@@ -1,0 +1,8 @@
+PKGNAME=virtualenvwrapper
+PKGSEC=python
+PKGDEP="stevedore virtualenv"
+BUILDDEP="python-build python-installer wheel"
+PKGDES="Extension modules for virtualenv"
+
+ABTYPE=pep517
+ABHOST=noarch

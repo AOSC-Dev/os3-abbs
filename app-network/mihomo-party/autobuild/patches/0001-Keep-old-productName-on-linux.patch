@@ -1,4 +1,4 @@
-From 0048046bb7eede8ba9b13dffbe1466c1ace5f6a5 Mon Sep 17 00:00:00 2001
+From 2c47220f7a580fd2014073a6283074ed3277851b Mon Sep 17 00:00:00 2001
 From: miwu04 <mail@alanlin.icu>
 Date: Tue, 5 Nov 2024 01:18:49 +0800
 Subject: [PATCH 1/2] Keep old productName on linux

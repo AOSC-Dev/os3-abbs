@@ -1,4 +1,4 @@
-From 338205bda2373490b4300abb47dea674fa36aad5 Mon Sep 17 00:00:00 2001
+From 33d9af438ebdde08b483ac37d4533b01c4738718 Mon Sep 17 00:00:00 2001
 From: miwu04 <mail@alanlin.icu>
 Date: Tue, 5 Nov 2024 01:19:03 +0800
 Subject: [PATCH 2/2] Remove auto update feature
@@ -165,7 +165,7 @@ index dd3b9a5..fbcf359 100644
    ipcMain.handle('platform', () => process.platform)
    ipcMain.handle('openUWPTool', ipcErrorWrapper(openUWPTool))
 diff --git a/src/main/utils/template.ts b/src/main/utils/template.ts
-index 26f2db1..b150312 100644
+index 91e390f..7ef5735 100644
 --- a/src/main/utils/template.ts
 +++ b/src/main/utils/template.ts
 @@ -11,7 +11,6 @@ export const defaultConfig: IAppConfig = {
@@ -177,7 +177,7 @@ index 26f2db1..b150312 100644
    useNameserverPolicy: false,
    controlDns: true,
 diff --git a/src/renderer/src/App.tsx b/src/renderer/src/App.tsx
-index 39397d2..d44568a 100644
+index aef0099..87b03c6 100644
 --- a/src/renderer/src/App.tsx
 +++ b/src/renderer/src/App.tsx
 @@ -26,7 +26,6 @@ import ConnCard from '@renderer/components/sider/conn-card'
@@ -488,10 +488,10 @@ index 1097967..646f312 100644
    return ipcErrorWrapper(await window.electron.ipcRenderer.invoke('getVersion'))
  }
 diff --git a/src/shared/types.d.ts b/src/shared/types.d.ts
-index e8c59a5..fe67640 100644
+index 4644c00..f034d9a 100644
 --- a/src/shared/types.d.ts
 +++ b/src/shared/types.d.ts
-@@ -248,7 +248,6 @@ interface IAppConfig {
+@@ -258,7 +258,6 @@ interface IAppConfig {
    siderWidth: number
    appTheme: AppTheme
    customTheme?: string

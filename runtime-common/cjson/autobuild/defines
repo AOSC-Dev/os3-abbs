@@ -1,0 +1,6 @@
+PKGNAME=cjson
+PKGDES="JSON parser in ANSI C"
+PKGSEC=libs
+PKGDEP="glibc"
+
+ABTYPE=cmakeninja

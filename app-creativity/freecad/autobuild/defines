@@ -1,7 +1,9 @@
 PKGNAME=freecad
-PKGDEP="med hdf5 opencascade vtk glew boost coin xerces-c pyside2 libspnav matplotlib pcl pivy ply fmt"
+PKGDEP="med hdf5 opencascade vtk glew boost coin xerces-c pyside2 \
+        libspnav matplotlib pcl pivy ply fmt double-conversion glu \
+        yaml-cpp"
 PKGSUG="openscad"
-BUILDDEP="swig pybind11 eigen-3"
+BUILDDEP="swig pybind11 eigen-3 utfcpp doxygen"
 PKGSEC="graphics"
 PKGDES="Parametric 3D CAD modeler"
 
@@ -20,16 +22,14 @@ CMAKE_AFTER="-DCMAKE_SKIP_INSTALL_RPATH=OFF \
              -DFREECAD_USE_PYBIND11=ON \
              -DFREECAD_USE_QT_FILEDIALOG=OFF \
              -DFREECAD_USE_FREETYPE=ON \
-             -DFREECAD_USE_EXTERNAL_PIVY=OFF \
              -DBUILD_ADDONMGR=ON \
-             -DBUILD_ARCH=ON \
-             -DBUILD_ASSEMBLY=OFF \
+             -DBUILD_ASSEMBLY=ON \
+             -DBUILD_BIM=ON \
+             -DBUILD_CAM=ON \
              -DBUILD_CLOUD=ON \
-             -DBUILD_COMPLETE=OFF \
              -DBUILD_DRAFT=ON \
              -DBUILD_DESIGNER_PLUGIN=ON \
              -DBUILD_DRAWING=ON \
-             -DBUILD_FEM=ON \
              -DBUILD_FEM_NETGEN=OFF \
              -DBUILD_FLAT_MESH=ON \
              -DBUILD_FORCE_DIRECTORY=ON \
@@ -41,16 +41,18 @@ CMAKE_AFTER="-DCMAKE_SKIP_INSTALL_RPATH=OFF \
              -DBUILD_INSPECTION=ON \
              -DBUILD_JTREADER=OFF \
              -DBUILD_MATERIAL=ON \
+             -DBUILD_MEASURE=ON \
              -DBUILD_MESH=ON \
              -DBUILD_MESH_PART=ON \
              -DBUILD_OPENSCAD=ON \
              -DBUILD_PART=ON \
              -DBUILD_PART_DESIGN=ON \
              -DBUILD_PATH=ON \
+             -DBUILD_PLOT=ON \
              -DBUILD_POINTS=ON \
              -DBUILD_QT5=ON \
              -DBUILD_RAYTRACING=ON \
-             -DBUILD_REVERSEENGINEERING=OFF \
+             -DBUILD_REVERSEENGINEERING=ON \
              -DBUILD_ROBOT=ON \
              -DBUILD_SHOW=ON \
              -DBUILD_SKETCHER=ON \

@@ -4,60 +4,68 @@
 # Smart developers of Arch Linux invented a way to sequentially
 # build different flavors of PHP, therefore allowing a full
 # PHP package to be shipped.
-# The source build dir is not cleaned to speed up the build as
-# most of the components are shared between packages.
+# PHP clears all .so files found in SRCDIR when 'make clean'.
+# To stop installed extension .so files from being removed
+# (because PKGDIR in a subdirectory of SRCDIR), we first install
+# all files into a TMPPKGDIR and move files into PKGDIR at last.
 
 abinfo "Preparing the environment ..."
 export EXTENSION_DIR=/usr/lib/php/modules
 export PEAR_INSTALLDIR=/usr/share/pear
+TMPPKGDIR="$(realpath ../tmpabdist)"
+mkdir -vp "$TMPPKGDIR"
 
 abinfo "Building and installing PHP ..."
 "$SRCDIR"/configure \
-    ${AUTOTOOLS_DEF[@]} ${AUTOTOOLS_AFTER} \
+    "${AUTOTOOLS_DEF[@]}" ${AUTOTOOLS_AFTER} \
     --without-pear \
     --disable-cgi \
     --enable-pcntl
 make
-make -j1 INSTALL_ROOT="$PKGDIR" install
-install -dvm755 "$PKGDIR"/usr/share/pear
+make INSTALL_ROOT="$TMPPKGDIR" install
+install -dvm755 "$TMPPKGDIR"/usr/share/pear
 install -Dvm644 "$SRCDIR"/php.ini-production \
-    "$PKGDIR"/etc/php/php.ini
-install -dvm755 "$PKGDIR"/etc/php/conf.d/
-rm -v "$PKGDIR"/usr/bin/phar
+    "$TMPPKGDIR"/etc/php/php.ini
+install -dvm755 "$TMPPKGDIR"/etc/php/conf.d/
+rm -v "$TMPPKGDIR"/usr/bin/phar
 ln -sv phar.phar \
-    "$PKGDIR"/usr/bin/phar
+    "$TMPPKGDIR"/usr/bin/phar
+make distclean
 
 abinfo "Building and installing PHP with Pear module ..."
 "$SRCDIR"/configure \
-    ${AUTOTOOLS_DEF[@]} ${AUTOTOOLS_AFTER} \
+    "${AUTOTOOLS_DEF[@]}" ${AUTOTOOLS_AFTER} \
     --with-pear
 make
-make install-pear INSTALL_ROOT="$PKGDIR"
+make install-pear INSTALL_ROOT="$TMPPKGDIR"
 abinfo "Dropping dot files ..."
-rm -rv "$PKGDIR"/usr/share/pear/.{channels,filemap,lock,registry}
-rm -rv "$PKGDIR"/.{channels,depdb,depdblock,filemap,lock,registry}
+rm -rv "$TMPPKGDIR"/usr/share/pear/.{channels,filemap,lock,registry}
+rm -rv "$TMPPKGDIR"/.{channels,depdb,depdblock,filemap,lock,registry}
+make distclean
 
 abinfo "Building and installing PHP with CGI and FCGI executable ..."
 "$SRCDIR"/configure \
-    ${AUTOTOOLS_DEF[@]} ${AUTOTOOLS_AFTER} \
+    "${AUTOTOOLS_DEF[@]}" ${AUTOTOOLS_AFTER} \
     --disable-cli \
     --enable-cgi
 make
 install -Dvm755 "$SRCDIR"/sapi/cgi/php-cgi \
-    "$PKGDIR"/usr/bin/php-cgi
+    "$TMPPKGDIR"/usr/bin/php-cgi
+make distclean
 
 abinfo "Building and installing PHP with Apache/HTTPD module ..."
 "$SRCDIR"/configure \
-    ${AUTOTOOLS_DEF[@]} ${AUTOTOOLS_AFTER} \
+    "${AUTOTOOLS_DEF[@]}" ${AUTOTOOLS_AFTER} \
     --disable-cli \
     --with-apxs2
 make
 install -Dvm755 "$SRCDIR"/libs/libphp.so \
-    "$PKGDIR"/usr/lib/httpd/modules/libphp.so
+    "$TMPPKGDIR"/usr/lib/httpd/modules/libphp.so
+make distclean
 
 abinfo "Building and installing PHP with FPM module ..."
 "$SRCDIR"/configure \
-    ${AUTOTOOLS_DEF[@]} ${AUTOTOOLS_AFTER} \
+    "${AUTOTOOLS_DEF[@]}" ${AUTOTOOLS_AFTER} \
     --disable-cli \
     --enable-cgi \
     --enable-fpm \
@@ -65,32 +73,38 @@ abinfo "Building and installing PHP with FPM module ..."
     --with-fpm-user=http \
     --with-fpm-group=http
 make
-make install-fpm INSTALL_ROOT="$PKGDIR" -j1
+make install-fpm INSTALL_ROOT="$TMPPKGDIR" -j1
 install -Dvm755 "$SRCDIR"/sapi/fpm/php-fpm.service \
-    "$PKGDIR"/usr/lib/systemd/system/php-fpm.service
+    "$TMPPKGDIR"/usr/lib/systemd/system/php-fpm.service
 install -Dvm755 "$SRCDIR"/sapi/fpm/php-fpm \
-    "$PKGDIR"/usr/bin/php-fpm
+    "$TMPPKGDIR"/usr/bin/php-fpm
 install -Dvm644 "$SRCDIR"/sapi/fpm/php-fpm.8 \
-    "$PKGDIR"/usr/share/man/man8/php-fpm.8
+    "$TMPPKGDIR"/usr/share/man/man8/php-fpm.8
 install -Dvm644 "$SRCDIR"/sapi/fpm/php-fpm.conf \
-    "$PKGDIR"/etc/php/php-fpm.conf
-install -dvm755 "$PKGDIR"/etc/php/php-fpm.d
+    "$TMPPKGDIR"/etc/php/php-fpm.conf
+install -dvm755 "$TMPPKGDIR"/etc/php/php-fpm.d
+make distclean
 
 abinfo "Setting user/group in /etc/php/php-fpm.d/www.conf ..."
 abwarn "FIXME: Why doesn't --with-fpm-{user,group} work?"
 sed -e 's|nobody|http|g' \
-    -i "$PKGDIR"/etc/php/php-fpm.d/www.conf
+    -i "$TMPPKGDIR"/etc/php/php-fpm.d/www.conf
 
 abinfo "Building and installing PHP with Embed module ..."
 "$SRCDIR"/configure \
-    ${AUTOTOOLS_DEF[@]} ${AUTOTOOLS_AFTER} \
+    "${AUTOTOOLS_DEF[@]}" ${AUTOTOOLS_AFTER} \
     --disable-cli \
     --enable-embed=shared
 make
 install -Dvm755 "$SRCDIR"/libs/libphp.so \
-    "$PKGDIR"/usr/lib/libphp.so
+    "$TMPPKGDIR"/usr/lib/libphp.so
 install -Dvm644 "$SRCDIR"/sapi/embed/php_embed.h \
-    "$PKGDIR"/usr/include/php/sapi/embed/php_embed.h
+    "$TMPPKGDIR"/usr/include/php/sapi/embed/php_embed.h
+make distclean
 
 abinfo "Moving /var/run => /run ..."
-mv -v "$PKGDIR"/{var/,}run
+mv -v "$TMPPKGDIR"/{var/,}run
+
+abinfo "Moving files from TMPPKGDIR to PKGDIR ..."
+mkdir -vp "$PKGDIR"
+mv -v "$TMPPKGDIR"/* "$PKGDIR"/

@@ -1,4 +1,4 @@
-From 36d2477426af103a2b05e34c7b6e8877f541c4d4 Mon Sep 17 00:00:00 2001
+From 271b3135ff61ec03d6f79bf872024d4f141517ac Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Sun, 28 Jan 2024 14:07:46 +0800
 Subject: [PATCH 08/37] FROMEXT: drivers/firmware: Move sysfb_init() from
@@ -36,7 +36,7 @@ fs_initcall function which is ensured after vgaarb initialization.
 
 Signed-off-by: Huacai Chen <chenhuacai@loongson.cn>
 
-Link: https://github.com/chenhuacai/linux/commit/a04a5bfb7c7a1b5b9041c03f8a282481aba5ed0c
+Link: https://github.com/chenhuacai/linux/commit/824b279f6d07d3cc44eff7e648cbe2157d74d74e
 Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
 ---
  drivers/firmware/sysfb.c | 2 +-

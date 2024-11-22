@@ -1,4 +1,4 @@
-From e745464ace6569a712dff7aa00a4af62c220183a Mon Sep 17 00:00:00 2001
+From 53007bc7898d99afee29b1b73e448e05c99cc98f Mon Sep 17 00:00:00 2001
 From: Icenowy Zheng <icenowy@aosc.io>
 Date: Tue, 1 Dec 2020 16:19:04 +0800
 Subject: [PATCH 32/37] OBSOLETE: AOSCOS: arm64: rockchip: dts: rk3399: fix PD

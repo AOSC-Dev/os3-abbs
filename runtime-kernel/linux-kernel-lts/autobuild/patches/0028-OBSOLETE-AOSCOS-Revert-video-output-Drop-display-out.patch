@@ -1,4 +1,4 @@
-From b43ac9747ce675c277d32adf6c1e1ee13806a8f7 Mon Sep 17 00:00:00 2001
+From 36fb62f895ce64d345b0d05d82e142bd5ea9d321 Mon Sep 17 00:00:00 2001
 From: Jiaxun Yang <jiaxun.yang@flygoat.com>
 Date: Tue, 7 Nov 2017 09:01:33 +0800
 Subject: [PATCH 28/37] OBSOLETE: AOSCOS: Revert "video / output: Drop display

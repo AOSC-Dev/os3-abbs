@@ -1,4 +1,4 @@
-From e4d955da252c51fc2cde1afca1abc10e399b169d Mon Sep 17 00:00:00 2001
+From 9694e209fec6e84025043a241710c2c0c0828b6c Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Filipe=20La=C3=ADns?= <lains@riseup.net>
 Date: Sat, 23 Jan 2021 18:03:33 +0000
 Subject: [PATCH 35/37] OBSOLETE: HID: logitech-dj: add support for the new
@@ -29,7 +29,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  2 files changed, 38 insertions(+), 13 deletions(-)
 
 diff --git a/drivers/hid/hid-ids.h b/drivers/hid/hid-ids.h
-index c4a00a25836a..1c0dfe59ad00 100644
+index 9e26341fdcc8..3e700cd7bb2a 100644
 --- a/drivers/hid/hid-ids.h
 +++ b/drivers/hid/hid-ids.h
 @@ -868,6 +868,7 @@
@@ -37,9 +37,9 @@ index c4a00a25836a..1c0dfe59ad00 100644
  #define USB_DEVICE_ID_LOGITECH_NANO_RECEIVER_LIGHTSPEED_1_1	0xc53f
  #define USB_DEVICE_ID_LOGITECH_NANO_RECEIVER_POWERPLAY	0xc53a
 +#define USB_DEVICE_ID_LOGITECH_NANO_RECEIVER_LIGHTSPEED_1_2	0xc547
+ #define USB_DEVICE_ID_LOGITECH_BOLT_RECEIVER	0xc548
  #define USB_DEVICE_ID_SPACETRAVELLER	0xc623
  #define USB_DEVICE_ID_SPACENAVIGATOR	0xc626
- #define USB_DEVICE_ID_DINOVO_DESKTOP	0xc704
 diff --git a/drivers/hid/hid-logitech-dj.c b/drivers/hid/hid-logitech-dj.c
 index 37958edec55f..cdb298707eb0 100644
 --- a/drivers/hid/hid-logitech-dj.c

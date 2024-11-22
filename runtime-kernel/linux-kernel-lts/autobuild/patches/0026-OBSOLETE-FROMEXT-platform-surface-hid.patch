@@ -1,4 +1,4 @@
-From 8b3a216a774309872c32e7b748716ae3e1f96726 Mon Sep 17 00:00:00 2001
+From fde8009419ad7c917a0d8bb455bd8b4865af1fb7 Mon Sep 17 00:00:00 2001
 From: qzed <qzed@users.noreply.github.com>
 Date: Tue, 17 Sep 2019 17:16:23 +0200
 Subject: [PATCH 26/37] OBSOLETE: FROMEXT: platform: surface hid
@@ -11,10 +11,10 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 12 insertions(+)
 
 diff --git a/drivers/hid/hid-ids.h b/drivers/hid/hid-ids.h
-index d4f6066dbbc5..c4a00a25836a 100644
+index 1a05e2268589..9e26341fdcc8 100644
 --- a/drivers/hid/hid-ids.h
 +++ b/drivers/hid/hid-ids.h
-@@ -938,6 +938,18 @@
+@@ -939,6 +939,18 @@
  #define USB_DEVICE_ID_MS_TYPE_COVER_2    0x07a9
  #define USB_DEVICE_ID_MS_POWER_COVER     0x07da
  #define USB_DEVICE_ID_MS_SURFACE3_COVER		0x07de

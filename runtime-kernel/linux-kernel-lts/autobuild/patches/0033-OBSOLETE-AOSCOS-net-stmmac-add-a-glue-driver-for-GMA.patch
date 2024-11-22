@@ -1,4 +1,4 @@
-From 29a44237d47e81ae41e6d3f44f0d5b6e3e699133 Mon Sep 17 00:00:00 2001
+From 1bf19c5297df5167f0f55d62d594c374459dbc00 Mon Sep 17 00:00:00 2001
 From: Icenowy Zheng <uwu@icenowy.me>
 Date: Sun, 25 Sep 2022 23:03:51 +0800
 Subject: [PATCH 33/37] OBSOLETE: AOSCOS: net: stmmac: add a glue driver for

@@ -1,4 +1,4 @@
-From d562d62d51e68112ec0fe8ee3ac18e22c726a2ae Mon Sep 17 00:00:00 2001
+From 298314469ad0d0a32fda87f0045bd45c2be33eb9 Mon Sep 17 00:00:00 2001
 From: Hunter Laux <hunterlaux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Date: Wed, 6 Apr 2016 00:54:05 -0700
 Subject: [PATCH 02/37] BACKPORT: FROMLIST: usb: phy: tegra: Add 38.4MHz clock

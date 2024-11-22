@@ -1,4 +1,4 @@
-From ddb789da5c9e9e6dc99be6ef424e35aa48808cc9 Mon Sep 17 00:00:00 2001
+From e33cbd55930f0974af959a2cdf2a8a02ab3c937f Mon Sep 17 00:00:00 2001
 From: Icenowy Zheng <icenowy@aosc.io>
 Date: Mon, 30 Nov 2020 22:49:55 +0800
 Subject: [PATCH 31/37] OBSOLETE: AOSCOS: arm64: dts: rockchip: add out-of-band

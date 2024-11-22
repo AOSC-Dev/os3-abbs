@@ -1,7 +1,7 @@
-From 800fc7e94a6beb024f8104b7ec7cd9830aa8ab2b Mon Sep 17 00:00:00 2001
+From 156a2638e784d35662a6901beaee2259a4675cc3 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Fri, 23 Aug 2024 18:39:33 +0800
-Subject: [PATCH 027/155] UPSTREAM: LoongArch: Architectural preparation for
+Subject: [PATCH 027/163] UPSTREAM: LoongArch: Architectural preparation for
  AVEC irqchip
 
 Add architectural preparation for AVEC irqchip, including:
@@ -116,7 +116,7 @@ index 65503c9eb529..c4835800c8b9 100644
  #define LOONGSON_PCH_IRQ_BASE		64
  #define LOONGSON_PCH_ACPI_IRQ		(LOONGSON_PCH_IRQ_BASE + 47)
 diff --git a/arch/loongarch/include/asm/loongarch.h b/arch/loongarch/include/asm/loongarch.h
-index 24a3f4925cfb..04bf1a7f903a 100644
+index 70b2c90a366f..69706d7c3476 100644
 --- a/arch/loongarch/include/asm/loongarch.h
 +++ b/arch/loongarch/include/asm/loongarch.h
 @@ -246,8 +246,8 @@
@@ -128,7 +128,7 @@ index 24a3f4925cfb..04bf1a7f903a 100644
 +#define  CSR_ESTAT_IS_WIDTH		15
 +#define  CSR_ESTAT_IS			(_ULCAST_(0x7fff) << CSR_ESTAT_IS_SHIFT)
  
- #define LOONGARCH_CSR_ERA		0x6	/* ERA */
+ #define LOONGARCH_CSR_ERA		0x6	/* Exception return address */
  
 @@ -642,6 +642,13 @@
  

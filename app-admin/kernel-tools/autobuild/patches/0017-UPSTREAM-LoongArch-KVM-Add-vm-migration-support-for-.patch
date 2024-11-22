@@ -1,7 +1,7 @@
-From c579334ba8b90ee281fc9e0c1b9d63e8a72e4ac9 Mon Sep 17 00:00:00 2001
+From a4c4cd9cda6b5264fdd05675830d92a30e09b040 Mon Sep 17 00:00:00 2001
 From: Bibo Mao <maobibo@loongson.cn>
 Date: Wed, 11 Sep 2024 23:26:32 +0800
-Subject: [PATCH 017/155] UPSTREAM: LoongArch: KVM: Add vm migration support
+Subject: [PATCH 017/163] UPSTREAM: LoongArch: KVM: Add vm migration support
  for LBT registers
 
 Every vcpu has separate LBT registers. And there are four scr registers,
@@ -55,7 +55,7 @@ index 49bafac8b22d..003fb766c93f 100644
  #define LOONGARCH_REG_64(TYPE, REG)	(TYPE | KVM_REG_SIZE_U64 | (REG << LOONGARCH_REG_SHIFT))
  #define KVM_IOC_CSRID(REG)		LOONGARCH_REG_64(KVM_REG_LOONGARCH_CSR, REG)
 diff --git a/arch/loongarch/kvm/vcpu.c b/arch/loongarch/kvm/vcpu.c
-index 8b45f6ad7854..6906babf27c6 100644
+index 05edf97a5bd8..17afbdc0885d 100644
 --- a/arch/loongarch/kvm/vcpu.c
 +++ b/arch/loongarch/kvm/vcpu.c
 @@ -584,6 +584,34 @@ static int kvm_get_one_reg(struct kvm_vcpu *vcpu,

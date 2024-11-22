@@ -1,0 +1,12 @@
+abinfo "Building hashcat ..."
+make \
+    SHARED=1 \
+    USE_SYSTEM_OPENCL=1 \
+    USE_SYSTEM_UNRAR=0 \
+    USE_SYSTEM_XXHASH=1 \
+    USE_SYSTEM_ZLIB=1
+
+abinfo "Installing hashcat ..."
+make install \
+    DESTDIR="${PKGDIR}" \
+    PREFIX=/usr

@@ -1,7 +1,7 @@
 From 8453841bbbea8a87a16e4c24c2a113532f3edbc0 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Fri, 23 Aug 2024 18:39:32 +0800
-Subject: [PATCH 026/163] BACKPORT: LoongArch: Move irqchip function prototypes
+Subject: [PATCH 026/164] BACKPORT: LoongArch: Move irqchip function prototypes
  to irq-loongson.h
 
 Some irqchip functions are only for internal use by irqchip drivers, so

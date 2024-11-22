@@ -1,7 +1,7 @@
 From 5508cb350a2421bc1bf0c39789666ca568c97988 Mon Sep 17 00:00:00 2001
 From: Tiezhu Yang <yangtiezhu@loongson.cn>
 Date: Tue, 17 Sep 2024 22:23:10 +0800
-Subject: [PATCH 034/163] UPSTREAM: LoongArch: Remove
+Subject: [PATCH 034/164] UPSTREAM: LoongArch: Remove
  STACK_FRAME_NON_STANDARD(do_syscall)
 
 For now, we can remove STACK_FRAME_NON_STANDARD(do_syscall) because

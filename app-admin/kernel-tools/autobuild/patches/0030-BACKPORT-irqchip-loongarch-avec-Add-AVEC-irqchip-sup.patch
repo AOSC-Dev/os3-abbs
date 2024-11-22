@@ -1,7 +1,7 @@
 From dd94ae3e58be165917e017ddc21711baab2e92a2 Mon Sep 17 00:00:00 2001
 From: Tianyang Zhang <zhangtianyang@loongson.cn>
 Date: Fri, 23 Aug 2024 18:43:37 +0800
-Subject: [PATCH 030/163] BACKPORT: irqchip/loongarch-avec: Add AVEC irqchip
+Subject: [PATCH 030/164] BACKPORT: irqchip/loongarch-avec: Add AVEC irqchip
  support
 
 Introduce the advanced extended interrupt controllers (AVECINTC). This

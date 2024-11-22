@@ -1,7 +1,7 @@
 From 246e16480785b42bd00f5a86fb590a72c71b89c8 Mon Sep 17 00:00:00 2001
 From: Bibo Mao <maobibo@loongson.cn>
 Date: Wed, 11 Sep 2024 23:26:32 +0800
-Subject: [PATCH 016/163] UPSTREAM: LoongArch: KVM: Add Binary Translation
+Subject: [PATCH 016/164] UPSTREAM: LoongArch: KVM: Add Binary Translation
  extension support
 
 Loongson Binary Translation (LBT) is used to accelerate binary translation,

@@ -1,7 +1,7 @@
 From 4c635450f6f3df87c540e10da7a2920c4c7f3198 Mon Sep 17 00:00:00 2001
 From: Bibo Mao <maobibo@loongson.cn>
 Date: Wed, 28 Aug 2024 12:59:50 +0800
-Subject: [PATCH 021/163] UPSTREAM: Loongarch: KVM: Add KVM hypercalls
+Subject: [PATCH 021/164] UPSTREAM: Loongarch: KVM: Add KVM hypercalls
  documentation for LoongArch
 
 Add documentation topic for using pv_virt when running as a guest

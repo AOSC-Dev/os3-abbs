@@ -1,0 +1,41 @@
+From 1f6927381d515eebff73ee301008977f86a52a9b Mon Sep 17 00:00:00 2001
+From: Len Brown <len.brown@intel.com>
+Date: Tue, 12 Nov 2024 21:07:00 -0500
+Subject: [PATCH 087/164] FROMLIST: x86/cpu: Add INTEL_LUNARLAKE_M to
+ X86_BUG_MONITOR
+
+Under some conditions, MONITOR wakeups on Lunar Lake processors
+can be lost, resulting in significant user-visible delays.
+
+Add LunarLake to X86_BUG_MONITOR so that wake_up_idle_cpu()
+always sends an IPI, avoiding this potential delay.
+
+Closes: https://bugzilla.kernel.org/show_bug.cgi?id=219364
+
+Cc: stable@vger.kernel.org # 6.11
+Signed-off-by: Len Brown <len.brown@intel.com>
+
+Link: https://lore.kernel.org/all/a4aa8842a3c3bfdb7fe9807710eef159cbf0e705.1731463305.git.len.brown@intel.com/
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ arch/x86/kernel/cpu/intel.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/arch/x86/kernel/cpu/intel.c b/arch/x86/kernel/cpu/intel.c
+index 08b95a35b5cb..a7ae2d3f0b67 100644
+--- a/arch/x86/kernel/cpu/intel.c
++++ b/arch/x86/kernel/cpu/intel.c
+@@ -584,7 +584,9 @@ static void init_intel(struct cpuinfo_x86 *c)
+ 	     c->x86_vfm == INTEL_WESTMERE_EX))
+ 		set_cpu_bug(c, X86_BUG_CLFLUSH_MONITOR);
+ 
+-	if (boot_cpu_has(X86_FEATURE_MWAIT) && c->x86_vfm == INTEL_ATOM_GOLDMONT)
++	if (boot_cpu_has(X86_FEATURE_MWAIT) &&
++	    (c->x86_vfm == INTEL_ATOM_GOLDMONT ||
++	     c->x86_vfm == INTEL_LUNARLAKE_M))
+ 		set_cpu_bug(c, X86_BUG_MONITOR);
+ 
+ #ifdef CONFIG_X86_64
+-- 
+2.47.0
+

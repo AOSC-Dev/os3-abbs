@@ -1,7 +1,7 @@
 From 8b6595930fe258be1f03e04727fc082047387245 Mon Sep 17 00:00:00 2001
 From: Jiaxun Yang <jiaxun.yang@flygoat.com>
 Date: Tue, 24 Sep 2024 15:32:20 +0800
-Subject: [PATCH 037/163] UPSTREAM: LoongArch: Rework CPU feature probe from
+Subject: [PATCH 037/164] UPSTREAM: LoongArch: Rework CPU feature probe from
  CPUCFG/IOCSR
 
 Probe ISA level, TLB, IOCSR information from CPUCFG to improve kernel

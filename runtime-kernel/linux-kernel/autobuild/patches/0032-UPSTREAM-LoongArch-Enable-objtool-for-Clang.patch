@@ -1,7 +1,7 @@
 From 9d72dd4612ef37a601d9acc80bc450d917098b1a Mon Sep 17 00:00:00 2001
 From: Tiezhu Yang <yangtiezhu@loongson.cn>
 Date: Tue, 17 Sep 2024 22:23:09 +0800
-Subject: [PATCH 032/163] UPSTREAM: LoongArch: Enable objtool for Clang
+Subject: [PATCH 032/164] UPSTREAM: LoongArch: Enable objtool for Clang
 
 For now, it can enable objtool for Clang, just remove !CC_IS_CLANG for
 HAVE_OBJTOOL in arch/loongarch/Kconfig.

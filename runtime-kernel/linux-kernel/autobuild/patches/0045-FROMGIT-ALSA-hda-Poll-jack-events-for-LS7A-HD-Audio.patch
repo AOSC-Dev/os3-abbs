@@ -1,7 +1,7 @@
 From 656280afe40b7edfc6122277af8cf58a90bccac1 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Fri, 15 Nov 2024 23:06:53 +0800
-Subject: [PATCH 045/163] FROMGIT: ALSA: hda: Poll jack events for LS7A
+Subject: [PATCH 045/164] FROMGIT: ALSA: hda: Poll jack events for LS7A
  HD-Audio
 
 LS7A HD-Audio disable interrupts and use polling mode due to hardware

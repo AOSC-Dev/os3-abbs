@@ -1,7 +1,7 @@
-From feca8b81dd1aff2256c79806170645767d6ffd00 Mon Sep 17 00:00:00 2001
+From 55a99ea2fbea3647a8ab344d3a4e910909742c67 Mon Sep 17 00:00:00 2001
 From: Bibo Mao <maobibo@loongson.cn>
 Date: Wed, 11 Sep 2024 23:26:32 +0800
-Subject: [PATCH 015/155] UPSTREAM: LoongArch: KVM: Add VM feature detection
+Subject: [PATCH 015/163] UPSTREAM: LoongArch: KVM: Add VM feature detection
  function
 
 Loongson SIMD Extension (LSX), Loongson Advanced SIMD Extension (LASX)
@@ -53,7 +53,7 @@ index ddc5cab0ffd0..49bafac8b22d 100644
  #define KVM_LOONGARCH_VCPU_CPUCFG	0
  #define KVM_LOONGARCH_VCPU_PVTIME_CTRL	1
 diff --git a/arch/loongarch/kvm/vcpu.c b/arch/loongarch/kvm/vcpu.c
-index 6905283f535b..ae991b3fda79 100644
+index 9218fc521c22..2a5baa2089ca 100644
 --- a/arch/loongarch/kvm/vcpu.c
 +++ b/arch/loongarch/kvm/vcpu.c
 @@ -497,6 +497,12 @@ static int _kvm_get_cpucfg_mask(int id, u64 *v)

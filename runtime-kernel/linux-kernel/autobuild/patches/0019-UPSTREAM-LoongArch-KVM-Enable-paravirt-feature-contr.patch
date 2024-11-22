@@ -1,7 +1,7 @@
-From f8b4f3474d5d50c87cdbb283512b5ec34247084a Mon Sep 17 00:00:00 2001
+From c9754b2bf729e658e20baf91b0d5b4f8818c61b1 Mon Sep 17 00:00:00 2001
 From: Bibo Mao <maobibo@loongson.cn>
 Date: Thu, 12 Sep 2024 20:53:40 +0800
-Subject: [PATCH 019/155] UPSTREAM: LoongArch: KVM: Enable paravirt feature
+Subject: [PATCH 019/163] UPSTREAM: LoongArch: KVM: Enable paravirt feature
  control from VMM
 
 Export kernel paravirt features to user space, so that VMM can control
@@ -85,7 +85,7 @@ index ca067bf6dd0a..d7e8f7d50ee0 100644
 +
  #endif /* __ASM_LOONGARCH_KVM_VCPU_H__ */
 diff --git a/arch/loongarch/include/asm/loongarch.h b/arch/loongarch/include/asm/loongarch.h
-index bf112386e42f..24a3f4925cfb 100644
+index e7c8311c87ec..70b2c90a366f 100644
 --- a/arch/loongarch/include/asm/loongarch.h
 +++ b/arch/loongarch/include/asm/loongarch.h
 @@ -161,16 +161,8 @@
@@ -283,7 +283,7 @@ index 34e23a9ed07f..90894f70ff4a 100644
  	}
  
 diff --git a/arch/loongarch/kvm/vcpu.c b/arch/loongarch/kvm/vcpu.c
-index 7ed129a231a9..0697b1064251 100644
+index 6dd9518372bc..174734a23d0a 100644
 --- a/arch/loongarch/kvm/vcpu.c
 +++ b/arch/loongarch/kvm/vcpu.c
 @@ -953,6 +953,8 @@ static int kvm_loongarch_cpucfg_has_attr(struct kvm_vcpu *vcpu,

@@ -1,7 +1,7 @@
-From fbbc66ea1f6d146b1b3fde57aaa6f33145be1e29 Mon Sep 17 00:00:00 2001
+From 8a7471840aa7bfe53b22a2a6f2c3a6136ca6253a Mon Sep 17 00:00:00 2001
 From: Chen Baozi <chenbaozi@phytium.com.cn>
 Date: Fri, 14 Jul 2023 08:34:22 +0800
-Subject: [PATCH 087/155] BACKPORT: PHYTIUM: net: stmmac: Add Phytium GMAC glue
+Subject: [PATCH 087/163] BACKPORT: PHYTIUM: net: stmmac: Add Phytium GMAC glue
  layer
 
 This patch adds support for Phytium GMAC controller which derived from

@@ -1,7 +1,7 @@
-From 976c7ece32787ec8fa7d67ee99ea511ad05dde5c Mon Sep 17 00:00:00 2001
+From 8b6595930fe258be1f03e04727fc082047387245 Mon Sep 17 00:00:00 2001
 From: Jiaxun Yang <jiaxun.yang@flygoat.com>
 Date: Tue, 24 Sep 2024 15:32:20 +0800
-Subject: [PATCH 037/155] UPSTREAM: LoongArch: Rework CPU feature probe from
+Subject: [PATCH 037/163] UPSTREAM: LoongArch: Rework CPU feature probe from
  CPUCFG/IOCSR
 
 Probe ISA level, TLB, IOCSR information from CPUCFG to improve kernel
@@ -104,7 +104,7 @@ index 843f9c4ec980..98cf4d7b4b0a 100644
  
  #endif /* _ASM_CPU_H */
 diff --git a/arch/loongarch/include/asm/loongarch.h b/arch/loongarch/include/asm/loongarch.h
-index 04bf1a7f903a..26542413a5b0 100644
+index 69706d7c3476..64ad277e096e 100644
 --- a/arch/loongarch/include/asm/loongarch.h
 +++ b/arch/loongarch/include/asm/loongarch.h
 @@ -62,6 +62,7 @@

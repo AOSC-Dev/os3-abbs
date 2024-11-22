@@ -1,7 +1,7 @@
-From 046dfa2e1b4b85f63b6253f1c22d1504acc92259 Mon Sep 17 00:00:00 2001
+From 9532a1e392252558f26f6c06389e031d14ada15d Mon Sep 17 00:00:00 2001
 From: Zhao Qunqin <zhaoqunqin@loongson.cn>
-Date: Wed, 13 Nov 2024 16:55:47 +0800
-Subject: [PATCH 083/155] FROMLIST: EDAC: Add EDAC driver for loongson memory
+Date: Fri, 15 Nov 2024 15:55:56 +0800
+Subject: [PATCH 083/163] FROMLIST: EDAC: Add EDAC driver for loongson memory
  controller
 
 Add ECC support for Loongson SoC DDR controller. This
@@ -12,7 +12,7 @@ Only ACPI firmware is supported.
 Signed-off-by: Zhao Qunqin <zhaoqunqin@loongson.cn>
 Reviewed-by: Huacai Chen <chenhuacai@loongson.cn>
 
-Link: https://lore.kernel.org/all/20241113085547.15680-1-zhaoqunqin@loongson.cn/
+Link: https://lore.kernel.org/all/20241115075556.7349-1-zhaoqunqin@loongson.cn/
 Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
 ---
  MAINTAINERS                  |   6 ++
@@ -41,7 +41,7 @@ index 1f397800b85a..c253fb9926e4 100644
  M:	Sathya Prakash <sathya.prakash@broadcom.com>
  M:	Sreekanth Reddy <sreekanth.reddy@broadcom.com>
 diff --git a/arch/loongarch/Kconfig b/arch/loongarch/Kconfig
-index c6d03d607b6e..199b675e2c11 100644
+index 4b02b0492c3b..0ca36a0e4357 100644
 --- a/arch/loongarch/Kconfig
 +++ b/arch/loongarch/Kconfig
 @@ -79,6 +79,7 @@ config LOONGARCH
@@ -81,7 +81,7 @@ index 4edfb83ffbee..d6f2cfe7e544 100644
 +obj-$(CONFIG_EDAC_LOONGSON)		+= loongson_edac.o
 diff --git a/drivers/edac/loongson_edac.c b/drivers/edac/loongson_edac.c
 new file mode 100644
-index 000000000000..29607972f3a1
+index 000000000000..4997b3600985
 --- /dev/null
 +++ b/drivers/edac/loongson_edac.c
 @@ -0,0 +1,156 @@
@@ -223,7 +223,7 @@ index 000000000000..29607972f3a1
 +}
 +
 +static const struct acpi_device_id loongson_edac_acpi_match[] = {
-+	{"LOON000G", 0},
++	{"LOON0010", 0},
 +	{}
 +};
 +MODULE_DEVICE_TABLE(acpi, loongson_edac_acpi_match);

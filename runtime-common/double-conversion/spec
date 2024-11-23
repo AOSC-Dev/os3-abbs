@@ -1,4 +1,4 @@
-VER=3.2.1
-SRCS="tbl::https://github.com/google/double-conversion/archive/v$VER.tar.gz"
-CHKSUMS="sha256::e40d236343cad807e83d192265f139481c51fc83a1c49e406ac6ce0a0ba7cd35"
+VER=3.3.0
+SRCS="git::commit=tags/v${VER}::https://github.com/google/double-conversion"
+CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=7454"

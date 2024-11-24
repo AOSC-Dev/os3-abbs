@@ -1,4 +1,4 @@
-From 55a99ea2fbea3647a8ab344d3a4e910909742c67 Mon Sep 17 00:00:00 2001
+From 60a4dfdfa2d00532e1e857235a00b6243183b412 Mon Sep 17 00:00:00 2001
 From: Bibo Mao <maobibo@loongson.cn>
 Date: Wed, 11 Sep 2024 23:26:32 +0800
 Subject: [PATCH 015/164] UPSTREAM: LoongArch: KVM: Add VM feature detection

@@ -1,4 +1,4 @@
-From 73662cdb0cae7c913b7bf6aa3032884b33e13585 Mon Sep 17 00:00:00 2001
+From a821898fb71900293b67e833a97b2a04199781a0 Mon Sep 17 00:00:00 2001
 From: Bibo Mao <maobibo@loongson.cn>
 Date: Tue, 24 Sep 2024 15:32:06 +0800
 Subject: [PATCH 036/164] UPSTREAM: LoongArch: Enable ACPI BGRT handling

@@ -1,4 +1,4 @@
-From fe6a0970fc7873a5ba94669b37dac9d1809f5c1c Mon Sep 17 00:00:00 2001
+From 9898acbb16135c340babf97eae4f1ab48dcf6a0e Mon Sep 17 00:00:00 2001
 From: Hunter Laux <hunterlaux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Date: Wed, 6 Apr 2016 00:54:05 -0700
 Subject: [PATCH 047/164] BACKPORT: FROMLIST: usb: phy: tegra: Add 38.4MHz

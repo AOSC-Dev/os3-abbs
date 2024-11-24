@@ -1,4 +1,4 @@
-From 14f1223f6c67a1827878d4b7b2821dfc8dade169 Mon Sep 17 00:00:00 2001
+From dc094c5c59184b6b036cb150690c33312e257f28 Mon Sep 17 00:00:00 2001
 From: Yanteng Si <siyanteng@loongson.cn>
 Date: Wed, 7 Aug 2024 21:45:28 +0800
 Subject: [PATCH 001/164] UPSTREAM: net: stmmac: Move the atds flag to the

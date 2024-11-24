@@ -1,4 +1,4 @@
-From dd94ae3e58be165917e017ddc21711baab2e92a2 Mon Sep 17 00:00:00 2001
+From 6b9931c8e98795a0f63030739a8f00cb98553e03 Mon Sep 17 00:00:00 2001
 From: Tianyang Zhang <zhangtianyang@loongson.cn>
 Date: Fri, 23 Aug 2024 18:43:37 +0800
 Subject: [PATCH 030/164] BACKPORT: irqchip/loongarch-avec: Add AVEC irqchip
@@ -64,7 +64,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  create mode 100644 drivers/irqchip/irq-loongarch-avec.c
 
 diff --git a/arch/loongarch/Kconfig b/arch/loongarch/Kconfig
-index 70f169210b52..0e3abf7b0bd3 100644
+index ce232ddcd27d..7ba3baee859e 100644
 --- a/arch/loongarch/Kconfig
 +++ b/arch/loongarch/Kconfig
 @@ -85,6 +85,7 @@ config LOONGARCH
@@ -89,10 +89,10 @@ index c4835800c8b9..9c2ca785faa9 100644
  
  extern struct acpi_madt_lio_pic *acpi_liointc;
 diff --git a/arch/loongarch/kernel/paravirt.c b/arch/loongarch/kernel/paravirt.c
-index 708eda025ed8..a5fc61f8b348 100644
+index b30560f4c0ac..e5a39bbad078 100644
 --- a/arch/loongarch/kernel/paravirt.c
 +++ b/arch/loongarch/kernel/paravirt.c
-@@ -135,6 +135,11 @@ static irqreturn_t pv_ipi_interrupt(int irq, void *dev)
+@@ -147,6 +147,11 @@ static irqreturn_t pv_ipi_interrupt(int irq, void *dev)
  		info->ipi_irqs[IPI_IRQ_WORK]++;
  	}
  
@@ -105,7 +105,7 @@ index 708eda025ed8..a5fc61f8b348 100644
  }
  
 diff --git a/arch/loongarch/kernel/smp.c b/arch/loongarch/kernel/smp.c
-index 482b3c7e3042..9afc2d8b3414 100644
+index fb15d264f1d6..81a3ca364f4e 100644
 --- a/arch/loongarch/kernel/smp.c
 +++ b/arch/loongarch/kernel/smp.c
 @@ -72,6 +72,7 @@ static const char *ipi_types[NR_IPI] __tracepoint_string = {

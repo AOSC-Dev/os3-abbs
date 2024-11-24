@@ -1,4 +1,4 @@
-From 9d72dd4612ef37a601d9acc80bc450d917098b1a Mon Sep 17 00:00:00 2001
+From 5d9082426f4d489b78baf0459924aff9d0c51d1a Mon Sep 17 00:00:00 2001
 From: Tiezhu Yang <yangtiezhu@loongson.cn>
 Date: Tue, 17 Sep 2024 22:23:09 +0800
 Subject: [PATCH 032/164] UPSTREAM: LoongArch: Enable objtool for Clang
@@ -16,7 +16,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/loongarch/Kconfig b/arch/loongarch/Kconfig
-index 0e3abf7b0bd3..8dff6ddaf9c5 100644
+index 7ba3baee859e..41ff8b75efe7 100644
 --- a/arch/loongarch/Kconfig
 +++ b/arch/loongarch/Kconfig
 @@ -147,7 +147,7 @@ config LOONGARCH

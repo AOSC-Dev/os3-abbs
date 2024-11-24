@@ -1,4 +1,4 @@
-From bde4df97ee9fd7745fa21b5d1f75dfdf816e3744 Mon Sep 17 00:00:00 2001
+From a30aaa3c435e43ca0c1007007657fc3b7823890f Mon Sep 17 00:00:00 2001
 From: zuoqian <zuoqian2032@phytium.com.cn>
 Date: Tue, 23 Jan 2024 09:24:03 +0800
 Subject: [PATCH 090/164] BACKPORT: PHYTIUM: drivers: fix build errors

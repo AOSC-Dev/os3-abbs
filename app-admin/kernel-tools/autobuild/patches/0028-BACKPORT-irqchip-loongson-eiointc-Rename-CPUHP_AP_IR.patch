@@ -1,4 +1,4 @@
-From 8d97dc99a922b68fcb0cfdaaf170347b8616d0ed Mon Sep 17 00:00:00 2001
+From 9adb72e7c82bd0c42504c4cfb10ed1fc1e374b27 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Fri, 23 Aug 2024 18:39:34 +0800
 Subject: [PATCH 028/164] BACKPORT: irqchip/loongson-eiointc: Rename

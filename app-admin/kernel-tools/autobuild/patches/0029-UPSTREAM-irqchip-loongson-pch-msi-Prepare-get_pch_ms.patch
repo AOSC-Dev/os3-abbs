@@ -1,4 +1,4 @@
-From 213120d8496bf78bbef37ec75d29d36d4908aad2 Mon Sep 17 00:00:00 2001
+From f7261cd02ad63168b0f79ef014b0f44f38b16e06 Mon Sep 17 00:00:00 2001
 From: Tianyang Zhang <zhangtianyang@loongson.cn>
 Date: Fri, 23 Aug 2024 18:43:36 +0800
 Subject: [PATCH 029/164] UPSTREAM: irqchip/loongson-pch-msi: Prepare

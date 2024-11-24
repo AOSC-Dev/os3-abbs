@@ -1,4 +1,4 @@
-From d8422782fff1640dc225a9e3c92d080c06dab760 Mon Sep 17 00:00:00 2001
+From 3bba02afc6a6ecd6e33ca40692c076caa56466ce Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Tue, 24 Sep 2024 15:32:20 +0800
 Subject: [PATCH 040/164] UPSTREAM: LoongArch: Improve hardware page table

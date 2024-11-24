@@ -1,4 +1,4 @@
-From 1f6927381d515eebff73ee301008977f86a52a9b Mon Sep 17 00:00:00 2001
+From 88d9431305ba0235b45539ec73e0416676d5f4e7 Mon Sep 17 00:00:00 2001
 From: Len Brown <len.brown@intel.com>
 Date: Tue, 12 Nov 2024 21:07:00 -0500
 Subject: [PATCH 087/164] FROMLIST: x86/cpu: Add INTEL_LUNARLAKE_M to

@@ -1,4 +1,4 @@
-From a85be12026332bbd053784a99d4f59a7ec34b06e Mon Sep 17 00:00:00 2001
+From bff53e1ecf93a5f038de67e3a67564070d793a4c Mon Sep 17 00:00:00 2001
 From: Tiezhu Yang <yangtiezhu@loongson.cn>
 Date: Tue, 17 Sep 2024 22:23:09 +0800
 Subject: [PATCH 033/164] UPSTREAM: LoongArch: Set AS_HAS_THIN_ADD_SUB as y if
@@ -27,7 +27,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/loongarch/Kconfig b/arch/loongarch/Kconfig
-index 8dff6ddaf9c5..34531dc8a61f 100644
+index 41ff8b75efe7..4fbb262e421b 100644
 --- a/arch/loongarch/Kconfig
 +++ b/arch/loongarch/Kconfig
 @@ -266,7 +266,7 @@ config AS_HAS_FCSR_CLASS

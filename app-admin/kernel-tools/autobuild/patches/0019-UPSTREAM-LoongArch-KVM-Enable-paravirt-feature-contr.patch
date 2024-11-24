@@ -1,4 +1,4 @@
-From c9754b2bf729e658e20baf91b0d5b4f8818c61b1 Mon Sep 17 00:00:00 2001
+From 18722fd0dc2f60215fd21643f97511bf45585fb7 Mon Sep 17 00:00:00 2001
 From: Bibo Mao <maobibo@loongson.cn>
 Date: Thu, 12 Sep 2024 20:53:40 +0800
 Subject: [PATCH 019/164] UPSTREAM: LoongArch: KVM: Enable paravirt feature
@@ -170,10 +170,10 @@ index 000000000000..b0604aa9b4bb
 +
 +#endif /* _UAPI_ASM_KVM_PARA_H */
 diff --git a/arch/loongarch/kernel/paravirt.c b/arch/loongarch/kernel/paravirt.c
-index 32537e9b1708..1306ad830ae2 100644
+index aec075e568c4..a5e5936c4196 100644
 --- a/arch/loongarch/kernel/paravirt.c
 +++ b/arch/loongarch/kernel/paravirt.c
-@@ -176,7 +176,7 @@ int __init pv_ipi_init(void)
+@@ -190,7 +190,7 @@ int __init pv_ipi_init(void)
  		return 0;
  
  	feature = read_cpucfg(CPUCFG_KVM_FEATURE);
@@ -182,7 +182,7 @@ index 32537e9b1708..1306ad830ae2 100644
  		return 0;
  
  #ifdef CONFIG_SMP
-@@ -207,7 +207,7 @@ static int pv_enable_steal_time(void)
+@@ -222,7 +222,7 @@ static int pv_enable_steal_time(void)
  	}
  
  	addr |= KVM_STEAL_PHYS_VALID;
@@ -191,7 +191,7 @@ index 32537e9b1708..1306ad830ae2 100644
  
  	return 0;
  }
-@@ -215,7 +215,7 @@ static int pv_enable_steal_time(void)
+@@ -230,7 +230,7 @@ static int pv_enable_steal_time(void)
  static void pv_disable_steal_time(void)
  {
  	if (has_steal_clock)
@@ -200,7 +200,7 @@ index 32537e9b1708..1306ad830ae2 100644
  }
  
  #ifdef CONFIG_SMP
-@@ -267,7 +267,7 @@ int __init pv_time_init(void)
+@@ -282,7 +282,7 @@ int __init pv_time_init(void)
  		return 0;
  
  	feature = read_cpucfg(CPUCFG_KVM_FEATURE);

@@ -1,4 +1,4 @@
-From 5ead2c3df76efa6e1b1b14c58be0edaeab74ade5 Mon Sep 17 00:00:00 2001
+From 690def2a88fb36109511d1c326b5dd9bb05fc298 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Thu, 29 Oct 2020 16:29:11 +0800
 Subject: [PATCH 137/164] FROMEXT: LoongArch: Add CPU HWMon platform driver

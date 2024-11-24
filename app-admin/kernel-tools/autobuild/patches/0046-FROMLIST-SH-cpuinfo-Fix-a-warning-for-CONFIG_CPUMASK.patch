@@ -1,4 +1,4 @@
-From 1cc7f7a517290c5402e54c1c467c90a5971ba0d1 Mon Sep 17 00:00:00 2001
+From ad48fe6bf6111ac621c906d3ef36dde07076e88e Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Thu, 14 Jul 2022 16:41:36 +0800
 Subject: [PATCH 046/164] FROMLIST: SH: cpuinfo: Fix a warning for

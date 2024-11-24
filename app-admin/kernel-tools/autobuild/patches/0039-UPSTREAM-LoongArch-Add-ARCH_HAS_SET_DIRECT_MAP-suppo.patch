@@ -1,4 +1,4 @@
-From 817e59b27328318cd9579274e6998fdc1620243b Mon Sep 17 00:00:00 2001
+From 31d448ae264edb99e75f52534a2ec521c9f5c7b4 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Tue, 24 Sep 2024 15:32:20 +0800
 Subject: [PATCH 039/164] UPSTREAM: LoongArch: Add ARCH_HAS_SET_DIRECT_MAP
@@ -42,7 +42,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  3 files changed, 65 insertions(+)
 
 diff --git a/arch/loongarch/Kconfig b/arch/loongarch/Kconfig
-index 46fa58bde685..4b02b0492c3b 100644
+index 2c7b2bc6368e..1b1c357a8bd9 100644
 --- a/arch/loongarch/Kconfig
 +++ b/arch/loongarch/Kconfig
 @@ -26,6 +26,7 @@ config LOONGARCH

@@ -1,4 +1,4 @@
-From fc04ebcb059d5e9da17ff0b83e0a7848b8f3d1e4 Mon Sep 17 00:00:00 2001
+From 79ae298caabfda00f4506c57b3b566a70db9f4d9 Mon Sep 17 00:00:00 2001
 From: Yanteng Si <siyanteng@loongson.cn>
 Date: Wed, 7 Aug 2024 21:45:30 +0800
 Subject: [PATCH 003/164] UPSTREAM: net: stmmac: Export dwmac1000_dma_ops

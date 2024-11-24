@@ -1,4 +1,4 @@
-From 55852c69fa45783c38bd22f109ef20d004279d5f Mon Sep 17 00:00:00 2001
+From b0a10aaf9021eb3cc52d7bf7f5901b7cc6bff7fd Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 15 Oct 2024 18:37:52 +0800
 Subject: [PATCH 159/164] AOSCOS: Revert "cpufreq: amd-pstate: initialize core

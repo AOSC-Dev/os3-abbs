@@ -1,4 +1,4 @@
-From 8574d9b4a33a5241bad01d867fcb3f1e7cadd829 Mon Sep 17 00:00:00 2001
+From 57599614e6bf25c7ef68bb65e7f9fe8487216435 Mon Sep 17 00:00:00 2001
 From: Jiaxun Yang <jiaxun.yang@flygoat.com>
 Date: Tue, 16 Jul 2024 22:14:59 +0800
 Subject: [PATCH 024/164] UPSTREAM: cpu/hotplug: Provide weak fallback for

@@ -1,4 +1,4 @@
-From 3ad84709390a85eb06a86ddedbc592c751189f29 Mon Sep 17 00:00:00 2001
+From 737e7b403dc588f108413836cedc35579c15e29b Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Tue, 22 Oct 2024 17:04:14 +0800
 Subject: [PATCH 048/164] FROMLIST: dt-bindings: pwm: Add Loongson PWM

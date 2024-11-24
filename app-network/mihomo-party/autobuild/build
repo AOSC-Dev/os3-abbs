@@ -28,5 +28,5 @@ ln -sv ../lib/mihomo-party/mihomo-party "$PKGDIR"/usr/bin/mihomo-party
 
 abinfo "Installing application icon ..."
 install -Dvm644 "$SRCDIR"/resources/icon.png \
-                "$PKGDIR"/usr/share/pixmaps/mihomo-party.png
+                "$PKGDIR"/usr/share/icons/hicolor/512x512/apps/mihomo-party.png
 

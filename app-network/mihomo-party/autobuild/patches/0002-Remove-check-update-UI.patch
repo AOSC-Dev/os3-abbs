@@ -1,0 +1,99 @@
+From 14c8061df0c089241d9ecb0f71823d204f0d91f4 Mon Sep 17 00:00:00 2001
+From: miwu04 <mail@alanlin.icu>
+Date: Sun, 24 Nov 2024 17:50:25 +0800
+Subject: [PATCH 2/2] Remove check update UI
+
+---
+ src/main/utils/template.ts                    |  2 +-
+ .../src/components/settings/actions.tsx       | 26 -------------------
+ .../components/settings/general-config.tsx    | 10 -------
+ 3 files changed, 1 insertion(+), 37 deletions(-)
+
+diff --git a/src/main/utils/template.ts b/src/main/utils/template.ts
+index e2a0341..5e3f6c7 100644
+--- a/src/main/utils/template.ts
++++ b/src/main/utils/template.ts
+@@ -11,7 +11,7 @@ export const defaultConfig: IAppConfig = {
+   useSubStore: true,
+   proxyDisplayMode: 'simple',
+   proxyDisplayOrder: 'default',
+-  autoCheckUpdate: true,
++  autoCheckUpdate: false,
+   autoCloseConnection: true,
+   useNameserverPolicy: false,
+   controlDns: true,
+diff --git a/src/renderer/src/components/settings/actions.tsx b/src/renderer/src/components/settings/actions.tsx
+index 1a80925..0690381 100644
+--- a/src/renderer/src/components/settings/actions.tsx
++++ b/src/renderer/src/components/settings/actions.tsx
+@@ -2,7 +2,6 @@ import { Button, Tooltip } from '@nextui-org/react'
+ import SettingCard from '../base/base-setting-card'
+ import SettingItem from '../base/base-setting-item'
+ import {
+-  checkUpdate,
+   createHeapSnapshot,
+   quitApp,
+   quitWithoutCore,
+@@ -35,31 +34,6 @@ const Actions: React.FC = () => {
+             打开引导页面
+           </Button>
+         </SettingItem>
+-        <SettingItem title="检查更新" divider>
+-          <Button
+-            size="sm"
+-            isLoading={checkingUpdate}
+-            onPress={async () => {
+-              try {
+-                setCheckingUpdate(true)
+-                const version = await checkUpdate()
+-                if (version) {
+-                  setNewVersion(version.version)
+-                  setChangelog(version.changelog)
+-                  setOpenUpdate(true)
+-                } else {
+-                  new window.Notification('当前已是最新版本', { body: '无需更新' })
+-                }
+-              } catch (e) {
+-                alert(e)
+-              } finally {
+-                setCheckingUpdate(false)
+-              }
+-            }}
+-          >
+-            检查更新
+-          </Button>
+-        </SettingItem>
+         <SettingItem
+           title="重置软件"
+           actions={
+diff --git a/src/renderer/src/components/settings/general-config.tsx b/src/renderer/src/components/settings/general-config.tsx
+index c595074..f74e4c9 100644
+--- a/src/renderer/src/components/settings/general-config.tsx
++++ b/src/renderer/src/components/settings/general-config.tsx
+@@ -49,7 +49,6 @@ const GeneralConfig: React.FC = () => {
+     autoQuitWithoutCoreDelay = 60,
+     customTheme = 'default.css',
+     envType = [platform === 'win32' ? 'powershell' : 'bash'],
+-    autoCheckUpdate,
+     appTheme = 'system'
+   } = appConfig || {}
+ 
+@@ -92,15 +91,6 @@ const GeneralConfig: React.FC = () => {
+             }}
+           />
+         </SettingItem>
+-        <SettingItem title="自动检查更新" divider>
+-          <Switch
+-            size="sm"
+-            isSelected={autoCheckUpdate}
+-            onValueChange={(v) => {
+-              patchAppConfig({ autoCheckUpdate: v })
+-            }}
+-          />
+-        </SettingItem>
+         <SettingItem title="静默启动" divider>
+           <Switch
+             size="sm"
+-- 
+2.47.0
+

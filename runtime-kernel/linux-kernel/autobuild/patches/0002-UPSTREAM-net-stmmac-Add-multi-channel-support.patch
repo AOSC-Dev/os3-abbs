@@ -1,4 +1,4 @@
-From 1530c987822325ea70be4691a7f271e0e906c92a Mon Sep 17 00:00:00 2001
+From d3ed3d8fe7b41a0142b949cd78ac27a7f475a7e4 Mon Sep 17 00:00:00 2001
 From: Yanteng Si <siyanteng@loongson.cn>
 Date: Wed, 7 Aug 2024 21:45:29 +0800
 Subject: [PATCH 002/164] UPSTREAM: net: stmmac: Add multi-channel support

@@ -1,4 +1,4 @@
-From 937b8f86d3a3cc6b265199d1522f215ddad45a04 Mon Sep 17 00:00:00 2001
+From ef75d8d3bc46490bb681fcc90cbcc3ffefc0146b Mon Sep 17 00:00:00 2001
 From: Daniel Scally <dan.scally@ideasonboard.com>
 Date: Thu, 2 Mar 2023 12:59:39 +0000
 Subject: [PATCH 128/164] SURFACE: platform/x86: int3472: Remap reset GPIO for

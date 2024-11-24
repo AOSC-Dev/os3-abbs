@@ -1,4 +1,4 @@
-From 9532a1e392252558f26f6c06389e031d14ada15d Mon Sep 17 00:00:00 2001
+From 50790c7c5652a91a2629ed9881e90bba60c02f68 Mon Sep 17 00:00:00 2001
 From: Zhao Qunqin <zhaoqunqin@loongson.cn>
 Date: Fri, 15 Nov 2024 15:55:56 +0800
 Subject: [PATCH 083/164] FROMLIST: EDAC: Add EDAC driver for loongson memory
@@ -41,7 +41,7 @@ index 1f397800b85a..c253fb9926e4 100644
  M:	Sathya Prakash <sathya.prakash@broadcom.com>
  M:	Sreekanth Reddy <sreekanth.reddy@broadcom.com>
 diff --git a/arch/loongarch/Kconfig b/arch/loongarch/Kconfig
-index 4b02b0492c3b..0ca36a0e4357 100644
+index 1b1c357a8bd9..b4f2ab6d2bc0 100644
 --- a/arch/loongarch/Kconfig
 +++ b/arch/loongarch/Kconfig
 @@ -79,6 +79,7 @@ config LOONGARCH

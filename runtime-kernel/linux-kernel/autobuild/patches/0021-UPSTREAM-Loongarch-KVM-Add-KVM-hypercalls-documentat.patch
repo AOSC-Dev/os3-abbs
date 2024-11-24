@@ -1,4 +1,4 @@
-From 4c635450f6f3df87c540e10da7a2920c4c7f3198 Mon Sep 17 00:00:00 2001
+From 2463e734d4c7379a34be536ac2f60a6adbfbeb6d Mon Sep 17 00:00:00 2001
 From: Bibo Mao <maobibo@loongson.cn>
 Date: Wed, 28 Aug 2024 12:59:50 +0800
 Subject: [PATCH 021/164] UPSTREAM: Loongarch: KVM: Add KVM hypercalls

@@ -1,4 +1,4 @@
-From 497b03b351a987d35a300f86d0a3c335f0105434 Mon Sep 17 00:00:00 2001
+From 6449b844b839867c005964aa4d5239c690830d98 Mon Sep 17 00:00:00 2001
 From: graysky <therealgraysky AT proton DOT me>
 Date: Mon, 16 Sep 2024 05:55:58 -0400
 Subject: [PATCH 136/164] FROMEXT:
@@ -569,10 +569,10 @@ index 2a7279d80460..abfadddd1b23 100644
  #
  # P6_NOPs are a relatively minor optimization that require a family >=
 diff --git a/arch/x86/Makefile b/arch/x86/Makefile
-index 801fd85c3ef6..db8fcb971401 100644
+index 5fb0cc6c1642..b06ba6facee9 100644
 --- a/arch/x86/Makefile
 +++ b/arch/x86/Makefile
-@@ -177,15 +177,96 @@ else
+@@ -178,15 +178,96 @@ else
          cflags-$(CONFIG_MK8)		+= -march=k8
          cflags-$(CONFIG_MPSC)		+= -march=nocona
          cflags-$(CONFIG_MCORE2)		+= -march=core2

@@ -1,4 +1,4 @@
-From 5508cb350a2421bc1bf0c39789666ca568c97988 Mon Sep 17 00:00:00 2001
+From c8a41c36c37864242ea4414deef60cd9bedc6ce9 Mon Sep 17 00:00:00 2001
 From: Tiezhu Yang <yangtiezhu@loongson.cn>
 Date: Tue, 17 Sep 2024 22:23:10 +0800
 Subject: [PATCH 034/164] UPSTREAM: LoongArch: Remove

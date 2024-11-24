@@ -1,4 +1,4 @@
-From c2be6233732041aff9d710cd8420990a94707a78 Mon Sep 17 00:00:00 2001
+From 4f917fe2de8239c97fece1f6dba0e471232a73cf Mon Sep 17 00:00:00 2001
 From: Bibo Mao <maobibo@loongson.cn>
 Date: Thu, 12 Sep 2024 22:56:14 +0800
 Subject: [PATCH 020/164] UPSTREAM: LoongArch: KVM: Implement function
@@ -45,10 +45,10 @@ index d0f087870628..c4e84227280d 100644
  static inline unsigned int kvm_arch_para_hints(void)
  {
 diff --git a/arch/loongarch/kernel/paravirt.c b/arch/loongarch/kernel/paravirt.c
-index 1306ad830ae2..708eda025ed8 100644
+index a5e5936c4196..b30560f4c0ac 100644
 --- a/arch/loongarch/kernel/paravirt.c
 +++ b/arch/loongarch/kernel/paravirt.c
-@@ -152,11 +152,14 @@ static void pv_init_ipi(void)
+@@ -166,11 +166,14 @@ static void pv_init_ipi(void)
  }
  #endif
  
@@ -64,7 +64,7 @@ index 1306ad830ae2..708eda025ed8 100644
  	if (!hypervisor_type) {
  		config = read_cpucfg(CPUCFG_KVM_SIG);
  		if (!memcmp(&config, KVM_SIGNATURE, 4))
-@@ -166,17 +169,22 @@ static bool kvm_para_available(void)
+@@ -180,17 +183,22 @@ static bool kvm_para_available(void)
  	return hypervisor_type == HYPERVISOR_KVM;
  }
  
@@ -93,7 +93,7 @@ index 1306ad830ae2..708eda025ed8 100644
  		return 0;
  
  #ifdef CONFIG_SMP
-@@ -259,15 +267,9 @@ static struct notifier_block pv_reboot_nb = {
+@@ -274,15 +282,9 @@ static struct notifier_block pv_reboot_nb = {
  
  int __init pv_time_init(void)
  {

@@ -1,4 +1,4 @@
-From f1322271c3cf57352ca9b0fc2e39cd96167650b5 Mon Sep 17 00:00:00 2001
+From 5ce8bb2f4c2e578da0231c8ae3d0f72523f4a452 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <baimingcong@uniontech.com>
 Date: Fri, 28 Jun 2024 16:23:20 +0800
 Subject: [PATCH 113/164] DEEPIN: net: ethernet: phytium: add a missing

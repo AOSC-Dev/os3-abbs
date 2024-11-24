@@ -1,4 +1,4 @@
-From f02c27baa7b06b8d87e557fd4f7210afb00def34 Mon Sep 17 00:00:00 2001
+From 4f805da8bf1f276600948ef5526cca90eec2b06a Mon Sep 17 00:00:00 2001
 From: Yanteng Si <siyanteng@loongson.cn>
 Date: Wed, 7 Aug 2024 21:47:10 +0800
 Subject: [PATCH 007/164] UPSTREAM: net: stmmac: dwmac-loongson: Detach

@@ -1,4 +1,4 @@
-From fa181e730e5cbfcda03fac7f77df2bb2f83e1b44 Mon Sep 17 00:00:00 2001
+From 88d000965ea3c076f77db9a271d59eef3714688b Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Sun, 19 May 2024 15:24:52 -0500
 Subject: [PATCH 076/164] FROMLIST: maintainers: Add an entry for ntsync.

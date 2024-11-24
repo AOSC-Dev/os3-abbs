@@ -1,4 +1,4 @@
-From 17d7bebcebc5681a5ecdfd8d6f13c7e5bd456831 Mon Sep 17 00:00:00 2001
+From ff06f0b87252a86a1dde52cb360276d0c288da22 Mon Sep 17 00:00:00 2001
 From: Ayufan <ayufan@ayufan.eu>
 Date: Sun, 30 Dec 2018 13:32:47 +0100
 Subject: [PATCH 116/164] ARMBIAN: ayufan: dts: rockpro64: change rx_delay for
@@ -7,7 +7,7 @@ Subject: [PATCH 116/164] ARMBIAN: ayufan: dts: rockpro64: change rx_delay for
 Change-Id: Ib3899f684188aa1ed1545717af004bba53fe0e07
 
 Signed-off-by: Ayufan <ayufan@ayufan.eu>
-Link: https://github.com/armbian/build/blob/8db8e198e32f8069af97426ca6986ff9d7bf9801/patch/kernel/archive/rockchip64-6.12/board-rockpro64-change-rx_delay-for-gmac.patch
+Link: https://github.com/armbian/build/blob/ae6a235582a796e97399d6e37b674f99d8e3bce6/patch/kernel/archive/rockchip64-6.12/board-rockpro64-change-rx_delay-for-gmac.patch
 Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
 ---
  arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi | 2 +-

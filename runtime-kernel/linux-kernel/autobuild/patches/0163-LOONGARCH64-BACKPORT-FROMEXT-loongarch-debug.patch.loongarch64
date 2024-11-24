@@ -1,4 +1,4 @@
-From 6286fcfbd6fecf8ec5c9492fd594fd46bd2a8192 Mon Sep 17 00:00:00 2001
+From 34af98a0ecdaca58fe98a0f71c303863d9923c34 Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Tue, 15 Oct 2024 19:35:34 +0800
 Subject: [PATCH 163/164] LOONGARCH64: BACKPORT: FROMEXT: loongarch debug
@@ -44,10 +44,10 @@ index c38db2a74614..52ca01312dac 100644
  #define RING_START_UDW(base)			XE_REG((base) + 0x48)
  
 diff --git a/drivers/gpu/drm/xe/xe_bo.c b/drivers/gpu/drm/xe/xe_bo.c
-index e147ef1d0578..ae3c17e102e0 100644
+index 9a01babe679c..e004d63afc53 100644
 --- a/drivers/gpu/drm/xe/xe_bo.c
 +++ b/drivers/gpu/drm/xe/xe_bo.c
-@@ -1250,7 +1250,7 @@ struct xe_bo *___xe_bo_create_locked(struct xe_device *xe, struct xe_bo *bo,
+@@ -1257,7 +1257,7 @@ struct xe_bo *___xe_bo_create_locked(struct xe_device *xe, struct xe_bo *bo,
  	};
  	struct ttm_placement *placement;
  	uint32_t alignment;
@@ -56,7 +56,7 @@ index e147ef1d0578..ae3c17e102e0 100644
  	int err;
  
  	/* Only kernel objects should set GT */
-@@ -1272,13 +1272,13 @@ struct xe_bo *___xe_bo_create_locked(struct xe_device *xe, struct xe_bo *bo,
+@@ -1279,13 +1279,13 @@ struct xe_bo *___xe_bo_create_locked(struct xe_device *xe, struct xe_bo *bo,
  		alignment = SZ_64K >> PAGE_SHIFT;
  
  	} else {
@@ -74,7 +74,7 @@ index e147ef1d0578..ae3c17e102e0 100644
  
  	if (!bo) {
  		bo = xe_bo_alloc();
-@@ -1288,7 +1288,8 @@ struct xe_bo *___xe_bo_create_locked(struct xe_device *xe, struct xe_bo *bo,
+@@ -1295,7 +1295,8 @@ struct xe_bo *___xe_bo_create_locked(struct xe_device *xe, struct xe_bo *bo,
  
  	bo->ccs_cleared = false;
  	bo->tile = tile;
@@ -84,7 +84,7 @@ index e147ef1d0578..ae3c17e102e0 100644
  	bo->flags = flags;
  	bo->cpu_caching = cpu_caching;
  	bo->ttm.base.funcs = &xe_gem_object_funcs;
-@@ -1299,7 +1300,7 @@ struct xe_bo *___xe_bo_create_locked(struct xe_device *xe, struct xe_bo *bo,
+@@ -1306,7 +1307,7 @@ struct xe_bo *___xe_bo_create_locked(struct xe_device *xe, struct xe_bo *bo,
  #endif
  	INIT_LIST_HEAD(&bo->vram_userfault_link);
  

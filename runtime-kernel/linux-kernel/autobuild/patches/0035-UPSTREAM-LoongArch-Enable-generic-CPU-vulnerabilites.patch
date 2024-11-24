@@ -1,4 +1,4 @@
-From 18fbca240509a022fe0d28ce4a018b1eab215df1 Mon Sep 17 00:00:00 2001
+From 33b26be5b2af0817a00c20e95a02561df2dcaef5 Mon Sep 17 00:00:00 2001
 From: Tiezhu Yang <yangtiezhu@loongson.cn>
 Date: Tue, 24 Sep 2024 15:31:51 +0800
 Subject: [PATCH 035/164] UPSTREAM: LoongArch: Enable generic CPU
@@ -49,7 +49,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 1 insertion(+)
 
 diff --git a/arch/loongarch/Kconfig b/arch/loongarch/Kconfig
-index 34531dc8a61f..b9d3c98efe18 100644
+index 4fbb262e421b..afcdfb5e883a 100644
 --- a/arch/loongarch/Kconfig
 +++ b/arch/loongarch/Kconfig
 @@ -82,6 +82,7 @@ config LOONGARCH

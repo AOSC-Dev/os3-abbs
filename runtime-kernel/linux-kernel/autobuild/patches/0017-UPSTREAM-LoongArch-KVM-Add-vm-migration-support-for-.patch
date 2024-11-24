@@ -1,4 +1,4 @@
-From a4c4cd9cda6b5264fdd05675830d92a30e09b040 Mon Sep 17 00:00:00 2001
+From 24ef478bae74e28fce03d5706f4f392a65e34871 Mon Sep 17 00:00:00 2001
 From: Bibo Mao <maobibo@loongson.cn>
 Date: Wed, 11 Sep 2024 23:26:32 +0800
 Subject: [PATCH 017/164] UPSTREAM: LoongArch: KVM: Add vm migration support

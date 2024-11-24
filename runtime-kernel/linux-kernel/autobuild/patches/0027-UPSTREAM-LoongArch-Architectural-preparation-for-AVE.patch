@@ -1,4 +1,4 @@
-From 156a2638e784d35662a6901beaee2259a4675cc3 Mon Sep 17 00:00:00 2001
+From 741e0dde4deb3ce865b0e3b36d7d8e99dfc1e4f6 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Fri, 23 Aug 2024 18:39:33 +0800
 Subject: [PATCH 027/164] UPSTREAM: LoongArch: Architectural preparation for

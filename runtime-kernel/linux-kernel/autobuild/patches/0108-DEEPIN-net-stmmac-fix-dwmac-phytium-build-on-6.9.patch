@@ -1,4 +1,4 @@
-From aed2c0b67289de0c618ccb37d140937287bed16a Mon Sep 17 00:00:00 2001
+From eb78e4b84df5127bcf46f67db1704ec47097a199 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <baimingcong@uniontech.com>
 Date: Thu, 27 Jun 2024 14:37:53 +0800
 Subject: [PATCH 108/164] DEEPIN: net: stmmac: fix dwmac-phytium build on 6.9

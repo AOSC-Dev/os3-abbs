@@ -1,4 +1,4 @@
-From 1b78b56f8426dd14e6d5460364087bff040aefae Mon Sep 17 00:00:00 2001
+From 5c83b2e2c4edc0b4417999d3c3ae94d9f2a78ef2 Mon Sep 17 00:00:00 2001
 From: zouxiaoh <xiaohong.zou@intel.com>
 Date: Fri, 25 Jun 2021 08:52:59 +0800
 Subject: [PATCH 126/164] SURFACE: iommu: intel-ipu: use IOMMU passthrough mode

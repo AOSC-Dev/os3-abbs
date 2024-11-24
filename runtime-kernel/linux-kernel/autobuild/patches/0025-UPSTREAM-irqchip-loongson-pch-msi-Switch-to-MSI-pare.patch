@@ -1,4 +1,4 @@
-From 4bdce08367da3b10ffd756799cfb7f8a89697053 Mon Sep 17 00:00:00 2001
+From e410a195a0884dab1d2bbc2b0d40af251859789d Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Thu, 15 Aug 2024 19:26:07 +0800
 Subject: [PATCH 025/164] UPSTREAM: irqchip/loongson-pch-msi: Switch to MSI

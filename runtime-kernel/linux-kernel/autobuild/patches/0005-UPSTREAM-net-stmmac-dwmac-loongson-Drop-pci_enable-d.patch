@@ -1,4 +1,4 @@
-From a4a8076334eef1314dc0bea96880a4f6b5f1c04f Mon Sep 17 00:00:00 2001
+From 055ae7ff5aac472e696e46d0a5358ec3e7acab1d Mon Sep 17 00:00:00 2001
 From: Yanteng Si <siyanteng@loongson.cn>
 Date: Wed, 7 Aug 2024 21:47:08 +0800
 Subject: [PATCH 005/164] UPSTREAM: net: stmmac: dwmac-loongson: Drop

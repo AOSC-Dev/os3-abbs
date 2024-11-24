@@ -1,4 +1,4 @@
-From 97126907e8d34c795d3d65d6a2d55079406cfb2f Mon Sep 17 00:00:00 2001
+From 70ece3b46699721027c4270726ca101c8159a8e1 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Tue, 17 Sep 2024 22:23:22 +0800
 Subject: [PATCH 043/164] UPSTREAM: Docs/LoongArch: Add advanced extended IRQ

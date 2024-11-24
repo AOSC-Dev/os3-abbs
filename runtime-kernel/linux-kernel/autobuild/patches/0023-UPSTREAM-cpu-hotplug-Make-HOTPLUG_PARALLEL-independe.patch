@@ -1,4 +1,4 @@
-From 8b0d7efa5a820c6315e39834aa34200bf9bb7c4d Mon Sep 17 00:00:00 2001
+From 24add02d7ae4320d611ecfe2d63b33284389e92e Mon Sep 17 00:00:00 2001
 From: Jiaxun Yang <jiaxun.yang@flygoat.com>
 Date: Tue, 16 Jul 2024 22:14:58 +0800
 Subject: [PATCH 023/164] UPSTREAM: cpu/hotplug: Make HOTPLUG_PARALLEL

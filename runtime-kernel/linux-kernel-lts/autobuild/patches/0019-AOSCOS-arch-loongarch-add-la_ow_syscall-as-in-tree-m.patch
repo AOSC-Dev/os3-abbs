@@ -1,4 +1,4 @@
-From 5341e0b531b80ec17188801794fd938f34dbfae4 Mon Sep 17 00:00:00 2001
+From c9b5d9e24d549a386b01acd15d1c8a7110febf76 Mon Sep 17 00:00:00 2001
 From: Miao Wang <shankerwangmiao@gmail.com>
 Date: Wed, 28 Aug 2024 03:09:24 +0800
 Subject: [PATCH 19/37] AOSCOS: arch/loongarch: add la_ow_syscall as in-tree

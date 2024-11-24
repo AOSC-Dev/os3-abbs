@@ -1,4 +1,4 @@
-From 271b3135ff61ec03d6f79bf872024d4f141517ac Mon Sep 17 00:00:00 2001
+From b41fd36b71d94d5603bb1ef624e09511b06c9915 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Sun, 28 Jan 2024 14:07:46 +0800
 Subject: [PATCH 08/37] FROMEXT: drivers/firmware: Move sysfb_init() from

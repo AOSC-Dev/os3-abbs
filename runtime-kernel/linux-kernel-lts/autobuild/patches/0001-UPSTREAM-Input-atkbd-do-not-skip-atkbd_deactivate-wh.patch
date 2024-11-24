@@ -1,4 +1,4 @@
-From ecb603691894c1a71d617c917ee8b4ed22f52970 Mon Sep 17 00:00:00 2001
+From 6c2610c5b38b8e8972c162a8cc2696a42d56ecde Mon Sep 17 00:00:00 2001
 From: Hans de Goede <hdegoede@redhat.com>
 Date: Fri, 26 Jan 2024 17:07:24 +0100
 Subject: [PATCH 01/37] UPSTREAM: Input: atkbd - do not skip atkbd_deactivate()

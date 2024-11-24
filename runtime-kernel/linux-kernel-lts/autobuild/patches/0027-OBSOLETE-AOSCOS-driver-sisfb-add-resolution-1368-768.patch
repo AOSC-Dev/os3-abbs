@@ -1,4 +1,4 @@
-From be2aee01ce8681e5af3a127e135d95afb688ac2f Mon Sep 17 00:00:00 2001
+From db5fed217162dac7e0c3b285a40acf64bc8ee432 Mon Sep 17 00:00:00 2001
 From: flygoat <flygoatfree@gmail.com>
 Date: Sun, 5 Mar 2017 20:33:17 +0800
 Subject: [PATCH 27/37] OBSOLETE: AOSCOS: driver sisfb add resolution 1368*768

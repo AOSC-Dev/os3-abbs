@@ -1,4 +1,4 @@
-From 9694e209fec6e84025043a241710c2c0c0828b6c Mon Sep 17 00:00:00 2001
+From 09494cdc4ca7ef5ec755f19b89497a290cb0806b Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Filipe=20La=C3=ADns?= <lains@riseup.net>
 Date: Sat, 23 Jan 2021 18:03:33 +0000
 Subject: [PATCH 35/37] OBSOLETE: HID: logitech-dj: add support for the new

@@ -1,4 +1,4 @@
-From e6ab146617efba3637bd99e817a9a5d4a377a220 Mon Sep 17 00:00:00 2001
+From 17b2fe62d8ccfd1ba4222e3d483d6427dc16f9b7 Mon Sep 17 00:00:00 2001
 From: Miao Wang <shankerwangmiao@gmail.com>
 Date: Thu, 18 Jul 2024 18:55:59 +0800
 Subject: [PATCH 13/37] AOSCOS: loongarch: parse BPI data and add memory
@@ -457,7 +457,7 @@ index 065f2db57c09..76ac35cf9698 100644
  	pagetable_init();
  	bootcmdline_init(cmdline_p);
 diff --git a/arch/loongarch/kernel/smp.c b/arch/loongarch/kernel/smp.c
-index d74dfe1206ed..1414f308ec62 100644
+index 9dbe7907a961..f926248f4c07 100644
 --- a/arch/loongarch/kernel/smp.c
 +++ b/arch/loongarch/kernel/smp.c
 @@ -33,6 +33,8 @@

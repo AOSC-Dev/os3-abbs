@@ -1,4 +1,4 @@
-From 419d4e05061232670697b75575bd5a2dc3e3896e Mon Sep 17 00:00:00 2001
+From d5d98057843f0027a526669d9c300026a5fb6e6c Mon Sep 17 00:00:00 2001
 From: Josh Boyer <jwboyer@fedoraproject.org>
 Date: Mon, 11 Nov 2013 08:39:16 -0500
 Subject: [PATCH 23/37] OBSOLETE: FEDORA: lib/cpumask: Make CPUMASK_OFFSTACK

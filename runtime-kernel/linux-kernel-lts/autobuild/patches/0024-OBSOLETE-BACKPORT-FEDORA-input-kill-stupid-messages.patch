@@ -1,4 +1,4 @@
-From f377c23815bad39b11bac2cb1a1653dd103d93fb Mon Sep 17 00:00:00 2001
+From 1651fbb9dfac89135f709508469228009c6a1341 Mon Sep 17 00:00:00 2001
 From: "kernel-team@fedoraproject.org" <kernel-team@fedoraproject.org>
 Date: Thu, 29 Jul 2010 16:46:31 -0700
 Subject: [PATCH 24/37] OBSOLETE: BACKPORT: FEDORA: input: kill stupid messages

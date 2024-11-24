@@ -1,4 +1,4 @@
-From 06ccf34fc4aebe00be5203ff9b8c9c30983cbdc2 Mon Sep 17 00:00:00 2001
+From adc2aaccc76a3937de0fe2116406cb0e2db72de5 Mon Sep 17 00:00:00 2001
 From: Benjamin Tissoires <benjamin.tissoires@redhat.com>
 Date: Wed, 22 Apr 2015 11:45:09 -0400
 Subject: [PATCH 22/37] OBSOLETE: FROMLIST: Input - synaptics: pin 3 touches

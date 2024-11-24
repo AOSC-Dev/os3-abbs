@@ -1,4 +1,4 @@
-From 73b79bc818822075ae56a19cc96a7a54efefd988 Mon Sep 17 00:00:00 2001
+From eb445087d69988cc722378f460174f22421e6654 Mon Sep 17 00:00:00 2001
 From: Mark Weiman <mark.weiman@markzz.com>
 Date: Wed, 27 Jan 2021 13:28:09 -0500
 Subject: [PATCH 34/37] OBSOLETE: pci: Enable overrides for missing ACS

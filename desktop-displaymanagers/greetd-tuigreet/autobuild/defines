@@ -2,6 +2,7 @@ PKGNAME=greetd-tuigreet
 PKGSEC=x11
 PKGDEP="greetd"
 BUILDDEP="rustc llvm scdoc"
+PKGRECOM="xinit"
 PKGDES="A graphical console greeter for greetd"
 
 USECLANG=1

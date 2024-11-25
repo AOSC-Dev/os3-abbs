@@ -1,7 +1,7 @@
 From 4797e07013a5795c1963974c7d7570078eea7b71 Mon Sep 17 00:00:00 2001
 From: Xiaolong Chen <chenxiaolong@loongson.cn>
 Date: Tue, 12 Sep 2023 15:21:25 +0800
-Subject: [PATCH 55/89] LoongArch: Add tests for ASX vector subtraction
+Subject: [PATCH 55/90] LoongArch: Add tests for ASX vector subtraction
  instructions.
 
 gcc/testsuite/ChangeLog:

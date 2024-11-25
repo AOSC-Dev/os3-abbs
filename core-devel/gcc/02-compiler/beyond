@@ -56,6 +56,10 @@ else
     chmod -v 755 "$PKGDIR"/usr/bin/go{,fmt}-gnu
 fi
 
+abinfo "Installing position-independent libiberty.a ..."
+install -Dvm644 "$BLDDIR"/libiberty/pic/libiberty.a \
+                "$PKGDIR"/usr/lib/libiberty.a
+
 abinfo "Creating compatibility symlinks to ${HOST/aosc/unknown} ..."
 ln -sv ${HOST} \
     "$PKGDIR"/usr/lib/gcc/${HOST/aosc/unknown}

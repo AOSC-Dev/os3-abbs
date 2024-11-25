@@ -1,7 +1,7 @@
 From 8d95e51681df90bdf842688a2795761ebc644655 Mon Sep 17 00:00:00 2001
 From: Yang Yujie <yangyujie@loongson.cn>
 Date: Mon, 28 Aug 2023 10:20:12 +0800
-Subject: [PATCH 19/89] LoongArch: add new configure option
+Subject: [PATCH 19/90] LoongArch: add new configure option
  --with-strict-align-lib
 
 LoongArch processors may not support memory accesses without natural

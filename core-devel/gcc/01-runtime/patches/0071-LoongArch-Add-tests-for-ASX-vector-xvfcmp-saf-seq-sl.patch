@@ -1,7 +1,7 @@
 From 3689dc9ee0df5c477e4d68145b3f40f815dc3340 Mon Sep 17 00:00:00 2001
 From: Xiaolong Chen <chenxiaolong@loongson.cn>
 Date: Tue, 12 Sep 2023 16:48:35 +0800
-Subject: [PATCH 71/89] LoongArch: Add tests for ASX vector
+Subject: [PATCH 71/90] LoongArch: Add tests for ASX vector
  xvfcmp{saf/seq/sle/slt/sne/sor/sun} instructions.
 
 gcc/testsuite/ChangeLog:

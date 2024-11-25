@@ -1,7 +1,7 @@
 From 267d56b496745d99562aa942cead6e0964c3060d Mon Sep 17 00:00:00 2001
 From: mengqinggang <mengqinggang@loongson.cn>
 Date: Fri, 15 Sep 2023 12:04:04 +0800
-Subject: [PATCH 79/89] Modify gas uleb128 support test
+Subject: [PATCH 79/90] Modify gas uleb128 support test
 
 Some assemblers (GNU as for LoongArch) generates relocations for leb128
 symbol arithmetic for relaxation, we need to disable relaxation probing

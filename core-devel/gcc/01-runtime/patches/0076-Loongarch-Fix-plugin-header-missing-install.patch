@@ -1,7 +1,7 @@
 From b13ac0d9c4836d9fc6a6e4ff88d1d75e909e036b Mon Sep 17 00:00:00 2001
 From: Guo Jie <guojie@loongson.cn>
 Date: Wed, 16 Aug 2023 09:48:22 +0800
-Subject: [PATCH 76/89] Loongarch: Fix plugin header missing install.
+Subject: [PATCH 76/90] Loongarch: Fix plugin header missing install.
 
 gcc/ChangeLog:
 

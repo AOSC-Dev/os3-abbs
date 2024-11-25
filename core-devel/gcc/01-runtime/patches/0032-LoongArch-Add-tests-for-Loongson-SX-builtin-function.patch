@@ -1,7 +1,7 @@
 From 29875e9083df3fc71b6afd8f828ae53bc535d7fe Mon Sep 17 00:00:00 2001
 From: Xiaolong Chen <chenxiaolong@loongson.cn>
 Date: Mon, 11 Sep 2023 09:38:42 +0800
-Subject: [PATCH 32/89] LoongArch: Add tests for Loongson SX builtin functions.
+Subject: [PATCH 32/90] LoongArch: Add tests for Loongson SX builtin functions.
 
 gcc/testsuite/ChangeLog:
 

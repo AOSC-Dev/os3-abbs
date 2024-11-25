@@ -1,7 +1,7 @@
 From 2e3ede251589fb4d2bae0c3ad71c42c3fa1a3486 Mon Sep 17 00:00:00 2001
 From: liushuyu <liushuyu001@gmail.com>
 Date: Tue, 6 Feb 2024 07:55:22 -0800
-Subject: [PATCH 87/89] libphobos/libdruntime: add autoconf
+Subject: [PATCH 87/90] libphobos/libdruntime: add autoconf
 
 ---
  libphobos/configure               | 13 +++++++++++++

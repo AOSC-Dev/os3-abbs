@@ -1,7 +1,7 @@
 From 408d59df1db8d4490fa1693994a803dbb2b74e14 Mon Sep 17 00:00:00 2001
 From: Prathamesh Kulkarni <prathamesh.kulkarni@linaro.org>
 Date: Wed, 26 Jul 2023 22:36:26 +0530
-Subject: [PATCH 88/89] Fix ICE observed in PR110280.
+Subject: [PATCH 88/90] Fix ICE observed in PR110280.
 
 gcc/ChangeLog:
 	PR tree-optimization/110280

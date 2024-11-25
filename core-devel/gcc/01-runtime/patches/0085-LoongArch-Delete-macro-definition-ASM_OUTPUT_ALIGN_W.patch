@@ -1,7 +1,7 @@
 From 7f02208b0cb8146f0b0d5788d4209a3b4df652d5 Mon Sep 17 00:00:00 2001
 From: Lulu Cheng <chenglulu@loongson.cn>
 Date: Fri, 15 Sep 2023 11:56:01 +0800
-Subject: [PATCH 85/89] LoongArch: Delete macro definition
+Subject: [PATCH 85/90] LoongArch: Delete macro definition
  ASM_OUTPUT_ALIGN_WITH_NOP.
 
 There are two reasons for removing this macro definition:

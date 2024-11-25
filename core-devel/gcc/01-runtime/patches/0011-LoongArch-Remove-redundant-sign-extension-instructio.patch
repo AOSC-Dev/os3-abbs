@@ -1,7 +1,7 @@
 From 3b3faee24512c9d98309bbee21662cb27f1b7ce7 Mon Sep 17 00:00:00 2001
 From: Lulu Cheng <chenglulu@loongson.cn>
 Date: Thu, 24 Aug 2023 16:44:56 +0800
-Subject: [PATCH 11/89] LoongArch: Remove redundant sign extension instructions
+Subject: [PATCH 11/90] LoongArch: Remove redundant sign extension instructions
  caused by SLT instructions.
 
 Since the SLT instruction does not distinguish between 64-bit operations and 32-bit

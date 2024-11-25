@@ -1,7 +1,7 @@
 From ce5ac5e267d8c4dc6db54f7777dfdc8c00f6ade1 Mon Sep 17 00:00:00 2001
 From: Xiaolong Chen <chenxiaolong@loongson.cn>
 Date: Tue, 12 Sep 2023 11:25:20 +0800
-Subject: [PATCH 47/89] LoongArch: Add tests for SX vector floating point
+Subject: [PATCH 47/90] LoongArch: Add tests for SX vector floating point
  arithmetic instructions.
 
 gcc/testsuite/ChangeLog:

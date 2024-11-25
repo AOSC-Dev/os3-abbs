@@ -1,7 +1,7 @@
 From 53f4670b56854e67df45a5b0227ecae8cf43535d Mon Sep 17 00:00:00 2001
 From: Xiaolong Chen <chenxiaolong@loongson.cn>
 Date: Wed, 13 Sep 2023 12:35:41 +0800
-Subject: [PATCH 74/89] LoongArch: Add tests for ASX vector
+Subject: [PATCH 74/90] LoongArch: Add tests for ASX vector
  xvssrln/xvssrlni/xvssrlrn/xvssrlrni instructions.
 
 gcc/testsuite/ChangeLog:

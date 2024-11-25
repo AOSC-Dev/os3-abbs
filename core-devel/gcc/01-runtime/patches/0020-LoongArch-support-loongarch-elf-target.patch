@@ -1,7 +1,7 @@
 From 9e169793d6245d6ea1e67d4a774a2ae2e55f79e2 Mon Sep 17 00:00:00 2001
 From: Yang Yujie <yangyujie@loongson.cn>
 Date: Fri, 30 Jun 2023 17:07:59 +0800
-Subject: [PATCH 20/89] LoongArch: support loongarch*-elf target
+Subject: [PATCH 20/90] LoongArch: support loongarch*-elf target
 
 gcc/ChangeLog:
 

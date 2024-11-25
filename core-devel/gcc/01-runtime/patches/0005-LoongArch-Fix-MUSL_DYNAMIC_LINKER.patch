@@ -1,7 +1,7 @@
 From 1e0b547255135b663343b843948c60ccd3fa7447 Mon Sep 17 00:00:00 2001
 From: Peng Fan <fanpeng@loongson.cn>
 Date: Wed, 19 Apr 2023 16:23:42 +0800
-Subject: [PATCH 05/89] LoongArch: Fix MUSL_DYNAMIC_LINKER
+Subject: [PATCH 05/90] LoongArch: Fix MUSL_DYNAMIC_LINKER
 
 The system based on musl has no '/lib64', so change it.
 

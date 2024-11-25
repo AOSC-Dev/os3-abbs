@@ -1,7 +1,7 @@
 From 48f24153db81983f68d11e5f57b44045c8cebdea Mon Sep 17 00:00:00 2001
 From: Xi Ruoyao <xry111@xry111.site>
 Date: Fri, 24 Jun 2022 20:23:13 +0800
-Subject: [PATCH 07/89] fortran: use grep instead of fgrep
+Subject: [PATCH 07/90] fortran: use grep instead of fgrep
 
 fgrep has been deprecated in favor of grep -F for a long time, and the
 curren grep release (3.10) prints a warning of fgrep is used.  Stop

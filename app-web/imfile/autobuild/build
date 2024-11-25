@@ -1,0 +1,20 @@
+abinfo "Prevent Corepack from showing the URL ..."
+export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
+
+abinfo "Fetching dependencies and prepare ..."
+yarn install
+
+abinfo "Building imFile ..."
+yarn run build:dir
+
+abinfo "Installing imFile ..."
+install -dvm755 "$PKGDIR"/usr/lib/imfile
+cp -rv "$SRCDIR"/release/linux*-unpacked/* "$PKGDIR"/usr/lib/imfile/
+
+abinfo "Creating symbolic link ..."
+mkdir -pv "$PKGDIR"/usr/bin
+ln -sv ../lib/imfile/imfile "$PKGDIR"/usr/bin/imfile
+
+abinfo "Installing application icon ..."
+install -Dvm644 "$SRCDIR"/build/256x256.png \
+                "$PKGDIR"/usr/share/icons/hicolor/256x256/apps/imfile.png

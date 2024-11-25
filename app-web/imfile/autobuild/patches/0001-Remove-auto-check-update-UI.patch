@@ -1,0 +1,63 @@
+From 53f001318ad4bde20ba138ac9c61b88f33376795 Mon Sep 17 00:00:00 2001
+From: miwu04 <mail@alanlin.icu>
+Date: Tue, 26 Nov 2024 00:18:49 +0800
+Subject: [PATCH] Remove auto check update UI
+
+---
+ src/main/menus/tray.json                      |  1 -
+ .../components/Preference/Advanced.vue        | 27 -------------------
+ 2 files changed, 28 deletions(-)
+
+diff --git a/src/main/menus/tray.json b/src/main/menus/tray.json
+index 2d0ac4a..a8239c7 100644
+--- a/src/main/menus/tray.json
++++ b/src/main/menus/tray.json
+@@ -5,7 +5,6 @@
+   { "type": "separator" },
+   { "id": "app.show", "command": "application:show", "command-arg": { "page": "index" } },
+   { "id": "help.manual", "command": "help:manual" },
+-  { "id": "app.check-for-updates", "command": "application:check-for-updates" },
+   { "type": "separator" },
+   { "id": "app.task-list", "command": "application:task-list", "command-before": "application:show?page=index" },
+   { "id": "app.preferences", "command": "application:preferences", "command-before": "application:show?page=index" },
+diff --git a/src/renderer/components/Preference/Advanced.vue b/src/renderer/components/Preference/Advanced.vue
+index a2cade9..dbfc9d0 100644
+--- a/src/renderer/components/Preference/Advanced.vue
++++ b/src/renderer/components/Preference/Advanced.vue
+@@ -24,33 +24,6 @@
+         :model="form"
+         :rules="rules"
+       >
+-        <el-form-item
+-          :label="`${$t('preferences.auto-update')}: `"
+-          :label-width="formLabelWidth"
+-        >
+-          <el-col class="form-item-sub" :span="24">
+-            <el-checkbox v-model="form.autoCheckUpdate">
+-              {{ $t('preferences.auto-check-update') }}
+-            </el-checkbox>
+-            <div
+-              class="el-form-item__info"
+-              style="margin-top: 8px;"
+-              v-if="form.lastCheckUpdateTime !== 0"
+-            >
+-              {{
+-                $t('preferences.last-check-update-time') + ': ' +
+-                (
+-                  form.lastCheckUpdateTime !== 0 ?
+-                    new Date(form.lastCheckUpdateTime).toLocaleString() :
+-                    new Date().toLocaleString()
+-                )
+-              }}
+-              <span class="action-link" @click.prevent="onCheckUpdateClick">
+-                {{ $t('app.check-updates-now') }}
+-              </span>
+-            </div>
+-          </el-col>
+-        </el-form-item>
+         <el-form-item
+           :label="`${$t('preferences.proxy')}: `"
+           :label-width="formLabelWidth"
+-- 
+2.47.0
+

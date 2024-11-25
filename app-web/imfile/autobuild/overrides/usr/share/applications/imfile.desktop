@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=imFile
+Comment=A download manager which supports downloading HTTP, FTP, BitTorrent, Magnet, etc
+Comment[zh_CN]=一款下载工具，支持下载 HTTP、FTP、BT、磁力链等资源
+Comment[zh_TW]=一款下載工具，支持下載 HTTP、FTP、BT、磁力鏈等資源
+Exec=/usr/bin/imfile %U
+Icon=imfile
+Terminal=false
+Categories=Network;
+MimeType=application/x-bittorrent;x-scheme-handler/magnet;application/x-bittorrent;x-scheme-handler/mo;x-scheme-handler/imfile;x-scheme-handler/magnet;x-scheme-handler/thunder;application/x-bittorrent;x-scheme-handler/mo;x-scheme-handler/imfile;x-scheme-handler/magnet;x-scheme-handler/thunder;application/x-bittorrent;x-scheme-handler/mo;x-scheme-handler/imfile;x-scheme-handler/magnet;x-scheme-handler/thunder;application/x-bittorrent;x-scheme-handler/mo;x-scheme-handler/imfile;x-scheme-handler/magnet;x-scheme-handler/thunder;application/x-bittorrent;x-scheme-handler/mo;x-scheme-handler/imfile;x-scheme-handler/magnet;x-scheme-handler/thunder;
+StartupWMClass=imFile

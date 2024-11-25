@@ -1,0 +1,9 @@
+PKGNAME=imfile
+PKGSEC=web
+PKGDEP="gtk-3 nss libsecret libnotify xdg-utils x11-lib at-spi2-core util-linux-runtime"
+BUILDDEP="nodejs yarn"
+PKGDES="A download manager which supports downloading HTTP, FTP, BitTorrent, Magnet, etc"
+
+PKGPROV="imfile-desktop"
+
+FAIL_ARCH="!(amd64|arm64)"

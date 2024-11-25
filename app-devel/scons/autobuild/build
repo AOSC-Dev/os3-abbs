@@ -1,0 +1,15 @@
+abinfo "Building scons ..."
+python3 "$SRCDIR"/scripts/scons.py \
+    BUILD_SYSTEM="BuildIt!" \
+    DEVELOPER="AOSC"
+
+abinfo "Installing scons ..."
+python3 \
+    -m installer \
+    --destdir="$PKGDIR" \
+    "$SRCDIR"/build/dist/*.whl
+
+abinfo "Installing documents ..."
+install -Dvm644 \
+    "$SRCDIR"/build/doc/man/*.1 \
+    -t "$PKGDIR"/usr/share/man/man1/

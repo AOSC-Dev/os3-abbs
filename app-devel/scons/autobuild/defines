@@ -1,8 +1,9 @@
 PKGNAME=scons
 PKGSEC=devel
-PKGDEP="python-3 pypsutil"
-BUILDDEP="setuptools wheel"
 PKGDES="A Python replacement for Makefile-based build systems"
+PKGDEP="python-3 pypsutil"
+
+BUILDDEP="setuptools wheel lxml ninja"
 
 NOPYTHON2=1
 ABHOST=noarch

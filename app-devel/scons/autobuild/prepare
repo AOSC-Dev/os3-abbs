@@ -1,2 +1,0 @@
-abinfo "Preparing sources wiht scripts/scons.py ..."
-python3 "$SRCDIR"/scripts/scons.py

@@ -53,7 +53,7 @@ MESON_AFTER="-Dsession_tracking_consolekit=false \
              -Dlibaudit=no \
              -Dwext=true \
              -Dwifi=true \
-             -Diwd=false \
+             -Diwd=true \
              -Dppp=true \
              -Dmodem_manager=true \
              -Dofono=true \

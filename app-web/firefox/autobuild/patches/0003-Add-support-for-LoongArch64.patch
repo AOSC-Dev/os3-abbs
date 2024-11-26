@@ -1,7 +1,7 @@
-From b735d7db4db7eb49babd9fbded72410192d8edf6 Mon Sep 17 00:00:00 2001
+From b9c73089a9d53c9fd082c3d8a5eb63b1d17ae7c5 Mon Sep 17 00:00:00 2001
 From: Jiangjin Wang <kaymw@aosc.io>
 Date: Sun, 22 Oct 2023 22:13:17 -0700
-Subject: [PATCH 03/11] Add support for LoongArch64
+Subject: [PATCH 03/12] Add support for LoongArch64
 
 Adapted from LoongArchLinux. Rebased to Firefox 130.0.0.
 
@@ -9,14 +9,14 @@ Co-Authored-By: loongson <loongson@loongson.cn>
 Co-Authored-By: WANG Xuerui <xen0n@gentoo.org>
 Signed-off-by: WANG Xuerui <xen0n@gentoo.org>
 ---
- third_party/libwebrtc/build/build_config.h             | 4 ++++
+ third_party/chromium/build/build_config.h              | 4 ++++
  toolkit/components/telemetry/pingsender/pingsender.cpp | 1 +
  2 files changed, 5 insertions(+)
 
-diff --git a/third_party/libwebrtc/build/build_config.h b/third_party/libwebrtc/build/build_config.h
+diff --git a/third_party/chromium/build/build_config.h b/third_party/chromium/build/build_config.h
 index c39ae9da50..28191de026 100644
---- a/third_party/libwebrtc/build/build_config.h
-+++ b/third_party/libwebrtc/build/build_config.h
+--- a/third_party/chromium/build/build_config.h
++++ b/third_party/chromium/build/build_config.h
 @@ -210,6 +210,10 @@
  #define ARCH_CPU_SPARC 1
  #define ARCH_CPU_32_BITS 1
@@ -41,5 +41,5 @@ index 30f2907c72..e6645227a2 100644
  
  #include <zlib.h>
 -- 
-2.47.0.windows.2
+2.47.0
 

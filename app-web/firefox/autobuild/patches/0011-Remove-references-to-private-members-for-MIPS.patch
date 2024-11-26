@@ -1,7 +1,7 @@
-From 12f94951e587b428859db98dc9e84359a4c1b96c Mon Sep 17 00:00:00 2001
+From 409ecdd51e120feaa340389904a37d5d5d84e1fb Mon Sep 17 00:00:00 2001
 From: Henry Chen <henry.chen@oss.cipunited.com>
 Date: Sat, 12 Oct 2024 10:57:33 +0800
-Subject: [PATCH 11/11] Remove references to private members for MIPS
+Subject: [PATCH 11/12] Remove references to private members for MIPS
 
 ---
  js/src/jit/mips-shared/AtomicOperations-mips-shared.h | 4 ++--
@@ -30,5 +30,5 @@ index 5ef11fd8c2..f48a4b6deb 100644
  
  template <>
 -- 
-2.47.0.windows.2
+2.47.0
 

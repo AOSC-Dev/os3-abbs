@@ -1,0 +1,423 @@
+From 4b6b4a4aac8b2355d2020b473235315554dcc297 Mon Sep 17 00:00:00 2001
+From: Xuan Chen <chenx97@aosc.io>
+Date: Thu, 7 Nov 2024 10:00:55 +0000
+Subject: [PATCH 12/12] Bug 1929801 - [MIPS64] Implement undefined and
+ MOZ_CRASH methods. r=anba
+
+This patch implements missing methods that cause builds to fail
+for MIPS64, and implements lowerBigIntPtrDiv and lowerBigIntPtrMod
+properly as the codegen can properly emit them now.
+
+Differential Revision: https://phabricator.services.mozilla.com/D228293
+---
+ js/src/jit/MacroAssembler.h                   |  4 +-
+ .../jit/mips-shared/Lowering-mips-shared.cpp  | 18 +++++++
+ js/src/jit/mips-shared/Lowering-mips-shared.h |  2 +
+ .../MacroAssembler-mips-shared-inl.h          | 34 +++++++++++-
+ js/src/jit/mips32/CodeGenerator-mips32.cpp    | 22 ++++++++
+ js/src/jit/mips32/CodeGenerator-mips32.h      |  5 ++
+ js/src/jit/mips32/Lowering-mips32.cpp         |  8 ---
+ js/src/jit/mips32/Lowering-mips32.h           |  3 --
+ js/src/jit/mips64/CodeGenerator-mips64.cpp    | 24 +++++++++
+ js/src/jit/mips64/CodeGenerator-mips64.h      |  5 ++
+ js/src/jit/mips64/Lowering-mips64.cpp         |  8 ---
+ js/src/jit/mips64/Lowering-mips64.h           |  3 --
+ js/src/jit/mips64/MacroAssembler-mips64-inl.h | 52 +++++++++++++++++++
+ js/src/jit/mips64/MacroAssembler-mips64.cpp   | 12 +++++
+ 14 files changed, 175 insertions(+), 25 deletions(-)
+
+diff --git a/js/src/jit/MacroAssembler.h b/js/src/jit/MacroAssembler.h
+index 2101fbe8eb..1e9961fd7e 100644
+--- a/js/src/jit/MacroAssembler.h
++++ b/js/src/jit/MacroAssembler.h
+@@ -1218,7 +1218,7 @@ class MacroAssembler : public MacroAssemblerSpecific {
+       DEFINED_ON(mips_shared, arm, arm64, loong64, riscv64, wasm32);
+ 
+   inline void quotient64(Register rhs, Register srcDest, bool isUnsigned)
+-      DEFINED_ON(arm64, loong64, riscv64);
++      DEFINED_ON(arm64, loong64, mips64, riscv64);
+ 
+   // As above, but srcDest must be eax and tempEdx must be edx.
+   inline void quotient32(Register rhs, Register srcDest, Register tempEdx,
+@@ -1232,7 +1232,7 @@ class MacroAssembler : public MacroAssemblerSpecific {
+       DEFINED_ON(mips_shared, arm, arm64, loong64, riscv64, wasm32);
+ 
+   inline void remainder64(Register rhs, Register srcDest, bool isUnsigned)
+-      DEFINED_ON(arm64, loong64, riscv64);
++      DEFINED_ON(arm64, loong64, mips64, riscv64);
+ 
+   // As above, but srcDest must be eax and tempEdx must be edx.
+   inline void remainder32(Register rhs, Register srcDest, Register tempEdx,
+diff --git a/js/src/jit/mips-shared/Lowering-mips-shared.cpp b/js/src/jit/mips-shared/Lowering-mips-shared.cpp
+index 4b5fefbc70..4297617fe0 100644
+--- a/js/src/jit/mips-shared/Lowering-mips-shared.cpp
++++ b/js/src/jit/mips-shared/Lowering-mips-shared.cpp
+@@ -376,6 +376,24 @@ void LIRGeneratorMIPSShared::lowerBigIntPtrRsh(MBigIntPtrRsh* ins) {
+   define(lir, ins);
+ }
+ 
++void LIRGeneratorMIPSShared::lowerBigIntPtrDiv(MBigIntPtrDiv* ins) {
++  auto* lir = new (alloc())
++      LBigIntPtrDiv(useRegister(ins->lhs()), useRegister(ins->rhs()),
++                    LDefinition::BogusTemp(), LDefinition::BogusTemp());
++  assignSnapshot(lir, ins->bailoutKind());
++  define(lir, ins);
++}
++
++void LIRGeneratorMIPSShared::lowerBigIntPtrMod(MBigIntPtrMod* ins) {
++  auto* lir = new (alloc())
++      LBigIntPtrMod(useRegister(ins->lhs()), useRegister(ins->rhs()), temp(),
++                    LDefinition::BogusTemp());
++  if (ins->canBeDivideByZero()) {
++    assignSnapshot(lir, ins->bailoutKind());
++  }
++  define(lir, ins);
++}
++
+ void LIRGenerator::visitWasmNeg(MWasmNeg* ins) {
+   if (ins->type() == MIRType::Int32) {
+     define(new (alloc()) LNegI(useRegisterAtStart(ins->input())), ins);
+diff --git a/js/src/jit/mips-shared/Lowering-mips-shared.h b/js/src/jit/mips-shared/Lowering-mips-shared.h
+index 758c7b6ba1..706859e5cc 100644
+--- a/js/src/jit/mips-shared/Lowering-mips-shared.h
++++ b/js/src/jit/mips-shared/Lowering-mips-shared.h
+@@ -68,6 +68,8 @@ class LIRGeneratorMIPSShared : public LIRGeneratorShared {
+ 
+   void lowerBigIntPtrLsh(MBigIntPtrLsh* ins);
+   void lowerBigIntPtrRsh(MBigIntPtrRsh* ins);
++  void lowerBigIntPtrDiv(MBigIntPtrDiv* ins);
++  void lowerBigIntPtrMod(MBigIntPtrMod* ins);
+ 
+   LTableSwitch* newLTableSwitch(const LAllocation& in,
+                                 const LDefinition& inputCopy,
+diff --git a/js/src/jit/mips-shared/MacroAssembler-mips-shared-inl.h b/js/src/jit/mips-shared/MacroAssembler-mips-shared-inl.h
+index 9c3fa71a09..871d975b0d 100644
+--- a/js/src/jit/mips-shared/MacroAssembler-mips-shared-inl.h
++++ b/js/src/jit/mips-shared/MacroAssembler-mips-shared-inl.h
+@@ -317,6 +317,10 @@ void MacroAssembler::flexibleLshift32(Register src, Register dest) {
+   lshift32(src, dest);
+ }
+ 
++void MacroAssembler::flexibleLshiftPtr(Register shift, Register srcDest) {
++  lshiftPtr(shift, srcDest);
++}
++
+ void MacroAssembler::lshift32(Imm32 imm, Register dest) {
+   ma_sll(dest, dest, imm);
+ }
+@@ -345,6 +349,15 @@ void MacroAssembler::rshift32Arithmetic(Imm32 imm, Register dest) {
+   ma_sra(dest, dest, imm);
+ }
+ 
++void MacroAssembler::flexibleRshiftPtr(Register shift, Register srcDest) {
++  rshiftPtr(shift, srcDest);
++}
++
++void MacroAssembler::flexibleRshiftPtrArithmetic(Register shift,
++                                                 Register srcDest) {
++  rshiftPtrArithmetic(shift, srcDest);
++}
++
+ // ===============================================================
+ // Rotation functions
+ void MacroAssembler::rotateLeft(Imm32 count, Register input, Register dest) {
+@@ -791,6 +804,12 @@ void MacroAssembler::branchMulPtr(Condition cond, Register src, Register dest,
+   ma_mulPtrTestOverflow(dest, dest, src, label);
+ }
+ 
++void MacroAssembler::branchNegPtr(Condition cond, Register reg, Label* label) {
++  MOZ_ASSERT(cond == Assembler::Overflow);
++  negPtr(reg);
++  branchPtr(Assembler::Equal, reg, ImmWord(INTPTR_MIN), label);
++}
++
+ void MacroAssembler::decBranchPtr(Condition cond, Register lhs, Imm32 rhs,
+                                   Label* label) {
+   subPtr(rhs, lhs);
+@@ -1245,9 +1264,22 @@ void MacroAssembler::test32LoadPtr(Condition cond, const Address& addr,
+   bind(&skip);
+ }
+ 
++void MacroAssembler::test32MovePtr(Condition cond, Register operand, Imm32 mask,
++                                   Register src, Register dest) {
++  MOZ_ASSERT(cond == Assembler::Zero || cond == Assembler::NonZero);
++  Label skip;
++  branchTest32(Assembler::InvertCondition(cond), operand, mask, &skip);
++  movePtr(src, dest);
++  bind(&skip);
++}
++
+ void MacroAssembler::test32MovePtr(Condition cond, const Address& addr,
+                                    Imm32 mask, Register src, Register dest) {
+-  MOZ_CRASH();
++  MOZ_ASSERT(cond == Assembler::Zero || cond == Assembler::NonZero);
++  Label skip;
++  branchTest32(Assembler::InvertCondition(cond), addr, mask, &skip);
++  movePtr(src, dest);
++  bind(&skip);
+ }
+ 
+ void MacroAssembler::spectreBoundsCheck32(Register index, Register length,
+diff --git a/js/src/jit/mips32/CodeGenerator-mips32.cpp b/js/src/jit/mips32/CodeGenerator-mips32.cpp
+index 0f322114f5..9efe8828fa 100644
+--- a/js/src/jit/mips32/CodeGenerator-mips32.cpp
++++ b/js/src/jit/mips32/CodeGenerator-mips32.cpp
+@@ -389,3 +389,25 @@ void CodeGenerator::visitWasmAtomicStoreI64(LWasmAtomicStoreI64* lir) {
+ 
+   masm.wasmAtomicStore64(lir->mir()->access(), addr, tmp, value);
+ }
++
++void CodeGeneratorMIPS::emitBigIntPtrDiv(LBigIntPtrDiv* ins, Register dividend,
++                                         Register divisor, Register output) {
++  // Callers handle division by zero and integer overflow.
++#ifdef MIPSR6
++  masm.as_div(/* result= */ output, dividend, divisor);
++#else
++  masm.as_div(dividend, divisor);
++  masm.as_mflo(/* result= */ output);
++#endif
++}
++
++void CodeGeneratorMIPS::emitBigIntPtrMod(LBigIntPtrMod* ins, Register dividend,
++                                         Register divisor, Register output) {
++  // Callers handle division by zero and integer overflow.
++#ifdef MIPSR6
++  masm.as_mod(/* result= */ output, dividend, divisor);
++#else
++  masm.as_div(dividend, divisor);
++  masm.as_mfhi(/* result= */ output);
++#endif
++}
+diff --git a/js/src/jit/mips32/CodeGenerator-mips32.h b/js/src/jit/mips32/CodeGenerator-mips32.h
+index 3501b9667c..c4114fa23f 100644
+--- a/js/src/jit/mips32/CodeGenerator-mips32.h
++++ b/js/src/jit/mips32/CodeGenerator-mips32.h
+@@ -27,6 +27,11 @@ class CodeGeneratorMIPS : public CodeGeneratorMIPSShared {
+ 
+   // Functions for LTestVAndBranch.
+   void splitTagForTest(const ValueOperand& value, ScratchTagScope& tag);
++
++  void emitBigIntPtrDiv(LBigIntPtrDiv* ins, Register dividend, Register divisor,
++                        Register output);
++  void emitBigIntPtrMod(LBigIntPtrMod* ins, Register dividend, Register divisor,
++                        Register output);
+ };
+ 
+ typedef CodeGeneratorMIPS CodeGeneratorSpecific;
+diff --git a/js/src/jit/mips32/Lowering-mips32.cpp b/js/src/jit/mips32/Lowering-mips32.cpp
+index 4b7f0ee24a..0062898b6a 100644
+--- a/js/src/jit/mips32/Lowering-mips32.cpp
++++ b/js/src/jit/mips32/Lowering-mips32.cpp
+@@ -216,14 +216,6 @@ void LIRGeneratorMIPS::lowerUModI64(MMod* mod) {
+   defineReturn(lir, mod);
+ }
+ 
+-void LIRGeneratorMIPS::lowerBigIntPtrDiv(MBigIntPtrDiv* ins) {
+-  MOZ_CRASH("NYI");
+-}
+-
+-void LIRGeneratorMIPS::lowerBigIntPtrMod(MBigIntPtrMod* ins) {
+-  MOZ_CRASH("NYI");
+-}
+-
+ void LIRGenerator::visitWasmTruncateToInt64(MWasmTruncateToInt64* ins) {
+   MDefinition* opd = ins->input();
+   MOZ_ASSERT(opd->type() == MIRType::Double || opd->type() == MIRType::Float32);
+diff --git a/js/src/jit/mips32/Lowering-mips32.h b/js/src/jit/mips32/Lowering-mips32.h
+index dc1ab023fb..163f45f79a 100644
+--- a/js/src/jit/mips32/Lowering-mips32.h
++++ b/js/src/jit/mips32/Lowering-mips32.h
+@@ -41,9 +41,6 @@ class LIRGeneratorMIPS : public LIRGeneratorMIPSShared {
+   void lowerWasmBuiltinModI64(MWasmBuiltinModI64* mod);
+   void lowerUDivI64(MDiv* div);
+   void lowerUModI64(MMod* mod);
+-
+-  void lowerBigIntPtrDiv(MBigIntPtrDiv* ins);
+-  void lowerBigIntPtrMod(MBigIntPtrMod* ins);
+ };
+ 
+ typedef LIRGeneratorMIPS LIRGeneratorSpecific;
+diff --git a/js/src/jit/mips64/CodeGenerator-mips64.cpp b/js/src/jit/mips64/CodeGenerator-mips64.cpp
+index 3d4f972685..b1afee8181 100644
+--- a/js/src/jit/mips64/CodeGenerator-mips64.cpp
++++ b/js/src/jit/mips64/CodeGenerator-mips64.cpp
+@@ -468,3 +468,27 @@ void CodeGenerator::visitAtomicStore64(LAtomicStore64* lir) {
+   }
+   masm.memoryBarrierAfter(sync);
+ }
++
++void CodeGeneratorMIPS64::emitBigIntPtrDiv(LBigIntPtrDiv* ins,
++                                           Register dividend, Register divisor,
++                                           Register output) {
++  // Callers handle division by zero and integer overflow.
++#ifdef MIPSR6
++  masm.as_ddiv(/* result= */ output, dividend, divisor);
++#else
++  masm.as_ddiv(dividend, divisor);
++  masm.as_mflo(/* result= */ output);
++#endif
++}
++
++void CodeGeneratorMIPS64::emitBigIntPtrMod(LBigIntPtrMod* ins,
++                                           Register dividend, Register divisor,
++                                           Register output) {
++  // Callers handle division by zero and integer overflow.
++#ifdef MIPSR6
++  masm.as_dmod(/* result= */ output, dividend, divisor);
++#else
++  masm.as_ddiv(dividend, divisor);
++  masm.as_mfhi(/* result= */ output);
++#endif
++}
+diff --git a/js/src/jit/mips64/CodeGenerator-mips64.h b/js/src/jit/mips64/CodeGenerator-mips64.h
+index 7f2b2c09b8..c016252aed 100644
+--- a/js/src/jit/mips64/CodeGenerator-mips64.h
++++ b/js/src/jit/mips64/CodeGenerator-mips64.h
+@@ -27,6 +27,11 @@ class CodeGeneratorMIPS64 : public CodeGeneratorMIPSShared {
+ 
+   // Functions for LTestVAndBranch.
+   void splitTagForTest(const ValueOperand& value, ScratchTagScope& tag);
++
++  void emitBigIntPtrDiv(LBigIntPtrDiv* ins, Register dividend, Register divisor,
++                        Register output);
++  void emitBigIntPtrMod(LBigIntPtrMod* ins, Register dividend, Register divisor,
++                        Register output);
+ };
+ 
+ typedef CodeGeneratorMIPS64 CodeGeneratorSpecific;
+diff --git a/js/src/jit/mips64/Lowering-mips64.cpp b/js/src/jit/mips64/Lowering-mips64.cpp
+index d4418b5a65..0ddb784296 100644
+--- a/js/src/jit/mips64/Lowering-mips64.cpp
++++ b/js/src/jit/mips64/Lowering-mips64.cpp
+@@ -75,14 +75,6 @@ void LIRGeneratorMIPS64::lowerUModI64(MMod* mod) {
+   defineInt64(lir, mod);
+ }
+ 
+-void LIRGeneratorMIPS64::lowerBigIntPtrDiv(MBigIntPtrDiv* ins) {
+-  MOZ_CRASH("NYI");
+-}
+-
+-void LIRGeneratorMIPS64::lowerBigIntPtrMod(MBigIntPtrMod* ins) {
+-  MOZ_CRASH("NYI");
+-}
+-
+ void LIRGeneratorMIPS64::lowerAtomicLoad64(MLoadUnboxedScalar* ins) {
+   const LUse elements = useRegister(ins->elements());
+   const LAllocation index =
+diff --git a/js/src/jit/mips64/Lowering-mips64.h b/js/src/jit/mips64/Lowering-mips64.h
+index 0334e857ca..d9c2dc6524 100644
+--- a/js/src/jit/mips64/Lowering-mips64.h
++++ b/js/src/jit/mips64/Lowering-mips64.h
+@@ -41,9 +41,6 @@ class LIRGeneratorMIPS64 : public LIRGeneratorMIPSShared {
+   void lowerUDivI64(MDiv* div);
+   void lowerUModI64(MMod* mod);
+ 
+-  void lowerBigIntPtrDiv(MBigIntPtrDiv* ins);
+-  void lowerBigIntPtrMod(MBigIntPtrMod* ins);
+-
+   void lowerAtomicLoad64(MLoadUnboxedScalar* ins);
+   void lowerAtomicStore64(MStoreUnboxedScalar* ins);
+ };
+diff --git a/js/src/jit/mips64/MacroAssembler-mips64-inl.h b/js/src/jit/mips64/MacroAssembler-mips64-inl.h
+index 855360dfd8..012044ebbb 100644
+--- a/js/src/jit/mips64/MacroAssembler-mips64-inl.h
++++ b/js/src/jit/mips64/MacroAssembler-mips64-inl.h
+@@ -56,6 +56,14 @@ void MacroAssembler::move32To64SignExtend(Register src, Register64 dest) {
+   ma_sll(dest.reg, src, Imm32(0));
+ }
+ 
++void MacroAssembler::move8SignExtendToPtr(Register src, Register dest) {
++  move8To64SignExtend(src, Register64(dest));
++}
++
++void MacroAssembler::move16SignExtendToPtr(Register src, Register dest) {
++  move16To64SignExtend(src, Register64(dest));
++}
++
+ void MacroAssembler::move32SignExtendToPtr(Register src, Register dest) {
+   ma_sll(dest, src, Imm32(0));
+ }
+@@ -315,6 +323,46 @@ void MacroAssembler::inc64(AbsoluteAddress dest) {
+   as_sd(SecondScratchReg, ScratchRegister, 0);
+ }
+ 
++void MacroAssembler::quotient64(Register rhs, Register srcDest,
++                                bool isUnsigned) {
++  if (isUnsigned) {
++#ifdef MIPSR6
++    as_ddivu(srcDest, srcDest, rhs);
++#else
++    as_ddivu(srcDest, rhs);
++#endif
++  } else {
++#ifdef MIPSR6
++    as_ddiv(srcDest, srcDest, rhs);
++#else
++    as_ddiv(srcDest, rhs);
++#endif
++  }
++#ifndef MIPSR6
++  as_mflo(srcDest);
++#endif
++}
++
++void MacroAssembler::remainder64(Register rhs, Register srcDest,
++                                 bool isUnsigned) {
++  if (isUnsigned) {
++#ifdef MIPSR6
++    as_dmodu(srcDest, srcDest, rhs);
++#else
++    as_ddivu(srcDest, rhs);
++#endif
++  } else {
++#ifdef MIPSR6
++    as_dmod(srcDest, srcDest, rhs);
++#else
++    as_ddiv(srcDest, rhs);
++#endif
++  }
++#ifndef MIPSR6
++  as_mfhi(srcDest);
++#endif
++}
++
+ void MacroAssembler::neg64(Register64 reg) { as_dsubu(reg.reg, zero, reg.reg); }
+ 
+ void MacroAssembler::negPtr(Register reg) { as_dsubu(reg, zero, reg); }
+@@ -363,6 +411,10 @@ void MacroAssembler::rshiftPtrArithmetic(Imm32 imm, Register dest) {
+   ma_dsra(dest, dest, imm);
+ }
+ 
++void MacroAssembler::rshiftPtrArithmetic(Register shift, Register dest) {
++  ma_dsra(dest, dest, shift);
++}
++
+ void MacroAssembler::rshift64Arithmetic(Imm32 imm, Register64 dest) {
+   MOZ_ASSERT(0 <= imm.value && imm.value < 64);
+   ma_dsra(dest.reg, dest.reg, imm);
+diff --git a/js/src/jit/mips64/MacroAssembler-mips64.cpp b/js/src/jit/mips64/MacroAssembler-mips64.cpp
+index 58bf261215..35914d92dc 100644
+--- a/js/src/jit/mips64/MacroAssembler-mips64.cpp
++++ b/js/src/jit/mips64/MacroAssembler-mips64.cpp
+@@ -2821,6 +2821,18 @@ void MacroAssembler::convertUInt64ToFloat32(Register64 src_, FloatRegister dest,
+   bind(&done);
+ }
+ 
++void MacroAssembler::flexibleQuotientPtr(
++    Register rhs, Register srcDest, bool isUnsigned,
++    const LiveRegisterSet& volatileLiveRegs) {
++  quotient64(rhs, srcDest, isUnsigned);
++}
++
++void MacroAssembler::flexibleRemainderPtr(
++    Register rhs, Register srcDest, bool isUnsigned,
++    const LiveRegisterSet& volatileLiveRegs) {
++  remainder64(rhs, srcDest, isUnsigned);
++}
++
+ #ifdef ENABLE_WASM_TAIL_CALLS
+ void MacroAssembler::wasmMarkCallAsSlow() { mov(ra, ra); }
+ 
+-- 
+2.47.0
+

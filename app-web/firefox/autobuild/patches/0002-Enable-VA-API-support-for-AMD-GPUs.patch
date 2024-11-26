@@ -1,17 +1,17 @@
-From 11aa4c4ec6b679fd2e6bf98093a2400075dc7dff Mon Sep 17 00:00:00 2001
+From 6819568f4ba7fff8b015c68f5d0b3adba73b227d Mon Sep 17 00:00:00 2001
 From: Jiangjin Wang <kaymw@aosc.io>
 Date: Tue, 14 Nov 2023 18:14:20 -0800
-Subject: [PATCH 02/11] Enable VA-API support for AMD GPUs
+Subject: [PATCH 02/12] Enable VA-API support for AMD GPUs
 
 ---
  widget/gtk/GfxInfo.cpp | 8 --------
  1 file changed, 8 deletions(-)
 
 diff --git a/widget/gtk/GfxInfo.cpp b/widget/gtk/GfxInfo.cpp
-index ca0eb790a9..92396669c4 100644
+index bc26a3b373..d21714c743 100644
 --- a/widget/gtk/GfxInfo.cpp
 +++ b/widget/gtk/GfxInfo.cpp
-@@ -1094,14 +1094,6 @@ const nsTArray<GfxDriverInfo>& GfxInfo::GetGfxDriverInfo() {
+@@ -1105,14 +1105,6 @@ const nsTArray<GfxDriverInfo>& GfxInfo::GetGfxDriverInfo() {
          nsIGfxInfo::FEATURE_BLOCKED_DEVICE, DRIVER_LESS_THAN, V(23, 1, 1, 0),
          "FEATURE_HARDWARE_VIDEO_DECODING_AMD_DISABLE", "Mesa 23.1.1.0");
  
@@ -27,5 +27,5 @@ index ca0eb790a9..92396669c4 100644
      // FEATURE_HW_DECODED_VIDEO_ZERO_COPY - ALLOWLIST
      APPEND_TO_DRIVER_BLOCKLIST2(OperatingSystem::Linux, DeviceFamily::All,
 -- 
-2.47.0.windows.2
+2.47.0
 

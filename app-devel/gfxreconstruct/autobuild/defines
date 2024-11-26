@@ -1,0 +1,7 @@
+PKGNAME=gfxconstruct
+PKGDES="Tools for capturing and replaying Vulkan APIs"
+PKGSEC=devel
+PKGDEP="vulkan-loader wayland x11-lib xcb-util-keysyms lz4 zstd zlib"
+BUILDDEP="vulkan-headers"
+
+ABTYPE=cmakeninja

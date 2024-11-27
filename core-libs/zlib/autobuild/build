@@ -1,6 +1,0 @@
-abinfo "Building zlib from source ..."
-"${SRCDIR}"/configure --prefix=/usr
-make $ABMK $MAKE_AFTER
-
-abinfo "Installing files ..."
-make install DESTDIR="$PKGDIR" $MAKE_AFTER

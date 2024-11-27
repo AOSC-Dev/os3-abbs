@@ -1,4 +1,4 @@
-From b02f62c48ce74ea6ece8c88b9996fa102eb23cb0 Mon Sep 17 00:00:00 2001
+From 51e9c79004e85e63142d1e4dbe8f9e457833c5c3 Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Sat, 10 Aug 2024 06:35:24 +0800
 Subject: [PATCH 16/18] AOSCOS: Build Loongson SIMD EXtension (LSX) and
@@ -37,5 +37,5 @@ index 1fd1be71e3..fbe35fc42e 100644
        'source/scale_rgb.cc',
        'source/scale_uv.cc',
 -- 
-2.41.0.windows.1
+2.47.0
 

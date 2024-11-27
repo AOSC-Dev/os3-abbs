@@ -1,4 +1,4 @@
-From d842ed6ad39ca67c9dedad3b56396c478014c5cc Mon Sep 17 00:00:00 2001
+From 47fb55da46716e2a9bf6de735d8b03208c157e7f Mon Sep 17 00:00:00 2001
 From: Nico Grunbaum <na-g@nostrum.com>
 Date: Sun, 28 Jul 2024 06:49:13 +0000
 Subject: [PATCH 04/18] UPSTREAM: Bug 1905842 - non-unified build scale_uv.cc
@@ -25,5 +25,5 @@ index 18fbf36dc2..c461db46ce 100644
  
  GYP_DIRS += ['libyuv']
 -- 
-2.41.0.windows.1
+2.47.0
 

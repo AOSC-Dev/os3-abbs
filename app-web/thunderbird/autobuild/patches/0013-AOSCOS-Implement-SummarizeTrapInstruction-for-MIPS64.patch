@@ -1,4 +1,4 @@
-From 4bab07f6d019f950378fceb572f78bbfda109983 Mon Sep 17 00:00:00 2001
+From f6377da385787894d4f0e54d763069d21787c7f4 Mon Sep 17 00:00:00 2001
 From: Jiangjin Wang <the@salted.fish>
 Date: Tue, 28 Nov 2023 21:44:16 -0800
 Subject: [PATCH 13/18] AOSCOS: Implement SummarizeTrapInstruction for MIPS64
@@ -211,5 +211,5 @@ index 99834d6740..c4b449d79d 100644
  
  #  elif defined(JS_CODEGEN_NONE)
 -- 
-2.41.0.windows.1
+2.47.0
 

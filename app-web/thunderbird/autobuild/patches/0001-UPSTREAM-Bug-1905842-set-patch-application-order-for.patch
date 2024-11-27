@@ -1,4 +1,4 @@
-From e9227926f2131c03cf564ee15f1087c9dbd5515a Mon Sep 17 00:00:00 2001
+From e4ee943585ecc4f1c23a05fe49cb9dafa6d9822d Mon Sep 17 00:00:00 2001
 From: Nico Grunbaum <na-g@nostrum.com>
 Date: Sun, 28 Jul 2024 06:49:12 +0000
 Subject: [PATCH 01/18] UPSTREAM: Bug 1905842 - set patch application order for
@@ -69,5 +69,5 @@ index 318735146a..9a1fe8b9ad 100644
 +    - 01_make_mjpeg_printfs_optional.patch
 +    - 02_update_gyp.patch
 -- 
-2.41.0.windows.1
+2.47.0
 

@@ -1,4 +1,4 @@
-From 7e7c7540e4f5de9b429e01e627e5e1949e907c58 Mon Sep 17 00:00:00 2001
+From 506a6ab2b8be24bc354392018d904e26477ded68 Mon Sep 17 00:00:00 2001
 From: Julian Seward <jseward@acm.org>
 Date: Wed, 7 Aug 2024 11:08:13 +0000
 Subject: [PATCH 07/18] BACKPORT: Bug 1855960 - [MIPS64] Make some assembler
@@ -1086,5 +1086,5 @@ index 24c76a65a7..95f127151d 100644
  
    void storeUnalignedFloat32(const wasm::MemoryAccessDesc& access,
 -- 
-2.41.0.windows.1
+2.47.0
 

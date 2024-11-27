@@ -1,4 +1,4 @@
-From d2fc85973cf2002e406800859b157cd9568f1ce5 Mon Sep 17 00:00:00 2001
+From 2f08c29dcd22b576b6999b1aa0e790049bb9dc2b Mon Sep 17 00:00:00 2001
 From: Jiangjin Wang <kaymw@aosc.io>
 Date: Sun, 22 Oct 2023 22:13:17 -0700
 Subject: [PATCH 12/18] BACKPORT: LOONGARCHLINUX: Add support for LoongArch64
@@ -32,5 +32,5 @@ index c39ae9da50..28191de026 100644
  #error Please add support for your architecture in build/build_config.h
  #endif
 -- 
-2.41.0.windows.1
+2.47.0
 

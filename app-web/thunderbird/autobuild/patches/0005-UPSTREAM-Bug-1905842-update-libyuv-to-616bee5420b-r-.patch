@@ -1,4 +1,4 @@
-From 7036140e6905f67703bf09b7a0a14dba75490ed4 Mon Sep 17 00:00:00 2001
+From 2b01d04b5eeee2cacd1e72e5e84f6cda3b4f84a2 Mon Sep 17 00:00:00 2001
 From: Nico Grunbaum <na-g@nostrum.com>
 Date: Sun, 28 Jul 2024 06:49:13 +0000
 Subject: [PATCH 05/18] UPSTREAM: Bug 1905842 - update libyuv to
@@ -52600,5 +52600,5 @@ index 5f8ce07ab5..22cdb1bd79 100644
    # The package's license, where possible using the mnemonic from
    # https://spdx.org/licenses/
 -- 
-2.41.0.windows.1
+2.47.0
 

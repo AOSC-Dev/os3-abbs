@@ -1,4 +1,4 @@
-From d2cd5ccb9833a42ea11aa82e6697bf8b5471b3d2 Mon Sep 17 00:00:00 2001
+From 38301f42d7404c99786128ff4bee9456a2a64670 Mon Sep 17 00:00:00 2001
 From: Eike Rathke <erack@redhat.com>
 Date: Thu, 10 Oct 2024 07:35:30 +0800
 Subject: [PATCH 08/18] FEDORA: 0001-GLIBCXX-fix-for-GCC-12.patch
@@ -43,5 +43,5 @@ index 0180f6bcfa..f587cff767 100644
   * that do use them. libstdc++ from GCC 5.0 added exception constructors with
   * char const* argument. Older versions only have a constructor with
 -- 
-2.41.0.windows.1
+2.47.0
 

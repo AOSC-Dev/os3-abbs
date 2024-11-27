@@ -1,7 +1,0 @@
-PKGNAME=qcef
-PKGSEC=libs
-PKGDEP="gconf nss qt-5"
-PKGDES="Qt5 binding of Chromium Embedded Framework"
-
-ABTYPE="cmake"
-FAIL_ARCH="!(amd64)"

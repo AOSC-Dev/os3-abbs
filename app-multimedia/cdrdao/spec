@@ -1,4 +1,5 @@
 VER=1.2.5
+REL=1
 SRCS="tbl::https://sourceforge.net/projects/cdrdao/files/cdrdao-$VER.tar.bz2"
 CHKSUMS="sha256::d19b67c853c5dba2406afaab6cd788e77f35eebe634cac4679528477c7be01b6"
 CHKUPDATE="anitya::id=263"

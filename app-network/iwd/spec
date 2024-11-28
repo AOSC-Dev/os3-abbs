@@ -1,4 +1,4 @@
-VER=3.0
+VER=3.2
 SRCS="tbl::https://mirrors.edge.kernel.org/pub/linux/network/wireless/iwd-$VER.tar.xz"
-CHKSUMS="sha256::bd167ab368b6ba302b6c948a4f41f02d233a12e20d5094b1c0393325309f8a60"
+CHKSUMS="sha256::21f5a8e29a41ff301045f36eed97a4e540262adfdc003db847fe0c7dce874e15"
 CHKUPDATE="anitya::id=18380"

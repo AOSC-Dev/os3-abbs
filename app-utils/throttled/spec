@@ -1,4 +1,4 @@
-VER=0.10.0
-SRCS="tbl::https://github.com/erpalma/throttled/archive/refs/tags/v$VER.tar.gz"
-CHKSUMS="sha256::49e042fc26a809b0e4f129598c8f12377809a43f6be5792a50a0b765a6cb69b8"
+VER=0.11
+SRCS="git::commit=tags/v$VER::https://github.com/erpalma/throttled"
+CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=231654"

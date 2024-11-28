@@ -1,6 +1,6 @@
-From a173ec83f2d1704003502f84fbd392415356ed8a Mon Sep 17 00:00:00 2001
+From cc627d20fec800e69796088e17d91f00b0ea47d6 Mon Sep 17 00:00:00 2001
 From: eatradish <sakiiily@aosc.io>
-Date: Mon, 15 Jul 2024 15:50:05 +0800
+Date: Thu, 28 Nov 2024 11:09:59 +0800
 Subject: [PATCH] cargo: use default --release build settings
 
 ---
@@ -8,12 +8,12 @@ Subject: [PATCH] cargo: use default --release build settings
  1 file changed, 14 deletions(-)
 
 diff --git a/Cargo.toml b/Cargo.toml
-index f2f08506a1..743fc49c23 100644
+index 98922a7ca2..6bc3155309 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -536,20 +536,6 @@ ttf-parser = { opt-level = 3 }
- wasmtime-cranelift = { opt-level = 3 }
- wasmtime = { opt-level = 3 }
+@@ -604,20 +604,6 @@ ui_input = { codegen-units = 1 }
+ vcs_menu = { codegen-units = 1 }
+ zed_actions = { codegen-units = 1 }
  
 -[profile.release]
 -debug = "limited"
@@ -33,5 +33,5 @@ index f2f08506a1..743fc49c23 100644
  dbg_macro = "deny"
  todo = "deny"
 -- 
-2.46.0
+2.47.1
 

@@ -1,0 +1,32 @@
+From d57964fe30504a3618e0f4ea3f497552bb35fb5a Mon Sep 17 00:00:00 2001
+From: "Liu, Chang" <cl91tp@gmail.com>
+Date: Wed, 8 Nov 2023 13:02:10 +0800
+Subject: [PATCH 6/6] modesetting: match against Multimedia Video Controllers
+ as well
+
+Some GPU devices such as those found in the Loongson 7A2000 bridge
+chips and 2K2000 SOCs identify as Multimedia Video Controllers
+(PCI class 0x4 subclass 0x0). These have standard KMS drivers in
+the kernel and the modesetting driver works flawlessly, so match
+against these types of devices as well.
+---
+ hw/xfree86/drivers/modesetting/driver.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/hw/xfree86/drivers/modesetting/driver.c b/hw/xfree86/drivers/modesetting/driver.c
+index 535f49d1d..54eb42d84 100644
+--- a/hw/xfree86/drivers/modesetting/driver.c
++++ b/hw/xfree86/drivers/modesetting/driver.c
+@@ -96,6 +96,9 @@ static const struct pci_id_match ms_device_match[] = {
+     {
+      PCI_MATCH_ANY, PCI_MATCH_ANY, PCI_MATCH_ANY, PCI_MATCH_ANY,
+      0x00030000, 0x00ff0000, 0},
++    {
++     PCI_MATCH_ANY, PCI_MATCH_ANY, PCI_MATCH_ANY, PCI_MATCH_ANY,
++     0x00040000, 0x00ff0000, 0},
+ 
+     {0, 0, 0},
+ };
+-- 
+2.47.1
+

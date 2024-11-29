@@ -1,7 +1,7 @@
 From b9010be23844651b133e09921993054ed9e5c1e8 Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Fri, 30 Aug 2024 14:27:59 +0800
-Subject: [PATCH 4/5] xf86: Accept devices with the 'hyperv_drm' driver
+Subject: [PATCH 4/6] xf86: Accept devices with the 'hyperv_drm' driver
 
 Put in a workaround to accept devices of the kernel's hyperv_drm
 driver. Makes Xorg work on HyperV Gen 1/2 with the DRM graphics
@@ -28,5 +28,5 @@ index 45028f7a6..071f44b2a 100644
                      if (strcmp(xf86_platform_devices[j].attribs->driver, "simpledrm") == 0)
                          break;
 -- 
-2.47.0
+2.47.1
 

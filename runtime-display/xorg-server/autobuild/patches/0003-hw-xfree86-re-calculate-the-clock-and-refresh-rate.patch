@@ -1,7 +1,7 @@
 From 5c1585f201bc1b75eea3416ea7cff441509be526 Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Fri, 30 Aug 2024 14:18:25 +0800
-Subject: [PATCH 3/5] hw/xfree86: re-calculate the clock and refresh rate
+Subject: [PATCH 3/6] hw/xfree86: re-calculate the clock and refresh rate
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -85,5 +85,5 @@ index ad01b87ec..561087717 100644
      MODE_ERROR = -1             /* error condition */
  } ModeStatus;
 -- 
-2.47.0
+2.47.1
 

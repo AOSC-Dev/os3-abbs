@@ -1,7 +1,7 @@
 From d02162ee355de18fc02474a43226bed8777f734c Mon Sep 17 00:00:00 2001
 From: Ben Skeggs <bskeggs@redhat.com>
 Date: Sat, 22 Apr 2017 02:26:28 +1000
-Subject: [PATCH 2/5] xfree86: use modesetting driver by default on GeForce 8
+Subject: [PATCH 2/6] xfree86: use modesetting driver by default on GeForce 8
  and newer
 
 Signed-off-by: Ben Skeggs <bskeggs@redhat.com>
@@ -49,5 +49,5 @@ index db705bf72..d2e78acaa 100644
  #endif
          driverList[idx++] = "nv";
 -- 
-2.47.0
+2.47.1
 

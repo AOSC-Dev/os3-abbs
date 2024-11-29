@@ -1,4 +1,4 @@
-VER=1.500
+VER=1.501
 SRCS="tbl::https://github.com/lxgw/LxgwWenKai/releases/download/v$VER/lxgw-wenkai-v$VER.tar.gz"
-CHKSUMS="sha256::e5c4121eb2ff925966b2b3921070e1b2221adcf5e90e1e442eb0a7561ffda712"
+CHKSUMS="sha256::ec1060e93189cd35600473f2cd36061635e689dbc0cce542580535d4bca59812"
 CHKUPDATE="anitya::id=227594"

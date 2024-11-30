@@ -1,4 +1,4 @@
-From eb78e4b84df5127bcf46f67db1704ec47097a199 Mon Sep 17 00:00:00 2001
+From 276466ca7ea09276e2dea905c818d490105b787f Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <baimingcong@uniontech.com>
 Date: Thu, 27 Jun 2024 14:37:53 +0800
 Subject: [PATCH 108/164] DEEPIN: net: stmmac: fix dwmac-phytium build on 6.9
@@ -15,7 +15,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-phytium.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-phytium.c
-index 6e8e44730bec..6ecfa671b7f3 100644
+index 6e8e44730bec6..6ecfa671b7f37 100644
 --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-phytium.c
 +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-phytium.c
 @@ -176,7 +176,7 @@ static int phytium_dwmac_probe(struct platform_device *pdev)
@@ -28,5 +28,5 @@ index 6e8e44730bec..6ecfa671b7f3 100644
  	struct net_device *ndev = platform_get_drvdata(pdev);
  	struct stmmac_priv *priv = netdev_priv(ndev);
 -- 
-2.47.0
+2.47.1
 

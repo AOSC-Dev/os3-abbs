@@ -31,7 +31,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  4 files changed, 83 insertions(+), 27 deletions(-)
 
 diff --git a/arch/loongarch/include/asm/atomic.h b/arch/loongarch/include/asm/atomic.h
-index 99af8b3160a8..c86f0ab922ec 100644
+index 99af8b3160a88..c86f0ab922ec7 100644
 --- a/arch/loongarch/include/asm/atomic.h
 +++ b/arch/loongarch/include/asm/atomic.h
 @@ -15,6 +15,7 @@
@@ -51,7 +51,7 @@ index 99af8b3160a8..c86f0ab922ec 100644
  #define __AMOR_DB	"amor_db.d	"
  #define __AMXOR_DB	"amxor_db.d	"
 diff --git a/arch/loongarch/include/asm/mmu_context.h b/arch/loongarch/include/asm/mmu_context.h
-index 9f97c3453b9c..304363bd3935 100644
+index 9f97c3453b9ce..304363bd39352 100644
 --- a/arch/loongarch/include/asm/mmu_context.h
 +++ b/arch/loongarch/include/asm/mmu_context.h
 @@ -49,12 +49,12 @@ static inline void enter_lazy_tlb(struct mm_struct *mm, struct task_struct *tsk)
@@ -127,7 +127,7 @@ index 9f97c3453b9c..304363bd3935 100644
  		}
  	}
 diff --git a/arch/loongarch/include/asm/pgtable.h b/arch/loongarch/include/asm/pgtable.h
-index 85431f20a14d..9965f52ef65b 100644
+index 85431f20a14db..9965f52ef65b6 100644
 --- a/arch/loongarch/include/asm/pgtable.h
 +++ b/arch/loongarch/include/asm/pgtable.h
 @@ -331,29 +331,23 @@ static inline void set_pte(pte_t *ptep, pte_t pteval)
@@ -174,7 +174,7 @@ index 85431f20a14d..9965f52ef65b 100644
  }
  
 diff --git a/arch/loongarch/mm/fault.c b/arch/loongarch/mm/fault.c
-index 97b40defde06..deefd9617d00 100644
+index 97b40defde060..deefd9617d008 100644
 --- a/arch/loongarch/mm/fault.c
 +++ b/arch/loongarch/mm/fault.c
 @@ -31,11 +31,52 @@
@@ -231,5 +231,5 @@ index 97b40defde06..deefd9617d00 100644
  	if (fixup_exception(regs))
  		return;
 -- 
-2.47.0
+2.47.1
 

@@ -16,7 +16,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/loongarch/Kconfig b/arch/loongarch/Kconfig
-index 7ba3baee859e..41ff8b75efe7 100644
+index 7ba3baee859e4..41ff8b75efe7e 100644
 --- a/arch/loongarch/Kconfig
 +++ b/arch/loongarch/Kconfig
 @@ -147,7 +147,7 @@ config LOONGARCH
@@ -29,5 +29,5 @@ index 7ba3baee859e..41ff8b75efe7 100644
  	select HAVE_PERF_EVENTS
  	select HAVE_PERF_REGS
 -- 
-2.47.0
+2.47.1
 

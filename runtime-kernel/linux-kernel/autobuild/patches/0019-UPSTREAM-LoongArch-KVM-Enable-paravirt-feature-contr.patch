@@ -33,7 +33,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  create mode 100644 arch/loongarch/include/uapi/asm/kvm_para.h
 
 diff --git a/arch/loongarch/include/asm/kvm_host.h b/arch/loongarch/include/asm/kvm_host.h
-index 5552d5142127..d6bb72424027 100644
+index 5552d5142127e..d6bb72424027a 100644
 --- a/arch/loongarch/include/asm/kvm_host.h
 +++ b/arch/loongarch/include/asm/kvm_host.h
 @@ -112,6 +112,8 @@ struct kvm_arch {
@@ -58,7 +58,7 @@ index 5552d5142127..d6bb72424027 100644
  	/*
  	 * Switch pointer-to-function type to unsigned long
 diff --git a/arch/loongarch/include/asm/kvm_para.h b/arch/loongarch/include/asm/kvm_para.h
-index 43ec61589e6c..d0f087870628 100644
+index 43ec61589e6cd..d0f087870628a 100644
 --- a/arch/loongarch/include/asm/kvm_para.h
 +++ b/arch/loongarch/include/asm/kvm_para.h
 @@ -2,6 +2,8 @@
@@ -71,7 +71,7 @@ index 43ec61589e6c..d0f087870628 100644
   * Hypercall code field
   */
 diff --git a/arch/loongarch/include/asm/kvm_vcpu.h b/arch/loongarch/include/asm/kvm_vcpu.h
-index ca067bf6dd0a..d7e8f7d50ee0 100644
+index ca067bf6dd0ac..d7e8f7d50ee0c 100644
 --- a/arch/loongarch/include/asm/kvm_vcpu.h
 +++ b/arch/loongarch/include/asm/kvm_vcpu.h
 @@ -130,4 +130,9 @@ static inline bool kvm_pvtime_supported(void)
@@ -85,7 +85,7 @@ index ca067bf6dd0a..d7e8f7d50ee0 100644
 +
  #endif /* __ASM_LOONGARCH_KVM_VCPU_H__ */
 diff --git a/arch/loongarch/include/asm/loongarch.h b/arch/loongarch/include/asm/loongarch.h
-index e7c8311c87ec..70b2c90a366f 100644
+index e7c8311c87eca..70b2c90a366f1 100644
 --- a/arch/loongarch/include/asm/loongarch.h
 +++ b/arch/loongarch/include/asm/loongarch.h
 @@ -161,16 +161,8 @@
@@ -107,7 +107,7 @@ index e7c8311c87ec..70b2c90a366f 100644
  #ifndef __ASSEMBLY__
  
 diff --git a/arch/loongarch/include/uapi/asm/Kbuild b/arch/loongarch/include/uapi/asm/Kbuild
-index c6d141d7b7d7..517761419999 100644
+index c6d141d7b7d73..517761419999a 100644
 --- a/arch/loongarch/include/uapi/asm/Kbuild
 +++ b/arch/loongarch/include/uapi/asm/Kbuild
 @@ -1,4 +1,2 @@
@@ -116,7 +116,7 @@ index c6d141d7b7d7..517761419999 100644
 -
 -generic-y += kvm_para.h
 diff --git a/arch/loongarch/include/uapi/asm/kvm.h b/arch/loongarch/include/uapi/asm/kvm.h
-index 06778dd37ad1..70d89070bfeb 100644
+index 06778dd37ad15..70d89070bfeb4 100644
 --- a/arch/loongarch/include/uapi/asm/kvm.h
 +++ b/arch/loongarch/include/uapi/asm/kvm.h
 @@ -92,13 +92,15 @@ struct kvm_fpu {
@@ -144,7 +144,7 @@ index 06778dd37ad1..70d89070bfeb 100644
  #define KVM_LOONGARCH_VCPU_CPUCFG	0
 diff --git a/arch/loongarch/include/uapi/asm/kvm_para.h b/arch/loongarch/include/uapi/asm/kvm_para.h
 new file mode 100644
-index 000000000000..b0604aa9b4bb
+index 0000000000000..b0604aa9b4bbd
 --- /dev/null
 +++ b/arch/loongarch/include/uapi/asm/kvm_para.h
 @@ -0,0 +1,21 @@
@@ -170,7 +170,7 @@ index 000000000000..b0604aa9b4bb
 +
 +#endif /* _UAPI_ASM_KVM_PARA_H */
 diff --git a/arch/loongarch/kernel/paravirt.c b/arch/loongarch/kernel/paravirt.c
-index aec075e568c4..a5e5936c4196 100644
+index aec075e568c45..a5e5936c4196d 100644
 --- a/arch/loongarch/kernel/paravirt.c
 +++ b/arch/loongarch/kernel/paravirt.c
 @@ -190,7 +190,7 @@ int __init pv_ipi_init(void)
@@ -210,7 +210,7 @@ index aec075e568c4..a5e5936c4196 100644
  
  	has_steal_clock = 1;
 diff --git a/arch/loongarch/kvm/exit.c b/arch/loongarch/kvm/exit.c
-index 34e23a9ed07f..90894f70ff4a 100644
+index 34e23a9ed07f5..90894f70ff4a5 100644
 --- a/arch/loongarch/kvm/exit.c
 +++ b/arch/loongarch/kvm/exit.c
 @@ -50,9 +50,7 @@ static int kvm_emu_cpucfg(struct kvm_vcpu *vcpu, larch_inst inst)
@@ -283,7 +283,7 @@ index 34e23a9ed07f..90894f70ff4a 100644
  	}
  
 diff --git a/arch/loongarch/kvm/vcpu.c b/arch/loongarch/kvm/vcpu.c
-index 6dd9518372bc..174734a23d0a 100644
+index 6dd9518372bc6..174734a23d0ac 100644
 --- a/arch/loongarch/kvm/vcpu.c
 +++ b/arch/loongarch/kvm/vcpu.c
 @@ -953,6 +953,8 @@ static int kvm_loongarch_cpucfg_has_attr(struct kvm_vcpu *vcpu,
@@ -381,7 +381,7 @@ index 6dd9518372bc..174734a23d0a 100644
  
  	if (get_user(gpa, user))
 diff --git a/arch/loongarch/kvm/vm.c b/arch/loongarch/kvm/vm.c
-index e0d267aec7a4..4ba734aaef87 100644
+index e0d267aec7a4b..4ba734aaef87a 100644
 --- a/arch/loongarch/kvm/vm.c
 +++ b/arch/loongarch/kvm/vm.c
 @@ -5,6 +5,7 @@
@@ -419,5 +419,5 @@ index e0d267aec7a4..4ba734aaef87 100644
  		return -ENXIO;
  	}
 -- 
-2.47.0
+2.47.1
 

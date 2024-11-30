@@ -1,4 +1,4 @@
-From 6449b844b839867c005964aa4d5239c690830d98 Mon Sep 17 00:00:00 2001
+From ec7e405f16c67bdac3fcc43f8683f027115a161f Mon Sep 17 00:00:00 2001
 From: graysky <therealgraysky AT proton DOT me>
 Date: Mon, 16 Sep 2024 05:55:58 -0400
 Subject: [PATCH 136/164] FROMEXT:
@@ -131,7 +131,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  3 files changed, 499 insertions(+), 17 deletions(-)
 
 diff --git a/arch/x86/Kconfig.cpu b/arch/x86/Kconfig.cpu
-index 2a7279d80460..abfadddd1b23 100644
+index 2a7279d80460a..abfadddd1b234 100644
 --- a/arch/x86/Kconfig.cpu
 +++ b/arch/x86/Kconfig.cpu
 @@ -155,9 +155,8 @@ config MPENTIUM4
@@ -569,7 +569,7 @@ index 2a7279d80460..abfadddd1b23 100644
  #
  # P6_NOPs are a relatively minor optimization that require a family >=
 diff --git a/arch/x86/Makefile b/arch/x86/Makefile
-index 5fb0cc6c1642..b06ba6facee9 100644
+index 5fb0cc6c16420..b06ba6facee9d 100644
 --- a/arch/x86/Makefile
 +++ b/arch/x86/Makefile
 @@ -178,15 +178,96 @@ else
@@ -673,7 +673,7 @@ index 5fb0cc6c1642..b06ba6facee9 100644
  
          KBUILD_CFLAGS += -mno-red-zone
 diff --git a/arch/x86/include/asm/vermagic.h b/arch/x86/include/asm/vermagic.h
-index 75884d2cdec3..f4e29563473d 100644
+index 75884d2cdec37..f4e29563473df 100644
 --- a/arch/x86/include/asm/vermagic.h
 +++ b/arch/x86/include/asm/vermagic.h
 @@ -17,6 +17,54 @@
@@ -761,5 +761,5 @@ index 75884d2cdec3..f4e29563473d 100644
  #define MODULE_PROC_FAMILY "ELAN "
  #elif defined CONFIG_MCRUSOE
 -- 
-2.47.0
+2.47.1
 

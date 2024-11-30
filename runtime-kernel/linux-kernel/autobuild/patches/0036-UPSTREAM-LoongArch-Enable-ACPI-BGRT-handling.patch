@@ -17,7 +17,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  2 files changed, 5 insertions(+), 1 deletion(-)
 
 diff --git a/arch/loongarch/kernel/acpi.c b/arch/loongarch/kernel/acpi.c
-index 929a497c987e..f1a74b80f22c 100644
+index 929a497c987e8..f1a74b80f22c5 100644
 --- a/arch/loongarch/kernel/acpi.c
 +++ b/arch/loongarch/kernel/acpi.c
 @@ -9,6 +9,7 @@
@@ -39,7 +39,7 @@ index 929a497c987e..f1a74b80f22c 100644
  
  fdt_earlycon:
 diff --git a/drivers/acpi/Kconfig b/drivers/acpi/Kconfig
-index e3a7c2aedd5f..d67f63d93b2a 100644
+index e3a7c2aedd5f0..d67f63d93b2ab 100644
 --- a/drivers/acpi/Kconfig
 +++ b/drivers/acpi/Kconfig
 @@ -451,7 +451,7 @@ config ACPI_HED
@@ -52,5 +52,5 @@ index e3a7c2aedd5f..d67f63d93b2a 100644
  	  This driver adds support for exposing the ACPI Boottime Graphics
  	  Resource Table, which allows the operating system to obtain
 -- 
-2.47.0
+2.47.1
 

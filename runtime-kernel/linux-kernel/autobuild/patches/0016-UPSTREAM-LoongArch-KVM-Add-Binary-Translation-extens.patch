@@ -24,7 +24,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  4 files changed, 84 insertions(+), 3 deletions(-)
 
 diff --git a/arch/loongarch/include/asm/kvm_host.h b/arch/loongarch/include/asm/kvm_host.h
-index 5f0677e03817..5262cec07182 100644
+index 5f0677e03817b..5262cec071823 100644
 --- a/arch/loongarch/include/asm/kvm_host.h
 +++ b/arch/loongarch/include/asm/kvm_host.h
 @@ -133,8 +133,9 @@ enum emulation_result {
@@ -60,7 +60,7 @@ index 5f0677e03817..5262cec07182 100644
  int kvm_arch_vcpu_dump_regs(struct kvm_vcpu *vcpu);
  
 diff --git a/arch/loongarch/include/asm/kvm_vcpu.h b/arch/loongarch/include/asm/kvm_vcpu.h
-index 86570084e05a..ca067bf6dd0a 100644
+index 86570084e05aa..ca067bf6dd0ac 100644
 --- a/arch/loongarch/include/asm/kvm_vcpu.h
 +++ b/arch/loongarch/include/asm/kvm_vcpu.h
 @@ -75,6 +75,12 @@ static inline void kvm_save_lasx(struct loongarch_fpu *fpu) { }
@@ -77,7 +77,7 @@ index 86570084e05a..ca067bf6dd0a 100644
  void kvm_save_timer(struct kvm_vcpu *vcpu);
  void kvm_restore_timer(struct kvm_vcpu *vcpu);
 diff --git a/arch/loongarch/kvm/exit.c b/arch/loongarch/kvm/exit.c
-index ea73f9dc2cc6..a3d550a34973 100644
+index ea73f9dc2cc6a..a3d550a34973e 100644
 --- a/arch/loongarch/kvm/exit.c
 +++ b/arch/loongarch/kvm/exit.c
 @@ -748,6 +748,14 @@ static int kvm_handle_lasx_disabled(struct kvm_vcpu *vcpu)
@@ -104,7 +104,7 @@ index ea73f9dc2cc6..a3d550a34973 100644
  	[EXCCODE_HVC]			= kvm_handle_hypercall,
  };
 diff --git a/arch/loongarch/kvm/vcpu.c b/arch/loongarch/kvm/vcpu.c
-index 2a5baa2089ca..05edf97a5bd8 100644
+index 2a5baa2089ca7..05edf97a5bd84 100644
 --- a/arch/loongarch/kvm/vcpu.c
 +++ b/arch/loongarch/kvm/vcpu.c
 @@ -6,6 +6,7 @@
@@ -216,5 +216,5 @@ index 2a5baa2089ca..05edf97a5bd8 100644
  	preempt_enable();
  }
 -- 
-2.47.0
+2.47.1
 

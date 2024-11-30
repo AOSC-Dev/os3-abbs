@@ -43,7 +43,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  create mode 100644 arch/loongarch/include/asm/qspinlock.h
 
 diff --git a/arch/loongarch/include/asm/Kbuild b/arch/loongarch/include/asm/Kbuild
-index 2bb3676429c0..4635b755b2b4 100644
+index 2bb3676429c05..4635b755b2b43 100644
 --- a/arch/loongarch/include/asm/Kbuild
 +++ b/arch/loongarch/include/asm/Kbuild
 @@ -6,7 +6,6 @@ generic-y += mcs_spinlock.h
@@ -55,7 +55,7 @@ index 2bb3676429c0..4635b755b2b4 100644
  generic-y += ioctl.h
  generic-y += statfs.h
 diff --git a/arch/loongarch/include/asm/paravirt.h b/arch/loongarch/include/asm/paravirt.h
-index dddec49671ae..3f4323603e6a 100644
+index dddec49671ae4..3f4323603e6aa 100644
 --- a/arch/loongarch/include/asm/paravirt.h
 +++ b/arch/loongarch/include/asm/paravirt.h
 @@ -19,6 +19,7 @@ static inline u64 paravirt_steal_clock(int cpu)
@@ -80,7 +80,7 @@ index dddec49671ae..3f4323603e6a 100644
  #endif
 diff --git a/arch/loongarch/include/asm/qspinlock.h b/arch/loongarch/include/asm/qspinlock.h
 new file mode 100644
-index 000000000000..e76d3aa1e1eb
+index 0000000000000..e76d3aa1e1ebe
 --- /dev/null
 +++ b/arch/loongarch/include/asm/qspinlock.h
 @@ -0,0 +1,41 @@
@@ -126,7 +126,7 @@ index 000000000000..e76d3aa1e1eb
 +
 +#endif // _ASM_LOONGARCH_QSPINLOCK_H
 diff --git a/arch/loongarch/kernel/paravirt.c b/arch/loongarch/kernel/paravirt.c
-index 867fa816726c..aec075e568c4 100644
+index 867fa816726cf..aec075e568c45 100644
 --- a/arch/loongarch/kernel/paravirt.c
 +++ b/arch/loongarch/kernel/paravirt.c
 @@ -13,6 +13,7 @@ static int has_steal_clock;
@@ -152,7 +152,7 @@ index 867fa816726c..aec075e568c4 100644
 +	return 0;
 +}
 diff --git a/arch/loongarch/kernel/setup.c b/arch/loongarch/kernel/setup.c
-index d2b18ed23b8a..cbd3c09a93c1 100644
+index d2b18ed23b8a4..cbd3c09a93c14 100644
 --- a/arch/loongarch/kernel/setup.c
 +++ b/arch/loongarch/kernel/setup.c
 @@ -604,6 +604,8 @@ void __init setup_arch(char **cmdline_p)
@@ -165,7 +165,7 @@ index d2b18ed23b8a..cbd3c09a93c1 100644
  	plat_smp_setup();
  	prefill_possible_map();
 diff --git a/arch/loongarch/kernel/smp.c b/arch/loongarch/kernel/smp.c
-index b1329fe01fae..fb15d264f1d6 100644
+index b1329fe01fae9..fb15d264f1d69 100644
 --- a/arch/loongarch/kernel/smp.c
 +++ b/arch/loongarch/kernel/smp.c
 @@ -476,7 +476,7 @@ core_initcall(ipi_pm_init);
@@ -187,5 +187,5 @@ index b1329fe01fae..fb15d264f1d6 100644
  
  /* called from main before smp_init() */
 -- 
-2.47.0
+2.47.1
 

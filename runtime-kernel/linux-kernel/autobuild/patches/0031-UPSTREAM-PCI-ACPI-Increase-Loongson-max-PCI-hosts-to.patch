@@ -20,7 +20,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 12 insertions(+)
 
 diff --git a/drivers/acpi/pci_mcfg.c b/drivers/acpi/pci_mcfg.c
-index 860014b89b8e..58e10a980114 100644
+index 860014b89b8eb..58e10a9801148 100644
 --- a/drivers/acpi/pci_mcfg.c
 +++ b/drivers/acpi/pci_mcfg.c
 @@ -181,6 +181,18 @@ static struct mcfg_fixup mcfg_quirks[] = {
@@ -43,5 +43,5 @@ index 860014b89b8e..58e10a980114 100644
  };
  
 -- 
-2.47.0
+2.47.1
 

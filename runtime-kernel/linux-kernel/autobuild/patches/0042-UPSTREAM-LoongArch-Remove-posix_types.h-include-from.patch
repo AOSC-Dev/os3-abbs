@@ -23,7 +23,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 1 deletion(-)
 
 diff --git a/arch/loongarch/include/uapi/asm/sigcontext.h b/arch/loongarch/include/uapi/asm/sigcontext.h
-index 6c22f616b8f1..5cd121275bac 100644
+index 6c22f616b8f15..5cd121275bacb 100644
 --- a/arch/loongarch/include/uapi/asm/sigcontext.h
 +++ b/arch/loongarch/include/uapi/asm/sigcontext.h
 @@ -9,7 +9,6 @@
@@ -35,5 +35,5 @@ index 6c22f616b8f1..5cd121275bac 100644
  /* FP context was used */
  #define SC_USED_FP		(1 << 0)
 -- 
-2.47.0
+2.47.1
 

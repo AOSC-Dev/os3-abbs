@@ -1,4 +1,4 @@
-From 21c93d56f6082a108934f6d9a6badb85ab1040fa Mon Sep 17 00:00:00 2001
+From acceaf1510cece18b3743d4f7870a3db26f02ab6 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?=E5=BF=98=E6=80=80?= <otgwt@outlook.com>
 Date: Wed, 3 Jul 2024 03:13:45 +0000
 Subject: [PATCH 114/164] DEEPIN: net: phytium: convert and remove validate()
@@ -17,7 +17,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 6 insertions(+), 64 deletions(-)
 
 diff --git a/drivers/net/ethernet/phytium/phytmac_main.c b/drivers/net/ethernet/phytium/phytmac_main.c
-index d329aded10f0..696b491750ae 100644
+index d329aded10f0a..696b491750ae5 100644
 --- a/drivers/net/ethernet/phytium/phytmac_main.c
 +++ b/drivers/net/ethernet/phytium/phytmac_main.c
 @@ -1551,71 +1551,7 @@ static void phytmac_pcs_get_state(struct phylink_config *config,
@@ -114,5 +114,5 @@ index d329aded10f0..696b491750ae 100644
  					pdata->phy_interface, &phytmac_phylink_ops);
  	if (IS_ERR(pdata->phylink)) {
 -- 
-2.47.0
+2.47.1
 

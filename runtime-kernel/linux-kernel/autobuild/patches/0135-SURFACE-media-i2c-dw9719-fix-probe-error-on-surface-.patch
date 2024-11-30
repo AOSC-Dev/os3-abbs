@@ -1,4 +1,4 @@
-From f7bc27b736f6678b8e187dedae04be43b7faf027 Mon Sep 17 00:00:00 2001
+From 16aed5059be9d596d57743e68b3dfbab6bbb0b14 Mon Sep 17 00:00:00 2001
 From: mojyack <mojyack@gmail.com>
 Date: Tue, 26 Mar 2024 05:55:44 +0900
 Subject: [PATCH 135/164] SURFACE: media: i2c: dw9719: fix probe error on
@@ -19,7 +19,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 3 insertions(+)
 
 diff --git a/drivers/media/i2c/dw9719.c b/drivers/media/i2c/dw9719.c
-index c626ed845928..0094cfda57ea 100644
+index c626ed845928c..0094cfda57ea8 100644
 --- a/drivers/media/i2c/dw9719.c
 +++ b/drivers/media/i2c/dw9719.c
 @@ -82,6 +82,9 @@ static int dw9719_power_up(struct dw9719_device *dw9719)
@@ -33,5 +33,5 @@ index c626ed845928..0094cfda57ea 100644
  	cci_write(dw9719->regmap, DW9719_CONTROL, 1, &ret);
  
 -- 
-2.47.0
+2.47.1
 

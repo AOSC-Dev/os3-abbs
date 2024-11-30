@@ -46,7 +46,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  2 files changed, 259 insertions(+)
 
 diff --git a/drivers/misc/ntsync.c b/drivers/misc/ntsync.c
-index 3c2f743c58b0..d5864891caf0 100644
+index 3c2f743c58b00..d5864891caf04 100644
 --- a/drivers/misc/ntsync.c
 +++ b/drivers/misc/ntsync.c
 @@ -6,11 +6,16 @@
@@ -355,7 +355,7 @@ index 3c2f743c58b0..d5864891caf0 100644
  		return -ENOIOCTLCMD;
  	}
 diff --git a/include/uapi/linux/ntsync.h b/include/uapi/linux/ntsync.h
-index dcfa38fdc93c..edc12c7a10dc 100644
+index dcfa38fdc93c6..edc12c7a10dca 100644
 --- a/include/uapi/linux/ntsync.h
 +++ b/include/uapi/linux/ntsync.h
 @@ -16,7 +16,21 @@ struct ntsync_sem_args {
@@ -381,5 +381,5 @@ index dcfa38fdc93c..edc12c7a10dc 100644
  #define NTSYNC_IOC_SEM_POST		_IOWR('N', 0x81, __u32)
  
 -- 
-2.47.0
+2.47.1
 

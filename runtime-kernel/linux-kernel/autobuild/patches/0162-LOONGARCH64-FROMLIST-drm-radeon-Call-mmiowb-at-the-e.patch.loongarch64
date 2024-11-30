@@ -1,4 +1,4 @@
-From 68c3e5226d050abbebf3c35a552372b3b17dca38 Mon Sep 17 00:00:00 2001
+From ec6e0799736dfa770dceb8c8e4b65cb1984a5cb7 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Tue, 20 Feb 2024 15:49:58 +0800
 Subject: [PATCH 162/164] LOONGARCH64: FROMLIST: drm/radeon: Call mmiowb() at
@@ -51,7 +51,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 1 insertion(+)
 
 diff --git a/drivers/gpu/drm/radeon/radeon_ring.c b/drivers/gpu/drm/radeon/radeon_ring.c
-index 8d1d458286a8..d6a58952cc9d 100644
+index 8d1d458286a84..d6a58952cc9da 100644
 --- a/drivers/gpu/drm/radeon/radeon_ring.c
 +++ b/drivers/gpu/drm/radeon/radeon_ring.c
 @@ -185,6 +185,7 @@ void radeon_ring_commit(struct radeon_device *rdev, struct radeon_ring *ring,
@@ -63,5 +63,5 @@ index 8d1d458286a8..d6a58952cc9d 100644
  
  /**
 -- 
-2.47.0
+2.47.1
 

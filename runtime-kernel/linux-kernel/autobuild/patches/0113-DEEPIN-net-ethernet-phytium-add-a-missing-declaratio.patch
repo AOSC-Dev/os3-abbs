@@ -1,4 +1,4 @@
-From 5ce8bb2f4c2e578da0231c8ae3d0f72523f4a452 Mon Sep 17 00:00:00 2001
+From 552e97e75f4dc5244f667d193f81d1e05b9a7205 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <baimingcong@uniontech.com>
 Date: Fri, 28 Jun 2024 16:23:20 +0800
 Subject: [PATCH 113/164] DEEPIN: net: ethernet: phytium: add a missing
@@ -24,7 +24,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 1 insertion(+)
 
 diff --git a/drivers/net/ethernet/phytium/phytmac_platform.c b/drivers/net/ethernet/phytium/phytmac_platform.c
-index 797909211fed..343e1a5ce564 100644
+index 797909211fed1..343e1a5ce564a 100644
 --- a/drivers/net/ethernet/phytium/phytmac_platform.c
 +++ b/drivers/net/ethernet/phytium/phytmac_platform.c
 @@ -77,6 +77,7 @@ static int phytmac_get_phy_mode(struct platform_device *pdev)
@@ -36,5 +36,5 @@ index 797909211fed..343e1a5ce564 100644
  	struct phytmac *pdata;
  	int ret, i;
 -- 
-2.47.0
+2.47.1
 

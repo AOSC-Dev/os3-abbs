@@ -28,7 +28,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  2 files changed, 65 insertions(+)
 
 diff --git a/arch/loongarch/include/uapi/asm/kvm.h b/arch/loongarch/include/uapi/asm/kvm.h
-index 49bafac8b22d..003fb766c93f 100644
+index 49bafac8b22d3..003fb766c93f7 100644
 --- a/arch/loongarch/include/uapi/asm/kvm.h
 +++ b/arch/loongarch/include/uapi/asm/kvm.h
 @@ -64,6 +64,7 @@ struct kvm_fpu {
@@ -55,7 +55,7 @@ index 49bafac8b22d..003fb766c93f 100644
  #define LOONGARCH_REG_64(TYPE, REG)	(TYPE | KVM_REG_SIZE_U64 | (REG << LOONGARCH_REG_SHIFT))
  #define KVM_IOC_CSRID(REG)		LOONGARCH_REG_64(KVM_REG_LOONGARCH_CSR, REG)
 diff --git a/arch/loongarch/kvm/vcpu.c b/arch/loongarch/kvm/vcpu.c
-index 05edf97a5bd8..17afbdc0885d 100644
+index 05edf97a5bd84..17afbdc0885db 100644
 --- a/arch/loongarch/kvm/vcpu.c
 +++ b/arch/loongarch/kvm/vcpu.c
 @@ -584,6 +584,34 @@ static int kvm_get_one_reg(struct kvm_vcpu *vcpu,
@@ -129,5 +129,5 @@ index 05edf97a5bd8..17afbdc0885d 100644
  		switch (reg->id) {
  		case KVM_REG_LOONGARCH_COUNTER:
 -- 
-2.47.0
+2.47.1
 

@@ -49,7 +49,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 1 insertion(+)
 
 diff --git a/arch/loongarch/Kconfig b/arch/loongarch/Kconfig
-index 4fbb262e421b..afcdfb5e883a 100644
+index 4fbb262e421b1..afcdfb5e883a8 100644
 --- a/arch/loongarch/Kconfig
 +++ b/arch/loongarch/Kconfig
 @@ -82,6 +82,7 @@ config LOONGARCH
@@ -61,5 +61,5 @@ index 4fbb262e421b..afcdfb5e883a 100644
  	select GENERIC_GETTIMEOFDAY
  	select GENERIC_IOREMAP if !ARCH_IOREMAP
 -- 
-2.47.0
+2.47.1
 

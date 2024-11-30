@@ -1,4 +1,4 @@
-From 6103edfc6f5f48cb36fc5bd04320b64d3630dbb9 Mon Sep 17 00:00:00 2001
+From e6f3a7e25c1200c86176f311cce49775a434428e Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jonas=20Dre=C3=9Fler?= <verdre@v0yd.nl>
 Date: Thu, 25 Mar 2021 11:33:02 +0100
 Subject: [PATCH 119/164] SURFACE: Bluetooth: btusb: Lower passive lescan
@@ -41,7 +41,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 15 insertions(+)
 
 diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index 2408e50743ca..9d6139a24982 100644
+index 2408e50743ca6..9d6139a249821 100644
 --- a/drivers/bluetooth/btusb.c
 +++ b/drivers/bluetooth/btusb.c
 @@ -65,6 +65,7 @@ static struct usb_driver btusb_driver;
@@ -81,5 +81,5 @@ index 2408e50743ca..9d6139a24982 100644
  	    (id->driver_info & BTUSB_MEDIATEK)) {
  		hdev->setup = btusb_mtk_setup;
 -- 
-2.47.0
+2.47.1
 

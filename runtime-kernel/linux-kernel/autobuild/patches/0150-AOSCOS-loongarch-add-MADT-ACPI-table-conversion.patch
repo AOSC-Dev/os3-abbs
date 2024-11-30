@@ -1,4 +1,4 @@
-From 21d40c9e10e9d4a4336a8c4d873af2bd6d11efa2 Mon Sep 17 00:00:00 2001
+From e057b2ce4f19aeac4935a82479b9fe90ed0a3168 Mon Sep 17 00:00:00 2001
 From: Miao Wang <shankerwangmiao@gmail.com>
 Date: Sat, 20 Jul 2024 06:32:15 +0800
 Subject: [PATCH 150/164] AOSCOS: loongarch: add MADT ACPI table conversion
@@ -21,7 +21,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  4 files changed, 321 insertions(+)
 
 diff --git a/arch/loongarch/include/asm/acpi.h b/arch/loongarch/include/asm/acpi.h
-index 313f66f7913a..ba78288a26e3 100644
+index 313f66f7913af..ba78288a26e3f 100644
 --- a/arch/loongarch/include/asm/acpi.h
 +++ b/arch/loongarch/include/asm/acpi.h
 @@ -45,6 +45,11 @@ static inline u32 get_acpi_id_for_cpu(unsigned int cpu)
@@ -37,7 +37,7 @@ index 313f66f7913a..ba78288a26e3 100644
  
  #define ACPI_TABLE_UPGRADE_MAX_PHYS ARCH_LOW_ADDRESS_LIMIT
 diff --git a/arch/loongarch/kernel/legacy_boot.c b/arch/loongarch/kernel/legacy_boot.c
-index 30c01c8b22a0..841d8db85a3c 100644
+index 30c01c8b22a0a..841d8db85a3cb 100644
 --- a/arch/loongarch/kernel/legacy_boot.c
 +++ b/arch/loongarch/kernel/legacy_boot.c
 @@ -1,7 +1,13 @@
@@ -381,7 +381,7 @@ index 30c01c8b22a0..841d8db85a3c 100644
  	return have_bpi;
  }
 diff --git a/drivers/acpi/tables.c b/drivers/acpi/tables.c
-index 9e1b01c35070..564e5ca523cd 100644
+index 9e1b01c350702..564e5ca523cd4 100644
 --- a/drivers/acpi/tables.c
 +++ b/drivers/acpi/tables.c
 @@ -693,6 +693,7 @@ acpi_status acpi_os_table_override(struct acpi_table_header *existing_table,
@@ -401,7 +401,7 @@ index 9e1b01c35070..564e5ca523cd 100644
  
  int __init acpi_table_init(void)
 diff --git a/include/linux/acpi.h b/include/linux/acpi.h
-index 0687a442fec7..fff07ee5116b 100644
+index 0687a442fec7d..fff07ee5116b1 100644
 --- a/include/linux/acpi.h
 +++ b/include/linux/acpi.h
 @@ -772,6 +772,16 @@ int acpi_get_local_u64_address(acpi_handle handle, u64 *addr);
@@ -422,5 +422,5 @@ index 0687a442fec7..fff07ee5116b 100644
  
  #define acpi_disabled 1
 -- 
-2.47.0
+2.47.1
 

@@ -23,7 +23,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  7 files changed, 7 insertions(+), 7 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/omap-mpuss-lowpower.c b/arch/arm/mach-omap2/omap-mpuss-lowpower.c
-index 7ad74db951f6..f18ef45e2fe1 100644
+index 7ad74db951f66..f18ef45e2fe10 100644
 --- a/arch/arm/mach-omap2/omap-mpuss-lowpower.c
 +++ b/arch/arm/mach-omap2/omap-mpuss-lowpower.c
 @@ -333,7 +333,7 @@ int omap4_hotplug_cpu(unsigned int cpu, unsigned int power_state)
@@ -36,7 +36,7 @@ index 7ad74db951f6..f18ef45e2fe1 100644
  	 * omap4_secondary_startup().
  	 */
 diff --git a/drivers/gpu/drm/msm/disp/dpu1/dpu_crtc.h b/drivers/gpu/drm/msm/disp/dpu1/dpu_crtc.h
-index b26d5fe40c72..febc3e764a63 100644
+index b26d5fe40c721..febc3e764a632 100644
 --- a/drivers/gpu/drm/msm/disp/dpu1/dpu_crtc.h
 +++ b/drivers/gpu/drm/msm/disp/dpu1/dpu_crtc.h
 @@ -231,7 +231,7 @@ struct dpu_crtc_state {
@@ -49,7 +49,7 @@ index b26d5fe40c72..febc3e764a63 100644
   */
  static inline int dpu_crtc_frame_pending(struct drm_crtc *crtc)
 diff --git a/drivers/infiniband/core/sa_query.c b/drivers/infiniband/core/sa_query.c
-index 8175dde60b0a..53571e6b3162 100644
+index 8175dde60b0a8..53571e6b3162c 100644
 --- a/drivers/infiniband/core/sa_query.c
 +++ b/drivers/infiniband/core/sa_query.c
 @@ -1420,7 +1420,7 @@ enum opa_pr_supported {
@@ -62,7 +62,7 @@ index 8175dde60b0a..53571e6b3162 100644
   * is possible and PR_IB_SUPPORTED if an IB path record
   * query is possible.
 diff --git a/drivers/input/misc/wistron_btns.c b/drivers/input/misc/wistron_btns.c
-index 5c4956678cd0..39d6f642cd19 100644
+index 5c4956678cd0a..39d6f642cd197 100644
 --- a/drivers/input/misc/wistron_btns.c
 +++ b/drivers/input/misc/wistron_btns.c
 @@ -1075,7 +1075,7 @@ static void wistron_led_init(struct device *parent)
@@ -75,7 +75,7 @@ index 5c4956678cd0..39d6f642cd19 100644
  		if (led_classdev_register(parent, &wistron_mail_led))
  			leds_present &= ~FE_MAIL_LED;
 diff --git a/drivers/mtd/nand/raw/nandsim.c b/drivers/mtd/nand/raw/nandsim.c
-index 179b28459b4b..df48b7d01d16 100644
+index 179b28459b4bd..df48b7d01d16c 100644
 --- a/drivers/mtd/nand/raw/nandsim.c
 +++ b/drivers/mtd/nand/raw/nandsim.c
 @@ -1381,7 +1381,7 @@ static inline union ns_mem *NS_GET_PAGE(struct nandsim *ns)
@@ -88,7 +88,7 @@ index 179b28459b4b..df48b7d01d16 100644
  static inline u_char *NS_PAGE_BYTE_OFF(struct nandsim *ns)
  {
 diff --git a/drivers/scsi/bfa/bfa_fcs.c b/drivers/scsi/bfa/bfa_fcs.c
-index 5023c0ab4277..e52ce9b01f49 100644
+index 5023c0ab42777..e52ce9b01f49a 100644
 --- a/drivers/scsi/bfa/bfa_fcs.c
 +++ b/drivers/scsi/bfa/bfa_fcs.c
 @@ -1431,7 +1431,7 @@ bfa_cb_lps_flogo_comp(void *bfad, void *uarg)
@@ -101,7 +101,7 @@ index 5023c0ab4277..e52ce9b01f49 100644
  bfa_fcs_vf_t   *
  bfa_fcs_vf_lookup(struct bfa_fcs_s *fcs, u16 vf_id)
 diff --git a/drivers/scsi/pmcraid.c b/drivers/scsi/pmcraid.c
-index a2a084c8075e..72a4c6e3d0c8 100644
+index a2a084c8075e0..72a4c6e3d0c8d 100644
 --- a/drivers/scsi/pmcraid.c
 +++ b/drivers/scsi/pmcraid.c
 @@ -4009,7 +4009,7 @@ static void pmcraid_tasklet_function(unsigned long instance)
@@ -114,5 +114,5 @@ index a2a084c8075e..72a4c6e3d0c8 100644
   */
  static
 -- 
-2.47.0
+2.47.1
 

@@ -30,7 +30,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  8 files changed, 48 insertions(+), 8 deletions(-)
 
 diff --git a/arch/loongarch/include/asm/cpu-features.h b/arch/loongarch/include/asm/cpu-features.h
-index 2eafe6a6aca8..16a716f88a5c 100644
+index 2eafe6a6aca81..16a716f88a5ca 100644
 --- a/arch/loongarch/include/asm/cpu-features.h
 +++ b/arch/loongarch/include/asm/cpu-features.h
 @@ -65,5 +65,6 @@
@@ -41,7 +41,7 @@ index 2eafe6a6aca8..16a716f88a5c 100644
  
  #endif /* __ASM_CPU_FEATURES_H */
 diff --git a/arch/loongarch/include/asm/cpu.h b/arch/loongarch/include/asm/cpu.h
-index 48b9f7168bcc..843f9c4ec980 100644
+index 48b9f7168bcca..843f9c4ec9807 100644
 --- a/arch/loongarch/include/asm/cpu.h
 +++ b/arch/loongarch/include/asm/cpu.h
 @@ -99,6 +99,7 @@ enum cpu_type_enum {
@@ -60,7 +60,7 @@ index 48b9f7168bcc..843f9c4ec980 100644
  
  #endif /* _ASM_CPU_H */
 diff --git a/arch/loongarch/include/asm/hardirq.h b/arch/loongarch/include/asm/hardirq.h
-index 1d7feb719515..10da8d6961cb 100644
+index 1d7feb7195157..10da8d6961cb0 100644
 --- a/arch/loongarch/include/asm/hardirq.h
 +++ b/arch/loongarch/include/asm/hardirq.h
 @@ -12,12 +12,13 @@
@@ -79,7 +79,7 @@ index 1d7feb719515..10da8d6961cb 100644
  
  typedef struct {
 diff --git a/arch/loongarch/include/asm/irq.h b/arch/loongarch/include/asm/irq.h
-index 65503c9eb529..c4835800c8b9 100644
+index 65503c9eb5293..c4835800c8b9b 100644
 --- a/arch/loongarch/include/asm/irq.h
 +++ b/arch/loongarch/include/asm/irq.h
 @@ -39,11 +39,22 @@ void spurious_interrupt(void);
@@ -116,7 +116,7 @@ index 65503c9eb529..c4835800c8b9 100644
  #define LOONGSON_PCH_IRQ_BASE		64
  #define LOONGSON_PCH_ACPI_IRQ		(LOONGSON_PCH_IRQ_BASE + 47)
 diff --git a/arch/loongarch/include/asm/loongarch.h b/arch/loongarch/include/asm/loongarch.h
-index 70b2c90a366f..69706d7c3476 100644
+index 70b2c90a366f1..69706d7c3476d 100644
 --- a/arch/loongarch/include/asm/loongarch.h
 +++ b/arch/loongarch/include/asm/loongarch.h
 @@ -246,8 +246,8 @@
@@ -182,7 +182,7 @@ index 70b2c90a366f..69706d7c3476 100644
  #define EXCCODE_INT_END		(EXCCODE_INT_START + EXCCODE_INT_NUM - 1)
  
 diff --git a/arch/loongarch/include/asm/smp.h b/arch/loongarch/include/asm/smp.h
-index 50db503f44e3..3383c9d24e94 100644
+index 50db503f44e3c..3383c9d24e942 100644
 --- a/arch/loongarch/include/asm/smp.h
 +++ b/arch/loongarch/include/asm/smp.h
 @@ -70,10 +70,12 @@ extern int __cpu_logical_map[NR_CPUS];
@@ -199,7 +199,7 @@ index 50db503f44e3..3383c9d24e94 100644
  struct secondary_data {
  	unsigned long stack;
 diff --git a/arch/loongarch/kernel/cpu-probe.c b/arch/loongarch/kernel/cpu-probe.c
-index 55320813ee08..14f0449f5452 100644
+index 55320813ee081..14f0449f54520 100644
 --- a/arch/loongarch/kernel/cpu-probe.c
 +++ b/arch/loongarch/kernel/cpu-probe.c
 @@ -106,7 +106,6 @@ static void cpu_probe_common(struct cpuinfo_loongarch *c)
@@ -220,7 +220,7 @@ index 55320813ee08..14f0449f5452 100644
  		c->options |= LOONGARCH_CPU_HYPERVISOR;
  
 diff --git a/arch/loongarch/kernel/irq.c b/arch/loongarch/kernel/irq.c
-index adac8fcbb2ac..d129039b368b 100644
+index adac8fcbb2aca..d129039b368b0 100644
 --- a/arch/loongarch/kernel/irq.c
 +++ b/arch/loongarch/kernel/irq.c
 @@ -87,6 +87,18 @@ static void __init init_vec_parent_group(void)
@@ -243,5 +243,5 @@ index adac8fcbb2ac..d129039b368b 100644
  {
  	int i;
 -- 
-2.47.0
+2.47.1
 

@@ -17,7 +17,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 59 insertions(+)
 
 diff --git a/tools/testing/selftests/drivers/ntsync/ntsync.c b/tools/testing/selftests/drivers/ntsync/ntsync.c
-index b6481c2b85cc..12ccb4ec28e4 100644
+index b6481c2b85cc9..12ccb4ec28e43 100644
 --- a/tools/testing/selftests/drivers/ntsync/ntsync.c
 +++ b/tools/testing/selftests/drivers/ntsync/ntsync.c
 @@ -442,6 +442,65 @@ TEST(manual_event_state)
@@ -87,5 +87,5 @@ index b6481c2b85cc..12ccb4ec28e4 100644
  {
  	int objs[NTSYNC_MAX_WAIT_COUNT + 1], fd, ret;
 -- 
-2.47.0
+2.47.1
 

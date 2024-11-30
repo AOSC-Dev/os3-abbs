@@ -26,7 +26,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  create mode 100644 arch/loongarch/mm/pageattr.c
 
 diff --git a/arch/loongarch/Kconfig b/arch/loongarch/Kconfig
-index afcdfb5e883a..2c7b2bc6368e 100644
+index afcdfb5e883a8..2c7b2bc6368ef 100644
 --- a/arch/loongarch/Kconfig
 +++ b/arch/loongarch/Kconfig
 @@ -25,6 +25,7 @@ config LOONGARCH
@@ -39,7 +39,7 @@ index afcdfb5e883a..2c7b2bc6368e 100644
  	select ARCH_INLINE_READ_LOCK_BH if !PREEMPTION
 diff --git a/arch/loongarch/include/asm/set_memory.h b/arch/loongarch/include/asm/set_memory.h
 new file mode 100644
-index 000000000000..64c7f942e8ec
+index 0000000000000..64c7f942e8ece
 --- /dev/null
 +++ b/arch/loongarch/include/asm/set_memory.h
 @@ -0,0 +1,17 @@
@@ -61,7 +61,7 @@ index 000000000000..64c7f942e8ec
 +
 +#endif /* _ASM_LOONGARCH_SET_MEMORY_H */
 diff --git a/arch/loongarch/mm/Makefile b/arch/loongarch/mm/Makefile
-index e4d1e581dbae..278be2c8fc36 100644
+index e4d1e581dbae3..278be2c8fc369 100644
 --- a/arch/loongarch/mm/Makefile
 +++ b/arch/loongarch/mm/Makefile
 @@ -4,7 +4,8 @@
@@ -76,7 +76,7 @@ index e4d1e581dbae..278be2c8fc36 100644
  obj-$(CONFIG_KASAN)		+= kasan_init.o
 diff --git a/arch/loongarch/mm/pageattr.c b/arch/loongarch/mm/pageattr.c
 new file mode 100644
-index 000000000000..e3db1c38b5fe
+index 0000000000000..e3db1c38b5fe3
 --- /dev/null
 +++ b/arch/loongarch/mm/pageattr.c
 @@ -0,0 +1,158 @@
@@ -239,5 +239,5 @@ index 000000000000..e3db1c38b5fe
 +	return __set_memory(addr, numpages, __pgprot(_PAGE_WRITE | _PAGE_DIRTY), __pgprot(0));
 +}
 -- 
-2.47.0
+2.47.1
 

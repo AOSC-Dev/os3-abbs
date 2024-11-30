@@ -31,7 +31,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  7 files changed, 205 insertions(+), 3 deletions(-)
 
 diff --git a/arch/loongarch/include/asm/kvm_csr.h b/arch/loongarch/include/asm/kvm_csr.h
-index 724ca8b7b401..4a76ce796f1f 100644
+index 724ca8b7b4011..4a76ce796f1f4 100644
 --- a/arch/loongarch/include/asm/kvm_csr.h
 +++ b/arch/loongarch/include/asm/kvm_csr.h
 @@ -30,6 +30,7 @@
@@ -60,7 +60,7 @@ index 724ca8b7b401..4a76ce796f1f 100644
 +
  #endif	/* __ASM_LOONGARCH_KVM_CSR_H__ */
 diff --git a/arch/loongarch/include/asm/kvm_host.h b/arch/loongarch/include/asm/kvm_host.h
-index 5262cec07182..5552d5142127 100644
+index 5262cec071823..5552d5142127e 100644
 --- a/arch/loongarch/include/asm/kvm_host.h
 +++ b/arch/loongarch/include/asm/kvm_host.h
 @@ -30,6 +30,7 @@
@@ -125,7 +125,7 @@ index 5262cec07182..5552d5142127 100644
  int kvm_arch_vcpu_dump_regs(struct kvm_vcpu *vcpu);
  
 diff --git a/arch/loongarch/include/asm/loongarch.h b/arch/loongarch/include/asm/loongarch.h
-index ab6985d9e49f..e7c8311c87ec 100644
+index ab6985d9e49f0..e7c8311c87eca 100644
 --- a/arch/loongarch/include/asm/loongarch.h
 +++ b/arch/loongarch/include/asm/loongarch.h
 @@ -119,6 +119,7 @@
@@ -137,7 +137,7 @@ index ab6985d9e49f..e7c8311c87ec 100644
  #define  CPUCFG6_UPM			BIT(14)
  
 diff --git a/arch/loongarch/include/uapi/asm/kvm.h b/arch/loongarch/include/uapi/asm/kvm.h
-index 003fb766c93f..06778dd37ad1 100644
+index 003fb766c93f7..06778dd37ad15 100644
 --- a/arch/loongarch/include/uapi/asm/kvm.h
 +++ b/arch/loongarch/include/uapi/asm/kvm.h
 @@ -98,6 +98,7 @@ struct kvm_fpu {
@@ -149,7 +149,7 @@ index 003fb766c93f..06778dd37ad1 100644
  /* Device Control API on vcpu fd */
  #define KVM_LOONGARCH_VCPU_CPUCFG	0
 diff --git a/arch/loongarch/kvm/exit.c b/arch/loongarch/kvm/exit.c
-index a3d550a34973..34e23a9ed07f 100644
+index a3d550a34973e..34e23a9ed07f5 100644
 --- a/arch/loongarch/kvm/exit.c
 +++ b/arch/loongarch/kvm/exit.c
 @@ -127,6 +127,14 @@ static int kvm_handle_csr(struct kvm_vcpu *vcpu, larch_inst inst)
@@ -168,7 +168,7 @@ index a3d550a34973..34e23a9ed07f 100644
  	switch (rj) {
  	case 0: /* process csrrd */
 diff --git a/arch/loongarch/kvm/vcpu.c b/arch/loongarch/kvm/vcpu.c
-index 17afbdc0885d..6dd9518372bc 100644
+index 17afbdc0885db..6dd9518372bc6 100644
 --- a/arch/loongarch/kvm/vcpu.c
 +++ b/arch/loongarch/kvm/vcpu.c
 @@ -32,6 +32,126 @@ const struct kvm_stats_header kvm_vcpu_stats_header = {
@@ -400,7 +400,7 @@ index 17afbdc0885d..6dd9518372bc 100644
  	if (vcpu->arch.aux_inuse & KVM_LARCH_HWCSR_USABLE)
  		return 0;
 diff --git a/arch/loongarch/kvm/vm.c b/arch/loongarch/kvm/vm.c
-index 33398a151e71..e0d267aec7a4 100644
+index 33398a151e716..e0d267aec7a4b 100644
 --- a/arch/loongarch/kvm/vm.c
 +++ b/arch/loongarch/kvm/vm.c
 @@ -122,6 +122,10 @@ static int kvm_vm_feature_has_attr(struct kvm *kvm, struct kvm_device_attr *attr
@@ -415,5 +415,5 @@ index 33398a151e71..e0d267aec7a4 100644
  		return -ENXIO;
  	}
 -- 
-2.47.0
+2.47.1
 

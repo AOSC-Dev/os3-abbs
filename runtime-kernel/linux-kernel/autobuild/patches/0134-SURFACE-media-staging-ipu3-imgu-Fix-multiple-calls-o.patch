@@ -1,4 +1,4 @@
-From 991f401b9d84d2914bdf08606dad4460bf44e13c Mon Sep 17 00:00:00 2001
+From dcd1878cc8d8c0f13ac9329a403db46427b05ab4 Mon Sep 17 00:00:00 2001
 From: mojyack <mojyack@gmail.com>
 Date: Sat, 3 Feb 2024 12:59:53 +0900
 Subject: [PATCH 134/164] SURFACE: media: staging: ipu3-imgu: Fix multiple
@@ -16,7 +16,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 8 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/staging/media/ipu3/ipu3-v4l2.c b/drivers/staging/media/ipu3/ipu3-v4l2.c
-index 3df58eb3e882..81aff2d5d898 100644
+index 3df58eb3e8822..81aff2d5d8988 100644
 --- a/drivers/staging/media/ipu3/ipu3-v4l2.c
 +++ b/drivers/staging/media/ipu3/ipu3-v4l2.c
 @@ -538,18 +538,18 @@ static void imgu_vb2_stop_streaming(struct vb2_queue *vq)
@@ -47,5 +47,5 @@ index 3df58eb3e882..81aff2d5d898 100644
  		r = imgu_s_stream(imgu, false);
  		if (!r)
 -- 
-2.47.0
+2.47.1
 

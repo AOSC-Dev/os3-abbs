@@ -1,4 +1,4 @@
-From 34af98a0ecdaca58fe98a0f71c303863d9923c34 Mon Sep 17 00:00:00 2001
+From 0575d01ab6d9314d9cb0ed47844e939bc3468778 Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Tue, 15 Oct 2024 19:35:34 +0800
 Subject: [PATCH 163/164] LOONGARCH64: BACKPORT: FROMEXT: loongarch debug
@@ -30,7 +30,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  12 files changed, 34 insertions(+), 32 deletions(-)
 
 diff --git a/drivers/gpu/drm/xe/regs/xe_engine_regs.h b/drivers/gpu/drm/xe/regs/xe_engine_regs.h
-index c38db2a74614..52ca01312dac 100644
+index c38db2a746140..52ca01312dac8 100644
 --- a/drivers/gpu/drm/xe/regs/xe_engine_regs.h
 +++ b/drivers/gpu/drm/xe/regs/xe_engine_regs.h
 @@ -52,8 +52,7 @@
@@ -44,7 +44,7 @@ index c38db2a74614..52ca01312dac 100644
  #define RING_START_UDW(base)			XE_REG((base) + 0x48)
  
 diff --git a/drivers/gpu/drm/xe/xe_bo.c b/drivers/gpu/drm/xe/xe_bo.c
-index 9a01babe679c..e004d63afc53 100644
+index 9a01babe679c9..e004d63afc534 100644
 --- a/drivers/gpu/drm/xe/xe_bo.c
 +++ b/drivers/gpu/drm/xe/xe_bo.c
 @@ -1257,7 +1257,7 @@ struct xe_bo *___xe_bo_create_locked(struct xe_device *xe, struct xe_bo *bo,
@@ -94,7 +94,7 @@ index 9a01babe679c..e004d63afc53 100644
  	if (resv) {
  		ctx.allow_res_evict = !(flags & XE_BO_FLAG_NO_RESV_EVICT);
 diff --git a/drivers/gpu/drm/xe/xe_ggtt.c b/drivers/gpu/drm/xe/xe_ggtt.c
-index 226542bb1442..111bb64e02fb 100644
+index 226542bb1442e..111bb64e02fbe 100644
 --- a/drivers/gpu/drm/xe/xe_ggtt.c
 +++ b/drivers/gpu/drm/xe/xe_ggtt.c
 @@ -35,7 +35,7 @@ static u64 xelp_ggtt_pte_encode_bo(struct xe_bo *bo, u64 bo_offset,
@@ -107,7 +107,7 @@ index 226542bb1442..111bb64e02fb 100644
  
  	if (xe_bo_is_vram(bo) || xe_bo_is_stolen_devmem(bo))
 diff --git a/drivers/gpu/drm/xe/xe_guc.c b/drivers/gpu/drm/xe/xe_guc.c
-index de0fe9e65746..df5a64dffa9b 100644
+index de0fe9e65746e..df5a64dffa9b4 100644
 --- a/drivers/gpu/drm/xe/xe_guc.c
 +++ b/drivers/gpu/drm/xe/xe_guc.c
 @@ -78,7 +78,7 @@ static u32 guc_ctl_feature_flags(struct xe_guc *guc)
@@ -129,7 +129,7 @@ index de0fe9e65746..df5a64dffa9b 100644
  
  	return flags;
 diff --git a/drivers/gpu/drm/xe/xe_guc_ads.c b/drivers/gpu/drm/xe/xe_guc_ads.c
-index 1c60b685dbc6..85843b6c2c2e 100644
+index 1c60b685dbc6d..85843b6c2c2ea 100644
 --- a/drivers/gpu/drm/xe/xe_guc_ads.c
 +++ b/drivers/gpu/drm/xe/xe_guc_ads.c
 @@ -138,7 +138,7 @@ static size_t guc_ads_regset_size(struct xe_guc_ads *ads)
@@ -214,7 +214,7 @@ index 1c60b685dbc6..85843b6c2c2e 100644
  
  		/*
 diff --git a/drivers/gpu/drm/xe/xe_guc_ct.c b/drivers/gpu/drm/xe/xe_guc_ct.c
-index 1e8bb8b28a23..ca7f9ebf5373 100644
+index 1e8bb8b28a23e..ca7f9ebf5373f 100644
 --- a/drivers/gpu/drm/xe/xe_guc_ct.c
 +++ b/drivers/gpu/drm/xe/xe_guc_ct.c
 @@ -165,7 +165,7 @@ int xe_guc_ct_init(struct xe_guc_ct *ct)
@@ -227,7 +227,7 @@ index 1e8bb8b28a23..ca7f9ebf5373 100644
  	ct->g2h_wq = alloc_ordered_workqueue("xe-g2h-wq", 0);
  	if (!ct->g2h_wq)
 diff --git a/drivers/gpu/drm/xe/xe_guc_log.c b/drivers/gpu/drm/xe/xe_guc_log.c
-index a37ee3419428..d2bb7427404f 100644
+index a37ee34194284..d2bb7427404fd 100644
 --- a/drivers/gpu/drm/xe/xe_guc_log.c
 +++ b/drivers/gpu/drm/xe/xe_guc_log.c
 @@ -45,7 +45,7 @@ static size_t guc_log_size(void)
@@ -240,7 +240,7 @@ index a37ee3419428..d2bb7427404f 100644
  }
  
 diff --git a/drivers/gpu/drm/xe/xe_guc_pc.c b/drivers/gpu/drm/xe/xe_guc_pc.c
-index 034b29984d5e..89ed21a074cd 100644
+index 034b29984d5ed..89ed21a074cd6 100644
 --- a/drivers/gpu/drm/xe/xe_guc_pc.c
 +++ b/drivers/gpu/drm/xe/xe_guc_pc.c
 @@ -955,7 +955,7 @@ int xe_guc_pc_start(struct xe_guc_pc *pc)
@@ -262,7 +262,7 @@ index 034b29984d5e..89ed21a074cd 100644
  
  	if (xe->info.skip_guc_pc)
 diff --git a/drivers/gpu/drm/xe/xe_migrate.c b/drivers/gpu/drm/xe/xe_migrate.c
-index a849c48d8ac9..6a1bfc3f41cc 100644
+index a849c48d8ac90..6a1bfc3f41cc2 100644
 --- a/drivers/gpu/drm/xe/xe_migrate.c
 +++ b/drivers/gpu/drm/xe/xe_migrate.c
 @@ -548,7 +548,7 @@ static void emit_pte(struct xe_migrate *m,
@@ -293,7 +293,7 @@ index a849c48d8ac9..6a1bfc3f41cc 100644
  
  	while (size) {
 diff --git a/drivers/gpu/drm/xe/xe_pt.c b/drivers/gpu/drm/xe/xe_pt.c
-index 31a751a5de3f..eca40551d6a9 100644
+index 31a751a5de3f1..eca40551d6a99 100644
 --- a/drivers/gpu/drm/xe/xe_pt.c
 +++ b/drivers/gpu/drm/xe/xe_pt.c
 @@ -1244,7 +1244,7 @@ __xe_pt_bind_vma(struct xe_tile *tile, struct xe_vma *vma, struct xe_exec_queue
@@ -306,7 +306,7 @@ index 31a751a5de3f..eca40551d6a9 100644
  	       xe_vma_start(vma), xe_vma_end(vma), q);
  
 diff --git a/drivers/gpu/drm/xe/xe_query.c b/drivers/gpu/drm/xe/xe_query.c
-index 3a30b12e2252..148fd8c6c2a4 100644
+index 3a30b12e22521..148fd8c6c2a47 100644
 --- a/drivers/gpu/drm/xe/xe_query.c
 +++ b/drivers/gpu/drm/xe/xe_query.c
 @@ -342,7 +342,7 @@ static int query_config(struct xe_device *xe, struct drm_xe_device_query *query)
@@ -319,7 +319,7 @@ index 3a30b12e2252..148fd8c6c2a4 100644
  	config->info[DRM_XE_QUERY_CONFIG_MAX_EXEC_QUEUE_PRIORITY] =
  		xe_exec_queue_device_get_max_priority(xe);
 diff --git a/drivers/gpu/drm/xe/xe_vm.c b/drivers/gpu/drm/xe/xe_vm.c
-index 3ac41f70ea6b..578ba318be0a 100644
+index 3ac41f70ea6b1..578ba318be0a6 100644
 --- a/drivers/gpu/drm/xe/xe_vm.c
 +++ b/drivers/gpu/drm/xe/xe_vm.c
 @@ -1190,7 +1190,7 @@ static u64 xelp_pde_encode_bo(struct xe_bo *bo, u64 bo_offset,
@@ -350,5 +350,5 @@ index 3ac41f70ea6b..578ba318be0a 100644
  
  	if (likely(!xe_vma_read_only(vma)))
 -- 
-2.47.0
+2.47.1
 

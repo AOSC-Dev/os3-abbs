@@ -1,4 +1,4 @@
-From 20f2d0c3ba3f70210f9c9cfc67ee3e99b7850320 Mon Sep 17 00:00:00 2001
+From 61af19f49793ee5d9ebd89a25a1f4ea7244d7309 Mon Sep 17 00:00:00 2001
 From: Tianhao Chai <cth451@gmail.com>
 Date: Thu, 18 Jan 2024 18:07:58 -0500
 Subject: [PATCH 156/164] AOSCOS: la_ow_syscall: add kconfig for module
@@ -12,7 +12,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  create mode 100644 arch/loongarch/ow_syscall/Kconfig
 
 diff --git a/arch/loongarch/Kconfig b/arch/loongarch/Kconfig
-index b4f2ab6d2bc0..347e164c0108 100644
+index b4f2ab6d2bc05..347e164c0108e 100644
 --- a/arch/loongarch/Kconfig
 +++ b/arch/loongarch/Kconfig
 @@ -726,3 +726,5 @@ source "drivers/cpufreq/Kconfig"
@@ -23,7 +23,7 @@ index b4f2ab6d2bc0..347e164c0108 100644
 +source "arch/loongarch/ow_syscall/Kconfig"
 diff --git a/arch/loongarch/ow_syscall/Kconfig b/arch/loongarch/ow_syscall/Kconfig
 new file mode 100644
-index 000000000000..c28a37145b6f
+index 0000000000000..c28a37145b6f6
 --- /dev/null
 +++ b/arch/loongarch/ow_syscall/Kconfig
 @@ -0,0 +1,15 @@
@@ -43,5 +43,5 @@ index 000000000000..c28a37145b6f
 +	  If unsure, say N.
 +
 -- 
-2.47.0
+2.47.1
 

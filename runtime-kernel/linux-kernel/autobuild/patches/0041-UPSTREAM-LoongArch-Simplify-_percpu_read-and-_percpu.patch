@@ -32,7 +32,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 35 insertions(+), 89 deletions(-)
 
 diff --git a/arch/loongarch/include/asm/percpu.h b/arch/loongarch/include/asm/percpu.h
-index 8f290e5546cf..87be9b14e9da 100644
+index 8f290e5546cf7..87be9b14e9dab 100644
 --- a/arch/loongarch/include/asm/percpu.h
 +++ b/arch/loongarch/include/asm/percpu.h
 @@ -68,75 +68,6 @@ PERCPU_OP(and, and, &)
@@ -189,5 +189,5 @@ index 8f290e5546cf..87be9b14e9da 100644
  #define this_cpu_xchg_1(pcp, val) _percpu_xchg(pcp, val)
  #define this_cpu_xchg_2(pcp, val) _percpu_xchg(pcp, val)
 -- 
-2.47.0
+2.47.1
 

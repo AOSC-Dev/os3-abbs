@@ -22,7 +22,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  2 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/irqchip/irq-loongson-eiointc.c b/drivers/irqchip/irq-loongson-eiointc.c
-index 34b5ca2f5e62..c756b7aa8055 100644
+index 34b5ca2f5e629..c756b7aa80558 100644
 --- a/drivers/irqchip/irq-loongson-eiointc.c
 +++ b/drivers/irqchip/irq-loongson-eiointc.c
 @@ -398,8 +398,8 @@ static int __init eiointc_init(struct eiointc_priv *priv, int parent_irq,
@@ -37,7 +37,7 @@ index 34b5ca2f5e62..c756b7aa8055 100644
  	}
  
 diff --git a/include/linux/cpuhotplug.h b/include/linux/cpuhotplug.h
-index 9316c39260e0..1c1dae20e2f4 100644
+index 9316c39260e0e..1c1dae20e2f45 100644
 --- a/include/linux/cpuhotplug.h
 +++ b/include/linux/cpuhotplug.h
 @@ -144,7 +144,7 @@ enum cpuhp_state {
@@ -50,5 +50,5 @@ index 9316c39260e0..1c1dae20e2f4 100644
  	CPUHP_AP_IRQ_RISCV_IMSIC_STARTING,
  	CPUHP_AP_IRQ_RISCV_SBI_IPI_STARTING,
 -- 
-2.47.0
+2.47.1
 

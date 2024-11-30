@@ -29,7 +29,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  create mode 100644 Documentation/virt/kvm/loongarch/index.rst
 
 diff --git a/Documentation/virt/kvm/index.rst b/Documentation/virt/kvm/index.rst
-index ad13ec55ddfe..9ca5a45c2140 100644
+index ad13ec55ddfe5..9ca5a45c2140a 100644
 --- a/Documentation/virt/kvm/index.rst
 +++ b/Documentation/virt/kvm/index.rst
 @@ -14,6 +14,7 @@ KVM
@@ -42,7 +42,7 @@ index ad13ec55ddfe..9ca5a45c2140 100644
     vcpu-requests
 diff --git a/Documentation/virt/kvm/loongarch/hypercalls.rst b/Documentation/virt/kvm/loongarch/hypercalls.rst
 new file mode 100644
-index 000000000000..2d6b94031f1b
+index 0000000000000..2d6b94031f1b7
 --- /dev/null
 +++ b/Documentation/virt/kvm/loongarch/hypercalls.rst
 @@ -0,0 +1,89 @@
@@ -137,7 +137,7 @@ index 000000000000..2d6b94031f1b
 +and SWI is used for PV IPI inject since there is no VM-exits accessing SWI registers.
 diff --git a/Documentation/virt/kvm/loongarch/index.rst b/Documentation/virt/kvm/loongarch/index.rst
 new file mode 100644
-index 000000000000..83387b4c5345
+index 0000000000000..83387b4c53455
 --- /dev/null
 +++ b/Documentation/virt/kvm/loongarch/index.rst
 @@ -0,0 +1,10 @@
@@ -152,7 +152,7 @@ index 000000000000..83387b4c5345
 +
 +   hypercalls.rst
 diff --git a/MAINTAINERS b/MAINTAINERS
-index cc40a9d9b8cd..53629156e327 100644
+index cc40a9d9b8cd1..53629156e327d 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
 @@ -12308,6 +12308,7 @@ L:	kvm@vger.kernel.org
@@ -164,5 +164,5 @@ index cc40a9d9b8cd..53629156e327 100644
  F:	arch/loongarch/include/uapi/asm/kvm*
  F:	arch/loongarch/kvm/
 -- 
-2.47.0
+2.47.1
 

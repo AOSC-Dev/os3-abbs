@@ -31,7 +31,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  create mode 100644 drivers/hwmon/surface_temp.c
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 53629156e327..73ebd630afe7 100644
+index 53629156e327d..73ebd630afe74 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
 @@ -15219,6 +15219,12 @@ S:	Maintained
@@ -48,7 +48,7 @@ index 53629156e327..73ebd630afe7 100644
  M:	Maximilian Luz <luzmaximilian@gmail.com>
  L:	platform-driver-x86@vger.kernel.org
 diff --git a/drivers/hwmon/Kconfig b/drivers/hwmon/Kconfig
-index 778e584c3a75..6b0f71c059ab 100644
+index 778e584c3a75c..6b0f71c059ab8 100644
 --- a/drivers/hwmon/Kconfig
 +++ b/drivers/hwmon/Kconfig
 @@ -2084,6 +2084,17 @@ config SENSORS_SURFACE_FAN
@@ -70,7 +70,7 @@ index 778e584c3a75..6b0f71c059ab 100644
  	tristate "Texas Instruments ADC128D818"
  	depends on I2C
 diff --git a/drivers/hwmon/Makefile b/drivers/hwmon/Makefile
-index b1c7056c37db..3ce8d6a9202e 100644
+index b1c7056c37db5..3ce8d6a9202e6 100644
 --- a/drivers/hwmon/Makefile
 +++ b/drivers/hwmon/Makefile
 @@ -209,6 +209,7 @@ obj-$(CONFIG_SENSORS_SPARX5)	+= sparx5-temp.o
@@ -83,7 +83,7 @@ index b1c7056c37db..3ce8d6a9202e 100644
  obj-$(CONFIG_SENSORS_TC74)	+= tc74.o
 diff --git a/drivers/hwmon/surface_temp.c b/drivers/hwmon/surface_temp.c
 new file mode 100644
-index 000000000000..cd21f331f157
+index 0000000000000..cd21f331f1576
 --- /dev/null
 +++ b/drivers/hwmon/surface_temp.c
 @@ -0,0 +1,235 @@
@@ -323,5 +323,5 @@ index 000000000000..cd21f331f157
 +MODULE_DESCRIPTION("Thermal sensor subsystem driver for Surface System Aggregator Module");
 +MODULE_LICENSE("GPL");
 -- 
-2.47.0
+2.47.1
 

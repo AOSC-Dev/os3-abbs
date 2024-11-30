@@ -26,7 +26,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-loongson.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-loongson.c
-index 10228b60dbdf..0ff2b330cee2 100644
+index 10228b60dbdf4..0ff2b330cee2c 100644
 --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-loongson.c
 +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-loongson.c
 @@ -9,6 +9,8 @@
@@ -48,5 +48,5 @@ index 10228b60dbdf..0ff2b330cee2 100644
  };
  MODULE_DEVICE_TABLE(pci, loongson_dwmac_id_table);
 -- 
-2.47.0
+2.47.1
 

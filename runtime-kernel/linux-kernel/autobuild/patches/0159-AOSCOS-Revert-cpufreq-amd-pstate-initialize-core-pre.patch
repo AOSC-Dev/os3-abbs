@@ -1,4 +1,4 @@
-From b0a10aaf9021eb3cc52d7bf7f5901b7cc6bff7fd Mon Sep 17 00:00:00 2001
+From 6ccdcb107f3c6b581d27bc054a3e84061a2185ef Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 15 Oct 2024 18:37:52 +0800
 Subject: [PATCH 159/164] AOSCOS: Revert "cpufreq: amd-pstate: initialize core
@@ -30,7 +30,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  2 files changed, 23 insertions(+), 97 deletions(-)
 
 diff --git a/drivers/cpufreq/amd-pstate.c b/drivers/cpufreq/amd-pstate.c
-index 929b9097a6c1..00ddd781e323 100644
+index 929b9097a6c17..00ddd781e323c 100644
 --- a/drivers/cpufreq/amd-pstate.c
 +++ b/drivers/cpufreq/amd-pstate.c
 @@ -695,53 +695,6 @@ static void amd_pstate_adjust_perf(unsigned int cpu,
@@ -225,7 +225,7 @@ index 929b9097a6c1..00ddd781e323 100644
  	.attr		= amd_pstate_epp_attr,
  };
 diff --git a/drivers/cpufreq/amd-pstate.h b/drivers/cpufreq/amd-pstate.h
-index cc8bb2bc325a..f80b33fa5d43 100644
+index cc8bb2bc325aa..f80b33fa5d43a 100644
 --- a/drivers/cpufreq/amd-pstate.h
 +++ b/drivers/cpufreq/amd-pstate.h
 @@ -100,7 +100,6 @@ struct amd_cpudata {
@@ -237,5 +237,5 @@ index cc8bb2bc325a..f80b33fa5d43 100644
  
  #endif /* _LINUX_AMD_PSTATE_H */
 -- 
-2.47.0
+2.47.1
 

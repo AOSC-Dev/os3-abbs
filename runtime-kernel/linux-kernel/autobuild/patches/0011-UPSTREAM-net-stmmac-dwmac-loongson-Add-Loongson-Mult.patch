@@ -61,7 +61,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  2 files changed, 327 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/net/ethernet/stmicro/stmmac/common.h b/drivers/net/ethernet/stmicro/stmmac/common.h
-index cd36ff4da68c..684489156dce 100644
+index cd36ff4da68c6..684489156dcee 100644
 --- a/drivers/net/ethernet/stmicro/stmmac/common.h
 +++ b/drivers/net/ethernet/stmicro/stmmac/common.h
 @@ -29,6 +29,7 @@
@@ -73,7 +73,7 @@ index cd36ff4da68c..684489156dce 100644
  #define DWMAC_CORE_4_10		0x41
  #define DWMAC_CORE_5_00		0x50
 diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-loongson.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-loongson.c
-index c0740a41025b..48c92ba826d9 100644
+index c0740a41025bd..48c92ba826d9e 100644
 --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-loongson.c
 +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-loongson.c
 @@ -8,8 +8,69 @@
@@ -479,5 +479,5 @@ index c0740a41025b..48c92ba826d9 100644
  		if (pci_resource_len(pdev, i) == 0)
  			continue;
 -- 
-2.47.0
+2.47.1
 

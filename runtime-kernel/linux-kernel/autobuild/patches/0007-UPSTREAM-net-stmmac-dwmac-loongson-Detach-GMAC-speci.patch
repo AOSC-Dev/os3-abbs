@@ -43,7 +43,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 12 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-loongson.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-loongson.c
-index 0ff2b330cee2..327275b28dc2 100644
+index 0ff2b330cee2c..327275b28dc2c 100644
 --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-loongson.c
 +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-loongson.c
 @@ -11,7 +11,7 @@
@@ -103,5 +103,5 @@ index 0ff2b330cee2..327275b28dc2 100644
  	res.addr = pcim_iomap_table(pdev)[0];
  
 -- 
-2.47.0
+2.47.1
 

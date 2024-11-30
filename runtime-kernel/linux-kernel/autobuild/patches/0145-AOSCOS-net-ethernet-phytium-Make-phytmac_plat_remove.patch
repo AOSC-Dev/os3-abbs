@@ -1,4 +1,4 @@
-From a1493b36f9db251849c06f201532b737a8b03a64 Mon Sep 17 00:00:00 2001
+From 9b37b0a747bc1014c740f867ec4c199d851217b2 Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Sun, 22 Sep 2024 03:57:43 +0800
 Subject: [PATCH 145/164] AOSCOS: net: ethernet: phytium: Make
@@ -12,7 +12,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 1 insertion(+), 3 deletions(-)
 
 diff --git a/drivers/net/ethernet/phytium/phytmac_platform.c b/drivers/net/ethernet/phytium/phytmac_platform.c
-index 343e1a5ce564..985ae83b3977 100644
+index 343e1a5ce564a..985ae83b3977e 100644
 --- a/drivers/net/ethernet/phytium/phytmac_platform.c
 +++ b/drivers/net/ethernet/phytium/phytmac_platform.c
 @@ -204,14 +204,12 @@ static int phytmac_plat_probe(struct platform_device *pdev)
@@ -32,5 +32,5 @@ index 343e1a5ce564..985ae83b3977 100644
  
  static int __maybe_unused phytmac_plat_suspend(struct device *dev)
 -- 
-2.47.0
+2.47.1
 

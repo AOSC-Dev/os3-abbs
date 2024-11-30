@@ -18,7 +18,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  create mode 100644 Documentation/userspace-api/ntsync.rst
 
 diff --git a/Documentation/userspace-api/index.rst b/Documentation/userspace-api/index.rst
-index 274cc7546efc..9c1b15cd89ab 100644
+index 274cc7546efc2..9c1b15cd89ab0 100644
 --- a/Documentation/userspace-api/index.rst
 +++ b/Documentation/userspace-api/index.rst
 @@ -63,6 +63,7 @@ Everything else
@@ -31,7 +31,7 @@ index 274cc7546efc..9c1b15cd89ab 100644
  
 diff --git a/Documentation/userspace-api/ntsync.rst b/Documentation/userspace-api/ntsync.rst
 new file mode 100644
-index 000000000000..767844637a7d
+index 0000000000000..767844637a7df
 --- /dev/null
 +++ b/Documentation/userspace-api/ntsync.rst
 @@ -0,0 +1,398 @@
@@ -434,5 +434,5 @@ index 000000000000..767844637a7d
 +  ``objs`` and in ``alert``. If this is attempted, the function fails
 +  with ``EINVAL``.
 -- 
-2.47.0
+2.47.1
 

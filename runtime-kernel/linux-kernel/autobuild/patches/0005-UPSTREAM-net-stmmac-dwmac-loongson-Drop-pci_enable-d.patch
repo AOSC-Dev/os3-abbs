@@ -23,7 +23,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 3 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-loongson.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-loongson.c
-index 2d4ecb0efbad..10228b60dbdf 100644
+index 2d4ecb0efbad5..10228b60dbdf4 100644
 --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-loongson.c
 +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-loongson.c
 @@ -117,7 +117,6 @@ static int loongson_dwmac_probe(struct pci_dev *pdev, const struct pci_device_id
@@ -72,5 +72,5 @@ index 2d4ecb0efbad..10228b60dbdf 100644
  }
  
 -- 
-2.47.0
+2.47.1
 

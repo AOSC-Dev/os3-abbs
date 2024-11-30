@@ -17,7 +17,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 98 insertions(+)
 
 diff --git a/tools/testing/selftests/drivers/ntsync/ntsync.c b/tools/testing/selftests/drivers/ntsync/ntsync.c
-index 993f5db23768..b77fb0b2c4b1 100644
+index 993f5db237682..b77fb0b2c4b1f 100644
 --- a/tools/testing/selftests/drivers/ntsync/ntsync.c
 +++ b/tools/testing/selftests/drivers/ntsync/ntsync.c
 @@ -706,4 +706,102 @@ TEST(wake_any)
@@ -124,5 +124,5 @@ index 993f5db23768..b77fb0b2c4b1 100644
 +
  TEST_HARNESS_MAIN
 -- 
-2.47.0
+2.47.1
 

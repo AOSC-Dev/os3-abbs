@@ -21,7 +21,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  2 files changed, 24 insertions(+), 35 deletions(-)
 
 diff --git a/drivers/irqchip/Kconfig b/drivers/irqchip/Kconfig
-index d078bdc48c38..341cd9ca5a05 100644
+index d078bdc48c38f..341cd9ca5a05e 100644
 --- a/drivers/irqchip/Kconfig
 +++ b/drivers/irqchip/Kconfig
 @@ -685,6 +685,7 @@ config LOONGSON_PCH_MSI
@@ -33,7 +33,7 @@ index d078bdc48c38..341cd9ca5a05 100644
  	help
  	  Support for the Loongson PCH MSI Controller.
 diff --git a/drivers/irqchip/irq-loongson-pch-msi.c b/drivers/irqchip/irq-loongson-pch-msi.c
-index dd4d699170f4..2242f63c66fc 100644
+index dd4d699170f4e..2242f63c66fc9 100644
 --- a/drivers/irqchip/irq-loongson-pch-msi.c
 +++ b/drivers/irqchip/irq-loongson-pch-msi.c
 @@ -15,6 +15,8 @@
@@ -136,5 +136,5 @@ index dd4d699170f4..2242f63c66fc 100644
  	return 0;
  }
 -- 
-2.47.0
+2.47.1
 

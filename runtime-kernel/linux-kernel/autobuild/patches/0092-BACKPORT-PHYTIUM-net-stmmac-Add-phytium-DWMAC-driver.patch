@@ -1,4 +1,4 @@
-From d2149f1c2614ccf56f9364593309583f5d6b0a20 Mon Sep 17 00:00:00 2001
+From 8bc0a744df4ce69b95142489ea1d47b42639c5df Mon Sep 17 00:00:00 2001
 From: Li Wencheng <liwencheng@phytium.com.cn>
 Date: Mon, 25 Mar 2024 17:38:27 +0800
 Subject: [PATCH 092/164] BACKPORT: PHYTIUM: net/stmmac: Add phytium DWMAC
@@ -20,7 +20,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  2 files changed, 21 insertions(+), 28 deletions(-)
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 2d6be32480f3..cb134e4c6791 100644
+index 2d6be32480f3a..cb134e4c67914 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
 @@ -2702,12 +2702,6 @@ S:	Maintained
@@ -50,7 +50,7 @@ index 2d6be32480f3..cb134e4c6791 100644
  M:	Giovanni Cabiddu <giovanni.cabiddu@intel.com>
  L:	qat-linux@intel.com
 diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-phytium.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-phytium.c
-index a930cea6280b..d31b8e870f64 100644
+index a930cea6280b6..d31b8e870f647 100644
 --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-phytium.c
 +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-phytium.c
 @@ -37,8 +37,7 @@ static int phytium_get_mac_mode(struct fwnode_handle *fwnode)
@@ -158,5 +158,5 @@ index a930cea6280b..d31b8e870f64 100644
  		.name		= "phytium-dwmac",
  		.of_match_table	= of_match_ptr(phytium_dwmac_of_match),
 -- 
-2.47.0
+2.47.1
 

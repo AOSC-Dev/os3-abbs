@@ -18,7 +18,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 11 insertions(+)
 
 diff --git a/kernel/cpu.c b/kernel/cpu.c
-index b1fd2a3db91a..9439e9d6e908 100644
+index b1fd2a3db91a2..9439e9d6e9087 100644
 --- a/kernel/cpu.c
 +++ b/kernel/cpu.c
 @@ -1808,6 +1808,7 @@ static int __init parallel_bringup_parse_param(char *arg)
@@ -47,5 +47,5 @@ index b1fd2a3db91a..9439e9d6e908 100644
  /*
   * On architectures which have enabled parallel bringup this invokes all BP
 -- 
-2.47.0
+2.47.1
 

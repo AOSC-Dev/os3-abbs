@@ -22,7 +22,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  create mode 100644 drivers/pwm/pwm-loongson.c
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 6ad85d250abe..b584d408c075 100644
+index 6ad85d250abe0..b584d408c0752 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
 @@ -13211,6 +13211,7 @@ M:	Binbin Zhou <zhoubinbin@loongson.cn>
@@ -34,7 +34,7 @@ index 6ad85d250abe..b584d408c075 100644
  LOONGSON-2 SOC SERIES CLOCK DRIVER
  M:	Yinbo Zhu <zhuyinbo@loongson.cn>
 diff --git a/drivers/pwm/Kconfig b/drivers/pwm/Kconfig
-index 3e53838990f5..de8483ab71f9 100644
+index 3e53838990f5b..de8483ab71f92 100644
 --- a/drivers/pwm/Kconfig
 +++ b/drivers/pwm/Kconfig
 @@ -344,6 +344,18 @@ config PWM_KEEMBAY
@@ -57,7 +57,7 @@ index 3e53838990f5..de8483ab71f9 100644
  	tristate "TI/National Semiconductor LP3943 PWM support"
  	depends on MFD_LP3943
 diff --git a/drivers/pwm/Makefile b/drivers/pwm/Makefile
-index 0be4f3e6dd43..7ddf231d9d62 100644
+index 0be4f3e6dd432..7ddf231d9d628 100644
 --- a/drivers/pwm/Makefile
 +++ b/drivers/pwm/Makefile
 @@ -29,6 +29,7 @@ obj-$(CONFIG_PWM_INTEL_LGM)	+= pwm-intel-lgm.o
@@ -70,7 +70,7 @@ index 0be4f3e6dd43..7ddf231d9d62 100644
  obj-$(CONFIG_PWM_LPC32XX)	+= pwm-lpc32xx.o
 diff --git a/drivers/pwm/pwm-loongson.c b/drivers/pwm/pwm-loongson.c
 new file mode 100644
-index 000000000000..4c9b14efadc3
+index 0000000000000..4c9b14efadc3c
 --- /dev/null
 +++ b/drivers/pwm/pwm-loongson.c
 @@ -0,0 +1,288 @@
@@ -363,5 +363,5 @@ index 000000000000..4c9b14efadc3
 +MODULE_AUTHOR("Loongson Technology Corporation Limited.");
 +MODULE_LICENSE("GPL");
 -- 
-2.47.0
+2.47.1
 

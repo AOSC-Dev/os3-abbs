@@ -1,4 +1,4 @@
-From bf69f3dbd4041c3afc7f428b43d070e4fe9fa475 Mon Sep 17 00:00:00 2001
+From 9581e497565568cbabdea1d09e8ea57c830fe0ff Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Thu, 21 Nov 2024 18:53:37 +0800
 Subject: [PATCH 161/164] AOSCOS: remove dependencies on UBUNTU_ODM_DRIVERS
@@ -16,7 +16,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  4 files changed, 4 deletions(-)
 
 diff --git a/drivers/gpio/Kconfig b/drivers/gpio/Kconfig
-index 2be612f9ce55..09f8ed605b97 100644
+index 2be612f9ce558..09f8ed605b97f 100644
 --- a/drivers/gpio/Kconfig
 +++ b/drivers/gpio/Kconfig
 @@ -1639,7 +1639,6 @@ menu "PCI GPIO expanders"
@@ -28,7 +28,7 @@ index 2be612f9ce55..09f8ed605b97 100644
  	help
  	  Say yes here to support GPIO pins on Single Board Computers produced
 diff --git a/drivers/hwmon/Kconfig b/drivers/hwmon/Kconfig
-index e58c9e2edfb3..9154f1e80b14 100644
+index e58c9e2edfb35..9154f1e80b142 100644
 --- a/drivers/hwmon/Kconfig
 +++ b/drivers/hwmon/Kconfig
 @@ -41,7 +41,6 @@ comment "Native drivers"
@@ -40,7 +40,7 @@ index e58c9e2edfb3..9154f1e80b14 100644
  	help
  	  This hwmon driver adds support for reporting temperature or fan
 diff --git a/drivers/leds/Kconfig b/drivers/leds/Kconfig
-index c2fec19e9fa8..09b79f462b1d 100644
+index c2fec19e9fa81..09b79f462b1db 100644
 --- a/drivers/leds/Kconfig
 +++ b/drivers/leds/Kconfig
 @@ -68,7 +68,6 @@ config LEDS_88PM860X
@@ -52,7 +52,7 @@ index c2fec19e9fa8..09b79f462b1d 100644
  	help
  	  This led driver adds support for LED brightness control on Single
 diff --git a/drivers/mfd/Kconfig b/drivers/mfd/Kconfig
-index d8d98a1f3133..40a6b3641d6e 100644
+index d8d98a1f3133e..40a6b3641d6e9 100644
 --- a/drivers/mfd/Kconfig
 +++ b/drivers/mfd/Kconfig
 @@ -2248,7 +2248,6 @@ config MFD_QCOM_PM8008
@@ -64,5 +64,5 @@ index d8d98a1f3133..40a6b3641d6e 100644
  	  Say yes here to support mltiple IO devices on Single Board Computers
  	  produced by AAEON.
 -- 
-2.47.0
+2.47.1
 

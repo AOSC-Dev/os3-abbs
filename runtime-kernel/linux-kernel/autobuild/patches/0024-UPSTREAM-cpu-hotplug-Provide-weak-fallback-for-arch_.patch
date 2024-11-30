@@ -25,7 +25,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 5 insertions(+)
 
 diff --git a/kernel/cpu.c b/kernel/cpu.c
-index 9439e9d6e908..c16a9b66baba 100644
+index 9439e9d6e9087..c16a9b66baba7 100644
 --- a/kernel/cpu.c
 +++ b/kernel/cpu.c
 @@ -1829,6 +1829,11 @@ static inline const struct cpumask *cpuhp_get_primary_thread_mask(void)
@@ -41,5 +41,5 @@ index 9439e9d6e908..c16a9b66baba 100644
   * On architectures which have enabled parallel bringup this invokes all BP
   * prepare states for each of the to be onlined APs first. The last state
 -- 
-2.47.0
+2.47.1
 

@@ -38,7 +38,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/Makefile b/drivers/gpu/drm/Makefile
-index fa432a1ac9e2..d753acf99757 100644
+index fa432a1ac9e2b..d753acf997572 100644
 --- a/drivers/gpu/drm/Makefile
 +++ b/drivers/gpu/drm/Makefile
 @@ -158,6 +158,7 @@ obj-y			+= arm/
@@ -58,5 +58,5 @@ index fa432a1ac9e2..d753acf99757 100644
  obj-$(CONFIG_DRM_TVE200) += tve200/
  obj-$(CONFIG_DRM_XEN) += xen/
 -- 
-2.47.0
+2.47.1
 

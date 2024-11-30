@@ -31,7 +31,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  create mode 100644 drivers/irqchip/irq-loongson.h
 
 diff --git a/arch/loongarch/include/asm/irq.h b/arch/loongarch/include/asm/irq.h
-index 480418bc5071..65503c9eb529 100644
+index 480418bc5071a..65503c9eb5293 100644
 --- a/arch/loongarch/include/asm/irq.h
 +++ b/arch/loongarch/include/asm/irq.h
 @@ -88,20 +88,6 @@ struct acpi_madt_bio_pic;
@@ -56,7 +56,7 @@ index 480418bc5071..65503c9eb529 100644
  
  extern struct acpi_madt_lio_pic *acpi_liointc;
 diff --git a/drivers/irqchip/irq-loongarch-cpu.c b/drivers/irqchip/irq-loongarch-cpu.c
-index b35903a06902..826e23eb35ce 100644
+index b35903a06902f..826e23eb35ce9 100644
 --- a/drivers/irqchip/irq-loongarch-cpu.c
 +++ b/drivers/irqchip/irq-loongarch-cpu.c
 @@ -13,6 +13,8 @@
@@ -69,7 +69,7 @@ index b35903a06902..826e23eb35ce 100644
  struct fwnode_handle *cpuintc_handle;
  
 diff --git a/drivers/irqchip/irq-loongson-eiointc.c b/drivers/irqchip/irq-loongson-eiointc.c
-index b1f2080be2be..34b5ca2f5e62 100644
+index b1f2080be2beb..34b5ca2f5e629 100644
 --- a/drivers/irqchip/irq-loongson-eiointc.c
 +++ b/drivers/irqchip/irq-loongson-eiointc.c
 @@ -17,6 +17,8 @@
@@ -82,7 +82,7 @@ index b1f2080be2be..34b5ca2f5e62 100644
  #define EIOINTC_REG_IPMAP	0x14c0
  #define EIOINTC_REG_ENABLE	0x1600
 diff --git a/drivers/irqchip/irq-loongson-htvec.c b/drivers/irqchip/irq-loongson-htvec.c
-index 0bff728b25e3..5da02c7ad0b3 100644
+index 0bff728b25e3d..5da02c7ad0b30 100644
 --- a/drivers/irqchip/irq-loongson-htvec.c
 +++ b/drivers/irqchip/irq-loongson-htvec.c
 @@ -17,6 +17,8 @@
@@ -95,7 +95,7 @@ index 0bff728b25e3..5da02c7ad0b3 100644
  #define HTVEC_EN_OFF		0x20
  #define HTVEC_MAX_PARENT_IRQ	8
 diff --git a/drivers/irqchip/irq-loongson-liointc.c b/drivers/irqchip/irq-loongson-liointc.c
-index 7c4fe7ab4b83..2b1bd4a96665 100644
+index 7c4fe7ab4b830..2b1bd4a96665b 100644
 --- a/drivers/irqchip/irq-loongson-liointc.c
 +++ b/drivers/irqchip/irq-loongson-liointc.c
 @@ -22,6 +22,8 @@
@@ -108,7 +108,7 @@ index 7c4fe7ab4b83..2b1bd4a96665 100644
  #define LIOINTC_NUM_PARENT	4
  #define LIOINTC_NUM_CORES	4
 diff --git a/drivers/irqchip/irq-loongson-pch-lpc.c b/drivers/irqchip/irq-loongson-pch-lpc.c
-index 9b35492fb6be..2d4c3ec128b8 100644
+index 9b35492fb6be9..2d4c3ec128b8f 100644
 --- a/drivers/irqchip/irq-loongson-pch-lpc.c
 +++ b/drivers/irqchip/irq-loongson-pch-lpc.c
 @@ -15,6 +15,8 @@
@@ -121,7 +121,7 @@ index 9b35492fb6be..2d4c3ec128b8 100644
  #define LPC_INT_CTL		0x00
  #define LPC_INT_ENA		0x04
 diff --git a/drivers/irqchip/irq-loongson-pch-msi.c b/drivers/irqchip/irq-loongson-pch-msi.c
-index 2242f63c66fc..d43731878800 100644
+index 2242f63c66fc9..d43731878800c 100644
 --- a/drivers/irqchip/irq-loongson-pch-msi.c
 +++ b/drivers/irqchip/irq-loongson-pch-msi.c
 @@ -16,6 +16,7 @@
@@ -133,7 +133,7 @@ index 2242f63c66fc..d43731878800 100644
  static int nr_pics;
  
 diff --git a/drivers/irqchip/irq-loongson-pch-pic.c b/drivers/irqchip/irq-loongson-pch-pic.c
-index cbaef65e804c..69efda35a8e7 100644
+index cbaef65e804ce..69efda35a8e78 100644
 --- a/drivers/irqchip/irq-loongson-pch-pic.c
 +++ b/drivers/irqchip/irq-loongson-pch-pic.c
 @@ -17,6 +17,8 @@
@@ -147,7 +147,7 @@ index cbaef65e804c..69efda35a8e7 100644
  #define PCH_PIC_HTMSI_EN	0x40
 diff --git a/drivers/irqchip/irq-loongson.h b/drivers/irqchip/irq-loongson.h
 new file mode 100644
-index 000000000000..b155f1258ed5
+index 0000000000000..b155f1258ed57
 --- /dev/null
 +++ b/drivers/irqchip/irq-loongson.h
 @@ -0,0 +1,25 @@
@@ -177,5 +177,5 @@ index 000000000000..b155f1258ed5
 +
 +#endif /* _DRIVERS_IRQCHIP_IRQ_LOONGSON_H */
 -- 
-2.47.0
+2.47.1
 

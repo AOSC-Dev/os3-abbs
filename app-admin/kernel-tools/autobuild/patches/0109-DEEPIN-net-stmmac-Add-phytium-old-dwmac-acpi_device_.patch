@@ -1,4 +1,4 @@
-From c9877c1a9974f8d3db492465f67c28a564f1f6f0 Mon Sep 17 00:00:00 2001
+From a3cd8c8e79931901b3c600f13db9d1330289504e Mon Sep 17 00:00:00 2001
 From: Wentao Guan <guanwentao@uniontech.com>
 Date: Wed, 8 May 2024 18:11:37 +0800
 Subject: [PATCH 109/164] DEEPIN: net/stmmac: Add phytium old dwmac
@@ -17,7 +17,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 1 insertion(+)
 
 diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-phytium.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-phytium.c
-index 6ecfa671b7f3..dd4171a39a4a 100644
+index 6ecfa671b7f37..dd4171a39a4a9 100644
 --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-phytium.c
 +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-phytium.c
 @@ -198,6 +198,7 @@ MODULE_DEVICE_TABLE(of, phytium_dwmac_of_match);
@@ -29,5 +29,5 @@ index 6ecfa671b7f3..dd4171a39a4a 100644
  	{ }
  };
 -- 
-2.47.0
+2.47.1
 

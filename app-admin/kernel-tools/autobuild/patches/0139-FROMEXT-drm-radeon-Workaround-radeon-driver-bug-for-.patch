@@ -1,4 +1,4 @@
-From 615abda210d601b3e02bcc517424dc5782b747c9 Mon Sep 17 00:00:00 2001
+From cd087a0d043ceec235aaf8053d4febd264e34d73 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Mon, 22 Feb 2021 10:53:47 +0800
 Subject: [PATCH 139/164] FROMEXT: drm/radeon: Workaround radeon driver bug for
@@ -21,7 +21,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  4 files changed, 4 insertions(+)
 
 diff --git a/drivers/gpu/drm/radeon/cik.c b/drivers/gpu/drm/radeon/cik.c
-index b5e96a8fc2c1..8275eeba0b34 100644
+index b5e96a8fc2c16..8275eeba0b349 100644
 --- a/drivers/gpu/drm/radeon/cik.c
 +++ b/drivers/gpu/drm/radeon/cik.c
 @@ -8093,6 +8093,7 @@ int cik_irq_process(struct radeon_device *rdev)
@@ -33,7 +33,7 @@ index b5e96a8fc2c1..8275eeba0b34 100644
  
  	/* make sure wptr hasn't changed while processing */
 diff --git a/drivers/gpu/drm/radeon/evergreen.c b/drivers/gpu/drm/radeon/evergreen.c
-index c634dc28e6c3..fd9ff62f292a 100644
+index c634dc28e6c30..fd9ff62f292ac 100644
 --- a/drivers/gpu/drm/radeon/evergreen.c
 +++ b/drivers/gpu/drm/radeon/evergreen.c
 @@ -4919,6 +4919,7 @@ int evergreen_irq_process(struct radeon_device *rdev)
@@ -45,7 +45,7 @@ index c634dc28e6c3..fd9ff62f292a 100644
  
  	/* make sure wptr hasn't changed while processing */
 diff --git a/drivers/gpu/drm/radeon/r600.c b/drivers/gpu/drm/radeon/r600.c
-index 087d41e370fd..00621ae44bde 100644
+index 087d41e370fdc..00621ae44bded 100644
 --- a/drivers/gpu/drm/radeon/r600.c
 +++ b/drivers/gpu/drm/radeon/r600.c
 @@ -4328,6 +4328,7 @@ int r600_irq_process(struct radeon_device *rdev)
@@ -57,7 +57,7 @@ index 087d41e370fd..00621ae44bde 100644
  
  	/* make sure wptr hasn't changed while processing */
 diff --git a/drivers/gpu/drm/radeon/si.c b/drivers/gpu/drm/radeon/si.c
-index 15759c8ca5b7..3bc479da07cd 100644
+index 15759c8ca5b7b..3bc479da07cdf 100644
 --- a/drivers/gpu/drm/radeon/si.c
 +++ b/drivers/gpu/drm/radeon/si.c
 @@ -6423,6 +6423,7 @@ int si_irq_process(struct radeon_device *rdev)
@@ -69,5 +69,5 @@ index 15759c8ca5b7..3bc479da07cd 100644
  
  	/* make sure wptr hasn't changed while processing */
 -- 
-2.47.0
+2.47.1
 

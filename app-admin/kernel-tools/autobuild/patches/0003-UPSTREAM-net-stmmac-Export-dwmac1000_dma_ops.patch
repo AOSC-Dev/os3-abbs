@@ -24,7 +24,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 1 insertion(+)
 
 diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac1000_dma.c b/drivers/net/ethernet/stmicro/stmmac/dwmac1000_dma.c
-index b3d7eff53b18..118a22406a2e 100644
+index b3d7eff53b180..118a22406a2e9 100644
 --- a/drivers/net/ethernet/stmicro/stmmac/dwmac1000_dma.c
 +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac1000_dma.c
 @@ -296,3 +296,4 @@ const struct stmmac_dma_ops dwmac1000_dma_ops = {
@@ -33,5 +33,5 @@ index b3d7eff53b18..118a22406a2e 100644
  };
 +EXPORT_SYMBOL_GPL(dwmac1000_dma_ops);
 -- 
-2.47.0
+2.47.1
 

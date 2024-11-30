@@ -1,4 +1,4 @@
-From f2736bd7bd67dfcfcf6b2d69eeb7c0f936195fe0 Mon Sep 17 00:00:00 2001
+From 46d4c69a8ab62e83dee3a1f7b8c90cdf6fa50a37 Mon Sep 17 00:00:00 2001
 From: Kate Hsuan <hpa@redhat.com>
 Date: Tue, 21 Mar 2023 23:37:18 +0800
 Subject: [PATCH 133/164] SURFACE: leds: tps68470: Add LED control for tps68470
@@ -24,7 +24,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  create mode 100644 drivers/leds/leds-tps68470.c
 
 diff --git a/drivers/leds/Kconfig b/drivers/leds/Kconfig
-index 0f9da230fa4d..c2fec19e9fa8 100644
+index 0f9da230fa4dc..c2fec19e9fa81 100644
 --- a/drivers/leds/Kconfig
 +++ b/drivers/leds/Kconfig
 @@ -945,6 +945,18 @@ config LEDS_TPS6105X
@@ -47,7 +47,7 @@ index 0f9da230fa4d..c2fec19e9fa8 100644
  	tristate "LED support for SGI Octane machines"
  	depends on LEDS_CLASS
 diff --git a/drivers/leds/Makefile b/drivers/leds/Makefile
-index 3edf87550390..12d78f82819c 100644
+index 3edf875503903..12d78f82819ca 100644
 --- a/drivers/leds/Makefile
 +++ b/drivers/leds/Makefile
 @@ -89,6 +89,7 @@ obj-$(CONFIG_LEDS_TCA6507)		+= leds-tca6507.o
@@ -60,7 +60,7 @@ index 3edf87550390..12d78f82819c 100644
  obj-$(CONFIG_LEDS_WM8350)		+= leds-wm8350.o
 diff --git a/drivers/leds/leds-tps68470.c b/drivers/leds/leds-tps68470.c
 new file mode 100644
-index 000000000000..35aeb5db89c8
+index 0000000000000..35aeb5db89c8f
 --- /dev/null
 +++ b/drivers/leds/leds-tps68470.c
 @@ -0,0 +1,185 @@
@@ -250,5 +250,5 @@ index 000000000000..35aeb5db89c8
 +MODULE_DESCRIPTION("LED driver for TPS68470 PMIC");
 +MODULE_LICENSE("GPL v2");
 -- 
-2.47.0
+2.47.1
 

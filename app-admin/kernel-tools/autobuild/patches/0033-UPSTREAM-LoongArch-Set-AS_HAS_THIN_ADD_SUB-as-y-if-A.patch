@@ -27,7 +27,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/loongarch/Kconfig b/arch/loongarch/Kconfig
-index 41ff8b75efe7..4fbb262e421b 100644
+index 41ff8b75efe7e..4fbb262e421b1 100644
 --- a/arch/loongarch/Kconfig
 +++ b/arch/loongarch/Kconfig
 @@ -266,7 +266,7 @@ config AS_HAS_FCSR_CLASS
@@ -40,5 +40,5 @@ index 41ff8b75efe7..4fbb262e421b 100644
  config AS_HAS_LSX_EXTENSION
  	def_bool $(as-instr,vld \$vr0$(comma)\$a0$(comma)0)
 -- 
-2.47.0
+2.47.1
 

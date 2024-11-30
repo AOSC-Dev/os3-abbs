@@ -46,7 +46,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  2 files changed, 64 insertions(+)
 
 diff --git a/Documentation/arch/loongarch/irq-chip-model.rst b/Documentation/arch/loongarch/irq-chip-model.rst
-index 7988f4192363..6dd48256e39f 100644
+index 7988f41923639..6dd48256e39f7 100644
 --- a/Documentation/arch/loongarch/irq-chip-model.rst
 +++ b/Documentation/arch/loongarch/irq-chip-model.rst
 @@ -85,6 +85,38 @@ to CPUINTC directly::
@@ -89,7 +89,7 @@ index 7988f4192363..6dd48256e39f 100644
  ========================
  
 diff --git a/Documentation/translations/zh_CN/arch/loongarch/irq-chip-model.rst b/Documentation/translations/zh_CN/arch/loongarch/irq-chip-model.rst
-index f1e9ab18206c..472761938682 100644
+index f1e9ab18206c3..472761938682c 100644
 --- a/Documentation/translations/zh_CN/arch/loongarch/irq-chip-model.rst
 +++ b/Documentation/translations/zh_CN/arch/loongarch/irq-chip-model.rst
 @@ -87,6 +87,38 @@ PCH-LPC/PCH-MSI，然后被EIOINTC统一收集，再直接到达CPUINTC::
@@ -132,5 +132,5 @@ index f1e9ab18206c..472761938682 100644
  ==============
  
 -- 
-2.47.0
+2.47.1
 

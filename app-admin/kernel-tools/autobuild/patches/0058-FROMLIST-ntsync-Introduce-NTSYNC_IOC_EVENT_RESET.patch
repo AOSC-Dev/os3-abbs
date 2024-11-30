@@ -17,7 +17,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  2 files changed, 25 insertions(+)
 
 diff --git a/drivers/misc/ntsync.c b/drivers/misc/ntsync.c
-index 97d9b6047fbe..b070ceccc3af 100644
+index 97d9b6047fbea..b070ceccc3afd 100644
 --- a/drivers/misc/ntsync.c
 +++ b/drivers/misc/ntsync.c
 @@ -559,6 +559,28 @@ static int ntsync_event_set(struct ntsync_obj *event, void __user *argp)
@@ -59,7 +59,7 @@ index 97d9b6047fbe..b070ceccc3af 100644
  		return -ENOIOCTLCMD;
  	}
 diff --git a/include/uapi/linux/ntsync.h b/include/uapi/linux/ntsync.h
-index 36d903521bbe..7fdf79729b20 100644
+index 36d903521bbe7..7fdf79729b208 100644
 --- a/include/uapi/linux/ntsync.h
 +++ b/include/uapi/linux/ntsync.h
 @@ -52,5 +52,6 @@ struct ntsync_wait_args {
@@ -70,5 +70,5 @@ index 36d903521bbe..7fdf79729b20 100644
  
  #endif
 -- 
-2.47.0
+2.47.1
 

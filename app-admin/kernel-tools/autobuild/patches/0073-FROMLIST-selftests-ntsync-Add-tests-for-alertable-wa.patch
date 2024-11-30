@@ -16,7 +16,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 176 insertions(+), 3 deletions(-)
 
 diff --git a/tools/testing/selftests/drivers/ntsync/ntsync.c b/tools/testing/selftests/drivers/ntsync/ntsync.c
-index 5d17eff6a370..5465a16d38b3 100644
+index 5d17eff6a3700..5465a16d38b3f 100644
 --- a/tools/testing/selftests/drivers/ntsync/ntsync.c
 +++ b/tools/testing/selftests/drivers/ntsync/ntsync.c
 @@ -95,7 +95,7 @@ static int read_event_state(int event, __u32 *signaled, __u32 *manual)
@@ -229,5 +229,5 @@ index 5d17eff6a370..5465a16d38b3 100644
 +
  TEST_HARNESS_MAIN
 -- 
-2.47.0
+2.47.1
 

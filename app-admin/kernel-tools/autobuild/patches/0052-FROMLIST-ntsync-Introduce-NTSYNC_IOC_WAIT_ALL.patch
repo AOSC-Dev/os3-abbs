@@ -35,7 +35,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  2 files changed, 322 insertions(+), 13 deletions(-)
 
 diff --git a/drivers/misc/ntsync.c b/drivers/misc/ntsync.c
-index d5864891caf0..a2f2dfadc3ee 100644
+index d5864891caf04..a2f2dfadc3ee6 100644
 --- a/drivers/misc/ntsync.c
 +++ b/drivers/misc/ntsync.c
 @@ -13,6 +13,7 @@
@@ -526,7 +526,7 @@ index d5864891caf0..a2f2dfadc3ee 100644
  		return ntsync_wait_any(dev, argp);
  	default:
 diff --git a/include/uapi/linux/ntsync.h b/include/uapi/linux/ntsync.h
-index edc12c7a10dc..addf187b1573 100644
+index edc12c7a10dca..addf187b15737 100644
 --- a/include/uapi/linux/ntsync.h
 +++ b/include/uapi/linux/ntsync.h
 @@ -31,6 +31,7 @@ struct ntsync_wait_args {
@@ -538,5 +538,5 @@ index edc12c7a10dc..addf187b1573 100644
  #define NTSYNC_IOC_SEM_POST		_IOWR('N', 0x81, __u32)
  
 -- 
-2.47.0
+2.47.1
 

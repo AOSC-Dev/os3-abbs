@@ -1,4 +1,4 @@
-From 690def2a88fb36109511d1c326b5dd9bb05fc298 Mon Sep 17 00:00:00 2001
+From a3e52d7ff56382d61074ad2b49f36bb10253faa8 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Thu, 29 Oct 2020 16:29:11 +0800
 Subject: [PATCH 137/164] FROMEXT: LoongArch: Add CPU HWMon platform driver
@@ -18,7 +18,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  create mode 100644 drivers/platform/loongarch/cpu_hwmon.c
 
 diff --git a/drivers/platform/loongarch/Kconfig b/drivers/platform/loongarch/Kconfig
-index 5633e4d73991..9ec1a86ef7fa 100644
+index 5633e4d73991a..9ec1a86ef7fae 100644
 --- a/drivers/platform/loongarch/Kconfig
 +++ b/drivers/platform/loongarch/Kconfig
 @@ -16,6 +16,14 @@ menuconfig LOONGARCH_PLATFORM_DEVICES
@@ -37,7 +37,7 @@ index 5633e4d73991..9ec1a86ef7fa 100644
  	tristate "Generic Loongson-3 Laptop Driver"
  	depends on ACPI
 diff --git a/drivers/platform/loongarch/Makefile b/drivers/platform/loongarch/Makefile
-index f43ab03db1a2..8038291bae3a 100644
+index f43ab03db1a2d..8038291bae3aa 100644
 --- a/drivers/platform/loongarch/Makefile
 +++ b/drivers/platform/loongarch/Makefile
 @@ -1 +1,2 @@
@@ -45,7 +45,7 @@ index f43ab03db1a2..8038291bae3a 100644
  obj-$(CONFIG_LOONGSON_LAPTOP) += loongson-laptop.o
 diff --git a/drivers/platform/loongarch/cpu_hwmon.c b/drivers/platform/loongarch/cpu_hwmon.c
 new file mode 100644
-index 000000000000..93a05993745a
+index 0000000000000..93a05993745aa
 --- /dev/null
 +++ b/drivers/platform/loongarch/cpu_hwmon.c
 @@ -0,0 +1,194 @@
@@ -244,5 +244,5 @@ index 000000000000..93a05993745a
 +MODULE_DESCRIPTION("Loongson CPU Hwmon driver");
 +MODULE_LICENSE("GPL");
 -- 
-2.47.0
+2.47.1
 

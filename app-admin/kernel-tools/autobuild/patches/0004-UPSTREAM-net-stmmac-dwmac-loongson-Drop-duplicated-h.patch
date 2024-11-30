@@ -24,7 +24,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-loongson.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-loongson.c
-index ee3604f58def..2d4ecb0efbad 100644
+index ee3604f58def5..2d4ecb0efbad5 100644
 --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-loongson.c
 +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-loongson.c
 @@ -16,7 +16,7 @@ static int loongson_default_data(struct plat_stmmacenet_data *plat)
@@ -45,5 +45,5 @@ index ee3604f58def..2d4ecb0efbad 100644
  }
  
 -- 
-2.47.0
+2.47.1
 

@@ -23,7 +23,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  2 files changed, 63 insertions(+), 10 deletions(-)
 
 diff --git a/drivers/misc/ntsync.c b/drivers/misc/ntsync.c
-index a11fe2469841..87a24798a5c7 100644
+index a11fe2469841b..87a24798a5c7b 100644
 --- a/drivers/misc/ntsync.c
 +++ b/drivers/misc/ntsync.c
 @@ -885,22 +885,29 @@ static int setup_wait(struct ntsync_device *dev,
@@ -179,7 +179,7 @@ index a11fe2469841..87a24798a5c7 100644
  	if (signaled != -1) {
  		struct ntsync_wait_args __user *user_args = argp;
 diff --git a/include/uapi/linux/ntsync.h b/include/uapi/linux/ntsync.h
-index 74abeba832f7..4a8095a3fc34 100644
+index 74abeba832f77..4a8095a3fc34c 100644
 --- a/include/uapi/linux/ntsync.h
 +++ b/include/uapi/linux/ntsync.h
 @@ -37,7 +37,8 @@ struct ntsync_wait_args {
@@ -193,5 +193,5 @@ index 74abeba832f7..4a8095a3fc34 100644
  
  #define NTSYNC_MAX_WAIT_COUNT 64
 -- 
-2.47.0
+2.47.1
 

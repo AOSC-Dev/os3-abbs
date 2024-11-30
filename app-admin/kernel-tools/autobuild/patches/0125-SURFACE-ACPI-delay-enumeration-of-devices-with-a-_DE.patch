@@ -1,4 +1,4 @@
-From 6866d4ab294ef055760103ad1d566394f514f9a1 Mon Sep 17 00:00:00 2001
+From b77231a753bd9d2c777ad88d1d83b84b66f7ab74 Mon Sep 17 00:00:00 2001
 From: Hans de Goede <hdegoede@redhat.com>
 Date: Sun, 10 Oct 2021 20:56:57 +0200
 Subject: [PATCH 125/164] SURFACE: ACPI: delay enumeration of devices with a
@@ -61,7 +61,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 3 insertions(+)
 
 diff --git a/drivers/acpi/scan.c b/drivers/acpi/scan.c
-index 22ae7829a915..0fe281280316 100644
+index 22ae7829a9155..0fe281280316e 100644
 --- a/drivers/acpi/scan.c
 +++ b/drivers/acpi/scan.c
 @@ -2185,6 +2185,9 @@ static acpi_status acpi_bus_check_add_2(acpi_handle handle, u32 lvl_not_used,
@@ -75,5 +75,5 @@ index 22ae7829a915..0fe281280316 100644
  	 * Do not enumerate devices with enumeration_by_parent flag set as
  	 * they will be enumerated by their respective parents.
 -- 
-2.47.0
+2.47.1
 

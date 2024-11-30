@@ -24,7 +24,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  create mode 100644 drivers/edac/loongson_edac.c
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 1f397800b85a..c253fb9926e4 100644
+index 1f397800b85ac..c253fb9926e4c 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
 @@ -13268,6 +13268,12 @@ S:	Maintained
@@ -41,7 +41,7 @@ index 1f397800b85a..c253fb9926e4 100644
  M:	Sathya Prakash <sathya.prakash@broadcom.com>
  M:	Sreekanth Reddy <sreekanth.reddy@broadcom.com>
 diff --git a/arch/loongarch/Kconfig b/arch/loongarch/Kconfig
-index 1b1c357a8bd9..b4f2ab6d2bc0 100644
+index 1b1c357a8bd95..b4f2ab6d2bc05 100644
 --- a/arch/loongarch/Kconfig
 +++ b/arch/loongarch/Kconfig
 @@ -79,6 +79,7 @@ config LOONGARCH
@@ -53,7 +53,7 @@ index 1b1c357a8bd9..b4f2ab6d2bc0 100644
  	select GENERIC_CLOCKEVENTS
  	select GENERIC_CMOS_UPDATE
 diff --git a/drivers/edac/Kconfig b/drivers/edac/Kconfig
-index 16c8de5050e5..02369c3766e2 100644
+index 16c8de5050e59..02369c3766e20 100644
 --- a/drivers/edac/Kconfig
 +++ b/drivers/edac/Kconfig
 @@ -573,5 +573,13 @@ config EDAC_VERSAL
@@ -71,7 +71,7 @@ index 16c8de5050e5..02369c3766e2 100644
  
  endif # EDAC
 diff --git a/drivers/edac/Makefile b/drivers/edac/Makefile
-index 4edfb83ffbee..d6f2cfe7e544 100644
+index 4edfb83ffbeef..d6f2cfe7e5449 100644
 --- a/drivers/edac/Makefile
 +++ b/drivers/edac/Makefile
 @@ -89,3 +89,4 @@ obj-$(CONFIG_EDAC_DMC520)		+= dmc520_edac.o
@@ -81,7 +81,7 @@ index 4edfb83ffbee..d6f2cfe7e544 100644
 +obj-$(CONFIG_EDAC_LOONGSON)		+= loongson_edac.o
 diff --git a/drivers/edac/loongson_edac.c b/drivers/edac/loongson_edac.c
 new file mode 100644
-index 000000000000..4997b3600985
+index 0000000000000..4997b36009851
 --- /dev/null
 +++ b/drivers/edac/loongson_edac.c
 @@ -0,0 +1,156 @@
@@ -242,5 +242,5 @@ index 000000000000..4997b3600985
 +MODULE_AUTHOR("Zhao Qunqin <zhaoqunqin@loongson.cn>");
 +MODULE_DESCRIPTION("EDAC driver for loongson memory controller");
 -- 
-2.47.0
+2.47.1
 

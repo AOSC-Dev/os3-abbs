@@ -29,7 +29,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  create mode 100644 tools/testing/selftests/drivers/ntsync/ntsync.c
 
 diff --git a/tools/testing/selftests/Makefile b/tools/testing/selftests/Makefile
-index bc8fe9e8f7f2..b1296bd8eb3f 100644
+index bc8fe9e8f7f20..b1296bd8eb3f7 100644
 --- a/tools/testing/selftests/Makefile
 +++ b/tools/testing/selftests/Makefile
 @@ -17,6 +17,7 @@ TARGETS += devices/error_logs
@@ -42,14 +42,14 @@ index bc8fe9e8f7f2..b1296bd8eb3f 100644
  TARGETS += drivers/net/bonding
 diff --git a/tools/testing/selftests/drivers/ntsync/.gitignore b/tools/testing/selftests/drivers/ntsync/.gitignore
 new file mode 100644
-index 000000000000..848573a3d3ea
+index 0000000000000..848573a3d3eaf
 --- /dev/null
 +++ b/tools/testing/selftests/drivers/ntsync/.gitignore
 @@ -0,0 +1 @@
 +ntsync
 diff --git a/tools/testing/selftests/drivers/ntsync/Makefile b/tools/testing/selftests/drivers/ntsync/Makefile
 new file mode 100644
-index 000000000000..dbf2b055c0b2
+index 0000000000000..dbf2b055c0b28
 --- /dev/null
 +++ b/tools/testing/selftests/drivers/ntsync/Makefile
 @@ -0,0 +1,7 @@
@@ -62,14 +62,14 @@ index 000000000000..dbf2b055c0b2
 +include ../../lib.mk
 diff --git a/tools/testing/selftests/drivers/ntsync/config b/tools/testing/selftests/drivers/ntsync/config
 new file mode 100644
-index 000000000000..60539c826d06
+index 0000000000000..60539c826d062
 --- /dev/null
 +++ b/tools/testing/selftests/drivers/ntsync/config
 @@ -0,0 +1 @@
 +CONFIG_WINESYNC=y
 diff --git a/tools/testing/selftests/drivers/ntsync/ntsync.c b/tools/testing/selftests/drivers/ntsync/ntsync.c
 new file mode 100644
-index 000000000000..1e145c6dfded
+index 0000000000000..1e145c6dfded3
 --- /dev/null
 +++ b/tools/testing/selftests/drivers/ntsync/ntsync.c
 @@ -0,0 +1,149 @@
@@ -223,5 +223,5 @@ index 000000000000..1e145c6dfded
 +
 +TEST_HARNESS_MAIN
 -- 
-2.47.0
+2.47.1
 

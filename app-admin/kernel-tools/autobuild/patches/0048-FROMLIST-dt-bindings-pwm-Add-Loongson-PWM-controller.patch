@@ -21,7 +21,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
 
 diff --git a/Documentation/devicetree/bindings/pwm/loongson,ls7a-pwm.yaml b/Documentation/devicetree/bindings/pwm/loongson,ls7a-pwm.yaml
 new file mode 100644
-index 000000000000..46814773e0cc
+index 0000000000000..46814773e0cc8
 --- /dev/null
 +++ b/Documentation/devicetree/bindings/pwm/loongson,ls7a-pwm.yaml
 @@ -0,0 +1,66 @@
@@ -92,7 +92,7 @@ index 000000000000..46814773e0cc
 +        #pwm-cells = <3>;
 +    };
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 73ebd630afe7..6ad85d250abe 100644
+index 73ebd630afe74..6ad85d250abe0 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
 @@ -13206,6 +13206,12 @@ S:	Maintained
@@ -109,5 +109,5 @@ index 73ebd630afe7..6ad85d250abe 100644
  M:	Yinbo Zhu <zhuyinbo@loongson.cn>
  L:	linux-clk@vger.kernel.org
 -- 
-2.47.0
+2.47.1
 

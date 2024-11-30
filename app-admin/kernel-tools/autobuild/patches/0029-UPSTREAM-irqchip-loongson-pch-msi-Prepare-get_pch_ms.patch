@@ -25,7 +25,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/irqchip/irq-loongson-pch-msi.c b/drivers/irqchip/irq-loongson-pch-msi.c
-index d43731878800..0dc14550791d 100644
+index d43731878800c..0dc14550791db 100644
 --- a/drivers/irqchip/irq-loongson-pch-msi.c
 +++ b/drivers/irqchip/irq-loongson-pch-msi.c
 @@ -255,17 +255,17 @@ IRQCHIP_DECLARE(pch_msi, "loongson,pch-msi-1.0", pch_msi_of_init);
@@ -52,5 +52,5 @@ index d43731878800..0dc14550791d 100644
  	int ret;
  	struct fwnode_handle *domain_handle;
 -- 
-2.47.0
+2.47.1
 

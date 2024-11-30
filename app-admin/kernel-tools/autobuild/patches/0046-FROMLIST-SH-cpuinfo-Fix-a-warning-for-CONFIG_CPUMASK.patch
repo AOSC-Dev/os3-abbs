@@ -48,7 +48,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/sh/kernel/cpu/proc.c b/arch/sh/kernel/cpu/proc.c
-index a306bcd6b341..5f6d0e827bae 100644
+index a306bcd6b3413..5f6d0e827baeb 100644
 --- a/arch/sh/kernel/cpu/proc.c
 +++ b/arch/sh/kernel/cpu/proc.c
 @@ -132,7 +132,7 @@ static int show_cpuinfo(struct seq_file *m, void *v)
@@ -61,5 +61,5 @@ index a306bcd6b341..5f6d0e827bae 100644
  static void *c_next(struct seq_file *m, void *v, loff_t *pos)
  {
 -- 
-2.47.0
+2.47.1
 

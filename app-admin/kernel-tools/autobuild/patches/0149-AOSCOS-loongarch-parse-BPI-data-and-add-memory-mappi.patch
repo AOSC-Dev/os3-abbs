@@ -1,4 +1,4 @@
-From 7be0286a2f102a7060e681114a6cfc8a465e4073 Mon Sep 17 00:00:00 2001
+From 90040be7fa25f42b4a76963dd25a64a5753605ac Mon Sep 17 00:00:00 2001
 From: Miao Wang <shankerwangmiao@gmail.com>
 Date: Thu, 18 Jul 2024 18:55:59 +0800
 Subject: [PATCH 149/164] AOSCOS: loongarch: parse BPI data and add memory
@@ -35,7 +35,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  create mode 100644 arch/loongarch/kernel/legacy_boot.h
 
 diff --git a/arch/loongarch/kernel/Makefile b/arch/loongarch/kernel/Makefile
-index c9bfeda89e40..e52144b9f282 100644
+index c9bfeda89e407..e52144b9f2827 100644
 --- a/arch/loongarch/kernel/Makefile
 +++ b/arch/loongarch/kernel/Makefile
 @@ -79,3 +79,5 @@ obj-$(CONFIG_UPROBES)		+= uprobes.o
@@ -45,7 +45,7 @@ index c9bfeda89e40..e52144b9f282 100644
 +
 +obj-y				+= legacy_boot.o
 diff --git a/arch/loongarch/kernel/efi.c b/arch/loongarch/kernel/efi.c
-index ff44bb09ee96..9ae0afaa2ddf 100644
+index ff44bb09ee96f..9ae0afaa2ddfb 100644
 --- a/arch/loongarch/kernel/efi.c
 +++ b/arch/loongarch/kernel/efi.c
 @@ -25,6 +25,8 @@
@@ -67,7 +67,7 @@ index ff44bb09ee96..9ae0afaa2ddf 100644
  
 diff --git a/arch/loongarch/kernel/legacy_boot.c b/arch/loongarch/kernel/legacy_boot.c
 new file mode 100644
-index 000000000000..30c01c8b22a0
+index 0000000000000..30c01c8b22a0a
 --- /dev/null
 +++ b/arch/loongarch/kernel/legacy_boot.c
 @@ -0,0 +1,297 @@
@@ -370,7 +370,7 @@ index 000000000000..30c01c8b22a0
 +}
 diff --git a/arch/loongarch/kernel/legacy_boot.h b/arch/loongarch/kernel/legacy_boot.h
 new file mode 100644
-index 000000000000..6d3a36ebaab7
+index 0000000000000..6d3a36ebaab71
 --- /dev/null
 +++ b/arch/loongarch/kernel/legacy_boot.h
 @@ -0,0 +1,18 @@
@@ -393,7 +393,7 @@ index 000000000000..6d3a36ebaab7
 +
 +#endif /* __LEGACY_BOOT_H_ */
 diff --git a/arch/loongarch/kernel/mem.c b/arch/loongarch/kernel/mem.c
-index 86d37a447eec..b24b3db96018 100644
+index 86d37a447eec1..b24b3db96018d 100644
 --- a/arch/loongarch/kernel/mem.c
 +++ b/arch/loongarch/kernel/mem.c
 @@ -10,6 +10,8 @@
@@ -415,7 +415,7 @@ index 86d37a447eec..b24b3db96018 100644
  
  	/* Reserve the first 2MB */
 diff --git a/arch/loongarch/kernel/numa.c b/arch/loongarch/kernel/numa.c
-index 8fe21f868f72..5d45c389e961 100644
+index 8fe21f868f72d..5d45c389e9612 100644
 --- a/arch/loongarch/kernel/numa.c
 +++ b/arch/loongarch/kernel/numa.c
 @@ -26,6 +26,8 @@
@@ -436,7 +436,7 @@ index 8fe21f868f72..5d45c389e961 100644
  		return -EINVAL;
  
 diff --git a/arch/loongarch/kernel/setup.c b/arch/loongarch/kernel/setup.c
-index cbd3c09a93c1..782e8849355a 100644
+index cbd3c09a93c14..782e8849355a5 100644
 --- a/arch/loongarch/kernel/setup.c
 +++ b/arch/loongarch/kernel/setup.c
 @@ -49,6 +49,8 @@
@@ -457,7 +457,7 @@ index cbd3c09a93c1..782e8849355a 100644
  	pagetable_init();
  	bootcmdline_init(cmdline_p);
 diff --git a/arch/loongarch/kernel/smp.c b/arch/loongarch/kernel/smp.c
-index 81a3ca364f4e..6c4e9fbfb7c1 100644
+index 81a3ca364f4ed..6c4e9fbfb7c1b 100644
 --- a/arch/loongarch/kernel/smp.c
 +++ b/arch/loongarch/kernel/smp.c
 @@ -35,6 +35,8 @@
@@ -479,5 +479,5 @@ index 81a3ca364f4e..6c4e9fbfb7c1 100644
  	cpuboot_data.thread_info = (unsigned long)task_thread_info(idle);
  
 -- 
-2.47.0
+2.47.1
 

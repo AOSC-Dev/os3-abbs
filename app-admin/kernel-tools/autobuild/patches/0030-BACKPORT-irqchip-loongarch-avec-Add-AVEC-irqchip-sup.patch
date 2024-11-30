@@ -64,7 +64,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  create mode 100644 drivers/irqchip/irq-loongarch-avec.c
 
 diff --git a/arch/loongarch/Kconfig b/arch/loongarch/Kconfig
-index ce232ddcd27d..7ba3baee859e 100644
+index ce232ddcd27d7..7ba3baee859e4 100644
 --- a/arch/loongarch/Kconfig
 +++ b/arch/loongarch/Kconfig
 @@ -85,6 +85,7 @@ config LOONGARCH
@@ -76,7 +76,7 @@ index ce232ddcd27d..7ba3baee859e 100644
  	select GENERIC_IRQ_PROBE
  	select GENERIC_IRQ_SHOW
 diff --git a/arch/loongarch/include/asm/irq.h b/arch/loongarch/include/asm/irq.h
-index c4835800c8b9..9c2ca785faa9 100644
+index c4835800c8b9b..9c2ca785faa9b 100644
 --- a/arch/loongarch/include/asm/irq.h
 +++ b/arch/loongarch/include/asm/irq.h
 @@ -99,6 +99,8 @@ struct acpi_madt_bio_pic;
@@ -89,7 +89,7 @@ index c4835800c8b9..9c2ca785faa9 100644
  
  extern struct acpi_madt_lio_pic *acpi_liointc;
 diff --git a/arch/loongarch/kernel/paravirt.c b/arch/loongarch/kernel/paravirt.c
-index b30560f4c0ac..e5a39bbad078 100644
+index b30560f4c0acf..e5a39bbad0780 100644
 --- a/arch/loongarch/kernel/paravirt.c
 +++ b/arch/loongarch/kernel/paravirt.c
 @@ -147,6 +147,11 @@ static irqreturn_t pv_ipi_interrupt(int irq, void *dev)
@@ -105,7 +105,7 @@ index b30560f4c0ac..e5a39bbad078 100644
  }
  
 diff --git a/arch/loongarch/kernel/smp.c b/arch/loongarch/kernel/smp.c
-index fb15d264f1d6..81a3ca364f4e 100644
+index fb15d264f1d69..81a3ca364f4ed 100644
 --- a/arch/loongarch/kernel/smp.c
 +++ b/arch/loongarch/kernel/smp.c
 @@ -72,6 +72,7 @@ static const char *ipi_types[NR_IPI] __tracepoint_string = {
@@ -129,7 +129,7 @@ index fb15d264f1d6..81a3ca364f4e 100644
  }
  
 diff --git a/drivers/irqchip/Makefile b/drivers/irqchip/Makefile
-index 15635812b2d6..e3679ec2b9f7 100644
+index 15635812b2d66..e3679ec2b9f76 100644
 --- a/drivers/irqchip/Makefile
 +++ b/drivers/irqchip/Makefile
 @@ -110,7 +110,7 @@ obj-$(CONFIG_LS1X_IRQ)			+= irq-ls1x.o
@@ -143,7 +143,7 @@ index 15635812b2d6..e3679ec2b9f7 100644
  obj-$(CONFIG_LOONGSON_HTPIC)		+= irq-loongson-htpic.o
 diff --git a/drivers/irqchip/irq-loongarch-avec.c b/drivers/irqchip/irq-loongarch-avec.c
 new file mode 100644
-index 000000000000..0f6e465dd309
+index 0000000000000..0f6e465dd3095
 --- /dev/null
 +++ b/drivers/irqchip/irq-loongarch-avec.c
 @@ -0,0 +1,425 @@
@@ -573,7 +573,7 @@ index 000000000000..0f6e465dd309
 +	return ret;
 +}
 diff --git a/drivers/irqchip/irq-loongarch-cpu.c b/drivers/irqchip/irq-loongarch-cpu.c
-index 826e23eb35ce..e62dab4c97fc 100644
+index 826e23eb35ce9..e62dab4c97fcf 100644
 --- a/drivers/irqchip/irq-loongarch-cpu.c
 +++ b/drivers/irqchip/irq-loongarch-cpu.c
 @@ -142,7 +142,10 @@ static int __init acpi_cascade_irqdomain_init(void)
@@ -589,7 +589,7 @@ index 826e23eb35ce..e62dab4c97fc 100644
  
  static int __init cpuintc_acpi_init(union acpi_subtable_headers *header,
 diff --git a/drivers/irqchip/irq-loongson-eiointc.c b/drivers/irqchip/irq-loongson-eiointc.c
-index c756b7aa8055..e24db71a8783 100644
+index c756b7aa80558..e24db71a8783c 100644
 --- a/drivers/irqchip/irq-loongson-eiointc.c
 +++ b/drivers/irqchip/irq-loongson-eiointc.c
 @@ -362,6 +362,9 @@ static int __init acpi_cascade_irqdomain_init(void)
@@ -603,7 +603,7 @@ index c756b7aa8055..e24db71a8783 100644
  	if (r < 0)
  		return r;
 diff --git a/drivers/irqchip/irq-loongson-pch-msi.c b/drivers/irqchip/irq-loongson-pch-msi.c
-index 0dc14550791d..bd337ecddb40 100644
+index 0dc14550791db..bd337ecddb409 100644
 --- a/drivers/irqchip/irq-loongson-pch-msi.c
 +++ b/drivers/irqchip/irq-loongson-pch-msi.c
 @@ -278,4 +278,18 @@ int __init pch_msi_acpi_init(struct irq_domain *parent, struct acpi_madt_msi_pic
@@ -626,7 +626,7 @@ index 0dc14550791d..bd337ecddb40 100644
 +}
  #endif
 diff --git a/drivers/irqchip/irq-loongson.h b/drivers/irqchip/irq-loongson.h
-index b155f1258ed5..11fa138d1f44 100644
+index b155f1258ed57..11fa138d1f443 100644
 --- a/drivers/irqchip/irq-loongson.h
 +++ b/drivers/irqchip/irq-loongson.h
 @@ -12,6 +12,7 @@ int liointc_acpi_init(struct irq_domain *parent,
@@ -645,7 +645,7 @@ index b155f1258ed5..11fa138d1f44 100644
  
  #endif /* _DRIVERS_IRQCHIP_IRQ_LOONGSON_H */
 diff --git a/include/linux/cpuhotplug.h b/include/linux/cpuhotplug.h
-index 1c1dae20e2f4..f39186738d81 100644
+index 1c1dae20e2f45..f39186738d81b 100644
 --- a/include/linux/cpuhotplug.h
 +++ b/include/linux/cpuhotplug.h
 @@ -145,6 +145,7 @@ enum cpuhp_state {
@@ -657,5 +657,5 @@ index 1c1dae20e2f4..f39186738d81 100644
  	CPUHP_AP_IRQ_RISCV_IMSIC_STARTING,
  	CPUHP_AP_IRQ_RISCV_SBI_IPI_STARTING,
 -- 
-2.47.0
+2.47.1
 

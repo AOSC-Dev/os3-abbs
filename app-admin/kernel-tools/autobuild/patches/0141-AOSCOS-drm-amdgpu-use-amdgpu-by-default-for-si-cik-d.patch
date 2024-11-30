@@ -1,4 +1,4 @@
-From e04b29d731b68aed004f4af8fbcb5ea4e47000be Mon Sep 17 00:00:00 2001
+From e3ed421741ba922b2cc05ee504cc58d476b440c5 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Sun, 22 Sep 2024 00:57:24 +0800
 Subject: [PATCH 141/164] AOSCOS: drm: amdgpu: use amdgpu by default for si/cik
@@ -21,7 +21,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  2 files changed, 4 insertions(+), 14 deletions(-)
 
 diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
-index e2382566af44..5ce560218f09 100644
+index e2382566af445..5ce560218f09f 100644
 --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
 +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
 @@ -600,13 +600,8 @@ module_param_named(timeout_period, amdgpu_watchdog_timer.period, uint, 0644);
@@ -53,7 +53,7 @@ index e2382566af44..5ce560218f09 100644
  module_param_named(cik_support, amdgpu_cik_support, int, 0444);
  #endif
 diff --git a/drivers/gpu/drm/radeon/radeon_drv.c b/drivers/gpu/drm/radeon/radeon_drv.c
-index 7bf08164140e..e42956b683bb 100644
+index 7bf08164140ef..e42956b683bb1 100644
 --- a/drivers/gpu/drm/radeon/radeon_drv.c
 +++ b/drivers/gpu/drm/radeon/radeon_drv.c
 @@ -239,12 +239,12 @@ module_param_named(uvd, radeon_uvd, int, 0444);
@@ -74,5 +74,5 @@ index 7bf08164140e..e42956b683bb 100644
  
  static struct pci_device_id pciidlist[] = {
 -- 
-2.47.0
+2.47.1
 

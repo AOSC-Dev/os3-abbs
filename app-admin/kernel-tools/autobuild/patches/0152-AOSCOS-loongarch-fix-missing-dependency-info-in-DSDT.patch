@@ -1,4 +1,4 @@
-From b41827627abae18b5b3e4a2be18cfa72b663aa72 Mon Sep 17 00:00:00 2001
+From 93ad5fc459fc10dd2dce62bd949acc5bb9e36646 Mon Sep 17 00:00:00 2001
 From: Miao Wang <shankerwangmiao@gmail.com>
 Date: Thu, 25 Jul 2024 16:09:19 +0800
 Subject: [PATCH 152/164] AOSCOS: loongarch: fix missing dependency info in
@@ -31,7 +31,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  4 files changed, 54 insertions(+)
 
 diff --git a/arch/loongarch/include/asm/acpi.h b/arch/loongarch/include/asm/acpi.h
-index c954d15d0a47..8d8551c2b6c0 100644
+index c954d15d0a47c..8d8551c2b6c04 100644
 --- a/arch/loongarch/include/asm/acpi.h
 +++ b/arch/loongarch/include/asm/acpi.h
 @@ -51,6 +51,8 @@ extern void acpi_arch_os_table_override (struct acpi_table_header *existing_tabl
@@ -44,7 +44,7 @@ index c954d15d0a47..8d8551c2b6c0 100644
  #endif /* !CONFIG_ACPI */
  
 diff --git a/arch/loongarch/kernel/legacy_boot.c b/arch/loongarch/kernel/legacy_boot.c
-index 7043bfd0399d..3ec69ffd8b94 100644
+index 7043bfd0399d6..3ec69ffd8b942 100644
 --- a/arch/loongarch/kernel/legacy_boot.c
 +++ b/arch/loongarch/kernel/legacy_boot.c
 @@ -617,6 +617,53 @@ void acpi_arch_pci_probe_root_dev_filter(struct resource_entry *entry)
@@ -102,7 +102,7 @@ index 7043bfd0399d..3ec69ffd8b94 100644
  	return have_bpi;
  }
 diff --git a/drivers/acpi/bus.c b/drivers/acpi/bus.c
-index 284bc2e03580..4f807f4bb576 100644
+index 284bc2e035804..4f807f4bb576b 100644
 --- a/drivers/acpi/bus.c
 +++ b/drivers/acpi/bus.c
 @@ -1459,6 +1459,7 @@ static int __init acpi_init(void)
@@ -114,7 +114,7 @@ index 284bc2e03580..4f807f4bb576 100644
  	acpi_ec_init();
  	acpi_debugfs_init();
 diff --git a/include/linux/acpi.h b/include/linux/acpi.h
-index fff07ee5116b..d0231e068e08 100644
+index fff07ee5116b1..d0231e068e08d 100644
 --- a/include/linux/acpi.h
 +++ b/include/linux/acpi.h
 @@ -1539,6 +1539,10 @@ void acpi_arm_init(void);
@@ -129,5 +129,5 @@ index fff07ee5116b..d0231e068e08 100644
  void acpi_init_pcc(void);
  #else
 -- 
-2.47.0
+2.47.1
 

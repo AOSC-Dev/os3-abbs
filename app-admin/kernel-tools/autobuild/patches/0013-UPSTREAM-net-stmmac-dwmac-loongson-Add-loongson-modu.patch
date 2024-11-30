@@ -21,7 +21,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 1 insertion(+)
 
 diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-loongson.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-loongson.c
-index 949e349ef856..bfe6e2d631bd 100644
+index 949e349ef8568..bfe6e2d631bdf 100644
 --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-loongson.c
 +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-loongson.c
 @@ -686,4 +686,5 @@ module_pci_driver(loongson_dwmac_driver);
@@ -31,5 +31,5 @@ index 949e349ef856..bfe6e2d631bd 100644
 +MODULE_AUTHOR("Yanteng Si <siyanteng@loongson.cn>");
  MODULE_LICENSE("GPL v2");
 -- 
-2.47.0
+2.47.1
 

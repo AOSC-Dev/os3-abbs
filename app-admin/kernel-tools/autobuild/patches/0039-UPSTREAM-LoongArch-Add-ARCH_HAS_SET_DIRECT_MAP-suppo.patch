@@ -42,7 +42,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  3 files changed, 65 insertions(+)
 
 diff --git a/arch/loongarch/Kconfig b/arch/loongarch/Kconfig
-index 2c7b2bc6368e..1b1c357a8bd9 100644
+index 2c7b2bc6368ef..1b1c357a8bd95 100644
 --- a/arch/loongarch/Kconfig
 +++ b/arch/loongarch/Kconfig
 @@ -26,6 +26,7 @@ config LOONGARCH
@@ -54,7 +54,7 @@ index 2c7b2bc6368e..1b1c357a8bd9 100644
  	select ARCH_INLINE_READ_LOCK if !PREEMPTION
  	select ARCH_INLINE_READ_LOCK_BH if !PREEMPTION
 diff --git a/arch/loongarch/include/asm/set_memory.h b/arch/loongarch/include/asm/set_memory.h
-index 64c7f942e8ec..d70505b6676c 100644
+index 64c7f942e8ece..d70505b6676cb 100644
 --- a/arch/loongarch/include/asm/set_memory.h
 +++ b/arch/loongarch/include/asm/set_memory.h
 @@ -14,4 +14,8 @@ int set_memory_nx(unsigned long addr, int numpages);
@@ -67,7 +67,7 @@ index 64c7f942e8ec..d70505b6676c 100644
 +
  #endif /* _ASM_LOONGARCH_SET_MEMORY_H */
 diff --git a/arch/loongarch/mm/pageattr.c b/arch/loongarch/mm/pageattr.c
-index e3db1c38b5fe..ffd8d76021d4 100644
+index e3db1c38b5fe3..ffd8d76021d47 100644
 --- a/arch/loongarch/mm/pageattr.c
 +++ b/arch/loongarch/mm/pageattr.c
 @@ -156,3 +156,63 @@ int set_memory_rw(unsigned long addr, int numpages)
@@ -135,5 +135,5 @@ index e3db1c38b5fe..ffd8d76021d4 100644
 +	return __set_memory(addr, 1, __pgprot(0), __pgprot(_PAGE_PRESENT | _PAGE_VALID));
 +}
 -- 
-2.47.0
+2.47.1
 

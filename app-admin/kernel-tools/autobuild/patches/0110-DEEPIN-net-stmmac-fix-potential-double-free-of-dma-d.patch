@@ -1,4 +1,4 @@
-From e5183b62d5fba678bedd4eebab3f19b060664db0 Mon Sep 17 00:00:00 2001
+From b9be72ff861dd08ed0e7568fbba6f643522b95c4 Mon Sep 17 00:00:00 2001
 From: Yanteng Si <siyanteng@loongson.cn>
 Date: Mon, 27 May 2024 10:20:21 +0800
 Subject: [PATCH 110/164] DEEPIN: net: stmmac: fix potential double free of dma
@@ -30,7 +30,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 11 insertions(+)
 
 diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-index 88b3179dac9f..ebe76db47ac7 100644
+index 88b3179dac9f5..ebe76db47ac73 100644
 --- a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
 +++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
 @@ -1930,13 +1930,18 @@ static void __free_dma_rx_desc_resources(struct stmmac_priv *priv,
@@ -68,5 +68,5 @@ index 88b3179dac9f..ebe76db47ac7 100644
  
  static void free_dma_tx_desc_resources(struct stmmac_priv *priv,
 -- 
-2.47.0
+2.47.1
 

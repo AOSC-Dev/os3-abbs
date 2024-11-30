@@ -16,7 +16,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 97 insertions(+), 2 deletions(-)
 
 diff --git a/tools/testing/selftests/drivers/ntsync/ntsync.c b/tools/testing/selftests/drivers/ntsync/ntsync.c
-index 40ad8cbd3138..c0f372167557 100644
+index 40ad8cbd31388..c0f372167557d 100644
 --- a/tools/testing/selftests/drivers/ntsync/ntsync.c
 +++ b/tools/testing/selftests/drivers/ntsync/ntsync.c
 @@ -73,7 +73,8 @@ static int unlock_mutex(int mutex, __u32 owner, __u32 *count)
@@ -142,5 +142,5 @@ index 40ad8cbd3138..c0f372167557 100644
 +
  TEST_HARNESS_MAIN
 -- 
-2.47.0
+2.47.1
 

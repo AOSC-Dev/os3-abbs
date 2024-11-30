@@ -20,7 +20,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  2 files changed, 27 insertions(+), 15 deletions(-)
 
 diff --git a/arch/loongarch/include/asm/kvm_para.h b/arch/loongarch/include/asm/kvm_para.h
-index d0f087870628..c4e84227280d 100644
+index d0f087870628a..c4e84227280dc 100644
 --- a/arch/loongarch/include/asm/kvm_para.h
 +++ b/arch/loongarch/include/asm/kvm_para.h
 @@ -156,10 +156,20 @@ static __always_inline long kvm_hypercall5(u64 fid,
@@ -45,7 +45,7 @@ index d0f087870628..c4e84227280d 100644
  static inline unsigned int kvm_arch_para_hints(void)
  {
 diff --git a/arch/loongarch/kernel/paravirt.c b/arch/loongarch/kernel/paravirt.c
-index a5e5936c4196..b30560f4c0ac 100644
+index a5e5936c4196d..b30560f4c0acf 100644
 --- a/arch/loongarch/kernel/paravirt.c
 +++ b/arch/loongarch/kernel/paravirt.c
 @@ -166,11 +166,14 @@ static void pv_init_ipi(void)
@@ -112,5 +112,5 @@ index a5e5936c4196..b30560f4c0ac 100644
  
  	has_steal_clock = 1;
 -- 
-2.47.0
+2.47.1
 

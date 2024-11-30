@@ -1,4 +1,4 @@
-From 6b24e63f6c171907fb382182f57a1889324785e8 Mon Sep 17 00:00:00 2001
+From ff2953d4cced2dca759aa7522a2368d307d3da3b Mon Sep 17 00:00:00 2001
 From: Kunyang_Fan <kunyang_fan@asus.com>
 Date: Wed, 16 Jun 2021 13:56:59 +0800
 Subject: [PATCH 102/164] BACKPORT: UBUNTU: ODM: gpio: add driver for AAEON
@@ -28,7 +28,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  create mode 100644 drivers/gpio/gpio-aaeon.c
 
 diff --git a/drivers/gpio/Kconfig b/drivers/gpio/Kconfig
-index 58f43bcced7c..2be612f9ce55 100644
+index 58f43bcced7c1..2be612f9ce558 100644
 --- a/drivers/gpio/Kconfig
 +++ b/drivers/gpio/Kconfig
 @@ -1636,6 +1636,18 @@ endmenu
@@ -51,7 +51,7 @@ index 58f43bcced7c..2be612f9ce55 100644
  	tristate "AMD 8111 GPIO driver"
  	depends on X86 || COMPILE_TEST
 diff --git a/drivers/gpio/Makefile b/drivers/gpio/Makefile
-index 64dd6d9d730d..e6b6355c66d4 100644
+index 64dd6d9d730d5..e6b6355c66d40 100644
 --- a/drivers/gpio/Makefile
 +++ b/drivers/gpio/Makefile
 @@ -24,6 +24,7 @@ obj-$(CONFIG_GPIO_104_IDI_48)		+= gpio-104-idi-48.o
@@ -64,7 +64,7 @@ index 64dd6d9d730d..e6b6355c66d4 100644
  obj-$(CONFIG_GPIO_AGGREGATOR)		+= gpio-aggregator.o
 diff --git a/drivers/gpio/gpio-aaeon.c b/drivers/gpio/gpio-aaeon.c
 new file mode 100644
-index 000000000000..3183c45dd194
+index 0000000000000..3183c45dd1946
 --- /dev/null
 +++ b/drivers/gpio/gpio-aaeon.c
 @@ -0,0 +1,205 @@
@@ -274,5 +274,5 @@ index 000000000000..3183c45dd194
 +MODULE_AUTHOR("Edward Lin <edward1_lin@aaeon.com.tw>");
 +MODULE_LICENSE("GPL v2");
 -- 
-2.47.0
+2.47.1
 

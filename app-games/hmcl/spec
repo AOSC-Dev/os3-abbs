@@ -1,4 +1,4 @@
-VER=3.5.10
+VER=3.6.11
 SRCS="git::commit=tags/release-$VER::https://github.com/HMCL-dev/HMCL"
 CHKUPDATE="anitya::id=371893"
 CHKSUMS="SKIP"

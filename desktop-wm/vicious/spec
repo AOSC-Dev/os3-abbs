@@ -1,4 +1,4 @@
-VER=2.3.3
+VER=2.7.1
 SRCS="tbl::https://github.com/Mic92/vicious/archive/v${VER}.tar.gz"
-CHKSUMS="sha256::062f0e8c802a07b58d094fcc66aba7a7de242726733d31ee607a483c20c4957c"
+CHKSUMS="sha256::6d572186b810e25f159a679744c40bfd25e7bf5e480089e648d86ffbab682f4b"
 CHKUPDATE="anitya::id=5087"

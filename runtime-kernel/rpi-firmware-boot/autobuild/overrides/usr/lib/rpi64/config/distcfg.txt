@@ -1,0 +1,12 @@
+# Distribution specific config
+
+# Make sure Pi will execute 64-bit kernel
+arm_64bit=1
+
+# Kernel image name
+kernel=kernel8.img
+
+# Uncomment this for initrd support
+# You should copy your initrd to boot partition before enabling initrd
+# initramfs initrd.img followkernel
+

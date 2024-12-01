@@ -15,6 +15,10 @@ CMAKE_AFTER="-DENABLE_PYTHON=ON \
              -DENABLE_DOC=ON \
              -DENABLE_TESTS=OFF \
              -DENABLE_JAVASCRIPT=OFF \
-	     -DENABLE_RUBY=OFF \
-	     -DENABLE_DOC_INCOMPLETE=ON \
+             -DENABLE_RUBY=OFF \
+             -DENABLE_DOC_INCOMPLETE=ON \
              -DCA_FILE=/etc/ssl/ca-bundle.crt"
+# FIXME: Similar to the above issue, asciidoctor causes FTBFS with illegal
+# instruction on riscv64
+CMAKE_AFTER__RISCV64="${CMAKE_AFTER} \
+                      -DENABLE_DOC=OFF"

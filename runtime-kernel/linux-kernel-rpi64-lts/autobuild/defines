@@ -1,0 +1,16 @@
+PKGNAME=linux-kernel-rpi64-lts-${__VER}
+PKGSEC=kernel
+PKGDEP=""
+BUILDDEP="bc dracut git pahole"
+PKGDES="Raspberry Pi downstream Linux Kernel v${__VER} for AOSC OS (Longterm Maintenance)"
+
+FAIL_ARCH="!(arm64)"
+ABSTRIP=0
+ABELFDEP=0
+ABSPLITDBG=0
+#PKGEPOCH=1
+
+PKGBREAK="
+	zfs<=2.2.0
+	nvidia<=530.41.03
+"

@@ -1,0 +1,7 @@
+PKGNAME="rpi-firmware-boot"
+PKGDES="Bootloader and firmware necessary for booting a Pi"
+PKGSEC=libs
+
+ABHOST=noarch
+ABSTRIP=no
+ABSPLITDBG=0

@@ -1,0 +1,54 @@
+#
+# The Raspberry Pi build script
+# Copied from `linux-kernel' build.
+#
+abinfo "Preparing build environment ..."
+OLDARCH="$ARCH"
+unset ARCH
+if [[ "${CROSS:-$ARCH}" = "amd64" ]]; then
+    SRCARCH="x86"
+elif [[ "${CROSS:-$ARCH}" = "arm64" ]]; then
+    SRCARCH="arm64"
+elif [[ "${CROSS:-$ARCH}" = "loongson3" ]]; then
+    SRCARCH="mips"
+elif [[ "${CROSS:-$ARCH}" = "ppc64el" ]]; then
+    SRCARCH="powerpc"    
+fi
+
+abinfo "Copying config and setting up env..."
+
+cp -v autobuild/config "$SRCDIR"/.config
+
+. autobuild/build-common/set-var
+
+abinfo "Building kernel..."
+make
+
+abinfo "Stripping symbols..."
+. autobuild/build-common/strip-modules
+
+abinfo "Installing modules..."
+mkdir -p "$PKGDIR"/usr
+make INSTALL_MOD_PATH="$PKGDIR"/usr modules_install
+
+abinfo "Copying kernel..."
+# make a local copy of compiled kernel
+mkdir -p "$PKGDIR/usr/lib/aosc-os-arm64-boot/linux-kernel-$version$LOCALNAME/"
+cp -v arch/arm64/boot/Image "$PKGDIR/usr/lib/aosc-os-arm64-boot/linux-kernel-$version$LOCALNAME/"
+
+abinfo "Copying kernel and dtbs to /usr/lib/rpi64/kernel..."
+# Make a folder to store new kernel, as dpkg may fall into problems when updating files in vfat filesystem.
+# The actual backup and replace process are moved to postinst.
+mkdir -p "$PKGDIR/usr/lib/rpi64/kernel/overlays"
+cp -v arch/arm64/boot/Image "$PKGDIR/usr/lib/rpi64/kernel/kernel8.img"
+
+# Copies the dtbs and overlays.
+abinfo "Coping new device tree and overlays..."
+cp -v arch/arm64/boot/dts/broadcom/*.dtb "$PKGDIR/usr/lib/rpi64/kernel/"
+cp -rv arch/arm64/boot/dts/overlays/*.dtb* "$PKGDIR/usr/lib/rpi64/kernel/overlays/"
+
+export ARCH=$OLDARCH
+rm -rf "$PKGDIR"/usr/lib/firmware
+
+. autobuild/build-common/ext-hdr
+. autobuild/build-common/gen-scripts

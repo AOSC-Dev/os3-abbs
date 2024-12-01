@@ -1,0 +1,1 @@
+mkdir -p "$PKGDIR/usr/lib/rpi64/kernel"

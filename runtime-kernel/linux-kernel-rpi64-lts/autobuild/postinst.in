@@ -1,0 +1,33 @@
+#!/bin/bash
+LOCAL_VER=@LOCAL_VER@
+VER=@VER@
+KERNEL=${VER}${LOCAL_VER}
+
+if [ -x /usr/bin/depmod ]; then
+  depmod ${KERNEL}
+else
+  echo "Kmod is not installed, please install package 'kmod'."
+fi
+
+if [ -x /usr/bin/dkms ]; then
+  dkms autoinstall --kernelver ${KERNEL}
+fi
+
+if [ -x /etc/kernel/postinst.d/apt-auto-removal ]; then
+  /etc/kernel/postinst.d/apt-auto-removal
+fi
+if grep -q "/boot/rpi" /etc/fstab; then
+  # try mounting it first
+  mount -a
+  if [ "$?" != "0" ]; then
+    # failed, try one last time
+    echo "Unable to mount /boot/rpi."
+    mkdir -p /boot/rpi
+    mount -a || exit 1
+    echo "/boot/rpi is created and mounted. Continuing."
+  fi
+  echo "Updating kernel..."
+  cp -r /usr/lib/rpi64/kernel/* /boot/rpi/
+else
+  echo "Can not find mount point /boot/rpi. Skip copying kernel."
+fi

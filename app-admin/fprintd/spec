@@ -1,4 +1,4 @@
-VER=1.94.3
-SRCS="tbl::https://gitlab.freedesktop.org/libfprint/fprintd/-/archive/v$VER/fprintd-v$VER.tar.gz"
-CHKSUMS="sha256::2413ec9c0be24f6852afde31baa275a2d7fe3a9ee03973af9362ddb97231aedd"
+VER=1.94.4
+SRCS="git::commit=tags/v$VER::https://gitlab.freedesktop.org/libfprint/fprintd.git"
+CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=835"

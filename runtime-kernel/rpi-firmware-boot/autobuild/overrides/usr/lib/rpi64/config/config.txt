@@ -1,5 +1,6 @@
-# For more options and information see
-# http://rpf.io/configtxt
+# For more options and information see:
+# https://www.raspberrypi.com/documentation/computers/config_txt.html
+
 # Some settings may impact device functionality. See link above for details
 
 # uncomment if you get no picture on HDMI for a default "safe" mode
@@ -16,9 +17,6 @@
 # overscan.
 #framebuffer_width=1280
 #framebuffer_height=720
-
-# uncomment if hdmi display is not detected and composite is being output
-#hdmi_force_hotplug=1
 
 # uncomment to force a specific HDMI mode (this will force VGA)
 #hdmi_group=1
@@ -47,7 +45,8 @@
 #dtoverlay=gpio-ir,gpio_pin=17
 #dtoverlay=gpio-ir-tx,gpio_pin=18
 
-# Additional overlays and parameters are documented /boot/overlays/README
+# Additional overlays and parameters are documented
+# /boot/overlays/README
 
 # Enable audio (loads snd_bcm2835)
 dtparam=audio=on
@@ -60,12 +59,28 @@ display_auto_detect=1
 
 # Enable DRM VC4 V3D driver
 dtoverlay=vc4-kms-v3d
+max_framebuffers=2
 
-# Run in 64-bit mode
-arm_64bit=1
+# Don't have the firmware create an initial video= setting in cmdline.txt.
+# Use the kernel's default instead.
+disable_fw_kms_setup=1
 
 # Disable compensation for displays with overscan
 disable_overscan=1
+
+# Uncomment if hdmi display is not detected and composite is being output
+#hdmi_force_hotplug=1
+
+# Uncomment if you want to disable wifi or bluetooth respectively
+#dtoverlay=disable-wifi
+#dtoverlay=disable-bt
+
+# Uncomment this to enable infrared communication.
+#dtoverlay=gpio-ir,gpio_pin=17
+#dtoverlay=gpio-ir-tx,gpio_pin=18
+
+# Run as fast as firmware / board allows
+arm_boost=1
 
 [cm4]
 # Enable host mode on the 2711 built-in XHCI USB controller.
@@ -73,10 +88,8 @@ disable_overscan=1
 # (e.g. for USB device mode) or if USB support is not required.
 otg_mode=1
 
-[pi4]
-# Run as fast as firmware / board allows
-arm_boost=1
-max_framebuffers=2
+[cm5]
+dtoverlay=dwc2,dr_mode=host
 
 [all]
 include distcfg.txt

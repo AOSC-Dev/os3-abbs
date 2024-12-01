@@ -1,10 +1,10 @@
-UPSTREAM_VER=20241122
+UPSTREAM_VER=20241128
 DEBIANVER=20240909-2
 VER=${UPSTREAM_VER}+debian${DEBIANVER/-/+}
 REL=2
 # When using a stable tag.
 # SRCS="git::commit=tags/${UPSTREAM_VER}::https://gitlab.com/kernel-firmware/linux-firmware.git \
-SRCS="git::commit=3ed524d5c15373883390b0fc49a425076f823a25::https://gitlab.com/kernel-firmware/linux-firmware.git \
+SRCS="git::commit=e6c08272f15b6802bd9832a364074ec7e8a37166::https://gitlab.com/kernel-firmware/linux-firmware.git \
       file::rename=brcmfmac43456-sdio.bin::https://github.com/RPi-Distro/firmware-nonfree/raw/4b356e134e8333d073bd3802d767a825adec3807/debian/config/brcm80211/brcm/brcmfmac43456-sdio.bin \
       file::rename=brcmfmac43456-sdio.clm_blob::https://github.com/RPi-Distro/firmware-nonfree/raw/4b356e134e8333d073bd3802d767a825adec3807/debian/config/brcm80211/brcm/brcmfmac43456-sdio.clm_blob \
       file::rename=brcmfmac43456-sdio.AP6256.txt::https://github.com/armbian/firmware/raw/8e7c8a855f0a91d3a34c1e37086d5aa894b2011e/brcm/nvram_ap6256.txt \

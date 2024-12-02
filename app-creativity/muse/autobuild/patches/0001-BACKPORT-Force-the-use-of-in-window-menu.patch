@@ -1,0 +1,27 @@
+From 9c80fd3513991ca56cd2b006efa4fe45e161d64f Mon Sep 17 00:00:00 2001
+From: Icenowy Zheng <uwu@icenowy.me>
+Date: Mon, 2 Dec 2024 16:23:21 +0800
+Subject: [PATCH] Force the use of in-window menu
+
+KDE global menu with MusE sucks.
+
+Signed-off-by: Icenowy Zheng <uwu@icenowy.me>
+---
+ src/muse/main.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/muse/main.cpp b/muse/main.cpp
+index a9f3e493..e60b7338 100644
+--- a/muse/main.cpp
++++ b/muse/main.cpp
+@@ -836,6 +836,7 @@ int main(int argc, char* argv[])
+           MusEGlobal::config.startSong = "";
+         }
+ 
++	app.instance()->setAttribute(Qt::AA_DontUseNativeMenuBar, true);
+         app.instance()->setAttribute(Qt::AA_DontShowIconsInMenus, !MusEGlobal::config.showIconsInMenus);
+         app.instance()->setAttribute(Qt::AA_DontUseNativeDialogs, !MusEGlobal::config.useNativeStandardDialogs);
+ 
+-- 
+2.47.1
+

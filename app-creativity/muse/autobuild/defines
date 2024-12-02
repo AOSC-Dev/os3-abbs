@@ -1,0 +1,16 @@
+PKGNAME=muse
+PKGDEP="qt-5 libsndfile libsamplerate jack alsa-lib \
+        fluidsynth dssi rtaudio gtkmm lilv sord serd \
+        liblo lash liblrdf"
+PKGRECOM="pyqt5 dssi-vst"
+BUILDDEP="ladspa-sdk extra-cmake-modules"
+PKGSEC=sound
+PKGDES="A multi-track DAW focusing on MIDI sequencing"
+
+ABTYPE=cmakeninja
+
+# TODO: package libinstpatch and let MusE use it for automatic additional
+#       drum kit listing.
+CMAKE_AFTER="-DENABLE_INSTPATCH=OFF \
+             -DCMAKE_SKIP_INSTALL_RPATH=OFF \
+             -DLIB_INSTALL_DIR=/usr/lib"

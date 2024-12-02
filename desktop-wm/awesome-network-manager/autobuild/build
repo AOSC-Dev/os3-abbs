@@ -1,3 +1,0 @@
-mkdir -p "$PKGDIR"
-cp -arv {usr,etc} "$PKGDIR"/
-rm -rv "$PKGDIR"/etc/xdg/awesome/debian

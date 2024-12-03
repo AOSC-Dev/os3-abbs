@@ -1,0 +1,8 @@
+PKGNAME=adcli
+PKGSEC=admin
+PKGDES="Command-line tool for managing Active Directory domains"
+PKGDEP="openldap krb5 cyrus-sasl"
+BUILDDEP="libxslt xmlto docbook-xsl"
+
+# FIXME: build in SRCDIR because of generated Makefile for docs/manpage
+ABSHADOW=0

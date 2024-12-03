@@ -1,6 +1,6 @@
 PKGNAME="realmd"
 PKGDES="DBus service for configuring kerberos and other online identities"
-PKGDEP="glib polkit systemd krb5 openldap samba dbus"
+PKGDEP="glib polkit systemd krb5 openldap samba dbus adcli"
 BUILDDEP="xmlto docbook-xsl"
 PKGSEC="admin"
 

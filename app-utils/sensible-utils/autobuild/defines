@@ -1,6 +1,6 @@
 PKGNAME=sensible-utils
 PKGSEC=utils
-PKGDES="Utilities for sensible alternative selection"
+PKGDES="Utilities for configuring common utility alternatives"
 BUILDDEP="po4a"
 
 ABHOST=noarch

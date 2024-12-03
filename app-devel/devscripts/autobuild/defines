@@ -1,6 +1,7 @@
 PKGNAME=devscripts
 PKGSEC=utils
 PKGDES="Utility scripts for Debian developers"
+PKGDEP="sensible-utils"
 BUILDDEP="libxslt po4a docbook-xsl"
 
 ABHOST=noarch

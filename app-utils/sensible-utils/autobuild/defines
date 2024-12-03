@@ -1,5 +1,6 @@
 PKGNAME=sensible-utils
 PKGSEC=utils
 PKGDES="Utilities for sensible alternative selection"
+BUILDDEP="po4a"
 
 ABHOST=noarch

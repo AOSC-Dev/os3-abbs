@@ -1,0 +1,5 @@
+PKGNAME=sensible-utils
+PKGSEC=utils
+PKGDES="Utilities for sensible alternative selection"
+
+ABHOST=noarch

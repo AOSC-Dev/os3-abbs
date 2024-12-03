@@ -1,0 +1,4 @@
+VER=0.0.24
+SRCS="git::commit=tags/debian/$VER::https://salsa.debian.org/debian/sensible-utils.git"
+CHKSUMS="SKIP"
+CHKUPDATE="anitya::id=375729"

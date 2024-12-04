@@ -67,7 +67,8 @@ CONFIGURE_OPTIONS=" \
     --enable-vaapi \
     --enable-libaom \
     --enable-libsmbclient \
-    --enable-libsvtav1"
+    --enable-libsvtav1 \
+    --enable-libwebp"
 
 # FIXME: lto1: fatal error: target specific builtin not available
 # Potentially a compiler bug?

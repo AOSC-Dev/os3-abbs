@@ -1,4 +1,4 @@
-VER=24.06
+VER=24.12
 SRCS="tbl::https://downloads.sourceforge.net/project/rosegarden/rosegarden/$VER/rosegarden-${VER}.tar.xz"
-CHKSUMS="sha256::866cd4297c128a68208edd28a37808f278f630219533fff32441ad6647e09c27"
+CHKSUMS="sha256::7f3f66136b09af14bd9998e4ade4d6204d458afd1694788fd6dcb3a96ebf15cc"
 CHKUPDATE="anitya::id=8939"

@@ -1,7 +1,7 @@
-VER=19.1.2
+VER=19.1.5
 SRCS="https://github.com/llvm/llvm-project/releases/download/llvmorg-$VER/llvm-project-$VER.src.tar.xz"
 SUBDIR="llvm-project-$VER.src/llvm"
-CHKSUMS="sha256::3666f01fc52d8a0b0da83e107d74f208f001717824be0b80007f529453aa1e19"
+CHKSUMS="sha256::bd8445f554aae33d50d3212a15e993a667c0ad1b694ac1977f3463db3338e542"
 CHKUPDATE="anitya::id=1830"
 # Note: Prefer larger RAM.
 ENVREQ__ARM64="total_mem=60"

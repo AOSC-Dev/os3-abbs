@@ -1,4 +1,4 @@
-From 0c51e807d250d06ac46449a9a25a39f5bd9d3295 Mon Sep 17 00:00:00 2001
+From 7c7325681794e28dd284ee1ee7bb0280d92f822a Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 9 Apr 2024 17:43:49 +0800
 Subject: [PATCH 2/8] fix(core_settings.h): use system window decoration by
@@ -22,5 +22,5 @@ index 87fb383f..6e879b7e 100644
  	rpl::variable<bool> _systemDarkModeEnabled = true;
  	rpl::variable<WindowTitleContent> _windowTitleContent;
 -- 
-2.47.0
+2.47.1
 

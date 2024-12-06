@@ -1,4 +1,4 @@
-From b3a36159c5dfa3b857d826d2570313f9110ccc4b Mon Sep 17 00:00:00 2001
+From 7dd11a98d5b86d26e12cc59669aa6ac74c8db1dc Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 9 Apr 2024 22:02:32 +0800
 Subject: [PATCH 3/8] fix(ui): fix build with Qt 5
@@ -12,10 +12,10 @@ Co-authored-by: Henry Chen <chenx97@aosc.io>
  4 files changed, 8 insertions(+)
 
 diff --git a/Telegram/lib_ui/ui/text/text_entity.cpp b/Telegram/lib_ui/ui/text/text_entity.cpp
-index 8c1e7932..a4d9872a 100644
+index 810f5764..cd6200f5 100644
 --- a/Telegram/lib_ui/ui/text/text_entity.cpp
 +++ b/Telegram/lib_ui/ui/text/text_entity.cpp
-@@ -2413,6 +2413,8 @@ EntityInText::EntityInText(
+@@ -2417,6 +2417,8 @@ EntityInText::EntityInText(
  , _data(data) {
  }
  
@@ -25,7 +25,7 @@ index 8c1e7932..a4d9872a 100644
  		const EntitiesInText &entities,
  		int textLength) {
 diff --git a/Telegram/lib_ui/ui/text/text_entity.h b/Telegram/lib_ui/ui/text/text_entity.h
-index e5b7a690..80dda845 100644
+index 75b5e8e3..dbbd5303 100644
 --- a/Telegram/lib_ui/ui/text/text_entity.h
 +++ b/Telegram/lib_ui/ui/text/text_entity.h
 @@ -71,6 +71,8 @@ public:
@@ -68,5 +68,5 @@ index 24274c37..a57c4fab 100644
 +
 +#include "webview_linux_compositor.moc"
 -- 
-2.47.0
+2.47.1
 

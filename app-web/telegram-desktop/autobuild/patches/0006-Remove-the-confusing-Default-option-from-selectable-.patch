@@ -1,4 +1,4 @@
-From b3819cd8acaf120f9256fd3c605a7f30b18cc66d Mon Sep 17 00:00:00 2001
+From 69dd9b486c0fff460cd61a35cd4a85a01b5457af Mon Sep 17 00:00:00 2001
 From: Jiangjin Wang <kaymw@aosc.io>
 Date: Mon, 6 May 2024 17:15:17 -0700
 Subject: [PATCH 6/8] Remove the confusing "Default" option from selectable
@@ -45,5 +45,5 @@ index becdc962..550ac863 100644
  		std::swap(result[2], *nowIt);
  		++skip;
 -- 
-2.47.0
+2.47.1
 

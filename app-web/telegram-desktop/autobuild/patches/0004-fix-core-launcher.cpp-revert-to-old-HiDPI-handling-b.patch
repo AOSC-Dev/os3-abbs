@@ -1,4 +1,4 @@
-From c41f94d25db66cf55d572d461652cee2de7fd061 Mon Sep 17 00:00:00 2001
+From da878a531aa9e605fe122930d26d9e708996a16f Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 9 Apr 2024 22:04:57 +0800
 Subject: [PATCH 4/8] fix(core/launcher.cpp): revert to old HiDPI handling
@@ -13,10 +13,10 @@ Co-authored-by: Henry Chen <chenx97@aosc.io>
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/Telegram/SourceFiles/core/launcher.cpp b/Telegram/SourceFiles/core/launcher.cpp
-index 0b6afb7a..f38dd544 100644
+index 312ce966..7a445f2c 100644
 --- a/Telegram/SourceFiles/core/launcher.cpp
 +++ b/Telegram/SourceFiles/core/launcher.cpp
-@@ -338,7 +338,9 @@ void Launcher::initHighDpi() {
+@@ -342,7 +342,9 @@ void Launcher::initHighDpi() {
  #endif // Qt < 6.2.0
  
  #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
@@ -28,5 +28,5 @@ index 0b6afb7a..f38dd544 100644
  
  	if (OptionFractionalScalingEnabled.value()) {
 -- 
-2.47.0
+2.47.1
 

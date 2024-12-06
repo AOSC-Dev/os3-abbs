@@ -1,4 +1,4 @@
-From 007d25ee4f4bed41bed945a3be463e2cd0426d54 Mon Sep 17 00:00:00 2001
+From ad4f8d71884d33857354c5b295a89070684aa4d0 Mon Sep 17 00:00:00 2001
 From: Jiangjin Wang <kaymw@aosc.io>
 Date: Mon, 6 May 2024 00:06:32 -0700
 Subject: [PATCH 5/8] fix(settings): use system fonts by default
@@ -29,5 +29,5 @@ index 6e879b7e..241ef95e 100644
  	std::optional<bool> _weatherInCelsius;
  	QByteArray _tonsiteStorageToken;
 -- 
-2.47.0
+2.47.1
 

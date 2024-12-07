@@ -1,23 +1,18 @@
-VER=560.35.03
-REL=1
-_SETTINGS_VER=${VER}
+VER=565.77
+_SETTINGS_VER=565.57.01
 
 SRCS__AMD64="
-	file::rename=NVIDIA-Linux-$VER.run::https://us.download.nvidia.com/XFree86/Linux-x86_64/$VER/NVIDIA-Linux-x86_64-$VER.run
-	tbl::https://github.com/NVIDIA/nvidia-settings/archive/${_SETTINGS_VER}.tar.gz
+        file::rename=NVIDIA-Linux-$VER.run::https://us.download.nvidia.com/XFree86/Linux-x86_64/$VER/NVIDIA-Linux-x86_64-$VER.run
+        tbl::https://github.com/NVIDIA/nvidia-settings/archive/${_SETTINGS_VER}.tar.gz
 "
-CHKSUMS__AMD64="
-	sha256::f2932c92fadd43c5b2341be453fc4f73f0ad7185c26bb7a43fbde81ae29f1fe3
-	sha256::e0e85a58423c30bcc2f95b7c28c674593a95e862f9c8c5c7b82e19cd3ce18fe5
-"
+CHKSUMS__AMD64="sha256::0a7aa742c46bcf34d766982402d17b3db1fdb3bc1b89344d70cd123c1cb3147c \
+         sha256::f9947a71d24783fbc3df2b793a310aaab42a60e958606135881001f1606203be"
 SRCS__ARM64="
-	file::rename=NVIDIA-Linux-$VER.run::https://us.download.nvidia.com/XFree86/aarch64/$VER/NVIDIA-Linux-aarch64-${VER}.run
-	tbl::https://github.com/NVIDIA/nvidia-settings/archive/${_SETTINGS_VER}.tar.gz
+        file::rename=NVIDIA-Linux-$VER.run::https://us.download.nvidia.com/XFree86/aarch64/$VER/NVIDIA-Linux-aarch64-${VER}.run
+        tbl::https://github.com/NVIDIA/nvidia-settings/archive/${_SETTINGS_VER}.tar.gz
 "
-CHKSUMS__ARM64="
-	sha256::b3c64054abd1357a63c5162a337139a2cb3915da96fadbf5a900b6a438df1beb
-	sha256::e0e85a58423c30bcc2f95b7c28c674593a95e862f9c8c5c7b82e19cd3ce18fe5
-"
+CHKSUMS__ARM64="sha256::2d201852785f9cadeb72e3ded5d8b13b002e8d2a1fd7d90d39f7511c4edb4e81 \
+         sha256::f9947a71d24783fbc3df2b793a310aaab42a60e958606135881001f1606203be"
 
 SUBDIR=.
 CHKUPDATE="anitya::id=5454"

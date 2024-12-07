@@ -1,5 +1,5 @@
-VER=1.28.0
+VER=1.28.1
 SRCS="tbl::https://github.com/syncthing/syncthing/releases/download/v$VER/syncthing-source-v$VER.tar.gz"
-CHKSUMS="sha256::73b4030f9fca381f58f4966db48cc135cd8232fe9e8853b5651de0f0bf4cfbf7"
+CHKSUMS="sha256::e965995bfa3b3cf62d935246a259e764703d4aedfa030ec310a287dca0e1459a"
 CHKUPDATE="anitya::id=11814"
 SUBDIR="."

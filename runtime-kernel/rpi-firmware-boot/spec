@@ -1,5 +1,6 @@
-VER="1.20241126"
+UPSTREAM_VER="1.20241126"
+VER="${UPSTREAM_VER}"
 REL=0
-COMMIT="4bb9d889a9d48c7335ebe53c0b8be83285ea54b1"
-SRCS="tbl::https://github.com/raspberrypi/firmware/archive/$COMMIT.tar.gz"
-CHKSUMS="sha256::c2da24fd153b769bd759b11666167a284eaa53cea8f8cc68ea42dc1bf697a80e"
+SRCS="tbl::https://github.com/raspberrypi/firmware/releases/download/$VER/raspi-firmware_$VER.orig.tar.xz"
+CHKSUMS="sha256::020dbcdbb30af5942a62fc3eb355449aba45276b67e864dee2522ff53fd936e6"
+CHKUPDATE="anitya::id=21744"

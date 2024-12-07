@@ -4,6 +4,9 @@ PKGSEC=libs
 PKGDEP="gtk-3"
 BUILDDEP="gtk-doc xmlto gobject-introspection gnome-common"
 
+# FIXME: Binary tool split packages not detected in Spiral LUT.
+PKGPROV="libnotify-bin_spiral"
+
 PKGDEP__RETRO="gtk-2"
 PKGDEP__ARMV4="${PKGDEP__RETRO}"
 PKGDEP__ARMV6HF="${PKGDEP__RETRO}"

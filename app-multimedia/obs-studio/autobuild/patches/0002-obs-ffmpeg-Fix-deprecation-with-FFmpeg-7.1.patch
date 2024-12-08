@@ -1,18 +1,18 @@
-From 463fabeda1ef8cc31e7c6f2cd25d6194bc717dca Mon Sep 17 00:00:00 2001
+From 28d9509dea76e271a5dc1b58c310f4d6c45a9cfc Mon Sep 17 00:00:00 2001
 From: tytan652 <tytan652@tytanium.xyz>
 Date: Mon, 11 Nov 2024 19:47:03 +0100
-Subject: [PATCH] obs-ffmpeg: Fix deprecation with FFmpeg 7.1
+Subject: [PATCH 2/3] obs-ffmpeg: Fix deprecation with FFmpeg 7.1
 
 ---
- .../obs-ffmpeg/obs-ffmpeg-audio-encoders.c    | 23 ++++++++---
- plugins/obs-ffmpeg/obs-ffmpeg-output.c        | 41 ++++++++++++-------
- 2 files changed, 45 insertions(+), 19 deletions(-)
+ .../obs-ffmpeg/obs-ffmpeg-audio-encoders.c    | 23 +++++++++---
+ plugins/obs-ffmpeg/obs-ffmpeg-output.c        | 36 +++++++++++++------
+ 2 files changed, 44 insertions(+), 15 deletions(-)
 
 diff --git a/plugins/obs-ffmpeg/obs-ffmpeg-audio-encoders.c b/plugins/obs-ffmpeg/obs-ffmpeg-audio-encoders.c
-index 49ee82dae..0cb0e9113 100644
+index baa39072b..4258be19d 100644
 --- a/plugins/obs-ffmpeg/obs-ffmpeg-audio-encoders.c
 +++ b/plugins/obs-ffmpeg/obs-ffmpeg-audio-encoders.c
-@@ -290,11 +290,24 @@ static void *enc_create(obs_data_t *settings, obs_encoder_t *encoder,
+@@ -236,11 +236,24 @@ static void *enc_create(obs_data_t *settings, obs_encoder_t *encoder, const char
  
  	enc->context->sample_rate = audio_output_get_sample_rate(audio);
  
@@ -39,7 +39,7 @@ index 49ee82dae..0cb0e9113 100644
  		while (*fmt != AV_SAMPLE_FMT_NONE) {
  			if (*fmt == sample_format) {
  				enc->context->sample_fmt = *fmt;
-@@ -305,15 +318,15 @@ static void *enc_create(obs_data_t *settings, obs_encoder_t *encoder,
+@@ -251,15 +264,15 @@ static void *enc_create(obs_data_t *settings, obs_encoder_t *encoder, const char
  
  		/* Fall back to default if requested format was not found. */
  		if (enc->context->sample_fmt == AV_SAMPLE_FMT_NONE)
@@ -59,10 +59,10 @@ index 49ee82dae..0cb0e9113 100644
  		int closest = 0;
  
 diff --git a/plugins/obs-ffmpeg/obs-ffmpeg-output.c b/plugins/obs-ffmpeg/obs-ffmpeg-output.c
-index 899f5e2d0..94eb66141 100644
+index 28a0dda03..9615abee7 100644
 --- a/plugins/obs-ffmpeg/obs-ffmpeg-output.c
 +++ b/plugins/obs-ffmpeg/obs-ffmpeg-output.c
-@@ -189,6 +189,7 @@ static bool create_video_stream(struct ffmpeg_data *data)
+@@ -170,6 +170,7 @@ static bool create_video_stream(struct ffmpeg_data *data)
  	enum AVPixelFormat closest_format;
  	AVCodecContext *context;
  	struct obs_video_info ovi;
@@ -70,22 +70,21 @@ index 899f5e2d0..94eb66141 100644
  
  	if (!obs_get_video_info(&ovi)) {
  		ffmpeg_log_error(LOG_WARNING, data, "No active video");
-@@ -200,14 +201,6 @@ static bool create_video_stream(struct ffmpeg_data *data)
+@@ -180,13 +181,6 @@ static bool create_video_stream(struct ffmpeg_data *data)
  			data->config.video_encoder))
  		return false;
  
 -	closest_format = data->config.format;
 -	if (data->vcodec->pix_fmts) {
 -		const int has_alpha = closest_format == AV_PIX_FMT_BGRA;
--		closest_format = avcodec_find_best_pix_fmt_of_list(
--			data->vcodec->pix_fmts, closest_format, has_alpha,
--			NULL);
+-		closest_format =
+-			avcodec_find_best_pix_fmt_of_list(data->vcodec->pix_fmts, closest_format, has_alpha, NULL);
 -	}
 -
  	context = avcodec_alloc_context3(data->vcodec);
  	context->bit_rate = (int64_t)data->config.video_bitrate * 1000;
  	context->width = data->config.scale_width;
-@@ -215,15 +208,28 @@ static bool create_video_stream(struct ffmpeg_data *data)
+@@ -194,14 +188,28 @@ static bool create_video_stream(struct ffmpeg_data *data)
  	context->time_base = (AVRational){ovi.fps_den, ovi.fps_num};
  	context->framerate = (AVRational){ovi.fps_num, ovi.fps_den};
  	context->gop_size = data->config.gop_size;
@@ -94,8 +93,7 @@ index 899f5e2d0..94eb66141 100644
  	context->color_primaries = data->config.color_primaries;
  	context->color_trc = data->config.color_trc;
  	context->colorspace = data->config.colorspace;
--	context->chroma_sample_location = determine_chroma_location(
--		closest_format, data->config.colorspace);
+-	context->chroma_sample_location = determine_chroma_location(closest_format, data->config.colorspace);
  	context->thread_count = 0;
  
 +#if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(61, 13, 100)
@@ -117,7 +115,7 @@ index 899f5e2d0..94eb66141 100644
  	data->video->time_base = context->time_base;
  	data->video->avg_frame_rate = (AVRational){ovi.fps_num, ovi.fps_den};
  
-@@ -361,6 +367,7 @@ static bool create_audio_stream(struct ffmpeg_data *data, int idx)
+@@ -305,6 +313,7 @@ static bool create_audio_stream(struct ffmpeg_data *data, int idx)
  	AVStream *stream;
  	struct obs_audio_info aoi;
  	int channels;
@@ -125,14 +123,11 @@ index 899f5e2d0..94eb66141 100644
  
  	if (!obs_get_audio_info(&aoi)) {
  		ffmpeg_log_error(LOG_WARNING, data, "No active audio");
-@@ -392,9 +399,15 @@ static bool create_audio_stream(struct ffmpeg_data *data, int idx)
+@@ -324,7 +333,14 @@ static bool create_audio_stream(struct ffmpeg_data *data, int idx)
  	if (aoi.speakers == SPEAKERS_4POINT1)
  		context->ch_layout = (AVChannelLayout)AV_CHANNEL_LAYOUT_4POINT1;
- #endif
--	context->sample_fmt = data->acodec->sample_fmts
--				      ? data->acodec->sample_fmts[0]
--				      : AV_SAMPLE_FMT_FLTP;
-+
+ 
+-	context->sample_fmt = data->acodec->sample_fmts ? data->acodec->sample_fmts[0] : AV_SAMPLE_FMT_FLTP;
 +#if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(61, 13, 100)
 +	sample_fmts = data->acodec->sample_fmts;
 +#else
@@ -145,5 +140,5 @@ index 899f5e2d0..94eb66141 100644
  	stream->time_base = context->time_base;
  
 -- 
-2.47.0
+2.47.1
 

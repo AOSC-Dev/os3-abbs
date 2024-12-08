@@ -1,15 +1,17 @@
-VER=30.2.3
-REL=2
+VER=31.0.0
 # __OBS_CEF_VER: Find the build version on https://cef-builds.spotifycdn.com/index.html#linux64
-# FIXME: 126.x has https://github.com/chromiumembedded/cef/issues/3616#issuecomment-2158624330
-__OBS_CEF_VER="125.0.22+gc410c95+chromium-125.0.6422.142"
+# Check https://github.com/obsproject/obs-studio/wiki/Build-Instructions-For-Linux#obs-browser
+# for upstream required CEF version for reference.
+__OBS_CEF_VER="127.3.5+g114ea2a+chromium-127.0.6533.120"
 SRCS="git::commit=tags/$VER;rename=obs-studio::https://github.com/obsproject/obs-studio"
 SRCS__AMD64="${SRCS} \
             tbl::rename=cef.tar.bz2::https://cef-builds.spotifycdn.com/cef_binary_${__OBS_CEF_VER}_linux64_minimal.tar.bz2"
 SRCS__ARM64="${SRCS} \
             tbl::rename=cef.tar.bz2::https://cef-builds.spotifycdn.com/cef_binary_${__OBS_CEF_VER}_linuxarm64_minimal.tar.bz2"
 CHKSUMS="SKIP"
-CHKSUMS__AMD64="$CHKSUMS sha256::9c99e4346bf4e07c81201186e67ef1f35d6204cde14957579a22dd55a49fdfda"
-CHKSUMS__ARM64="$CHKSUMS sha256::65e99652b4cd57f29d818bc7aa27f3be119a8ce0c69e59b1ea01af59583d0594"
+CHKSUMS__AMD64="SKIP \
+         sha256::e7b13b6d92a95625a7a3d5b801a6928cbf41e2ec6afab0d7028bb5b6c88e0d48"
+CHKSUMS__ARM64="SKIP \
+         sha256::b3c751f7bac03b49825306e96273d6c98dedf26a2fab4e4785964a965859741b"
 SUBDIR="obs-studio"
 CHKUPDATE="anitya::id=7239"

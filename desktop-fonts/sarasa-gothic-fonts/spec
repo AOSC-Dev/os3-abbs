@@ -1,7 +1,7 @@
-VER=1.0.24
+VER=1.0.25
 SRCS="tbl::https://github.com/be5invis/Sarasa-Gothic/releases/download/v$VER/Sarasa-TTC-$VER.7z \
       git::commit=tags/v$VER::https://github.com/be5invis/Sarasa-Gothic"
-CHKSUMS="sha256::0eafa69236cfeba81aebbcebe5b8efaf89bb6b942c6f958b68ae95937068053b \
+CHKSUMS="sha256::e30e4baa237bac413b25360bec97ae504c640e391eb8ef98b2721f3479a4703f \
          SKIP"
 CHKUPDATE="anitya::id=227599"
 SUBDIR=.

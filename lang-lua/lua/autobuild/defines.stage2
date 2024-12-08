@@ -1,6 +1,5 @@
 PKGNAME=lua
 PKGSEC=devel
-PKGDEP="lua-5.1"
 PKGDES="Transitional package for lua-5.1"
 
 ABHOST=noarch

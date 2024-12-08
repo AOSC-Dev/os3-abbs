@@ -1,8 +1,8 @@
-LLVM_MAJOR_VER=15
+LLVM_MAJOR_VER=14
 
 mv -v "${PKGDIR}"/usr/include/opencl-c{,-base}.h "${PKGDIR}"/usr/include/igc
 mkdir -pv "${PKGDIR}"/usr/share/doc/"${PKGNAME}"
-mv -v "${PKGDIR}"/usr/lib/igc/NOTICES.txt "${PKGDIR}"/usr/share/doc/"${PKGNAME}"
+mv -v "${PKGDIR}"/usr/lib/igc2/NOTICES.txt "${PKGDIR}"/usr/share/doc/"${PKGNAME}"
 rm "${PKGDIR}"/usr/bin/lld
 
 abinfo "Fixing up permissions ..."

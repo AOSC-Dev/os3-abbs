@@ -1,19 +1,19 @@
-VER=1.0.17791.9
-LLVM_VER=15.0.7
-OPENCL_CLANG_VER=15.0.0
-SPIRV_LLVM_TRANSLATOR_VER=15.0.3
-VS_INTRINSICS_VER=0.20.1
+VER=2.1.12
+LLVM_VER=14.0.6
+OPENCL_CLANG_VER=14.0.1
+SPIRV_LLVM_TRANSLATOR_VER=14.0.7
+VS_INTRINSICS_VER=0.21.0
 SPIRV_TOOLS_VER=1.3.290.0
 
-SRCS="git::commit=tags/igc-$VER;copy-repo=true::https://github.com/intel/intel-graphics-compiler.git \
+SRCS="git::commit=tags/v$VER;copy-repo=true::https://github.com/intel/intel-graphics-compiler.git \
       tbl::https://github.com/llvm/llvm-project/releases/download/llvmorg-"${LLVM_VER}"/llvm-project-"${LLVM_VER}".src.tar.xz \
       git::commit=tags/v$OPENCL_CLANG_VER;rename=opencl-clang;copy-repo=true::https://github.com/intel/opencl-clang.git \
-      git::commit=tags/v$SPIRV_LLVM_TRANSLATOR_VER;rename=SPIRV-LLVM-Translator;copy-repo=true::https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git \
+      git::commit=tags/v$SPIRV_LLVM_TRANSLATOR_VER;rename=SPIRV-LLVM-Translator-IGC;copy-repo=true::https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git \
       git::commit=tags/v$VS_INTRINSICS_VER;rename=vc-intrinsics::https://github.com/intel/vc-intrinsics.git \
       git::commit=tags/vulkan-sdk-$SPIRV_TOOLS_VER;rename=SPIRV-Tools::https://github.com/KhronosGroup/SPIRV-Tools.git \
       git::commit=tags/vulkan-sdk-$SPIRV_TOOLS_VER;rename=SPIRV-Headers::https://github.com/KhronosGroup/SPIRV-Headers.git"
 CHKSUMS="SKIP \
-         sha256::8b5fcb24b4128cf04df1b0b9410ce8b1a729cb3c544e6da885d234280dedeac6 \
+         sha256::8b3cfd7bc695bd6cea0f37f53f0981f34f87496e79e2529874fd03a2f9dd3a8a \
          SKIP \
          SKIP \
          SKIP \

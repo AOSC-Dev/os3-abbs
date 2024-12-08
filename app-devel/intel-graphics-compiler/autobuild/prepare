@@ -1,12 +1,12 @@
 export CFLAGS="${CFLAGS} -fno-semantic-interposition"
-export CXXFLAGS="${CXXFLAGS} -fno-semantic-interposition -I "${SRCDIR}"/../SPIRV-LLVM-Translator/include"
+export CXXFLAGS="${CXXFLAGS} -fno-semantic-interposition"
 export LDFLAGS="${LDFLAGS} -Wl,-Bsymbolic"
 
 git config --local user.name "AOSC Maintainers"
 git config --local user.email "maintainers@aosc.io"
 
-LLVM_VER=15.0.7
-mv "${SRCDIR}"/../llvm-project-"${LLVM_VER}".src "${SRCDIR}"/../llvm-project
+LLVM_VER=14.0.6
+mv -v "${SRCDIR}"/../llvm-project-"${LLVM_VER}".src "${SRCDIR}"/../llvm-project
 cd "${SRCDIR}"/../llvm-project
 
 abinfo "Applying patches for LLVM ..."
@@ -14,13 +14,13 @@ for file in "${SRCDIR}"/../opencl-clang/patches/clang/*.patch
 do
     patch -p1 -t -s -N -i "$file"
 done
-rm "${SRCDIR}"/../opencl-clang/patches/clang/*.patch
-for file in "${SRCDIR}"/external/llvm/releases/15.0.0/patches_external/*.patch
+rm -v "${SRCDIR}"/../opencl-clang/patches/clang/*.patch
+for file in "${SRCDIR}"/external/llvm/releases/14.0.0/patches_external/*.patch
 do
     patch -p1 -t -s -N -i "$file"
 done
-rm "${SRCDIR}"/external/llvm/releases/15.0.0/patches_external/*.patch
+rm -v "${SRCDIR}"/external/llvm/releases/14.0.0/patches_external/*.patch
 
 mkdir "${SRCDIR}"/../llvm-project/.git
-ln -s "${SRCDIR}"/../SPIRV-LLVM-Translator  "${SRCDIR}"/../llvm-project/llvm/projects/llvm-spirv
-ln -s "${SRCDIR}"/../opencl-clang "${SRCDIR}"/../llvm-project/llvm/projects/opencl-clang
+ln -sv "${SRCDIR}"/../SPIRV-LLVM-Translator-IGC "${SRCDIR}"/../llvm-project/llvm/projects/llvm-spirv
+ln -sv "${SRCDIR}"/../opencl-clang "${SRCDIR}"/../llvm-project/llvm/projects/opencl-clang

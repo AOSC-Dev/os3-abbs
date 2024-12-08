@@ -1,0 +1,5 @@
+PKGNAME=grub-btrfs
+PKGSEC=utils
+PKGDEP="systemd grub btrfs-progs bash"
+PKGDES="Tool to add a sub-menu for BtrFS snapshots to the GRUB bootloader"
+ABHOST=noarch

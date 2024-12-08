@@ -1,0 +1,2 @@
+abinfo "Installing grub-btrfs ..."
+make install DESTDIR="$PKGDIR"

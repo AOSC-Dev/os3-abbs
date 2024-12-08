@@ -1,0 +1,4 @@
+VER=4.13
+SRCS="git::commit=tags/$VER::https://github.com/Antynea/grub-btrfs/"
+CHKSUMS="SKIP"
+CHKUPDATE="anitya::id=375790"

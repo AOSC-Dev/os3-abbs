@@ -1,0 +1,12 @@
+abinfo "Creating geant4.sh"
+mkdir -pv "$PKGDIR"/etc/profile.d
+# geant4.sh will be overridden
+touch "$PKGDIR"/etc/profile.d/geant4.sh
+
+abinfo "Creating symbolic link to geant4.sh in bashrc.d ..."
+mkdir -pv "$PKGDIR"/etc/bashrc.d
+ln -sv ../../etc/profile.d/geant4.sh "$PKGDIR"/etc/bashrc.d/geant4.sh
+
+abinfo "Creating symbolic link to geant4.sh in zshrc.d ..."
+mkdir -pv "$PKGDIR"/etc/zsh/zshrc.d
+ln -sv ../../../etc/profile.d/geant4.sh "$PKGDIR"/etc/zsh/zshrc.d/geant4.sh

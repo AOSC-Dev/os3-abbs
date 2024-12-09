@@ -2,8 +2,9 @@ PKGNAME=pcp
 PKGSEC=util
 PKGDEP="avahi chan hdrhistogram-c inetutils jsonpointer libmicrohttpd libnsl2 \
         libpfm libuv libvarlink libwww-perl lxml openpyxl perl perl-dbd-mysql \
-        perl-file-slurp perl-json perl-net-snmp perl-xml-libxml \
-        perl-yaml-libyaml procps psycopg2 python-3 requests six systemtap"
+        perl-file-slurp perl-json perl-net-snmp perl-spreadsheet-read perl-xml-libxml \
+        perl-xml-tokeparser perl-yaml-libyaml procps psycopg2 python-3 \
+        requests six systemtap"
 BUILDDEP="libvirt-python qt-5"
 PKGDES="System performance and analysis framework"
 

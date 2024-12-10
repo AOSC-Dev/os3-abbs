@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+norm="\e[0;0m"
+gray="\e[0;37m"
+dark="\e[0;90m"
+drkr="\e[0;40;38;5;240m"
+lght="\e[0;40;38;5;254m"
+brgt="\e[0;1;40;38;5;255m"
+blck="\e[0;38;5;0m\e[48;5;0m"
+orng="\e[0;40;38;5;172m"
+gren="\e[0;32m"
+lgrn="\e[0;40;38;5;118m"
+rred="\e[5;31m"
+
+echo -e "\
+${blck}                                                                               ${norm}
+${blck}          ${dark}ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg${blck}${norm}
+${blck}       ${dark}ggg${lght}9999999999999999999999999999999999999999999999999999999999999${dark}@@${drkr}ggw${norm}
+${blck}     ${dark}ggg${lght}//////////////////////////////////////////////////////////////${dark}@@@${drkr}BBK${norm}
+${blck}  ${dark}j@@@${brgt}MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM${dark}@@@@@${drkr}BBK${norm}
+${blck}  ${dark}|@@${brgt}MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM${dark}@@@@@@@${drkr}BBK${norm}
+${blck}  ${dark}|@@${brgt}MMM${lght}||||||||||||||||||||||||||||||||||||||||||||||${lgrn}@@@@@@@${lght}|||||${dark}@@@@@@@${drkr}BBK${norm}
+${blck}  ${dark}|@@${brgt}MMM${lght}||||||||||||||||||||||||||||||||||||||||||||||${gren}BBBBBBB${lght}|||||${dark}@@@@@@@${drkr}BBK${norm}
+${blck}  ${dark}|@@${brgt}MMM${lght}||||||||||||||||||||||||||||||||||||||||||||||||||||||||||${dark}@@@@@@@${drkr}BBK${norm}
+${blck}  ${dark}|@@${brgt}MMM${lght}||${dark}NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN${lght}|||||${dark}@@@@@@@${drkr}BBK${norm}
+${blck}  ${dark}|@@${brgt}MMM${lght}||${brgt}MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM${lght}|||||${dark}@@@@@@@${drkr}BBK${norm}
+${blck}  ${dark}|@@${brgt}MMM${lght}||${dark}ggggggggggggggggggggggggggggggggggggggggggggggggggg${lght}|||||${dark}@@@@@@@${drkr}BBK${norm}
+${blck}  ${dark}|@@${brgt}MMM${lght}||${brgt}MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM${lght}|||||${dark}@@@@@@@${drkr}BBK${norm}
+${blck}  ${dark}|@@${brgt}MMM${lght}||||||||||||||||||||||||||||||||||||||||||||||||||||||||||${dark}@@@@@${drkr}WWPP^${norm}
+${blck}  ${dark}|@@${brgt}MMM${lght}||||||||||||||||||||||||||||||||||||||||||||||||||||||||||${dark}@@g${drkr}MMMM${norm}
+${blck}  ${dark}|MMggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg${drkr}RRRRR${norm}
+${blck}     ${drkr}BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBh${norm}
+${blck}                                  ${drkr}8BK${dark}@@${drkr}BBP${norm}
+${blck}                                  ${dark}[@E  ${drkr}BBP${norm}
+${blck}                      ${rred}@@@@@@@@@${norm}   ${dark}[@E${norm}  ${drkr}BBP${norm}   ${rred}@@@@@@@@@${norm}
+${blck}${dark}NNL${norm}  ${dark}NNNNNNNNNNNNNNNNNNNN${rred}@@@@@@@@${orng}NNNNNNNNNN${rred}@@@@@@@@${dark}NNNNNNNNNNNNNNNNNNNNNN${norm}   ${dark}NN${norm}
+${blck}${brgt}\`\`${norm}   ${brgt}\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`${rred}@@@@@@@@${orng}FFFFFF${rred}@@@@@@@@${brgt}\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`${norm}   ${brgt}\`\`${norm}
+${blck}${drkr}PPL${norm}  ${drkr}PPPPPPPPPPPPPPPPPPPPPPPP${rred}@@@@@@@@${orng}@${rred}@@@@@@@@@${drkr}PPPPPPPPPPPPPPPPPPPPPPPPPP${norm}   ${drkr}PP${norm}
+${blck}${drkr}PPL${norm}  ${drkr}PPPPPPPPPPPPPPPPPPPPPPPPP${rred},,@@@@@@@@@@@@,,${drkr}PPPPPPPPPPPPPPPPPPPPPPPPPPP${norm}   ${drkr}PP${norm}
+${blck}                            ${rred}@@@@@@@@@@@@@@@@@@@@${norm}
+${blck}                          ${rred}@@@@@@@@@@${norm}    ${rred}@@@@@@@@@@${norm}
+${blck}                        ${rred}@@@@@@@@@@${norm}        ${rred}@@@@@@@@@@${norm}
+${blck}                      ${rred}@@@@@@@@@E${norm}             ${rred}@@@@@@@@@${norm}
+"

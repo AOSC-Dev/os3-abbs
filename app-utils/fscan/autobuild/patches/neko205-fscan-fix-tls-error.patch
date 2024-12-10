@@ -1,0 +1,41 @@
+From 994dab4139017a0e4a85804051d6e4fc2cca0553 Mon Sep 17 00:00:00 2001
+From: Neko205 <neko200553@gmail.com>
+Date: Wed, 11 Dec 2024 10:18:55 +0800
+Subject: [PATCH] Fix compilation issues on LoongArch and RISC-V
+
+fscan uses a forked tls module, which fails to build on LoongArch and
+RISC-V (despite the RISC-V changes on that fork). The forked tls
+module was also used in the grdp module.
+
+Remove dependency to the forked tls module in both the main fscan
+source and in the grdp module. The latter was forked yet again under
+my name until the upstream adopts this change.
+
+Signed-off-by: Neko205 <neko200553@gmail.com>
+---
+ go.mod | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/go.mod b/go.mod
+index 9322059..5065192 100644
+--- a/go.mod
++++ b/go.mod
+@@ -34,7 +34,6 @@ require (
+ 	github.com/hashicorp/errwrap v1.0.0 // indirect
+ 	github.com/hashicorp/go-multierror v1.1.1 // indirect
+ 	github.com/huin/asn1ber v0.0.0-20120622192748-af09f62e6358 // indirect
+-	github.com/icodeface/tls v0.0.0-20190904083142-17aec93c60e5 // indirect
+ 	github.com/lunixbochs/struc v0.0.0-20200707160740-784aaebc1d40 // indirect
+ 	github.com/mattn/go-colorable v0.0.9 // indirect
+ 	github.com/mattn/go-isatty v0.0.3 // indirect
+@@ -50,6 +49,6 @@ require (
+ 	honnef.co/go/tools v0.0.1-2019.2.3 // indirect
+ )
+ 
+-replace github.com/tomatome/grdp v0.0.0-20211231062539-be8adab7eaf3 => github.com/shadow1ng/grdp v1.0.3
++replace github.com/tomatome/grdp v0.0.0-20211231062539-be8adab7eaf3 => github.com/neko205-mx/grdp v0.0.0-20241212060740-9eb3456031f5
+ 
+ replace github.com/C-Sto/goWMIExec v0.0.1-deva.0.20210704154847-b8ebd6464a06 => github.com/shadow1ng/goWMIExec v0.0.2
+-- 
+2.47.1
+

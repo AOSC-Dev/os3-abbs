@@ -1,0 +1,7 @@
+PKGNAME=fscan
+PKGDES="A comprehensive intranet scanning tool"
+PKGSEC=utils
+PKGDEP="glibc"
+BUILDDEP="go"
+
+ABSPLITDBG=0

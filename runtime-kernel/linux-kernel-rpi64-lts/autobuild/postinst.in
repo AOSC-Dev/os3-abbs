@@ -1,33 +1,43 @@
 #!/bin/bash
-LOCAL_VER=@LOCAL_VER@
+LOCAL_VER_RPI4=@LOCAL_VER_RPI4@
+LOCAL_VER_RPI5=@LOCAL_VER_RPI5@
 VER=@VER@
-KERNEL=${VER}${LOCAL_VER}
+KERNEL_RPI4=${VER}${LOCAL_VER_RPI4}
+KERNEL_RPI5=${VER}${LOCAL_VER_RPI5}
 
 if [ -x /usr/bin/depmod ]; then
-  depmod ${KERNEL}
+  depmod ${KERNEL_RPI4}
+  depmod ${KERNEL_RPI5}
 else
   echo "Kmod is not installed, please install package 'kmod'."
 fi
 
 if [ -x /usr/bin/dkms ]; then
-  dkms autoinstall --kernelver ${KERNEL}
+  dkms autoinstall --kernelver ${KERNEL_RPI4}
+  dkms autoinstall --kernelver ${KERNEL_RPI5}
 fi
 
 if [ -x /etc/kernel/postinst.d/apt-auto-removal ]; then
   /etc/kernel/postinst.d/apt-auto-removal
 fi
-if grep -q "/boot/rpi" /etc/fstab; then
-  # try mounting it first
-  mount -a
-  if [ "$?" != "0" ]; then
-    # failed, try one last time
-    echo "Unable to mount /boot/rpi."
-    mkdir -p /boot/rpi
-    mount -a || exit 1
-    echo "/boot/rpi is created and mounted. Continuing."
-  fi
-  echo "Updating kernel..."
-  cp -r /usr/lib/rpi64/kernel/* /boot/rpi/
+
+if [ -d "/tree/runtime-kernel" ]; then
+  echo "Running in build environment, skipping kernel update."
 else
-  echo "Can not find mount point /boot/rpi. Skip copying kernel."
+  if grep -q "/boot/rpi" /etc/fstab; then
+    # try mounting it first
+    mount -a
+    if [ "$?" != "0" ]; then
+      # failed, try one last time
+      echo "Unable to mount /boot/rpi. Retrying."
+      mkdir -p /boot/rpi
+      mount -a || { echo "Failed to mount all partitions. Your kernel is not updated." ; exit 1 ; }
+      echo "/boot/rpi is created and mounted. Continuing."
+    fi
+    echo "Updating kernel..."
+    cp -r /usr/lib/rpi64/kernel/* /boot/rpi/
+  else
+    echo "Can not find mount point /boot/rpi. Your kernel is not updated."
+    exit 1
+  fi
 fi

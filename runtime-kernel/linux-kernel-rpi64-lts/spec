@@ -1,8 +1,5 @@
 VER=6.6.62
 
-# Note: For use inside autobuild/.
-__VER="${VER}"
-
 # Use this for stable releases.
 #REL=1
 

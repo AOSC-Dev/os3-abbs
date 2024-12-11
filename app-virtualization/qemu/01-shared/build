@@ -56,7 +56,6 @@ SYSTEM_CONFIGURE_FLAGS="
 	--enable-blkio
 	--enable-sndio
 	--disable-netmap
-	--enable-pvrdma
 	--enable-rdma
 	--disable-rbd
 	--enable-u2f
@@ -73,7 +72,6 @@ SYSTEM_CONFIGURE_FLAGS="
 if ab_match_arch amd64; then
 	SYSTEM_CONFIGURE_FLAGS+="
 		--enable-avx2
-		--enable-avx512f
 		--enable-avx512bw
 	"
 fi

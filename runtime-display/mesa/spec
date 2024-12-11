@@ -1,10 +1,10 @@
-UPSTREAM_VER=24.3.0
+UPSTREAM_VER=24.3.1
 DXHEADERS_VER=1.614.1
 VER=${UPSTREAM_VER/\-/\~}+dxheaders${DXHEADERS_VER}
 
 SRCS="tbl::https://archive.mesa3d.org/mesa-${UPSTREAM_VER}.tar.xz \
       git::commit=tags/v${DXHEADERS_VER};rename=dxheaders::https://github.com/microsoft/DirectX-Headers.git"
-CHKSUMS="sha256::97813fe65028ef21b4d4e54164563059e8408d8fee3489a2323468d198bf2efc \
+CHKSUMS="sha256::9c795900449ce5bc7c526ba0ab3532a22c3c951cab7e0dd9de5fcac41b0843af \
          SKIP"
 SUBDIR="mesa-${UPSTREAM_VER}"
 CHKUPDATE="anitya::id=1970"

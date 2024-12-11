@@ -1,0 +1,42 @@
+From a56d5d333376551e65eacf0866cac3bef9d3eaed Mon Sep 17 00:00:00 2001
+From: Kexy Biscuit <kexybiscuit@aosc.io>
+Date: Wed, 11 Dec 2024 17:24:20 +0800
+Subject: [PATCH 5/5] AOSCOS: mips: detect Loongson CPU model names without ICT
+
+There was a patch proposing to drop ICT in CPU model names
+("MIPS: Add __cpu_full_name[] to make CPU names more human-readable"),
+but never got its way into Linux kernel upstream. Never the less, since
+AOSC OS includes that patch, it's necessary for valgrind to detect
+Loongson CPU model names with or without ICT.
+
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ coregrind/m_machine.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/coregrind/m_machine.c b/coregrind/m_machine.c
+index 234efb312..ece336503 100644
+--- a/coregrind/m_machine.c
++++ b/coregrind/m_machine.c
+@@ -680,7 +680,8 @@ static Bool VG_(parse_cpuinfo)(void)
+    const char *search_Broadcom_str = "cpu model\t\t: Broadcom";
+    const char *search_Cavium_str= "cpu model\t\t: Cavium";
+    const char *search_Ingenic_str= "cpu model\t\t: Ingenic";
+-   const char *search_Loongson_str= "cpu model\t\t: ICT Loongson";
++   const char *search_Ict_Loongson_str= "cpu model\t\t: ICT Loongson";
++   const char *search_Loongson_str= "cpu model\t\t: Loongson";
+    const char *search_MIPS_str = "cpu model\t\t: MIPS";
+    const char *search_Netlogic_str = "cpu model\t\t: Netlogic";
+ 
+@@ -734,7 +735,7 @@ static Bool VG_(parse_cpuinfo)(void)
+        vai.hwcaps = VEX_PRID_COMP_MIPS;
+    else if (VG_(strstr)(file_buf, search_Ingenic_str) != NULL)
+        vai.hwcaps = VEX_PRID_COMP_INGENIC_E1;
+-   else if (VG_(strstr)(file_buf, search_Loongson_str) != NULL)
++   else if (VG_(strstr)(file_buf, search_Ict_Loongson_str) != NULL || VG_(strstr)(file_buf, search_Loongson_str) != NULL)
+        vai.hwcaps = (VEX_PRID_COMP_LEGACY | VEX_PRID_IMP_LOONGSON_64);
+    else {
+        /* Did not find string in the proc file. */
+-- 
+2.47.1.windows.1
+

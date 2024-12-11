@@ -1,8 +1,9 @@
-From 783786c23250a23e11020943e6814745e28b9bb2 Mon Sep 17 00:00:00 2001
+From 7fb7bb9bf894199715f1c5eddd2b1e3342400791 Mon Sep 17 00:00:00 2001
 From: Jiajie Chen <c@jia.je>
 Date: Sun, 4 Feb 2024 22:20:18 +0800
-Subject: [PATCH 4/4] some -Wl,-z,now
+Subject: [PATCH 4/5] AOSCOS: some -Wl,-z,now
 
+Signed-off-by: Jiajie Chen <c@jia.je>
 ---
  auxprogs/Makefile.am  | 6 +++---
  coregrind/Makefile.am | 4 ++--
@@ -40,7 +41,7 @@ index 3a9709da6..bcbd3e0eb 100644
  getoff_@VGCONF_ARCH_PRI@_@VGCONF_OS@_LDADD = $(LDADD) -ldl
  endif
 diff --git a/coregrind/Makefile.am b/coregrind/Makefile.am
-index 8a7f753a6..d305ac9fd 100644
+index e3e31a73b..509c17909 100644
 --- a/coregrind/Makefile.am
 +++ b/coregrind/Makefile.am
 @@ -62,7 +62,7 @@ RANLIB = ${LTO_RANLIB}
@@ -62,5 +63,5 @@ index 8a7f753a6..d305ac9fd 100644
  vgdb_CFLAGS    += -static
  endif
 -- 
-2.44.0
+2.47.1.windows.1
 

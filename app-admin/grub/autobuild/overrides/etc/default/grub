@@ -9,10 +9,10 @@ GRUB_TIMEOUT=5
 # GRUB distributor.
 GRUB_DISTRIBUTOR="AOSC OS"
 
-# Linux boot parameters for non-Recoveray boots.
+# Linux boot parameters for non-Recovery boots.
 GRUB_CMDLINE_LINUX_DEFAULT="quiet rd.auto rd.auto=1 splash"
 # Linux boot parameters for all boot modes.
-GRUB_CMDLINE_LINUX="quiet rd.auto rd.auto=1 splash"
+GRUB_CMDLINE_LINUX=""
 
 # Preload both GPT and MBR modules so that they are not missed.
 GRUB_PRELOAD_MODULES="part_gpt part_msdos"

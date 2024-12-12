@@ -1,0 +1,7 @@
+PKGNAME=mvfst
+PKGSEC=libs
+PKGDEP="boost double-conversion fizz fmt folly glog"
+PKGDES="QUIC library in C++"
+
+ABTYPE=cmakeninja
+CMAKE_AFTER=('-DBUILD_SHARED_LIBS=ON')

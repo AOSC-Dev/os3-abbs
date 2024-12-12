@@ -1,0 +1,14 @@
+PKGNAME=folly
+PKGSEC=libs
+PKGDEP="boost double-conversion fmt gflags glog lz4 openssl snappy xz zlib"
+BUILDDEP="fast-float"
+PKGDES="C++17 API component library"
+
+CMAKE_AFTER=('-DBUILD_SHARED_LIBS=ON')
+# FIXME: error: 'occupiedMask' was not declared in this scope
+# enable FOLLY_HAVE_INT128_T for the fallback implementation.
+# see folly/container/detail/F14Table.h
+CMAKE_AFTER__RISCV64=(
+    "${CMAKE_AFTER[@]}"
+    '-DFOLLY_HAVE_INT128_T=ON'
+)

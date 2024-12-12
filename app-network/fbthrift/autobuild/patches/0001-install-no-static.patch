@@ -1,0 +1,32 @@
+diff --git a/thrift/compiler/CMakeLists.txt b/thrift/compiler/CMakeLists.txt
+index 6a33a421d6..0dde5ac4cd 100644
+--- a/thrift/compiler/CMakeLists.txt
++++ b/thrift/compiler/CMakeLists.txt
+@@ -170,7 +170,6 @@ target_link_libraries(
+ 
+ add_library(
+   whisker
+-  STATIC
+ 
+   whisker/detail/string.cc
+   whisker/ast.cc
+@@ -186,8 +185,8 @@ add_library(
+ )
+ target_link_libraries(
+   whisker
+-  fmt::fmt
+-  compiler_base
++  PUBLIC fmt::fmt
++  PRIVATE compiler_base
+ )
+ 
+ add_subdirectory(generate)
+@@ -241,8 +240,6 @@ endif ()
+ install(
+   TARGETS thrift1
+     compiler_ast
+-    compiler_base
+-    compiler_lib
+     compiler
+     mustache
+     whisker

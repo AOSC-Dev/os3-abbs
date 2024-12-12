@@ -1,0 +1,25 @@
+From c83b60a82d23fd215becb2c66923ef04587ee39a Mon Sep 17 00:00:00 2001
+From: Henry Chen <henry.chen@oss.cipunited.com>
+Date: Mon, 16 Dec 2024 17:31:39 +0800
+Subject: [PATCH] Fix pywatchman installation prefix and DESTDIR
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index dd6eec332..a587111d6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -427,7 +427,7 @@ if(Python3_Development_FOUND)
+       ${CMAKE_COMMAND} -E env
+         CMAKE_CURRENT_SOURCE_DIR=${CMAKE_CURRENT_SOURCE_DIR}
+         ${Python3_EXECUTABLE} ${SETUP_PY} install
+-        --root $ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}
++        --root $ENV{DESTDIR} --prefix ${CMAKE_INSTALL_PREFIX}
+       WORKING_DIRECTORY ${PYWATCHMAN_BASE}
+       RESULT_VARIABLE STATUS)
+     if (NOT STATUS STREQUAL 0)
+-- 
+2.47.1
+

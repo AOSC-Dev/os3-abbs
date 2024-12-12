@@ -1,0 +1,8 @@
+PKGNAME=edencommon
+PKGSEC=libs
+PKGDEP="fb303 folly gflags glog"
+BUILDDEP="gtest"
+PKGDES="Support library for Watchman and Eden projects"
+
+ABTYPE=cmakeninja
+CMAKE_AFTER=('-DBUILD_SHARED_LIBS=ON')

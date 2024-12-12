@@ -1,0 +1,8 @@
+PKGNAME=fast-float
+PKGSEC=libs
+PKGDEP="glibc"
+PKGDES="Header-only string-to-float for C and C++"
+
+# no binaries will be built because we don't run tests.
+ABTYPE=cmakeninja
+ABHOST=noarch

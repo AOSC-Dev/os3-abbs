@@ -1,0 +1,4 @@
+VER=0.05
+SRCS="tbl::https://cpan.metacpan.org/authors/id/P/PO/PODMASTER/XML-TokeParser-$VER.tar.gz"
+CHKSUMS="sha256::8539b4f98436b1a6d088341a8b4530b7922acd651f3f29377f8b1948c7e2d7c2"
+CHKUPDATE="anitya::id=16103"

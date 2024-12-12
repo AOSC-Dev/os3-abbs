@@ -1,0 +1,6 @@
+PKGNAME=perl-xml-tokeparser
+PKGSEC=perl
+PKGDEP="perl-xml-parser"
+PKGDES="Perl module to XML::TokeParser"
+
+ABHOST=noarch

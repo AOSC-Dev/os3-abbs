@@ -1,0 +1,6 @@
+PKGNAME=perl-spreadsheet-read
+PKGSEC=perl
+PKGDEP="perl perl-data-peek perl-tk perl-tk-tablematrix"
+PKGDES="Meta-Wrapper for reading spreadsheet data"
+
+ABHOST=noarch

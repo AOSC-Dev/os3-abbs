@@ -1,0 +1,4 @@
+VER=0.91
+SRCS="git::commit=tags/$VER::https://github.com/Tux/Spreadsheet-Read.git"
+CHKSUMS="SKIP"
+CHKUPDATE="anitya::id=375908"

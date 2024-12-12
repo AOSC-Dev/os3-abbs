@@ -1,0 +1,4 @@
+VER="2024.12.30.00"
+SRCS="git::commit=tags/v$VER::https://github.com/facebookexperimental/edencommon"
+CHKSUMS="SKIP"
+CHKUPDATE="anitya::id=375630"

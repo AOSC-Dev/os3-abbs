@@ -1,0 +1,7 @@
+PKGNAME=cpptoml
+PKGSEC=libs
+PKGDES="Header-only TOML v0.5.0 (2018) configuration file parser"
+PKGDEP="glibc"
+
+ABTYPE=cmakeninja
+ABHOST=noarch

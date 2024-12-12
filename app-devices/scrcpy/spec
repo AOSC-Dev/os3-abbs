@@ -1,7 +1,7 @@
-VER=3.0
+VER=3.1
 SRCS="git::commit=tags/v$VER::https://github.com/Genymobile/scrcpy \
       file::rename=scrcpy-server::https://github.com/Genymobile/scrcpy/releases/download/v$VER/scrcpy-server-v$VER"
 CHKSUMS="SKIP \
-         sha256::800044c62a94d5fc16f5ab9c86d45b1050eae3eb436514d1b0d2fe2646b894ea"
+         sha256::958f0944a62f23b1f33a16e9eb14844c1a04b882ca175a738c16d23cb22b86c0"
 SUBDIR="scrcpy"
 CHKUPDATE="anitya::id=226924"

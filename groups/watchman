@@ -1,0 +1,8 @@
+app-network/fbthrift
+app-network/fizz
+runtime-common/folly
+runtime-common/edencommon
+runtime-network/wangle
+runtime-network/fb303
+runtime-network/mvfst
+app-utils/watchman

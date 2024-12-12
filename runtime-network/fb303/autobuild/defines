@@ -1,0 +1,7 @@
+PKGNAME=fb303
+PKGSEC=libs
+PKGDEP="fbthrift fizz fmt folly gflags glog wangle"
+PKGDES="Thrift-based framework for querying information from a service"
+
+ABTYPE=cmakeninja
+CMAKE_AFTER=('-DBUILD_SHARED_LIBS=ON')

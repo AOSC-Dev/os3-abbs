@@ -1,0 +1,28 @@
+From 953aac526a1623ee96e982e717e313aafa074195 Mon Sep 17 00:00:00 2001
+From: Henry Chen <henry.chen@oss.cipunited.com>
+Date: Mon, 16 Dec 2024 16:37:55 +0800
+Subject: [PATCH] Fix impossible constraint error for mips and riscv
+
+---
+ folly/lang/Hint-inl.h | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/folly/lang/Hint-inl.h b/folly/lang/Hint-inl.h
+index 2c207a551..63126226d 100644
+--- a/folly/lang/Hint-inl.h
++++ b/folly/lang/Hint-inl.h
+@@ -100,7 +100,11 @@ FOLLY_ALWAYS_INLINE void compiler_must_not_elide(T const& t, std::false_type) {
+   //
+   // avoided for pointers to avoid fallout in calling code which mistakenly
+   // applies the hint to the address of a value but not to the value itself
++#if defined (__mips__) || defined (__riscv)
++  asm volatile("" : : "rm"(t) : "memory");
++#else
+   asm volatile("" : : "r"(t));
++#endif
+ }
+ 
+ template <typename T>
+-- 
+2.47.1
+

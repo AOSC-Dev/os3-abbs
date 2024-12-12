@@ -1,0 +1,10 @@
+PKGNAME=wangle
+PKGSEC=libs
+PKGDEP="double-conversion fizz fmt folly gflags glog libevent openssl"
+PKGDES="A networking library providing common abstractions for clients and servers"
+
+ABTYPE=cmakeninja
+CMAKE_AFTER=(
+    '-DBUILD_SHARED_LIBS=ON'
+    '-DBUILD_TESTS=OFF'
+)

@@ -1,0 +1,7 @@
+PKGNAME=fizz
+PKGSEC=net
+PKGDEP="fmt gflags glog libsodium openssl"
+BUILDDEP="folly gtest"
+PKGDES="Asynchronous TLS 1.3 implementation in C++"
+
+CMAKE_AFTER=('-DBUILD_SHARED_LIBS=ON')

@@ -1,4 +1,4 @@
-From 18e1b3c8a09535744f28297ae4693a413c4649d8 Mon Sep 17 00:00:00 2001
+From a42ad01a43b82cd93473a97c2f58277b8933b706 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Mon, 12 Aug 2024 22:19:25 +0800
 Subject: [PATCH 2/3] AOSCOS: fix: do not tint terminal by default
@@ -13,7 +13,7 @@ Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/shared/pretty-print.c b/src/shared/pretty-print.c
-index 4e38e60775f4..adb2f066173f 100644
+index 4e38e60775..adb2f06617 100644
 --- a/src/shared/pretty-print.c
 +++ b/src/shared/pretty-print.c
 @@ -456,7 +456,7 @@ bool shall_tint_background(void) {
@@ -26,5 +26,5 @@ index 4e38e60775f4..adb2f066173f 100644
                  log_debug_errno(cache, "Failed to parse $SYSTEMD_TINT_BACKGROUND, leaving background tinting enabled: %m");
  
 -- 
-2.47.0
+2.47.1
 

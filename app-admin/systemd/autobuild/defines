@@ -4,6 +4,10 @@ PKGDEP="glib lz4 xz acl bash cryptsetup curl elfutils gnutls kbd kmod \
         libcap libidn2 libmicrohttpd linux-pam util-linux-runtime libgcrypt hwdata \
         libgpg-error iptables libxkbcommon qrencode aosc-aaa \
         libseccomp pcre2 zstd libfido2 tpm2-tss p11-kit openssl zlib bzip2"
+PKGDEP__LOONGSON3="glib lz4 xz acl bash cryptsetup curl elfutils gnutls kbd kmod \
+        libcap libidn2 libmicrohttpd linux-pam util-linux-runtime libgcrypt hwdata \
+        libgpg-error iptables libxkbcommon qrencode aosc-aaa \
+        pcre2 zstd libfido2 tpm2-tss p11-kit openssl zlib bzip2"
 PKGDEP__RETRO="glib acl bash kbd libcap linux-pam util-linux hwdata \
                aosc-aaa kmod polkit dbus openssl zlib bzip2"
 PKGDEP__ARMV4="${PKGDEP__RETRO}"
@@ -136,6 +140,175 @@ MESON_AFTER="-Dmode=release \
              -Ddns-servers= \
              -Dntp-servers=aoscos.pool.ntp.org \
              -Dseccomp=true \
+             -Dselinux=false \
+             -Dapparmor=false \
+             -Dsmack=false \
+             -Dpolkit=true \
+             -Dima=false \
+             -Dacl=true \
+             -Daudit=false \
+             -Dblkid=true \
+             -Dfdisk=true \
+             -Dkmod=true \
+             -Dpam=true \
+             -Dpwquality=true \
+             -Dmicrohttpd=true \
+             -Dlibcryptsetup=true \
+             -Dlibcryptsetup-plugins=true \
+             -Dlibcurl=true \
+             -Didn=false \
+             -Dlibidn2=true \
+             -Dlibidn=false \
+             -Dlibiptc=true \
+             -Dqrencode=true \
+             -Dgcrypt=true \
+             -Dgnutls=true \
+             -Dopenssl=true \
+             -Dcryptolib=gcrypt \
+             -Dp11kit=true \
+             -Dlibfido2=true \
+             -Dtpm2=true \
+             -Delfutils=true \
+             -Dzlib=true \
+             -Dbzip2=true \
+             -Dxz=true \
+             -Dlz4=true \
+             -Dzstd=true \
+             -Ddefault-compression=zstd \
+             -Dxkbcommon=true \
+             -Dpcre2=true \
+             -Dglib=true \
+             -Ddbus=true \
+             -Dsbat-distro=aosc \
+             -Dsbat-distro-generation=1 \
+             -Dsbat-distro-summary=AOSC \
+             -Dsbat-distro-pkgname=systemd \
+             -Dsbat-distro-version= \
+             -Dsbat-distro-url=https://packages.aosc.io/packages/systemd \
+             -Defi-color-normal=white,black \
+             -Defi-color-entry=white,black \
+             -Defi-color-highlight=cyan,black \
+             -Defi-color-edit=black,lightgray \
+             -Dbashcompletiondir=/usr/share/bash-completion/completions \
+             -Dzshcompletiondir=/usr/share/zsh/site-functions \
+             -Dok-color=green \
+             -Durlify=true \
+             -Dfexecve=false \
+             -Doss-fuzz=false \
+             -Dllvm-fuzz=false \
+             -Dkernel-install=true \
+             -Danalyze=true \
+             -Dbpf-framework=false"
+# FIXME: GNU C Library needs the stack to be executable for MIPS hard-float
+# ABIs, unless explicitly configured at build time to require minimum kernel
+# version 4.8 or newer.
+#
+# Unfortunately, glibc in Core 11 and earlier was configured to require kernel
+# version 3.4 or newer, which causes lots of existing binaries to have
+# executable stack. This conflicts with MemoryDenyWriteExecute=yes, which is
+# the default for lots of systemd service units.
+#
+# The ideal solution would be to rebuild the world, however that's virtually
+# impossible, especially for an process architecture with such limited resource
+# and focus. Luckily, disabling seccomp support for systemd also removes the
+# restriction on executable stack, so let's take this until most of the
+# packages have been rebuilt with Core 12 or newer.
+# Link: https://t.me/c/1109254909/672325
+MESON_AFTER__LOONGSON3="-Dmode=release \
+             -Dsplit-usr=false \
+             -Dsplit-bin=false \
+             -Dlink-udev-shared=true \
+             -Dlink-systemctl-shared=true \
+             -Dlink-networkd-shared=true \
+             -Dlink-timesyncd-shared=true \
+             -Dlink-journalctl-shared=true \
+             -Dlink-boot-shared=true \
+             -Dfirst-boot-full-preset=true \
+             -Dstatic-libsystemd=false \
+             -Dstatic-libudev=true \
+             -Dstandalone-binaries=false \
+             -Dinitrd=true \
+             -Dcompat-mutable-uid-boundaries=false \
+             -Dnscd=true \
+             -Ddebug-shell=/bin/bash \
+             -Ddebug-tty=/dev/tty9 \
+             -Ddebug-extra= \
+             -Dmemory-accounting-default=true \
+             -Dbump-proc-sys-fs-file-max=true \
+             -Dbump-proc-sys-fs-nr-open=true \
+             -Dlog-trace=false \
+             -Dutmp=true \
+             -Dhibernate=true \
+             -Dldconfig=true \
+             -Dresolve=true \
+             -Defi=true \
+             -Dtpm=true \
+             -Denvironment-d=true \
+             -Dbinfmt=true \
+             -Drepart=true \
+             -Dsysupdate=true \
+             -Dcoredump=true \
+             -Dpstore=true \
+             -Doomd=true \
+             -Dlogind=true \
+             -Dhostnamed=true \
+             -Dlocaled=true \
+             -Dmachined=true \
+             -Dportabled=true \
+             -Dsysext=true \
+             -Duserdb=true \
+             -Dhomed=true \
+             -Dnetworkd=true \
+             -Dtimedated=true \
+             -Dtimesyncd=true \
+             -Dremote=true \
+             -Dcreate-log-dirs=true \
+             -Dnss-myhostname=true \
+             -Dnss-mymachines=true \
+             -Dnss-resolve=true \
+             -Dnss-systemd=true \
+             -Dfirstboot=true \
+             -Drandomseed=true \
+             -Dbacklight=true \
+             -Dvconsole=true \
+             -Dvmspawn=true \
+             -Dquotacheck=true \
+             -Dsysusers=true \
+             -Dtmpfiles=true \
+             -Dimportd=true \
+             -Dhwdb=true \
+             -Drfkill=true \
+             -Dxdg-autostart=true \
+             -Dman=true \
+             -Dhtml=true \
+             -Dtranslations=true \
+             -Dinstall-sysconfdir=true \
+             -Dfallback-hostname=aosc \
+             -Ddefault-hierarchy=unified \
+             -Dstatus-unit-format-default=combined \
+             -Dtime-epoch=0 \
+             -Dclock-valid-range-usec-max=473364000000000 \
+             -Ddefault-user-shell=/bin/bash \
+             -Dadm-group=true \
+             -Dwheel-group=true \
+             -Dnobody-user=systemd-nobody \
+             -Dnobody-group=systemd-nogroup \
+             -Ddev-kvm-mode=0666 \
+             -Dgroup-render-mode=0666 \
+             -Ddefault-kill-user-processes=false \
+             -Dgshadow=true \
+             -Ddefault-locale=C.UTF-8 \
+             -Dnspawn-locale=C.UTF-8 \
+             -Dlocalegen-path=/usr/bin/locale-gen \
+             -Dservice-watchdog=3min \
+             -Ddefault-dnssec=allow-downgrade \
+             -Ddefault-dns-over-tls=no \
+             -Ddefault-mdns=yes \
+             -Ddefault-llmnr=yes \
+             -Ddns-over-tls=gnutls \
+             -Ddns-servers= \
+             -Dntp-servers=aoscos.pool.ntp.org \
+             -Dseccomp=false \
              -Dselinux=false \
              -Dapparmor=false \
              -Dsmack=false \

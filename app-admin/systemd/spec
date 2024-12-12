@@ -1,15 +1,15 @@
 VER=257
 
 # Use this for stable releases.
-#REL=1
+REL=1
 # Note: In specific cases, `www.kernel.org` is faster than `cdn.kernel.org`. Change the host when appropriate.
-#SRCS="git::commit=tags/v$VER::https://github.com/systemd/systemd.git"
+SRCS="git::commit=tags/v$VER::https://github.com/systemd/systemd.git"
 
 # Use this for RC releases.
-RC=3
+#RC=3
 # To RFC: Increment by 0.1 per RC release, i.e., RC3 = 0.3.
-REL=0.${RC}
-SRCS="git::commit=tags/v$VER-rc$RC::https://github.com/systemd/systemd.git"
+#REL=0.${RC}
+#SRCS="git::commit=tags/v$VER-rc$RC::https://github.com/systemd/systemd.git"
 
 CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=205088"

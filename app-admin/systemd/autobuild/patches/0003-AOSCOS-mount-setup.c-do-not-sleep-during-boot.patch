@@ -1,4 +1,4 @@
-From f50ea5d19d353aae1881553121ec6982f9cb0cbf Mon Sep 17 00:00:00 2001
+From a0182794aa90a545866b1d0022913299aa8dc1c1 Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Sun, 10 Nov 2024 13:38:51 +0800
 Subject: [PATCH 3/3] AOSCOS: mount-setup.c: do not sleep during boot
@@ -11,7 +11,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/src/shared/mount-setup.c b/src/shared/mount-setup.c
-index d5009fb59ed1..9e20aa7b7cb6 100644
+index d5009fb59e..9e20aa7b7c 100644
 --- a/src/shared/mount-setup.c
 +++ b/src/shared/mount-setup.c
 @@ -522,10 +522,10 @@ int mount_cgroup_legacy_controllers(bool loaded_policy) {
@@ -28,5 +28,5 @@ index d5009fb59ed1..9e20aa7b7cb6 100644
                          return 0;
                  }
 -- 
-2.47.0
+2.47.1
 

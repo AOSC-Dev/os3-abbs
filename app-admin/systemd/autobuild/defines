@@ -1,10 +1,10 @@
 PKGNAME=systemd
 PKGSEC=admin
-PKGDEP="glib lz4 xz acl bash cryptsetup curl elfutils gnutls kbd kmod \
+PKGDEP="glib lz4 xz acl bash cryptsetup curl elfutils gnutls kbd kmod libaudit libbpf \
         libcap libidn2 libmicrohttpd linux-pam util-linux-runtime libgcrypt hwdata \
         libgpg-error iptables libxkbcommon qrencode aosc-aaa \
         libseccomp pcre2 zstd libfido2 tpm2-tss p11-kit openssl zlib bzip2"
-PKGDEP__LOONGSON3="glib lz4 xz acl bash cryptsetup curl elfutils gnutls kbd kmod \
+PKGDEP__LOONGSON3="glib lz4 xz acl bash cryptsetup curl elfutils gnutls kbd kmod libaudit libbpf \
         libcap libidn2 libmicrohttpd linux-pam util-linux-runtime libgcrypt hwdata \
         libgpg-error iptables libxkbcommon qrencode aosc-aaa \
         pcre2 zstd libfido2 tpm2-tss p11-kit openssl zlib bzip2"
@@ -146,7 +146,7 @@ MESON_AFTER="-Dmode=release \
              -Dpolkit=true \
              -Dima=false \
              -Dacl=true \
-             -Daudit=false \
+             -Daudit=true \
              -Dblkid=true \
              -Dfdisk=true \
              -Dkmod=true \
@@ -198,7 +198,7 @@ MESON_AFTER="-Dmode=release \
              -Dllvm-fuzz=false \
              -Dkernel-install=true \
              -Danalyze=true \
-             -Dbpf-framework=false"
+             -Dbpf-framework=true"
 # FIXME: GNU C Library needs the stack to be executable for MIPS hard-float
 # ABIs, unless explicitly configured at build time to require minimum kernel
 # version 4.8 or newer.
@@ -315,7 +315,7 @@ MESON_AFTER__LOONGSON3="-Dmode=release \
              -Dpolkit=true \
              -Dima=false \
              -Dacl=true \
-             -Daudit=false \
+             -Daudit=true \
              -Dblkid=true \
              -Dfdisk=true \
              -Dkmod=true \
@@ -367,7 +367,7 @@ MESON_AFTER__LOONGSON3="-Dmode=release \
              -Dllvm-fuzz=false \
              -Dkernel-install=true \
              -Danalyze=true \
-             -Dbpf-framework=false"
+             -Dbpf-framework=true"
 MESON_AFTER__RETRO=" \
              ${MESON_AFTER} \
              -Dxkbcommon=false \

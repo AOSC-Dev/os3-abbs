@@ -15,7 +15,7 @@ done
 
 cat << EOF > "$SRCDIR/autobuild/postrm"
 if [ "\$1" != "upgrade" ]; then
-    update-alternatives --remove-all llvm $LLVM_SUFFIX || true
+    update-alternatives --remove-all llvm || true
 fi
 EOF
 

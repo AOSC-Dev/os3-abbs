@@ -2,7 +2,7 @@ _majorver=${PKGVER%.*}
 
 make MYCFLAGS="$CFLAGS" MYLDFLAGS="$LDFLAGS" linux $ABMK &&
 
-mkdir -p abdist/usr/share/man/man1
+mkdir -vp abdist/usr/share/man/man1
 
 make \
      TO_BIN='lua5.1 luac5.1' \
@@ -13,16 +13,16 @@ make \
      INSTALL_MAN=../abdist/usr/share/man/man1 \
      install &&
 
-install -Dm644 etc/lua.pc "abdist"/usr/lib/pkgconfig/lua.pc
-install -d "abdist/usr/share/doc/lua"
-install -m644 doc/*.{gif,png,css,html} "abdist"/usr/share/doc/lua
-install -Dm644 COPYRIGHT "abdist"/usr/share/licenses/lua/COPYRIGHT
+install -Dvm644 etc/lua.pc "abdist"/usr/lib/pkgconfig/lua.pc
+install -dv "abdist/usr/share/doc/lua"
+install -vm644 doc/*.{gif,png,css,html} "abdist"/usr/share/doc/lua
+install -Dvm644 COPYRIGHT "abdist"/usr/share/licenses/lua/COPYRIGHT
 
-ln -s liblua5.1.so "abdist"/usr/lib/liblua.so.5.1
-ln -s liblua5.1.so "abdist"/usr/lib/liblua.so.5.1.5
+ln -sv liblua5.1.so "abdist"/usr/lib/liblua.so.5.1
+ln -sv liblua5.1.so "abdist"/usr/lib/liblua.so.5.1.5
 
-ln -s lua5.1 abdist/usr/bin/lua
-ln -s luac5.1 abdist/usr/bin/luac
+ln -sv lua5.1 abdist/usr/bin/lua
+ln -sv luac5.1 abdist/usr/bin/luac
 
 cd abdist/usr/include/lua5.1
 for i in *; do

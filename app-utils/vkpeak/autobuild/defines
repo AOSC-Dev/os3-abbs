@@ -1,0 +1,5 @@
+PKGNAME=vkpeak
+PKGSEC=utils
+PKGDEP="vulkan-loader"
+BUILDDEP="vulkan-headers"
+PKGDES="Measure peak performance using Vulkan"

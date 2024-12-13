@@ -1,0 +1,4 @@
+VER=20240505
+SRCS="git::commit=tags/$VER::https://github.com/nihui/vkpeak"
+CHKSUMS="SKIP"
+CHKUPDATE="anitya::id=375832"

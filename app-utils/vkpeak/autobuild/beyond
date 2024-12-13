@@ -1,0 +1,6 @@
+abinfo "Dropping ncnn files ..."
+rm -rv "$PKGDIR"
+
+abinfo "Installing vkpeak ..."
+mkdir -pv "$PKGDIR"/usr/bin
+cp -av "$BLDDIR"/vkpeak "$PKGDIR"/usr/bin/vkpeak

@@ -20,3 +20,6 @@ CMAKE_AFTER="-DCMAKE_INSTALL_PREFIX=/usr \
              -DGEANT4_USE_PYTHON=ON \
              -DGEANT4_INSTALL_DATA=ON \
              -DGEANT4_INSTALL_DATASETS_TENDL=ON"
+
+# FIXME: ABI change for returning aggregates with empty bases in GCC 12.1
+NOLTO__LOONGSON3=1

@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ -d "/tree/runtime-kernel" ]; then
+  echo "Running in build environment, skipping firmware update."
+  exit 0
+fi
+
 if ! grep -q "/boot/rpi" /etc/fstab; then
   echo "Mount point '/boot/rpi' does not exist in fstab file."
   echo "You need to update firmware files manually, which is installed to /usr/lib/rpi64/boot."

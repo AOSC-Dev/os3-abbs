@@ -1,5 +1,4 @@
 abinfo "Copying firmware..."
 mkdir -pv "$PKGDIR/usr/lib/rpi64/boot/"
 cp -v "$SRCDIR"/boot/*.{bin,dat,elf} "$PKGDIR"/usr/lib/rpi64/boot/
-cp -v "$SRCDIR"/boot/COPYING.linux "$PKGDIR"/usr/lib/rpi64/boot/
 cp -v "$SRCDIR"/boot/LICENCE.broadcom "$PKGDIR"/usr/lib/rpi64/boot/

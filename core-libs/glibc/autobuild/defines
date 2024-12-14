@@ -48,6 +48,14 @@ AUTOTOOLS_AFTER="--libexecdir=/usr/lib \
                  --enable-stack-protector=strong \
                  --enable-fortify-source=3 \
                  --disable-crypt"
+# Note: For control-flow protection via Intel CET.
+AUTOTOOLS_AFTER__AMD64=" \
+                 ${AUTOTOOLS_AFTER} \
+                 --enable-cet"
+# Note: For MTE (Memory Tagging Extension) support.
+AUTOTOOLS_AFTER__ARM64=" \
+                 ${AUTOTOOLS_AFTER} \
+                 --enable-memory-tagging"
 
 NOSTATIC=0
 

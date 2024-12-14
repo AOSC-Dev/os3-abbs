@@ -1,0 +1,25 @@
+From e83882d1ee38b2d0ef0593a1a09a732d592166d3 Mon Sep 17 00:00:00 2001
+From: miwu04 <mail@alanlin.icu>
+Date: Sat, 7 Dec 2024 23:57:02 +0800
+Subject: [PATCH 2/2] Update dekstop entry translations
+
+---
+ src/timeshift-gtk.desktop | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/timeshift-gtk.desktop b/src/timeshift-gtk.desktop
+index 1fc7977..b21397c 100644
+--- a/src/timeshift-gtk.desktop
++++ b/src/timeshift-gtk.desktop
+@@ -26,6 +26,8 @@ Comment[ko]=시스템 복원 유틸리티
+ Comment[lt]=Sistemos atkūrimo paslaugų programa
+ Comment[nl]=Hulpmiddel voor systeemherstel
+ Comment[ru]=Программа для восстановления системы
++Comment[zh_CN]=系统还原工具
++Comment[zh_TW]=系統還原工具
+ X-KDE-StartupNotify=false
+ Categories=System;
+ X-GNOME-UsesNotifications=true
+-- 
+2.47.1
+

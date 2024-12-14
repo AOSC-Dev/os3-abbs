@@ -1,0 +1,4 @@
+VER=24.06.5
+SRCS="git::commit=tags/$VER::https://github.com/linuxmint/timeshift"
+CHKSUMS="SKIP"
+CHKUPDATE="anitya::id=16791"

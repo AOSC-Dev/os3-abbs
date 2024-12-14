@@ -1,0 +1,9 @@
+PKGNAME=timeshift
+PKGSEC=utils
+PKGDES="System Restore Utility"
+BUILDDEP="meson help2man gettext vala vte libgee json-glib xapps"
+PKGDEP="at-spi2-core glibc cairo gdk-pixbuf libgee glib gnutls gtk-3 json-glib pango pcre2 vte x11-lib zlib rsync psmisc btrfs-progs xapps"
+
+PKGPROV=timeshift-btrfs
+
+ABTYPE=meson

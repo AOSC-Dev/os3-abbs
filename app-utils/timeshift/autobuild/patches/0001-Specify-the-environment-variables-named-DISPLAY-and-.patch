@@ -1,0 +1,35 @@
+From c944c4e2ee57747840e0367238418dd8fa181d76 Mon Sep 17 00:00:00 2001
+From: miwu04 <mail@alanlin.icu>
+Date: Sat, 7 Dec 2024 23:50:17 +0800
+Subject: [PATCH 1/2] Specify the environment variables named DISPLAY and
+ XAUTHORITY.
+
+---
+ src/timeshift-launcher | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/timeshift-launcher b/src/timeshift-launcher
+index b121bd5..ac3ef9e 100755
+--- a/src/timeshift-launcher
++++ b/src/timeshift-launcher
+@@ -9,7 +9,7 @@ else
+ 	# user is not admin
+ 	if echo $- | grep "i" >/dev/null 2>&1; then
+ 		# script is running in interactive mode
+-		su - -c "${app_command}"
++		su - -c "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY ${app_command}"
+ 	else
+ 		# script is running in non-interactive mode
+ 		if [ "$XDG_SESSION_TYPE" = "wayland" ] ; then
+@@ -18,7 +18,7 @@ else
+ 			xhost -SI:localuser:root
+ 			xhost
+ 		elif command -v pkexec >/dev/null 2>&1; then
+-			pkexec ${app_command}
++			pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY ${app_command}
+ 		elif command -v sudo >/dev/null 2>&1; then
+ 			x-terminal-emulator -e "sudo ${app_command}"
+ 		elif command -v su >/dev/null 2>&1; then
+-- 
+2.47.1
+

@@ -1,24 +1,31 @@
 #!/bin/bash
 
 if ! grep -q "/boot/rpi" /etc/fstab; then
-  echo "Mount point \`/boot/rpi' does not exist in fstab file."
+  echo "Mount point '/boot/rpi' does not exist in fstab file."
   echo "You need to update firmware files manually, which is installed to /usr/lib/rpi64/boot."
   echo "Or add the boot partition to fstab and try again."
-  exit 0
+  exit 1
 fi
 
 if ! mount -a; then
-  echo "Unable to mount /boot/rpi! Please check your fstab file. Not treating as an error, exiting cleanly."
-  exit 0
+  # echo "Unable to mount /boot/rpi! Please check your fstab file. Not treating as an error, exiting cleanly."
+  echo "Failed to mount /boot/rpi! Please check your fstab file."
+  echo "Your firmware is not updated."
+  exit 1
 fi
 
 if [ -e /boot/rpi/kernel8.img ]; then
+  echo "Copying new firmware..."
+  cp -r /usr/lib/rpi64/boot/* /boot/rpi/
+elif [ -e /boot/rpi/kernel_2712.img ]; then
   echo "Copying new firmware..."
   cp -r /usr/lib/rpi64/boot/* /boot/rpi/
 else
   echo "Copying kernel and firmware..."
   cp -r /usr/lib/rpi64/boot/* /boot/rpi/
   if [ -e /usr/lib/rpi64/kernel/kernel8.img ]; then
+    cp -r /usr/lib/rpi64/kernel/* /boot/rpi/
+  elif [ -e /usr/lib/rpi64/kernel/kernel_2712.img ]; then
     cp -r /usr/lib/rpi64/kernel/* /boot/rpi/
   fi
 fi

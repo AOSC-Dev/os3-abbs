@@ -1,4 +1,4 @@
-VER=4.18.0
+VER=4.20.0
 SRCS="https://archive.xfce.org/src/xfce/thunar-volman/${VER%.*}/thunar-volman-$VER.tar.bz2"
-CHKSUMS="sha256::93b75c7ffbe246a21f4190295acc148e184be8df397e431b258d0d676e87fc65"
+CHKSUMS="sha256::b0dad852959b515b8fbfd1ed552e362340347d26d5246e7f1b973027131eb1da"
 CHKUPDATE="anitya::id=14672"

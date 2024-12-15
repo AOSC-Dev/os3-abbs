@@ -1,0 +1,2 @@
+abinfo "Adding -Wno-error=incompatible-pointer-types to fix compilation ..."
+export CFLAGS="${CFLAGS} -Wno-error=incompatible-pointer-types"

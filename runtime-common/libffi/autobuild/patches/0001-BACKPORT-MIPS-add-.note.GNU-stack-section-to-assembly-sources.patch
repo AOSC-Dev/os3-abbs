@@ -1,0 +1,46 @@
+From f515eac04cf8e5f594d5d9dee5fb7dfc3a186a4c Mon Sep 17 00:00:00 2001
+From: Icenowy Zheng <uwu@icenowy.me>
+Date: Fri, 13 Dec 2024 18:36:02 +0800
+Subject: [PATCH] MIPS: add .note.GNU-stack section to assembly sources (#872)
+
+To build ELF shared libraries that do not require executable stack on
+MIPS, every object file linked should have a .note.GNU-stack section,
+otherwise the linker defaults to executable stack.
+
+As libffi shouldn't require executable stack, add the .note.GNU-stack
+section to the assembly source files under src/mips, like other
+architectures.
+
+Signed-off-by: Icenowy Zheng <uwu@icenowy.me>
+---
+ src/mips/n32.S | 4 ++++
+ src/mips/o32.S | 4 ++++
+ 2 files changed, 8 insertions(+)
+
+diff --git a/src/mips/n32.S b/src/mips/n32.S
+index df58e80..08cbb95 100644
+--- a/src/mips/n32.S
++++ b/src/mips/n32.S
+@@ -821,3 +821,7 @@ cls_epilogue:
+ #endif /* __GNUC__ */	
+ 	
+ #endif
++
++#if defined __ELF__ && defined __linux__
++	.section .note.GNU-stack,"",%progbits
++#endif
+diff --git a/src/mips/o32.S b/src/mips/o32.S
+index 78517be..03ceed5 100644
+--- a/src/mips/o32.S
++++ b/src/mips/o32.S
+@@ -559,3 +559,7 @@ $LASFDE2:
+ $LEFDE2:
+ 
+ #endif
++
++#if defined __ELF__ && defined __linux__
++	.section .note.GNU-stack,"",%progbits
++#endif
+-- 
+2.47.1
+

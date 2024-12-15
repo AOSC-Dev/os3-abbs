@@ -5,7 +5,6 @@ PKGSEC=libs
 
 AUTOTOOLS_AFTER="--enable-pax_emutramp \
                  --enable-static"
-ABSHADOW=0
 
 NOSTATIC=0
 NOSTATIC__RETRO=1

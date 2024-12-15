@@ -1,0 +1,7 @@
+PKGNAME=metasploit
+PKGDES="Advanced open-source platform for developing, testing, and using exploit code"
+PKGSEC=utils
+PKGDEP="ruby ruby-bundler libpcap postgresql sqlite libxslt libxml2 inetutils git"
+
+ABSTRIP=0
+ABSPLITDBG=0

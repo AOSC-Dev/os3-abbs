@@ -1,0 +1,54 @@
+#!/bin/bash
+
+# 设置 Ruby 的 GEM 默认目录
+GEMDIR=$(ruby -e 'puts Gem.default_dir')
+
+# 设置 Bundler 配置
+abinfo "设置 Bundler 配置..."
+sed -e '/BUNDLED WITH/,+1d' -i Gemfile.lock
+
+# 对 Nokogiri 使用系统库
+bundle config build.nokogiri --use-system-libraries
+# 启用部署模式
+bundle config set --local deployment 'true'
+# 禁用缓存
+bundle config set --local no-cache 'true'
+# 设置 Bundler 路径为目标安装路径
+bundle config set path "$PKGDIR$GEMDIR"
+
+# 修改 gemspec 以支持 find 替代 git ls-files
+sed 's|git ls-files|find -type f|' -i metasploit-framework.gemspec
+
+# 安装依赖
+abinfo "正在使用 Bundler 安装依赖..."
+bundle install -j"$(nproc)" --no-cache
+
+# 调整文件权限
+abinfo "调整文件权限..."
+find "$PKGDIR$GEMDIR" -exec chmod o+r '{}' \;
+
+# 创建可执行文件脚本
+abinfo "创建可执行文件脚本..."
+for script in msfconsole msfvenom msfrpc msfrpcd msfd; do
+  # 如果目标目录不存在，创建它
+  mkdir -p "$PKGDIR/usr/bin"
+
+  # 创建脚本
+  script_path="$PKGDIR/usr/bin/$script"
+  echo -e "#!/bin/bash\nBUNDLE_GEMFILE=$PKGDIR/opt/metasploit/Gemfile exec bundle exec ruby /opt/metasploit/$script \"\$@\"" > "$script_path"
+  chmod 755 "$script_path"
+done
+
+# 处理 tools 脚本
+abinfo "设置工具脚本..."
+
+tools_dir="$PKGDIR/opt/metasploit/"
+
+# 创建目标目录
+mkdir -p "$tools_dir"
+
+# 使用 rsync 复制文件并排除 $PKGDIR
+rsync -a --exclude="$PKGDIR" "$SRCDIR/" "$tools_dir"
+
+
+abinfo "脚本执行完成。"

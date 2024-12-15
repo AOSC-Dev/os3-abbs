@@ -6,6 +6,6 @@ BUILDDEP="intltool"
 PKGSEC=xfce
 
 AUTOTOOLS_AFTER="--enable-xrandr --enable-xcursor --enable-libnotify --enable-libxklavier \
-                 --enable-pluggable-dialogs --enable-sound-settings --disable-debug --enable-upower-glib \
+                 --enable-sound-settings --disable-debug --enable-upower-glib \
                  --enable-xorg-libinput"
 RECONF=0

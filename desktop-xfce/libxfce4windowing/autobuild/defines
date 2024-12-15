@@ -1,6 +1,6 @@
 PKGNAME=libxfce4windowing
 PKGDES="Common Windowing library for Xfce"
-PKGDEP="x11-lib gtk-3 wayland libdisplay-info"
+PKGDEP="x11-lib gtk-3 wayland libdisplay-info libwnck-3"
 BUILDDEP="gtk-doc gobject-introspection"
 PKGSEC=xfce
 

@@ -1,4 +1,4 @@
-VER=4.18.2
+VER=4.20.0
 SRCS="https://archive.xfce.org/src/xfce/libxfce4util/${VER%.*}/libxfce4util-${VER}.tar.bz2"
-CHKSUMS="sha256::d9a329182b78f7e2520cd4aafcbb276bbbf162f6a89191676539ad2e3889c353"
+CHKSUMS="sha256::21493f9c9995a282823db93839f6b9f06ae31edb094191ba9acf04d932a2b592"
 CHKUPDATE="anitya::id=232001"

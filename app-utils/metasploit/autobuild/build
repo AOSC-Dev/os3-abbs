@@ -21,7 +21,7 @@ bundle install -j"$(nproc)" --no-cache
 
 abinfo "调整文件权限..."
 
-chmod -R 775 $SRCDIR/*
+chmod -R 775 $PKGDIR/*
 
 
 abinfo "调整文件权限..."

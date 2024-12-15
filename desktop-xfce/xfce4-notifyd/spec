@@ -1,4 +1,4 @@
-VER=0.9.4
+VER=0.9.6
 SRCS="https://archive.xfce.org/src/apps/xfce4-notifyd/${VER%.*}/xfce4-notifyd-$VER.tar.bz2"
-CHKSUMS="sha256::ae6c128c055c44bd07202f73ae69ad833c5e4754f3530696965136e4d9ea7818"
+CHKSUMS="sha256::9e53265cca7d835c31b3c2c0d3ae961704870839ef583dcca3e4cc98ae3d2671"
 CHKUPDATE="anitya::id=15832"

@@ -1,4 +1,4 @@
-VER=4.18.10
+VER=4.20.0
 SRCS="https://archive.xfce.org/src/xfce/thunar/${VER%.*}/thunar-$VER.tar.bz2"
-CHKSUMS="sha256::e8308a1f139602d8c125f594bfcebb063b7dac1fbb6e14293bab4cdb3ecf1d08"
+CHKSUMS="sha256::27731a76f3aecf3752b1ca35afad89e264c52244f70083d933507dd4a17548b0"
 CHKUPDATE="anitya::id=14669"

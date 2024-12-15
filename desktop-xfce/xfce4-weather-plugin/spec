@@ -1,4 +1,4 @@
-VER=0.11.2
+VER=0.11.3
 SRCS="https://archive.xfce.org/src/panel-plugins/xfce4-weather-plugin/${VER%.*}/xfce4-weather-plugin-${VER}.tar.bz2"
-CHKSUMS="sha256::65d40aff7863550858a9f9d2b6054f27c69a3e7e712991785987f9a73bba876b"
+CHKSUMS="sha256::002d1fe63906d2f3a012f3cb58cceff1dfbcc466759e36c76d3b03dd01c0dc57"
 CHKUPDATE="anitya::id=15820"

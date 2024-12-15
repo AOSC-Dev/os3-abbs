@@ -1,6 +1,4 @@
 abinfo "Fetching dependencies and prepare ..."
-# Resolve the need for manual validation in automation scripts
-export CI=true  
 pnpm install
 if ab_match_arch amd64; then
     pnpm add @mihomo-party/sysproxy-linux-x64-gnu

@@ -1,9 +1,9 @@
 PKGNAME=librsvg
 PKGDES="SVG rendering and manipulation library"
 PKGSEC=libs
-PKGDEP="libcroco pango gdk-pixbuf"
-BUILDDEP="gobject-introspection gtk-doc intltool vala vim rustc llvm gi-docgen docutils"
-BUILDDEP__RETRO="llvm rustc"
+PKGDEP="cairo pango gdk-pixbuf dav1d glib freetype libxml2"
+BUILDDEP="gobject-introspection vala rustc llvm gi-docgen docutils cargo-c"
+BUILDDEP__RETRO="llvm rustc cargo-c"
 BUILDDEP__ARMV4="${BUILDDEP__RETRO}"
 BUILDDEP__ARMV6HF="${BUILDDEP__RETRO}"
 BUILDDEP__ARMV7HF="${BUILDDEP__RETRO}"
@@ -13,22 +13,13 @@ BUILDDEP__M68K="${BUILDDEP__RETRO}"
 BUILDDEP__POWERPC="${BUILDDEP__RETRO}"
 BUILDDEP__PPC64="${BUILDDEP__RETRO}"
 
-AUTOTOOLS_AFTER="--enable-vala"
-AUTOTOOLS_AFTER__RETRO=" \
-                 ${AUTOTOOLS_AFTER} \
-                 --disable-vala \
-                 --disable-introspection"
+MESON_AFTER="-Dvala=enabled -Ddocs=enabled"
+MESON_AFTER__RETRO="-Dvala=disabled \
+		    -Dintrospection=disabled
+                    -Ddocs=disabled"
 ABSHADOW=0
-RECONF=0
-
 USECLANG=1
-USECLANG__LOONGSON3=0
-USECLANG__RISCV64=0
-USECLANG__MIPS64R6EL=0
-NOLTO__LOONGSON3=1
-NOLTO__RISCV64=1
-NOLTO__MIPS64R6EL=1
-ABSPLITDBG=0
 
-# FIXME: ld.lld not yet available for loongarch64.
-NOLTO__LOONGARCH64=1
+# FIXME: ld.lld: error: relocation R_MIPS_64 cannot be used against local
+# symbol; recompile with -fPIC
+NOLTO__LOONGSON3=1

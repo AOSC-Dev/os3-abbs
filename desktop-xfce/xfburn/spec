@@ -1,4 +1,4 @@
-VER=0.7.0
+VER=0.7.2
 SRCS="https://archive.xfce.org/src/apps/xfburn/${VER%.*}/xfburn-$VER.tar.bz2"
-CHKSUMS="sha256::ba960ea79a044b93e513f7c32bca1a599472d687ed0e0184bde8c84aeebb1f45"
+CHKSUMS="sha256::c2bb01d9f7335e487f91db40ebddeea30d071364c1c3b56838466fd3367a9925"
 CHKUPDATE="anitya::id=10158"

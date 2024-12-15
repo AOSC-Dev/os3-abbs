@@ -1,3 +1,4 @@
+abinfo "Adding extra build flags ..."
 export CFLAGS="${CFLAGS} -fno-strict-aliasing"
 export CPPFLAGS="${CPPFLAGS} -I/usr/include/et"
 
@@ -5,3 +6,6 @@ export CPPFLAGS+=" -D_REENTRANT=1"
 export CFLAGS+=" -D_REENTRANT=1"
 export CXXFLAGS+=" -D_REENTRANT=1"
 export LDFLAGS+=" -D_REENTRANT=1"
+
+abinfo "Overriding krb5_cv_attr_constructor_destructor ..."
+export krb5_cv_attr_constructor_destructor=yes,yes

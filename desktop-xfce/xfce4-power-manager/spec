@@ -1,4 +1,4 @@
-VER=4.18.4
+VER=4.20.0
 SRCS="https://archive.xfce.org/src/xfce/xfce4-power-manager/${VER%.*}/xfce4-power-manager-$VER.tar.bz2"
-CHKSUMS="sha256::76918f7bdcd936dbbf20efd9221a33be0cd504c7d7ffce792bace3c720f3d874"
+CHKSUMS="sha256::971391cef63352833bdd92df28957392e17e1f2b3d486c0f57294fd204d6ed29"
 CHKUPDATE="anitya::id=15831"

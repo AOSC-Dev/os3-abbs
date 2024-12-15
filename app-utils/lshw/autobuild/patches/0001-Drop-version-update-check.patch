@@ -1,24 +1,20 @@
-diff -Naur lshw-B.02.19.2/src/core/version.cc lshw-B.02.19.2.nocheckupdate/src/core/version.cc
---- lshw-B.02.19.2/src/core/version.cc	2020-03-22 10:50:25.000000000 -0700
-+++ lshw-B.02.19.2.nocheckupdate/src/core/version.cc	2022-12-15 21:40:40.837273321 -0800
-@@ -84,13 +84,3 @@
- 
-   return txt;
- }
--
--const char * checkupdates()
--{
--  static char *latest = NULL;
--
--  if(!latest)
--    latest = txtquery(PACKAGE, "ezix.org", NULL);
--
--  return latest;
--}
-diff -Naur lshw-B.02.19.2/src/core/version.h lshw-B.02.19.2.nocheckupdate/src/core/version.h
---- lshw-B.02.19.2/src/core/version.h	2020-03-22 10:50:25.000000000 -0700
-+++ lshw-B.02.19.2.nocheckupdate/src/core/version.h	2022-12-15 21:40:42.606296315 -0800
-@@ -13,8 +13,6 @@
+From 22267d5389bf1b2407ea6d4b1d3db39a31ed2dca Mon Sep 17 00:00:00 2001
+From: Kaiyang Wu <self@origincode.me>
+Date: Mon, 16 Dec 2024 01:21:53 -0800
+Subject: [PATCH] Drop version update check
+
+Signed-off-by: Kaiyang Wu <self@origincode.me>
+---
+ src/core/version.h  |  2 --
+ src/gui/callbacks.c | 25 -------------------------
+ src/lshw.cc         |  6 ------
+ 3 files changed, 33 deletions(-)
+
+diff --git a/src/core/version.h b/src/core/version.h
+index 91e039a..39e2620 100644
+--- a/src/core/version.h
++++ b/src/core/version.h
+@@ -13,8 +13,6 @@ extern "C" {
  
  const char * getpackageversion();
  
@@ -27,16 +23,16 @@ diff -Naur lshw-B.02.19.2/src/core/version.h lshw-B.02.19.2.nocheckupdate/src/co
  #ifdef __cplusplus
  }
  #endif
-diff -Naur lshw-B.02.19.2/src/gui/callbacks.c lshw-B.02.19.2.nocheckupdate/src/gui/callbacks.c
---- lshw-B.02.19.2/src/gui/callbacks.c	2020-03-22 10:50:25.000000000 -0700
-+++ lshw-B.02.19.2.nocheckupdate/src/gui/callbacks.c	2022-12-15 21:41:05.813597862 -0800
-@@ -53,35 +53,7 @@
- on_version_realize                     (GtkWidget       *widget,
- gpointer         user_data)
- {
--  const char *latest = checkupdates();
+diff --git a/src/gui/callbacks.c b/src/gui/callbacks.c
+index b108777..daa1138 100644
+--- a/src/gui/callbacks.c
++++ b/src/gui/callbacks.c
+@@ -63,31 +63,6 @@ on_about_activated                     (GSimpleAction   *action,
+                         "version", getpackageversion(),
+                         "license-type", GTK_LICENSE_GPL_2_0,
+                         NULL);
 -
-   gtk_label_set_text(GTK_LABEL(widget), getpackageversion());
+-  const char *latest = checkupdates();
 -
 -  if(latest)
 -  {
@@ -54,22 +50,20 @@ diff -Naur lshw-B.02.19.2/src/gui/callbacks.c lshw-B.02.19.2.nocheckupdate/src/g
 -                                  latest);
 -
 -        gtk_window_set_title(GTK_WINDOW(dialog), "Update available");
--        /* Destroy the dialog when the user responds to it (e.g. clicks a button) */
--        g_signal_connect_swapped (dialog, "response",
--                           G_CALLBACK (gtk_widget_destroy),
--                           dialog);
 -      }
 -
--      gtk_widget_show(dialog);
+-      gtk_dialog_run(GTK_DIALOG(dialog));
+-      gtk_widget_destroy(dialog);
 -    }
 -  }
  }
  
- 
-diff -Naur lshw-B.02.19.2/src/lshw.cc lshw-B.02.19.2.nocheckupdate/src/lshw.cc
---- lshw-B.02.19.2/src/lshw.cc	2020-03-22 10:50:25.000000000 -0700
-+++ lshw-B.02.19.2.nocheckupdate/src/lshw.cc	2022-12-15 21:40:37.045224042 -0800
-@@ -117,13 +117,7 @@
+ G_MODULE_EXPORT
+diff --git a/src/lshw.cc b/src/lshw.cc
+index 5a2d594..5d9a34b 100644
+--- a/src/lshw.cc
++++ b/src/lshw.cc
+@@ -118,13 +118,7 @@ char **argv)
  
      if (strcmp(argv[1], "-version") == 0)
      {
@@ -83,3 +77,6 @@ diff -Naur lshw-B.02.19.2/src/lshw.cc lshw-B.02.19.2.nocheckupdate/src/lshw.cc
        exit(0);
      }
  
+-- 
+2.47.1
+

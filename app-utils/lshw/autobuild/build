@@ -6,4 +6,4 @@ make \
 abinfo "Installing lshw ..."
 make install \
     DESTDIR="$PKGDIR" \
-    ${MAKE_INSTALL_DEF}
+    ${MAKE_INSTALL_DEF[@]}

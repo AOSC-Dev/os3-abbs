@@ -1,4 +1,4 @@
-VER=0.6.2
+VER=0.6.3
 SRCS="https://archive.xfce.org/src/apps/mousepad/${VER%.*}/mousepad-$VER.tar.bz2"
-CHKSUMS="sha256::e7cacb3b8cb1cd689e6341484691069e73032810ca51fc747536fc36eb18d19d"
+CHKSUMS="sha256::2ff162c185f18014ab9c82c2ac2dfce4fba20eb0005e7690ee27f00b9cb929b9"
 CHKUPDATE="anitya::id=198617"

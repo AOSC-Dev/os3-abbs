@@ -1,6 +1,6 @@
 PKGNAME=mousepad
 PKGDES="A simple text editor for Xfce"
-PKGDEP="dbus-glib gtksourceview-3 desktop-file-utils dconf exo"
+PKGDEP="dbus-glib gtksourceview-3 desktop-file-utils dconf exo gspell"
 BUILDDEP="intltool perl"
 PKGSEC=xfce
 RECONF=0

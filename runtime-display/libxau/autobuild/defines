@@ -2,3 +2,5 @@ PKGNAME=libxau
 PKGDEP="glibc x11-proto"
 PKGSEC=x11
 PKGDES="X11 Authorization Library"
+
+ABTYPE=autotools

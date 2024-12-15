@@ -1,4 +1,4 @@
-VER=0.4.8
+VER=0.4.9
 SRCS="https://archive.xfce.org/src/panel-plugins/xfce4-pulseaudio-plugin/${VER%.*}/xfce4-pulseaudio-plugin-$VER.tar.bz2"
-CHKSUMS="sha256::bd742b207c39c221e91c57c9c9be2839eb802d1b1ee01a02b7427cd02d3f0348"
+CHKSUMS="sha256::a0807615fb2848d0361b7e4568a44f26d189fda48011c7ba074986c8bfddc99a"
 CHKUPDATE="anitya::id=5752"

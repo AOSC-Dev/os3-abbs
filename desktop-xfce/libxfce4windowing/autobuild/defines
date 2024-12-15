@@ -1,0 +1,8 @@
+PKGNAME=libxfce4windowing
+PKGDES="Common Windowing library for Xfce"
+PKGDEP="x11-lib gtk-3 x11-lib"
+BUILDDEP="gtk-doc gobject-introspection"
+PKGSEC=xfce
+
+RECONF=0
+NOPARALLEL=1

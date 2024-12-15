@@ -2,6 +2,7 @@ desktop-xfce/xfce4-dev-tools
 desktop-xfce/libxfce4util
 desktop-xfce/xfconf
 desktop-xfce/libxfce4ui
+desktop-xfce/libxfce4windowing
 desktop-xfce/exo
 desktop-xfce/garcon
 desktop-xfce/xfce4-panel

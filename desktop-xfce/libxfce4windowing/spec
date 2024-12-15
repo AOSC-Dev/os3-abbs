@@ -1,0 +1,4 @@
+VER=4.20.0
+SRCS="https://archive.xfce.org/src/xfce/libxfce4windowing/${VER%.*}/libxfce4windowing-$VER.tar.bz2"
+CHKSUMS="sha256::56f29b1d79606fb00a12c83ef4ece12877d2b22bf1acaaff89537fbe8e939f68"
+CHKUPDATE="anitya::id=375258"

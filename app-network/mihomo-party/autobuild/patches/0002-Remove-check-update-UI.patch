@@ -1,7 +1,7 @@
 From 14c8061df0c089241d9ecb0f71823d204f0d91f4 Mon Sep 17 00:00:00 2001
 From: miwu04 <mail@alanlin.icu>
 Date: Sun, 24 Nov 2024 17:50:25 +0800
-Subject: [PATCH 2/2] Remove check update UI
+Subject: [PATCH 2/6] Remove check update UI
 
 ---
  src/main/utils/template.ts                    |  2 +-
@@ -95,5 +95,5 @@ index c595074..f74e4c9 100644
            <Switch
              size="sm"
 -- 
-2.47.0
+2.47.1
 

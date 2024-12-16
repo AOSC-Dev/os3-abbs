@@ -1,0 +1,34 @@
+From 3d99502cbe440786627f104a76443adc73fe4d8b Mon Sep 17 00:00:00 2001
+From: miwu04 <mail@alanlin.icu>
+Date: Tue, 17 Dec 2024 00:01:33 +0800
+Subject: [PATCH 3/6] Drop clash-meta-alpha support
+
+---
+ src/renderer/src/pages/mihomo.tsx | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/src/renderer/src/pages/mihomo.tsx b/src/renderer/src/pages/mihomo.tsx
+index 9f24eaa..d4d1d5b 100644
+--- a/src/renderer/src/pages/mihomo.tsx
++++ b/src/renderer/src/pages/mihomo.tsx
+@@ -19,8 +19,7 @@ import InterfaceModal from '@renderer/components/mihomo/interface-modal'
+ import { MdDeleteForever } from 'react-icons/md'
+ 
+ const CoreMap = {
+-  mihomo: '稳定版',
+-  'mihomo-alpha': '预览版'
++  mihomo: '稳定版'
+ }
+ 
+ const Mihomo: React.FC = () => {
+@@ -127,7 +126,6 @@ const Mihomo: React.FC = () => {
+               }}
+             >
+               <SelectItem key="mihomo">{CoreMap['mihomo']}</SelectItem>
+-              <SelectItem key="mihomo-alpha">{CoreMap['mihomo-alpha']}</SelectItem>
+             </Select>
+           </SettingItem>
+           <SettingItem title="混合端口" divider>
+-- 
+2.47.1
+

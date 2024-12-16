@@ -1,0 +1,25 @@
+From b00eaad699f392a40100fbf5f162cdf5ced460cc Mon Sep 17 00:00:00 2001
+From: "Lain \"Fearyncess\" Yang" <fsf@live.com>
+Date: Mon, 16 Dec 2024 23:45:02 +0800
+Subject: [PATCH] Revert "Add "Hidden" key to index.theme"
+
+This reverts commit 998977e044825787d994966c1937c7b1006588d5.
+---
+ index.theme | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/index.theme b/index.theme
+index 585f40785..2cac7b18f 100644
+--- a/index.theme
++++ b/index.theme
+@@ -3,7 +3,6 @@ Name=Adwaita
+ Comment=The Only One
+ Example=folder
+ Inherits=AdwaitaLegacy,hicolor
+-Hidden=true
+ 
+ # KDE Specific Stuff
+ DisplayDepth=32
+-- 
+2.47.1
+

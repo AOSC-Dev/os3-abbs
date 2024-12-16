@@ -1,4 +1,4 @@
-VER=46.2
+VER=47.0
 SRCS="https://download.gnome.org/sources/adwaita-icon-theme/${VER%%.*}/adwaita-icon-theme-${VER/\~/.}.tar.xz"
-CHKSUMS="sha256::beb126b9429339ba762e0818d5e73b2c46f444975bf80076366eae2d0f96b5cb"
+CHKSUMS="sha256::ad088a22958cb8469e41d9f1bba0efb27e586a2102213cd89cc26db2e002bdfe"
 CHKUPDATE="anitya::id=13117"

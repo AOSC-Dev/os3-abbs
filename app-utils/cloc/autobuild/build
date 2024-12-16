@@ -1,1 +1,3 @@
+abinfo "Installing cloc ..."
+cd "$SRCDIR"/Unix
 make install DESTDIR="$PKGDIR"

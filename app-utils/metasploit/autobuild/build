@@ -21,9 +21,6 @@ bundle install -j"$(nproc)" --no-cache
 
 abinfo "调整文件权限..."
 
-chmod -R 775 $PKGDIR/*
-
-
 abinfo "调整文件权限..."
 find "$PKGDIR$GEMDIR" -exec chmod o+r '{}' \;
 
@@ -49,3 +46,5 @@ mkdir -p "$tools_dir"
 
 
 rsync -a --exclude="$PKGDIR" "$SRCDIR/" "$tools_dir"
+
+chmod -R 775 $PKGDIR/*

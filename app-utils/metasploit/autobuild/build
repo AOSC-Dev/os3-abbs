@@ -20,7 +20,7 @@ abinfo "正在使用 Bundler 安装依赖..."
 bundle install -j"$(nproc)" --no-cache
 
 abinfo "调整文件权限..."
-chmod -R 777 "PKGDIR" 
+chmod -R 777 "$PKGDIR" 
 
 
 abinfo "创建可执行文件脚本..."

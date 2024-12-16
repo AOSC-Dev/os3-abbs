@@ -1,0 +1,7 @@
+abinfo "Building nuclei ..."
+go build -v -o "nuclei" "$SRCDIR"/cmd/nuclei
+
+abinfo "Installing nuclei ..."
+install -Dvm755 "$SRCDIR"/nuclei -t "$PKGDIR"/usr/bin
+install -Dvm644 "$SRCDIR"/README*.md -t "$PKGDIR"/usr/share/doc/nuclei
+install -Dvm644 "$SRCDIR"/LICENSE.md "$PKGDIR"/usr/share/doc/nuclei/LINCENSE.md

@@ -1,7 +1,7 @@
-From cc8c0ba185d23f329e1db1034d051a793f8b073f Mon Sep 17 00:00:00 2001
+From 24bff057ef8cea4f58482e3157e2eb57629dba6e Mon Sep 17 00:00:00 2001
 From: Mo Zhou <lumin@debian.org>
 Date: Tue, 16 Jul 2024 15:37:19 +0800
-Subject: [PATCH 4/5] Force libtool to produce verbose output
+Subject: [PATCH 4/4] Force libtool to produce verbose output
 
 See: https://salsa.debian.org/zfsonlinux-team/zfs/-/blob/0b542b085ec0a4070392bd01921cfaa7ce1bad87/debian/patches/force-verbose-rules.patch
 ---
@@ -9,12 +9,12 @@ See: https://salsa.debian.org/zfsonlinux-team/zfs/-/blob/0b542b085ec0a4070392bd0
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/config/Rules.am b/config/Rules.am
-index 2e463ae60..d71d82394 100644
+index cb4066b7c..5445f6b26 100644
 --- a/config/Rules.am
 +++ b/config/Rules.am
-@@ -12,7 +12,7 @@ AM_CPPFLAGS = \
- 	-I$(top_srcdir)/lib/libspl/include \
- 	-I$(top_srcdir)/lib/libspl/include/os/@ac_system_l@
+@@ -13,7 +13,7 @@ AM_CPPFLAGS = \
+ 	-I$(top_srcdir)/lib/libspl/include/os/@ac_system_l@ \
+ 	-I$(top_srcdir)/lib/libzpool/include
  
 -AM_LIBTOOLFLAGS = --silent
 +AM_LIBTOOLFLAGS =
@@ -22,5 +22,5 @@ index 2e463ae60..d71d82394 100644
  AM_CFLAGS  = -std=gnu99 -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Wwrite-strings -Wno-sign-compare -Wno-missing-field-initializers
  AM_CFLAGS += -fno-strict-aliasing
 -- 
-2.39.2
+2.39.5
 

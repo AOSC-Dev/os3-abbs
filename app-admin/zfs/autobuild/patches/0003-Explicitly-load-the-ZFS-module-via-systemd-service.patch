@@ -1,7 +1,7 @@
-From 4ad539fbe1f7f0e6246f03801185fef1385aba83 Mon Sep 17 00:00:00 2001
+From 57b0027f7ecb4c53f845da8c59d6eca604ee1d2b Mon Sep 17 00:00:00 2001
 From: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Date: Tue, 16 Jul 2024 15:35:34 +0800
-Subject: [PATCH 3/5] Explicitly load the ZFS module via systemd service
+Subject: [PATCH 3/4] Explicitly load the ZFS module via systemd service
 
 See: https://salsa.debian.org/zfsonlinux-team/zfs/-/blob/0b542b085ec0a4070392bd01921cfaa7ce1bad87/debian/patches/2100-zfs-load-module.patch
 ---
@@ -101,5 +101,5 @@ index 000000000..d74af0468
 +WantedBy=zfs-mount.service
 +WantedBy=zfs.target
 -- 
-2.39.2
+2.39.5
 

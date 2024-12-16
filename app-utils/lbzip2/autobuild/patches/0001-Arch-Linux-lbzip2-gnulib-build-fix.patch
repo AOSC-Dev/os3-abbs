@@ -2,15 +2,15 @@ diff --git a/lib/fseterr.c b/lib/fseterr.c
 index 82649c3ac..adb637256 100644
 --- a/lib/fseterr.c
 +++ b/lib/fseterr.c
-@@ -29,7 +29,7 @@ fseterr (FILE *fp)
+@@ -29,7 +29,7 @@
    /* Most systems provide FILE as a struct and the necessary bitmask in
       <stdio.h>, because they need it for implementing getc() and putc() as
       fast macros.  */
 -#if defined _IO_ftrylockfile || __GNU_LIBRARY__ == 1 /* GNU libc, BeOS, Haiku, Linux libc5 */
 +#if defined _IO_EOF_SEEN || __GNU_LIBRARY__ == 1 /* GNU libc, BeOS, Haiku, Linux libc5 */
    fp->_flags |= _IO_ERR_SEEN;
- #elif defined __sferror || defined __DragonFly__ || defined __ANDROID__
-   /* FreeBSD, NetBSD, OpenBSD, DragonFly, Mac OS X, Cygwin, Minix 3, Android */
+ #elif defined __sferror || defined __DragonFly__ /* FreeBSD, NetBSD, OpenBSD, DragonFly, Mac OS X, Cygwin */
+   fp_->_flags |= __SERR;
 diff --git a/lib/stdio-impl.h b/lib/stdio-impl.h
 index 78d896e9f..05c5752a2 100644
 --- a/lib/stdio-impl.h

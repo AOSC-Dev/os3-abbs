@@ -20,7 +20,8 @@ abinfo "正在使用 Bundler 安装依赖..."
 bundle install -j"$(nproc)" --no-cache
 
 abinfo "调整文件权限..."
-chmod -R 777 "$PKGDIR" 
+chmod -R 777 "$PKGDIR"
+chmod -R 777 "$SRCDIR"
 
 
 abinfo "创建可执行文件脚本..."
@@ -31,7 +32,7 @@ for script in msfconsole msfvenom msfrpc msfrpcd msfd; do
 
   script_path="$PKGDIR/usr/bin/$script"
   echo -e "#!/bin/bash\nBUNDLE_GEMFILE=/opt/metasploit/Gemfile exec bundle exec ruby /opt/metasploit/$script \"\$@\"" > "$script_path"
-  chmod 777 "$script_path"
+  chmod 777 "$PKGDIR"
 done
 
 

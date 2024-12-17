@@ -3,7 +3,7 @@ UPSTREAM_VER=5.7.0
 __GAMEVER="${UPSTREAM_VER}"
 __IRRLICHTVER=1.9.0mt10
 VER=${UPSTREAM_VER}+irrlicht${__IRRLICHTVER}
-REL=2
+REL=3
 SRCS="tbl::https://github.com/minetest/minetest/archive/${UPSTREAM_VER}.tar.gz \
       git::commit=tags/${UPSTREAM_VER};rename=minetest_game::https://github.com/minetest/minetest_game \
       git::commit=tags/${__IRRLICHTVER};rename=irrlichtmt::https://github.com/minetest/irrlicht"

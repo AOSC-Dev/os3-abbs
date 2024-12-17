@@ -5,4 +5,4 @@ PKGDES="An OCR program"
 
 ABTYPE=cmakeninja
 CMAKE_AFTER="-DBUILD_SHARED_LIBS=ON -DTESSDATA_PREFIX=/usr/share"
-PKGBREAK="crow-translate<=2.11.1 opencv<=4.7.0-2 skanpage<=22.08.5"
+PKGBREAK="crow-translate<=2.11.1-2 opencv<=4.9.0-4 skanpage<=23.08.5-2"

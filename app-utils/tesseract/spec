@@ -1,4 +1,4 @@
-VER=5.4.1
+VER=5.5.0
 FASTVER=4.1.0
 SRCS="git::commit=tags/$VER::https://github.com/tesseract-ocr/tesseract \
       git::commit=tags/$FASTVER;rename=tessdata_fast::https://github.com/tesseract-ocr/tessdata_fast"
@@ -6,4 +6,3 @@ CHKSUMS="SKIP \
          SKIP"
 SUBDIR="tesseract"
 CHKUPDATE="anitya::id=4954"
-REL=2

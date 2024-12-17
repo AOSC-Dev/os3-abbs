@@ -1,0 +1,2 @@
+chmod +x autogen.sh
+bash autogen.sh

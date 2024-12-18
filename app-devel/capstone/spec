@@ -1,4 +1,4 @@
-VER=5.0.1
+VER=5.0
 SRCS="git::commit=tags/$VER::https://github.com/aquynh/capstone"
 CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=11008"

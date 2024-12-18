@@ -2,9 +2,9 @@ PKGNAME=xfce-base
 PKGSEC=Bases
 PKGDEP="flexiserver polkit-gnome thunar xfce4-appfinder xfce4-notifyd \
         xfce4-panel xfce4-screensaver xfce4-screenshooter xfce4-session \
-        xfdesktop xfwm4"
+        xfdesktop xfwm4 xfconf"
 PKGRECOM="alacarte catfish desktop-base evince exo garcon mousepad orage \
-          parole pavucontrol ristretto thunar-archive-plugin \
+          gigolo pavucontrol ristretto thunar-archive-plugin \
           thunar-media-tags-plugin thunar-volman tumbler xfburn \
           xfce4-appfinder xfce4-battery-plugin xfce4-clipman-plugin \
           xfce4-cpufreq-plugin xfce4-cpugraph-plugin xfce4-dict \
@@ -15,8 +15,7 @@ PKGRECOM="alacarte catfish desktop-base evince exo garcon mousepad orage \
           xfce4-settings xfce4-smartbookmark-plugin xfce4-systemload-plugin \
           xfce4-taskmanager xfce4-terminal xfce4-time-out-plugin \
           xfce4-timer-plugin xfce4-verve-plugin xfce4-wavelan-plugin \
-          xfce4-weather-plugin xfce4-whiskermenu-plugin xfce4-xkb-plugin \
-          xfconf xfwm4-themes"
+          xfce4-weather-plugin xfce4-whiskermenu-plugin xfce4-xkb-plugin"
 PKGDES="Meta package for XFCE desktop environment"
 
 PKGPROV="xfce4-meta"

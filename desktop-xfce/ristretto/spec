@@ -2,3 +2,4 @@ VER=0.13.2
 SRCS="https://archive.xfce.org/src/apps/ristretto/${VER%.*}/ristretto-$VER.tar.bz2"
 CHKSUMS="sha256::779f5ede3016019eec01d64a025583078d3936e35d4288ec2e8433494d757dd9"
 CHKUPDATE="anitya::id=8365"
+REL=1

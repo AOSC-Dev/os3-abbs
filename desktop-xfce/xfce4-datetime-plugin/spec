@@ -2,3 +2,4 @@ VER=0.8.3
 SRCS="https://archive.xfce.org/src/panel-plugins/xfce4-datetime-plugin/${VER%.*}/xfce4-datetime-plugin-$VER.tar.bz2"
 CHKSUMS="sha256::6b2eeb79fb586868737426cbd2a4cd43c7f8c58507d8a2f578e0150187cc00b0"
 CHKUPDATE="anitya::id=15889"
+REL=1

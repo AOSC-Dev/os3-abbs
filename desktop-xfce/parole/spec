@@ -1,4 +1,0 @@
-VER=4.18.1
-SRCS="https://archive.xfce.org/src/apps/parole/${VER%.*}/parole-${VER}.tar.bz2"
-CHKSUMS="sha256::0c7364a484812f69cf2b20a2323864203334cc854fd8103d1d1131814ac55a66"
-CHKUPDATE="anitya::id=232002"

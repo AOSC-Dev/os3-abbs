@@ -1,6 +1,6 @@
-VER=2025.0.0
-PKG_URL=96aa5993-5b22-4a9b-91ab-da679f422594
-PKG_CODE=885
+VER=2025.0.1
+PKG_URL=dfc4a434-838c-4450-a6fe-2fa903b75aa7
+PKG_CODE=46
 SRCS="file::rename=intel-oneapi-base-toolkit-"${VER}"."${PKG_CODE}"_offline.sh::https://registrationcenter-download.intel.com/akdlm/IRC_NAS/"${PKG_URL}"/intel-oneapi-base-toolkit-"${VER}"."${PKG_CODE}"_offline.sh"
-CHKSUMS="sha256::b379986e96a70d4d8c64b46eaecec73f14916ba39438ff167cb5f4f5fffc66de"
+CHKSUMS="sha384::8f315562c26104eea7790e1fba868d63562f0fd1888623f0f4a286a234ec799beefefe78ffa904bd71dc6b8fb479df79"
 CHKUPDATE="anitya::id=372585"

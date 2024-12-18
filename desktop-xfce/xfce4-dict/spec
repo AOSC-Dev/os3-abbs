@@ -1,5 +1,4 @@
-VER=0.8.4
-REL=2
+VER=0.8.8
 SRCS="https://archive.xfce.org/src/apps/xfce4-dict/${VER%.*}/xfce4-dict-$VER.tar.bz2"
-CHKSUMS="sha256::cb85fefbf742b306f2a8dca695252bae22842ab586abd31b52688312e3f631e3"
+CHKSUMS="sha256::0d0cb079d276d82c174a52c94ee4df12df490a525befc44650e261f8e5eae916"
 CHKUPDATE="anitya::id=15887"

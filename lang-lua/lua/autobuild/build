@@ -1,1 +1,1 @@
-mkdir "$PKGDIR"
+mkdir -v "$PKGDIR"

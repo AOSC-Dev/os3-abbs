@@ -1,19 +1,8 @@
 abinfo "Fetching dependencies and prepare ..."
 pnpm install
-if ab_match_arch amd64; then
-    pnpm add @mihomo-party/sysproxy-linux-x64-gnu
-    pnpm prepare --x64
-elif ab_match_arch arm64; then
-    pnpm add @mihomo-party/sysproxy-linux-arm64-gnu
-    pnpm prepare --arm64
-fi
 
 abinfo "Building Mihomo-Party ..."
-if ab_match_arch amd64; then
-    pnpm build:linux --x64 --dir
-elif ab_match_arch arm64; then
-    pnpm build:linux --arm64 --dir
-fi
+pnpm build:linux --dir
 
 
 abinfo "Installing Mihomo Party ..."

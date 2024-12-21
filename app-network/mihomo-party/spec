@@ -3,5 +3,3 @@ REL=1
 SRCS="git::commit=tags/v$VER::https://github.com/mihomo-party-org/mihomo-party.git"
 CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=375292"
-ENVREQ__ARM64="total_mem_per_core=3"
-ENVREQ__AMD64="total_mem_per_core=3"

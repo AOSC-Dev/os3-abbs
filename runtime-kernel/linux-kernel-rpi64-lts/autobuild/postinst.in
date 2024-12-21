@@ -21,23 +21,24 @@ if [ -x /etc/kernel/postinst.d/apt-auto-removal ]; then
   /etc/kernel/postinst.d/apt-auto-removal
 fi
 
-if [ -d "/tree/runtime-kernel" ]; then
+if systemd-detect-virt -q -c ; then
   echo "Running in build environment, skipping kernel update."
-else
-  if grep -q "/boot/rpi" /etc/fstab; then
-    # try mounting it first
-    mount -a
-    if [ "$?" != "0" ]; then
-      # failed, try one last time
-      echo "Unable to mount /boot/rpi. Retrying."
-      mkdir -p /boot/rpi
-      mount -a || { echo "Failed to mount all partitions. Your kernel is not updated." ; exit 1 ; }
-      echo "/boot/rpi is created and mounted. Continuing."
-    fi
-    echo "Updating kernel..."
-    cp -r /usr/lib/rpi64/kernel/* /boot/rpi/
-  else
-    echo "Can not find mount point /boot/rpi. Your kernel is not updated."
-    exit 1
+elif grep -q /boot/rpi /proc/mounts; then
+  echo "Updating kernel..."
+  cp -r /usr/lib/rpi64/kernel/"$VER"/* /boot/rpi/
+elif grep -q "/boot/rpi" /etc/fstab; then
+  # trying to mount it first
+  mount -a
+  if [ "$?" != "0" ]; then
+    # failed, try one last time
+    echo "Unable to mount /boot/rpi. Retrying."
+    mkdir -p /boot/rpi
+    mount -a || { echo "Failed to mount all partitions. Your kernel is not updated." ; exit 1 ; }
+    echo "/boot/rpi is created and mounted. Continuing."
   fi
+  echo "Updating kernel..."
+  cp -r /usr/lib/rpi64/kernel/"$VER"/* /boot/rpi/
+else
+  echo "Can not find mount point /boot/rpi. Your kernel is not updated."
+  exit 1
 fi

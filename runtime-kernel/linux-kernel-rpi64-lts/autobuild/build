@@ -2,18 +2,6 @@
 # The Raspberry Pi build script
 # Copied from `linux-kernel' build.
 #
-abinfo "Preparing build environment ..."
-OLDARCH="$ARCH"
-unset ARCH
-if [[ "${CROSS:-$ARCH}" = "amd64" ]]; then
-    SRCARCH="x86"
-elif [[ "${CROSS:-$ARCH}" = "arm64" ]]; then
-    SRCARCH="arm64"
-elif [[ "${CROSS:-$ARCH}" = "loongson3" ]]; then
-    SRCARCH="mips"
-elif [[ "${CROSS:-$ARCH}" = "ppc64el" ]]; then
-    SRCARCH="powerpc"    
-fi
 
 # RPi4 kernel build starts.
 
@@ -36,13 +24,10 @@ mkdir -p "$PKGDIR"/usr
 make INSTALL_MOD_PATH="$PKGDIR"/usr modules_install
 
 abinfo "Copying kernel..."
-# make a local copy of compiled kernel
-mkdir -p "$PKGDIR/usr/lib/aosc-os-arm64-boot/linux-kernel-$version$LOCALNAME/"
-mkdir -p "$PKGDIR/usr/lib/rpi64/kernel/overlays"
-cp -v arch/arm64/boot/Image "$PKGDIR/usr/lib/aosc-os-arm64-boot/linux-kernel-$version$LOCALNAME/"
-cp -v arch/arm64/boot/Image "$PKGDIR/usr/lib/rpi64/kernel/kernel8.img"
+mkdir -p "$PKGDIR"/usr/lib/rpi64/kernel/"$version"/overlays
+install -Dvm755 "$SRCDIR"/arch/arm64/boot/Image "$PKGDIR"/usr/lib/rpi64/kernel/"$version"/kernel8.img
 
-export ARCH=$OLDARCH
+abinfo "Removing the unnecessary firmware in PKGDIR ..."
 rm -rf "$PKGDIR"/usr/lib/firmware
 
 . autobuild/build-common/ext-hdr
@@ -84,13 +69,10 @@ mkdir -p "$PKGDIR"/usr
 make INSTALL_MOD_PATH="$PKGDIR"/usr modules_install
 
 abinfo "Copying kernel..."
-# make a local copy of compiled kernel
-mkdir -p "$PKGDIR/usr/lib/aosc-os-arm64-boot/linux-kernel-$version$LOCALNAME/"
-mkdir -p "$PKGDIR/usr/lib/rpi64/kernel/overlays"
-cp -v arch/arm64/boot/Image "$PKGDIR/usr/lib/aosc-os-arm64-boot/linux-kernel-$version$LOCALNAME/"
-cp -v arch/arm64/boot/Image "$PKGDIR/usr/lib/rpi64/kernel/kernel_2712.img"
+mkdir -p "$PKGDIR"/usr/lib/rpi64/kernel/"$version"/overlays
+install -Dvm755 "$SRCDIR"/arch/arm64/boot/Image "$PKGDIR"/usr/lib/rpi64/kernel/"$version"/kernel_2712.img
 
-export ARCH=$OLDARCH
+abinfo "Removing the unnecessary firmware in PKGDIR ..."
 rm -rf "$PKGDIR"/usr/lib/firmware
 
 . autobuild/build-common/ext-hdr
@@ -105,7 +87,7 @@ export LOCALNAME_RPI5=$LOCALNAME
 # Only copy after both RPi4 and RPi5 kernels and modules were copied.
 
 abinfo "Coping new device tree and overlays to /usr/lib/rpi64/kernel..."
-cp -v arch/arm64/boot/dts/broadcom/*.dtb "$PKGDIR/usr/lib/rpi64/kernel/"
-cp -rv arch/arm64/boot/dts/overlays/*.dtb* "$PKGDIR/usr/lib/rpi64/kernel/overlays/"
+cp -v "$SRCDIR"/arch/arm64/boot/dts/broadcom/*.dtb "$PKGDIR"/usr/lib/rpi64/kernel/"$version"/
+cp -rv "$SRCDIR"/arch/arm64/boot/dts/overlays/*.dtb* "$PKGDIR"/usr/lib/rpi64/kernel/"$version"/overlays/
 
 . autobuild/build-common/gen-scripts

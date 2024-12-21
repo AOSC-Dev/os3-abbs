@@ -1,6 +1,7 @@
 PKGNAME=clpeak
 PKGDES="Benchmark tool to measure theortical peak performance of OpenCL devices"
 PKGDEP="libcl"
+BUILDDEP="opencl-registry-api"
 PKGSEC="utils"
 
 ABTYPE=cmakeninja

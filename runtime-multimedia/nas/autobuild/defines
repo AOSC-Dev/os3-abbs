@@ -1,0 +1,5 @@
+PKGNAME=nas
+PKGSEC=libs
+PKGDEP="glibc x11-lib"
+BUILDDEP="imake"
+PKGDES="Network Audio System (runtime only)"

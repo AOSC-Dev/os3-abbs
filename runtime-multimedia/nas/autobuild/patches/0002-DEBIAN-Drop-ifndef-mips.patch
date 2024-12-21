@@ -1,0 +1,47 @@
+From 3d3a75cd5072db25ccb0aca3c4e033f1f9504193 Mon Sep 17 00:00:00 2001
+From: Jochen Sprickerhof <jspricke@debian.org>
+Date: Thu, 9 May 2024 09:06:24 +0200
+Subject: [PATCH 2/2] DEBIAN: Drop #ifndef mips
+
+Debian only builds for mips64el nowadays.
+
+This fixes the implicit declaration of function.
+---
+ lib/audio/fileutil.h | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/lib/audio/fileutil.h b/lib/audio/fileutil.h
+index 3fa58a2..cd2d99e 100644
+--- a/lib/audio/fileutil.h
++++ b/lib/audio/fileutil.h
+@@ -61,12 +61,10 @@ static int      endian = 1;
+ 
+ _FUNCPROTOBEGIN
+ 
+-#ifndef mips
+ extern unsigned short
+ FileSwapS(
+ 			unsigned short
+ );
+-#endif	/* mips */
+ 
+ extern AuUint32
+ FileSwapL(
+@@ -85,14 +83,12 @@ FileReadL(
+                         int			/* swap? */
+ );
+ 
+-#ifndef mips
+ extern int
+ FileWriteS(
+                         unsigned short,
+ 			FILE	*,
+                         int			/* swap? */
+ );
+-#endif
+ 
+ extern int
+ FileWriteL(
+-- 
+2.47.1
+

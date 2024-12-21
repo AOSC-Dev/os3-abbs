@@ -1,0 +1,21 @@
+abinfo "Generating Makefile ..."
+xmkmf -a
+
+# Note: This is a runtime package meant to provide compatbility. We will
+# not maintain any user-facing components (utilities, daemons, etc.).
+abinfo "Building libaudio ..."
+make \
+    -C "$SRCDIR"/lib \
+    EXTRA_LDOPTIONS="${LDFLAGS}" \
+    CCOPTIONS="${CPPFLAGS} ${CFLAGS} -fcommon" \
+    LDFLAGS_DEF="${LDFLAGS}"
+
+abinfo "Installing libaudio ..."
+make install \
+    DESTDIR="$PKGDIR" \
+    -C "$SRCDIR"/lib
+
+if [ -d "$PKGDIR"/usr/lib64 ]; then
+    abinfo "Moving /usr/lib64 => /usr/lib ..."
+    mv -v "$PKGDIR"/usr/lib{64,}
+fi

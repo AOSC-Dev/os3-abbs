@@ -1,0 +1,656 @@
+From 511f04362af6d3a6e3a8be96ac12ee6216b6adde Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.io>
+Date: Sat, 21 Dec 2024 14:57:42 +0800
+Subject: [PATCH 1/2] DEBIAN: fix: add missing declarations and definitions
+
+(From Debian source: nas 1.9.4-9)
+
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ clients/audio/auctl/auctl.h       |  1 +
+ clients/audio/auplay/auplay.c     |  2 +-
+ clients/audio/examples/playFile.c |  2 +-
+ lib/audio/ConnSvr.c               |  2 +
+ lib/audio/OpenSvr.c               |  8 ++++
+ server/dda/voxware/auvoxware.c    |  4 +-
+ server/dda/voxware/auvoxware.h    |  2 +-
+ server/dda/voxware/config.c       |  2 +
+ server/dia/au.h                   |  2 +
+ server/dia/auprocess.c            |  1 +
+ server/dia/gram.y                 |  5 ++-
+ server/dia/lex.l                  |  2 +-
+ server/dia/main.c                 |  3 ++
+ server/include/dixstruct.h        |  3 ++
+ server/include/os.h               | 19 +++++++--
+ server/os/access.c                | 31 +++++++-------
+ server/os/auth.c                  | 10 ++---
+ server/os/connection.c            | 15 ++++---
+ server/os/daemon.c                |  2 +
+ server/os/io.c                    |  6 +--
+ server/os/mitauth.c               |  4 +-
+ server/os/utils.c                 | 68 +++++++++++++++++++------------
+ 22 files changed, 125 insertions(+), 69 deletions(-)
+
+diff --git a/clients/audio/auctl/auctl.h b/clients/audio/auctl/auctl.h
+index e6ea3f0..640e503 100644
+--- a/clients/audio/auctl/auctl.h
++++ b/clients/audio/auctl/auctl.h
+@@ -23,6 +23,7 @@
+  */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <audio/audiolib.h>
+ #include <audio/Aos.h>
+ #include <ctype.h>
+diff --git a/clients/audio/auplay/auplay.c b/clients/audio/auplay/auplay.c
+index ba7a263..99bbacc 100644
+--- a/clients/audio/auplay/auplay.c
++++ b/clients/audio/auplay/auplay.c
+@@ -146,7 +146,7 @@ do_file(char *fname)
+ 	fprintf(stderr, "Couldn't play file \"%s\"\n", fname);
+ }
+ 
+-main(int argc, char **argv)
++int main(int argc, char **argv)
+ {
+     int             i,
+                     numfnames,
+diff --git a/clients/audio/examples/playFile.c b/clients/audio/examples/playFile.c
+index 646077e..c06c28a 100644
+--- a/clients/audio/examples/playFile.c
++++ b/clients/audio/examples/playFile.c
+@@ -13,7 +13,7 @@
+ #include <audio/audiolib.h>
+ #include <audio/soundlib.h>
+ 
+-main(int argc, char **argv)
++int main(int argc, char **argv)
+ {
+     char           *file = argv[1];
+     int             volume = 100;
+diff --git a/lib/audio/ConnSvr.c b/lib/audio/ConnSvr.c
+index e71bfee..fa3c667 100644
+--- a/lib/audio/ConnSvr.c
++++ b/lib/audio/ConnSvr.c
+@@ -76,6 +76,8 @@
+ # include <sys/stropts.h>
+ #endif
+ 
++#include <arpa/inet.h>
++
+ #ifdef STREAMSCONN
+ #define select _AuSelect
+ #endif
+diff --git a/lib/audio/OpenSvr.c b/lib/audio/OpenSvr.c
+index 8b45ec5..7b4db23 100644
+--- a/lib/audio/OpenSvr.c
++++ b/lib/audio/OpenSvr.c
+@@ -59,6 +59,14 @@ static void _AuOCOutOfMemory();
+ 
+ static int xferConnectionSetup();
+ 
++AuBool
++_AuSendClientPrefix (
++     AuServer *aud,
++     auConnClientPrefix *client,	/* contains count for auth_* */
++     char *auth_proto, 
++     char *auth_string	/* NOT null-terminated */
++     );
++
+ /*****************************************************************************
+  *				 AuOpenServer				     *
+  *****************************************************************************/
+diff --git a/server/dda/voxware/auvoxware.c b/server/dda/voxware/auvoxware.c
+index 1aafff6..bc7cecf 100644
+--- a/server/dda/voxware/auvoxware.c
++++ b/server/dda/voxware/auvoxware.c
+@@ -138,9 +138,7 @@ PERFORMANCE OF THIS SOFTWARE.
+ #endif
+ #include <sys/types.h>
+ #include <errno.h>
+-#ifndef _POSIX_SOURCE
+-# include <sys/ioctl.h>
+-#endif
++#include <sys/ioctl.h>
+ 
+ #if defined(__CYGWIN__)
+ # ifndef O_SYNC
+diff --git a/server/dda/voxware/auvoxware.h b/server/dda/voxware/auvoxware.h
+index d923b38..f455ee4 100644
+--- a/server/dda/voxware/auvoxware.h
++++ b/server/dda/voxware/auvoxware.h
+@@ -80,7 +80,7 @@ typedef int AuBlock;
+ 
+ /* use functions defined in auvoxware.c.  These are also used by dia/ */
+ AuBlock _AuBlockAudio(void);
+-void    _AuUnblockAudio(AuBlock _x);
++void    _AuUnBlockAudio(AuBlock _x);
+ 
+ #define AuBlockAudio()     _AuBlockAudio()
+ #define AuUnBlockAudio(_x) _AuUnBlockAudio(_x)
+diff --git a/server/dda/voxware/config.c b/server/dda/voxware/config.c
+index d3bfca5..b70fc94 100644
+--- a/server/dda/voxware/config.c
++++ b/server/dda/voxware/config.c
+@@ -5,6 +5,8 @@
+  */
+ 
+ #include <fcntl.h>
++#include <string.h>
++#include "os.h"
+ #include "nasconf.h"
+ #include "config.h"
+ #include "aulog.h"
+diff --git a/server/dia/au.h b/server/dia/au.h
+index 5537a02..a49f5ca 100644
+--- a/server/dia/au.h
++++ b/server/dia/au.h
+@@ -26,6 +26,8 @@
+ #ifndef _AU_H_
+ #define _AU_H_
+ 
++#include <unistd.h>
++
+ /* This will define the appropriate *_SERVER */
+ #include "auservertype.h"
+ 
+diff --git a/server/dia/auprocess.c b/server/dia/auprocess.c
+index 61abf68..8621548 100644
+--- a/server/dia/auprocess.c
++++ b/server/dia/auprocess.c
+@@ -29,6 +29,7 @@
+ #include <audio/audio.h>
+ #include <audio/Aproto.h>
+ #include "au.h"
++#include "aulog.h"
+ 
+ #include "nasconf.h"
+ 
+diff --git a/server/dia/gram.y b/server/dia/gram.y
+index 017b00e..ac719ae 100644
+--- a/server/dia/gram.y
++++ b/server/dia/gram.y
+@@ -16,6 +16,9 @@
+ static char     *ptr;
+ static int parsebool(char *str);
+ extern int yylineno;
++void yyerror(const char *s);
++void RemoveDQuote(char *str);
++int yylex();
+ 
+ %}
+ 
+@@ -167,7 +170,7 @@ number          : NUMBER                { $$ = $1; }
+ 
+ %%
+ 
+-RemoveDQuote(str)
++void RemoveDQuote(str)
+ char *str;
+ {
+     char *i, *o;
+diff --git a/server/dia/lex.l b/server/dia/lex.l
+index 85e3c25..5142376 100644
+--- a/server/dia/lex.l
++++ b/server/dia/lex.l
+@@ -54,7 +54,7 @@ number                          [0-9]+
+                                 }
+ %%
+ #ifndef yywrap
+-yywrap()
++int yywrap()
+ {
+     return (1);
+ }
+diff --git a/server/dia/main.c b/server/dia/main.c
+index 83601ae..de1c55a 100644
+--- a/server/dia/main.c
++++ b/server/dia/main.c
+@@ -53,6 +53,7 @@ SOFTWARE.
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <unistd.h>
+ #include <audio/audio.h>
+ #include <audio/Aproto.h>
+ #include "NasConfig.h"
+@@ -64,6 +65,8 @@ SOFTWARE.
+ #include "globals.h"
+ #include "nasconf.h"
+ #include "release.h"
++#include "gram.h"
++#include "aulog.h"
+ 
+ extern void OsInit(void), InitClient(), ResetWellKnownSockets(),
+ Dispatch(), FreeAllResources();
+diff --git a/server/include/dixstruct.h b/server/include/dixstruct.h
+index 34b2254..87d3437 100644
+--- a/server/include/dixstruct.h
++++ b/server/include/dixstruct.h
+@@ -81,4 +81,7 @@ extern void CloseDownClient();
+ 
+ extern void UpdateCurrentTimeIf(void);
+ 
++void ProcessWorkQueue(void);
++Bool QueueWorkProc(Bool(*function)(), ClientPtr client, pointer closure);
++
+ #endif /* DIXSTRUCT_H */
+diff --git a/server/include/os.h b/server/include/os.h
+index f7084d5..8eab568 100644
+--- a/server/include/os.h
++++ b/server/include/os.h
+@@ -133,9 +133,6 @@ extern void safe_free(void *ptr);
+ int ReadRequestFromClient();
+ void CloseDownConnection();
+ void CreateWellKnownSockets();
+-void ErrorF();
+-void Error();
+-void FatalError();
+ void ProcessCommandLine();
+ char *FindConfigFile();
+ void FlushAllOutput();
+@@ -154,4 +151,20 @@ void *debug_Xrealloc(char *file, int line, pointer ptr,
+ #endif
+ long GetTimeInMillis();
+ 
++void osBecomeOrphan(void);
++void osBecomeDaemon(void);
++int DefineSelf(int fd);
++void EnableLocalHost(void);
++void ResetHosts(char *display);
++void ResetAuthorization(void);
++void OsInitAllocator(void);
++void AuditF(const char *format, ...);
++void ErrorF(const char *format, ...);
++void FatalError(const char *format, ...);
++void Error(char *str);
++
++#include <sys/types.h>
++#include <sys/socket.h>
++int InvalidHost(struct sockaddr *saddr, int len);
++
+ #endif /* OS_H */
+diff --git a/server/os/access.c b/server/os/access.c
+index 2573013..2849620 100644
+--- a/server/os/access.c
++++ b/server/os/access.c
+@@ -208,6 +208,14 @@ static int AccessEnabled = DEFAULT_ACCESS_CONTROL;
+ static int LocalHostEnabled = FALSE;
+ static int UsingXdmcp = FALSE;
+ 
++void AddLocalHosts()
++{
++    HOST *self;
++
++    for (self = selfhosts; self; self = self->next)
++        (void) NewHost(self->family, self->addr, self->len);
++}
++
+ /*
+  * called when authorization is not enabled to add the
+  * local host to the access list
+@@ -245,9 +253,9 @@ AccessUsingXdmcp(void)
+ /* SVR4, ISC, linux use this if SIOCGIFCONF fails */
+ #ifdef USE_FALLBACK_DEFINESELF
+ static
+-FallbackDefineSelf(fd)
++int FallbackDefineSelf(fd)
+ #else
+-DefineSelf(fd)
++int DefineSelf(fd)
+ #endif
+ int fd;
+ {
+@@ -315,8 +323,7 @@ int fd;
+ /* Define this host for access control.  Find all the hosts the OS knows about 
+  * for this fd and add them to the selfhosts list.
+  */
+-DefineSelf(fd)
+-int fd;
++int DefineSelf(int fd)
+ {
+     char buf[2048], *cp, *cplim;
+     struct ifconf ifc;
+@@ -398,8 +405,7 @@ int fd;
+ #else /* _MINIX */
+ /* Define this host for access control.
+  */
+-DefineSelf(fd)
+-int fd;
++in DefineSelf(int fd)
+ {
+     int len;
+     int r;
+@@ -435,17 +441,8 @@ int fd;
+ #endif /* AMOEBA */
+ 
+ 
+-AddLocalHosts()
+-{
+-    HOST *self;
+-
+-    for (self = selfhosts; self; self = self->next)
+-        (void) NewHost(self->family, self->addr, self->len);
+-}
+-
+ /* Reset access control list to initial hosts */
+-ResetHosts(display)
+-char *display;
++void ResetHosts(char *display)
+ {
+     HOST *host;
+     char hostname[120];
+@@ -807,7 +804,7 @@ CheckAddr(int family, pointer pAddr, unsigned length)
+ /* Check if a host is not in the access control list. 
+  * Returns 1 if host is invalid, 0 if we've found it. */
+ 
+-InvalidHost(saddr, len)
++int InvalidHost(saddr, len)
+ #ifdef AMOEBA
+ ipaddr_t *saddr;
+ #else
+diff --git a/server/os/auth.c b/server/os/auth.c
+index 2aef275..b350a01 100644
+--- a/server/os/auth.c
++++ b/server/os/auth.c
+@@ -83,7 +83,7 @@ static char *authorization_file = (char *) NULL;
+ static int AuthorizationIndex = 0;
+ static Bool ShouldLoadAuth = TRUE;
+ 
+-InitAuthorization(file_name)
++void InitAuthorization(file_name)
+ char *file_name;
+ {
+     authorization_file = file_name;
+@@ -148,7 +148,7 @@ char *data;
+     return (AuID) ~ 0L;
+ }
+ 
+-ResetAuthorization()
++void ResetAuthorization()
+ {
+     int i;
+ 
+@@ -175,7 +175,7 @@ char *data;
+     return (AuID) ~ 0L;
+ }
+ 
+-AuthorizationFromID(id, name_lenp, namep, data_lenp, datap)
++int AuthorizationFromID(id, name_lenp, namep, data_lenp, datap)
+ AuID id;
+ unsigned short *name_lenp;
+ char **namep;
+@@ -194,7 +194,7 @@ char **datap;
+     return 0;
+ }
+ 
+-RemoveAuthorization(name_length, name, data_length, data)
++int RemoveAuthorization(name_length, name, data_length, data)
+ unsigned short name_length;
+ char *name;
+ unsigned short data_length;
+@@ -211,7 +211,7 @@ char *data;
+     return 0;
+ }
+ 
+-AddAuthorization(name_length, name, data_length, data)
++int AddAuthorization(name_length, name, data_length, data)
+ unsigned short name_length;
+ char *name;
+ unsigned short data_length;
+diff --git a/server/os/connection.c b/server/os/connection.c
+index f87c9f0..4aea328 100644
+--- a/server/os/connection.c
++++ b/server/os/connection.c
+@@ -1713,6 +1713,9 @@ CheckConnections()
+     }
+ }
+ 
++// Ugh, should be in a header
++int FlushClient(ClientPtr who, OsCommPtr oc, char *extraBuf, int extraCount);
++
+ /*****************
+  * CloseDownConnection
+  *    Delete client from AllClients and free resources 
+@@ -1734,7 +1737,7 @@ ClientPtr client;
+ }
+ 
+ 
+-AddEnabledDevice(fd)
++void AddEnabledDevice(fd)
+ int fd;
+ {
+     BITSET(EnabledDevices, fd);
+@@ -1742,7 +1745,7 @@ int fd;
+ }
+ 
+ 
+-RemoveEnabledDevice(fd)
++void RemoveEnabledDevice(fd)
+ int fd;
+ {
+     BITCLEAR(EnabledDevices, fd);
+@@ -1759,7 +1762,7 @@ int fd;
+  *    This routine is "undone" by ListenToAllClients()
+  *****************/
+ 
+-OnlyListenToOneClient(client)
++void OnlyListenToOneClient(client)
+ ClientPtr client;
+ {
+     OsCommPtr oc = (OsCommPtr) client->osPrivate;
+@@ -1789,7 +1792,7 @@ ClientPtr client;
+  *    Undoes OnlyListentToOneClient()
+  ****************/
+ 
+-ListenToAllClients()
++void ListenToAllClients()
+ {
+     if (GrabInProgress) {
+         ORBITS(AllSockets, AllSockets, SavedAllSockets);
+@@ -1801,7 +1804,7 @@ ListenToAllClients()
+ 
+ /* make client impervious to grabs; assume only executing client calls this */
+ 
+-MakeClientGrabImpervious(client)
++void MakeClientGrabImpervious(client)
+ ClientPtr client;
+ {
+     OsCommPtr oc = (OsCommPtr) client->osPrivate;
+@@ -1812,7 +1815,7 @@ ClientPtr client;
+ 
+ /* make client pervious to grabs; assume only executing client calls this */
+ 
+-MakeClientGrabPervious(client)
++void MakeClientGrabPervious(client)
+ ClientPtr client;
+ {
+     OsCommPtr oc = (OsCommPtr) client->osPrivate;
+diff --git a/server/os/daemon.c b/server/os/daemon.c
+index b4bb47a..4098737 100644
+--- a/server/os/daemon.c
++++ b/server/os/daemon.c
+@@ -36,6 +36,7 @@ from the X Consortium.
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <unistd.h>
+ 
+ #include <fcntl.h>
+ #include <sys/types.h>
+@@ -60,6 +61,7 @@ from the X Consortium.
+ #endif
+ 
+ #include "os.h"
++#include "aulog.h"
+ 
+ void
+ osBecomeOrphan(void)
+diff --git a/server/os/io.c b/server/os/io.c
+index b607da3..8b74360 100644
+--- a/server/os/io.c
++++ b/server/os/io.c
+@@ -370,7 +370,7 @@ int count;
+  *
+  **********************/
+ 
+-ResetCurrentRequest(client)
++void ResetCurrentRequest(client)
+ ClientPtr client;
+ {
+     OsCommPtr oc = (OsCommPtr) client->osPrivate;
+@@ -966,7 +966,7 @@ int count;
+     return TRUE;
+ }
+ 
+-ResetCurrentRequest(client)
++void ResetCurrentRequest(client)
+ ClientPtr client;
+ {
+     OsCommPtr oc = (OsCommPtr) client->osPrivate;
+@@ -1390,7 +1390,7 @@ int count;
+     return (TRUE);
+ }
+ 
+-ResetCurrentRequest(client)
++void ResetCurrentRequest(client)
+ ClientPtr client;
+ {
+     OsCommPtr oc = (OsCommPtr) client->osPrivate;
+diff --git a/server/os/mitauth.c b/server/os/mitauth.c
+index f1039b7..02aff5f 100644
+--- a/server/os/mitauth.c
++++ b/server/os/mitauth.c
+@@ -119,7 +119,7 @@ char *data;
+     return (AuID) - 1;
+ }
+ 
+-MitFromID(id, data_lenp, datap)
++int MitFromID(id, data_lenp, datap)
+ AuID id;
+ unsigned short *data_lenp;
+ char **datap;
+@@ -136,7 +136,7 @@ char **datap;
+     return 0;
+ }
+ 
+-MitRemoveCookie(data_length, data)
++int MitRemoveCookie(data_length, data)
+ unsigned short data_length;
+ char *data;
+ {
+diff --git a/server/os/utils.c b/server/os/utils.c
+index d073cf7..c84a64d 100644
+--- a/server/os/utils.c
++++ b/server/os/utils.c
+@@ -53,6 +53,7 @@ SOFTWARE.
+ #include <audio/Aproto.h>
+ #include <errno.h>
+ #include <limits.h>
++#include <stdarg.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include "nasconf.h"
+@@ -564,19 +565,37 @@ OsInitAllocator(void)
+     return;
+ }
+ 
++static int _vfprintf_wrapper(FILE *restrict stream,
++                             const char *restrict format,
++                             va_list ap)
++{
++    int ret = 0;
++
++#ifdef AMOEBA
++    mu_lock(&print_lock);
++#endif
++
++    ret = vfprintf(stream, format, ap);
++
++#ifdef AMOEBA
++    mu_unlock(&print_lock);
++#endif
++
++    return ret;
++}
++
+ /*VARARGS1*/
+-void
+-AuditF(char *f, char *s0, char *s1, char *s2, char *s3, char *s4, char *s5,
+-       char *s6, char *s7, char *s8, char *s9)
+-{                               /* limit of ten args */
++void AuditF(const char *format, ...)
++{
+ #ifdef X_NOT_STDC_ENV
+     long tm;
+ #else
+     time_t tm;
+ #endif
+     char *autime, *s;
++    va_list ap;
+ 
+-    if (*f != ' ') {
++    if (*format != ' ') {
+         time(&tm);
+         autime = ctime(&tm);
+         if (s = index(autime, '\n'))
+@@ -587,36 +606,35 @@ AuditF(char *f, char *s0, char *s1, char *s2, char *s3, char *s4, char *s5,
+             s = argvGlobal[0];
+         ErrorF("AUDIT: %s: %d %s: ", autime, getpid(), s);
+     }
+-    ErrorF(f, s0, s1, s2, s3, s4, s5, s6, s7, s8, s9);
+ 
++    va_start(ap, format);
++    _vfprintf_wrapper(stderr, format, ap);
++    va_end(ap);
+     return;
+ }
+ 
+-/*VARARGS1*/
+-void
+-FatalError(char *f, char *s0, char *s1, char *s2, char *s3, char *s4,
+-           char *s5, char *s6, char *s7, char *s8, char *s9)
+-{                               /* limit of ten args */
++void FatalError(const char *format, ...)
++{
++    va_list ap;
++
+     ErrorF("\nFatal server error:\n");
+-    ErrorF(f, s0, s1, s2, s3, s4, s5, s6, s7, s8, s9);
++
++    va_start(ap, format);
++    _vfprintf_wrapper(stderr, format, ap);
++    va_end(ap);
++
+     ErrorF("\n");
++
+     AbortServer();
+      /*NOTREACHED*/ return;
+ }
+ 
+-/*VARARGS1*/
+-void
+-ErrorF(char *f, char *s0, char *s1, char *s2, char *s3, char *s4, char *s5,
+-       char *s6, char *s7, char *s8, char *s9)
+-{                               /* limit of ten args */
+-#ifdef AMOEBA
+-    mu_lock(&print_lock);
+-#endif
+-    fprintf(stderr, f, s0, s1, s2, s3, s4, s5, s6, s7, s8, s9);
+-#ifdef AMOEBA
+-    mu_unlock(&print_lock);
+-#endif
++void ErrorF(const char *format, ...)
++{
++    va_list ap;
++    va_start(ap, format);
++    _vfprintf_wrapper(stderr, format, ap);
++    va_end(ap);
+ 
+     return;
+ }
+-
+-- 
+2.47.1
+

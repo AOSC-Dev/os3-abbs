@@ -1,4 +1,4 @@
-VER=1.35
+VER=1.36
 SRCS="tbl::https://github.com/baldurk/renderdoc/archive/v$VER.tar.gz"
-CHKSUMS="sha256::51e6bc0dbb38c7451ee2c2fc866a72326db452a608135ab117b97cbcd46a83cf"
+CHKSUMS="sha256::4308d08748d166ca0fe3bb5b94dbb5dc3aec3775b45d11967eb3c6d1c6c6ae84"
 CHKUPDATE="anitya::id=14973"

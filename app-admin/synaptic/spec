@@ -1,4 +1,4 @@
-VER=0.90.2
+VER=0.91.3
 SRCS="https://deb.debian.org/debian/pool/main/s/synaptic/synaptic_$VER.tar.xz"
-CHKSUMS="sha256::9e88f69e3c7dd1aa024ea4e20dce683ac3697e19360c7663bc2ff54f7b657ea6"
+CHKSUMS="sha256::e2ed206d8d5af86417eafbeff349b99cde29b31008e21a6327f4a49a7951ed33"
 CHKUPDATE="anitya::id=16196"

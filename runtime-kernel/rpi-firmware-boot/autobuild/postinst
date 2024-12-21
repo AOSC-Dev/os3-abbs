@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -d "/tree/runtime-kernel" ]; then
+if systemd-detect-virt -q -c ; then
   echo "Running in build environment, skipping firmware update."
   exit 0
 fi
@@ -19,21 +19,8 @@ if ! mount -a; then
   exit 1
 fi
 
-if [ -e /boot/rpi/kernel8.img ]; then
-  echo "Copying new firmware..."
-  cp -r /usr/lib/rpi64/boot/* /boot/rpi/
-elif [ -e /boot/rpi/kernel_2712.img ]; then
-  echo "Copying new firmware..."
-  cp -r /usr/lib/rpi64/boot/* /boot/rpi/
-else
-  echo "Copying kernel and firmware..."
-  cp -r /usr/lib/rpi64/boot/* /boot/rpi/
-  if [ -e /usr/lib/rpi64/kernel/kernel8.img ]; then
-    cp -r /usr/lib/rpi64/kernel/* /boot/rpi/
-  elif [ -e /usr/lib/rpi64/kernel/kernel_2712.img ]; then
-    cp -r /usr/lib/rpi64/kernel/* /boot/rpi/
-  fi
-fi
+echo "Installing the boot firmware ..."
+cp -r /usr/lib/rpi64/boot/* /boot/rpi/
 
 if [ ! -e /boot/rpi/config.txt ]; then
   echo "Creating config.txt..."
@@ -46,7 +33,8 @@ if [ ! -e /boot/rpi/distcfg.txt ]; then
 fi
 
 if [ ! -e /boot/rpi/cmdline.txt ]; then
-  PARTUUID="$(lsblk -x MOUNTPOINT -o MOUNTPOINT,PARTUUID | egrep '^/\s' | awk '{print $2}')"
+  echo "Getting information of the root partition ..."
+  eval "$(findmnt -Pyo PARTUUID /)"
   echo "Generating new cmdline.txt..."
   if [ ! "$PARTUUID" ]; then
     echo "WARNING: Could not determine PARTUUID of your current root filesystem!"

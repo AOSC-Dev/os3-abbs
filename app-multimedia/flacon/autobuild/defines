@@ -1,0 +1,4 @@
+PKGNAME=flacon
+PKGSEC=sound
+PKGDEP="qt-5 taglib uchardet"
+PKGDES="Audio file encoder and track extractor"

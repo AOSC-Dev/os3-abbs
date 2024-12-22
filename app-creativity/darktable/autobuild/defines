@@ -10,6 +10,7 @@ BUILDDEP="cmake gnome-doc-utils intltool po4a llvm sphinx doxygen"
 PKGDES="Utility to organize and develop raw images"
 
 CMAKE_AFTER=(
+	-DPROJECT_VERSION=$PKGVER
 	-DBINARY_PACKAGE_BUILD=ON
 	-DBUILD_BATTERY_INDICATOR=ON
 	-DBUILD_CURVE_TOOLS=ON

@@ -1,19 +1,18 @@
 # Building this package requires a minimal set of package to be installed:
 # Version of glibc
 # glibc for target architecture is required to build and for further usage.
-GLIBC_VER=2.38-6
+GLIBC_VER=2.40-1
 # Version of linux+api
-LINUXAPI_VER=6.7.12-0
+LINUXAPI_VER=6.12.5-0
 # Version of aosc-aaa
-AOSCAAA_VER=11.5.0-0
+AOSCAAA_VER=12.0.1-1
 # Version of libxcrypt
 LIBXCRYPT_VER=4.4.36-2
 # Version of gcc
-GCC_VER=13.2.0
+GCC_VER=14.2.0
 # Target architecture - this variable is used during build process
 
 VER=${GCC_VER}+glibc${GLIBC_VER/-/+}
-REL=2
 SRCS="tbl::https://ftp.gnu.org/gnu/gcc/gcc-${GCC_VER}/gcc-${GCC_VER}.tar.xz \
       file::rename=glibc_amd64.deb::https://repo.aosc.io/debs/pool/stable/main/g/glibc_${GLIBC_VER}_amd64.deb \
       file::rename=linux+api_amd64.deb::https://repo.aosc.io/debs/pool/stable/main/l/linux+api_${LINUXAPI_VER}_amd64.deb \
@@ -39,30 +38,30 @@ SRCS="tbl::https://ftp.gnu.org/gnu/gcc/gcc-${GCC_VER}/gcc-${GCC_VER}.tar.xz \
       file::rename=linux+api_riscv64.deb::https://repo.aosc.io/debs/pool/stable/main/l/linux+api_${LINUXAPI_VER}_riscv64.deb \
       file::rename=aosc-aaa_riscv64.deb::https://repo.aosc.io/debs/pool/stable/main/a/aosc-aaa_${AOSCAAA_VER}_riscv64.deb \
       file::rename=libxcrypt_riscv64.deb::https://repo.aosc.io/debs/pool/stable/main/libx/libxcrypt_${LIBXCRYPT_VER}_riscv64.deb"
-CHKSUMS="sha256::e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da \
-         sha256::84d8ca0dd05ff928ab9ed642fb6da77e48761a7e0a695372031a3ea266366d51 \
-         sha256::7109fa592dc5216bd108ca12915933443eb09eada575b11ce2c97372c2388710 \
-         sha256::421f47b7f383ef7ed142228f8270f25edfcff8ab55644cd19c87d69d39e01f64 \
+CHKSUMS="sha256::a7b39bc69cbf9e25826c5a60ab26477001f7c08d85cec04bc0e29cabed6f3cc9 \
+         sha256::299cce68204537a5fb08ce51ebef9aa98e490b8b43985ea5110cf3426c454b40 \
+         sha256::c143e61d1f31eadd5c449f8d7603f63abc570aec0ae80b23944f818c741af886 \
+         sha256::8e48b52f73fdd580f14da83be23dc772c266fca64264fd507e2195bfd9fd4c9d \
          sha256::8677f64698a357bcab0b163e8fee3f3c64aded7d20146295c0c177304e45b651 \
-         sha256::6d86aefdb2c2c7566893ba076a32c42030607969c0d79984ae1d4be7f8a18a42 \
-         sha256::c258b14d4c88e2220e05dd5768eda94eebf34bcc3f000e3573bbd7e0545b2ac9 \
-         sha256::4f5a562477974c23b1b606e31190356ef2e856efad80dc56933ddb6a78600b04 \
+         sha256::0905569cc248b5d64c3d75d763f98a4c8636a7412e64ec2e63a549081aa43fa7 \
+         sha256::71f63773899850264ad44ea60e1ba5bf2b20ea40dd880d04dd805506852d92ec \
+         sha256::900aa0198c06d34f4c7dc7bb7a6e2131fa31cc357f0c467022e4cf4863bc6dd0 \
          sha256::c37597d7ab7490ba8098fee5eae17b5445e23444c31b9d10b08a20de7885987a \
-         sha256::ebaae12c29040f386f9e372ffd57982297872882596e2a3a451d78eaa1ded36c \
-         sha256::ff977ed0d5b18ab3ba3e384b464a0220ed5a138efa2ef682158dc48698e56613 \
-         sha256::927ea507a7f37358c51eb74042a138f22287a9a6c45efab38f5ac442475db332 \
+         sha256::ad22e7c743c8c4238c85861cb5cd158b952f2d3fedbdff513388fc6cc6af7a98 \
+         sha256::dc2d959ac1a6b5bd5e3b3d496757fc3edfba76e072d66c44412306be5678b834 \
+         sha256::87bbe8f49a115dcac93ebd5512d99b884ad3646db760815d6a414f1c816cc3f4 \
          sha256::7912a6e3fc3e195277347d78eed92f4ef144a3b30bbd3f1fd9c63338d57f2c0f \
-         sha256::425c88416220d323a88c7fc73fec5c87c59e9f79c6905c98382f3b16941d3401 \
-         sha256::454096c89dfee5f8b3be374db0aa03d7ee887ca8ea01a46273b6a8dcfa3c89e7 \
-         sha256::fa0ce9f5928a13cfc3ce41ad879c4fae0557e19e9e70b484a36474ac5cea90a0 \
+         sha256::6305be1ce1fe64a1f16dd2c29da50a954a47ce02affac4f9a3971fcb61064059 \
+         sha256::eca6041f3cab8ce65754848f88ecb4350549d662257ac22625ae119c5b2608e6 \
+         sha256::89d1afa11f8fd657a2d86758a1660820f43881cd85c0cf40a2739dd09dd0fba8 \
          sha256::acc6e502d8eede83e0823e0eff6ef251054f6aa22458dd0c364a235806356054 \
-         sha256::add9db83365cde6ee4d414b1606d20b764ba73d5d9025e03ab029b7f9580929a \
-         sha256::8a66a11c26067253d5dec61dc0cc5939369131f3bb29061915ae194a90b02b83 \
-         sha256::bd9d03647788a094d2cf5b1a8b73f66a61695b492efd7b95e0e5ee917f8cf21e \
+         sha256::d6d4e30d1a509ef06e0641de6a9d731dac82c2872454c375a75a9f43bf01cd22 \
+         sha256::2d7c6a3b31bf1739b9a7b40fa4f68d44044f3ae43984619a47619bacfc12bb4a \
+         sha256::b2dd2e14a095ff1e9d048b5fbdb04e84155e0529d57f2d14bba0ebe38436dad0 \
          sha256::142b911cc07237c38449e876ec3cb8f7b2457ba09ec20f0c122b31a6da0a5e4c \
-         sha256::9089a28854ba9475bfa3f4c36db5e93de8829898320b5939849544f5c63b2cf5 \
-         sha256::ed268c1b3d9c1965d2aac25d7ea7526ffdd52e2c13aafdeb9a396da78d0cc707 \
-         sha256::68610c5bc2625cd4a3c60048e6b2d7d84f9cfa1c52b3b1c176393133d60cf8b8 \
+         sha256::dee9856f96da4010e8ebc667af739a4eedcbe2ce9254aba86e6beed1b953b8f2 \
+         sha256::f405b1fb8190ab27245c42ba8bb02fa8f8c2900e243e4697468d26eef269947d \
+         sha256::c27024a39ceef4eb00425b6be4b63cf8a0b6f484a978e130135c65a8bd623acc \
          sha256::45f00259d30fa67ac358556c20ab776027fd97c625ac8d633206a0d5c634bdaf"
 CHKUPDATE="anitya::id=6502"
 SUBDIR="gcc-${GCC_VER}"

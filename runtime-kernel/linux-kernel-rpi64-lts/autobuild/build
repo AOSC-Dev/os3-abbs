@@ -37,16 +37,8 @@ unset LOCALNAME
 
 # RPi4 kernel build ends.
 
-# Since `make mrproper` will destroy the installed kernel modules, we need to make a backup then.
-abinfo "Making backup for kernel and kernel modules..."
-tar -cvf rpi4-kernel.tar $PKGDIR
-
 abinfo "Removing all generated files + config + various backup files..."
 make mrproper
-
-# Now, restore the backup.
-abinfo "Restoring the backup..."
-tar -xvf rpi4-kernel.tar --directory=/
 
 # RPi5 kernel build starts.
 

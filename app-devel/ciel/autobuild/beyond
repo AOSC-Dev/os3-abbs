@@ -1,2 +1,1 @@
-mv -v "$PKGDIR/usr/bin/ciel-rs" "$PKGDIR/usr/bin/ciel"
 PREFIX="$PKGDIR/usr/" ./install-assets.sh

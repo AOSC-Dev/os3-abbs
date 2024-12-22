@@ -1,5 +1,4 @@
-VER=2.0.14
-REL=3
+VER=2.0.19
 SRCS="tbl::https://github.com/numactl/numactl/archive/v$VER.tar.gz"
-CHKSUMS="sha256::1ee27abd07ff6ba140aaf9bc6379b37825e54496e01d6f7343330cf1a4487035"
+CHKSUMS="sha256::8b84ffdebfa0d730fb2fc71bb7ec96bb2d38bf76fb67246fde416a68e04125e4"
 CHKUPDATE="anitya::id=2507"

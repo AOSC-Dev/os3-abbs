@@ -1,7 +1,20 @@
-for i in gccmakedep-1.0.3 imake-1.0.8 lndir-1.0.3 makedepend-1.0.6 xorg-cf-files-1.0.6; do
-     pushd "${i}"
-     ./configure --prefix=/usr --mandir=/usr/share/man
+for i in \
+    gccmakedep-${__GCCMAKEDEP_VER} \
+    imake-${__IMAKE_VER} \
+    lndir-${__LNDIR_VER} \
+    makedepend-${__MAKEDEPEND_VER} \
+    xorg-cf-files-${__CF_VER}; do
+     cd "$SRCDIR/${i}"
+     abinfo "Configuring $i ..."
+     ./configure \
+         ${AUTOTOOLS_DEF[@]}
+
+     abinfo "Building $i ..."
      make
-     make install DESTDIR="$PKGDIR"
-     popd
+
+     abinfo "Installing $i ..."
+     make install \
+         DESTDIR="$PKGDIR"
+
+     cd "$SRCDIR"
 done

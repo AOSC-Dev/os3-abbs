@@ -4,5 +4,5 @@ PKGDEP="glibc"
 BUILDDEP="x11-proto"
 PKGDES="X.Org imake program and related utilities"
 
-PKGREP="makedepend"
-PKGPROV="makedepend"
+PKGREP="gccmakedep lndir makedepend xorg-cf-files"
+PKGPROV="gccmakedep lndir makedepend xorg-cf-files"

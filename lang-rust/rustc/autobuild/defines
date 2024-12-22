@@ -1,8 +1,8 @@
 PKGNAME=rustc
 PKGEPOCH=1
 PKGSEC=devel
-PKGDEP="gcc-runtime llvm-runtime http-parser"
-BUILDDEP="cmake curl libffi llvm ninja rustc"
+PKGDEP="gcc-runtime llvm-runtime-19 http-parser"
+BUILDDEP="cmake curl libffi llvm-19 ninja rustc"
 PKGDES="General purpose, multi-paradigm programming language (compiler and runtime)"
 
 NOLTO=1

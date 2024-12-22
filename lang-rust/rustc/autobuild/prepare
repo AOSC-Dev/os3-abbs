@@ -35,6 +35,7 @@ abinfo "Generating config.toml ..."
 cat > "$SRCDIR"/config.toml <<EOF
 [llvm]
 link-shared = true
+download-ci-llvm = false
 ninja = true
 
 [build]
@@ -47,12 +48,39 @@ vendor = true
 print-step-timings = true
 EOF
 
-abinfo "Using system rustc for bootstrapping ..."
-cat >> "$SRCDIR"/config.toml << EOF
-cargo = "/usr/bin/cargo"
-rustc = "/usr/bin/rustc"
-rustfmt = "/usr/bin/rustfmt"
+# FIXME: Uncomment this if we have the last version built and ready.
+#
+#abinfo "Using system rustc for bootstrapping ..."
+#cat >> "$SRCDIR"/config.toml << EOF
+#cargo = "/usr/bin/cargo"
+#rustc = "/usr/bin/rustc"
+#rustfmt = "/usr/bin/rustfmt"
+#EOF
+
+# FIXME: Using local bootstrap tarball as we missed a release - rustc needs
+# to bootstrap from an adjacent release.
+if ab_match_arch loongson3; then
+    SRC_PARENT="$(realpath $SRCDIR/..)"
+
+    abinfo "Extracting bootstrapped Stage 1 Rust toolchain..."
+    bsdtar xf "$SRC_PARENT"/rustc-bootstrap-${PKGVER}-${CROSS:-$ARCH}.tar.xz \
+        -C "$SRC_PARENT"
+
+    abinfo "Copying bootstrapped Stage 1 Rust toolchain ..."
+    cp -rv "$SRC_PARENT"/rustc-bootstrap-${PKGVER}-${CROSS:-$ARCH}/opt/rustc-bootstrap-${PKGVER}-${CROSS:-$ARCH} \
+        /opt
+
+    if [ ! -e /opt/rustc-bootstrap-${PKGVER}-${CROSS:-$ARCH}/bin/rustc ] ; then
+        abdie "Help! Stage 1 Rust toolchain does not exist in the desired directory."
+    fi
+
+    abinfo "Using local bootstrap binaries ..."
+    cat >> "$SRCDIR"/config.toml << EOF
+cargo = "/opt/rustc-bootstrap-${PKGVER}-${CROSS:-$ARCH}/bin/cargo"
+rustc = "/opt/rustc-bootstrap-${PKGVER}-${CROSS:-$ARCH}/bin/rustc"
+rustfmt = "/opt/rustc-bootstrap-${PKGVER}-${CROSS:-$ARCH}/bin/rustfmt"
 EOF
+fi
 
 if ab_match_arch i486; then
     cat >> "$SRCDIR"/config.toml << EOF
@@ -100,22 +128,22 @@ channel = "stable"
 rpath = false
 
 [target.${rust_target}]
-llvm-config = "/usr/bin/llvm-config"
+llvm-config = "/usr/lib/llvm-19/bin/llvm-config"
 EOF
 
 if ab_match_arch i486; then
     cat >> "$SRCDIR"/config.toml << EOF
 [target.i686-unknown-linux-gnu]
-llvm-config = "/usr/bin/llvm-config"
+llvm-config = "/usr/lib/llvm-19/bin/llvm-config"
 EOF
 fi
 
 if ab_match_arch armv7hf; then
     cat >> "$SRCDIR"/config.toml << EOF
 [target.thumbv7neon-unknown-linux-gnueabihf]
-llvm-config = "/usr/bin/llvm-config"
+llvm-config = "/usr/lib/llvm-19/bin/llvm-config"
 
 [target.armv7-unknown-linux-gnueabihf]
-llvm-config = "/usr/bin/llvm-config"
+llvm-config = "/usr/lib/llvm-19/bin/llvm-config"
 EOF
 fi

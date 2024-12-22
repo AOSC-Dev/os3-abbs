@@ -1,4 +1,4 @@
-VER=3.1.0
+VER=3.3.0
 SRCS="tbl::https://www.argyllcms.com/Argyll_V${VER}_src.zip"
-CHKSUMS="sha256::4fdd5a1d7bc6dde79a54e350ec9374f6ef00b53903ee0d184cdfa4a11f0ecdcb"
+CHKSUMS="sha256::69db1c9ef66f8cacbbbab4ed9910147de6100c3afd17a0a8c12e6525b778e8ce"
 CHKUPDATE="anitya::id=108"

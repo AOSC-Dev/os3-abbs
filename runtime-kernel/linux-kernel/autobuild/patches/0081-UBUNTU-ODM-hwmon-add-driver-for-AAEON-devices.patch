@@ -1,7 +1,7 @@
 From 4bc4b9df0f64c8fb2b61e9be8df475bbb3154cba Mon Sep 17 00:00:00 2001
 From: Kunyang_Fan <kunyang_fan@asus.com>
 Date: Wed, 16 Jun 2021 13:57:01 +0800
-Subject: [PATCH 081/256] UBUNTU: ODM: hwmon: add driver for AAEON devices
+Subject: [PATCH 081/257] UBUNTU: ODM: hwmon: add driver for AAEON devices
 
 BugLink: https://bugs.launchpad.net/bugs/1929504
 

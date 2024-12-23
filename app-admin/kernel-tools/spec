@@ -16,10 +16,10 @@ __VER="${VER}"
 #SRCS="tbl::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git/snapshot/linux-stable-rc-${COMMIT}.tar.gz"
 
 # Use this for mainline RC releases.
-RC=2
+RC=4
 # To RFC: Increment by 0.1 per RC release, i.e., RC3 = 0.3.
-REL=0.${RC}e
+REL=0.${RC}
 SRCS="tbl::https://git.kernel.org/torvalds/t/linux-${VER%%.0}-rc${RC}.tar.gz"
 
-CHKSUMS="sha256::d55b2bfcb257df57019ca9ef9fab2f7dfec0a435fb515fe963d18d412ce67692"
+CHKSUMS="sha256::f7725ec2748d6790b63aea885fb6fa63c1b35a0e9fe61661d52ee74e1d62d3a3"
 CHKUPDATE="anitya::id=6501"

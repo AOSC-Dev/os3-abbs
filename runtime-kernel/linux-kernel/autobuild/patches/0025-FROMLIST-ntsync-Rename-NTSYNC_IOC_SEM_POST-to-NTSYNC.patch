@@ -1,7 +1,7 @@
 From bdc4184543f882e92dfb2a9562a63a9d57312535 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:43 -0600
-Subject: [PATCH 025/257] FROMLIST: ntsync: Rename NTSYNC_IOC_SEM_POST to
+Subject: [PATCH 025/258] FROMLIST: ntsync: Rename NTSYNC_IOC_SEM_POST to
  NTSYNC_IOC_SEM_RELEASE.
 
 Use the more common "release" terminology, which is also the term used by NT,

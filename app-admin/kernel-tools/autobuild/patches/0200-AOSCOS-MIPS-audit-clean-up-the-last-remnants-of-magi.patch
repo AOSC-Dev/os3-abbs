@@ -1,7 +1,7 @@
 From 2c2590395a23a05aaa7836d22e5da9b39711672b Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 17 Dec 2024 02:00:03 +0800
-Subject: [PATCH 200/258] AOSCOS: MIPS: audit: clean up the last remnants of
+Subject: [PATCH 200/259] AOSCOS: MIPS: audit: clean up the last remnants of
  magic numbers
 
 Follow commit 42f355ef59a2 ("audit: replace magic audit syscall class

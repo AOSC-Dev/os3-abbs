@@ -1,7 +1,7 @@
 From ce544015f3fed380ef681408f4fcd5e6283ca50f Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
-Subject: [PATCH 190/258] AOSCOS: snd/hda/conexant: Add support for lemote
+Subject: [PATCH 190/259] AOSCOS: snd/hda/conexant: Add support for lemote
  A1205
 
 Lemote A1205 is a all in one product.

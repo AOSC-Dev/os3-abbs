@@ -1,7 +1,7 @@
 From 0e963d908658a992b69b5aa7c61caadc0aa1d13f Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
-Subject: [PATCH 176/258] AOSCOS: Fix touchpad status error after STR/STD
+Subject: [PATCH 176/259] AOSCOS: Fix touchpad status error after STR/STD
 
 Signed-off-by: Rui Wang <wangr@lemote.com>
 Signed-off-by: Huacai Chen <chenhc@lemote.com>

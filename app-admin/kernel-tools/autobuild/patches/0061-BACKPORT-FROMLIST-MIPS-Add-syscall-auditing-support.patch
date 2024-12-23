@@ -1,7 +1,7 @@
 From 7ae20610fb2b6602662de1f6955746afc643f6c3 Mon Sep 17 00:00:00 2001
 From: Ralf Baechle <ralf@linux-mips.org>
 Date: Thu, 12 Mar 2020 17:41:23 +0800
-Subject: [PATCH 061/258] BACKPORT: FROMLIST: MIPS: Add syscall auditing
+Subject: [PATCH 061/259] BACKPORT: FROMLIST: MIPS: Add syscall auditing
  support
 
 The original patch is from Ralf. I have maintained it for more than six

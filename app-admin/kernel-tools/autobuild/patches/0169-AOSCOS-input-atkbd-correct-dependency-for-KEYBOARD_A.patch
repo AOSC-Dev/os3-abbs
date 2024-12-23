@@ -1,7 +1,7 @@
 From c6aaf7f7d49ef39bb8b46f9fa1b568193ebb4693 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 4 Dec 2024 17:54:18 +0800
-Subject: [PATCH 169/258] AOSCOS: input: atkbd: correct dependency for
+Subject: [PATCH 169/259] AOSCOS: input: atkbd: correct dependency for
  KEYBOARD_ATKBD_LEMOTE_KEYCODES
 
 Rename dependency MACH_LOONGSON => MACH_LOONGSON64 per commit

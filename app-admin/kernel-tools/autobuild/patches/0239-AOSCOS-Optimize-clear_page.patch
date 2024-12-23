@@ -1,7 +1,7 @@
 From 962c26ef4c0e59f803d9f5ec9d6539293610c2a7 Mon Sep 17 00:00:00 2001
 From: chenj <chenj@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
-Subject: [PATCH 239/258] AOSCOS: Optimize clear_page
+Subject: [PATCH 239/259] AOSCOS: Optimize clear_page
 
 Signed-off-by: chenj <chenj@lemote.com>
 Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>

@@ -1,7 +1,7 @@
 From d3169bc5e233dd72faff0f83068e15ec3998f204 Mon Sep 17 00:00:00 2001
 From: xiangy <xiangy@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
-Subject: [PATCH 191/258] AOSCOS: add 3g support and ppp config support
+Subject: [PATCH 191/259] AOSCOS: add 3g support and ppp config support
 
 Signed-off-by: Huacai Chen <chenhc@lemote.com>
 Signed-off-by: Hongliang Tao <taohl@lemote.com>

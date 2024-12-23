@@ -1,4 +1,6 @@
 VER=0.9.0
-SRCS="git::commit=v$VER;copy-repo=true::https://github.com/daeuniverse/dae.git"
-CHKSUMS="SKIP"
+REL=1
+SRCS="tbl::https://github.com/daeuniverse/dae/releases/download/v$VER/dae-full-src.zip"
+CHKSUMS="sha256::b631e2cc729f28410f5ccf584de18cf6a839c4a313d694df5e326377f6435ab1"
 CHKUPDATE="anitya::id=369479"
+SUBDIR=.

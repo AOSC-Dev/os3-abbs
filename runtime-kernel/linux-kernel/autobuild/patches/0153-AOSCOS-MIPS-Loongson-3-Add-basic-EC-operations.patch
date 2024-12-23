@@ -1,7 +1,7 @@
 From 71102bf0079c06bbd9d92070786ab7085d95cd6c Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
-Subject: [PATCH 153/258] AOSCOS: MIPS: Loongson 3: Add basic EC operations
+Subject: [PATCH 153/259] AOSCOS: MIPS: Loongson 3: Add basic EC operations
 
 Loongson-3 based laptops has a WPCE775L embedded controller. Add
 basic operations for future related drivers and board support.

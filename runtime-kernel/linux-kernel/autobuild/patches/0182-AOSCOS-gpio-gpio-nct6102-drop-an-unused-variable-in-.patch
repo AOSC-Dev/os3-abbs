@@ -1,7 +1,7 @@
 From f9bbf6db933d85e115d5b8d86e52df73dd013cc3 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Mon, 9 Dec 2024 17:31:56 +0800
-Subject: [PATCH 182/258] AOSCOS: gpio: gpio-nct6102: drop an unused variable
+Subject: [PATCH 182/259] AOSCOS: gpio: gpio-nct6102: drop an unused variable
  in nct6102_gpio_setup()
 
 The integer-type variable `ret' was never used in the function, causing an

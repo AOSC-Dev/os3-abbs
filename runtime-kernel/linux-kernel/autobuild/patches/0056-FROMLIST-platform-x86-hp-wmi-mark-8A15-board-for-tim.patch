@@ -1,7 +1,7 @@
 From 8b396271d915f7607d0619e80b339988e58568c3 Mon Sep 17 00:00:00 2001
 From: xiaoxi404 <1577912515@qq.com>
 Date: Mon, 23 Dec 2024 18:07:46 +0800
-Subject: [PATCH 056/258] FROMLIST: platform/x86: hp-wmi: mark 8A15 board for
+Subject: [PATCH 056/259] FROMLIST: platform/x86: hp-wmi: mark 8A15 board for
  timed OMEN thermal profile
 
 The HP OMEN 8 (2022), corresponding to a board ID of 8A15, supports OMEN

@@ -1,7 +1,7 @@
 From b97f7410567ad3aab26deacfb29f83195ccc1001 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Mon, 9 Dec 2024 17:24:26 +0800
-Subject: [PATCH 179/258] AOSCOS: gpio: use CPU_LOONGSON64 for GPIO_NCT6102
+Subject: [PATCH 179/259] AOSCOS: gpio: use CPU_LOONGSON64 for GPIO_NCT6102
 
 Per commit 30ad29bb4888 ("MIPS: Loongson: Naming style cleanup and
 rework"), rename the CPU_LOONGSON3 dependency as CPU_LOONGSON64.

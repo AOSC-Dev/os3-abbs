@@ -1,7 +1,7 @@
 From 526e5a545af3a9811bb8eac94c7a7b08441e95db Mon Sep 17 00:00:00 2001
 From: Yao Wang <wangyao@lemote.com>
 Date: Fri, 22 Nov 2019 19:21:01 +0800
-Subject: [PATCH 184/258] AOSCOS: hwmon: Add NCT7511 driver support
+Subject: [PATCH 184/259] AOSCOS: hwmon: Add NCT7511 driver support
 
 This driver is base on nct7802y. The nct7802y driver is incompatible
 with nct7511y, so add a nct7511 driver.

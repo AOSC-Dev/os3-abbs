@@ -1,7 +1,7 @@
 From 297ae8508d66953ff93611b11538c5b81c75283c Mon Sep 17 00:00:00 2001
 From: Kunyang_Fan <kunyang_fan@asus.com>
 Date: Tue, 24 Aug 2021 15:26:59 +0800
-Subject: [PATCH 086/258] UBUNTU: ODM: mfd: Check AAEON BFPI version before
+Subject: [PATCH 086/259] UBUNTU: ODM: mfd: Check AAEON BFPI version before
  adding device
 
 BugLink: https://bugs.launchpad.net/bugs/1937897

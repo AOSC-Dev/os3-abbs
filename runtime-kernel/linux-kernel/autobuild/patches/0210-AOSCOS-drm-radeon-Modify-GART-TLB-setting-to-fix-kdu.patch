@@ -1,7 +1,7 @@
 From 9526e762bd06fdd46b3f49f07a1cf86041260e7a Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Wed, 1 Aug 2018 14:39:20 +0800
-Subject: [PATCH 210/258] AOSCOS: drm/radeon: Modify GART TLB setting to fix
+Subject: [PATCH 210/259] AOSCOS: drm/radeon: Modify GART TLB setting to fix
  kdump failure
 
 After commit 0986c1a55ca64b44ee12 ("drm/radeon: stop poisoning the GART

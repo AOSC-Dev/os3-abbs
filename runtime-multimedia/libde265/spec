@@ -1,5 +1,4 @@
-VER=1.0.8
-REL=4
+VER=1.0.15
 SRCS="tbl::https://github.com/strukturag/libde265/releases/download/v${VER}/libde265-${VER}.tar.gz"
-CHKSUMS="sha256::24c791dd334fa521762320ff54f0febfd3c09fc978880a8c5fbc40a88f21d905"
+CHKSUMS="sha256::00251986c29d34d3af7117ed05874950c875dd9292d016be29d3b3762666511d"
 CHKUPDATE="anitya::id=11239"

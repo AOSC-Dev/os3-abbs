@@ -1,7 +1,7 @@
 From 431c239676e2b7694a737c1445be42a844d78767 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:57 -0600
-Subject: [PATCH 039/257] FROMLIST: selftests: ntsync: Add some tests for
+Subject: [PATCH 039/258] FROMLIST: selftests: ntsync: Add some tests for
  semaphore state.
 
 Wine has tests for its synchronization primitives, but these are more accessible

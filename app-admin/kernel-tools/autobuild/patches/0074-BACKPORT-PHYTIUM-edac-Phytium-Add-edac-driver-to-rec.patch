@@ -1,7 +1,7 @@
 From 11b64ee6da94198018d76559a0c9617ada5ed0a4 Mon Sep 17 00:00:00 2001
 From: Zhu Honglei <zhuhonglei1714@phytium.com.cn>
 Date: Wed, 20 Mar 2024 14:53:55 +0800
-Subject: [PATCH 074/256] BACKPORT: PHYTIUM: edac: Phytium: Add edac driver to
+Subject: [PATCH 074/257] BACKPORT: PHYTIUM: edac: Phytium: Add edac driver to
  receive RAS error
 
 Support for error detection and correction on the Phytium

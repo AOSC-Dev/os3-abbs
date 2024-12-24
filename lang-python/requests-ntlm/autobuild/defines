@@ -1,0 +1,8 @@
+PKGNAME=requests-ntlm
+PKGSEC=python
+PKGDEP="python-3 requests ntlm-auth pyspnego"
+BUILDDEP="wheel python-build python-installer setuptools"
+PKGDES="Allows for HTTP NTLM authentication using the requests library"
+
+ABTYPE=pep517
+ABSPLITDBG=0

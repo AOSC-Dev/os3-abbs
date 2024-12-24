@@ -1,0 +1,8 @@
+PKGNAME=pyspnego
+PKGSEC=python
+PKGDEP="python-3 cryptography"
+BUILDDEP="python-build python-installer setuptools wheel"
+PKGDES="SPNEGO Authentication library"
+
+ABTYPE=pep517
+ABSPLITDBG=0

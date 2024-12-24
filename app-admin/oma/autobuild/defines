@@ -4,7 +4,7 @@ PKGDEP="aosc-os-feature-data apt bzip2 gcc-runtime gmp gnutls libcap \
         libgcrypt libgpg-error lz4 nettle openssl systemd xxhash xz zlib \
         zstd ripgrep aosc-os-repository-data"
 PKGRECOM="apt-gen-list"
-BUILDDEP="rustc llvm"
+BUILDDEP="rustc llvm-19"
 PKGSEC="admin"
 PKGBREAK="mirrormgr<=0.11.1"
 PKGREP="mirrormgr<=0.11.1"

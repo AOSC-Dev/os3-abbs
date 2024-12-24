@@ -15,9 +15,9 @@ cmake "$SRCDIR" \
     -DLLVM_DEFAULT_TARGET_TRIPLE=${CPP_TRIPLE} \
     -DLLVM_HOST_TRIPLE=${CPP_TRIPLE} \
     -DCMAKE_SKIP_RPATH=NO \
-    -DCMAKE_SKIP_INSTALL_RPATH=YES
+    -DCMAKE_SKIP_INSTALL_RPATH=NO
 
-# FIXME: LLVM builds break with Ninja due to an unidentified race condition.    
+# FIXME: LLVM builds break with Ninja due to an unidentified race condition.
 # Fallback to GNU Make for now.
 #
 # Ref: https://github.com/llvm/llvm-project/issues/87553

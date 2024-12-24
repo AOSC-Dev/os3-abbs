@@ -1,4 +1,3 @@
-VER=9.1.0958
-SRCS="git::commit=tags/v$VER::https://github.com/vim/vim.git"
+VER="9.1.0953"
 CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=5092"

@@ -1,4 +1,4 @@
-VER=2024.12.13
+VER=2024.12.23
 SRCS="git::commit=tags/$VER::https://github.com/yt-dlp/yt-dlp"
 CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=143399"

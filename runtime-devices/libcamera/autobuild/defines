@@ -5,4 +5,6 @@ BUILDDEP="boost doxygen gnutls gstreamer-1-0 gtest jinja2 ply libevent libtiff \
           libdwarf lttng-ust meson ninja openssl pyyaml qt-5 sphinx systemd \
           texlive yaml graphviz"
 
+PKGBREAK="pipewire<=1.2.7-1"
+
 MESON_AFTER="-Dv4l2=true"

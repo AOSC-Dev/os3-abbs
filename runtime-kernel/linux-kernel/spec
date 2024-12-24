@@ -18,7 +18,7 @@ __VER="${VER}"
 # Use this for mainline RC releases.
 RC=4
 # To RFC: Increment by 0.1 per RC release, i.e., RC3 = 0.3.
-REL=0.${RC}b
+REL=0.${RC}c
 SRCS="tbl::https://git.kernel.org/torvalds/t/linux-${VER%%.0}-rc${RC}.tar.gz"
 
 CHKSUMS="sha256::f7725ec2748d6790b63aea885fb6fa63c1b35a0e9fe61661d52ee74e1d62d3a3"

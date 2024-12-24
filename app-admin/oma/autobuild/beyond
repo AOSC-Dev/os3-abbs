@@ -15,7 +15,7 @@ cp -v "$SRCDIR"/data/command-not-found/command-not-found.fish \
 
 abinfo "Installing man to /usr/share/man/man1 ..."
 mkdir -pv "$PKGDIR"/usr/share/man/man1
-cp -v "$SRCDIR"/man/*.1 \
+cp -v "$SRCDIR"/data/man/*.1 \
 	"$PKGDIR"/usr/share/man/man1
 
 abinfo "Installing Policykit config file ..."

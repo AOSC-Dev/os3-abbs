@@ -1,7 +1,7 @@
 From b1d68378d641862de95f5628721eb7811846d764 Mon Sep 17 00:00:00 2001
 From: Alex Crichton <alex@alexcrichton.com>
 Date: Sat, 10 Feb 2018 17:21:38 -0800
-Subject: [PATCH 7/9] [rust] Compile with /MT on MSVC
+Subject: [PATCH 07/12] [rust] Compile with /MT on MSVC
 
 Can't seem to figure out how to do this without this patch...
 ---
@@ -33,5 +33,5 @@ index 595c286abd91..d17d3c55395a 100644
  add_subdirectory(tools/lld)
  
 -- 
-2.45.2
+2.47.1
 

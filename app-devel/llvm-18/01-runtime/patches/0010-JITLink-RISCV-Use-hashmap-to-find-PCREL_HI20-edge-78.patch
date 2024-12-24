@@ -1,7 +1,7 @@
 From c020430f7b9c827e9f43e2abdd37b523656d5a50 Mon Sep 17 00:00:00 2001
 From: Jonas Hahnfeld <hahnjo@hahnjo.de>
 Date: Mon, 12 Feb 2024 19:45:52 +0100
-Subject: [PATCH 10/11] [JITLink][RISCV] Use hashmap to find PCREL_HI20 edge
+Subject: [PATCH 10/12] [JITLink][RISCV] Use hashmap to find PCREL_HI20 edge
  (#78849)
 
 As noted in issues #68594 and #73935, `JITLink/RISCV/ELF_ehframe.s`
@@ -104,5 +104,5 @@ index d0701ba08bd9..627f186ca591 100644
      using namespace riscv;
      using namespace llvm::support;
 -- 
-2.46.0
+2.47.1
 

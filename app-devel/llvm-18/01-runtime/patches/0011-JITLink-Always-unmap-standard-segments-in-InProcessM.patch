@@ -1,7 +1,7 @@
 From 94fb8943c3a9627e18288f06dceb6380e84b8490 Mon Sep 17 00:00:00 2001
 From: Min-Yih Hsu <min.hsu@sifive.com>
 Date: Fri, 16 Feb 2024 16:19:56 -0800
-Subject: [PATCH 11/11] [JITLink] Always unmap standard segments in
+Subject: [PATCH 11/12] [JITLink] Always unmap standard segments in
  InProcessMemoryManager::deallocate (#81943)
 
 Right now InProcessMemoryManager only releases a standard segment (via
@@ -34,5 +34,5 @@ index 474a0b5160bc..dacf0e6c8aa4 100644
        FinalizedAllocInfos.Deallocate(FA);
      }
 -- 
-2.46.0
+2.47.1
 

@@ -1,4 +1,4 @@
-VER=4.5.0
+VER=4.5.1
 SRCS="tbl::https://weechat.org/files/src/weechat-$VER.tar.xz"
-CHKSUMS="sha256::b85e800af0f7c9f2d60d72c0f7e56abbaa60274a4d47be17407907292da30398"
+CHKSUMS="sha256::67c143c7bc70e689b9ea86df674c9a9ff3cf44ccc9cdff21be6a561d5eafc528"
 CHKUPDATE="anitya::id=5122"

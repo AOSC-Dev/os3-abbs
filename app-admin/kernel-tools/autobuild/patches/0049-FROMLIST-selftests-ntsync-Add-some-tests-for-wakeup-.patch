@@ -1,100 +1,56 @@
-From d9d9b96afe8250b2ab4744bce83709f4b024830d Mon Sep 17 00:00:00 2001
+From c31331d45d3c6c4479309814c4c2f4e7e55447f2 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
-Date: Fri, 13 Dec 2024 13:35:07 -0600
-Subject: [PATCH 049/259] FROMLIST: selftests: ntsync: Add some tests for
- wakeup signaling via alerts.
+Date: Fri, 13 Dec 2024 13:35:02 -0600
+Subject: [PATCH 049/264] FROMLIST: selftests: ntsync: Add some tests for
+ wakeup signaling with WINESYNC_IOC_WAIT_ALL.
 
-Expand the alert tests to cover alerting a thread mid-wait, to test that the
-relevant scheduling logic works correctly.
+Test contended "wait-for-all" waits, to make sure that scheduling and wakeup
+logic works correctly, and that the wait only exits once objects are all
+simultaneously signaled.
 
 Signed-off-by: Elizabeth Figura <zfigura@codeweavers.com>
 
-Link: https://lore.kernel.org/all/20241213193511.457338-27-zfigura@codeweavers.com/
+Link: https://lore.kernel.org/all/20241213193511.457338-22-zfigura@codeweavers.com/
 Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
 ---
- .../testing/selftests/drivers/ntsync/ntsync.c | 62 +++++++++++++++++++
- 1 file changed, 62 insertions(+)
+ .../testing/selftests/drivers/ntsync/ntsync.c | 91 +++++++++++++++++++
+ 1 file changed, 91 insertions(+)
 
 diff --git a/tools/testing/selftests/drivers/ntsync/ntsync.c b/tools/testing/selftests/drivers/ntsync/ntsync.c
-index 72f078dde444..298b279729aa 100644
+index ad3f031c0b92..6bf0f10679d8 100644
 --- a/tools/testing/selftests/drivers/ntsync/ntsync.c
 +++ b/tools/testing/selftests/drivers/ntsync/ntsync.c
-@@ -1063,9 +1063,12 @@ TEST(wake_all)
- TEST(alert_any)
- {
- 	struct ntsync_event_args event_args = {0};
+@@ -675,4 +675,95 @@ TEST(wake_any)
+ 	close(fd);
+ }
+ 
++TEST(wake_all)
++{
++	struct ntsync_mutex_args mutex_args = {0};
 +	struct ntsync_wait_args wait_args = {0};
- 	struct ntsync_sem_args sem_args = {0};
- 	__u32 index, count, signaled;
++	struct ntsync_sem_args sem_args = {0};
 +	struct wait_args thread_args;
- 	int objs[2], event, fd, ret;
++	int objs[2], fd, ret;
++	__u32 count, index;
 +	pthread_t thread;
- 
- 	fd = open("/dev/ntsync", O_CLOEXEC | O_RDONLY);
- 	ASSERT_LE(0, fd);
-@@ -1107,6 +1110,34 @@ TEST(alert_any)
- 	EXPECT_EQ(0, ret);
- 	EXPECT_EQ(2, index);
- 
-+	/* test wakeup via alert */
 +
-+	ret = ioctl(event, NTSYNC_IOC_EVENT_RESET, &signaled);
-+	EXPECT_EQ(0, ret);
++	fd = open("/dev/ntsync", O_CLOEXEC | O_RDONLY);
++	ASSERT_LE(0, fd);
++
++	sem_args.count = 0;
++	sem_args.max = 3;
++	objs[0] = ioctl(fd, NTSYNC_IOC_CREATE_SEM, &sem_args);
++	EXPECT_LE(0, objs[0]);
++
++	mutex_args.owner = 123;
++	mutex_args.count = 1;
++	objs[1] = ioctl(fd, NTSYNC_IOC_CREATE_MUTEX, &mutex_args);
++	EXPECT_LE(0, objs[1]);
 +
 +	wait_args.timeout = get_abs_timeout(1000);
 +	wait_args.objs = (uintptr_t)objs;
 +	wait_args.count = 2;
-+	wait_args.owner = 123;
-+	wait_args.index = 0xdeadbeef;
-+	wait_args.alert = event;
-+	thread_args.fd = fd;
-+	thread_args.args = &wait_args;
-+	thread_args.request = NTSYNC_IOC_WAIT_ANY;
-+	ret = pthread_create(&thread, NULL, wait_thread, &thread_args);
-+	EXPECT_EQ(0, ret);
-+
-+	ret = wait_for_thread(thread, 100);
-+	EXPECT_EQ(ETIMEDOUT, ret);
-+
-+	ret = ioctl(event, NTSYNC_IOC_EVENT_SET, &signaled);
-+	EXPECT_EQ(0, ret);
-+
-+	ret = wait_for_thread(thread, 100);
-+	EXPECT_EQ(0, ret);
-+	EXPECT_EQ(0, thread_args.ret);
-+	EXPECT_EQ(2, wait_args.index);
-+
- 	close(event);
- 
- 	/* test with an auto-reset event */
-@@ -1143,9 +1174,12 @@ TEST(alert_any)
- TEST(alert_all)
- {
- 	struct ntsync_event_args event_args = {0};
-+	struct ntsync_wait_args wait_args = {0};
- 	struct ntsync_sem_args sem_args = {0};
-+	struct wait_args thread_args;
- 	__u32 index, count, signaled;
- 	int objs[2], event, fd, ret;
-+	pthread_t thread;
- 
- 	fd = open("/dev/ntsync", O_CLOEXEC | O_RDONLY);
- 	ASSERT_LE(0, fd);
-@@ -1173,6 +1207,34 @@ TEST(alert_all)
- 	EXPECT_EQ(0, ret);
- 	EXPECT_EQ(2, index);
- 
-+	/* test wakeup via alert */
-+
-+	ret = ioctl(event, NTSYNC_IOC_EVENT_RESET, &signaled);
-+	EXPECT_EQ(0, ret);
-+
-+	wait_args.timeout = get_abs_timeout(1000);
-+	wait_args.objs = (uintptr_t)objs;
-+	wait_args.count = 2;
-+	wait_args.owner = 123;
-+	wait_args.index = 0xdeadbeef;
-+	wait_args.alert = event;
++	wait_args.owner = 456;
 +	thread_args.fd = fd;
 +	thread_args.args = &wait_args;
 +	thread_args.request = NTSYNC_IOC_WAIT_ALL;
@@ -104,17 +60,62 @@ index 72f078dde444..298b279729aa 100644
 +	ret = wait_for_thread(thread, 100);
 +	EXPECT_EQ(ETIMEDOUT, ret);
 +
-+	ret = ioctl(event, NTSYNC_IOC_EVENT_SET, &signaled);
++	count = 1;
++	ret = release_sem(objs[0], &count);
 +	EXPECT_EQ(0, ret);
++	EXPECT_EQ(0, count);
++
++	ret = pthread_tryjoin_np(thread, NULL);
++	EXPECT_EQ(EBUSY, ret);
++
++	check_sem_state(objs[0], 1, 3);
++
++	ret = wait_any(fd, 1, &objs[0], 123, &index);
++	EXPECT_EQ(0, ret);
++	EXPECT_EQ(0, index);
++
++	ret = unlock_mutex(objs[1], 123, &count);
++	EXPECT_EQ(0, ret);
++	EXPECT_EQ(1, count);
++
++	ret = pthread_tryjoin_np(thread, NULL);
++	EXPECT_EQ(EBUSY, ret);
++
++	check_mutex_state(objs[1], 0, 0);
++
++	count = 2;
++	ret = release_sem(objs[0], &count);
++	EXPECT_EQ(0, ret);
++	EXPECT_EQ(0, count);
++	check_sem_state(objs[0], 1, 3);
++	check_mutex_state(objs[1], 1, 456);
 +
 +	ret = wait_for_thread(thread, 100);
 +	EXPECT_EQ(0, ret);
 +	EXPECT_EQ(0, thread_args.ret);
-+	EXPECT_EQ(2, wait_args.index);
 +
- 	close(event);
- 
- 	/* test with an auto-reset event */
++	/* delete an object while it's being waited on */
++
++	wait_args.timeout = get_abs_timeout(200);
++	wait_args.owner = 123;
++	ret = pthread_create(&thread, NULL, wait_thread, &thread_args);
++	EXPECT_EQ(0, ret);
++
++	ret = wait_for_thread(thread, 100);
++	EXPECT_EQ(ETIMEDOUT, ret);
++
++	close(objs[0]);
++	close(objs[1]);
++
++	ret = wait_for_thread(thread, 200);
++	EXPECT_EQ(0, ret);
++	EXPECT_EQ(-1, thread_args.ret);
++	EXPECT_EQ(ETIMEDOUT, thread_args.err);
++
++	close(fd);
++}
++
+ TEST_HARNESS_MAIN
 -- 
 2.48.0.rc0
 

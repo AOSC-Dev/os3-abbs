@@ -1,5 +1,5 @@
-VER=24.11
+VER=24.12
 SRCS="tbl::https://mediaarea.net/download/source/libmediainfo/$VER/libmediainfo_$VER.tar.xz"
-CHKSUMS="sha256::96e44a617f90c8b63bb685ad53be6716b7df4221793c329780f02aea6e707aa1"
+CHKSUMS="sha256::1f4986207f75deb290915e6bf0b33e3e455774305dd266ffe8997c01aad65b27"
 CHKUPDATE="anitya::id=16249"
 SUBDIR="MediaInfoLib/Project/GNU/Library"

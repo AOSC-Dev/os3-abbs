@@ -4,5 +4,5 @@ PKGDEP="python-3 typing-extensions  dnspython"
 BUILDDEP="wheel python-build python-installer setuptools"
 PKGDES="A standardized database driver for Python platforms and development"
 
-ABTYPE=pep517
+#ABTYPE=pep517
 ABSPLITDBG=0

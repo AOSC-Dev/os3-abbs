@@ -1,0 +1,26 @@
+diff --git a/configure b/configure
+index 3b0abeb8b2e..de68baf9646 100755
+--- a/configure
++++ b/configure
+@@ -9628,6 +9628,10 @@ fi
+ if test "x$CFLAGS_FOR_TARGET" = x; then
+   if test "x${is_cross_compiler}" = xyes; then
+     CFLAGS_FOR_TARGET="-g -O2"
++    case " $CFLAGS " in
++      *" -mxgot "*) ;;
++      *) CFLAGS_FOR_TARGET="-mxgot $CFLAGS_FOR_TARGET" ;;
++    esac
+   else
+     CFLAGS_FOR_TARGET=$CFLAGS
+     case " $CFLAGS " in
+@@ -9645,6 +9649,10 @@ fi
+ if test "x$CXXFLAGS_FOR_TARGET" = x; then
+   if test "x${is_cross_compiler}" = xyes; then
+     CXXFLAGS_FOR_TARGET="-g -O2"
++    case " $CXXFLAGS " in
++      *" -mxgot "*) ;;
++      *) CXXFLAGS_FOR_TARGET="-mxgot $CXXFLAGS_FOR_TARGET" ;;
++    esac
+   else
+     CXXFLAGS_FOR_TARGET=$CXXFLAGS
+     case " $CXXFLAGS " in

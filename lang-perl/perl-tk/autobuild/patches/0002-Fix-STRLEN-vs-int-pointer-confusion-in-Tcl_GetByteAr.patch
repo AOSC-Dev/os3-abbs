@@ -1,0 +1,28 @@
+From bbbddf8b8808aa41ff8825f33432b7bae9d37c38 Mon Sep 17 00:00:00 2001
+From: salieri <maliya355@outlook.com>
+Date: Thu, 26 Dec 2024 10:33:53 +0800
+Subject: [PATCH 2/6] Fix STRLEN vs int pointer confusion in Tcl_GetByteAr
+
+---
+ objGlue.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/objGlue.c b/objGlue.c
+index d4927eaf..dbd6a50e 100644
+--- a/objGlue.c
++++ b/objGlue.c
+@@ -627,7 +627,10 @@ Tcl_GetByteArrayFromObj(Tcl_Obj * objPtr, int * lengthPtr)
+  sv_utf8_downgrade(objPtr, 0);
+  if (lengthPtr)
+   {
+-   return (unsigned char *) SvPV(objPtr, *lengthPtr);
++   STRLEN len;
++   unsigned char *s = SvPV(objPtr, len);
++   *lengthPtr = len;
++   return s;
+   }
+  else
+   {
+-- 
+2.34.1
+

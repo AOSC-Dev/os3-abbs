@@ -1,0 +1,25 @@
+From f889ee4c764cb2f65c1babbb8bc6efd9cf8d958d Mon Sep 17 00:00:00 2001
+From: salieri <maliya355@outlook.com>
+Date: Thu, 26 Dec 2024 10:37:34 +0800
+Subject: [PATCH 4/6] Fix incompatible pointer type in function GetTextIndex
+
+---
+ pTk/mTk/generic/tkCanvText.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pTk/mTk/generic/tkCanvText.c b/pTk/mTk/generic/tkCanvText.c
+index 1a950a5a..de03da27 100644
+--- a/pTk/mTk/generic/tkCanvText.c
++++ b/pTk/mTk/generic/tkCanvText.c
+@@ -1234,7 +1234,7 @@ GetTextIndex(interp, canvas, itemPtr, obj, indexPtr)
+ 				 * index. */
+ {
+     TextItem *textPtr = (TextItem *) itemPtr;
+-    size_t length;
++    int length;
+     int c;
+     TkCanvas *canvasPtr = (TkCanvas *) canvas;
+     Tk_CanvasTextInfo *textInfoPtr = textPtr->textInfoPtr;
+-- 
+2.34.1
+

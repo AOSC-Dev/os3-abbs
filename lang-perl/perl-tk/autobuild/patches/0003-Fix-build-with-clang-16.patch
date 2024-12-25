@@ -1,0 +1,25 @@
+From 3f7dfc09d6571ab395a37c733305576e46e19f04 Mon Sep 17 00:00:00 2001
+From: salieri <maliya355@outlook.com>
+Date: Thu, 26 Dec 2024 10:36:55 +0800
+Subject: [PATCH 3/6] Fix build with clang-16
+
+---
+ pTk/Xlib.t | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pTk/Xlib.t b/pTk/Xlib.t
+index a193fc5e..c90964cb 100644
+--- a/pTk/Xlib.t
++++ b/pTk/Xlib.t
+@@ -331,7 +331,7 @@ VFUNC(int,XIntersectRegion,V_XIntersectRegion,_ANSI_ARGS_((Region, Region, Regio
+ #endif /* !DO_X_EXCLUDE */
+ 
+ #ifndef XKeycodeToKeysym
+-VFUNC(KeySym,XKeycodeToKeysym,V_XKeycodeToKeysym,_ANSI_ARGS_((Display *, unsigned int, int)))
++VFUNC(KeySym,XKeycodeToKeysym,V_XKeycodeToKeysym,_ANSI_ARGS_((Display *, KeyCode, int)))
+ #endif /* #ifndef XKeycodeToKeysym */
+ 
+ #ifndef XKeysymToString
+-- 
+2.34.1
+

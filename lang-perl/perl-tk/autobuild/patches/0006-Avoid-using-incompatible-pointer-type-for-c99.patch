@@ -1,0 +1,98 @@
+From 4bf2e1dcbef98f01837d8e85979a1af08dc17cb6 Mon Sep 17 00:00:00 2001
+From: salieri <maliya355@outlook.com>
+Date: Thu, 26 Dec 2024 10:39:37 +0800
+Subject: [PATCH 6/6] Avoid using incompatible pointer type for c99
+
+---
+ config/signedchar.c       | 2 +-
+ config/unsigned.c         | 5 +++--
+ pTk/config/Hstrdup.c      | 2 +-
+ pTk/config/Hstrtoul.c     | 1 +
+ pTk/mTk/generic/tkEvent.c | 1 +
+ pTk/mTk/generic/tkImage.c | 2 ++
+ 6 files changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/config/signedchar.c b/config/signedchar.c
+index bcf419dc..e96c1b1e 100644
+--- a/config/signedchar.c
++++ b/config/signedchar.c
+@@ -1,4 +1,4 @@
+-main()
++int main(void)
+ {
+  signed char x = 'a';
+  return (x - 'a');
+diff --git a/config/unsigned.c b/config/unsigned.c
+index 914506bb..fa9669ab 100644
+--- a/config/unsigned.c
++++ b/config/unsigned.c
+@@ -1,15 +1,16 @@
++#include <stdio.h>
+ int main()
+ {
+  char x[] = "\377";
+  if (x[0] > 0)
+   {
+    printf("char is unsigned type\n");
+-   exit(0);
++   return 0;
+   }
+  else
+   {
+    printf("char is signed type\n");
+-   exit(1);
++   return 1;
+   }
+ }
+ 
+diff --git a/pTk/config/Hstrdup.c b/pTk/config/Hstrdup.c
+index bbde6d2c..d3054134 100644
+--- a/pTk/config/Hstrdup.c
++++ b/pTk/config/Hstrdup.c
+@@ -6,7 +6,7 @@ int main()
+ {char *e;
+  char *p = strdup(STRING);
+  if (!p || strcmp(p,STRING))
+-  exit(1);
++  return 1;
+  return 0;
+ }
+ 
+diff --git a/pTk/config/Hstrtoul.c b/pTk/config/Hstrtoul.c
+index a5be7031..e29e4e4e 100644
+--- a/pTk/config/Hstrtoul.c
++++ b/pTk/config/Hstrtoul.c
+@@ -1,4 +1,5 @@
+ #include <stdlib.h>
++#include <string.h>
+ 
+ int main()
+ {char *e;
+diff --git a/pTk/mTk/generic/tkEvent.c b/pTk/mTk/generic/tkEvent.c
+index 3fc5821b..bdcb712f 100644
+--- a/pTk/mTk/generic/tkEvent.c
++++ b/pTk/mTk/generic/tkEvent.c
+@@ -1153,6 +1153,7 @@ TkEventDeadWindow(winPtr)
+ Time
+ TkCurrentTime(dispPtr, fallbackCurrent)
+     TkDisplay *dispPtr;		/* Display for which the time is desired. */
++    int fallbackCurrent;
+ {
+     register XEvent *eventPtr;
+     ThreadSpecificData *tsdPtr = (ThreadSpecificData *)
+diff --git a/pTk/mTk/generic/tkImage.c b/pTk/mTk/generic/tkImage.c
+index 7bfc3406..45b39573 100644
+--- a/pTk/mTk/generic/tkImage.c
++++ b/pTk/mTk/generic/tkImage.c
+@@ -1083,6 +1083,8 @@ int x;
+ int y;
+ int width;
+ int height;
++int imgWidth;
++int imgHeight;
+ {
+     Tk_Tile tile = (Tk_Tile) clientData;
+     Tk_TileChange *handler;
+-- 
+2.34.1
+

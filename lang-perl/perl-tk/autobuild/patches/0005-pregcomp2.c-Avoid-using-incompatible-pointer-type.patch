@@ -1,0 +1,23 @@
+From fb545116e8233bd51b4fbdbe86b30f5a4f91ba78 Mon Sep 17 00:00:00 2001
+From: salieri <maliya355@outlook.com>
+Date: Thu, 26 Dec 2024 10:38:32 +0800
+Subject: [PATCH 5/6] pregcomp2.c: Avoid using incompatible pointer type
+
+---
+ config/pregcomp2.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/config/pregcomp2.c b/config/pregcomp2.c
+index 98506999..bb0b4539 100644
+--- a/config/pregcomp2.c
++++ b/config/pregcomp2.c
+@@ -4,5 +4,5 @@
+ 
+ int main() {
+     SV* sv = newSViv(0);
+-    regexp* rx = pregcomp(sv, 0);
++    void* rx = pregcomp(sv, 0);
+ }
+-- 
+2.34.1
+

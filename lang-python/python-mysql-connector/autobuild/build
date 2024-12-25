@@ -1,0 +1,7 @@
+
+cd mysql-connector-python/
+
+python3 -m build --no-isolation --wheel 
+
+python -m installer --destdir="$PKGDIR" /dist/*.whl
+#python -m installer --destdir="$PKGDIR" "$SRCDIR"/mysqlx-connector-python/dist/*.whl

@@ -1,0 +1,10 @@
+PKGNAME=wayvnc
+PKGSEC=net
+PKGDEP="aml mesa libdrm libxkbcommon neatvnc linux-pam pixman jansson"
+BUILDDEP="meson ninja scdoc"
+PKGDES="A VNC server for wlroots-based Wayland compositors"
+
+MESON_AFTER=(
+    -Dman-pages=enabled
+    -Dtests=false
+)

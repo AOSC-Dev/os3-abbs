@@ -1,6 +1,5 @@
-VER=2.4.0
+VER=2.5.1
 SRCS="tbl::https://rubygems.org/downloads/kramdown-$VER.gem"
-CHKSUMS="sha256::b62e5bcbd6ea20c7a6730ebbb2a107237856e14f29cebf5b10c876cc1a2481c5"
+CHKSUMS="sha256::87bbb6abd9d3cebe4fc1f33e367c392b4500e6f8fa19dd61c0972cf4afe7368c"
 CHKUPDATE="anitya::id=4451"
 SUBDIR="."
-REL=1

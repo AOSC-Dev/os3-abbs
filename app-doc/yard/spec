@@ -1,6 +1,5 @@
-VER=0.9.26
+VER=0.9.37
 SRCS="tbl::https://rubygems.org/downloads/yard-$VER.gem"
-CHKSUMS="sha256::30594aa05cf737aa725c73444c7be3d54a443d0e258e1503da4eb1a0822cf963"
+CHKSUMS="sha256::a6e910399e78e613f80ba9add9ba7c394b1a935f083cccbef82903a3d2a26992"
 CHKUPDATE="anitya::id=4675"
 SUBDIR=.
-REL=2

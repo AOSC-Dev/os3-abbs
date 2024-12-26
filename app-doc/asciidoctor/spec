@@ -2,3 +2,4 @@ VER=2.0.23
 SRCS="tbl::https://rubygems.org/downloads/asciidoctor-$VER.gem"
 CHKSUMS="sha256::52208807f237dfa0ca29882f8b13d60b820496116ad191cf197ca56f2b7fddf3"
 CHKUPDATE="anitya::id=4258"
+REL=1

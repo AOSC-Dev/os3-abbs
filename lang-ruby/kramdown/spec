@@ -3,3 +3,4 @@ SRCS="tbl::https://rubygems.org/downloads/kramdown-$VER.gem"
 CHKSUMS="sha256::b62e5bcbd6ea20c7a6730ebbb2a107237856e14f29cebf5b10c876cc1a2481c5"
 CHKUPDATE="anitya::id=4451"
 SUBDIR="."
+REL=1

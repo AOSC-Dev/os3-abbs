@@ -6,7 +6,6 @@ app-doc/maruku
 app-doc/texlive
 app-doc/yard
 app-editors/vim
-app-penetration/john
 app-utils/dislocker
 app-utils/teamocil
 app-web/elinks

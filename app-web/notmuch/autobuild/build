@@ -1,0 +1,14 @@
+# Note: This is not a real Autotools source tree.
+abinfo "Configuring notmuch ..."
+"$SRCDIR"/configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --includedir=/usr/include \
+    --without-zsh-completion
+
+abinfo "Building notmuch ..."
+make
+
+abinfo "Installing notmuch ..."
+make install \
+    DESTDIR="$PKGDIR"

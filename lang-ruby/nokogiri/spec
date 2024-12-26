@@ -3,3 +3,4 @@ SRCS="tbl::https://rubygems.org/downloads/nokogiri-$VER.gem"
 CHKSUMS="sha256::f819cbfdfb0a7b19c9c52c6f2ca63df0e58a6125f4f139707b586b9511d7fe95"
 CHKUPDATE="anitya::id=4641"
 SUBDIR="."
+REL=1

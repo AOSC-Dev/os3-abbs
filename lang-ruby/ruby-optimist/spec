@@ -1,5 +1,4 @@
-VER=3.0.0
+VER=3.2.0
 SRCS="file::https://rubygems.org/downloads/optimist-$VER.gem"
-CHKSUMS="sha256::9248b63be64ee1516f2e1a1d98d8528571eb2a48399e19188db1d865c7cd5d16"
+CHKSUMS="sha256::01c9e4826bbcae048f96ce079eef662564829016b08f1f1bdc024b0fb398771c"
 CHKUPDATE="anitya::id=94873"
-REL=1

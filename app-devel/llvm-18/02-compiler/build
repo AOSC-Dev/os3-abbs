@@ -70,3 +70,16 @@ strip \
 abinfo "Making compatible version symlinks ..."
 ln -sv "${PKGVER%%.*}" \
     "$PKGDIR"/usr/lib/llvm-${PKGVER%%.*}/lib/clang/"${PKGVER}"
+
+# FIXME: Chromium would fail to detect Clang prefix unless a full absolute
+# path to the compilers were set. Debian creates a symlink:
+#
+#   /usr/lib/clang/${PKGVER%%.*}
+#       => /usr/lib/llvm-${PKGVER%%.*}/lib/clang/${PKGVER%%.*}
+#
+# to counteract this - not sure if needed anywhere else but create this
+# symlink just to be safe.
+abinfo "Making Clang prefix symlinks ..."
+mkdir -pv "$PKGDIR"/usr/lib/clang
+ln -sv ../llvm-${PKGVER%%.*}/lib/clang/${PKGVER%%.*} \
+    "$PKGDIR"/usr/lib/clang/${PKGVER%%.*}

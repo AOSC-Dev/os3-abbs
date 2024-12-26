@@ -1,11 +1,11 @@
-VER=127.0.6533.119
+VER=131.0.6778.204
 LAUNCHERVER=8
 SRCS="https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$VER.tar.xz \
       https://github.com/foutrelis/chromium-launcher/archive/v$LAUNCHERVER.tar.gz \
       file::rename=chromium-$VER.txt::https://chromium.googlesource.com/chromium/src/+/$VER?format=TEXT"
-CHKSUMS="sha256::acc9e3f9fd2d180b8831865a1ac4f5cdd9ffe6211f47f467296d9ee1be2a577e \
+CHKSUMS="sha256::c03b6d9c10a2b2db4b1d2cef0657e85ad2e2d836f029655106cebd9a140692e6 \
          sha256::213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a \
-         sha256::a9a993b61bc5444b1d38120b13ca53655fd0a20b506d204e802d2a97be679e8e"
+         sha256::06352f7ea6c2c5147824fe880e36173e9be6a541368cb9bb48c57f55a7e58b14"
 SUBDIR="chromium-$VER"
 CHKUPDATE="anitya::id=13344"
 ENVREQ__AMD64="core=96"

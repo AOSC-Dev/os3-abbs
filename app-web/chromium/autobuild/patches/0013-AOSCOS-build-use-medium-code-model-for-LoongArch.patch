@@ -1,0 +1,31 @@
+From 8e0743ca4a737337578c1d052475ec228f7d6be4 Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.io>
+Date: Tue, 24 Dec 2024 07:41:15 -0800
+Subject: [PATCH 13/14] AOSCOS: build: use medium code model for LoongArch
+
+This is needed to fix relaxation failure during linkage.
+
+Link: https://github.com/AOSC-Dev/chromium-loongarch64/blob/439f324cc6443628e6c8184263f11e38f1ded5ea/chromium/chromium-131.0.6778.85.4006-loongarch64-medium-cmodel.diff
+Co-authored-by: Jiajie Chen <c@jia.je>
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ build/rust/rust_target.gni | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/build/rust/rust_target.gni b/build/rust/rust_target.gni
+index b8b0e3a0ea1..6969c9c485c 100644
+--- a/build/rust/rust_target.gni
++++ b/build/rust/rust_target.gni
+@@ -399,6 +399,9 @@ template("rust_target") {
+       if (_rustc_metadata != "") {
+         rustflags += [ "-Cmetadata=${_rustc_metadata}" ]
+       }
++      if (current_cpu == "loong64") {
++        rustflags += [ "-Ccode-model=medium" ]
++      }
+       rustenv = _rustenv
+ 
+       if (_generate_crate_root) {
+-- 
+2.47.1
+

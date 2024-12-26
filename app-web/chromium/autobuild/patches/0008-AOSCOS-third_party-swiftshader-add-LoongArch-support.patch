@@ -1,0 +1,191 @@
+From 70d61b8e550bbf63e24862aa1b19dffd89b6f01b Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.io>
+Date: Tue, 24 Dec 2024 21:38:58 -0800
+Subject: [PATCH 08/14] AOSCOS: third_party/swiftshader: add LoongArch support
+
+Link: https://github.com/AOSC-Dev/chromium-loongarch64/blob/439f324cc6443628e6c8184263f11e38f1ded5ea/chromium/chromium-131.0.6778.85.4001-loongarch64-swiftshader.diff
+Co-authored-by: Jiajie Chen <c@jia.je>
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ third_party/swiftshader/src/Reactor/BUILD.gn   |  6 +++++-
+ third_party/swiftshader/src/Vulkan/BUILD.gn    |  1 +
+ .../linux/include/llvm/Config/AsmParsers.def   |  3 +++
+ .../linux/include/llvm/Config/AsmPrinters.def  |  3 +++
+ .../include/llvm/Config/Disassemblers.def      |  3 +++
+ .../linux/include/llvm/Config/Targets.def      |  3 +++
+ .../linux/include/llvm/Config/llvm-config.h    | 18 ++++++++++++++++++
+ 7 files changed, 36 insertions(+), 1 deletion(-)
+
+diff --git a/third_party/swiftshader/src/Reactor/BUILD.gn b/third_party/swiftshader/src/Reactor/BUILD.gn
+index 67dfeb0ec88..c9683912e75 100644
+--- a/third_party/swiftshader/src/Reactor/BUILD.gn
++++ b/third_party/swiftshader/src/Reactor/BUILD.gn
+@@ -307,7 +307,11 @@ if (supports_subzero) {
+ 
+ if (supports_llvm) {
+   swiftshader_source_set("swiftshader_llvm_reactor") {
+-    llvm_dir = "../../third_party/llvm-10.0"
++    if (current_cpu == "loong64") {
++      llvm_dir = "../../third_party/llvm-16.0"
++    } else {
++      llvm_dir = "../../third_party/llvm-10.0"
++    }
+ 
+     deps = [
+       ":swiftshader_reactor_base",
+diff --git a/third_party/swiftshader/src/Vulkan/BUILD.gn b/third_party/swiftshader/src/Vulkan/BUILD.gn
+index 852068cade0..fb6618f9d3a 100644
+--- a/third_party/swiftshader/src/Vulkan/BUILD.gn
++++ b/third_party/swiftshader/src/Vulkan/BUILD.gn
+@@ -229,6 +229,7 @@ swiftshader_shared_library("swiftshader_libvulkan") {
+   }
+ 
+   deps = [ ":_swiftshader_libvulkan" ]
++  libs = [ "m" ]
+ }
+ 
+ swiftshader_static_library("swiftshader_libvulkan_static") {
+diff --git a/third_party/swiftshader/third_party/llvm-16.0/configs/linux/include/llvm/Config/AsmParsers.def b/third_party/swiftshader/third_party/llvm-16.0/configs/linux/include/llvm/Config/AsmParsers.def
+index 2af3e28e82f..521454bdff8 100644
+--- a/third_party/swiftshader/third_party/llvm-16.0/configs/linux/include/llvm/Config/AsmParsers.def
++++ b/third_party/swiftshader/third_party/llvm-16.0/configs/linux/include/llvm/Config/AsmParsers.def
+@@ -45,6 +45,9 @@ LLVM_ASM_PARSER(PowerPC)
+ #if defined(__riscv)
+ LLVM_ASM_PARSER(RISCV)
+ #endif
++#if defined(__loongarch__)
++LLVM_ASM_PARSER(LoongArch)
++#endif
+ 
+ 
+ #undef LLVM_ASM_PARSER
+diff --git a/third_party/swiftshader/third_party/llvm-16.0/configs/linux/include/llvm/Config/AsmPrinters.def b/third_party/swiftshader/third_party/llvm-16.0/configs/linux/include/llvm/Config/AsmPrinters.def
+index 2f675be26f3..28eb68ec491 100644
+--- a/third_party/swiftshader/third_party/llvm-16.0/configs/linux/include/llvm/Config/AsmPrinters.def
++++ b/third_party/swiftshader/third_party/llvm-16.0/configs/linux/include/llvm/Config/AsmPrinters.def
+@@ -45,6 +45,9 @@ LLVM_ASM_PRINTER(PowerPC)
+ #if defined(__riscv)
+ LLVM_ASM_PRINTER(RISCV)
+ #endif
++#if defined(__loongarch__)
++LLVM_ASM_PRINTER(LoongArch)
++#endif
+ 
+ 
+ #undef LLVM_ASM_PRINTER
+diff --git a/third_party/swiftshader/third_party/llvm-16.0/configs/linux/include/llvm/Config/Disassemblers.def b/third_party/swiftshader/third_party/llvm-16.0/configs/linux/include/llvm/Config/Disassemblers.def
+index 80e3a1374d4..26ff566ff64 100644
+--- a/third_party/swiftshader/third_party/llvm-16.0/configs/linux/include/llvm/Config/Disassemblers.def
++++ b/third_party/swiftshader/third_party/llvm-16.0/configs/linux/include/llvm/Config/Disassemblers.def
+@@ -45,6 +45,9 @@ LLVM_DISASSEMBLER(PowerPC)
+ #if defined(__riscv)
+ LLVM_DISASSEMBLER(RISCV)
+ #endif
++#if defined(__loongarch__)
++LLVM_DISASSEMBLER(LoongArch)
++#endif
+ 
+ 
+ #undef LLVM_DISASSEMBLER
+diff --git a/third_party/swiftshader/third_party/llvm-16.0/configs/linux/include/llvm/Config/Targets.def b/third_party/swiftshader/third_party/llvm-16.0/configs/linux/include/llvm/Config/Targets.def
+index d34b0eaee75..91e9c277817 100644
+--- a/third_party/swiftshader/third_party/llvm-16.0/configs/linux/include/llvm/Config/Targets.def
++++ b/third_party/swiftshader/third_party/llvm-16.0/configs/linux/include/llvm/Config/Targets.def
+@@ -44,6 +44,9 @@ LLVM_TARGET(PowerPC)
+ #if defined(__riscv)
+ LLVM_TARGET(RISCV)
+ #endif
++#if defined(__loongarch__)
++LLVM_TARGET(LoongArch)
++#endif
+ 
+ 
+ #undef LLVM_TARGET
+diff --git a/third_party/swiftshader/third_party/llvm-16.0/configs/linux/include/llvm/Config/llvm-config.h b/third_party/swiftshader/third_party/llvm-16.0/configs/linux/include/llvm/Config/llvm-config.h
+index d9cce40e4e3..1be6ba9507d 100644
+--- a/third_party/swiftshader/third_party/llvm-16.0/configs/linux/include/llvm/Config/llvm-config.h
++++ b/third_party/swiftshader/third_party/llvm-16.0/configs/linux/include/llvm/Config/llvm-config.h
+@@ -47,6 +47,8 @@
+ #define LLVM_DEFAULT_TARGET_TRIPLE "powerpc64le-unknown-linux-gnu"
+ #elif defined(__riscv)
+ #define LLVM_DEFAULT_TARGET_TRIPLE "riscv64-unknown-linux-gnu"
++#elif defined(__loongarch__)
++#define LLVM_DEFAULT_TARGET_TRIPLE "loongarch64-unknown-linux-gnu"
+ #else
+ #error "unknown architecture"
+ #endif
+@@ -76,6 +78,8 @@
+ #define LLVM_HOST_TRIPLE "powerpc64le-unknown-linux-gnu"
+ #elif defined(__riscv)
+ #define LLVM_HOST_TRIPLE "riscv64-unknown-linux-gnu"
++#elif defined(__loongarch__)
++#define LLVM_HOST_TRIPLE "loongarch64-unknown-linux-gnu"
+ #else
+ #error "unknown architecture"
+ #endif
+@@ -95,6 +99,8 @@
+ #define LLVM_NATIVE_ARCH PowerPC
+ #elif defined(__riscv)
+ #define LLVM_NATIVE_ARCH RISCV
++#elif defined(__loongarch__)
++#define LLVM_NATIVE_ARCH LoongArch
+ #else
+ #error "unknown architecture"
+ #endif
+@@ -114,6 +120,8 @@
+ #define LLVM_NATIVE_ASMPARSER LLVMInitializePowerPCAsmParser
+ #elif defined(__riscv)
+ #define LLVM_NATIVE_ASMPARSER LLVMInitializeRISCVAsmParser
++#elif defined(__loongarch__)
++#define LLVM_NATIVE_ASMPARSER LLVMInitializeLoongArchAsmParser
+ #else
+ #error "unknown architecture"
+ #endif
+@@ -133,6 +141,8 @@
+ #define LLVM_NATIVE_ASMPRINTER LLVMInitializePowerPCAsmPrinter
+ #elif defined(__riscv)
+ #define LLVM_NATIVE_ASMPRINTER LLVMInitializeRISCVAsmPrinter
++#elif defined(__loongarch__)
++#define LLVM_NATIVE_ASMPRINTER LLVMInitializeLoongArchAsmPrinter
+ #else
+ #error "unknown architecture"
+ #endif
+@@ -152,6 +162,8 @@
+ #define LLVM_NATIVE_DISASSEMBLER LLVMInitializePowerPCDisassembler
+ #elif defined(__riscv)
+ #define LLVM_NATIVE_DISASSEMBLER LLVMInitializeRISCVDisassembler
++#elif defined(__loongarch__)
++#define LLVM_NATIVE_DISASSEMBLER LLVMInitializeLoongArchDisassembler
+ #else
+ #error "unknown architecture"
+ #endif
+@@ -171,6 +183,8 @@
+ #define LLVM_NATIVE_TARGET LLVMInitializePowerPCTarget
+ #elif defined(__riscv)
+ #define LLVM_NATIVE_TARGET LLVMInitializeRISCVTarget
++#elif defined(__loongarch__)
++#define LLVM_NATIVE_TARGET LLVMInitializeLoongArchTarget
+ #else
+ #error "unknown architecture"
+ #endif
+@@ -190,6 +204,8 @@
+ #define LLVM_NATIVE_TARGETINFO LLVMInitializePowerPCTargetInfo
+ #elif defined(__riscv)
+ #define LLVM_NATIVE_TARGETINFO LLVMInitializeRISCVTargetInfo
++#elif defined(__loongarch__)
++#define LLVM_NATIVE_TARGETINFO LLVMInitializeLoongArchTargetInfo
+ #else
+ #error "unknown architecture"
+ #endif
+@@ -209,6 +225,8 @@
+ #define LLVM_NATIVE_TARGETMC LLVMInitializePowerPCTargetMC
+ #elif defined(__riscv)
+ #define LLVM_NATIVE_TARGETMC LLVMInitializeRISCVTargetMC
++#elif defined(__loongarch__)
++#define LLVM_NATIVE_TARGETMC LLVMInitializeLoongArchTargetMC
+ #else
+ #error "unknown architecture"
+ #endif
+-- 
+2.47.1
+

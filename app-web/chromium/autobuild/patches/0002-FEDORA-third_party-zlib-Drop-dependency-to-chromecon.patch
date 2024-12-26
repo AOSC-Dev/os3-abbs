@@ -1,17 +1,19 @@
-From 20022b58e765008d48da080b306fa0dbbbbd6c03 Mon Sep 17 00:00:00 2001
+From 6cdf1354bd0a82a4e884ee36e86126e6dc052359 Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Fri, 26 Jul 2024 05:04:35 +0800
-Subject: [PATCH 02/27] [Fedora] chromium-77.0.3865.75-no-zlib-mangle.patch
+Subject: [PATCH 02/14] FEDORA: third_party/zlib: Drop dependency to
+ chromeconf.h
 
-https://src.fedoraproject.org/rpms/chromium/blob/5b27efc518c86b93dd2f30e877536599ed07beac/f/chromium-77.0.3865.75-no-zlib-mangle.patch
-
+Link: https://src.fedoraproject.org/rpms/chromium/blob/5b27efc518c86b93dd2f30e877536599ed07beac/f/chromium-77.0.3865.75-no-zlib-mangle.patch
 Co-authored-by: Tomas Popela <tpopela@redhat.com>
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
 ---
  third_party/zlib/zconf.h | 12 ------------
  1 file changed, 12 deletions(-)
 
 diff --git a/third_party/zlib/zconf.h b/third_party/zlib/zconf.h
-index 55fe101da6..a424506d20 100644
+index 55fe101da64..a424506d20b 100644
 --- a/third_party/zlib/zconf.h
 +++ b/third_party/zlib/zconf.h
 @@ -8,18 +8,6 @@
@@ -34,5 +36,5 @@ index 55fe101da6..a424506d20 100644
   * If you *really* need a unique prefix for all types and library functions,
   * compile with -DZ_PREFIX. The "standard" zlib should be compiled without it.
 -- 
-2.46.0
+2.47.1
 

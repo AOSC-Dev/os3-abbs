@@ -1,11 +1,17 @@
-abinfo 'Setting $GNFLAGS ...'
+abinfo 'Setting up build environment ...'
+# FIXME: Chromium fails to detect the correct LLVM/Clang prefix unless the
+# the full absolute path to the compiler is passed with CC/CXX.
+export CC=$(readlink -f $(which clang))
+export CXX=$(readlink -f $(which clang++))
 RUSTC_VERSION="$(rustc --version)"
 CLANG_VERSION="$(clang --version | sed -n 's/clang version //p' | cut -d. -f1)"
+
+abinfo 'Setting $GNFLAGS ...'
 GNFLAGS=(
     'google_api_key="AIzaSyBGpe01okUSW2GQDIgLovY23Mj1RKzzOOY"'
     'custom_toolchain="//build/toolchain/linux/unbundle:default"'
     'host_toolchain="//build/toolchain/linux/unbundle:default"'
-    'is_clang=true'
+    'is_clang=false'
     'clang_base_path="/usr"'
     'clang_use_chrome_plugins=false'
     "clang_version=\"$CLANG_VERSION\""
@@ -64,7 +70,7 @@ cp -av \
     "$SRCDIR"/out/Release/icudtl.dat \
     "$SRCDIR"/out/Release/chrome_crashpad_handler \
     "$SRCDIR"/out/Release/libvk_swiftshader.so \
-    "$SRCDIR"/out/Release/vk_swiftshader_icd.json \
+    "$SRCDIR"/third_party/swiftshader/src/Vulkan/vk_swiftshader_icd.json \
     "$SRCDIR"/out/Release/libEGL.so \
     "$SRCDIR"/out/Release/libGLESv2.so \
     "$PKGDIR"/usr/lib/chromium/

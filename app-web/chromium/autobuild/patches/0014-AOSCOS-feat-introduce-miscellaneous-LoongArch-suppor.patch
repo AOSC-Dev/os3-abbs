@@ -1,28 +1,52 @@
-From ad0dad495d94eefc623b356775c463f14704612e Mon Sep 17 00:00:00 2001
-From: Kexy Biscuit <kexybiscuit@aosc.io>
-Date: Thu, 8 Aug 2024 04:13:27 +0800
-Subject: [PATCH 18/27] [AOSC] patch
+From 9ac126c77e0b2407d3e4989e06ac51c20c85c29b Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.io>
+Date: Tue, 24 Dec 2024 07:42:34 -0800
+Subject: [PATCH 14/14] AOSCOS: feat: introduce miscellaneous LoongArch support
 
-https://github.com/AOSC-Dev/aosc-os-abbs/blob/c0cc5a4aab518bf24451de466fba520ea70ddc34/app-web/chromium/autobuild/patches/4007-loongarch64.patch
-
+Link: https://github.com/AOSC-Dev/chromium-loongarch64/blob/439f324cc6443628e6c8184263f11e38f1ded5ea/chromium/chromium-131.0.6778.85.4007-loongarch64.diff
 Co-authored-by: Jiajie Chen <c@jia.je>
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
 ---
+ base/BUILD.gn                                 |  2 +-
  .../partition_allocator/partition_alloc.gni   |  2 +-
  .../src/partition_alloc/BUILD.gn              |  3 +
  .../stack/asm/loong64/push_registers_asm.cc   | 49 +++++++++++
+ base/process/launch.h                         |  2 +-
  base/system/sys_info.cc                       |  2 +
- build/config/rust.gni                         |  4 +
+ build/config/c++/BUILD.gn                     |  1 +
+ build/config/rust.gni                         |  5 ++
+ components/variations/proto/study.proto       |  2 +
+ .../variations_field_trial_creator_base.cc    |  3 +
  content/common/user_agent.cc                  |  2 +
+ third_party/angle/BUILD.gn                    |  1 +
  .../loongarch64/webgl_image_conversion_lsx.h  | 88 +++++++++----------
  .../boringssl/src/include/openssl/target.h    |  2 +
- 8 files changed, 107 insertions(+), 45 deletions(-)
+ third_party/perfetto/src/base/BUILD.gn        |  1 +
+ third_party/protobuf-javascript/BUILD.gn      |  1 +
+ third_party/protobuf/BUILD.gn                 |  1 +
+ third_party/skia/src/opts/SkOpts_SetTarget.h  |  3 +-
+ ui/qt/BUILD.gn                                |  1 +
+ 19 files changed, 123 insertions(+), 48 deletions(-)
  create mode 100644 base/allocator/partition_allocator/src/partition_alloc/stack/asm/loong64/push_registers_asm.cc
 
+diff --git a/base/BUILD.gn b/base/BUILD.gn
+index 4c0e4645f64..0faf08ac0ef 100644
+--- a/base/BUILD.gn
++++ b/base/BUILD.gn
+@@ -1015,7 +1015,7 @@ component("base") {
+   defines = [ "BASE_IMPLEMENTATION" ]
+   data = []
+   data_deps = []
+-  libs = []
++  libs = [ "m" ]
+   frameworks = []
+ 
+   configs += [
 diff --git a/base/allocator/partition_allocator/partition_alloc.gni b/base/allocator/partition_allocator/partition_alloc.gni
-index ba109879f8..ba110befac 100644
+index 17da3298e76..b58397dce42 100644
 --- a/base/allocator/partition_allocator/partition_alloc.gni
 +++ b/base/allocator/partition_allocator/partition_alloc.gni
-@@ -244,7 +244,7 @@ use_starscan = build_with_chromium && has_64_bit_pointers
+@@ -304,7 +304,7 @@ declare_args() {
  
  stack_scan_supported =
      current_cpu == "x64" || current_cpu == "x86" || current_cpu == "arm" ||
@@ -32,10 +56,10 @@ index ba109879f8..ba110befac 100644
  # We want to provide assertions that guard against inconsistent build
  # args, but there is no point in having them fire if we're not building
 diff --git a/base/allocator/partition_allocator/src/partition_alloc/BUILD.gn b/base/allocator/partition_allocator/src/partition_alloc/BUILD.gn
-index 9823fb0301..5760c94691 100644
+index ec0b490a859..eff7e810fdb 100644
 --- a/base/allocator/partition_allocator/src/partition_alloc/BUILD.gn
 +++ b/base/allocator/partition_allocator/src/partition_alloc/BUILD.gn
-@@ -519,6 +519,9 @@ if (is_clang_or_gcc) {
+@@ -500,6 +500,9 @@ if (is_clang_or_gcc) {
      } else if (current_cpu == "riscv64") {
        assert(stack_scan_supported)
        sources += [ "stack/asm/riscv64/push_registers_asm.cc" ]
@@ -47,7 +71,7 @@ index 9823fb0301..5760c94691 100644
        assert(!stack_scan_supported)
 diff --git a/base/allocator/partition_allocator/src/partition_alloc/stack/asm/loong64/push_registers_asm.cc b/base/allocator/partition_allocator/src/partition_alloc/stack/asm/loong64/push_registers_asm.cc
 new file mode 100644
-index 0000000000..574c9ea846
+index 00000000000..574c9ea846e
 --- /dev/null
 +++ b/base/allocator/partition_allocator/src/partition_alloc/stack/asm/loong64/push_registers_asm.cc
 @@ -0,0 +1,49 @@
@@ -100,11 +124,24 @@ index 0000000000..574c9ea846
 +    "  ld.d $fp, $sp, 72                                 \n"
 +    "  addi.d $sp, $sp, 96                               \n"
 +    "  jr $ra                                            \n");
+diff --git a/base/process/launch.h b/base/process/launch.h
+index 009d75093c7..d570b93740c 100644
+--- a/base/process/launch.h
++++ b/base/process/launch.h
+@@ -55,7 +55,7 @@ namespace base {
+ // defined as a constant.
+ 
+ // These constants are borrowed from glibc’s (arch)/bits/pthread_stack_min.h.
+-#if defined(ARCH_CPU_ARM64)
++#if defined(ARCH_CPU_ARM64) || defined(ARCH_CPU_LOONGARCH64)
+ #define PTHREAD_STACK_MIN_CONST \
+   (__builtin_constant_p(PTHREAD_STACK_MIN) ? PTHREAD_STACK_MIN : 131072)
+ #else
 diff --git a/base/system/sys_info.cc b/base/system/sys_info.cc
-index 38bde5a139..68d8a2f460 100644
+index 745d42ed400..981c00f5990 100644
 --- a/base/system/sys_info.cc
 +++ b/base/system/sys_info.cc
-@@ -257,6 +257,8 @@ std::string SysInfo::ProcessCPUArchitecture() {
+@@ -261,6 +261,8 @@ std::string SysInfo::ProcessCPUArchitecture() {
    return "ARM_64";
  #elif defined(ARCH_CPU_RISCV64)
    return "RISCV_64";
@@ -113,20 +150,33 @@ index 38bde5a139..68d8a2f460 100644
  #else
    return std::string();
  #endif
+diff --git a/build/config/c++/BUILD.gn b/build/config/c++/BUILD.gn
+index a6ddbe4967e..19f2eace114 100644
+--- a/build/config/c++/BUILD.gn
++++ b/build/config/c++/BUILD.gn
+@@ -89,6 +89,7 @@ config("runtime_library") {
+     # Make sure we don't link against the system libstdc++ or libc++.
+     if (is_clang) {
+       ldflags += [ "-nostdlib++" ]
++      libs += [ "m" ]
+     } else {
+       # Gcc has a built-in abs() definition with default visibility.
+       # If it was not disabled, it would conflict with libc++'s abs()
 diff --git a/build/config/rust.gni b/build/config/rust.gni
-index 97e788a227..2b05f8d335 100644
+index 5b7807a1b84..e3db604b944 100644
 --- a/build/config/rust.gni
 +++ b/build/config/rust.gni
-@@ -204,6 +204,8 @@ if (is_linux || is_chromeos) {
-     }
+@@ -223,6 +223,9 @@ if (is_linux || is_chromeos) {
    } else if (current_cpu == "riscv64") {
      rust_abi_target = "riscv64gc-unknown-linux-gnu"
+     cargo_target_abi = ""
 +  } else if (current_cpu == "loong64") {
 +    rust_abi_target = "loongarch64-unknown-linux-gnu"
++    cargo_target_abi = ""
    } else {
      # Best guess for other future platforms.
      rust_abi_target = current_cpu + "-unknown-linux-gnu"
-@@ -292,6 +294,8 @@ if (current_cpu == "x86") {
+@@ -343,6 +346,8 @@ if (current_cpu == "x86") {
    rust_target_arch = "powerpc64"
  } else if (current_cpu == "riscv64") {
    rust_target_arch = "riscv64"
@@ -135,8 +185,35 @@ index 97e788a227..2b05f8d335 100644
  }
  
  assert(!toolchain_has_rust || rust_target_arch != "")
+diff --git a/components/variations/proto/study.proto b/components/variations/proto/study.proto
+index 7ef5eb238e1..f2d1708e6c1 100644
+--- a/components/variations/proto/study.proto
++++ b/components/variations/proto/study.proto
+@@ -262,6 +262,8 @@ message Study {
+     // A Mac-only value, indicating an x86-64 binary running on an arm64 host
+     // via "Rosetta 2" binary translation.
+     TRANSLATED_X86_64 = 4;
++
++    LOONGARCH64 = 5;
+   }
+ 
+   // Enum to pass as optional bool.
+diff --git a/components/variations/service/variations_field_trial_creator_base.cc b/components/variations/service/variations_field_trial_creator_base.cc
+index fbe60d2c441..f466506d41e 100644
+--- a/components/variations/service/variations_field_trial_creator_base.cc
++++ b/components/variations/service/variations_field_trial_creator_base.cc
+@@ -107,6 +107,9 @@ Study::CpuArchitecture GetCurrentCpuArchitecture() {
+   if (process_arch == "ARM") {
+     return Study::ARM32;
+   }
++  if (process_arch == "LOONGARCH_64") {
++    return Study::LOONGARCH64;
++  }
+   if (process_arch == "x86") {
+     return Study::X86_32;
+   }
 diff --git a/content/common/user_agent.cc b/content/common/user_agent.cc
-index 070658460e..39bff2d78b 100644
+index 070658460eb..39bff2d78b1 100644
 --- a/content/common/user_agent.cc
 +++ b/content/common/user_agent.cc
 @@ -174,6 +174,8 @@ std::string GetCpuArchitecture() {
@@ -148,8 +225,20 @@ index 070658460e..39bff2d78b 100644
    }
  #elif BUILDFLAG(IS_FUCHSIA)
    std::string cpu_arch = base::SysInfo::ProcessCPUArchitecture();
+diff --git a/third_party/angle/BUILD.gn b/third_party/angle/BUILD.gn
+index 511e73aa386..fc41e0a13ba 100644
+--- a/third_party/angle/BUILD.gn
++++ b/third_party/angle/BUILD.gn
+@@ -1443,6 +1443,7 @@ template("angle_libGLESv2") {
+       sources += [ "src/libGLESv2/libGLESv2.rc" ]
+       deps += [ ":angle_version" ]
+     }
++    libs = [ "m" ]
+   }
+ }
+ 
 diff --git a/third_party/blink/renderer/platform/graphics/cpu/loongarch64/webgl_image_conversion_lsx.h b/third_party/blink/renderer/platform/graphics/cpu/loongarch64/webgl_image_conversion_lsx.h
-index 114f3c112e..1e2096f651 100644
+index 114f3c112e8..1e2096f6510 100644
 --- a/third_party/blink/renderer/platform/graphics/cpu/loongarch64/webgl_image_conversion_lsx.h
 +++ b/third_party/blink/renderer/platform/graphics/cpu/loongarch64/webgl_image_conversion_lsx.h
 @@ -91,19 +91,19 @@ ALWAYS_INLINE void PackOneRowOfRGBA8LittleToRA8(const uint8_t*& source,
@@ -279,7 +368,7 @@ index 114f3c112e..1e2096f651 100644
      bgra_01 = __lsx_vpickev_b(bgra_1, bgra_0);
      bgra_23 = __lsx_vpickev_b(bgra_3, bgra_2);
 diff --git a/third_party/boringssl/src/include/openssl/target.h b/third_party/boringssl/src/include/openssl/target.h
-index 2760f52ce8..c53990fe8e 100644
+index 2760f52ce8e..c53990fe8eb 100644
 --- a/third_party/boringssl/src/include/openssl/target.h
 +++ b/third_party/boringssl/src/include/openssl/target.h
 @@ -54,6 +54,8 @@
@@ -291,6 +380,69 @@ index 2760f52ce8..c53990fe8e 100644
  #else
  // The list above enumerates the platforms that BoringSSL supports. For these
  // platforms we keep a reasonable bar of not breaking them: automated test
+diff --git a/third_party/perfetto/src/base/BUILD.gn b/third_party/perfetto/src/base/BUILD.gn
+index ace0ac6f9bb..ab395062de4 100644
+--- a/third_party/perfetto/src/base/BUILD.gn
++++ b/third_party/perfetto/src/base/BUILD.gn
+@@ -80,6 +80,7 @@ perfetto_component("base") {
+   if (enable_perfetto_stderr_crash_dump) {
+     deps += [ ":debug_crash_stack_trace" ]
+   }
++  libs = [ "m" ]
+ }
+ 
+ perfetto_component("clock_snapshots") {
+diff --git a/third_party/protobuf-javascript/BUILD.gn b/third_party/protobuf-javascript/BUILD.gn
+index 552cb411151..5fdb7c07ea9 100644
+--- a/third_party/protobuf-javascript/BUILD.gn
++++ b/third_party/protobuf-javascript/BUILD.gn
+@@ -28,5 +28,6 @@ if (current_toolchain == host_toolchain) {
+       "//third_party/protobuf:protobuf_warnings",
+       "//third_party/protobuf:protoc_warnings",
+     ]
++    libs = [ "m" ]
+   }
+ }
+diff --git a/third_party/protobuf/BUILD.gn b/third_party/protobuf/BUILD.gn
+index 2e62cbae9df..751088a930c 100644
+--- a/third_party/protobuf/BUILD.gn
++++ b/third_party/protobuf/BUILD.gn
+@@ -312,6 +312,7 @@ if (current_toolchain == host_toolchain) {
+     if (enable_js_protobuf) {
+       deps += [ "//third_party/protobuf-javascript:protoc-gen-js" ]
+     }
++    libs = [ "m" ]
+   }
+ }
+ 
+diff --git a/third_party/skia/src/opts/SkOpts_SetTarget.h b/third_party/skia/src/opts/SkOpts_SetTarget.h
+index 525cfcb862a..5f72a27db99 100644
+--- a/third_party/skia/src/opts/SkOpts_SetTarget.h
++++ b/third_party/skia/src/opts/SkOpts_SetTarget.h
+@@ -135,9 +135,10 @@
+         #define SK_OPTS_NS lasx
+         // The intrinsic from lasxintrin.h is wrapped by the __loongarch_asx macro, so we need to define it.
+         #define __loongarch_asx
++        #define __loongarch_sx
+ 
+         #if defined(__clang__)
+-          #pragma clang attribute push(__attribute__((target("lasx"))), apply_to=function)
++          #pragma clang attribute push(__attribute__((target("lsx,lasx"))), apply_to=function)
+         #endif
+ 
+     #else
+diff --git a/ui/qt/BUILD.gn b/ui/qt/BUILD.gn
+index 2da7845e2e4..68148339360 100644
+--- a/ui/qt/BUILD.gn
++++ b/ui/qt/BUILD.gn
+@@ -99,6 +99,7 @@ template("qt_shim") {
+       sources += get_target_outputs(":generate_moc" + invoker.qt_version)
+       deps += [ ":generate_moc" + invoker.qt_version ]
+     }
++    libs = [ "m" ]
+   }
+ }
+ qt_shim("qt5_shim") {
 -- 
-2.46.0
+2.47.1
 

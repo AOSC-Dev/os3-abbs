@@ -1,0 +1,41 @@
+From 4d90870290e73c8200d324f7bb49b0b47229b70e Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.io>
+Date: Tue, 24 Dec 2024 07:25:22 -0800
+Subject: [PATCH 03/14] FEDORA: Hard-code
+ std::hardware_destructive_interference_size as 64
+
+Align the data on a cache line boundary.
+
+Link: https://src.fedoraproject.org/rpms/chromium/blob/cfb5842982c88445ae17d4fcbe868c0fedde8a1e/f/chromium-130-hardware_destructive_interference_size.patch
+Co-authored-by: Than Ngo <than@redhat.com>
+Co-authored-by: Jiajie Chen <c@jia.je>
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ .../media_router/common/providers/cast/channel/enum_table.h   | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/components/media_router/common/providers/cast/channel/enum_table.h b/components/media_router/common/providers/cast/channel/enum_table.h
+index 18fd272c6a9..20dc7d913e1 100644
+--- a/components/media_router/common/providers/cast/channel/enum_table.h
++++ b/components/media_router/common/providers/cast/channel/enum_table.h
+@@ -12,7 +12,6 @@
+ 
+ #include <cstdint>
+ #include <cstring>
+-#include <new>
+ #include <optional>
+ #include <ostream>
+ #include <string_view>
+@@ -368,7 +367,8 @@ class EnumTable {
+ 
+  private:
+ #ifdef ARCH_CPU_64_BITS
+-  alignas(std::hardware_destructive_interference_size)
++  // Align the data on a cache line boundary.
++  alignas(64)
+ #endif
+       std::initializer_list<Entry> data_;
+   bool is_sorted_;
+-- 
+2.47.1
+

@@ -1,5 +1,4 @@
-VER=1.4.4
+VER=1.5.8
 SRCS="tbl::https://rubygems.org/gems/pkg-config-$VER.gem"
-CHKSUMS="sha256::23d64f7a82dec11baf00d09c5a9199b5dff28830723286e721f30b3b4c721a19"
+CHKSUMS="sha256::66f3f90094e5bfb7a66e371ee2dcd55616a21001ebff9bea4419f9457b4a9ef7"
 CHKUPDATE="anitya::id=4580"
-REL=1

@@ -1,5 +1,4 @@
-VER=0.34
+VER=0.38.3
 SRCS="tbl::https://notmuchmail.org/releases/notmuch-$VER.tar.xz"
-CHKSUMS="sha256::83e9581542b6e387f61f30cf0f5e2d9038912ee1bb73ad64b84d1d9c543761b6"
+CHKSUMS="sha256::9af46cc80da58b4301ca2baefcc25a40d112d0315507e632c0f3f0f08328d054"
 CHKUPDATE="anitya::id=2498"
-REL=2

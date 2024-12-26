@@ -1,6 +1,5 @@
-VER=2.8.6
+VER=2.8.8
 SRCS="tbl::https://rubygems.org/downloads/mini_portile2-$VER.gem"
-CHKSUMS="sha256::4e2ab09b924906fd42c0b6eb72816db6a435d0404e9cbdcc5d722c133b493991"
+CHKSUMS="sha256::8e47136cdac04ce81750bb6c09733b37895bf06962554e4b4056d78168d70a75"
 CHKUPDATE="anitya::id=78935"
 SUBDIR="."
-REL=1

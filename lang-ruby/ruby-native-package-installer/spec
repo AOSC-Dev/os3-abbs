@@ -1,5 +1,4 @@
-VER=1.0.9
+VER=1.1.9
 SRCS="tbl::https://rubygems.org/downloads/native-package-installer-$VER.gem"
-CHKSUMS="sha256::80bad0273706eeb4fc49ac8fa589b25eb6728c85a09fd241c8f0f06bdca32c5e"
+CHKSUMS="sha256::fbb41b6b22750791a4304f0a0aeea3dd837668892117f49c4caf2e8e0f4e792f"
 CHKUPDATE="anitya::id=26871"
-REL=2

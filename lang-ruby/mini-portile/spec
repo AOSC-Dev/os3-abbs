@@ -3,3 +3,4 @@ SRCS="tbl::https://rubygems.org/downloads/mini_portile2-$VER.gem"
 CHKSUMS="sha256::4e2ab09b924906fd42c0b6eb72816db6a435d0404e9cbdcc5d722c133b493991"
 CHKUPDATE="anitya::id=78935"
 SUBDIR="."
+REL=1

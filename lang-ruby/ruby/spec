@@ -1,5 +1,4 @@
-VER=3.2.2
-REL=1
+VER=3.4.1
 SRCS="tbl::https://cache.ruby-lang.org/pub/ruby/${VER:0:3}/ruby-$VER.tar.xz"
-CHKSUMS="sha256::4b352d0f7ec384e332e3e44cdbfdcd5ff2d594af3c8296b5636c710975149e23"
+CHKSUMS="sha256::018d59ffb52be3c0a6d847e22d3fd7a2c52d0ddfee249d3517a0c8c6dbfa70af"
 CHKUPDATE="anitya::id=4223"

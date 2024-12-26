@@ -1,5 +1,4 @@
-VER=1.3.23
+VER=1.3.24
 SRCS="tbl::http://download.libguestfs.org/hivex/hivex-$VER.tar.gz"
-CHKSUMS="sha256::40cf5484f15c94672259fb3b99a90bef6f390e63f37a52a1c06808a2016a6bbd"
+CHKSUMS="sha256::a52fa45cecc9a78adb2d28605d68261e4f1fd4514a778a5473013d2ccc8a193c"
 CHKUPDATE="anitya::id=226764"
-REL=3

@@ -1,7 +1,9 @@
 PKGNAME=rexml
 PKGSEC=ruby
-PKGDES="An XML toolkit for Ruby"
 PKGDEP="ruby"
+PKGDES="An XML toolkit for Ruby (transitional package for ruby)"
 
 ABHOST=noarch
-ABTYPE=ruby
+ABTYPE=dummy
+
+PKGEPOCH=1

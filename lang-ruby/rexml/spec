@@ -1,5 +1,2 @@
-VER=3.4.0
-SRCS="tbl::https://rubygems.org/downloads/rexml-$VER.gem"
-CHKSUMS="sha256::efbea1efba7fa151158e0ee1e643525834da2d8eb4cf744aa68f6480bc9804b2"
-CHKUPDATE="anitya::id=68589"
-SUBDIR="."
+VER=0
+DUMMYSRC=1

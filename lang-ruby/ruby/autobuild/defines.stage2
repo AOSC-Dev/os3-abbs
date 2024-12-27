@@ -2,8 +2,10 @@ PKGNAME=ruby
 PKGDES="A dynamic, open source programming language with a focus on simplicity and productivity"
 PKGSEC=ruby
 PKGDEP="gdbm openssl libffi yaml gmp zlib"
-AB_FLAGS_O3=1
-ABSHADOW=0
+
+# FIXME: LTO causes runtime failures.
+NOLTO=1
+
 AUTOTOOLS_AFTER="--sharedstatedir=/var/lib \
                  --libexecdir=/usr/lib/ruby \
                  --enable-shared \

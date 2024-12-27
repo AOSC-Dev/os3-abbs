@@ -1,7 +1,9 @@
 PKGNAME=ruby-bundler
 PKGSEC=ruby
 PKGDEP="ruby"
-PKGDES="Manage your application's gem dependencies with less pain"
+PKGDES="Manage your application's gem dependencies with less pain (transitional package for ruby)"
 
 ABHOST=noarch
-ABTYPE=ruby
+ABTYPE=dummy
+
+PKGEPOCH=1

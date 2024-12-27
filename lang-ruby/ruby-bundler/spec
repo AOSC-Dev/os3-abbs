@@ -1,5 +1,2 @@
-VER=2.6.2
-SRCS="file::https://rubygems.org/downloads/bundler-$VER.gem"
-CHKSUMS="sha256::4b89756e1b05390ff678491119a10f0973a2045cc9fcb227b02a9396b28f7d74"
-SUBDIR=.
-CHKUPDATE="anitya::id=4565"
+VER=0
+DUMMYSRC=1

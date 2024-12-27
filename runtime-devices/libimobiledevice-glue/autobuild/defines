@@ -1,0 +1,5 @@
+PKGNAME=libimobiledevice-glue
+PKGSEC=libs
+PKGDES="Library of shared code across the libimobiledevice project"
+
+PKGDEP="glibc libplist"

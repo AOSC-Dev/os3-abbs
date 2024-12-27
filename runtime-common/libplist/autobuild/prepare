@@ -1,0 +1,5 @@
+if ab_match_archgroup mainline ; then
+	abinfo "Setting Python and Cython version for Python bindings ..."
+	export PYTHON=/usr/bin/python3
+	export CYTHON=/usr/bin/cython3
+fi

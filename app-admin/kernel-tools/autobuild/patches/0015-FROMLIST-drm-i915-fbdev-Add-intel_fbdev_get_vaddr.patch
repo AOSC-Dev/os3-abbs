@@ -1,0 +1,116 @@
+From e1ef8d04e139073c66febdce1c1591c0b72602ab Mon Sep 17 00:00:00 2001
+From: Jocelyn Falempe <jfalempe@redhat.com>
+Date: Tue, 10 Dec 2024 10:28:41 +0100
+Subject: [PATCH 015/265] FROMLIST: drm/i915/fbdev: Add intel_fbdev_get_vaddr()
+
+The vaddr of the fbdev framebuffer is private to the struct
+intel_fbdev, so this function is needed to access it for drm_panic.
+Also the struct i915_vma is different between i915 and xe, so it
+requires a few functions to access fbdev->vma->iomap.
+
+Signed-off-by: Jocelyn Falempe <jfalempe@redhat.com>
+
+Link: https://lore.kernel.org/all/20241210093505.589893-2-jfalempe@redhat.com/
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ drivers/gpu/drm/i915/display/intel_fb_pin.c | 5 +++++
+ drivers/gpu/drm/i915/display/intel_fb_pin.h | 1 +
+ drivers/gpu/drm/i915/display/intel_fbdev.c  | 5 +++++
+ drivers/gpu/drm/i915/display/intel_fbdev.h  | 6 ++++++
+ drivers/gpu/drm/i915/i915_vma.h             | 5 +++++
+ drivers/gpu/drm/xe/display/xe_fb_pin.c      | 5 +++++
+ 6 files changed, 27 insertions(+)
+
+diff --git a/drivers/gpu/drm/i915/display/intel_fb_pin.c b/drivers/gpu/drm/i915/display/intel_fb_pin.c
+index d3a86f9c6bc8..c44019c7ab56 100644
+--- a/drivers/gpu/drm/i915/display/intel_fb_pin.c
++++ b/drivers/gpu/drm/i915/display/intel_fb_pin.c
+@@ -327,3 +327,8 @@ void intel_plane_unpin_fb(struct intel_plane_state *old_plane_state)
+ 			intel_dpt_unpin_from_ggtt(fb->dpt_vm);
+ 	}
+ }
++
++void *intel_fb_get_vaddr(struct i915_vma *vma)
++{
++	return i915_vma_get_iomap(vma);
++}
+diff --git a/drivers/gpu/drm/i915/display/intel_fb_pin.h b/drivers/gpu/drm/i915/display/intel_fb_pin.h
+index ac0319b53af0..0141f5f2b1c7 100644
+--- a/drivers/gpu/drm/i915/display/intel_fb_pin.h
++++ b/drivers/gpu/drm/i915/display/intel_fb_pin.h
+@@ -25,5 +25,6 @@ void intel_fb_unpin_vma(struct i915_vma *vma, unsigned long flags);
+ 
+ int intel_plane_pin_fb(struct intel_plane_state *plane_state);
+ void intel_plane_unpin_fb(struct intel_plane_state *old_plane_state);
++void *intel_fb_get_vaddr(struct i915_vma *vma);
+ 
+ #endif
+diff --git a/drivers/gpu/drm/i915/display/intel_fbdev.c b/drivers/gpu/drm/i915/display/intel_fbdev.c
+index 00852ff5b247..1d12d1c047d0 100644
+--- a/drivers/gpu/drm/i915/display/intel_fbdev.c
++++ b/drivers/gpu/drm/i915/display/intel_fbdev.c
+@@ -695,3 +695,8 @@ struct intel_framebuffer *intel_fbdev_framebuffer(struct intel_fbdev *fbdev)
+ 
+ 	return to_intel_framebuffer(fbdev->helper.fb);
+ }
++
++void *intel_fbdev_get_vaddr(struct intel_fbdev *fbdev)
++{
++	return intel_fb_get_vaddr(fbdev->vma);
++}
+diff --git a/drivers/gpu/drm/i915/display/intel_fbdev.h b/drivers/gpu/drm/i915/display/intel_fbdev.h
+index 08de2d5b3433..f033d4f1efe9 100644
+--- a/drivers/gpu/drm/i915/display/intel_fbdev.h
++++ b/drivers/gpu/drm/i915/display/intel_fbdev.h
+@@ -17,6 +17,7 @@ struct intel_framebuffer;
+ void intel_fbdev_setup(struct drm_i915_private *dev_priv);
+ void intel_fbdev_set_suspend(struct drm_device *dev, int state, bool synchronous);
+ struct intel_framebuffer *intel_fbdev_framebuffer(struct intel_fbdev *fbdev);
++void *intel_fbdev_get_vaddr(struct intel_fbdev *fbdev);
+ #else
+ static inline void intel_fbdev_setup(struct drm_i915_private *dev_priv)
+ {
+@@ -30,6 +31,11 @@ static inline struct intel_framebuffer *intel_fbdev_framebuffer(struct intel_fbd
+ {
+ 	return NULL;
+ }
++
++static inline void *intel_fbdev_get_vaddr(struct intel_fbdev *fbdev)
++{
++	return NULL;
++}
+ #endif
+ 
+ #endif /* __INTEL_FBDEV_H__ */
+diff --git a/drivers/gpu/drm/i915/i915_vma.h b/drivers/gpu/drm/i915/i915_vma.h
+index 6a6be8048aa8..4ae610927fa7 100644
+--- a/drivers/gpu/drm/i915/i915_vma.h
++++ b/drivers/gpu/drm/i915/i915_vma.h
+@@ -353,6 +353,11 @@ static inline bool i915_node_color_differs(const struct drm_mm_node *node,
+ 	return drm_mm_node_allocated(node) && node->color != color;
+ }
+ 
++static inline void __iomem *i915_vma_get_iomap(struct i915_vma *vma)
++{
++	return READ_ONCE(vma->iomap);
++}
++
+ /**
+  * i915_vma_pin_iomap - calls ioremap_wc to map the GGTT VMA via the aperture
+  * @vma: VMA to iomap
+diff --git a/drivers/gpu/drm/xe/display/xe_fb_pin.c b/drivers/gpu/drm/xe/display/xe_fb_pin.c
+index 761510ae0690..576b1e98f39c 100644
+--- a/drivers/gpu/drm/xe/display/xe_fb_pin.c
++++ b/drivers/gpu/drm/xe/display/xe_fb_pin.c
+@@ -421,3 +421,8 @@ u64 intel_dpt_offset(struct i915_vma *dpt_vma)
+ {
+ 	return 0;
+ }
++
++void *intel_fb_get_vaddr(struct i915_vma *vma)
++{
++	return NULL;
++}
+-- 
+2.48.0.rc0
+

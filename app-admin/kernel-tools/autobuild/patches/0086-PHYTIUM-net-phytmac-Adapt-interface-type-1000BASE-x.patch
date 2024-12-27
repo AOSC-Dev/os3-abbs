@@ -1,7 +1,7 @@
-From 6d246ff3204d7758140ee3e2f6244179d0af20dc Mon Sep 17 00:00:00 2001
+From 241bb3a31086c053aea6d76df5cf434758a5a2d5 Mon Sep 17 00:00:00 2001
 From: Li Wencheng <liwencheng@phytium.com.cn>
 Date: Fri, 29 Mar 2024 16:49:17 +0800
-Subject: [PATCH 086/264] PHYTIUM: net/phytmac: Adapt interface type 1000BASE-x
+Subject: [PATCH 086/265] PHYTIUM: net/phytmac: Adapt interface type 1000BASE-x
 
 Added 1000BASE-x interface type support for phymac driver.
 

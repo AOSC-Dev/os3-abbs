@@ -1,7 +1,7 @@
-From 40df065a9639be3e8b1458f6431bc2e3fcfb68d1 Mon Sep 17 00:00:00 2001
-From: xiaoxi404 <1577912515@qq.com>
-Date: Mon, 23 Dec 2024 18:07:46 +0800
-Subject: [PATCH 061/264] FROMLIST: platform/x86: hp-wmi: mark 8A15 board for
+From 76f389b5bdfe3de6184cbcddda53f48dd09e77e5 Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.io>
+Date: Thu, 26 Dec 2024 14:22:05 +0800
+Subject: [PATCH 061/265] FROMLIST: platform/x86: hp-wmi: mark 8A15 board for
  timed OMEN thermal profile
 
 The HP OMEN 8 (2022), corresponding to a board ID of 8A15, supports OMEN
@@ -26,10 +26,10 @@ Core Power:
 Add 8A15 to omen_thermal_profile_boards and
 omen_timed_thermal_profile_boards to improve performance.
 
-Signed-off-by: xiaoxi404 <1577912515@qq.com>
+Signed-off-by: Xi Xiao <1577912515@qq.com>
 Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
 
-Link: https://lore.kernel.org/all/20241223100748.2157703-1-jeffbai@aosc.io/
+Link: https://lore.kernel.org/all/20241226062207.3352629-1-jeffbai@aosc.io/
 Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
 ---
  drivers/platform/x86/hp/hp-wmi.c | 4 ++--

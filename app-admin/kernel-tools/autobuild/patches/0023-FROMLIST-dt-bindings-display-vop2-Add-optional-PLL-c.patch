@@ -1,0 +1,46 @@
+From 3fcf631051c475153e5b3fd80271803bb5589797 Mon Sep 17 00:00:00 2001
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Date: Wed, 11 Dec 2024 12:15:05 +0200
+Subject: [PATCH 023/265] FROMLIST: dt-bindings: display: vop2: Add optional
+ PLL clock properties
+
+On RK3588, HDMI PHY PLL can be used as an alternative and more accurate
+pixel clock source for VOP2 video ports 0, 1 and 2.
+
+Document the optional PLL clock properties corresponding to the two HDMI
+PHYs available on the SoC.
+
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+
+Link: https://lore.kernel.org/all/20241211-vop2-hdmi0-disp-modes-v2-1-471cf5001e45@collabora.com/
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ .../devicetree/bindings/display/rockchip/rockchip-vop2.yaml   | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+index 2531726af306..46d956e63338 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+@@ -53,6 +53,8 @@ properties:
+       - description: Pixel clock for video port 2.
+       - description: Pixel clock for video port 3.
+       - description: Peripheral(vop grf/dsi) clock.
++      - description: Alternative pixel clock provided by HDMI0 PHY PLL.
++      - description: Alternative pixel clock provided by HDMI1 PHY PLL.
+ 
+   clock-names:
+     minItems: 5
+@@ -64,6 +66,8 @@ properties:
+       - const: dclk_vp2
+       - const: dclk_vp3
+       - const: pclk_vop
++      - const: pll_hdmiphy0
++      - const: pll_hdmiphy1
+ 
+   rockchip,grf:
+     $ref: /schemas/types.yaml#/definitions/phandle
+-- 
+2.48.0.rc0
+

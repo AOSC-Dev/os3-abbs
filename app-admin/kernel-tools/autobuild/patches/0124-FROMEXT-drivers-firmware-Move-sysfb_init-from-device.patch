@@ -1,7 +1,7 @@
-From 341784d844b374e9919182706b55eb4353cec667 Mon Sep 17 00:00:00 2001
+From 7dca4e9fa12b74b62fc05f79e41ad879f2421a38 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Sun, 28 Jan 2024 14:07:46 +0800
-Subject: [PATCH 124/264] FROMEXT: drivers/firmware: Move sysfb_init() from
+Subject: [PATCH 124/265] FROMEXT: drivers/firmware: Move sysfb_init() from
  device_initcall to fs_initcall
 
 Consider a configuration like this:
@@ -36,7 +36,7 @@ fs_initcall function which is ensured after vgaarb initialization.
 
 Signed-off-by: Huacai Chen <chenhuacai@loongson.cn>
 
-Link: https://github.com/chenhuacai/linux/commit/c690c0a5e391ba777445087fadfb4d2b649597ca
+Link: https://github.com/chenhuacai/linux/commit/28fc814d235044b65756fffbe7ce7e098d501268
 Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
 ---
  drivers/firmware/sysfb.c | 2 +-

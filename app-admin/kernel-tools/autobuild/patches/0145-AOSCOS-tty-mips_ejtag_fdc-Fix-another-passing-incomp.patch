@@ -1,7 +1,7 @@
-From 743fcd0f2f6ddf65df6bff459a5c47633218b503 Mon Sep 17 00:00:00 2001
+From ebf1ac252d9ad36249482d58c13e648bebd560a3 Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Thu, 17 Oct 2024 22:45:51 +0800
-Subject: [PATCH 145/264] AOSCOS: tty: mips_ejtag_fdc: Fix another passing
+Subject: [PATCH 145/265] AOSCOS: tty: mips_ejtag_fdc: Fix another passing
  incompatible pointer type warning
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

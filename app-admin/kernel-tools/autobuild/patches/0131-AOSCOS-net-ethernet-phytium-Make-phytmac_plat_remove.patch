@@ -1,7 +1,7 @@
-From 1cc0d89ea3224e06502fac6748b80b31d1cf21cc Mon Sep 17 00:00:00 2001
+From 66452eac02a5f53177e223f66d0e083ff5342e9d Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Sun, 22 Sep 2024 03:57:43 +0800
-Subject: [PATCH 131/264] AOSCOS: net: ethernet: phytium: Make
+Subject: [PATCH 131/265] AOSCOS: net: ethernet: phytium: Make
  phytmac_plat_remove() return void
 
 Fixes: 53f8c475850d ("BACKPORT: PHYTIUM: net: phytium: Add support for phytium GMAC")

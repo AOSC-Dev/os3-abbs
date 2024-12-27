@@ -51,3 +51,5 @@ PKGBREAK="amarok-trinity<=14.1.2-1 apparmor<=3.0.8-2 asciidoctor<=2.0.23 \
           ruby-rainbow<=3.1.1 ruby-term-ansicolor<=1.11.2 ruby-text<=1.3.1-2 \
           tdebindings<=14.1.2 teamocil<=1.4.2-3 texlive<=20240312-1 \
           vim<=9.1.0958 yard<=0.9.26-1"
+# Note: Merged as part of ruby.
+PKGREP="rexml<=3.2.5-1 ruby-bundler<=2.1.4-1"

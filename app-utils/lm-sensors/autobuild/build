@@ -1,15 +1,30 @@
-make PREFIX=/usr \
-     SBINDIR=/usr/bin \
-     LIBDIR=/usr/lib \
-     MANDIR=/usr/share/man \
-     CFLAGS="${CPPFLAGS} ${CFLAGS} ${LDFLAGS}" \
-     EXLDFLAGS="${LDFLAGS}" \
-     PROG_EXTRA=sensord user
-make BUILD_STATIC_LIB=0 \
-     PREFIX=/usr \
-     SBINDIR=/usr/bin \
-     LIBDIR=/usr/lib \
-     MANDIR=/usr/share/man \
-     EXLDFLAGS="${LDFLAGS}" \
-     PROG_EXTRA=sensord \
-     DESTDIR="$PKGDIR" user_install
+abinfo "Configuring make parameters ..."
+MAKE_OPTS=(
+    "DESTDIR=$PKGDIR"
+    'PREFIX=/usr'
+    'SBINDIR=/usr/bin'
+    'LIBDIR=/usr/lib'
+    'MANDIR=/usr/share/man'
+    'BUILD_STATIC_LIB=0'
+)
+if ! ab_match_archgroup retro; then
+    MAKE_OPTS+=(
+        'PROG_EXTRA=sensord'
+    )
+fi
+
+abinfo "Building lm-sensors ..."
+make user \
+    ${MAKE_OPTS[@]} \
+    CFLAGS="${CPPFLAGS} ${CFLAGS} ${LDFLAGS}" \
+    EXLDFLAGS="${LDFLAGS}"
+
+abinfo "Installing lm-sensors ..."
+make user_install \
+    ${MAKE_OPTS[@]}
+
+if ! ab_match_archgroup retro; then
+    abinfo "Installing systemd units ..."
+    install -Dvm644 "$SRCDIR"/prog/init/*.service \
+        -t "$PKGDIR"/usr/lib/systemd/system/
+fi

@@ -11,5 +11,3 @@ PKGDEP__M68K="${PKGDEP__RETRO}"
 PKGDEP__POWERPC="${PKGDEP__RETRO}"
 PKGDEP__PPC64="${PKGDEP__RETRO}"
 PKGDES="Collection of userspace tools for general SMBus access and hardware monitoring"
-
-NOPARALLEL=1

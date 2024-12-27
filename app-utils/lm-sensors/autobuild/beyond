@@ -1,4 +1,0 @@
-abinfo "Installing systemd units ..."
-mkdir -pv "$PKGDIR"/usr/lib/systemd/system
-install -Dvm644 "$SRCDIR"/prog/init/*.service \
-    "$PKGDIR"/usr/lib/systemd/system/

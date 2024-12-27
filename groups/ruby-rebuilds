@@ -13,7 +13,6 @@ app-web/notmuch
 desktop-trinity/amarok-trinity
 desktop-trinity/koffice-trinity
 desktop-trinity/tdebindings
-lang-ruby/hpricot
 lang-ruby/kramdown
 lang-ruby/kramdown-parser-gfm
 lang-ruby/mini-portile

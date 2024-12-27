@@ -1,0 +1,4 @@
+VER=1.7.0
+SRCS="tbl::https://download-mirror.savannah.gnu.org/releases/davfs2/davfs2-$VER.tar.gz"
+CHKSUMS="sha256::251db75a27380cca1330b1b971700c5e5dcc0c90e5a47622285f0140edfe3a2f"
+CHKUPDATE="anitya::id=7487"

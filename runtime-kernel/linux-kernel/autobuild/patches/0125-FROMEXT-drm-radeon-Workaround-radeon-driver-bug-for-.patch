@@ -1,7 +1,7 @@
-From 04aec7d703f5fbf8717766583433a736281c2fc5 Mon Sep 17 00:00:00 2001
+From c2bfd0b040605deb6dbc8f4c15278acba240a6d8 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Mon, 22 Feb 2021 10:53:47 +0800
-Subject: [PATCH 125/264] FROMEXT: drm/radeon: Workaround radeon driver bug for
+Subject: [PATCH 125/265] FROMEXT: drm/radeon: Workaround radeon driver bug for
  Loongson
 
 Radeon driver can not handle the interrupt is faster than DMA data, so
@@ -11,7 +11,7 @@ enable interrupt again when interrupt is faster than DMA data.
 Signed-off-by: Huacai Chen <chenhuacai@loongson.cn>
 Signed-off-by: Zhijie Zhang <zhangzhijie@loongson.cn>
 
-Link: https://github.com/chenhuacai/linux/commit/da7888fcefe13641be381ee708f623d2b13fa36f
+Link: https://github.com/chenhuacai/linux/commit/6baf4bfaf56a2230d20f6940d3b9f1d13d100f5f
 Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
 ---
  drivers/gpu/drm/radeon/cik.c       | 1 +

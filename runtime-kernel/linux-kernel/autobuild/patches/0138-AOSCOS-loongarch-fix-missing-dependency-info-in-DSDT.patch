@@ -1,7 +1,7 @@
-From c3322da6941b32e71a8dc2ba9b3a83193b13b969 Mon Sep 17 00:00:00 2001
+From 1d8d0c3e95b1e993e50edaac81cf58d63b1d842b Mon Sep 17 00:00:00 2001
 From: Miao Wang <shankerwangmiao@gmail.com>
 Date: Thu, 25 Jul 2024 16:09:19 +0800
-Subject: [PATCH 138/264] AOSCOS: loongarch: fix missing dependency info in
+Subject: [PATCH 138/265] AOSCOS: loongarch: fix missing dependency info in
  DSDT
 
 On machines with legacy firmware with BPI01000 version, the devices on
@@ -29,7 +29,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  2 files changed, 49 insertions(+)
 
 diff --git a/arch/loongarch/include/asm/acpi.h b/arch/loongarch/include/asm/acpi.h
-index c954d15d0a47..8d8551c2b6c0 100644
+index faed136a10bf..3182174c8d99 100644
 --- a/arch/loongarch/include/asm/acpi.h
 +++ b/arch/loongarch/include/asm/acpi.h
 @@ -51,6 +51,8 @@ extern void acpi_arch_os_table_override (struct acpi_table_header *existing_tabl

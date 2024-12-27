@@ -1,7 +1,7 @@
-From 98629c632ab8f1887e2768e7499d7c6b43ba5fc1 Mon Sep 17 00:00:00 2001
+From d4a0852ca0c7de0287ea5354db8ad1cc1991234a Mon Sep 17 00:00:00 2001
 From: graysky <therealgraysky AT proton DOT me>
 Date: Mon, 16 Sep 2024 05:55:58 -0400
-Subject: [PATCH 122/264] FROMEXT:
+Subject: [PATCH 122/265] FROMEXT:
  more-ISA-levels-and-uarches-for-kernel-6.1.79+.patch
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

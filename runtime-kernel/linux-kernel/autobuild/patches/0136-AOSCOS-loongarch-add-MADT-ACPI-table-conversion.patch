@@ -1,7 +1,7 @@
-From c6b70efff8115a484804df6abeafa9e4b7d42d6f Mon Sep 17 00:00:00 2001
+From 6a6085e854b92619550615d8d8276114ea584a70 Mon Sep 17 00:00:00 2001
 From: Miao Wang <shankerwangmiao@gmail.com>
 Date: Sat, 20 Jul 2024 06:32:15 +0800
-Subject: [PATCH 136/264] AOSCOS: loongarch: add MADT ACPI table conversion
+Subject: [PATCH 136/265] AOSCOS: loongarch: add MADT ACPI table conversion
 
 On machines with legacy firmware with BPI version BPI01000, i.e. the
 older version, the content of the MADT ACPI table is not following the
@@ -21,7 +21,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  4 files changed, 321 insertions(+)
 
 diff --git a/arch/loongarch/include/asm/acpi.h b/arch/loongarch/include/asm/acpi.h
-index 313f66f7913a..ba78288a26e3 100644
+index fc2eff0535f8..22943f3c6ba3 100644
 --- a/arch/loongarch/include/asm/acpi.h
 +++ b/arch/loongarch/include/asm/acpi.h
 @@ -45,6 +45,11 @@ static inline u32 get_acpi_id_for_cpu(unsigned int cpu)

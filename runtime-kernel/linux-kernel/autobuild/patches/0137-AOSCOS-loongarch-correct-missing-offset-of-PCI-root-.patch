@@ -1,7 +1,7 @@
-From 8a81bc7d74e1bd98aecc7da42089af0df40a8de6 Mon Sep 17 00:00:00 2001
+From 000b15c43e5b5ec0f6165bc044fad3f91f96fbdb Mon Sep 17 00:00:00 2001
 From: Miao Wang <shankerwangmiao@gmail.com>
 Date: Wed, 24 Jul 2024 09:06:27 +0800
-Subject: [PATCH 137/264] AOSCOS: loongarch: correct missing offset of PCI root
+Subject: [PATCH 137/265] AOSCOS: loongarch: correct missing offset of PCI root
  controller in DSDT table
 
 On machines with legacy firmware with BPI version BPI01000, the PCI root
@@ -31,7 +31,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  4 files changed, 29 insertions(+), 1 deletion(-)
 
 diff --git a/arch/loongarch/include/asm/acpi.h b/arch/loongarch/include/asm/acpi.h
-index ba78288a26e3..c954d15d0a47 100644
+index 22943f3c6ba3..faed136a10bf 100644
 --- a/arch/loongarch/include/asm/acpi.h
 +++ b/arch/loongarch/include/asm/acpi.h
 @@ -49,6 +49,8 @@ static inline u32 get_acpi_id_for_cpu(unsigned int cpu)

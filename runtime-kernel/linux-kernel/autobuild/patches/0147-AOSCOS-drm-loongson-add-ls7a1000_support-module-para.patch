@@ -1,7 +1,7 @@
-From a9059e8905faddf7209d21fce78aa9625f07d5f8 Mon Sep 17 00:00:00 2001
+From 1d4ff184cf30ed11243370169a7f09eaa8274101 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 29 Oct 2024 23:17:28 +0800
-Subject: [PATCH 147/264] AOSCOS: drm: loongson: add ls7a1000_support module
+Subject: [PATCH 147/265] AOSCOS: drm: loongson: add ls7a1000_support module
  parameter
 
 The loongson DRM driver is known to cause boot failure or hang on certain

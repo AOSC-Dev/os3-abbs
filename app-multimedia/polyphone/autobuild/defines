@@ -1,5 +1,6 @@
 PKGNAME=polyphone
 PKGSEC=sound
-PKGDEP="qt-5 zlib openssl"
-BUILDDEP="flac jack libogg libvorbis portaudio qcustomplot rtmidi stk"
+PKGDEP="gcc-runtime qt-5 zlib openssl rtmidi alsa-lib stk libvorbis \
+    libsndfile libogg jack"
+BUILDDEP="flac portaudio qcustomplot"
 PKGDES="A soundfont editor for quickly designing musical instruments"

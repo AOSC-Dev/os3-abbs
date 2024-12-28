@@ -4,3 +4,6 @@ PKGDES="An HTML, XML, SAX and Reader parser"
 PKGDEP="libxml2 libxslt mini-portile racc ruby"
 
 ABTYPE=ruby
+
+# FIXME: No debug symbol found.
+ABSPLITDBG=0

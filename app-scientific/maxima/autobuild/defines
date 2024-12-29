@@ -17,6 +17,4 @@ NOLTO=1
 
 ABSPLITDBG=0
 
-BUILD_FINAL() {
-    export MAKE_AFTER="emacsdir=/usr/share/emacs/site-lisp/maxima"
-}
+MAKE_AFTER="emacsdir=/usr/share/emacs/site-lisp/maxima"

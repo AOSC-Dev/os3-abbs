@@ -1,0 +1,6 @@
+PKGNAME=ruri
+PKGSEC=admin
+PKGDEP="libcap libseccomp"
+PKGDES="A light linux container with zero runtime dependency"
+
+ABSTRIP=0 

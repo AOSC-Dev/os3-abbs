@@ -1,0 +1,4 @@
+VER=3.8
+SRCS="git::commit=tags/v$VER;copy-repo=true::https://github.com/Moe-Hacker/ruri"
+CHKSUMS="SKIP"
+REL=1

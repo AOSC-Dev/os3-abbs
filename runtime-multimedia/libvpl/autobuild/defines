@@ -1,5 +1,6 @@
 PKGNAME=libvpl
 PKGSEC=libs
+PKGDEP="intel-media-sdk vpl-gpu-rt"
 BUILDDEP="cmake"
 PKGDES="Intel Video Processing Library"
 

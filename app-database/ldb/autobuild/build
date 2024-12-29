@@ -1,14 +1,17 @@
-abinfo "Configuring..."
-./configure --prefix=/usr \
-                 --disable-rpath \
-                 --disable-rpath-install \
-                 --bundled-libraries=NONE \
-                 --builtin-libraries=replace \
-                 --with-modulesdir=/usr/lib/ldb/modules \
-                 --with-privatelibdir=/usr/lib/ldb
+abinfo "Setting /usr/bin/python3 as the default Python interpreter ..."
+export PYTHON="/usr/bin/python3"
 
-abinfo "Making..."
+abinfo "Configuring ldb ..."
+./configure --prefix=/usr \
+            --disable-rpath \
+            --disable-rpath-install \
+            --bundled-libraries=NONE \
+            --builtin-libraries=replace \
+            --with-modulesdir=/usr/lib/ldb/modules \
+            --with-privatelibdir=/usr/lib/ldb
+
+abinfo "Building ldb ..."
 make
 
-abinfo "Installing..."
+abinfo "Installing ldb ..."
 make DESTDIR="$PKGDIR" install

@@ -1,5 +1,4 @@
-VER=2.6.1
-REL=3
+VER=2.9.2
 SRCS="tbl::https://www.samba.org/ftp/ldb/ldb-$VER.tar.gz"
-CHKSUMS="sha256::467403f77df86782c3965bb175440baa2ed751a9feb9560194bd8c06bf1736c9"
+CHKSUMS="sha256::d155884002c79dbb1c3d8642f8b1013f2e520b3aeefd6e96412adec5b8d6cbc0"
 CHKUPDATE="anitya::id=1652"

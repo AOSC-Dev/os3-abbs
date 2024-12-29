@@ -1,0 +1,5 @@
+abinfo "Installing helper scripts"
+install -vDm 755 \
+  -t "$PKGDIR"/usr/share/keyd/ \
+  "$SRCDIR"/scripts/generate_xcompose \
+  "$SRCDIR"/scripts/dump-xkb-config

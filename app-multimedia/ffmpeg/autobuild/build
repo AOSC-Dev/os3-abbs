@@ -24,7 +24,7 @@ if ab_match_arch armv6hf; then
 fi
 
 if ab_match_arch amd64; then
-    MFX="--enable-libmfx"
+    VPL="--enable-libvpl"
     NVENC="--enable-nvenc"
     CUDA="--enable-cuda-llvm"
 fi
@@ -109,7 +109,7 @@ fi
 abinfo "Configuring FFmpeg ..."
 "$SRCDIR"/configure \
     ${CONFIGURE_OPTIONS} \
-    ${MIPSCONF} ${PPCCONF} ${ARMCONF} ${MFX} ${NVENC} ${CUDA}
+    ${MIPSCONF} ${PPCCONF} ${ARMCONF} ${VPL} ${NVENC} ${CUDA}
 
 abinfo "Building FFmpeg ..."
 make

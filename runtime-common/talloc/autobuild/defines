@@ -1,6 +1,6 @@
 PKGNAME=talloc
 PKGSEC=admin
-PKGDEP="glibc python-2"
+PKGDEP="glibc python-3"
 PKGDES="Hierarchical pool based memory allocator with destructors"
 
 NOPARALLEL=1

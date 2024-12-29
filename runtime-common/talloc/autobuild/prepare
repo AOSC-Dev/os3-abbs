@@ -1,5 +1,0 @@
-export AUTOTOOLS_DEF=""
-export PYTHON="/usr/bin/python3"
-
-sed -e 's:\.\./\.\./buildtools:./buildtools:' \
-    -i "$SRCDIR"/Makefile

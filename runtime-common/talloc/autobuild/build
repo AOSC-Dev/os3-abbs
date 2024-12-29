@@ -1,13 +1,16 @@
-abinfo "Configuring..."
-./configure --prefix=/usr \
-                 --sysconfdir=/etc/samba \
-                 --localstatedir=/var \
-                 --bundled-libraries=NONE \
-                 --builtin-libraries=replace \
-                 --enable-talloc-compat1
+abinfo "Setting /usr/bin/python3 as the default Python interpreter ..."
+export PYTHON="/usr/bin/python3"
 
-abinfo "Making..."
+abinfo "Configuring talloc ..."
+./configure --prefix=/usr \
+            --sysconfdir=/etc/samba \
+            --localstatedir=/var \
+            --bundled-libraries=NONE \
+            --builtin-libraries=replace \
+            --enable-talloc-compat1
+
+abinfo "Building talloc ..."
 make
 
-abinfo "Installing..."
+abinfo "Installing talloc ..."
 make DESTDIR="$PKGDIR" install

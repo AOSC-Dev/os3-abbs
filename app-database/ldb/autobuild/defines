@@ -15,7 +15,5 @@ PKGDES="Schema-less ldap-like API and database"
 
 NOPARALLEL=1
 
-alias BUILD_FINAL='doxygen Doxyfile'
-
 PKGEPOCH=2
 PKGBREAK="sssd<=2.4.0 samba<=4.10.17-1"

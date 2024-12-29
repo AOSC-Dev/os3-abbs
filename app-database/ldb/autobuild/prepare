@@ -9,3 +9,7 @@ fi
 
 # Workaround for hardcoded PATH to waf - Fedora rpm/libtdb.
 sed -e 's:\.\./\.\./buildtools:./buildtools:' -i Makefile
+
+BUILD_FINAL() {
+    doxygen Doxyfile
+}

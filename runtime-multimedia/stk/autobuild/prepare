@@ -1,1 +1,4 @@
-cp /usr/share/automake-1.16/config.* "$SRCDIR"/config/
+export RAWWAVE_PATH="/usr/share/stk/rawwaves/"
+
+abinfo "Copying automake configs ..."
+cp -v /usr/bin/config.* "$SRCDIR"/config/

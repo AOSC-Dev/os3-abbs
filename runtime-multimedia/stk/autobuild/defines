@@ -10,4 +10,3 @@ AUTOTOOLS_AFTER="--prefix=/usr \
                  --enable-debug"
 RECONF=1
 ABSHADOW=0
-export RAWWAVE_PATH="/usr/share/stk/rawwaves/"

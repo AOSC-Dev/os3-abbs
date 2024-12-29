@@ -1,8 +1,10 @@
 PKGNAME=pinentry
 PKGSEC=utils
 PKGDEP="libassuan libcap ncurses libsecret pcre2 gtk-2"
-BUILDDEP="gcr"
-PKGSUG="gcr"
+BUILDDEP="gcr qt-5"
+BUILDDEP__RISCV64="${BUILDDEP/qt-5/}"
+PKGSUG="gcr qt-5"
+PKGSUG__RISCV64="${PKGSUG/qt-5/}"
 PKGDES="A collection of simple PIN or passphrase entry dialogs"
 
 AUTOTOOLS_AFTER="--enable-pinentry-curses \
@@ -10,12 +12,8 @@ AUTOTOOLS_AFTER="--enable-pinentry-curses \
                  --enable-pinentry-tty \
                  --enable-pinentry-emacs \
                  --enable-pinentry-gtk2 \
-                 --enable-pinentry-gnome3"
-
-if [[ "${CROSS:-$ARCH}" != "riscv64" ]]; then
-	BUILDDEP+=" qt-5"
-	PKGSUG+=" qt-5"
-	AUTOTOOLS_AFTER+=" --enable-pinentry-qt"
-fi
+                 --enable-pinentry-gnome3 \
+                 --enable-pinentry-qt"
+AUTOTOOLS_AFTER__RISCV64="${AUTOTOOLS_AFTER/--enable-pinentry-qt/}"
 
 ABRPMAUTOPROVONLY=1

@@ -1,0 +1,4 @@
+BUILD_READY() {
+    abinfo "Building extra components ..."
+    make src/espeak-ng src/speak-ng
+}

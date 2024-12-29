@@ -1,10 +1,13 @@
-abinfo "Configuring..."
-./configure --prefix=/usr \
-                 --bundled-libraries=NONE \
-                 --builtin-libraries=replace
+abinfo "Setting /usr/bin/python3 as the default Python interpreter ..."
+export PYTHON="/usr/bin/python3"
 
-abinfo "Making..."
+abinfo "Configuring tevent ..."
+./configure --prefix=/usr \
+            --bundled-libraries=NONE \
+            --builtin-libraries=replace
+
+abinfo "Building tevent ..."
 make
 
-abinfo "Installing..."
+abinfo "Installing tevent ..."
 make DESTDIR="$PKGDIR" install

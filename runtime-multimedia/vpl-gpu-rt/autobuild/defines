@@ -1,0 +1,10 @@
+PKGNAME=vpl-gpu-rt
+PKGSEC=libs
+PKGDEP="libva intel-media-driver"
+BUILDDEP="cmake"
+PKGDES="Intel Video Processing Library GPU runtime"
+
+ABTYPE=cmake
+
+# vpl-gpu-rt only supports amd64
+FAIL_ARCH="!(amd64)"

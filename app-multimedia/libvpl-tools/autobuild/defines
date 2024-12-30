@@ -1,0 +1,10 @@
+PKGNAME=libvpl-tools
+PKGSEC=utils
+PKGDEP="libvpl intel-media-sdk vpl-gpu-rt libva libdrm x11-lib wayland"
+BUILDDEP="cmake wayland-protocols"
+PKGDES="Intel Video Processing Library tools"
+
+ABTYPE=cmake
+
+# libvpl only supports amd64
+FAIL_ARCH="!(amd64)"

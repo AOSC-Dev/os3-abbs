@@ -1,7 +1,7 @@
 From 5fa6eec9f5c3adb221b400df3e2ae84e5d99b775 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Wed, 8 Nov 2023 10:46:13 +0800
-Subject: [PATCH 005/271] FROMLIST: drm/Makefile: Move tiny drivers before
+Subject: [PATCH 005/276] FROMLIST: drm/Makefile: Move tiny drivers before
  native drivers
 
 After commit 60aebc9559492cea ("drivers/firmware: Move sysfb_init() from

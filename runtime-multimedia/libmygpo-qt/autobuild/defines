@@ -1,0 +1,4 @@
+PKGNAME=libmygpo-qt
+PKGSEC=libs
+PKGDES="A Qt Library that wraps the gpodder.net Web API"
+PKGDEP="qt-5"

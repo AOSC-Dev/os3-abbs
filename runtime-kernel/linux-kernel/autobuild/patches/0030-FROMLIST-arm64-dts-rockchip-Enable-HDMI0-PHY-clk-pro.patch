@@ -1,7 +1,7 @@
 From e0de82c77cbda1d3e2f1deb2f118956353b01dba Mon Sep 17 00:00:00 2001
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Date: Wed, 11 Dec 2024 12:15:08 +0200
-Subject: [PATCH 030/271] FROMLIST: arm64: dts: rockchip: Enable HDMI0 PHY clk
+Subject: [PATCH 030/276] FROMLIST: arm64: dts: rockchip: Enable HDMI0 PHY clk
  provider on RK3588
 
 Since commit c4b09c562086 ("phy: phy-rockchip-samsung-hdptx: Add clock

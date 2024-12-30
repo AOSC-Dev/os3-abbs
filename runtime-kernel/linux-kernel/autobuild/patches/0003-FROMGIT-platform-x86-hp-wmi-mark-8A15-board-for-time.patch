@@ -1,7 +1,7 @@
 From 0102be2c518f0fad5af47cc6292876d0d42ddac8 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Thu, 26 Dec 2024 14:22:05 +0800
-Subject: [PATCH 003/271] FROMGIT: platform/x86: hp-wmi: mark 8A15 board for
+Subject: [PATCH 003/276] FROMGIT: platform/x86: hp-wmi: mark 8A15 board for
  timed OMEN thermal profile
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

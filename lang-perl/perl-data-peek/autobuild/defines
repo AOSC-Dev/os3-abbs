@@ -1,0 +1,4 @@
+PKGNAME=perl-data-peek
+PKGSEC=perl
+PKGDEP="perl"
+PKGDES="A collection of low-level debug facilities"

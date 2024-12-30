@@ -1,0 +1,4 @@
+VER=0.52
+SRCS="tbl::https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/Data-Peek-$VER.tgz"
+CHKSUMS="sha256::6b78ae513c068bd1ed629d08531283c12a9888f61e96ffbdf166d6ab51e277d0"
+CHKUPDATE="anitya::id=2770"

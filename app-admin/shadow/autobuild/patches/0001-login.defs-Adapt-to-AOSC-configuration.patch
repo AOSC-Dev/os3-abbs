@@ -1,0 +1,98 @@
+From 88041e40396103c98590d357b0cf9f0da4ff8b23 Mon Sep 17 00:00:00 2001
+From: Xinhui Yang <cyan@cyano.uk>
+Date: Mon, 30 Dec 2024 22:12:24 +0800
+Subject: [PATCH] login.defs: Adapt to AOSC configuration
+
+- AOSC's login.defs is now decade old. Time to sync with upstream
+  configuration.
+- Set HOME_MODE to 0700 to allow UMASK to be 022 while keeping home
+  directories private.
+- Set SUPATH and PATH for non-Bash shells.
+---
+ etc/login.defs | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/etc/login.defs b/etc/login.defs
+index 33622c29..d6622d8f 100644
+--- a/etc/login.defs
++++ b/etc/login.defs
+@@ -86,8 +86,7 @@ CONSOLE		/etc/securetty
+ #
+ # If defined, ":" delimited list of "message of the day" files to
+ # be displayed upon login.
+-#
+-MOTD_FILE	/etc/motd
++MOTD_FILE
+ #MOTD_FILE	/etc/motd:/usr/lib/news/news-motd
+ 
+ #
+@@ -158,8 +157,8 @@ ENV_HZ		HZ=100
+ # *REQUIRED*  The default PATH settings, for superuser and normal users.
+ #
+ # (they are minimal, add the rest in the shell startup files)
+-ENV_SUPATH	PATH=/sbin:/bin:/usr/sbin:/usr/bin
+-ENV_PATH	PATH=/bin:/usr/bin
++ENV_SUPATH	PATH=/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin
++ENV_PATH	PATH=/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin
+ 
+ #
+ # Terminal permissions
+@@ -188,9 +187,9 @@ TTYPERM		0600
+ #
+ # Prefix these values with "0" to get octal, "0x" to get hexadecimal.
+ #
+-ERASECHAR	0177
++# ERASECHAR	0177
+ KILLCHAR	025
+-#ULIMIT		2097152
++# ULIMIT		2097152
+ 
+ # Default initial "umask" value used by login(1) on non-PAM enabled systems.
+ # Default "umask" value for pam_umask(8) on PAM enabled systems.
+@@ -199,6 +198,7 @@ KILLCHAR	025
+ # 022 is the default value, but 027, or even 077, could be considered
+ # for increased privacy. There is no One True Answer here: each sysadmin
+ # must make up their mind.
++HOME_MODE	0700
+ UMASK		022
+ 
+ # HOME_MODE is used by useradd(8) and newusers(8) to set the mode for new
+@@ -216,7 +216,7 @@ UMASK		022
+ #
+ PASS_MAX_DAYS	99999
+ PASS_MIN_DAYS	0
+-PASS_MIN_LEN	5
++PASS_MIN_LEN	1
+ PASS_WARN_AGE	7
+ 
+ #
+@@ -233,7 +233,7 @@ SU_WHEEL_ONLY	no
+ UID_MIN			 1000
+ UID_MAX			60000
+ # System accounts
+-SYS_UID_MIN		  101
++SYS_UID_MIN		  500
+ SYS_UID_MAX		  999
+ # Extra per user uids
+ SUB_UID_MIN		   100000
+@@ -246,7 +246,7 @@ SUB_UID_COUNT		    65536
+ GID_MIN			 1000
+ GID_MAX			60000
+ # System accounts
+-SYS_GID_MIN		  101
++SYS_GID_MIN		  500
+ SYS_GID_MAX		  999
+ # Extra per user group ids
+ SUB_GID_MIN		   100000
+@@ -329,7 +329,7 @@ CHFN_RESTRICT		rwh
+ # Note: If you use PAM, it is recommended to use a value consistent with
+ # the PAM modules configuration.
+ #
+-#ENCRYPT_METHOD DES
++ENCRYPT_METHOD SHA512
+ 
+ #
+ # Only works if ENCRYPT_METHOD is set to SHA256 or SHA512.
+-- 
+2.47.1
+

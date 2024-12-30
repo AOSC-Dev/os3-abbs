@@ -1,7 +1,7 @@
-From 826412bf00285dbcaccca03a3c28b6676fbab404 Mon Sep 17 00:00:00 2001
+From fe4537f7a8fbce54efae9a6734c45e84b0fcdb35 Mon Sep 17 00:00:00 2001
 From: Frank Liberato <liberato@chromium.org>
 Date: Wed, 7 Jul 2021 19:01:22 -0700
-Subject: [PATCH 2/2] Add av_stream_get_first_dts for Chromium
+Subject: [PATCH 2/4] Add av_stream_get_first_dts for Chromium
 
 ---
  libavformat/avformat.h | 4 ++++
@@ -42,5 +42,5 @@ index e9ded627ad..399c777f2a 100644
  #define SANE_CHUNK_SIZE (50000000)
  
 -- 
-2.46.2
+2.47.1
 

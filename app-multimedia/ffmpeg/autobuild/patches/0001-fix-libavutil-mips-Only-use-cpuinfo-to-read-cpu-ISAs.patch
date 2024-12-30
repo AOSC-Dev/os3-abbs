@@ -1,19 +1,19 @@
-From 1d0c743eb8eaf62ba35d5ac4120b741b3465f523 Mon Sep 17 00:00:00 2001
+From 1ace584bbc51082635887013d5da6d09d8c73f7d Mon Sep 17 00:00:00 2001
 From: Icenowy Zheng <icenowy@aosc.io>
 Date: Mon, 7 Sep 2020 03:49:55 +0800
-Subject: [PATCH 1/2] fix(libavutil/mips): Only use cpuinfo to read cpu ISAs
+Subject: [PATCH 1/4] fix(libavutil/mips): Only use cpuinfo to read cpu ISAs
 
 Signed-off-by: Icenowy Zheng <icenowy@aosc.io>
 ---
- libavutil/mips/asmdefs.h | 48 ----------------------------------------
+ libavutil/mips/asmdefs.h | 42 -----------------------------------
  libavutil/mips/cpu.c     | 48 +---------------------------------------
- 2 files changed, 1 insertion(+), 95 deletions(-)
+ 2 files changed, 1 insertion(+), 89 deletions(-)
 
 diff --git a/libavutil/mips/asmdefs.h b/libavutil/mips/asmdefs.h
-index 659342bab9..1815e83dad 100644
+index 659342bab9..4d3bf1f09a 100644
 --- a/libavutil/mips/asmdefs.h
 +++ b/libavutil/mips/asmdefs.h
-@@ -57,52 +57,4 @@
+@@ -57,48 +57,6 @@
  # define PTR_SLL        "sll "
  #endif
  
@@ -59,13 +59,9 @@ index 659342bab9..1815e83dad 100644
 -        ".endif\n\t"
 -        ".endm");
 -
--/* General union structure for clang adaption */
--union mmi_intfloat64 {
--    int64_t i;
--    double  f;
--};
--
- #endif /* AVCODEC_MIPS_ASMDEFS_H */
+ /* General union structure for clang adaption */
+ union mmi_intfloat64 {
+     int64_t i;
 diff --git a/libavutil/mips/cpu.c b/libavutil/mips/cpu.c
 index 2009c70f71..5002261b25 100644
 --- a/libavutil/mips/cpu.c
@@ -133,5 +129,5 @@ index 2009c70f71..5002261b25 100644
      /* Assume no SIMD ASE supported */
      return 0;
 -- 
-2.46.2
+2.47.1
 

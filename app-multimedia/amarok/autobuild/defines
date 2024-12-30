@@ -1,0 +1,4 @@
+PKGNAME=amarok
+PKGSEC=sound
+PKGDEP="plasma-framework kdnssd ktexteditor threadweaver extra-cmake-modules phonon mariadb taglib taglib-extras libgpod libmtp liblastfm audiocd-kio libmygpo-qt"
+PKGDES="the audio player for KDE"

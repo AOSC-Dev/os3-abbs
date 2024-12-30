@@ -1,0 +1,4 @@
+VER=1.29
+SRCS="tbl::https://cpan.metacpan.org/authors/id/C/CA/CAC/Tk-TableMatrix-$VER.tar.gz"
+CHKSUMS="sha256::d31708b8bbfddce9034540522b2e4ec58e70f2eb5b23ac593d2421ea90dbd0d6"
+CHKUPDATE="anitya::id=14404"

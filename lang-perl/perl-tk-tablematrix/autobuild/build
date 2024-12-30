@@ -1,0 +1,13 @@
+abinfo "Generating Makefile from Makefile.PL ..."
+PERL_MM_USE_DEFAULT=1 \
+  perl -I"$SRCDIR" Makefile.PL INSTALLDIRS=vendor
+
+abinfo "Building perl-tk-tablematrix ..."
+make V=1 VERBOSE=1 "${MAKE_AFTER[@]}"
+
+abinfo "Installing perl-tk-tablematrix ..."
+make V=1 VERBOSE=1 DESTDIR="$PKGDIR" install
+
+abinfo "Deleting conflicting files ..."
+rm "$PKGDIR"/usr/lib/perl5/vendor_perl/Tk/TableMatrix.pod
+rm "$PKGDIR"/usr/lib/perl5/vendor_perl/auto/Tk/pTk/extralibs.ld

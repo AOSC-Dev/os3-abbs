@@ -1,0 +1,4 @@
+PKGNAME=perl-tk-tablematrix
+PKGSEC=perl
+PKGDEP="perl perl-tk"
+PKGDES="Display data in TableSpreadsheet format"

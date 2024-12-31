@@ -1,0 +1,5 @@
+PKGNAME=ruri 
+ PKGSEC=admin 
+ PKGDEP="libcap libseccomp" 
+ PKGDES="A self-contained Linux container implementation" 
+ ABTYPE=cmake

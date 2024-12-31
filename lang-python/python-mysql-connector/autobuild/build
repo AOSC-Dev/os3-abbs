@@ -1,5 +1,7 @@
 abinfo "Building nuclei ..."
 python3 -m build --wheel --no-isolation mysql-connector-python/
+python3 -m build --wheel --no-isolation mysqlx-connector-python/
 
 abinfo "Installing nuclei ..."
 python3 -m installer --destdir="$PKGDIR" mysql-connector-python/dist/*.whl
+python3 -m installer --destdir="$PKGDIR" mysqlx-connector-python/dist/*.whl

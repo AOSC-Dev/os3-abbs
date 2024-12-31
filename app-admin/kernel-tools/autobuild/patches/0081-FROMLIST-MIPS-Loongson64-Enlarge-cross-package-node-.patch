@@ -1,7 +1,7 @@
 From 9aa91645c3a3b0d6650c5f00b0db2e2504e76b21 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Sun, 1 Nov 2020 11:33:58 +0800
-Subject: [PATCH 081/276] FROMLIST: MIPS: Loongson64: Enlarge cross-package
+Subject: [PATCH 081/277] FROMLIST: MIPS: Loongson64: Enlarge cross-package
  node distance
 
 NUMA node distances affect the NUMA balancing behaviors. The cost of

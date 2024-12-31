@@ -1,7 +1,7 @@
 From d80cf031509bd8d50daeb60062b7990f71d5b16c Mon Sep 17 00:00:00 2001
 From: Timo Aaltonen <timo.aaltonen@canonical.com>
 Date: Mon, 5 Aug 2024 14:48:08 +0300
-Subject: [PATCH 103/276] UBUNTU: SAUCE: hwmon: Fix aaeon driver for 6.11.
+Subject: [PATCH 103/277] UBUNTU: SAUCE: hwmon: Fix aaeon driver for 6.11.
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit

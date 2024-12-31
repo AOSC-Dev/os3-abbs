@@ -1,7 +1,7 @@
 From 23ebe9b049cdb13fad7bfa241a3d10f33f8493b8 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Wed, 6 Feb 2019 20:03:14 +0800
-Subject: [PATCH 074/276] FROMLIST: MIPS: math-emu: Add madd/msub/nmadd/nmsub
+Subject: [PATCH 074/277] FROMLIST: MIPS: math-emu: Add madd/msub/nmadd/nmsub
  emulation for Loongson-3
 
 Add madd.s/madd.d/msub.s/msub.d/nmadd.s/nmadd.d/nmsub.s/nmsub.d

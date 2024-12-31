@@ -1,7 +1,7 @@
 From 8ba3f368fdcab8529b2e09c986d16f6eb491086d Mon Sep 17 00:00:00 2001
 From: Daniel Scally <dan.scally@ideasonboard.com>
 Date: Wed, 22 Mar 2023 11:01:42 +0000
-Subject: [PATCH 128/276] SURFACE: media: v4l2-core: Acquire privacy led in
+Subject: [PATCH 128/277] SURFACE: media: v4l2-core: Acquire privacy led in
  v4l2_async_register_subdev()
 
 The current call to v4l2_subdev_get_privacy_led() is contained in

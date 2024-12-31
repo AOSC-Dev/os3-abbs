@@ -1,7 +1,7 @@
 From 708c683dbb81da0a61d230b4454fa0a92473fce1 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?=E5=BF=98=E6=80=80?= <guanwentao@uniontech.com>
 Date: Tue, 9 Jul 2024 17:17:48 +0800
-Subject: [PATCH 112/286] DEEPIN: net: stmmac: dwmac-phytium: compat some
+Subject: [PATCH 112/287] DEEPIN: net: stmmac: dwmac-phytium: compat some
  FT2000
 
 Compat with some quirk platform FT2000/4 as id "FTGM0001",

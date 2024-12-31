@@ -1,7 +1,7 @@
 From 218c76ff7990a740295bda3e0ac52a3a5405badf Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:35:11 -0600
-Subject: [PATCH 067/286] FROMLIST: ntsync: No longer depend on BROKEN.
+Subject: [PATCH 067/287] FROMLIST: ntsync: No longer depend on BROKEN.
 
 f5b335dc025cfee90957efa90dc72fada0d5abb4 ("misc: ntsync: mark driver as "broken"
 to prevent from building") was committed to avoid the driver being used while

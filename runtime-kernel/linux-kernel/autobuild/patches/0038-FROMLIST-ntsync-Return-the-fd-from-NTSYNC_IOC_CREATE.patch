@@ -1,7 +1,7 @@
 From b1ea742eaa153fc46140509dd623fe9517a7ec39 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:42 -0600
-Subject: [PATCH 038/286] FROMLIST: ntsync: Return the fd from
+Subject: [PATCH 038/287] FROMLIST: ntsync: Return the fd from
  NTSYNC_IOC_CREATE_SEM.
 
 Simplify the user API a bit by returning the fd as return value from the ioctl

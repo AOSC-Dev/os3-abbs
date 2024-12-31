@@ -1,0 +1,33 @@
+From 27ea731b66a9f7e53691a03d315e64de72a65313 Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.io>
+Date: Tue, 31 Dec 2024 21:32:45 +0800
+Subject: [PATCH 174/287] AOSCOS: hp-wmi: add 8BB3 to
+ omen_timed_thermal_profile_boards
+
+This board may need a timed power profile quirk. Not sure, tests pending.
+
+Fixes: "AOSCOS: hp-wmi: add 8BB3 to omen_thermal_profile_boards"
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+
+Link: https://t.me/c/1109254909/695630
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ drivers/platform/x86/hp/hp-wmi.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/platform/x86/hp/hp-wmi.c b/drivers/platform/x86/hp/hp-wmi.c
+index f43391b63d4b..4208908b87a2 100644
+--- a/drivers/platform/x86/hp/hp-wmi.c
++++ b/drivers/platform/x86/hp/hp-wmi.c
+@@ -81,7 +81,7 @@ static const char * const omen_thermal_profile_force_v0_boards[] = {
+  * "balanced" when reaching zero.
+  */
+ static const char * const omen_timed_thermal_profile_boards[] = {
+-	"8BAB", "8BAD", "8A42", "8A15"
++	"8BAB", "8BAD", "8A42", "8A15", "8BB3"
+ };
+ 
+ /* DMI Board names of Victus laptops */
+-- 
+2.48.0.rc1
+

@@ -1,7 +1,7 @@
 From 1087d0ed726d5a8f7e898aac10b158e333dae93d Mon Sep 17 00:00:00 2001
 From: Li Wencheng <liwencheng@phytium.com.cn>
 Date: Mon, 25 Mar 2024 17:38:27 +0800
-Subject: [PATCH 097/286] BACKPORT: PHYTIUM: net/stmmac: Add phytium DWMAC
+Subject: [PATCH 097/287] BACKPORT: PHYTIUM: net/stmmac: Add phytium DWMAC
  driver support v2
 
 Modify stmmmac driver to support phytium DWMAC controler.

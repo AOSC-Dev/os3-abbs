@@ -1,7 +1,7 @@
 From 66f4e22fc0f3cbb52c44788070ac825b7487d909 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:56 -0600
-Subject: [PATCH 052/286] FROMLIST: ntsync: Introduce alertable waits.
+Subject: [PATCH 052/287] FROMLIST: ntsync: Introduce alertable waits.
 
 NT waits can optionally be made "alertable". This is a special channel for
 thread wakeup that is mildly similar to SIGIO. A thread has an internal single

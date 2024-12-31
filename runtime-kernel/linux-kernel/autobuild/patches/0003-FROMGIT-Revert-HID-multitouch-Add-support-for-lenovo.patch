@@ -1,7 +1,7 @@
 From 1d233934c3140b161568f52b57b1607e07d897dc Mon Sep 17 00:00:00 2001
 From: Jiri Kosina <jkosina@suse.com>
 Date: Thu, 12 Dec 2024 09:53:10 +0100
-Subject: [PATCH 003/286] FROMGIT: Revert "HID: multitouch: Add support for
+Subject: [PATCH 003/287] FROMGIT: Revert "HID: multitouch: Add support for
  lenovo Y9000P Touchpad"
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

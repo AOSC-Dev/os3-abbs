@@ -1,7 +1,7 @@
 From ee12f665f33467b359bdec69110cc33f84850643 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 31 Dec 2024 21:31:10 +0800
-Subject: [PATCH 173/286] AOSCOS: hp-wmi: add 8BB3 to
+Subject: [PATCH 173/287] AOSCOS: hp-wmi: add 8BB3 to
  omen_thermal_profile_boards
 
 Mark OMEN by HP Transcend Gaming Laptop 16-u0xxx (board ID: 8BB3) for OMEN

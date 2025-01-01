@@ -1,7 +1,6 @@
-UPSTREAM_VER=2.2.2
+UPSTREAM_VER=2.2.3
 
 VER=${UPSTREAM_VER}
-REL=1
 SRCS="git::commit=tags/${UPSTREAM_VER}::https://github.com/zlib-ng/zlib-ng.git"
 CHKSUMS="SKIP"
 

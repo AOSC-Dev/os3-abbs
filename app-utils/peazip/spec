@@ -1,9 +1,9 @@
-VER=10.0.0
+VER=10.2.0
 SRCS="tbl::rename=peazip-${VER}.src.zip::https://github.com/peazip/PeaZip/releases/download/${VER}/peazip-${VER}.src.zip \
       file::rename=peazip_help.pdf::https://github.com/peazip/PeaZip/releases/download/${VER%.*}.0/peazip_help.pdf \
       tbl::https://github.com/peazip/PeaZip/releases/download/${VER}/peazip-${VER}.about_translations.zip"
-CHKSUMS="sha256::2aa9e1a88d8ac832bc43b82b6b3c6fc6a7111914e47c758c36034cabc0c1f7f4 \
-         sha256::4caa94716a35adbbec13dcd379b5e6eb604e33b4d9e86d783eb71bfe62bb0969 \
-         sha256::71cfaaf1b1f8f3a259a08accf4eb53a8bf0dd7afb33965845ff0c159aec4c3a5"
+CHKSUMS="sha256::14162e4aacb1371d25a65ef5c10e7cad929c10c6a84ed8672dfcc17ec74fad91 \
+         sha256::90139742213acffa4b4095021b4c3f220e40d85ce608a25401bdd71abf4c3707 \
+         sha256::78e41e005fbb1b34e279bec6fb6eb20c3a4bd2165125e2924e3f8a965663ee77"
 SUBDIR=peazip-${VER}.src
 CHKUPDATE="anitya::id=8759"

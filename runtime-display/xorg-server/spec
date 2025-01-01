@@ -1,5 +1,4 @@
-VER=21.1.14
-REL=1
+VER=21.1.15
 SRCS="tbl::https://www.x.org/archive/individual/xserver/xorg-server-$VER.tar.xz"
-CHKSUMS="sha256::8f2102cebdc4747d1656c1099ef610f5063c7422c24a177e300de569b354ee35"
+CHKSUMS="sha256::841c82901282902725762df03adbbcd68153d4cdfb0d61df0cfd73ad677ae089"
 CHKUPDATE="anitya::id=5250"

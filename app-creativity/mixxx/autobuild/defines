@@ -7,8 +7,11 @@ PKGDEP="lilv libebur128 mp4v2 libsndfile faad2 fftw libshout libmad qt-5 \
         upower qtkeychain ffmpeg wavpack"
 BUILDDEP="gtest mesa glu microsoft-gsl benchmark"
 
-CMAKE_AFTER="-DDOWNLOAD_MANUAL=ON \
-             -DINSTALL_USER_UDEV_RULES=OFF"
+CMAKE_AFTER=(
+    '-DDOWNLOAD_MANUAL=ON'
+    '-DINSTALL_USER_UDEV_RULES=OFF'
+    '-DQT6=OFF'
+)
 
 AB_FLAGS_O3=1
 

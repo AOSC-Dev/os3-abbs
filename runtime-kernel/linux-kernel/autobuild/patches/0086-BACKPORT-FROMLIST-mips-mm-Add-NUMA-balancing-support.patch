@@ -1,7 +1,7 @@
-From a80525997cfbbd7372497584324de71ef5bf43d7 Mon Sep 17 00:00:00 2001
+From c686a23e47732b484c03068cd6a3f5eabe66da6f Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Sun, 1 Nov 2020 11:33:56 +0800
-Subject: [PATCH 086/286] BACKPORT: FROMLIST: mips/mm: Add NUMA balancing
+Subject: [PATCH 086/285] BACKPORT: FROMLIST: mips/mm: Add NUMA balancing
  support
 
 NUMA balancing is available on nearly all architectures, but MIPS lacks
@@ -13,8 +13,8 @@ because NUMA balancing depends on huge page implicitly).
 Signed-off-by: Huacai Chen <chenhc@lemote.com>
 
 Link: https://lore.kernel.org/all/1604201638-4001-1-git-send-email-chenhc@lemote.com/
-[Kexy: Resolved minor conflicts in arch/mips/Kconfig, and
- arch/mips/include/asm/pgtable.h]
+[Kexy: Resolved minor conflicts in arch/mips/Kconfig,
+ and arch/mips/include/asm/pgtable.h]
 Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
 ---
  arch/mips/Kconfig                    |  1 +

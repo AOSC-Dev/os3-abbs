@@ -1,7 +1,7 @@
-From 42b53200f4c1a46cb7a9abc4c6be353f793336f8 Mon Sep 17 00:00:00 2001
+From b4190a94b7a76711dd9e764f5a34a67b75133198 Mon Sep 17 00:00:00 2001
 From: PJungkamp <p.jungkamp@gmail.com>
 Date: Fri, 25 Feb 2022 12:04:25 +0100
-Subject: [PATCH 128/286] BACKPORT: SURFACE: hid/multitouch: Add support for
+Subject: [PATCH 128/285] BACKPORT: SURFACE: hid/multitouch: Add support for
  surface pro type cover tablet switch
 
 The Surface Pro Type Cover has several non standard HID usages in it's

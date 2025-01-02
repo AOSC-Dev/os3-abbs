@@ -1,7 +1,7 @@
 From fbc9fe27ff962bfc5b656e475934f6195100fc44 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Thu, 26 Dec 2024 14:22:05 +0800
-Subject: [PATCH 001/286] UPSTREAM: platform/x86: hp-wmi: mark 8A15 board for
+Subject: [PATCH 001/285] UPSTREAM: platform/x86: hp-wmi: mark 8A15 board for
  timed OMEN thermal profile
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

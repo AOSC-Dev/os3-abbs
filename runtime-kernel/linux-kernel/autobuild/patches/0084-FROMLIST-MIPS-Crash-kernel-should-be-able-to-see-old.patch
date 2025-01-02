@@ -1,7 +1,7 @@
 From 3d5fbda068cc962c2c9526964d8c9a89d476b1b4 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 24 Sep 2020 18:07:57 +0800
-Subject: [PATCH 084/286] FROMLIST: MIPS: Crash kernel should be able to see
+Subject: [PATCH 084/285] FROMLIST: MIPS: Crash kernel should be able to see
  old memories
 
 Kexec-tools use mem=X@Y to pass usable memories to crash kernel, but in

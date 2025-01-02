@@ -1,7 +1,7 @@
-From bc17256ade752829025f3f488467f2ebebb5f8c9 Mon Sep 17 00:00:00 2001
+From a8c7321d7479994915a1dc39590c17595d0ed84e Mon Sep 17 00:00:00 2001
 From: Miao Wang <shankerwangmiao@gmail.com>
 Date: Tue, 13 Aug 2024 16:05:28 +0800
-Subject: [PATCH 158/286] AOSCOS: loongarch: fix DMA address offset
+Subject: [PATCH 158/285] AOSCOS: loongarch: fix DMA address offset
 
 Loongarch CPUs are using HT bus interface, which is only 40-bit wide,
 to communicate with the bridge chipset. However, the actual memory

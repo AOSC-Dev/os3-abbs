@@ -1,7 +1,7 @@
-From dcc65ae17b959634c95846f55d82d8d2ea37fc4b Mon Sep 17 00:00:00 2001
+From 10575f6a8ac64945ad8c6d6b2ab1eefedf1d1318 Mon Sep 17 00:00:00 2001
 From: Miao Wang <shankerwangmiao@gmail.com>
 Date: Thu, 18 Jul 2024 18:55:59 +0800
-Subject: [PATCH 154/286] AOSCOS: loongarch: parse BPI data and add memory
+Subject: [PATCH 154/285] AOSCOS: loongarch: parse BPI data and add memory
  mapping
 
 On legacy firmwares, the memory mapping information passed in the EFI

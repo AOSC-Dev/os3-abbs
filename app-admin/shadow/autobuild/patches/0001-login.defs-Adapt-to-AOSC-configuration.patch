@@ -1,4 +1,4 @@
-From 88041e40396103c98590d357b0cf9f0da4ff8b23 Mon Sep 17 00:00:00 2001
+From 964a317ef6fc3eb92ac6d2b99604c2b6e89c5047 Mon Sep 17 00:00:00 2001
 From: Xinhui Yang <cyan@cyano.uk>
 Date: Mon, 30 Dec 2024 22:12:24 +0800
 Subject: [PATCH] login.defs: Adapt to AOSC configuration
@@ -13,7 +13,7 @@ Subject: [PATCH] login.defs: Adapt to AOSC configuration
  1 file changed, 10 insertions(+), 10 deletions(-)
 
 diff --git a/etc/login.defs b/etc/login.defs
-index 33622c29..d6622d8f 100644
+index 33622c29..48073d7e 100644
 --- a/etc/login.defs
 +++ b/etc/login.defs
 @@ -86,8 +86,7 @@ CONSOLE		/etc/securetty
@@ -32,8 +32,8 @@ index 33622c29..d6622d8f 100644
  # (they are minimal, add the rest in the shell startup files)
 -ENV_SUPATH	PATH=/sbin:/bin:/usr/sbin:/usr/bin
 -ENV_PATH	PATH=/bin:/usr/bin
-+ENV_SUPATH	PATH=/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin
-+ENV_PATH	PATH=/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin
++ENV_SUPATH	PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
++ENV_PATH	PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
  
  #
  # Terminal permissions

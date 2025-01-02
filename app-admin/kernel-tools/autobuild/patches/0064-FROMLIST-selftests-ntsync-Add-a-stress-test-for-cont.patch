@@ -1,7 +1,7 @@
 From b2cbe4cf04d23cdfbca87a43fe1050e822e9be35 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:35:08 -0600
-Subject: [PATCH 064/286] FROMLIST: selftests: ntsync: Add a stress test for
+Subject: [PATCH 064/285] FROMLIST: selftests: ntsync: Add a stress test for
  contended waits.
 
 Test a more realistic usage pattern, and one with heavy contention, in order to

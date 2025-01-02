@@ -1,7 +1,7 @@
-From 6a5ff97963becdd15170829923ce3333e998bb4d Mon Sep 17 00:00:00 2001
+From 424411875cefe61ab2d23d6325765172147d96ac Mon Sep 17 00:00:00 2001
 From: wangrui <wangrui@loongson.cn>
 Date: Thu, 8 Apr 2021 19:30:59 +0800
-Subject: [PATCH 088/286] BACKPORT: FROMLIST: MIPS: tlbex: Avoid access invalid
+Subject: [PATCH 088/285] BACKPORT: FROMLIST: MIPS: tlbex: Avoid access invalid
  address when pmd is modifying
 
 When user-space program accessing a virtual address and falls into TLB invalid
@@ -32,11 +32,11 @@ Link: https://lore.kernel.org/all/CAAhV-H5a6f7SSaMfOJudFuqtzLqkDks_NkjsPe15gN3mJ
 [Kexy: Resolved minor conflict in arch/mips/mm/tlbex.c]
 Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
 ---
- arch/mips/mm/tlbex.c | 25 ++++++++++++-------------
- 1 file changed, 12 insertions(+), 13 deletions(-)
+ arch/mips/mm/tlbex.c | 27 ++++++++++++---------------
+ 1 file changed, 12 insertions(+), 15 deletions(-)
 
 diff --git a/arch/mips/mm/tlbex.c b/arch/mips/mm/tlbex.c
-index 69ea54bdc0c3..e285277c96c9 100644
+index 69ea54bdc0c3..33f613d6665b 100644
 --- a/arch/mips/mm/tlbex.c
 +++ b/arch/mips/mm/tlbex.c
 @@ -676,13 +676,12 @@ static void build_huge_tlb_write_entry(u32 **p, struct uasm_label **l,
@@ -97,7 +97,16 @@ index 69ea54bdc0c3..e285277c96c9 100644
  		build_update_entries(&p, GPR_K0, GPR_K1);
  		build_tlb_write_entry(&p, &l, &r, tlb_random);
  		uasm_l_leave(&l, p);
-@@ -2001,20 +2000,20 @@ build_r4000_tlbchange_handler_head(u32 **p, struct uasm_label **l,
+@@ -1300,8 +1299,6 @@ static void build_r4000_tlb_refill_handler(void)
+ 	}
+ #ifdef CONFIG_MIPS_HUGE_TLB_SUPPORT
+ 	uasm_l_tlb_huge_update(&l, p);
+-	if (htlb_info.need_reload_pte)
+-		UASM_i_LW(&p, htlb_info.huge_pte, 0, GPR_K1);
+ 	build_huge_update_entries(&p, htlb_info.huge_pte, GPR_K1);
+ 	build_huge_tlb_write_entry(&p, &l, &r, GPR_K0, tlb_random,
+ 				   htlb_info.restore_scratch);
+@@ -2001,20 +1998,20 @@ build_r4000_tlbchange_handler_head(u32 **p, struct uasm_label **l,
  	build_get_pgde32(p, wr.r1, wr.r2); /* get pgd in ptr */
  #endif
  

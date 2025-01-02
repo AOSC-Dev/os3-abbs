@@ -1,7 +1,7 @@
-From c535ad8edaae91947b3526648348916b59b32091 Mon Sep 17 00:00:00 2001
+From 84f0a1a055bf6a66ad3399e680f8e35b1f59852b Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?=E5=BF=98=E6=80=80?= <otgwt@outlook.com>
 Date: Wed, 3 Jul 2024 03:13:45 +0000
-Subject: [PATCH 119/286] DEEPIN: net: phytium: convert and remove validate()
+Subject: [PATCH 119/285] DEEPIN: net: phytium: convert and remove validate()
  references
 
 Populate the supported interfaces bitmap and MAC capabilities mask for

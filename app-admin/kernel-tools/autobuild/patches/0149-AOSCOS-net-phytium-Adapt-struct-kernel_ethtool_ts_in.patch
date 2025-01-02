@@ -1,7 +1,7 @@
-From d3707a07bc6b106de74305e95ec79537076a32d9 Mon Sep 17 00:00:00 2001
+From 38405a27dbbbd4ed670d2d102c11504cfdfac7fb Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Sun, 22 Sep 2024 03:42:30 +0800
-Subject: [PATCH 149/286] AOSCOS: net: phytium: Adapt struct
+Subject: [PATCH 149/285] AOSCOS: net: phytium: Adapt struct
  kernel_ethtool_ts_info
 
 Fixes: 53f8c475850d ("BACKPORT: PHYTIUM: net: phytium: Add support for phytium GMAC")

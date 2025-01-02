@@ -1,7 +1,7 @@
-From 66fe63835860eee9f3a2403efe8a9891b35aece7 Mon Sep 17 00:00:00 2001
+From a6e674204fcd7e0f394c5411fd2721183c4bccc4 Mon Sep 17 00:00:00 2001
 From: YunQiang Su <syq@debian.org>
 Date: Mon, 16 Nov 2020 09:11:00 +0800
-Subject: [PATCH 103/286] DEBIAN: Use RELAXED ieee754 mode for Loongson-3 as 3A
+Subject: [PATCH 103/285] DEBIAN: Use RELAXED ieee754 mode for Loongson-3 as 3A
  4000 is 2008-only
 
 There are 2 mode of value of IEEE NaN hardcoded by CPU.

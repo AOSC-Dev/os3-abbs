@@ -1,7 +1,7 @@
-From 0107eb5b83872a7771f8d16ef12bb5f84c29e948 Mon Sep 17 00:00:00 2001
+From eee844a5962bb8ba1823633e8a8ef36c43ec62bf Mon Sep 17 00:00:00 2001
 From: Miao Wang <shankerwangmiao@gmail.com>
 Date: Wed, 24 Jul 2024 09:06:27 +0800
-Subject: [PATCH 156/286] AOSCOS: loongarch: correct missing offset of PCI root
+Subject: [PATCH 156/285] AOSCOS: loongarch: correct missing offset of PCI root
  controller in DSDT table
 
 On machines with legacy firmware with BPI version BPI01000, the PCI root

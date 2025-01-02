@@ -1,4 +1,4 @@
-From da878a531aa9e605fe122930d26d9e708996a16f Mon Sep 17 00:00:00 2001
+From 7078e410339a70e35591df47a6aa1ea5515285fd Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 9 Apr 2024 22:04:57 +0800
 Subject: [PATCH 4/8] fix(core/launcher.cpp): revert to old HiDPI handling

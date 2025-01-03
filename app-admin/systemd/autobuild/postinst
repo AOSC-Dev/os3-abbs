@@ -9,6 +9,8 @@ _systemctl() {
 # the package upgrade sequence is messed up (i.e., whilst updating
 # OpenSSL, breaking systemd programs).
 _systemctl daemon-reexec || true
+# https://src.fedoraproject.org/rpms/systemd/blob/fc47a92e4a3828d6b3fc7901b481135a87132cd7/f/systemd.spec#_1103
+/usr/lib/systemd/systemd-update-helper user-reexec || true
 
 systemd-machine-id-setup ${DPKG_ROOT:+--root="$DPKG_ROOT"}
 

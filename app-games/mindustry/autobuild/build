@@ -5,9 +5,13 @@ abinfo "Generate icons..."
 cd core/assets/icons
 icns2png --extract icon.icns
 
-abinfo "Installing..."
+abinfo "Installing client jar file..."
 install -Dm755 "$SRCDIR/desktop/build/libs/Mindustry.jar" "$PKGDIR/usr/share/java/mindustry/mindustry.jar"
+
+abinfo "Installing server jar file..."
 install -Dm755 "$SRCDIR/server/build/libs/server-release.jar" "$PKGDIR/usr/share/java/mindustry/mindustry_server.jar"
+
+abinfo "Installing icon file..."
 local icon_size
 for icon_size in 256 512 1024; do
     install -Dm644 "$SRCDIR/core/assets/icons/icon_${icon_size}x${icon_size}x32.png" \

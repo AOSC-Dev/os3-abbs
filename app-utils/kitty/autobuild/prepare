@@ -1,0 +1,2 @@
+# FIXME: build system of this package doesn't use CPPFLAGS, instead merge it with CFLAGS
+export CFLAGS="${CFLAGS} ${CPPFLAGS}"

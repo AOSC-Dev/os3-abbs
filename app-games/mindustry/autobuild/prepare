@@ -1,0 +1,6 @@
+# skip android subproject; see settings.gradle
+unset ANDROID_HOME JITPACK
+# force using jdk17
+update-alternatives --set java /usr/lib/java-17/bin/java
+update-alternatives --set java-home /usr/lib/java-17
+

@@ -1,0 +1,6 @@
+VER=146
+SRCS="git::commit=tags/v$VER::https://github.com/Anuken/Mindustry.git \
+      git::commit=tags/v$VER;rename=Arc::https://github.com/Anuken/Arc.git"
+CHKSUMS="SKIP SKIP"
+CHKUPDATE="anitya::id=147357"
+SUBDIR="mindustry"

@@ -1,0 +1,2 @@
+patch -Np1 -d ../Arc -i ../mindustry/autobuild/patches/fix-arc-build-in-gradle.patch
+patch -Np1 -i autobuild/patches/always-use-local-arc.patch

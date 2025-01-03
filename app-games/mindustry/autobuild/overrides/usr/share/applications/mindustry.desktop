@@ -1,0 +1,18 @@
+[Desktop Entry]
+Categories=Game;
+Comment[zh_CN]=A sandbox tower defense game
+Comment=A sandbox tower defense game
+Exec=mindustry
+GenericName[zh_CN]=
+GenericName=
+Icon=mindustry
+MimeType=
+Name[zh_CN]=Mindustry
+Name=Mindustry
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=

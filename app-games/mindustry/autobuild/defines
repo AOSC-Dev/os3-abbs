@@ -1,0 +1,5 @@
+PKGNAME=mindustry
+PKGSEC=games
+PKGDEP="openjdk-17 alsa-lib libicns hicolor-icon-theme"
+PKGDES="A sandbox tower defense game"
+BUILDDEP="gradle"

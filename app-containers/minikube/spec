@@ -2,3 +2,4 @@ VER=1.34.0
 SRCS="git::commit=tags/v$VER;copy-repo=true::https://github.com/kubernetes/minikube"
 CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=320530"
+REL=1

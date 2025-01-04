@@ -2,3 +2,4 @@ VER=3.16.1
 SRCS="git::copy-repo=true;commit=tags/v$VER::https://github.com/helm/helm"
 CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=15046"
+REL=1

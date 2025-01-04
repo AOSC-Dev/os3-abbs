@@ -1,19 +1,24 @@
+abinfo "Entering mindustry folder..."
+cd ./mindustry
+
 abinfo "Building..."
 gradle desktop:dist server:dist --stacktrace
 
 abinfo "Generate icons..."
 cd core/assets/icons
 icns2png --extract icon.icns
+cd ../../..
 
 abinfo "Installing client jar file..."
-install -Dm755 "$SRCDIR/desktop/build/libs/Mindustry.jar" "$PKGDIR/usr/share/java/mindustry/mindustry.jar"
+install -Dm755 -v "desktop/build/libs/Mindustry.jar" "$PKGDIR/usr/share/java/mindustry/mindustry.jar"
 
 abinfo "Installing server jar file..."
-install -Dm755 "$SRCDIR/server/build/libs/server-release.jar" "$PKGDIR/usr/share/java/mindustry/mindustry_server.jar"
+install -Dm755 -v "server/build/libs/server-release.jar" "$PKGDIR/usr/share/java/mindustry/mindustry_server.jar"
 
 abinfo "Installing icon file..."
 local icon_size
 for icon_size in 256 512 1024; do
-    install -Dm644 "$SRCDIR/core/assets/icons/icon_${icon_size}x${icon_size}x32.png" \
+    install -Dm644 -v "core/assets/icons/icon_${icon_size}x${icon_size}x32.png" \
       "$PKGDIR/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps/mindustry.png"
 done
+

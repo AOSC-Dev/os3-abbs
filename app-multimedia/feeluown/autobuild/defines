@@ -1,7 +1,7 @@
 PKGNAME=feeluown
 PKGSEC=sound
 PKGDES="A universal player for various music streaming services"
-PKGRECOM="feeluown-bilibili feeluown-kuwo feeluown-netease feeluown-qqmusic feeluown-ytmusic"
+PKGRECOM="feeluown-bilibili feeluown-kuwo feeluown-netease feeluown-qqmusic"
 
 PKGDEP="python-3 requests tomlkit typing-extensions qasync \
 	janus pyqt5 pyopengl pydantic mpv mutagen yt-dlp \

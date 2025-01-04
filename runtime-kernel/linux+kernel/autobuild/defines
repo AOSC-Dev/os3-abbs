@@ -11,4 +11,4 @@ ABELFDEP=no
 
 PKGEPOCH=3
 
-FAIL_ARCH="!(amd64|arm64|loongarch64|ppc64el|riscv64)"
+FAIL_ARCH="!(amd64|arm64|loongarch64|loongson3|ppc64el|riscv64)"

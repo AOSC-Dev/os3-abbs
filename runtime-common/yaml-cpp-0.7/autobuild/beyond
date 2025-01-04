@@ -1,0 +1,3 @@
+abinfo "Removing unused gmock and gtest files ..."
+rm -rv "$PKGDIR"/usr/lib/legacy/yaml-cpp-0.7/cmake/GTest
+rm -rv "$PKGDIR"/usr/lib/legacy/yaml-cpp-0.7/pkgconfig/{gmock,gtest}*.pc

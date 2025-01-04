@@ -1,7 +1,8 @@
 PKGNAME=lutris
 PKGSEC=contrib/games
 PKGDEP="pygobject-3 pyyaml python-evdev gtk-3 glib psmisc cabextract unrar \
-        unzip p7zip curl x11-app gnome-desktop requests pillow webkit2gtk"
+        unzip p7zip curl x11-app gnome-desktop requests pillow webkit2gtk \
+	gtk-update-icon-cache lxml winetricks"
 BUILDDEP="python-build python-installer wheel"
 PKGDES="Game emulation and compatibility runtime manager and launcher"
 

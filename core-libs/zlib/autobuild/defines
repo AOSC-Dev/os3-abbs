@@ -23,6 +23,9 @@ PKGPROV="zlib1g_spiral zlib1g-dev_spiral zlib"
 # We have switched to zlib-ng.
 PKGEPOCH=1
 
+# Matching Debian/Ubuntu.
+PKGEPOCH_SPIRAL=1
+
 # zlib-ng does not need separate HWCAPS builds, since they detect CPU
 # features on the fly.
 AB_HWCAPS=0

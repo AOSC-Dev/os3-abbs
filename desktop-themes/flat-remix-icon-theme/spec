@@ -1,4 +1,6 @@
 VER=20240201
-SRCS="git::commit=tags/$VER::https://github.com/daniruiz/flat-remix"
+# FIXME: Upstream uses a submodule from AUR pulled via SSH (inaccessible).
+SRCS="git::submodule=false;commit=tags/$VER::https://github.com/daniruiz/flat-remix"
 CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=231526"
+REL=1

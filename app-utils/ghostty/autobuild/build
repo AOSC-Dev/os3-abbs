@@ -1,1 +1,2 @@
-zig build -Doptimize=ReleaseFast
+abinfo "Building and installing ..."
+zig build -Doptimize=ReleaseFast -p "$PKGDIR"/usr

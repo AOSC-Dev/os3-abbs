@@ -13,6 +13,13 @@ for i in "$PKGDIR"/usr/lib/llvm${LLVM_SUFFIX}/bin/*; do
             >> "$SRCDIR/autobuild/postinst"
 done
 
+for i in "$PKGDIR"/usr/lib/llvm${LLVM_SUFFIX}/lib/libomp*; do
+    OMP_LIB="$(basename $i)"
+    printf " --slave /usr/lib/$OMP_LIB $OMP_LIB /usr/lib/llvm%s/lib/$OMP_LIB" \
+        "$LLVM_SUFFIX" \
+        >> "$SRCDIR/autobuild/postinst"
+done
+
 cat << EOF > "$SRCDIR/autobuild/postrm"
 if [ "\$1" != "upgrade" ]; then
     update-alternatives --remove-all llvm || true

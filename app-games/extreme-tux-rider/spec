@@ -1,0 +1,4 @@
+VER=0.8.4
+SRCS="tbl::https://downloads.sourceforge.net/extremetuxracer/etr-$VER.tar.xz"
+CHKSUMS="sha512::65d54bfef59cf83eec9ee761ac24c728d3118cf47105920f22057b59425eba65e03967196d4a93039f30b9420e67b10f296ec7deed7e506ad78c7bb5ce5ed0d2"
+CHKUPDATE="anitya::id=774"

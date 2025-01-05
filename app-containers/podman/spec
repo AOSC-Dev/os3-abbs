@@ -3,6 +3,7 @@ UPSTREAM_VER=5.3.1
 #
 # https://github.com/containers/podman/blob/v$PKGVER/contrib/pkginstaller/Makefile
 GVISOR_TAP_VSOCK_VER=0.7.5
+REL=1
 
 VER=${UPSTREAM_VER}+vsock${GVISOR_TAP_VSOCK_VER}
 SRCS="git::commit=v${UPSTREAM_VER};rename=podman-${UPSTREAM_VER}::https://github.com/containers/podman \

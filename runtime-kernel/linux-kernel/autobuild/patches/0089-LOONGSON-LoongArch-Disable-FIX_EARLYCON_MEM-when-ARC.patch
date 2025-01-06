@@ -1,0 +1,38 @@
+From 0bd0baba6e8130859912ca133ed388e20015b100 Mon Sep 17 00:00:00 2001
+From: Jiaxun Yang <jiaxun.yang@flygoat.com>
+Date: Fri, 3 Jan 2025 11:36:51 +0000
+Subject: [PATCH 089/288] LOONGSON: LoongArch: Disable FIX_EARLYCON_MEM when
+ ARCH_IOREMAP is enabled
+
+When ARCH_IOREMAP is enabled, we are using always accessible DMW for
+ioremap(). It makes no sense to create a dedicated mapping for earlycon
+given that we can access the region via DMW.
+
+Disable FIX_EARLYCON_MEM when ARCH_IOREMAP is selected. This can ease
+debugging for early mapping issues.
+
+Signed-off-by: Jiaxun Yang <jiaxun.yang@flygoat.com>
+Signed-off-by: Huacai Chen <chenhuacai@loongson.cn>
+
+Link: https://github.com/chenhuacai/linux/commit/1c79cdef6a832d4a6f2baf79f7317ee63c47888e
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ arch/loongarch/Kconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/loongarch/Kconfig b/arch/loongarch/Kconfig
+index 28acd0b04115..ac52e3ef1810 100644
+--- a/arch/loongarch/Kconfig
++++ b/arch/loongarch/Kconfig
+@@ -246,7 +246,7 @@ config MACH_LOONGSON64
+ 	def_bool 64BIT
+ 
+ config FIX_EARLYCON_MEM
+-	def_bool y
++	def_bool !ARCH_IOREMAP
+ 
+ config PGTABLE_2LEVEL
+ 	bool
+-- 
+2.48.0.rc1
+

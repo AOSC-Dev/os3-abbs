@@ -1,7 +1,7 @@
-From 09c3a6181d305b369dc0df759d9c323edc00ac5e Mon Sep 17 00:00:00 2001
+From 597ca65743229d4ba8434205f33e31f4b8b9d7a8 Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Tue, 10 Dec 2024 20:37:05 +0800
-Subject: [PATCH 031/285] BACKPORT: FROMLIST: dt-bindings: pwm: Add Loongson
+Subject: [PATCH 031/288] BACKPORT: FROMLIST: dt-bindings: pwm: Add Loongson
  PWM controller
 
 Add Loongson PWM controller binding with DT schema format using
@@ -93,7 +93,7 @@ index 000000000000..46814773e0cc
 +        #pwm-cells = <3>;
 +    };
 diff --git a/MAINTAINERS b/MAINTAINERS
-index d5caa1cdb281..e7e634ee8c0a 100644
+index ace6a8430d9c..a8c825dd9cad 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
 @@ -13496,6 +13496,12 @@ S:	Maintained

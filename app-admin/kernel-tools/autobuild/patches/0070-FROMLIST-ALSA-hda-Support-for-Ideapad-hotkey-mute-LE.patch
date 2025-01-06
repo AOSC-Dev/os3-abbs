@@ -1,7 +1,7 @@
-From 2216daa74138960cf2dd5ff13c1fea16ba1e9a67 Mon Sep 17 00:00:00 2001
+From 2f35aafa672082b01dc79ab62a4afa0149603f3a Mon Sep 17 00:00:00 2001
 From: Jackie Dong <xy-jackie@139.com>
 Date: Thu, 19 Dec 2024 18:15:31 +0800
-Subject: [PATCH 070/285] FROMLIST: ALSA : hda : Support for Ideapad hotkey
+Subject: [PATCH 070/288] FROMLIST: ALSA : hda : Support for Ideapad hotkey
  mute LEDs
 
 New ideapad helper file with support for handling FN key mute LEDS.
@@ -112,7 +112,7 @@ index 538c37a78a56..7a692644a4ce 100644
  	{ .id = CXT_PINCFG_LEMOTE_A1205, .name = "lemote-a1205" },
  	{ .id = CXT_FIXUP_OLPC_XO, .name = "olpc-xo" },
 diff --git a/sound/pci/hda/patch_realtek.c b/sound/pci/hda/patch_realtek.c
-index 61ba5dc35b8b..794015633c19 100644
+index b74b566f675e..a00c12c94abd 100644
 --- a/sound/pci/hda/patch_realtek.c
 +++ b/sound/pci/hda/patch_realtek.c
 @@ -6934,6 +6934,16 @@ static void alc_fixup_thinkpad_acpi(struct hda_codec *codec,
@@ -161,7 +161,7 @@ index 61ba5dc35b8b..794015633c19 100644
  	SND_PCI_QUIRK(0x17aa, 0x3884, "Y780 YG DUAL", ALC287_FIXUP_TAS2781_I2C),
  	SND_PCI_QUIRK(0x17aa, 0x3886, "Y780 VECO DUAL", ALC287_FIXUP_TAS2781_I2C),
  	SND_PCI_QUIRK(0x17aa, 0x3891, "Lenovo Yoga Pro 7 14AHP9", ALC287_FIXUP_YOGA9_14IAP7_BASS_SPK_PIN),
-@@ -11130,6 +11148,7 @@ static const struct hda_model_fixup alc269_fixup_models[] = {
+@@ -11131,6 +11149,7 @@ static const struct hda_model_fixup alc269_fixup_models[] = {
  	{.id = ALC290_FIXUP_MONO_SPEAKERS_HSJACK, .name = "mono-speakers"},
  	{.id = ALC290_FIXUP_SUBWOOFER_HSJACK, .name = "alc290-subwoofer"},
  	{.id = ALC269_FIXUP_THINKPAD_ACPI, .name = "thinkpad"},

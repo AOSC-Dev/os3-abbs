@@ -1,6 +1,6 @@
-VER=20240828
-CHANGESET=9727cd2f7983d01cc4fd3b5ef21b72fc8f6a052a
+VER=20241119
+CHANGESET=fc857d1685f9cd017a2cf656a52d871b02a4cc89
 SRCS="file::rename=certdata.txt::https://hg.mozilla.org/mozilla-central/raw-file/$CHANGESET/security/nss/lib/ckfw/builtins/certdata.txt"
-CHKSUMS="sha256::36105b01631f9fc03b1eca779b44a30a1a5890b9bf8dc07ccb001a07301e01cf"
+CHKSUMS="sha256::c99d6d3f8d3d4e47719ba2b648992f5b58b150128d3aca3c05c566d8dc98e116"
 
 # FIXME: Check for updates at https://hg.mozilla.org/mozilla-central/log/tip/security/nss/lib/ckfw/builtins/certdata.txt

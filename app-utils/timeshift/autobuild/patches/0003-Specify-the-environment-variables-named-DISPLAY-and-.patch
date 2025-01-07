@@ -1,0 +1,26 @@
+From 12a7487f4e3a06a5a1ba8b382dfca264c78fe6e3 Mon Sep 17 00:00:00 2001
+From: Shyliuli <1658347525@qq.com>
+Date: Tue, 7 Jan 2025 16:36:36 +0800
+Subject: [PATCH 3/3] Specify the environment variables named DISPLAY and
+ XAUTHORITY for wayland
+
+---
+ src/timeshift-launcher | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/timeshift-launcher b/src/timeshift-launcher
+index ac3ef9e..1e4face 100755
+--- a/src/timeshift-launcher
++++ b/src/timeshift-launcher
+@@ -14,7 +14,7 @@ else
+ 		# script is running in non-interactive mode
+ 		if [ "$XDG_SESSION_TYPE" = "wayland" ] ; then
+ 			xhost +SI:localuser:root
+-			pkexec ${app_command}
++			pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY ${app_command}
+ 			xhost -SI:localuser:root
+ 			xhost
+ 		elif command -v pkexec >/dev/null 2>&1; then
+-- 
+2.47.1
+

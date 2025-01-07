@@ -1,7 +1,7 @@
-From e83882d1ee38b2d0ef0593a1a09a732d592166d3 Mon Sep 17 00:00:00 2001
+From 0b921abb122f656361a473b1bc6dbdc452e98f05 Mon Sep 17 00:00:00 2001
 From: miwu04 <mail@alanlin.icu>
 Date: Sat, 7 Dec 2024 23:57:02 +0800
-Subject: [PATCH 2/2] Update dekstop entry translations
+Subject: [PATCH 2/3] Update dekstop entry translations
 
 ---
  src/timeshift-gtk.desktop | 2 ++

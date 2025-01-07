@@ -5,8 +5,8 @@ VER=2.48.0
 #SRCS="https://cdn.kernel.org/pub/software/scm/git/git-$VER.tar.gz"
 
 # Use this for RC releases.
-RC=1
+RC=2
 SRCS="https://cdn.kernel.org/pub/software/scm/git/testing/git-$VER.rc$RC.tar.xz"
 
-CHKSUMS="sha256::be6df7354fc6ced1c0d05ecf44273000e137bd9710c9a5f165fd50eb2f571d82"
+CHKSUMS="sha256::770fe0f6215404087e24725c3ce483a10217649f8a4583bbdf26a6f92a7b5e15"
 CHKUPDATE="anitya::id=5350"

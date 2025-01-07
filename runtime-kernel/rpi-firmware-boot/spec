@@ -1,6 +1,6 @@
 UPSTREAM_VER="1.20241126"
 VER="${UPSTREAM_VER}"
-REL=0
+REL=1
 SRCS="tbl::https://github.com/raspberrypi/firmware/releases/download/$VER/raspi-firmware_$VER.orig.tar.xz"
 CHKSUMS="sha256::020dbcdbb30af5942a62fc3eb355449aba45276b67e864dee2522ff53fd936e6"
 CHKUPDATE="anitya::id=21744"

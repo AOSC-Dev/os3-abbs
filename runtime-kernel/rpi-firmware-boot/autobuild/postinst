@@ -1,46 +1,51 @@
 #!/bin/bash
 
+# In case of building a raw image, the post installation must handle this
+# manually.
+# Check if the system is running in a container.
 if systemd-detect-virt -q -c ; then
-  echo "Running in build environment, skipping firmware update."
-  exit 0
+	echo "Running in build environment, skipping firmware update."
+	exit 0
 fi
 
-if ! grep -q "/boot/rpi" /etc/fstab; then
-  echo "Mount point '/boot/rpi' does not exist in fstab file."
-  echo "You need to update firmware files manually, which is installed to /usr/lib/rpi64/boot."
-  echo "Or add the boot partition to fstab and try again."
-  exit 1
-fi
-
-if ! mount -a; then
-  # echo "Unable to mount /boot/rpi! Please check your fstab file. Not treating as an error, exiting cleanly."
-  echo "Failed to mount /boot/rpi! Please check your fstab file."
-  echo "Your firmware is not updated."
-  exit 1
+if ! grep -q "/boot/rpi" /proc/mounts; then
+	if ! grep -q "/boot/rpi" /etc/fstab; then
+		echo "Mount point '/boot/rpi' does not exist in fstab file."
+		echo "You need to update firmware files manually, which is installed to /usr/lib/rpi64/boot."
+		echo "Or add the boot partition to fstab and try again."
+		exit 1
+	fi
+	
+	if ! mount -a; then
+		# echo "Unable to mount /boot/rpi! Please check your fstab file. Not treating as an error, exiting cleanly."
+		echo "Failed to mount /boot/rpi! Please check your fstab file."
+		echo "Your firmware is not updated."
+		exit 1
+	fi
 fi
 
 echo "Installing the boot firmware ..."
 cp -r /usr/lib/rpi64/boot/* /boot/rpi/
 
 if [ ! -e /boot/rpi/config.txt ]; then
-  echo "Creating config.txt..."
-  cp /usr/lib/rpi64/config/config.txt /boot/rpi/config.txt
+	echo "Creating config.txt..."
+	cp /usr/lib/rpi64/config/config.txt /boot/rpi/config.txt
 fi
 
 if [ ! -e /boot/rpi/distcfg.txt ]; then
-  echo "Creating distcfg.txt..."
-  cp /usr/lib/rpi64/config/distcfg.txt /boot/rpi/distcfg.txt
+	echo "Creating distcfg.txt..."
+	cp /usr/lib/rpi64/config/distcfg.txt /boot/rpi/distcfg.txt
 fi
 
 if [ ! -e /boot/rpi/cmdline.txt ]; then
-  echo "Getting information of the root partition ..."
-  eval "$(findmnt -Pyo PARTUUID /)"
-  echo "Generating new cmdline.txt..."
-  if [ ! "$PARTUUID" ]; then
-    echo "WARNING: Could not determine PARTUUID of your current root filesystem!"
-    echo "Falling back to default root device /dev/mmcblk0p2."
-    echo -n "console=serial0,115200 console=tty1 root=/dev/mmcblk0p2 rw elevator=deadline fsck.repair=yes rootwait" > /boot/rpi/cmdline.txt
-  else
-    echo -n "console=serial0,115200 console=tty1 root=PARTUUID=${PARTUUID} rw elevator=deadline fsck.repair=yes rootwait" > /boot/rpi/cmdline.txt
-  fi
+	echo "Getting information of the root partition ..."
+	eval "$(findmnt -Pyo PARTUUID /)"
+	echo "Generating new cmdline.txt..."
+	if [ ! "$PARTUUID" ]; then
+		echo "WARNING: Could not determine PARTUUID of your current root filesystem!"
+		echo "Falling back to default root device /dev/mmcblk0p2."
+		echo -n "console=serial0,115200 console=tty1 root=/dev/mmcblk0p2 rw elevator=deadline fsck.repair=yes rootwait" > /boot/rpi/cmdline.txt
+	else
+		echo -n "console=serial0,115200 console=tty1 root=PARTUUID=${PARTUUID} rw elevator=deadline fsck.repair=yes rootwait" > /boot/rpi/cmdline.txt
+	fi
 fi

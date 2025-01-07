@@ -1,4 +1,4 @@
-VER=2.10.0
+VER=2.11.0
 SRCS="tbl::https://atoptool.nl/download/atop-$VER.tar.gz"
-CHKSUMS="sha256::e7a673cf2c82578e7dd82ecb0dec83fd9ecb30828b2561c28a9fa5aaf75d5f93"
+CHKSUMS="sha256::9b94c666602efff7bf402ecce706c347f38c39cb63498f9d39626861e5646e20"
 CHKUPDATE="anitya::id=135"

@@ -1,2 +1,7 @@
+abinfo "Renaming executable to ciel ..."
+mv -v "$PKGDIR"/usr/bin/ciel-rs \
+    "$PKGDIR"/usr/bin/ciel
+
 abinfo "Installing extra assets ..."
-PREFIX="$PKGDIR/usr/" ./install-assets.sh
+PREFIX="$PKGDIR"/usr/ \
+    "$SRCDIR"/install-assets.sh

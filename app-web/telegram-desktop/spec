@@ -1,10 +1,9 @@
-VER=5.10.0
-REL=1
+VER=5.10.1
 # Update tg_owt to the latest Git snapshot when updating Telegram Desktop
 OWTVER=be39b8c8d0db1f377118f813f0c4bd331d341d5e
 SRCS="tbl::https://github.com/telegramdesktop/tdesktop/releases/download/v$VER/tdesktop-$VER-full.tar.gz \
       git::rename=tg_owt;commit=${OWTVER}::https://github.com/desktop-app/tg_owt"
-CHKSUMS="sha256::ce21d0e71e5b5b318edf56778d47756a4db2e175bfa41314832f03a50a9be420 \
+CHKSUMS="sha256::46042cda2d8833ccf2fec9ef30c89f816f868364e82d1cd6b9512756f14234e1 \
          SKIP"
 SUBDIR="tdesktop-$VER-full"
 CHKUPDATE="anitya::id=16951"

@@ -1,0 +1,79 @@
+From 1e9daa06ce03f1680af5df138d6e05aec0e2ee02 Mon Sep 17 00:00:00 2001
+From: Tianyang Zhang <zhangtianyang@loongson.cn>
+Date: Mon, 30 Dec 2024 10:15:03 +0800
+Subject: [PATCH 073/290] FROMLIST: irqchip/loongarch-avec:Add multi-nodes
+ topology support
+
+avecintc_init() enables the Advanced Interrupt Controller (AVEC) of
+the boot CPU node, but nothing enables the AVEC on secondary nodes.
+
+Move the enablement to the CPU hotplug callback so that secondary
+nodes get the AVEC enabled too. In theory enabling it once per node
+would be sufficient, but redundant enabling does no hard, so keep the
+code simple and do it unconditionally.
+
+Signed-off-by: Tianyang Zhang <zhangtianyang@loongson.cn>
+
+Link: https://lore.kernel.org/all/20241230021503.14012-1-zhangtianyang@loongson.cn/
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ drivers/irqchip/irq-loongarch-avec.c | 17 +++++++++++++----
+ 1 file changed, 13 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/irqchip/irq-loongarch-avec.c b/drivers/irqchip/irq-loongarch-avec.c
+index 0f6e465dd309..988d3e02ac54 100644
+--- a/drivers/irqchip/irq-loongarch-avec.c
++++ b/drivers/irqchip/irq-loongarch-avec.c
+@@ -56,6 +56,15 @@ struct avecintc_data {
+ 	unsigned int		moving;
+ };
+ 
++static inline void avecintc_enable(void)
++{
++	u64 value;
++
++	value = iocsr_read64(LOONGARCH_IOCSR_MISC_FUNC);
++	value |= IOCSR_MISC_FUNC_AVEC_EN;
++	iocsr_write64(value, LOONGARCH_IOCSR_MISC_FUNC);
++}
++
+ static inline void avecintc_ack_irq(struct irq_data *d)
+ {
+ }
+@@ -127,6 +136,8 @@ static int avecintc_cpu_online(unsigned int cpu)
+ 
+ 	guard(raw_spinlock)(&loongarch_avec.lock);
+ 
++	avecintc_enable();
++
+ 	irq_matrix_online(loongarch_avec.vector_matrix);
+ 
+ 	pending_list_init(cpu);
+@@ -339,7 +350,6 @@ static int __init irq_matrix_init(void)
+ static int __init avecintc_init(struct irq_domain *parent)
+ {
+ 	int ret, parent_irq;
+-	unsigned long value;
+ 
+ 	raw_spin_lock_init(&loongarch_avec.lock);
+ 
+@@ -378,14 +388,13 @@ static int __init avecintc_init(struct irq_domain *parent)
+ 				  "irqchip/loongarch/avecintc:starting",
+ 				  avecintc_cpu_online, avecintc_cpu_offline);
+ #endif
+-	value = iocsr_read64(LOONGARCH_IOCSR_MISC_FUNC);
+-	value |= IOCSR_MISC_FUNC_AVEC_EN;
+-	iocsr_write64(value, LOONGARCH_IOCSR_MISC_FUNC);
++	avecintc_enable();
+ 
+ 	return ret;
+ 
+ out_remove_domain:
+ 	irq_domain_remove(loongarch_avec.domain);
++	loongarch_avec.domain = NULL;
+ out_free_handle:
+ 	irq_domain_free_fwnode(loongarch_avec.fwnode);
+ out:
+-- 
+2.48.0.rc2
+

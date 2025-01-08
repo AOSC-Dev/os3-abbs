@@ -1,0 +1,101 @@
+From 9ff35e682bf28d500496fad65ed4259759a0152b Mon Sep 17 00:00:00 2001
+From: Koichiro Den <koichiro.den@canonical.com>
+Date: Wed, 8 Jan 2025 13:28:07 +0900
+Subject: [PATCH 078/290] FROMLIST: vmstat: disable vmstat_work on
+ vmstat_cpu_down_prep()
+
+The upstream commit adcfb264c3ed ("vmstat: disable vmstat_work on
+vmstat_cpu_down_prep()") introduced another warning during the boot phase
+so was soon reverted on upstream by commit cd6313beaeae ("Revert "vmstat:
+disable vmstat_work on vmstat_cpu_down_prep()""). This commit resolves it
+and reattempts the original fix.
+
+Even after mm/vmstat:online teardown, shepherd may still queue work for
+the dying cpu until the cpu is removed from online mask. While it's quite
+rare, this means that after unbind_workers() unbinds a per-cpu kworker, it
+potentially runs vmstat_update for the dying CPU on an irrelevant cpu
+before entering atomic AP states. When CONFIG_DEBUG_PREEMPT=y, it results
+in the following error with the backtrace.
+
+  BUG: using smp_processor_id() in preemptible [00000000] code: \
+                                               kworker/7:3/1702
+  caller is refresh_cpu_vm_stats+0x235/0x5f0
+  CPU: 0 UID: 0 PID: 1702 Comm: kworker/7:3 Tainted: G
+  Tainted: [N]=TEST
+  Workqueue: mm_percpu_wq vmstat_update
+  Call Trace:
+   <TASK>
+   dump_stack_lvl+0x8d/0xb0
+   check_preemption_disabled+0xce/0xe0
+   refresh_cpu_vm_stats+0x235/0x5f0
+   vmstat_update+0x17/0xa0
+   process_one_work+0x869/0x1aa0
+   worker_thread+0x5e5/0x1100
+   kthread+0x29e/0x380
+   ret_from_fork+0x2d/0x70
+   ret_from_fork_asm+0x1a/0x30
+   </TASK>
+
+So, for mm/vmstat:online, disable vmstat_work reliably on teardown and
+symmetrically enable it on startup.
+
+For secondary CPUs during CPU hotplug scenarios, ensure the delayed work
+is disabled immediately after the initialization. These CPUs are not yet
+online when start_shepherd_timer() runs on boot CPU. vmstat_cpu_online()
+will enable the work for them.
+
+Suggested-by: Huacai Chen <chenhuacai@kernel.org>
+Signed-off-by: Huacai Chen <chenhuacai@kernel.org>
+Signed-off-by: Koichiro Den <koichiro.den@canonical.com>
+
+Link: https://lore.kernel.org/all/20250108042807.3429745-1-koichiro.den@canonical.com/
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ mm/vmstat.c | 15 +++++++++++++--
+ 1 file changed, 13 insertions(+), 2 deletions(-)
+
+diff --git a/mm/vmstat.c b/mm/vmstat.c
+index 4d016314a56c..16bfe1c694dd 100644
+--- a/mm/vmstat.c
++++ b/mm/vmstat.c
+@@ -2122,10 +2122,20 @@ static void __init start_shepherd_timer(void)
+ {
+ 	int cpu;
+ 
+-	for_each_possible_cpu(cpu)
++	for_each_possible_cpu(cpu) {
+ 		INIT_DEFERRABLE_WORK(per_cpu_ptr(&vmstat_work, cpu),
+ 			vmstat_update);
+ 
++		/*
++		 * For secondary CPUs during CPU hotplug scenarios,
++		 * vmstat_cpu_online() will enable the work.
++		 * mm/vmstat:online enables and disables vmstat_work
++		 * symmetrically during CPU hotplug events.
++		 */
++		if (!cpu_online(cpu))
++			disable_delayed_work_sync(&per_cpu(vmstat_work, cpu));
++	}
++
+ 	schedule_delayed_work(&shepherd,
+ 		round_jiffies_relative(sysctl_stat_interval));
+ }
+@@ -2148,13 +2158,14 @@ static int vmstat_cpu_online(unsigned int cpu)
+ 	if (!node_state(cpu_to_node(cpu), N_CPU)) {
+ 		node_set_state(cpu_to_node(cpu), N_CPU);
+ 	}
++	enable_delayed_work(&per_cpu(vmstat_work, cpu));
+ 
+ 	return 0;
+ }
+ 
+ static int vmstat_cpu_down_prep(unsigned int cpu)
+ {
+-	cancel_delayed_work_sync(&per_cpu(vmstat_work, cpu));
++	disable_delayed_work_sync(&per_cpu(vmstat_work, cpu));
+ 	return 0;
+ }
+ 
+-- 
+2.48.0.rc2
+

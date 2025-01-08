@@ -1,0 +1,49 @@
+From 33cd83f79cb8519bff87896815b4b22005b9b9dc Mon Sep 17 00:00:00 2001
+From: Linus Torvalds <torvalds@linux-foundation.org>
+Date: Mon, 6 Jan 2025 06:10:24 -0800
+Subject: [PATCH 001/290] UPSTREAM: Revert "vmstat: disable vmstat_work on
+ vmstat_cpu_down_prep()"
+
+This reverts commit adcfb264c3ed51fbbf5068ddf10d309a63683868.
+
+It turns out this just causes a different warning splat instead that
+seems to be much easier to trigger, so let's revert ASAP.
+
+Reported-and-bisected-by: Borislav Petkov <bp@alien8.de>
+Tested-by: Breno Leitao <leitao@debian.org>
+Reported-by: Alexander Gordeev <agordeev@linux.ibm.com>
+Link: https://lore.kernel.org/all/20250106131817.GAZ3vYGVr3-hWFFPLj@fat_crate.local/
+Cc: Koichiro Den <koichiro.den@canonical.com>
+Cc: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+Cc: Andrew Morton <akpm@linux-foundation.org>
+Signed-off-by: Linus Torvalds <torvalds@linux-foundation.org>
+
+(cherry picked from commit cd6313beaeaea0b2e6d428afef7a86a986b50abe)
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ mm/vmstat.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/mm/vmstat.c b/mm/vmstat.c
+index 0889b75cef14..4d016314a56c 100644
+--- a/mm/vmstat.c
++++ b/mm/vmstat.c
+@@ -2148,14 +2148,13 @@ static int vmstat_cpu_online(unsigned int cpu)
+ 	if (!node_state(cpu_to_node(cpu), N_CPU)) {
+ 		node_set_state(cpu_to_node(cpu), N_CPU);
+ 	}
+-	enable_delayed_work(&per_cpu(vmstat_work, cpu));
+ 
+ 	return 0;
+ }
+ 
+ static int vmstat_cpu_down_prep(unsigned int cpu)
+ {
+-	disable_delayed_work_sync(&per_cpu(vmstat_work, cpu));
++	cancel_delayed_work_sync(&per_cpu(vmstat_work, cpu));
+ 	return 0;
+ }
+ 
+-- 
+2.48.0.rc2
+

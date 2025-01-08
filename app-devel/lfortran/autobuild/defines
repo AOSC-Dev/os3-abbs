@@ -1,12 +1,13 @@
 PKGNAME=lfortran
 PKGSEC=devel
-PKGDEP="gcc-runtime glibc llvm ncurses python-3"
-BUILDDEP="fmt llvm python-3 re2c zlib-static zstd-static"
+PKGDEP="gcc-runtime glibc libunwind llvm ncurses python-3"
+BUILDDEP="fmt libunwind llvm python-3 re2c zlib-static zstd-static"
 PKGDES="Interactive LLVM-based Fortran compiler"
 
 ABTYPE=cmakeninja
 CMAKE_AFTER=" \
     -DBUILD_SHARED_LIBS=ON \
+    -DLLVM_DIR=$(llvm-config --cmakedir) \
     -DWITH_FMT=ON \
     -DWITH_LLVM=ON \
     -DWITH_RUNTIME_LIBRARY=ON \

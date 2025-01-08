@@ -1,0 +1,5 @@
+abinfo "Configuring hwdata ..."
+"$SRCDIR"/configure
+
+abinfo "Installing hwdata ..."
+make DESTDIR="$PKGDIR" install

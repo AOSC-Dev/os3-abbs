@@ -1,19 +1,28 @@
 Template: gamemode/add_user_to_group
 Type: note
-Description: To enable Gamemode , users need to be added to the 'gamemode' user group.
- If this operation is not performed, some functions may not work properly.
+Description: Gamemode User Group Configuration
+ To enable all features of 'gamemode', add the user to the 'gamemode' group.
  .
- You can add users to the 'gamemode' user group using the following command:
+ You can add a user to the 'gamemode' group with the following command:
  .
  sudo usermod -aG gamemode <username>
  .
- Once added to a user group, you need to log out and back in for the changes to take effect.
+ After adding the user to the group, you will need to log out and back in for the changes to take effect.
+ .
+ Make 'gamemode' enabled by default using
+ .
+ systemctl --user enable gamemoded
 Description-zh_CN.UTF-8: Gamemode 用户组配置要求
- 要启用 Gamemode,需将用户添加到 'gamemode' 用户组。
- 如果未进行此操作,部分功能可能无法正常使用
+ 要启用 'gamemode' 的所有功能,需将用户添加到 'gamemode' 用户组。
  .
  您可以使用以下命令将用户添加到 'gamemode' 用户组：
  .
  sudo usermod -aG gamemode <用户名>
  .
  添加用户到组,您需要注销并重新登录以使更改生效。
+ .
+ 设置
+ .
+ systemctl --user enable gamemoded
+ .
+ 使得'gamemode'默认启动

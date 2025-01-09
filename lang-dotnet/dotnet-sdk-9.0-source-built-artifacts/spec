@@ -1,9 +1,10 @@
 VER=9.0.0
 SDKVER=9.0.101
+SDKFULLVER="${SDKVER}-servicing.24575.1"
 
 # Note: For use inside autobuild/.
 __VER="${VER}"
-__SDKVER="${SDKVER}"
+__SDKFULLVER="${SDKFULLVER}"
 
 # Use this for stable releases.
 #REL=1

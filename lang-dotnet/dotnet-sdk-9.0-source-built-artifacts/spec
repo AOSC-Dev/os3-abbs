@@ -4,6 +4,7 @@ SDKFULLVER="${SDKVER}-servicing.24575.1"
 
 # Note: For use inside autobuild/.
 __VER="${VER}"
+__SDKVER="${SDKVER}"
 __SDKFULLVER="${SDKFULLVER}"
 
 # Use this for stable releases.

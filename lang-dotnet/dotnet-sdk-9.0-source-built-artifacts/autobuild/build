@@ -1,6 +1,6 @@
 abinfo "Extracting previous source-built artifacts ..."
 mkdir -v "$SRCDIR"/.dotnet "$SRCDIR"/.packages
-tar xf /usr/lib/dotnet/source-built-artifacts/dotnet-sdk-"$__SDKFULLVER"-"$RID".tar.gz -C "$SRCDIR"/.dotnet
+tar xf /usr/lib/dotnet/source-built-artifacts/dotnet-sdk-"$__SDKVER"-"$RID".tar.gz -C "$SRCDIR"/.dotnet
 tar xf /usr/lib/dotnet/source-built-artifacts/Private.SourceBuilt.Artifacts."$__SDKFULLVER"."$RID".tar.gz -C "$SRCDIR"/.packages
 
 abinfo "Preparing for source-build ..."

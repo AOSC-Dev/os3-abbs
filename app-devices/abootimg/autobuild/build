@@ -1,0 +1,6 @@
+abinfo "Building abootimg ..."
+cd "$SRCDIR"
+make all
+
+abinfo "Installing abootimg ..."
+install -Dvm755 abootimg "$PKGDIR/usr/bin/abootimg"

@@ -1,0 +1,6 @@
+PKGNAME=abootimg
+PKGSEC=utils
+PKGDES="Android boot image manipulation tool"
+PKGDEP="cpio util-linux"
+
+ABTYPE=self

@@ -1,0 +1,5 @@
+VER=0.6+git20120912
+_COMMIT="7e127fee6a3981f6b0a50ce9910267cd501e09d4"
+SRCS="git::commit=${_COMMIT}::https://github.com/ggrandou/abootimg"
+CHKSUMS="SKIP"
+CHKUPDATE="anitya::id=376275"

@@ -1,7 +1,7 @@
 From 63693c88e0f1f74aa3f9cdb38bef3f28ea69b63e Mon Sep 17 00:00:00 2001
 From: Kunyang_Fan <kunyang_fan@asus.com>
 Date: Wed, 16 Jun 2021 13:56:58 +0800
-Subject: [PATCH 115/290] UBUNTU: ODM: mfd: Add support for IO functions of
+Subject: [PATCH 115/291] UBUNTU: ODM: mfd: Add support for IO functions of
  AAEON devices
 
 BugLink: https://bugs.launchpad.net/bugs/1929504

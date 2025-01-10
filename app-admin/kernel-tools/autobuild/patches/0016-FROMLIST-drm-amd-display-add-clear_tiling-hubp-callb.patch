@@ -1,7 +1,7 @@
 From 8143d9d7746286427f50042cf9175889c8c1e2dc Mon Sep 17 00:00:00 2001
 From: Alex Deucher <alexander.deucher@amd.com>
 Date: Tue, 12 Nov 2024 16:37:12 -0500
-Subject: [PATCH 016/290] FROMLIST: drm/amd/display: add clear_tiling hubp
+Subject: [PATCH 016/291] FROMLIST: drm/amd/display: add clear_tiling hubp
  callbacks
 
 This adds clear_tiling callbacks to the hubp structure that

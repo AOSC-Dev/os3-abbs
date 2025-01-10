@@ -1,7 +1,7 @@
 From a1715adef94f39d168c6e6190b9ec7b9bd977caa Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 11 Dec 2024 17:20:33 +0800
-Subject: [PATCH 259/290] AOSCOS: staging: sb105x: revise type of
+Subject: [PATCH 259/291] AOSCOS: staging: sb105x: revise type of
  mp_write_room() as unsigned int
 
 Per commit 03b3b1a2405c ("tty: make tty_operations::write_room return

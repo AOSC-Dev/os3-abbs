@@ -1,7 +1,7 @@
 From 2e3f1a1d09ea48e58db42d55b536139003b92c91 Mon Sep 17 00:00:00 2001
 From: Jiaxun Yang <jiaxun.yang@flygoat.com>
 Date: Fri, 18 Oct 2024 20:51:39 +0800
-Subject: [PATCH 170/290] AOSCOS: MIPS: Temporarily disable Loongson3 LL/SC
+Subject: [PATCH 170/291] AOSCOS: MIPS: Temporarily disable Loongson3 LL/SC
  errata check
 
 To workaround the following errors:

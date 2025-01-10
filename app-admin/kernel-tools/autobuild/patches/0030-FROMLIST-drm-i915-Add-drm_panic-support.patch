@@ -1,7 +1,7 @@
 From 7e9e4ae5faeb5dc4bbbc647f8c47f938c8921b26 Mon Sep 17 00:00:00 2001
 From: Jocelyn Falempe <jfalempe@redhat.com>
 Date: Tue, 10 Dec 2024 10:28:45 +0100
-Subject: [PATCH 030/290] FROMLIST: drm/i915: Add drm_panic support
+Subject: [PATCH 030/291] FROMLIST: drm/i915: Add drm_panic support
 
 This adds drm_panic support for a wide range of Intel GPU. I've
 tested it only on 2 laptops, Haswell (with 128MB of eDRAM),

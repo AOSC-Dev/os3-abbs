@@ -1,7 +1,7 @@
 From 4713930e28d42c5647a05208a5bf4483bd8d5973 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
-Subject: [PATCH 186/290] AOSCOS: MIPS: Loongson 3: Add platform device drivers
+Subject: [PATCH 186/291] AOSCOS: MIPS: Loongson 3: Add platform device drivers
 
 Platform device drivers include temperature sensor (EMC1412, TMP75,
 LM93), fan controllers (SB700/SB710/SB800 chipset, WPCE775L EC) and

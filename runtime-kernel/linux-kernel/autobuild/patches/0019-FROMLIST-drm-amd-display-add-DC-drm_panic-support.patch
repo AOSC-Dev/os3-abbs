@@ -1,7 +1,7 @@
 From cdb6bfdaba18708e3ff192a10f4fff6abf869ab7 Mon Sep 17 00:00:00 2001
 From: Jocelyn Falempe <jfalempe@redhat.com>
 Date: Tue, 12 Nov 2024 16:37:15 -0500
-Subject: [PATCH 019/290] FROMLIST: drm/amd/display: add DC drm_panic support
+Subject: [PATCH 019/291] FROMLIST: drm/amd/display: add DC drm_panic support
 
 Add support for the drm_panic module, which displays a pretty user
 friendly message on the screen when a Linux kernel panic occurs.

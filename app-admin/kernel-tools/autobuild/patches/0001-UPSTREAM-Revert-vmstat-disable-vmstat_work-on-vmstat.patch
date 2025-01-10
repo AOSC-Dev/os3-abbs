@@ -1,7 +1,7 @@
 From 33cd83f79cb8519bff87896815b4b22005b9b9dc Mon Sep 17 00:00:00 2001
 From: Linus Torvalds <torvalds@linux-foundation.org>
 Date: Mon, 6 Jan 2025 06:10:24 -0800
-Subject: [PATCH 001/290] UPSTREAM: Revert "vmstat: disable vmstat_work on
+Subject: [PATCH 001/291] UPSTREAM: Revert "vmstat: disable vmstat_work on
  vmstat_cpu_down_prep()"
 
 This reverts commit adcfb264c3ed51fbbf5068ddf10d309a63683868.

@@ -1,7 +1,7 @@
 From 7291d948de08a801f85bac51afe3b3d272973e32 Mon Sep 17 00:00:00 2001
 From: Jiaxun Yang <jiaxun.yang@flygoat.com>
 Date: Fri, 3 Jan 2025 11:36:51 +0000
-Subject: [PATCH 091/290] LOONGSON: LoongArch: Disable FIX_EARLYCON_MEM when
+Subject: [PATCH 091/291] LOONGSON: LoongArch: Disable FIX_EARLYCON_MEM when
  ARCH_IOREMAP is enabled
 
 When ARCH_IOREMAP is enabled, we are using always accessible DMW for

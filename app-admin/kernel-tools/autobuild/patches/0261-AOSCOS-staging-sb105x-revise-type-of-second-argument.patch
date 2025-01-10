@@ -1,7 +1,7 @@
 From f735b2f99d2d35dcf1eb86c5f338b492484fb328 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 11 Dec 2024 17:25:55 +0800
-Subject: [PATCH 261/290] AOSCOS: staging: sb105x: revise type of second
+Subject: [PATCH 261/291] AOSCOS: staging: sb105x: revise type of second
  argument of mp_send_xchar() as u8
 
 Per commit 3a00da027946 ("tty: make tty_operations::send_xchar accept u8

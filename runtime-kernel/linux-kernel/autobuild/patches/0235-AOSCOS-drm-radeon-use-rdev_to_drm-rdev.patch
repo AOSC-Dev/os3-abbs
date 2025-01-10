@@ -1,7 +1,7 @@
 From f653869cea6b554cdd2427a7ce89e6299db05e42 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 11 Dec 2024 10:31:17 +0800
-Subject: [PATCH 235/290] AOSCOS: drm: radeon: use rdev_to_drm(rdev)
+Subject: [PATCH 235/291] AOSCOS: drm: radeon: use rdev_to_drm(rdev)
 
 Per commit fb1b5e1dd53f ("drm/radeon: change rdev->ddev to
 rdev_to_drm(rdev)"), members of the struct `rdev' is now accessed with

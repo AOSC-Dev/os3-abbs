@@ -1,7 +1,7 @@
 From 8549fa5ce92c14ea6b9f109c1caf4cfd98d4f823 Mon Sep 17 00:00:00 2001
 From: chenj <chenj@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
-Subject: [PATCH 275/290] AOSCOS: memcpy optimization for loongson-3
+Subject: [PATCH 275/291] AOSCOS: memcpy optimization for loongson-3
 
 [Mingcong Bai: Resolved a minor merge conflict in
 arch/mips/loongson64/Makefile.]

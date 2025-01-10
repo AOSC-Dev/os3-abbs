@@ -6,7 +6,7 @@ PKGSUG="openscad"
 BUILDDEP="swig pybind11 eigen-3 utfcpp doxygen"
 PKGSEC="graphics"
 PKGDES="Parametric 3D CAD modeler"
-
+NOLTO_LOONGSON3=1
 ABTYPE=cmakeninja
 
 CMAKE_AFTER="-DCMAKE_SKIP_INSTALL_RPATH=OFF \

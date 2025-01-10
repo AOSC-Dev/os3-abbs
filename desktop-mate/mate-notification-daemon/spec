@@ -1,4 +1,4 @@
-VER=1.28.1
+VER=1.28.3
 SRCS="tbl::https://pub.mate-desktop.org/releases/${VER:0:4}/mate-notification-daemon-$VER.tar.xz"
-CHKSUMS="sha256::fffef553bea15becff5ed40d64e18c23d3b649c4599cc1eb1e82f70533853b34"
+CHKSUMS="sha256::e00cecb1ff9f75b9ccc2644558e44343b80941edb40377dd8100ed3922adf413"
 CHKUPDATE="anitya::id=230618"

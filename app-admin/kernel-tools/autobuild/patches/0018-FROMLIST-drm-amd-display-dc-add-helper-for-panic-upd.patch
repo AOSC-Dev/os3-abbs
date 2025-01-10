@@ -1,7 +1,7 @@
 From d2b31ce0495a2370396b537ee4aea67c4d49f14a Mon Sep 17 00:00:00 2001
 From: Alex Deucher <alexander.deucher@amd.com>
 Date: Tue, 12 Nov 2024 16:37:14 -0500
-Subject: [PATCH 018/291] FROMLIST: drm/amd/display/dc: add helper for panic
+Subject: [PATCH 018/292] FROMLIST: drm/amd/display/dc: add helper for panic
  updates
 
 Add a DC helper for panic updates.

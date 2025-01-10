@@ -1,7 +1,7 @@
 From c86b349d3cb67957511cf11df2ab75a2da05e99c Mon Sep 17 00:00:00 2001
 From: chenj <chenj@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
-Subject: [PATCH 220/291] AOSCOS: snd/hda/conexant: add support for raw verbs
+Subject: [PATCH 220/292] AOSCOS: snd/hda/conexant: add support for raw verbs
 
 [Mingcong Bai: Resolved a minor merge conflict in
 sound/pci/hda/patch_conexant.c.]

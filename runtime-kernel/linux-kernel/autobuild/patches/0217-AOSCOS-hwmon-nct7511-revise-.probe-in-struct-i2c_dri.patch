@@ -1,7 +1,7 @@
 From dcfd03f2407ce77d9158cd37cca92610c99a4026 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Mon, 9 Dec 2024 18:04:57 +0800
-Subject: [PATCH 217/291] AOSCOS: hwmon: nct7511: revise .probe() in struct
+Subject: [PATCH 217/292] AOSCOS: hwmon: nct7511: revise .probe() in struct
  i2c_driver
 
 Since commit 03c835f498b5 ("i2c: Switch .probe() to not take an id

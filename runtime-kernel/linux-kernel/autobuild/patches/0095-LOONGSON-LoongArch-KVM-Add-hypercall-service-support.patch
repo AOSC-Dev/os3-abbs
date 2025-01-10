@@ -1,7 +1,7 @@
 From b0c6014de39393ab009d243529067cec9f5fb658 Mon Sep 17 00:00:00 2001
 From: Bibo Mao <maobibo@loongson.cn>
 Date: Fri, 3 Jan 2025 10:30:53 +0800
-Subject: [PATCH 095/291] LOONGSON: LoongArch: KVM: Add hypercall service
+Subject: [PATCH 095/292] LOONGSON: LoongArch: KVM: Add hypercall service
  support for usermode VMM
 
 Some VMMs provides special hypercall service in usermode, KVM should not

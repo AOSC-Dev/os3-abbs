@@ -1,7 +1,7 @@
 From bf4a88c77ae567e365ae31dc2edb65a76bce5e3f Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Sun, 28 May 2017 09:29:33 +0800
-Subject: [PATCH 263/291] AOSCOS: 8250_pci: Add a new PLX9050 serial port card
+Subject: [PATCH 263/292] AOSCOS: 8250_pci: Add a new PLX9050 serial port card
  support
 
 [Mingcong Bai: Resolved merge conflicts in

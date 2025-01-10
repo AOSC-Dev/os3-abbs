@@ -1,7 +1,7 @@
 From 748b8f36fe59a756a3fe422b988b9ab9afb745d9 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Mon, 9 Dec 2024 17:25:34 +0800
-Subject: [PATCH 211/291] AOSCOS: gpio: gpio-nct6102: add a missing include to
+Subject: [PATCH 211/292] AOSCOS: gpio: gpio-nct6102: add a missing include to
  <linux/gpio/driver.h>
 
 This driver was missing an include to <linux/gpio/driver.h>, the reference

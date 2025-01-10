@@ -1,7 +1,7 @@
 From 672d5688bcab7d417be4d7bd28bad41809f4c3f6 Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Tue, 17 Dec 2024 05:38:26 +0800
-Subject: [PATCH 284/291] AOSCOS: MIPS: remove duplicate defines of NR_syscalls
+Subject: [PATCH 284/292] AOSCOS: MIPS: remove duplicate defines of NR_syscalls
 
 In "FROMLIST: MIPS: Add syscall auditing support", some duplicate
 defines of NR_syscalls were added to arch/mips/include/asm/unistd.h,

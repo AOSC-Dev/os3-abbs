@@ -1,7 +1,7 @@
 From 062b867900d009f09eef31b67893260c3af1b54b Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:35:09 -0600
-Subject: [PATCH 066/291] FROMLIST: maintainers: Add an entry for ntsync.
+Subject: [PATCH 066/292] FROMLIST: maintainers: Add an entry for ntsync.
 
 Add myself as maintainer, supported by CodeWeavers.
 

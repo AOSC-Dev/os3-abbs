@@ -1,7 +1,7 @@
 From 9ff35e682bf28d500496fad65ed4259759a0152b Mon Sep 17 00:00:00 2001
 From: Koichiro Den <koichiro.den@canonical.com>
 Date: Wed, 8 Jan 2025 13:28:07 +0900
-Subject: [PATCH 078/291] FROMLIST: vmstat: disable vmstat_work on
+Subject: [PATCH 078/292] FROMLIST: vmstat: disable vmstat_work on
  vmstat_cpu_down_prep()
 
 The upstream commit adcfb264c3ed ("vmstat: disable vmstat_work on

@@ -1,7 +1,7 @@
 From f86f93f3cc94238e71977728eaa2543fcfd04ccc Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 11 Dec 2024 11:20:38 +0800
-Subject: [PATCH 238/291] AOSCOS: drm: radeon: limit MIPS Loongson-3
+Subject: [PATCH 238/292] AOSCOS: drm: radeon: limit MIPS Loongson-3
  workarounds for Juniper
 
 Guard MIPS Loongson-3 specific hacks around CONFIG_MACH_LOONGSON64.

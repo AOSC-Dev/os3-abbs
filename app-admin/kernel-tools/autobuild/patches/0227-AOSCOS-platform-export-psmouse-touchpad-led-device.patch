@@ -1,7 +1,7 @@
 From 0cf3b31a1495a7a1b3e2f046a5ab9fd9176e6256 Mon Sep 17 00:00:00 2001
 From: chenj <chenj@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
-Subject: [PATCH 227/291] AOSCOS: platform: export psmouse::touchpad led device
+Subject: [PATCH 227/292] AOSCOS: platform: export psmouse::touchpad led device
 
 [Mingcong Bai: Resolved a minor merge conflict in
 drivers/platform/mips/Kconfig.]

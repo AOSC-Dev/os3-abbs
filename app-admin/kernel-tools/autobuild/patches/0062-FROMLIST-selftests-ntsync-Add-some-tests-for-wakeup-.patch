@@ -1,7 +1,7 @@
 From 3793aa8005d2146e281e0c7d5b183e9744aff27a Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:35:05 -0600
-Subject: [PATCH 062/291] FROMLIST: selftests: ntsync: Add some tests for
+Subject: [PATCH 062/292] FROMLIST: selftests: ntsync: Add some tests for
  wakeup signaling with events.
 
 Expand the contended wait tests, which previously only covered events and

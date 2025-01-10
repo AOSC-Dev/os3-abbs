@@ -1,7 +1,7 @@
 From d5e69b5ff9836e4f6b626660871fe5438bb74420 Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Tue, 17 Dec 2024 05:45:49 +0800
-Subject: [PATCH 285/291] AOSCOS: MIPS: add copyright headers back
+Subject: [PATCH 285/292] AOSCOS: MIPS: add copyright headers back
 
 In "FROMLIST: MIPS: Add syscall auditing support", a copyright header
 was removed from arch/mips/include/uapi/asm/unistd.h with no proper

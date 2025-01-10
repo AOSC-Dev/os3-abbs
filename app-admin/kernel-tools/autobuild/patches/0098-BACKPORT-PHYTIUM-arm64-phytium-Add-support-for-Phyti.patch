@@ -1,7 +1,7 @@
 From 6de94e2aff871f9ee53d317ca0d1a9ab9e065af0 Mon Sep 17 00:00:00 2001
 From: Chen Baozi <chenbaozi@phytium.com.cn>
 Date: Fri, 14 Jul 2023 08:33:58 +0800
-Subject: [PATCH 098/291] BACKPORT: PHYTIUM: arm64: phytium: Add support for
+Subject: [PATCH 098/292] BACKPORT: PHYTIUM: arm64: phytium: Add support for
  Phytium SoC family
 
 This patch adds supoort for the Phytium SoC family.

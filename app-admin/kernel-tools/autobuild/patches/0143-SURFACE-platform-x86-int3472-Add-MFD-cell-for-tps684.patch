@@ -1,7 +1,7 @@
 From 229a1dd8039f8e9e1233f014c90780d6eb5507d0 Mon Sep 17 00:00:00 2001
 From: Kate Hsuan <hpa@redhat.com>
 Date: Tue, 21 Mar 2023 23:37:16 +0800
-Subject: [PATCH 143/291] SURFACE: platform: x86: int3472: Add MFD cell for
+Subject: [PATCH 143/292] SURFACE: platform: x86: int3472: Add MFD cell for
  tps68470 LED
 
 Add MFD cell for tps68470-led.

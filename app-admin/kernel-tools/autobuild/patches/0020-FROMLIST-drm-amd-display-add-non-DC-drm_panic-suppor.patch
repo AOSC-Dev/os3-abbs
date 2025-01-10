@@ -1,7 +1,7 @@
 From 6598c995b342981861511849348c71c72542b73c Mon Sep 17 00:00:00 2001
 From: Alex Deucher <alexander.deucher@amd.com>
 Date: Tue, 12 Nov 2024 16:37:16 -0500
-Subject: [PATCH 020/291] FROMLIST: drm/amd/display: add non-DC drm_panic
+Subject: [PATCH 020/292] FROMLIST: drm/amd/display: add non-DC drm_panic
  support
 
 Add support for the drm_panic module, which displays a pretty user

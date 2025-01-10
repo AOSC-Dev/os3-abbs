@@ -1,7 +1,7 @@
 From 030ddf18610fe0ce47d98aba7a6b5a47f8f77641 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Thu, 12 Dec 2024 14:45:22 +0800
-Subject: [PATCH 280/291] AOSCOS: spi: spi-loongson: allow building on
+Subject: [PATCH 280/292] AOSCOS: spi: spi-loongson: allow building on
  MACH_LOONGSON32/64
 
 LS2K/LS7A chipsets are also found on some MIPS-based Loongson hardware,

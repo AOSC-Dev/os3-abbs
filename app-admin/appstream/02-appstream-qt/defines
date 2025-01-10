@@ -3,4 +3,4 @@ PKGSEC=admin
 PKGDEP="appstream qt-5 qt-6"
 PKGDES="Qt bindings for AppStream"
 
-PKGBREAK="plasma-workspace<=5.27.11-2"
+PKGBREAK="plasma-workspace<=5.27.11-2 discover<=5.27.11-2"

@@ -1,4 +1,4 @@
-VER=1.28.0
+VER=1.28.1
 SRCS="tbl::https://pub.mate-desktop.org/releases/${VER:0:4}/atril-$VER.tar.xz"
-CHKSUMS="sha256::ced4725f6e9b71c4ea63676bfc3cc3be09d29dba08aa7a7ab97964e0b4355162"
+CHKSUMS="sha256::74c4f42979f3ead52def23767448d06ad7f715421e03c9b509404b096de8193e"
 CHKUPDATE="anitya::id=198706"

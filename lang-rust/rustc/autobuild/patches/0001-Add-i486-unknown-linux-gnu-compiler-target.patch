@@ -1,4 +1,4 @@
-From ba28fdb727b883690a37ebc1b23e42dbbc88255c Mon Sep 17 00:00:00 2001
+From 0eb87214cd03a079a2e8b6f499a3996583b253fd Mon Sep 17 00:00:00 2001
 From: Jiajie Chen <c@jia.je>
 Date: Fri, 9 Feb 2024 18:48:33 -0800
 Subject: [PATCH 1/2] Add i486-unknown-linux-gnu compiler target
@@ -10,10 +10,10 @@ Subject: [PATCH 1/2] Add i486-unknown-linux-gnu compiler target
  create mode 100644 compiler/rustc_target/src/spec/targets/i486_unknown_linux_gnu.rs
 
 diff --git a/compiler/rustc_target/src/spec/mod.rs b/compiler/rustc_target/src/spec/mod.rs
-index 82e11a3afc..1c813d903b 100644
+index 321ab40403..9130d21170 100644
 --- a/compiler/rustc_target/src/spec/mod.rs
 +++ b/compiler/rustc_target/src/spec/mod.rs
-@@ -1622,6 +1622,7 @@ supported_targets! {
+@@ -1623,6 +1623,7 @@ supported_targets! {
      ("x86_64-unknown-linux-gnux32", x86_64_unknown_linux_gnux32),
      ("i686-unknown-linux-gnu", i686_unknown_linux_gnu),
      ("i586-unknown-linux-gnu", i586_unknown_linux_gnu),

@@ -99,6 +99,7 @@ cat >> "$SRCDIR"/config.toml << EOF
 prefix = "/usr"
 
 [rust]
+download-rustc = false
 EOF
 
 if ! ab_match_arch armv4 && \

@@ -1,4 +1,4 @@
-From ac98d84d26ce1305335275bb75bf3d55beed4870 Mon Sep 17 00:00:00 2001
+From 4fb049c839649d6adeb67ee4b53093673b5e0fd1 Mon Sep 17 00:00:00 2001
 From: Jiajie Chen <c@jia.je>
 Date: Fri, 9 Feb 2024 18:48:40 -0800
 Subject: [PATCH 2/2] Add MIPS definitions to vendored libffi-sys

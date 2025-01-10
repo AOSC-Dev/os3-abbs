@@ -1,0 +1,6 @@
+if ab_match_arch loongson3; then
+export CXXFLAGS="$(CXXFLAGS) -Os"
+fi
+#FIXME:编译libFreeCADGui.so时类似以下的错误：
+#/var/cache/acbs/build/acbs.6r_tjrqj/freecad/src/Gui/ViewProviderLink.cpp:2767:(.text+0x69b8c4): relocation truncated to fit: R_MIPS_TLS_LDM against `guard variable for Gui::ViewProviderLink::startEditing(int)::_editingTransform'
+#loongson3平台独有

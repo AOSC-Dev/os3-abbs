@@ -1,4 +1,4 @@
-VER=1.2.6
+VER=1.2.7
 SRCS="tbl::https://downloads.sourceforge.net/rpcbind/rpcbind-$VER.tar.bz2"
-CHKSUMS="sha256::5613746489cae5ae23a443bb85c05a11741a5f12c8f55d2bb5e83b9defeee8de"
+CHKSUMS="sha256::f6edf8cdf562aedd5d53b8bf93962d61623292bfc4d47eedd3f427d84d06f37e"
 CHKUPDATE="anitya::id=4212"

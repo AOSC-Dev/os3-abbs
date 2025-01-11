@@ -1,0 +1,26 @@
+From 9d4c1c496b40c06a9bfd2a1006337137d10eec07 Mon Sep 17 00:00:00 2001
+From: "Lain \"Fearyncess\" Yang" <fsf@live.com>
+Date: Fri, 6 Dec 2024 11:04:30 +0800
+Subject: [PATCH] Change `servname` to sunrpc, following IANA ports assignation
+ table
+
+---
+ src/rpcbind.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/rpcbind.c b/src/rpcbind.c
+index ecebe97..a4e07a4 100644
+--- a/src/rpcbind.c
++++ b/src/rpcbind.c
+@@ -132,7 +132,7 @@ char *tcptrans;		/* Name of TCP transport */
+ char *udp_uaddr;	/* Universal UDP address */
+ char *tcp_uaddr;	/* Universal TCP address */
+ #endif
+-static char servname[] = "rpcbind";
++static char servname[] = "sunrpc";
+ static char superuser[] = "superuser";
+ 
+ int main(int, char *[]);
+-- 
+2.47.1
+

@@ -1,4 +1,4 @@
-VER=24.48.31907.7
+VER=24.52.32224.5
 SRCS="git::commit=tags/$VER::https://github.com/intel/compute-runtime.git"
 CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=229527"

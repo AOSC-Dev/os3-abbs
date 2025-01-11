@@ -1,6 +1,6 @@
 PKGNAME=skopeo
 PKGSEC=admin
-PKGDEP="gpgme containers-common"
+PKGDEP="gpgme containers-common skopeo"
 PKGDES="Utility for operating on container images and repositories"
 BUILDDEP="go go-md2man"
 

@@ -1,4 +1,4 @@
-From 3d99502cbe440786627f104a76443adc73fe4d8b Mon Sep 17 00:00:00 2001
+From f0067e9c89fcaab91d961d8fd9a22dcc21a8a742 Mon Sep 17 00:00:00 2001
 From: miwu04 <mail@alanlin.icu>
 Date: Tue, 17 Dec 2024 00:01:33 +0800
 Subject: [PATCH 3/6] Drop clash-meta-alpha support

@@ -1,4 +1,4 @@
-From 14c8061df0c089241d9ecb0f71823d204f0d91f4 Mon Sep 17 00:00:00 2001
+From d4d253b782966181ab562268a292d240c3f72794 Mon Sep 17 00:00:00 2001
 From: miwu04 <mail@alanlin.icu>
 Date: Sun, 24 Nov 2024 17:50:25 +0800
 Subject: [PATCH 2/6] Remove check update UI
@@ -10,7 +10,7 @@ Subject: [PATCH 2/6] Remove check update UI
  3 files changed, 1 insertion(+), 37 deletions(-)
 
 diff --git a/src/main/utils/template.ts b/src/main/utils/template.ts
-index e2a0341..5e3f6c7 100644
+index 6bc3513..e9f04fd 100644
 --- a/src/main/utils/template.ts
 +++ b/src/main/utils/template.ts
 @@ -11,7 +11,7 @@ export const defaultConfig: IAppConfig = {

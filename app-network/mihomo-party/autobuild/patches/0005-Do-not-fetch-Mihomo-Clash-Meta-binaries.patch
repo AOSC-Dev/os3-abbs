@@ -1,4 +1,4 @@
-From fc1abf809fc2a50ea6262f567954dd9abd1a21d4 Mon Sep 17 00:00:00 2001
+From 3af6c341e51445392a2ea0207c8b0f61c697ec68 Mon Sep 17 00:00:00 2001
 From: miwu04 <mail@alanlin.icu>
 Date: Tue, 17 Dec 2024 00:10:02 +0800
 Subject: [PATCH 5/6] Do not fetch Mihomo (Clash Meta) binaries We use a system

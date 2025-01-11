@@ -6,5 +6,5 @@ PKGDEP="gcc-runtime gdk-pixbuf glib graphene gstreamer gtk-4 libadwaita mpv open
 
 ABTYPE=meson
 
-# FIXME: ld.lld is not yet supported
-NOLTO__LOONGSON3=1
+# FIXME: undefined symbol: ring_core
+NOLTO=1

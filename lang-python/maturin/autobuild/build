@@ -1,0 +1,30 @@
+# FIXME: ld.lld: error: undefined hidden symbol: ring_core_0_17_8_OPENSSL_ia32cap_P
+CFLAGS+=" -ffat-lto-objects"
+
+abinfo "Building maturin ..."
+cargo run -- \
+    build \
+    --release \
+    --bindings bin \
+    --sdist \
+    --out dist \
+    --features password-storage \
+    --compatibility linux
+
+abinfo "Installing maturin ..."
+python3 \
+    -m installer \
+    --destdir="$PKGDIR" \
+    "$SRCDIR"/dist/*.whl
+
+abinfo "Installing bash completions ..."
+mkdir -pv "$PKGDIR"/usr/share/bash-completion/completions/
+"$PKGDIR"/usr/bin/maturin completions bash > "$PKGDIR"/usr/share/bash-completion/completions/maturin
+
+abinfo "Installing fish completions ..."
+mkdir -pv "$PKGDIR"/usr/share/fish/vendor_completions.d/
+"$PKGDIR"/usr/bin/maturin completions fish > "$PKGDIR"/usr/share/fish/vendor_completions.d/maturin
+
+abinfo "Installing zsh completions ..."
+mkdir -pv "$PKGDIR"/usr/share/zsh/site-functions/
+"$PKGDIR"/usr/bin/maturin completions zsh > "$PKGDIR"/usr/share/zsh/site-functions/_zsh

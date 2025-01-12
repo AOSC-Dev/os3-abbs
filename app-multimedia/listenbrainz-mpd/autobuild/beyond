@@ -1,0 +1,15 @@
+abinfo "Generating and installing documentation ..."
+asciidoctor -v -b manpage "$SRCDIR"/listenbrainz-mpd.adoc \
+    -o "$PKGDIR"/usr/share/man/man1/listenbrainz-mpd.1
+
+abinfo "Installing systemd user service ..."
+install -Dvm644 "$SRCDIR"/listenbrainz-mpd.service \
+    -t "$PKGDIR"/usr/lib/systemd/user/
+
+abinfo "Installing shell completions ..."
+install -Dvm644 "$SRCDIR"/generated_completions/_listenbrainz-mpd \
+    -t "$PKGDIR"/usr/share/zsh/functions/Completion/Linux/
+install -Dvm644 "$SRCDIR"/generated_completions/listenbrainz-mpd.fish \
+    -t "$PKGDIR"/usr/share/fish/vendor_completions.d/
+install -Dvm644 "$SRCDIR"/generated_completions/listenbrainz-mpd.bash \
+    -t "$PKGDIR"/usr/share/bash-completion/completions/

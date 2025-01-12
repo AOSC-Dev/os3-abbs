@@ -1,0 +1,13 @@
+PKGNAME=listenbrainz-mpd
+PKGSEC=sound
+PKGDEP="mpd"
+BUILDDEP="rustc llvm asciidoctor"
+PKGDES="A ListenBrainz submission client for Music Player Daemon"
+
+ABTYPE=rust
+USECLANG=1
+
+CARGO_AFTER="--features systemd,shell_completion"
+
+# FIXME: ld.lld is not yet available on loongson3
+NOLTO__LOONGSON3=1

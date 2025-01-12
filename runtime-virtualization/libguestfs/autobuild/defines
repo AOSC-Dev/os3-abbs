@@ -8,7 +8,6 @@ BUILDDEP="gperf libintl-perl pcre perl-module-build perl-string-shellquote \
 PKGDES="Access and modify virtual machine disk image"
 
 # FIXME: --disable-appliance, missing a lot of dependencies, to re-visit later.
-# FIXME: --disable-ocaml, OCaml bindings fails to build.
 # FIXME: --disable-rust, fails to build with Rust 1.71.1.
 AUTOTOOLS_AFTER="--disable-werror \
                  --enable-largefile \

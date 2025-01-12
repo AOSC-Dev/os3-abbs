@@ -1,7 +1,7 @@
 PKGNAME=guestfs-tools
 PKGSEC=libs
 PKGDEP="libguestfs qemu glibc cpio fuse augeas xz zstd"
-BUILDDEP="ocaml gperf findlib ocaml-augeas"
+BUILDDEP="ocaml gperf findlib ocaml-augeas perl-module-build perl-string-shellquote"
 PKGDES="Tools for accessing and modifying guest disk images"
 
 AUTOTOOLS_AFTER="--disable-werror \

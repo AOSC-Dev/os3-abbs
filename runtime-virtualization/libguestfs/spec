@@ -1,4 +1,5 @@
 VER=1.54.0
+REL=1
 SRCS="tbl::https://download.libguestfs.org/${VER%.*}-stable/libguestfs-$VER.tar.gz"
 CHKSUMS="sha256::b4afa0f8fd580205ea5548d468bc6e43c3becb995e2f60e63265527a63054246"
 CHKUPDATE="anitya::id=229572"

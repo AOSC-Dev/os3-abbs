@@ -1,0 +1,835 @@
+From 2eb5feac86ffb99e853d28e6b578986770c5b67f Mon Sep 17 00:00:00 2001
+From: Adhemerval Zanella <adhemerval.zanella@linaro.org>
+Date: Wed, 18 Sep 2024 16:01:22 +0200
+Subject: [PATCH 7/9] BACKPORT: linux: Add support for getrandom vDSO
+
+Linux 6.11 has getrandom() in vDSO. It operates on a thread-local opaque
+state allocated with mmap using flags specified by the vDSO.
+
+Multiple states are allocated at once, as many as fit into a page, and
+these are held in an array of available states to be doled out to each
+thread upon first use, and recycled when a thread terminates. As these
+states run low, more are allocated.
+
+To make this procedure async-signal-safe, a simple guard is used in the
+LSB of the opaque state address, falling back to the syscall if there's
+reentrancy contention.
+
+Also, _Fork() is handled by blocking signals on opaque state allocation
+(so _Fork() always sees a consistent state even if it interrupts a
+getrandom() call) and by iterating over the thread stack cache on
+reclaim_stack. Each opaque state will be in the free states list
+(grnd_alloc.states) or allocated to a running thread.
+
+The cancellation is handled by always using GRND_NONBLOCK flags while
+calling the vDSO, and falling back to the cancellable syscall if the
+kernel returns EAGAIN (would block). Since getrandom is not defined by
+POSIX and cancellation is supported as an extension, the cancellation is
+handled as 'may occur' instead of 'shall occur' [1], meaning that if
+vDSO does not block (the expected behavior) getrandom will not act as a
+cancellation entrypoint. It avoids a pthread_testcancel call on the fast
+path (different than 'shall occur' functions, like sem_wait()).
+
+It is currently enabled for x86_64, which is available in Linux 6.11,
+and aarch64, powerpc32, powerpc64, loongarch64, and s390x, which are
+available in Linux 6.12.
+
+Link: https://pubs.opengroup.org/onlinepubs/9799919799/nframe.html [1]
+Co-developed-by: Jason A. Donenfeld <Jason@zx2c4.com>
+Tested-by: Jason A. Donenfeld <Jason@zx2c4.com> # x86_64
+Tested-by: Adhemerval Zanella <adhemerval.zanella@linaro.org> # x86_64, aarch64
+Tested-by: Xi Ruoyao <xry111@xry111.site> # x86_64, aarch64, loongarch64
+Tested-by: Stefan Liebler <stli@linux.ibm.com> # s390x
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ elf/libc_early_init.c                        |   3 +
+ malloc/malloc.c                              |   4 +-
+ nptl/allocatestack.c                         |   2 +
+ nptl/descr.h                                 |   3 +
+ nptl/pthread_create.c                        |   5 +
+ stdlib/Makefile                              |   2 +
+ stdlib/tst-getrandom2.c                      |  47 +++
+ sysdeps/generic/getrandom-internal.h         |  26 ++
+ sysdeps/generic/not-cancel.h                 |   4 +-
+ sysdeps/mach/hurd/not-cancel.h               |   4 +-
+ sysdeps/nptl/_Fork.c                         |   2 +
+ sysdeps/nptl/fork.h                          |  12 +
+ sysdeps/unix/sysv/linux/aarch64/sysdep.h     |   1 +
+ sysdeps/unix/sysv/linux/dl-vdso-setup.c      |   5 +
+ sysdeps/unix/sysv/linux/dl-vdso-setup.h      |   3 +
+ sysdeps/unix/sysv/linux/getrandom-internal.h |  29 ++
+ sysdeps/unix/sysv/linux/getrandom.c          | 304 ++++++++++++++++++-
+ sysdeps/unix/sysv/linux/loongarch/sysdep.h   |   1 +
+ sysdeps/unix/sysv/linux/not-cancel.h         |   7 +-
+ sysdeps/unix/sysv/linux/powerpc/sysdep.h     |   1 +
+ sysdeps/unix/sysv/linux/s390/sysdep.h        |   1 +
+ sysdeps/unix/sysv/linux/x86_64/sysdep.h      |   1 +
+ 22 files changed, 460 insertions(+), 7 deletions(-)
+ create mode 100644 stdlib/tst-getrandom2.c
+ create mode 100644 sysdeps/generic/getrandom-internal.h
+ create mode 100644 sysdeps/unix/sysv/linux/getrandom-internal.h
+
+diff --git a/elf/libc_early_init.c b/elf/libc_early_init.c
+index 575b837f8f..20c71fd48b 100644
+--- a/elf/libc_early_init.c
++++ b/elf/libc_early_init.c
+@@ -23,6 +23,7 @@
+ #include <lowlevellock.h>
+ #include <pthread_early_init.h>
+ #include <sys/single_threaded.h>
++#include <getrandom-internal.h>
+ 
+ #ifdef SHARED
+ _Bool __libc_initial;
+@@ -43,6 +44,8 @@ __libc_early_init (_Bool initial)
+ 
+   __pthread_early_init ();
+ 
++  __getrandom_early_init (initial);
++
+ #if ENABLE_ELISION_SUPPORT
+   __lll_elision_init ();
+ #endif
+diff --git a/malloc/malloc.c b/malloc/malloc.c
+index bcb6e5b83c..9e577ab900 100644
+--- a/malloc/malloc.c
++++ b/malloc/malloc.c
+@@ -3140,8 +3140,8 @@ static void
+ tcache_key_initialize (void)
+ {
+   /* We need to use the _nostatus version here, see BZ 29624.  */
+-  if (__getrandom_nocancel_nostatus (&tcache_key, sizeof(tcache_key),
+-				     GRND_NONBLOCK)
++  if (__getrandom_nocancel_nostatus_direct (&tcache_key, sizeof(tcache_key),
++					    GRND_NONBLOCK)
+       != sizeof (tcache_key))
+     {
+       tcache_key = random_bits ();
+diff --git a/nptl/allocatestack.c b/nptl/allocatestack.c
+index f35a8369bd..9ed886573f 100644
+--- a/nptl/allocatestack.c
++++ b/nptl/allocatestack.c
+@@ -132,6 +132,8 @@ get_cached_stack (size_t *sizep, void **memp)
+   __libc_lock_init (result->exit_lock);
+   memset (&result->tls_state, 0, sizeof result->tls_state);
+ 
++  result->getrandom_buf = NULL;
++
+   /* Clear the DTV.  */
+   dtv_t *dtv = GET_DTV (TLS_TPADJ (result));
+   for (size_t cnt = 0; cnt < dtv[-1].counter; ++cnt)
+diff --git a/nptl/descr.h b/nptl/descr.h
+index 8cef95810c..4697f633e1 100644
+--- a/nptl/descr.h
++++ b/nptl/descr.h
+@@ -404,6 +404,9 @@ struct pthread
+   /* Used on strsignal.  */
+   struct tls_internal_t tls_state;
+ 
++  /* getrandom vDSO per-thread opaque state.  */
++  void *getrandom_buf;
++
+   /* rseq area registered with the kernel.  Use a custom definition
+      here to isolate from kernel struct rseq changes.  The
+      implementation of sched_getcpu needs acccess to the cpu_id field;
+diff --git a/nptl/pthread_create.c b/nptl/pthread_create.c
+index 1d3665d5ed..ef3ec33290 100644
+--- a/nptl/pthread_create.c
++++ b/nptl/pthread_create.c
+@@ -38,6 +38,7 @@
+ #include <version.h>
+ #include <clone_internal.h>
+ #include <futex-internal.h>
++#include <getrandom-internal.h>
+ 
+ #include <shlib-compat.h>
+ 
+@@ -549,6 +550,10 @@ start_thread (void *arg)
+     }
+ #endif
+ 
++  /* Release the vDSO getrandom per-thread buffer with all signal blocked,
++     to avoid creating a new free-state block during thread release.  */
++  __getrandom_vdso_release (pd);
++
+   if (!pd->user_stack)
+     advise_stack_range (pd->stackblock, pd->stackblock_size, (uintptr_t) pd,
+ 			pd->guardsize);
+diff --git a/stdlib/Makefile b/stdlib/Makefile
+index 8b0ac63ddb..d1867f2bc6 100644
+--- a/stdlib/Makefile
++++ b/stdlib/Makefile
+@@ -276,6 +276,7 @@ tests := \
+   tst-cxa_atexit \
+   tst-environ \
+   tst-getrandom \
++  tst-getrandom2 \
+   tst-labs \
+   tst-limits \
+   tst-llabs \
+@@ -623,3 +624,4 @@ $(objpfx)tst-setcontext3.out: tst-setcontext3.sh $(objpfx)tst-setcontext3
+ 	$(evaluate-test)
+ 
+ $(objpfx)tst-qsort5: $(libm)
++$(objpfx)tst-getrandom2: $(shared-thread-library)
+diff --git a/stdlib/tst-getrandom2.c b/stdlib/tst-getrandom2.c
+new file mode 100644
+index 0000000000..f085b4b74f
+--- /dev/null
++++ b/stdlib/tst-getrandom2.c
+@@ -0,0 +1,47 @@
++/* Tests for the getrandom functions.
++   Copyright (C) 2024 Free Software Foundation, Inc.
++   This file is part of the GNU C Library.
++
++   The GNU C Library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Lesser General Public
++   License as published by the Free Software Foundation; either
++   version 2.1 of the License, or (at your option) any later version.
++
++   The GNU C Library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++   Lesser General Public License for more details.
++
++   You should have received a copy of the GNU Lesser General Public
++   License along with the GNU C Library; if not, see
++   <https://www.gnu.org/licenses/>.  */
++
++#include <gnu/lib-names.h>
++#include <support/check.h>
++#include <support/xdlfcn.h>
++#include <support/xthread.h>
++#include <sys/random.h>
++
++static __typeof (getrandom) *getrandom_ptr;
++
++static void *
++threadfunc (void *ignored)
++{
++  char buffer;
++  TEST_COMPARE (getrandom_ptr (&buffer, 1, 0), 1);
++  return NULL;
++}
++
++static int
++do_test (void)
++{
++  /* Check if issuing getrandom in the secondary libc.so works when
++     the vDSO might be potentially used.  */
++  void *handle = xdlmopen (LM_ID_NEWLM, LIBC_SO, RTLD_NOW);
++  getrandom_ptr = xdlsym (handle, "getrandom");
++  for (int i = 0; i < 1000; ++i)
++    xpthread_join (xpthread_create (NULL, threadfunc, NULL));
++  return 0;
++}
++
++#include <support/test-driver.c>
+diff --git a/sysdeps/generic/getrandom-internal.h b/sysdeps/generic/getrandom-internal.h
+new file mode 100644
+index 0000000000..3fe46532a0
+--- /dev/null
++++ b/sysdeps/generic/getrandom-internal.h
+@@ -0,0 +1,26 @@
++/* Internal definitions for getrandom implementation.
++   Copyright (C) 2024 Free Software Foundation, Inc.
++   This file is part of the GNU C Library.
++
++   The GNU C Library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Lesser General Public
++   License as published by the Free Software Foundation; either
++   version 2.1 of the License, or (at your option) any later version.
++
++   The GNU C Library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++   Lesser General Public License for more details.
++
++   You should have received a copy of the GNU Lesser General Public
++   License along with the GNU C Library; if not, see
++   <https://www.gnu.org/licenses/>.  */
++
++#ifndef _GETRANDOM_INTERNAL_H
++#define _GETRANDOM_INTERNAL_H
++
++static inline void __getrandom_early_init (_Bool)
++{
++}
++
++#endif
+diff --git a/sysdeps/generic/not-cancel.h b/sysdeps/generic/not-cancel.h
+index 2dd1064600..8e3f49cc07 100644
+--- a/sysdeps/generic/not-cancel.h
++++ b/sysdeps/generic/not-cancel.h
+@@ -51,7 +51,9 @@
+   __fcntl64 (fd, cmd, __VA_ARGS__)
+ #define __getrandom_nocancel(buf, size, flags) \
+   __getrandom (buf, size, flags)
+-#define __getrandom_nocancel_nostatus(buf, size, flags) \
++#define __getrandom_nocancel_direct(buf, size, flags) \
++  __getrandom (buf, size, flags)
++#define __getrandom_nocancel_nostatus_direct(buf, size, flags) \
+   __getrandom (buf, size, flags)
+ #define __poll_infinity_nocancel(fds, nfds) \
+   __poll (fds, nfds, -1)
+diff --git a/sysdeps/mach/hurd/not-cancel.h b/sysdeps/mach/hurd/not-cancel.h
+index 69fb3c00ef..ec5f5aa895 100644
+--- a/sysdeps/mach/hurd/not-cancel.h
++++ b/sysdeps/mach/hurd/not-cancel.h
+@@ -79,7 +79,7 @@ __typeof (__fcntl) __fcntl_nocancel;
+ /* Non cancellable getrandom syscall that does not also set errno in case of
+    failure.  */
+ static inline ssize_t
+-__getrandom_nocancel_nostatus (void *buf, size_t buflen, unsigned int flags)
++__getrandom_nocancel_nostatus_direct (void *buf, size_t buflen, unsigned int flags)
+ {
+   int save_errno = errno;
+   ssize_t r = __getrandom (buf, buflen, flags);
+@@ -90,6 +90,8 @@ __getrandom_nocancel_nostatus (void *buf, size_t buflen, unsigned int flags)
+ 
+ #define __getrandom_nocancel(buf, size, flags) \
+   __getrandom (buf, size, flags)
++#define __getrandom_nocancel_direct(buf, size, flags) \
++  __getrandom (buf, size, flags)
+ 
+ #define __poll_infinity_nocancel(fds, nfds) \
+   __poll (fds, nfds, -1)
+diff --git a/sysdeps/nptl/_Fork.c b/sysdeps/nptl/_Fork.c
+index ef199ddbc3..c82fd50649 100644
+--- a/sysdeps/nptl/_Fork.c
++++ b/sysdeps/nptl/_Fork.c
+@@ -18,6 +18,7 @@
+ 
+ #include <arch-fork.h>
+ #include <pthreadP.h>
++#include <getrandom-internal.h>
+ 
+ pid_t
+ _Fork (void)
+@@ -43,6 +44,7 @@ _Fork (void)
+       self->robust_head.list = &self->robust_head;
+       INTERNAL_SYSCALL_CALL (set_robust_list, &self->robust_head,
+ 			     sizeof (struct robust_list_head));
++      call_function_static_weak (__getrandom_fork_subprocess);
+     }
+   return pid;
+ }
+diff --git a/sysdeps/nptl/fork.h b/sysdeps/nptl/fork.h
+index 7643926df9..eabf3c81b0 100644
+--- a/sysdeps/nptl/fork.h
++++ b/sysdeps/nptl/fork.h
+@@ -26,6 +26,7 @@
+ #include <mqueue.h>
+ #include <pthreadP.h>
+ #include <sysdep.h>
++#include <getrandom-internal.h>
+ 
+ static inline void
+ fork_system_setup (void)
+@@ -46,6 +47,7 @@ fork_system_setup_after_fork (void)
+ 
+   call_function_static_weak (__mq_notify_fork_subprocess);
+   call_function_static_weak (__timer_fork_subprocess);
++  call_function_static_weak (__getrandom_fork_subprocess);
+ }
+ 
+ /* In case of a fork() call the memory allocation in the child will be
+@@ -128,9 +130,19 @@ reclaim_stacks (void)
+ 		    curp->specific_used = true;
+ 		  }
+ 	    }
++
++	  call_function_static_weak (__getrandom_reset_state, curp);
+ 	}
+     }
+ 
++  /* Also reset stale getrandom states for user stack threads.  */
++  list_for_each (runp, &GL (dl_stack_user))
++    {
++      struct pthread *curp = list_entry (runp, struct pthread, list);
++      if (curp != self)
++	call_function_static_weak (__getrandom_reset_state, curp);
++    }
++
+   /* Add the stack of all running threads to the cache.  */
+   list_splice (&GL (dl_stack_used), &GL (dl_stack_cache));
+ 
+diff --git a/sysdeps/unix/sysv/linux/aarch64/sysdep.h b/sysdeps/unix/sysv/linux/aarch64/sysdep.h
+index bbbe35723c..974b503b2f 100644
+--- a/sysdeps/unix/sysv/linux/aarch64/sysdep.h
++++ b/sysdeps/unix/sysv/linux/aarch64/sysdep.h
+@@ -164,6 +164,7 @@
+ # define HAVE_CLOCK_GETRES64_VSYSCALL	"__kernel_clock_getres"
+ # define HAVE_CLOCK_GETTIME64_VSYSCALL	"__kernel_clock_gettime"
+ # define HAVE_GETTIMEOFDAY_VSYSCALL	"__kernel_gettimeofday"
++# define HAVE_GETRANDOM_VSYSCALL        "__kernel_getrandom"
+ 
+ # define HAVE_CLONE3_WRAPPER		1
+ 
+diff --git a/sysdeps/unix/sysv/linux/dl-vdso-setup.c b/sysdeps/unix/sysv/linux/dl-vdso-setup.c
+index 3a44944dbb..476c6db75a 100644
+--- a/sysdeps/unix/sysv/linux/dl-vdso-setup.c
++++ b/sysdeps/unix/sysv/linux/dl-vdso-setup.c
+@@ -66,6 +66,11 @@ PROCINFO_CLASS int (*_dl_vdso_clock_getres) (clockid_t,
+ PROCINFO_CLASS int (*_dl_vdso_clock_getres_time64) (clockid_t,
+ 						    struct __timespec64 *) RELRO;
+ # endif
++# ifdef HAVE_GETRANDOM_VSYSCALL
++PROCINFO_CLASS ssize_t (*_dl_vdso_getrandom) (void *buffer, size_t len,
++                                              unsigned int flags, void *state,
++                                              size_t state_len) RELRO;
++# endif
+ 
+ /* PowerPC specific ones.  */
+ # ifdef HAVE_GET_TBFREQ
+diff --git a/sysdeps/unix/sysv/linux/dl-vdso-setup.h b/sysdeps/unix/sysv/linux/dl-vdso-setup.h
+index 8aee5a8212..cde99f608c 100644
+--- a/sysdeps/unix/sysv/linux/dl-vdso-setup.h
++++ b/sysdeps/unix/sysv/linux/dl-vdso-setup.h
+@@ -50,6 +50,9 @@ setup_vdso_pointers (void)
+ #ifdef HAVE_RISCV_HWPROBE
+   GLRO(dl_vdso_riscv_hwprobe) = dl_vdso_vsym (HAVE_RISCV_HWPROBE);
+ #endif
++#ifdef HAVE_GETRANDOM_VSYSCALL
++  GLRO(dl_vdso_getrandom) = dl_vdso_vsym (HAVE_GETRANDOM_VSYSCALL);
++#endif
+ }
+ 
+ #endif
+diff --git a/sysdeps/unix/sysv/linux/getrandom-internal.h b/sysdeps/unix/sysv/linux/getrandom-internal.h
+new file mode 100644
+index 0000000000..37e6c9bc15
+--- /dev/null
++++ b/sysdeps/unix/sysv/linux/getrandom-internal.h
+@@ -0,0 +1,29 @@
++/* Internal definitions for Linux getrandom implementation.
++   Copyright (C) 2024 Free Software Foundation, Inc.
++   This file is part of the GNU C Library.
++
++   The GNU C Library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Lesser General Public
++   License as published by the Free Software Foundation; either
++   version 2.1 of the License, or (at your option) any later version.
++
++   The GNU C Library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++   Lesser General Public License for more details.
++
++   You should have received a copy of the GNU Lesser General Public
++   License along with the GNU C Library; if not, see
++   <https://www.gnu.org/licenses/>.  */
++
++#ifndef _GETRANDOM_INTERNAL_H
++#define _GETRANDOM_INTERNAL_H
++
++#include <pthreadP.h>
++
++extern void __getrandom_early_init (_Bool) attribute_hidden;
++
++extern void __getrandom_fork_subprocess (void) attribute_hidden;
++extern void __getrandom_vdso_release (struct pthread *curp) attribute_hidden;
++extern void __getrandom_reset_state (struct pthread *curp) attribute_hidden;
++#endif
+diff --git a/sysdeps/unix/sysv/linux/getrandom.c b/sysdeps/unix/sysv/linux/getrandom.c
+index 777d1decf0..c8c578263d 100644
+--- a/sysdeps/unix/sysv/linux/getrandom.c
++++ b/sysdeps/unix/sysv/linux/getrandom.c
+@@ -21,12 +21,314 @@
+ #include <unistd.h>
+ #include <sysdep-cancel.h>
+ 
++static inline ssize_t
++getrandom_syscall (void *buffer, size_t length, unsigned int flags,
++		   bool cancel)
++{
++  return cancel
++	 ? SYSCALL_CANCEL (getrandom, buffer, length, flags)
++	 : INLINE_SYSCALL_CALL (getrandom, buffer, length, flags);
++}
++
++#ifdef HAVE_GETRANDOM_VSYSCALL
++# include <assert.h>
++# include <ldsodefs.h>
++# include <libc-lock.h>
++# include <list.h>
++# include <setvmaname.h>
++# include <sys/mman.h>
++# include <sys/sysinfo.h>
++# include <tls-internal.h>
++
++/* These values will be initialized at loading time by calling the
++   _dl_vdso_getrandom with a special value.  The 'state_size' is the opaque
++   state size per-thread allocated with a mmap using 'mmap_prot' and
++   'mmap_flags' argument.  */
++static uint32_t state_size;
++static uint32_t state_size_cache_aligned;
++static uint32_t mmap_prot;
++static uint32_t mmap_flags;
++
++/* The function below are used on reentracy handling with (i.e. SA_NODEFER).
++   Before allocating a new state or issue the vDSO, atomically read the
++   current thread buffer, and if this is already reserved (is_reserved_ptr)
++   fallback to the syscall.  Otherwise, reserve the buffer by atomically
++   setting the LSB of the opaque state pointer.  The bit is cleared after the
++   vDSO is called, or before issuing the fallback syscall.  */
++
++static inline void *reserve_ptr (void *p)
++{
++  return (void *) ((uintptr_t) (p) | 1UL);
++}
++
++static inline void *release_ptr (void *p)
++{
++  return (void *) ((uintptr_t) (p) & ~1UL);
++}
++
++static inline bool is_reserved_ptr (void *p)
++{
++  return (uintptr_t) (p) & 1UL;
++}
++
++static struct
++{
++  __libc_lock_define (, lock);
++
++  void **states;  /* Queue of opaque states allocated with the kernel
++		     provided flags and used on getrandom vDSO call.  */
++  size_t len;	  /* Number of available free states in the queue.  */
++  size_t total;	  /* Number of states allocated from the kernel.  */
++  size_t cap;     /* Total number of states that 'states' can hold before
++		     needed to be resized.  */
++} grnd_alloc = {
++  .lock = LLL_LOCK_INITIALIZER
++};
++
++static bool
++vgetrandom_get_state_alloc (void)
++{
++  /* Start by allocating one page for the opaque states.  */
++  size_t block_size = ALIGN_UP (state_size_cache_aligned, GLRO(dl_pagesize));
++  size_t states_per_page = GLRO (dl_pagesize) / state_size_cache_aligned;
++  void *block = __mmap (NULL, GLRO(dl_pagesize), mmap_prot, mmap_flags, -1, 0);
++  if (block == MAP_FAILED)
++    return false;
++  __set_vma_name (block, block_size, " glibc: getrandom");
++
++  if (grnd_alloc.total + states_per_page > grnd_alloc.cap)
++    {
++      /* Use a new mmap instead of trying to mremap.  It avoids a
++	 potential multithread fork issue where fork is called just after
++	 mremap returns but before assigning to the grnd_alloc.states,
++	 thus making the its value invalid in the child.  */
++      void *old_states = grnd_alloc.states;
++      size_t new_states_size = ALIGN_UP ((grnd_alloc.total + states_per_page)
++					 * sizeof (*grnd_alloc.states),
++					 GLRO(dl_pagesize));
++
++      /* There is no need to memcpy any opaque state information because
++	 all the allocated opaque states are assigned to running threads
++	 (meaning that if we iterate over them we can reconstruct the state
++	 list).  */
++      void **states = __mmap (NULL, new_states_size, PROT_READ | PROT_WRITE,
++			      MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
++      if (states == MAP_FAILED)
++	{
++	  __munmap (block, block_size);
++	  return false;
++	}
++
++      /* Atomically replace the old state, so if a fork happens the child
++	 process will see a consistent free state buffer.  The size might
++	 not be updated, but it does not really matter since the buffer is
++	 always increased.  */
++      grnd_alloc.states = states;
++      atomic_thread_fence_seq_cst ();
++      if (old_states != NULL)
++	__munmap (old_states, grnd_alloc.cap * sizeof (*grnd_alloc.states));
++
++      __set_vma_name (states, new_states_size, " glibc: getrandom states");
++      grnd_alloc.cap = new_states_size / sizeof (*grnd_alloc.states);
++      atomic_thread_fence_seq_cst ();
++    }
++
++  for (size_t i = 0; i < states_per_page; ++i)
++    {
++      /* There is no need to handle states that straddle a page because
++	 we allocate only one page.  */
++      grnd_alloc.states[i] = block;
++      block += state_size_cache_aligned;
++    }
++  /* Concurrent fork should not observe the previous pointer value.  */
++  grnd_alloc.len = states_per_page;
++  grnd_alloc.total += states_per_page;
++  atomic_thread_fence_seq_cst ();
++
++  return true;
++}
++
++/* Allocate an opaque state for vgetrandom.  If the grnd_alloc does not have
++   any, mmap() another page of them using the vgetrandom parameters.  */
++static void *
++vgetrandom_get_state (void)
++{
++  void *state = NULL;
++
++  /* The signal blocking avoid the potential issue where _Fork() (which is
++     async-signal-safe) is called with the lock taken.  The function is
++     called only once during thread lifetime, so the overhead should be
++     minimal.  */
++  internal_sigset_t set;
++  internal_signal_block_all (&set);
++  __libc_lock_lock (grnd_alloc.lock);
++
++  if (grnd_alloc.len > 0 || vgetrandom_get_state_alloc ())
++    state = grnd_alloc.states[--grnd_alloc.len];
++
++  __libc_lock_unlock (grnd_alloc.lock);
++  internal_signal_restore_set (&set);
++
++  return state;
++}
++
++/* Returns true when vgetrandom is used successfully.  Returns false if the
++   syscall fallback should be issued in the case the vDSO is not present, in
++   the case of reentrancy, or if any memory allocation fails.  */
++static ssize_t
++getrandom_vdso (void *buffer, size_t length, unsigned int flags, bool cancel)
++{
++  if (__glibc_unlikely (state_size == 0))
++    return getrandom_syscall (buffer, length, flags, cancel);
++
++  struct pthread *self = THREAD_SELF;
++
++  void *state = atomic_load_relaxed (&self->getrandom_buf);
++  if (is_reserved_ptr (state))
++    return getrandom_syscall (buffer, length, flags, cancel);
++  atomic_store_relaxed (&self->getrandom_buf, reserve_ptr (state));
++  __atomic_signal_fence (__ATOMIC_ACQ_REL);
++
++  bool r = false;
++  if (state == NULL)
++    {
++      state = vgetrandom_get_state ();
++      if (state == NULL)
++        goto out;
++    }
++
++  /* Since the vDSO implementation does not issue the syscall with the
++     cancellation bridge (__syscall_cancel_arch), use GRND_NONBLOCK so there
++     is no potential unbounded blocking in the kernel.  It should be a rare
++     situation, only at system startup when RNG is not initialized.  */
++  ssize_t ret = GLRO (dl_vdso_getrandom) (buffer,
++					  length,
++					  flags | GRND_NONBLOCK,
++					  state,
++					  state_size);
++  if (INTERNAL_SYSCALL_ERROR_P (ret))
++    {
++      /* Fallback to the syscall if the kernel would block.  */
++      int err = INTERNAL_SYSCALL_ERRNO (ret);
++      if (err == EAGAIN && !(flags & GRND_NONBLOCK))
++        goto out;
++
++      __set_errno (err);
++      ret = -1;
++    }
++  r = true;
++
++out:
++  __atomic_signal_fence (__ATOMIC_ACQ_REL);
++  atomic_store_relaxed (&self->getrandom_buf, state);
++  return r ? ret : getrandom_syscall (buffer, length, flags, cancel);
++}
++#endif
++
++void
++__getrandom_early_init (_Bool initial)
++{
++#ifdef HAVE_GETRANDOM_VSYSCALL
++  /* libcs loaded for audit modules, dlmopen, etc. fallback to syscall.  */
++  if (initial && (GLRO (dl_vdso_getrandom) != NULL))
++    {
++      /* Used to query the vDSO for the required mmap flags and the opaque
++	 per-thread state size.  Defined by linux/random.h.  */
++      struct vgetrandom_opaque_params
++      {
++	uint32_t size_of_opaque_state;
++	uint32_t mmap_prot;
++	uint32_t mmap_flags;
++	uint32_t reserved[13];
++      } params;
++      if (GLRO(dl_vdso_getrandom) (NULL, 0, 0, &params, ~0UL) == 0)
++	{
++	  /* Align each opaque state to L1 data cache size to avoid false
++	     sharing.  If the size can not be obtained, use the kernel
++	     provided one.  */
++	  state_size = params.size_of_opaque_state;
++
++	  long int ld1sz = __sysconf (_SC_LEVEL1_DCACHE_LINESIZE);
++	  if (ld1sz <= 0)
++	    ld1sz = 1;
++	  state_size_cache_aligned = ALIGN_UP (state_size, ld1sz);
++	  /* Do not enable vDSO if the required opaque state size is larger
++	     than a page because we only allocate one page per time to hold
++	     the states.  */
++	  if (state_size_cache_aligned > GLRO(dl_pagesize))
++	    {
++	      state_size = 0;
++	      return;
++	    }
++	  mmap_prot = params.mmap_prot;
++	  mmap_flags = params.mmap_flags;
++	}
++    }
++#endif
++}
++
++/* Re-add the state state from CURP on the free list.  This function is
++   called after fork returns in the child, so no locking is required.  */
++void
++__getrandom_reset_state (struct pthread *curp)
++{
++#ifdef HAVE_GETRANDOM_VSYSCALL
++  if (grnd_alloc.states == NULL || curp->getrandom_buf == NULL)
++    return;
++  assert (grnd_alloc.len < grnd_alloc.cap);
++  grnd_alloc.states[grnd_alloc.len++] = release_ptr (curp->getrandom_buf);
++  curp->getrandom_buf = NULL;
++#endif
++}
++
++/* Called when a thread terminates, and adds its random buffer back into the
++   allocator pool for use in a future thread.  This is called by
++   pthread_create during thread termination, and after signal has been
++   blocked. */
++void
++__getrandom_vdso_release (struct pthread *curp)
++{
++#ifdef HAVE_GETRANDOM_VSYSCALL
++  if (curp->getrandom_buf == NULL)
++    return;
++
++  __libc_lock_lock (grnd_alloc.lock);
++  grnd_alloc.states[grnd_alloc.len++] = curp->getrandom_buf;
++  __libc_lock_unlock (grnd_alloc.lock);
++#endif
++}
++
++/* Reset the internal lock state in case another thread has locked while
++   this thread calls fork.  The stale thread states will be handled by
++   reclaim_stacks which calls __getrandom_reset_state on each thread.  */
++void
++__getrandom_fork_subprocess (void)
++{
++#ifdef HAVE_GETRANDOM_VSYSCALL
++  grnd_alloc.lock = LLL_LOCK_INITIALIZER;
++#endif
++}
++
++ssize_t
++__getrandom_nocancel (void *buffer, size_t length, unsigned int flags)
++{
++#ifdef HAVE_GETRANDOM_VSYSCALL
++  return getrandom_vdso (buffer, length, flags, false);
++#else
++  return getrandom_syscall (buffer, length, flags, false);
++#endif
++}
++
+ /* Write up to LENGTH bytes of randomness starting at BUFFER.
+    Return the number of bytes written, or -1 on error.  */
+ ssize_t
+ __getrandom (void *buffer, size_t length, unsigned int flags)
+ {
+-  return SYSCALL_CANCEL (getrandom, buffer, length, flags);
++#ifdef HAVE_GETRANDOM_VSYSCALL
++  return getrandom_vdso (buffer, length, flags, true);
++#else
++  return getrandom_syscall (buffer, length, flags, true);
++#endif
+ }
+ libc_hidden_def (__getrandom)
+ weak_alias (__getrandom, getrandom)
+diff --git a/sysdeps/unix/sysv/linux/loongarch/sysdep.h b/sysdeps/unix/sysv/linux/loongarch/sysdep.h
+index eb0ba790da..e2d853ae3e 100644
+--- a/sysdeps/unix/sysv/linux/loongarch/sysdep.h
++++ b/sysdeps/unix/sysv/linux/loongarch/sysdep.h
+@@ -119,6 +119,7 @@
+ #define HAVE_CLOCK_GETTIME64_VSYSCALL "__vdso_clock_gettime"
+ #define HAVE_GETTIMEOFDAY_VSYSCALL "__vdso_gettimeofday"
+ #define HAVE_GETCPU_VSYSCALL "__vdso_getcpu"
++#define HAVE_GETRANDOM_VSYSCALL "__vdso_getrandom"
+ 
+ #define HAVE_CLONE3_WRAPPER 1
+ 
+diff --git a/sysdeps/unix/sysv/linux/not-cancel.h b/sysdeps/unix/sysv/linux/not-cancel.h
+index 2a7585b73f..12f26912d3 100644
+--- a/sysdeps/unix/sysv/linux/not-cancel.h
++++ b/sysdeps/unix/sysv/linux/not-cancel.h
+@@ -27,6 +27,7 @@
+ #include <sys/syscall.h>
+ #include <sys/wait.h>
+ #include <time.h>
++#include <sys/random.h>
+ 
+ /* Non cancellable open syscall.  */
+ __typeof (open) __open_nocancel;
+@@ -84,15 +85,17 @@ __writev_nocancel_nostatus (int fd, const struct iovec *iov, int iovcnt)
+ }
+ 
+ static inline ssize_t
+-__getrandom_nocancel (void *buf, size_t buflen, unsigned int flags)
++__getrandom_nocancel_direct (void *buf, size_t buflen, unsigned int flags)
+ {
+   return INLINE_SYSCALL_CALL (getrandom, buf, buflen, flags);
+ }
+ 
++__typeof (getrandom) __getrandom_nocancel attribute_hidden;
++
+ /* Non cancellable getrandom syscall that does not also set errno in case of
+    failure.  */
+ static inline ssize_t
+-__getrandom_nocancel_nostatus (void *buf, size_t buflen, unsigned int flags)
++__getrandom_nocancel_nostatus_direct (void *buf, size_t buflen, unsigned int flags)
+ {
+   return INTERNAL_SYSCALL_CALL (getrandom, buf, buflen, flags);
+ }
+diff --git a/sysdeps/unix/sysv/linux/powerpc/sysdep.h b/sysdeps/unix/sysv/linux/powerpc/sysdep.h
+index a69b7db338..48f3d0d1b2 100644
+--- a/sysdeps/unix/sysv/linux/powerpc/sysdep.h
++++ b/sysdeps/unix/sysv/linux/powerpc/sysdep.h
+@@ -223,5 +223,6 @@
+ #define HAVE_TIME_VSYSCALL		"__kernel_time"
+ #define HAVE_GETTIMEOFDAY_VSYSCALL      "__kernel_gettimeofday"
+ #define HAVE_GET_TBFREQ                 "__kernel_get_tbfreq"
++#define HAVE_GETRANDOM_VSYSCALL         "__kernel_getrandom"
+ 
+ #endif /* _LINUX_POWERPC_SYSDEP_H  */
+diff --git a/sysdeps/unix/sysv/linux/s390/sysdep.h b/sysdeps/unix/sysv/linux/s390/sysdep.h
+index 9b3000ca62..9698c57a03 100644
+--- a/sysdeps/unix/sysv/linux/s390/sysdep.h
++++ b/sysdeps/unix/sysv/linux/s390/sysdep.h
+@@ -72,6 +72,7 @@
+ #ifdef __s390x__
+ #define HAVE_CLOCK_GETRES64_VSYSCALL	"__kernel_clock_getres"
+ #define HAVE_CLOCK_GETTIME64_VSYSCALL	"__kernel_clock_gettime"
++#define HAVE_GETRANDOM_VSYSCALL		"__kernel_getrandom"
+ #else
+ #define HAVE_CLOCK_GETRES_VSYSCALL	"__kernel_clock_getres"
+ #define HAVE_CLOCK_GETTIME_VSYSCALL	"__kernel_clock_gettime"
+diff --git a/sysdeps/unix/sysv/linux/x86_64/sysdep.h b/sysdeps/unix/sysv/linux/x86_64/sysdep.h
+index a2b021bd86..7dc072ae2d 100644
+--- a/sysdeps/unix/sysv/linux/x86_64/sysdep.h
++++ b/sysdeps/unix/sysv/linux/x86_64/sysdep.h
+@@ -376,6 +376,7 @@
+ # define HAVE_TIME_VSYSCALL             "__vdso_time"
+ # define HAVE_GETCPU_VSYSCALL		"__vdso_getcpu"
+ # define HAVE_CLOCK_GETRES64_VSYSCALL   "__vdso_clock_getres"
++# define HAVE_GETRANDOM_VSYSCALL        "__vdso_getrandom"
+ 
+ # define HAVE_CLONE3_WRAPPER			1
+ 
+-- 
+2.47.1
+

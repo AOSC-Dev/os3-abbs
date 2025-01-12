@@ -1,0 +1,55 @@
+From 8db9761ad729190432ceeed6434095bf9397b5ae Mon Sep 17 00:00:00 2001
+From: caiyinyu <caiyinyu@loongson.cn>
+Date: Wed, 6 Nov 2024 10:06:21 +0800
+Subject: [PATCH 6/9] BACKPORT: nptl: fix __builtin_thread_pointer detection on
+ LoongArch
+
+Signed-off-by: caiyinyu <caiyinyu@loongson.cn>
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ sysdeps/loongarch/nptl/thread_pointer.h | 10 ++--------
+ sysdeps/loongarch/nptl/tls.h            |  2 +-
+ 2 files changed, 3 insertions(+), 9 deletions(-)
+
+diff --git a/sysdeps/loongarch/nptl/thread_pointer.h b/sysdeps/loongarch/nptl/thread_pointer.h
+index 5dec2ef4c6..cc96062c93 100644
+--- a/sysdeps/loongarch/nptl/thread_pointer.h
++++ b/sysdeps/loongarch/nptl/thread_pointer.h
+@@ -19,18 +19,12 @@
+ #ifndef _SYS_THREAD_POINTER_H
+ #define _SYS_THREAD_POINTER_H
+ 
+-#include <sys/cdefs.h>
++register void *__thread_self asm ("$tp");
+ 
+ static inline void *
+ __thread_pointer (void)
+ {
+-#if __glibc_has_builtin (__builtin_thread_pointer)
+-  return __builtin_thread_pointer ();
+-#else
+-  void *__thread_register;
+-  __asm__ ("move %0, $tp" : "=r" (__thread_register));
+-  return __thread_register;
+-#endif
++  return __thread_self;
+ }
+ 
+ #endif /* _SYS_THREAD_POINTER_H */
+diff --git a/sysdeps/loongarch/nptl/tls.h b/sysdeps/loongarch/nptl/tls.h
+index ac1a92ea7b..675c0d27c1 100644
+--- a/sysdeps/loongarch/nptl/tls.h
++++ b/sysdeps/loongarch/nptl/tls.h
+@@ -26,8 +26,8 @@
+ #include <stddef.h>
+ #include <stdint.h>
+ #include <dl-dtv.h>
++#include "thread_pointer.h"
+ 
+-register void *__thread_self asm ("$tp");
+ #define READ_THREAD_POINTER() ({ __thread_self; })
+ 
+ /* Get system call information.  */
+-- 
+2.47.1
+

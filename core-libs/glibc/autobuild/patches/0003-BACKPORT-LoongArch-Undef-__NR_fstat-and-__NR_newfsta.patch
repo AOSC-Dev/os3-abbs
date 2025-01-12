@@ -1,0 +1,50 @@
+From d3c5f212242c6d7bc19723c7271f091e58ca7d19 Mon Sep 17 00:00:00 2001
+From: caiyinyu <caiyinyu@loongson.cn>
+Date: Tue, 24 Sep 2024 11:09:32 +0800
+Subject: [PATCH 3/9] BACKPORT: LoongArch: Undef __NR_fstat and
+ __NR_newfstatat.
+
+In Linux 6.11, fstat and newfstatat are added back. To avoid the messy
+usage of the fstat, newfstatat, and statx system calls, we will continue
+using statx only in glibc, maintaining consistency with previous versions of
+the LoongArch-specific glibc implementation.
+
+Signed-off-by: caiyinyu <caiyinyu@loongson.cn>
+Reviewed-by: Xi Ruoyao <xry111@xry111.site>
+Suggested-by: Florian Weimer <fweimer@redhat.com>
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ .../sysv/linux/loongarch/fixup-asm-unistd.h   | 21 +++++++++++++++++++
+ 1 file changed, 21 insertions(+)
+ create mode 100644 sysdeps/unix/sysv/linux/loongarch/fixup-asm-unistd.h
+
+diff --git a/sysdeps/unix/sysv/linux/loongarch/fixup-asm-unistd.h b/sysdeps/unix/sysv/linux/loongarch/fixup-asm-unistd.h
+new file mode 100644
+index 0000000000..0062756b5c
+--- /dev/null
++++ b/sysdeps/unix/sysv/linux/loongarch/fixup-asm-unistd.h
+@@ -0,0 +1,21 @@
++/* Regularize <asm/unistd.h> definitions.  LoongArch version.
++   Copyright (C) 2024 Free Software Foundation, Inc.
++
++   The GNU C Library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Lesser General Public
++   License as published by the Free Software Foundation; either
++   version 2.1 of the License, or (at your option) any later version.
++
++   The GNU C Library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++   Lesser General Public License for more details.
++
++   You should have received a copy of the GNU Lesser General Public
++   License along with the GNU C Library; if not, see
++   <http://www.gnu.org/licenses/>.  */
++
++/* To avoid the messy usage of the fstat, newfstatat, and statx system calls, we
++only use statx.  */
++#undef __NR_fstat
++#undef __NR_newfstatat
+-- 
+2.47.1
+

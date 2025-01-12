@@ -1,4 +1,4 @@
-VER=1.20.2
+VER=1.21
 SRCS="tbl::https://ftp.gnu.org/gnu/ed/ed-$VER.tar.lz"
-CHKSUMS="sha256::65fec7318f48c2ca17f334ac0f4703defe62037bb13cc23920de077b5fa24523"
+CHKSUMS="sha256::60e24998727d453a5cf02c54664b97536de46a2b34cd1f4f67c1c1a61bbbad75"
 CHKUPDATE="anitya::id=659"

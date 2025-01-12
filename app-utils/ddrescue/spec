@@ -1,4 +1,4 @@
-VER=1.28
+VER=1.29
 SRCS="tbl::https://ftp.gnu.org/gnu/ddrescue/ddrescue-$VER.tar.lz"
-CHKSUMS="sha256::6626c07a7ca1cc1d03cad0958522c5279b156222d32c342e81117cfefaeb10c1"
+CHKSUMS="sha256::01a414327853b39fba2fd0ece30f7bee2e9d8c8e8eb314318524adf5a60039a3"
 CHKUPDATE="anitya::id=410"

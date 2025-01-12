@@ -1,4 +1,4 @@
-VER=0.22.5
+VER=0.23
 SRCS="https://ftp.gnu.org/gnu/gettext/gettext-$VER.tar.xz"
-CHKSUMS="sha256::fe10c37353213d78a5b83d48af231e005c4da84db5ce88037d88355938259640"
+CHKSUMS="sha256::bf31a9b6bdf3e364669c7bd9858f97e4a0c408a8d22940c5d4ab638b65460f85"
 CHKUPDATE="anitya::id=898"

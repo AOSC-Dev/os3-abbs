@@ -1,0 +1,17 @@
+PKGNAME=guestfs-tools
+PKGSEC=libs
+PKGDEP="libguestfs qemu glibc cpio fuse augeas xz zstd"
+BUILDDEP="ocaml gperf findlib ocaml-augeas"
+PKGDES="Tools for accessing and modifying guest disk images"
+
+AUTOTOOLS_AFTER="--disable-werror \
+                 --enable-largefile \
+                 --enable-nls \
+                 --disable-rpath \
+                 --with-libvirt \
+                 PYTHON=/usr/bin/python3"
+
+ABSPLITDBG=0
+
+# FIXME: OCaml has LTO disabled, enabling LTO here results in linkage failure.
+NOLTO=1

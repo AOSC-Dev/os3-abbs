@@ -1,0 +1,19 @@
+diff --git a/unix/vncserver/vncserver.in b/unix/vncserver/vncserver.in
+index ebdd3a97..089177a9 100755
+--- a/unix/vncserver/vncserver.in
++++ b/unix/vncserver/vncserver.in
+@@ -447,7 +447,13 @@ sub SanityCheck
+ 	die "$prog: couldn't find \"$cmd\" on your PATH.\n";
+     }
+ 
+-    foreach $cmd ("/etc/X11/xinit/Xsession", "/etc/X11/Xsession") {
++    foreach $cmd ("/etc/X11/xinit/Xsession", "/etc/X11/Xsession",
++        "/etc/X11/xdm/Xsession",
++        "/usr/share/sddm/scripts/Xsession",
++        "/etc/gdm/Xsession",
++        "/etc/lightdm/Xsession",
++        "/etc/lxdm/Xsession",
++        "/etc/X11/tigervnc/Xsession") {
+         if (-x "$cmd") {
+             $Xsession = $cmd;
+             last;

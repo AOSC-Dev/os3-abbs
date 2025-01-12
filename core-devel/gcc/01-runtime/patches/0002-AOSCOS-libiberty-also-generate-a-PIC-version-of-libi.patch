@@ -1,8 +1,11 @@
-From 6c0d9b516b63bf07741c562dff0f74a988852769 Mon Sep 17 00:00:00 2001
+From 9ffdb74fc9519f9e93a856073020444ce28e6a7e Mon Sep 17 00:00:00 2001
 From: Henry Chen <henry.chen@oss.cipunited.com>
 Date: Mon, 25 Nov 2024 15:09:30 +0800
-Subject: [PATCH 2/2] libiberty: also generate a PIC version of libiberty.a
+Subject: [PATCH 02/40] AOSCOS: libiberty: also generate a PIC version of
+ libiberty.a
 
+Signed-off-by: Henry Chen <henry.chen@oss.cipunited.com>
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
 ---
  libiberty/configure | 4 ----
  1 file changed, 4 deletions(-)

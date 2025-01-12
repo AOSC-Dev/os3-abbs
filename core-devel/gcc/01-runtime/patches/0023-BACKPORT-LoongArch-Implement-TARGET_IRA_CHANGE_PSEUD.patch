@@ -1,0 +1,80 @@
+From 31b8566f4bb916271c4c4c84da7cbbb2e91fbf1a Mon Sep 17 00:00:00 2001
+From: Jiahao Xu <xujiahao@loongson.cn>
+Date: Tue, 17 Dec 2024 10:41:48 +0800
+Subject: [PATCH 23/40] BACKPORT: LoongArch: Implement
+ TARGET_IRA_CHANGE_PSEUDO_ALLOCNO_CLASS hook
+
+The hook changes the allocno class to either FP_REGS or GR_REGS depending on
+the mode of the register. This results in better register allocation overall,
+fewer spills and reduced codesize - particularly in SPEC2017 lbm.
+
+gcc/ChangeLog:
+
+	* config/loongarch/loongarch.cc
+	(loongarch_ira_change_pseudo_allocno_class): New function.
+	(TARGET_IRA_CHANGE_PSEUDO_ALLOCNO_CLASS): Define macro.
+
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ gcc/config/loongarch/loongarch.cc | 38 +++++++++++++++++++++++++++++++
+ 1 file changed, 38 insertions(+)
+
+diff --git a/gcc/config/loongarch/loongarch.cc b/gcc/config/loongarch/loongarch.cc
+index 1d41e577217..f5ec404e822 100644
+--- a/gcc/config/loongarch/loongarch.cc
++++ b/gcc/config/loongarch/loongarch.cc
+@@ -7071,6 +7071,40 @@ loongarch_secondary_reload (bool in_p ATTRIBUTE_UNUSED, rtx x,
+   return NO_REGS;
+ }
+ 
++/* Implement TARGET_IRA_CHANGE_PSEUDO_ALLOCNO_CLASS.
++
++   The register allocator chooses ALL_REGS if FP_REGS and GR_REGS have the
++   same cost - even if ALL_REGS has a much higher cost.  ALL_REGS is also used
++   if the cost of both FP_REGS and GR_REGS is lower than the memory cost (in
++   this case the best class is the lowest cost one).  Using ALL_REGS
++   irrespectively of itself cost results in bad allocations with many redundant
++   int<->FP moves which are expensive on various cores.
++
++   To avoid this we don't allow ALL_REGS as the allocno class, but force a
++   decision between FP_REGS and GR_REGS.  We use the allocno class if it isn't
++   ALL_REGS.  Similarly, use the best class if it isn't ALL_REGS.  Otherwise Set
++   the allocno class depending on the mode.
++
++   This change has a similar effect to increasing the cost of FPR->GPR register
++   moves for integer modes so that they are higher than the cost of memory but
++   changing the allocno class is more reliable.  */
++
++static reg_class_t
++loongarch_ira_change_pseudo_allocno_class (int regno, reg_class_t allocno_class,
++					   reg_class_t best_class)
++{
++  enum machine_mode mode;
++
++  if (allocno_class != ALL_REGS)
++    return allocno_class;
++
++  if (best_class != ALL_REGS)
++    return best_class;
++
++  mode = PSEUDO_REGNO_MODE (regno);
++  return FLOAT_MODE_P (mode) || VECTOR_MODE_P (mode) ? FP_REGS : GR_REGS;
++}
++
+ /* Implement TARGET_VALID_POINTER_MODE.  */
+ 
+ static bool
+@@ -11216,6 +11250,10 @@ loongarch_asm_code_end (void)
+ #undef TARGET_SECONDARY_RELOAD
+ #define TARGET_SECONDARY_RELOAD loongarch_secondary_reload
+ 
++#undef TARGET_IRA_CHANGE_PSEUDO_ALLOCNO_CLASS
++#define TARGET_IRA_CHANGE_PSEUDO_ALLOCNO_CLASS \
++  loongarch_ira_change_pseudo_allocno_class
++
+ #undef  TARGET_HAVE_SPECULATION_SAFE_VALUE
+ #define TARGET_HAVE_SPECULATION_SAFE_VALUE speculation_safe_value_not_needed
+ 
+-- 
+2.47.1
+

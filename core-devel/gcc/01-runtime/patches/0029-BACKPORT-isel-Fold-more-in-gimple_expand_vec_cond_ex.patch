@@ -1,0 +1,98 @@
+From 4a961272e20aa81ab4456acd18fc24f294d49372 Mon Sep 17 00:00:00 2001
+From: Kewen Lin <linkw@linux.ibm.com>
+Date: Tue, 2 Jul 2024 02:13:35 -0500
+Subject: [PATCH 29/40] BACKPORT: isel: Fold more in
+ gimple_expand_vec_cond_expr [PR115659]
+
+As PR115659 shows, assuming c = x CMP y, there are some
+folding chances for patterns r = c ? -1/z : z/0.
+
+For r = c ? -1 : z, it can be folded into:
+  - r = c | z (with ior_optab supported)
+  - or r = c ? c : z
+
+while for r = c ?  z : 0, it can be foled into:
+  - r = c & z (with and_optab supported)
+  - or r = c ? z : c
+
+This patch is to teach ISEL to take care of them and also
+remove the redundant gsi_replace as the caller of function
+gimple_expand_vec_cond_expr will handle it.
+
+	PR tree-optimization/115659
+
+gcc/ChangeLog:
+
+	* gimple-isel.cc (gimple_expand_vec_cond_expr): Add more foldings for
+	patterns x CMP y ? -1 : z and x CMP y ? z : 0.
+
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ gcc/gimple-isel.cc | 48 +++++++++++++++++++++++++++++++++++++++-------
+ 1 file changed, 41 insertions(+), 7 deletions(-)
+
+diff --git a/gcc/gimple-isel.cc b/gcc/gimple-isel.cc
+index 54c1801038b..60719eafc65 100644
+--- a/gcc/gimple-isel.cc
++++ b/gcc/gimple-isel.cc
+@@ -240,16 +240,50 @@ gimple_expand_vec_cond_expr (struct function *fun, gimple_stmt_iterator *gsi,
+ 	    can_compute_op0 = expand_vec_cmp_expr_p (op0a_type, op0_type,
+ 						     tcode);
+ 
+-	  /* Try to fold x CMP y ? -1 : 0 to x CMP y.  */
+ 	  if (can_compute_op0
+-	      && integer_minus_onep (op1)
+-	      && integer_zerop (op2)
+ 	      && TYPE_MODE (TREE_TYPE (lhs)) == TYPE_MODE (TREE_TYPE (op0)))
+ 	    {
+-	      tree conv_op = build1 (VIEW_CONVERT_EXPR, TREE_TYPE (lhs), op0);
+-	      gassign *new_stmt = gimple_build_assign (lhs, conv_op);
+-	      gsi_replace (gsi, new_stmt, true);
+-	      return new_stmt;
++	      /* Assuming c = x CMP y.  */
++	      bool op1_minus_onep = integer_minus_onep (op1);
++	      bool op2_zerop = integer_zerop (op2);
++	      tree vtype = TREE_TYPE (lhs);
++	      machine_mode vmode = TYPE_MODE (vtype);
++	      /* Try to fold r = c ? -1 : 0 to r = c.  */
++	      if (op1_minus_onep && op2_zerop)
++		{
++		  tree conv_op = build1 (VIEW_CONVERT_EXPR, vtype, op0);
++		  return gimple_build_assign (lhs, conv_op);
++		}
++	      /* Try to fold r = c ? -1 : z to r = c | z, or
++		 r = c ? c : z.  */
++	      if (op1_minus_onep)
++		{
++		  tree conv_op = build1 (VIEW_CONVERT_EXPR, vtype, op0);
++		  tree new_op1 = make_ssa_name (vtype);
++		  gassign *new_stmt = gimple_build_assign (new_op1, conv_op);
++		  gsi_insert_seq_before (gsi, new_stmt, GSI_SAME_STMT);
++		  if (optab_handler (ior_optab, vmode) != CODE_FOR_nothing)
++		    /* r = c | z */
++		    return gimple_build_assign (lhs, BIT_IOR_EXPR, new_op1,
++						op2);
++		  /* r = c ? c : z */
++		  op1 = new_op1;
++		}
++	      /* Try to fold r = c ? z : 0 to r = c & z, or
++		 r = c ? z : c.  */
++	      else if (op2_zerop)
++		{
++		  tree conv_op = build1 (VIEW_CONVERT_EXPR, vtype, op0);
++		  tree new_op2 = make_ssa_name (vtype);
++		  gassign *new_stmt = gimple_build_assign (new_op2, conv_op);
++		  gsi_insert_seq_before (gsi, new_stmt, GSI_SAME_STMT);
++		  if (optab_handler (and_optab, vmode) != CODE_FOR_nothing)
++		    /* r = c | z */
++		    return gimple_build_assign (lhs, BIT_AND_EXPR, new_op2,
++						op1);
++		  /* r = c ? z : c */
++		  op2 = new_op2;
++		}
+ 	    }
+ 
+ 	  /* When the compare has EH we do not want to forward it when
+-- 
+2.47.1
+

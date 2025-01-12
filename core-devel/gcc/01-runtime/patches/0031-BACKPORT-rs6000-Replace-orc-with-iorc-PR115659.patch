@@ -1,0 +1,113 @@
+From bd7ac1382c1c427798f26e621228de29a4e1bb2b Mon Sep 17 00:00:00 2001
+From: Kewen Lin <linkw@linux.ibm.com>
+Date: Mon, 8 Jul 2024 00:15:00 -0500
+Subject: [PATCH 31/40] BACKPORT: rs6000: Replace orc with iorc [PR115659]
+
+Since iorc optab is introduced, this patch is to update the
+expander names and all the related uses like bif expanders,
+gen functions accordingly.
+
+	PR tree-optimization/115659
+
+gcc/ChangeLog:
+
+	* config/rs6000/rs6000-builtins.def: Update some bif expanders by
+	replacing orc<mode>3 with iorc<mode>3.
+	* config/rs6000/rs6000-string.cc (expand_cmp_vec_sequence): Update gen
+	function by replacing orc<mode>3 with iorc<mode>3.
+	* config/rs6000/rs6000.md (orc<mode>3): Rename to ...
+	(iorc<mode>3): ... this.
+
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ gcc/config/rs6000/rs6000-builtins.def | 24 ++++++++++++------------
+ gcc/config/rs6000/rs6000-string.cc    |  2 +-
+ gcc/config/rs6000/rs6000.md           |  2 +-
+ 3 files changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/gcc/config/rs6000/rs6000-builtins.def b/gcc/config/rs6000/rs6000-builtins.def
+index 3bc7fed6956..736890fe6cb 100644
+--- a/gcc/config/rs6000/rs6000-builtins.def
++++ b/gcc/config/rs6000/rs6000-builtins.def
+@@ -2147,40 +2147,40 @@
+     NEG_V2DI negv2di2 {}
+ 
+   const vsc __builtin_altivec_orc_v16qi (vsc, vsc);
+-    ORC_V16QI orcv16qi3 {}
++    ORC_V16QI iorcv16qi3 {}
+ 
+   const vuc __builtin_altivec_orc_v16qi_uns (vuc, vuc);
+-    ORC_V16QI_UNS orcv16qi3 {}
++    ORC_V16QI_UNS iorcv16qi3 {}
+ 
+   const vsq __builtin_altivec_orc_v1ti (vsq, vsq);
+-    ORC_V1TI orcv1ti3 {}
++    ORC_V1TI iorcv1ti3 {}
+ 
+   const vuq __builtin_altivec_orc_v1ti_uns (vuq, vuq);
+-    ORC_V1TI_UNS orcv1ti3 {}
++    ORC_V1TI_UNS iorcv1ti3 {}
+ 
+   const vd __builtin_altivec_orc_v2df (vd, vd);
+-    ORC_V2DF orcv2df3 {}
++    ORC_V2DF iorcv2df3 {}
+ 
+   const vsll __builtin_altivec_orc_v2di (vsll, vsll);
+-    ORC_V2DI orcv2di3 {}
++    ORC_V2DI iorcv2di3 {}
+ 
+   const vull __builtin_altivec_orc_v2di_uns (vull, vull);
+-    ORC_V2DI_UNS orcv2di3 {}
++    ORC_V2DI_UNS iorcv2di3 {}
+ 
+   const vf __builtin_altivec_orc_v4sf (vf, vf);
+-    ORC_V4SF orcv4sf3 {}
++    ORC_V4SF iorcv4sf3 {}
+ 
+   const vsi __builtin_altivec_orc_v4si (vsi, vsi);
+-    ORC_V4SI orcv4si3 {}
++    ORC_V4SI iorcv4si3 {}
+ 
+   const vui __builtin_altivec_orc_v4si_uns (vui, vui);
+-    ORC_V4SI_UNS orcv4si3 {}
++    ORC_V4SI_UNS iorcv4si3 {}
+ 
+   const vss __builtin_altivec_orc_v8hi (vss, vss);
+-    ORC_V8HI orcv8hi3 {}
++    ORC_V8HI iorcv8hi3 {}
+ 
+   const vus __builtin_altivec_orc_v8hi_uns (vus, vus);
+-    ORC_V8HI_UNS orcv8hi3 {}
++    ORC_V8HI_UNS iorcv8hi3 {}
+ 
+   const vsc __builtin_altivec_vclzb (vsc);
+     VCLZB clzv16qi2 {}
+diff --git a/gcc/config/rs6000/rs6000-string.cc b/gcc/config/rs6000/rs6000-string.cc
+index 917f5572a6d..c4c62e8e2f9 100644
+--- a/gcc/config/rs6000/rs6000-string.cc
++++ b/gcc/config/rs6000/rs6000-string.cc
+@@ -743,7 +743,7 @@ expand_cmp_vec_sequence (unsigned HOST_WIDE_INT bytes_to_compare,
+ 	      rtx cmp_combined = gen_reg_rtx (load_mode);
+ 	      emit_insn (gen_altivec_eqv16qi (cmp_res, s1data, s2data));
+ 	      emit_insn (gen_altivec_eqv16qi (cmp_zero, s1data, zero_reg));
+-	      emit_insn (gen_orcv16qi3 (vec_result, cmp_zero, cmp_res));
++	      emit_insn (gen_iorcv16qi3 (vec_result, cmp_zero, cmp_res));
+ 	      emit_insn (gen_altivec_vcmpequb_p (cmp_combined, vec_result, zero_reg));
+ 	    }
+ 	}
+diff --git a/gcc/config/rs6000/rs6000.md b/gcc/config/rs6000/rs6000.md
+index 39c75af5c87..64bc2f518b5 100644
+--- a/gcc/config/rs6000/rs6000.md
++++ b/gcc/config/rs6000/rs6000.md
+@@ -7328,7 +7328,7 @@
+ 
+ ;; The canonical form is to have the negated element first, so we need to
+ ;; reverse arguments.
+-(define_expand "orc<mode>3"
++(define_expand "iorc<mode>3"
+   [(set (match_operand:BOOL_128 0 "vlogical_operand")
+ 	(ior:BOOL_128
+ 	 (not:BOOL_128 (match_operand:BOOL_128 2 "vlogical_operand"))
+-- 
+2.47.1
+

@@ -1,0 +1,124 @@
+From a5c121aa63ad75f7166f0bc529aa846fb852523e Mon Sep 17 00:00:00 2001
+From: Kewen Lin <linkw@linux.ibm.com>
+Date: Mon, 8 Jul 2024 00:14:59 -0500
+Subject: [PATCH 30/40] BACKPORT: isel: Fold more in
+ gimple_expand_vec_cond_expr with andc and iorc [PR115659]
+
+As PR115659 shows, assuming c = x CMP y, there are some
+folding chances for patterns r = c ? 0/z : z/-1:
+  - for r = c ? 0 : z, it can be folded into r = ~c & z.
+  - for r = c ? z : -1, it can be folded into r = ~c | z.
+
+But BIT_AND/BIT_IOR applied on one BIT_NOT operand is a
+compound operation, it's arguable to consider it beats
+vector selection.  So this patch is to introduce new
+optabs andc, iorc and its corresponding internal functions
+BIT_{ANDC,IORC}, and if targets defines such optabs for
+vector modes, it means targets support these hardware
+insns and should be not worse than vector selection.
+
+	PR tree-optimization/115659
+
+gcc/ChangeLog:
+
+	* doc/md.texi: Document andcm3 and iorcm3.
+	* gimple-isel.cc (gimple_expand_vec_cond_expr): Add more foldings for
+	patterns x CMP y ? 0 : z and x CMP y ? z : -1.
+	* internal-fn.def (BIT_ANDC): New internal function.
+	(BIT_IORC): Likewise.
+	* optabs.def (andc, iorc): New optab.
+
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ gcc/doc/md.texi     | 10 ++++++++++
+ gcc/gimple-isel.cc  | 26 ++++++++++++++++++++++++++
+ gcc/internal-fn.def |  4 ++++
+ gcc/optabs.def      |  2 ++
+ 4 files changed, 42 insertions(+)
+
+diff --git a/gcc/doc/md.texi b/gcc/doc/md.texi
+index 5730bda80dc..fb448c946cd 100644
+--- a/gcc/doc/md.texi
++++ b/gcc/doc/md.texi
+@@ -5543,6 +5543,16 @@ means of constraints requiring operands 1 and 0 to be the same location.
+ @itemx @samp{and@var{m}3}, @samp{ior@var{m}3}, @samp{xor@var{m}3}
+ Similar, for other arithmetic operations.
+ 
++@cindex @code{andc@var{m}3} instruction pattern
++@item @samp{andc@var{m}3}
++Like @code{and@var{m}3}, but it uses bitwise-complement of operand 2
++rather than operand 2 itself.
++
++@cindex @code{iorc@var{m}3} instruction pattern
++@item @samp{iorc@var{m}3}
++Like @code{ior@var{m}3}, but it uses bitwise-complement of operand 2
++rather than operand 2 itself.
++
+ @cindex @code{addv@var{m}4} instruction pattern
+ @item @samp{addv@var{m}4}
+ Like @code{add@var{m}3} but takes a @code{code_label} as operand 3 and
+diff --git a/gcc/gimple-isel.cc b/gcc/gimple-isel.cc
+index 60719eafc65..e4ab42ad05b 100644
+--- a/gcc/gimple-isel.cc
++++ b/gcc/gimple-isel.cc
+@@ -284,6 +284,32 @@ gimple_expand_vec_cond_expr (struct function *fun, gimple_stmt_iterator *gsi,
+ 		  /* r = c ? z : c */
+ 		  op2 = new_op2;
+ 		}
++	      bool op1_zerop = integer_zerop (op1);
++	      bool op2_minus_onep = integer_minus_onep (op2);
++	      /* Try to fold r = c ? 0 : z to r = .BIT_ANDC (z, c).  */
++	      if (op1_zerop
++		  && (direct_internal_fn_supported_p (IFN_BIT_ANDC, vtype,
++						      OPTIMIZE_FOR_BOTH)))
++		{
++		  tree conv_op = build1 (VIEW_CONVERT_EXPR, vtype, op0);
++		  tree new_op = make_ssa_name (vtype);
++		  gassign *new_stmt = gimple_build_assign (new_op, conv_op);
++		  gsi_insert_seq_before (gsi, new_stmt, GSI_SAME_STMT);
++		  return gimple_build_call_internal (IFN_BIT_ANDC, 2, op2,
++						     new_op);
++		}
++	      /* Try to fold r = c ? z : -1 to r = .BIT_IORC (z, c).  */
++	      else if (op2_minus_onep
++		       && (direct_internal_fn_supported_p (IFN_BIT_IORC, vtype,
++							   OPTIMIZE_FOR_BOTH)))
++		{
++		  tree conv_op = build1 (VIEW_CONVERT_EXPR, vtype, op0);
++		  tree new_op = make_ssa_name (vtype);
++		  gassign *new_stmt = gimple_build_assign (new_op, conv_op);
++		  gsi_insert_seq_before (gsi, new_stmt, GSI_SAME_STMT);
++		  return gimple_build_call_internal (IFN_BIT_IORC, 2, op1,
++						     new_op);
++		}
+ 	    }
+ 
+ 	  /* When the compare has EH we do not want to forward it when
+diff --git a/gcc/internal-fn.def b/gcc/internal-fn.def
+index 848bb9dbff3..6d2757845cc 100644
+--- a/gcc/internal-fn.def
++++ b/gcc/internal-fn.def
+@@ -585,6 +585,10 @@ DEF_INTERNAL_FN (DIVMODBITINT, ECF_LEAF, ". O . O . R . R . ")
+ DEF_INTERNAL_FN (FLOATTOBITINT, ECF_LEAF | ECF_NOTHROW, ". O . . ")
+ DEF_INTERNAL_FN (BITINTTOFLOAT, ECF_PURE | ECF_LEAF, ". R . ")
+ 
++/* Bitwise functions.  */
++DEF_INTERNAL_OPTAB_FN (BIT_ANDC, ECF_CONST, andc, binary)
++DEF_INTERNAL_OPTAB_FN (BIT_IORC, ECF_CONST, iorc, binary)
++
+ #undef DEF_INTERNAL_WIDENING_OPTAB_FN
+ #undef DEF_INTERNAL_SIGNED_COND_FN
+ #undef DEF_INTERNAL_COND_FN
+diff --git a/gcc/optabs.def b/gcc/optabs.def
+index ad14f9328b9..48c924a26ec 100644
+--- a/gcc/optabs.def
++++ b/gcc/optabs.def
+@@ -540,3 +540,5 @@ OPTAB_D (vec_shl_insert_optab, "vec_shl_insert_$a")
+ OPTAB_D (len_load_optab, "len_load_$a")
+ OPTAB_D (len_store_optab, "len_store_$a")
+ OPTAB_D (select_vl_optab, "select_vl$a")
++OPTAB_D (andc_optab, "andc$a3")
++OPTAB_D (iorc_optab, "iorc$a3")
+-- 
+2.47.1
+

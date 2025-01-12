@@ -1,0 +1,450 @@
+From 045de949f089b6d38bee54edcacde712ceb5fe86 Mon Sep 17 00:00:00 2001
+From: Jinyang He <hejinyang@loongson.cn>
+Date: Thu, 28 Nov 2024 09:26:25 +0800
+Subject: [PATCH 17/40] BACKPORT: LoongArch: Mask shift offset when emit {xv,
+ v}{srl, sll, sra} with sameimm vector
+
+For {xv,v}{srl,sll,sra}, the constraint `vector_same_uimm6` cause overflow
+in when emit {w,h,b}. Since the number of bits shifted is the remainder of
+the register value, it is actually unnecessary to constrain the range.
+Simply mask the shift number with the unit-bit-width, without any
+constraint on the shift range.
+
+gcc/ChangeLog:
+
+	* config/loongarch/constraints.md (Uuv6, Uuvx): Remove Uuv6,
+	add Uuvx as replicated vector const with unsigned range [0,umax].
+	* config/loongarch/lasx.md (xvsrl, xvsra, xvsll): Mask shift
+	offset by its unit bits.
+	* config/loongarch/lsx.md (vsrl, vsra, vsll): Likewise.
+	* config/loongarch/loongarch-protos.h
+	(loongarch_const_vector_same_int_p): Set default for low and high.
+	* config/loongarch/predicates.md: Replace reg_or_vector_same_uimm6
+	_operand to reg_or_vector_same_uimm_operand.
+
+gcc/testsuite/ChangeLog:
+
+	* gcc.target/loongarch/vector/lasx/lasx-shift-sameimm-vec.c: New test.
+	* gcc.target/loongarch/vector/lsx/lsx-shift-sameimm-vec.c: New test.
+
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ gcc/config/loongarch/constraints.md           | 14 ++--
+ gcc/config/loongarch/lasx.md                  | 60 ++++++++++++----
+ gcc/config/loongarch/loongarch-protos.h       |  5 +-
+ gcc/config/loongarch/lsx.md                   | 60 ++++++++++++----
+ gcc/config/loongarch/predicates.md            |  8 +--
+ .../vector/lasx/lasx-shift-sameimm-vec.c      | 72 +++++++++++++++++++
+ .../vector/lsx/lsx-shift-sameimm-vec.c        | 72 +++++++++++++++++++
+ 7 files changed, 254 insertions(+), 37 deletions(-)
+ create mode 100644 gcc/testsuite/gcc.target/loongarch/vector/lasx/lasx-shift-sameimm-vec.c
+ create mode 100644 gcc/testsuite/gcc.target/loongarch/vector/lsx/lsx-shift-sameimm-vec.c
+
+diff --git a/gcc/config/loongarch/constraints.md b/gcc/config/loongarch/constraints.md
+index f07d31650d2..96caca71b34 100644
+--- a/gcc/config/loongarch/constraints.md
++++ b/gcc/config/loongarch/constraints.md
+@@ -333,19 +333,19 @@
+   (and (match_code "const_vector")
+        (match_test "loongarch_const_vector_same_int_p (op, mode, -16, 15)")))
+ 
+-(define_constraint "Uuv6"
+-  "@internal
+-   A replicated vector const in which the replicated value is in the range
+-   [0,63]."
+-  (and (match_code "const_vector")
+-       (match_test "loongarch_const_vector_same_int_p (op, mode, 0, 63)")))
+-
+ (define_constraint "Urv8"
+   "@internal
+    A replicated vector const with replicated byte values as well as elements"
+   (and (match_code "const_vector")
+        (match_test "loongarch_const_vector_same_bytes_p (op, mode)")))
+ 
++(define_constraint "Uuvx"
++  "@internal
++   A replicated vector const in which the replicated value is in the unsigned
++   range [0,umax]."
++  (and (match_code "const_vector")
++       (match_test "loongarch_const_vector_same_int_p (op, mode)")))
++
+ (define_memory_constraint "ZC"
+   "A memory operand whose address is formed by a base register and offset
+    that is suitable for use in instructions with the same addressing mode
+diff --git a/gcc/config/loongarch/lasx.md b/gcc/config/loongarch/lasx.md
+index 94bbd0c26bb..b42bfd128f2 100644
+--- a/gcc/config/loongarch/lasx.md
++++ b/gcc/config/loongarch/lasx.md
+@@ -1050,11 +1050,23 @@
+   [(set (match_operand:ILASX 0 "register_operand" "=f,f")
+ 	(lshiftrt:ILASX
+ 	  (match_operand:ILASX 1 "register_operand" "f,f")
+-	  (match_operand:ILASX 2 "reg_or_vector_same_uimm6_operand" "f,Uuv6")))]
++	  (match_operand:ILASX 2 "reg_or_vector_same_uimm_operand" "f,Uuvx")))]
+   "ISA_HAS_LASX"
+-  "@
+-   xvsrl.<lasxfmt>\t%u0,%u1,%u2
+-   xvsrli.<lasxfmt>\t%u0,%u1,%E2"
++{
++  switch (which_alternative)
++    {
++    case 0:
++      return "xvsrl.<lasxfmt>\t%u0,%u1,%u2";
++    case 1:
++      {
++	unsigned HOST_WIDE_INT val = UINTVAL (CONST_VECTOR_ELT (operands[2], 0));
++	operands[2] = GEN_INT (val & (GET_MODE_UNIT_BITSIZE (<MODE>mode) - 1));
++	return "xvsrli.<lasxfmt>\t%u0,%u1,%d2";
++      }
++    default:
++      gcc_unreachable ();
++    }
++}
+   [(set_attr "type" "simd_shift")
+    (set_attr "mode" "<MODE>")])
+ 
+@@ -1063,11 +1075,23 @@
+   [(set (match_operand:ILASX 0 "register_operand" "=f,f")
+ 	(ashiftrt:ILASX
+ 	  (match_operand:ILASX 1 "register_operand" "f,f")
+-	  (match_operand:ILASX 2 "reg_or_vector_same_uimm6_operand" "f,Uuv6")))]
++	  (match_operand:ILASX 2 "reg_or_vector_same_uimm_operand" "f,Uuvx")))]
+   "ISA_HAS_LASX"
+-  "@
+-   xvsra.<lasxfmt>\t%u0,%u1,%u2
+-   xvsrai.<lasxfmt>\t%u0,%u1,%E2"
++{
++  switch (which_alternative)
++    {
++    case 0:
++      return "xvsra.<lasxfmt>\t%u0,%u1,%u2";
++    case 1:
++      {
++	unsigned HOST_WIDE_INT val = UINTVAL (CONST_VECTOR_ELT (operands[2], 0));
++	operands[2] = GEN_INT (val & (GET_MODE_UNIT_BITSIZE (<MODE>mode) - 1));
++	return "xvsrai.<lasxfmt>\t%u0,%u1,%d2";
++      }
++    default:
++      gcc_unreachable ();
++    }
++}
+   [(set_attr "type" "simd_shift")
+    (set_attr "mode" "<MODE>")])
+ 
+@@ -1076,11 +1100,23 @@
+   [(set (match_operand:ILASX 0 "register_operand" "=f,f")
+ 	(ashift:ILASX
+ 	  (match_operand:ILASX 1 "register_operand" "f,f")
+-	  (match_operand:ILASX 2 "reg_or_vector_same_uimm6_operand" "f,Uuv6")))]
++	  (match_operand:ILASX 2 "reg_or_vector_same_uimm_operand" "f,Uuvx")))]
+   "ISA_HAS_LASX"
+-  "@
+-   xvsll.<lasxfmt>\t%u0,%u1,%u2
+-   xvslli.<lasxfmt>\t%u0,%u1,%E2"
++{
++  switch (which_alternative)
++    {
++    case 0:
++      return "xvsll.<lasxfmt>\t%u0,%u1,%u2";
++    case 1:
++      {
++	unsigned HOST_WIDE_INT val = UINTVAL (CONST_VECTOR_ELT (operands[2], 0));
++	operands[2] = GEN_INT (val & (GET_MODE_UNIT_BITSIZE (<MODE>mode) - 1));
++	return "xvslli.<lasxfmt>\t%u0,%u1,%d2";
++      }
++    default:
++      gcc_unreachable ();
++    }
++}
+   [(set_attr "type" "simd_shift")
+    (set_attr "mode" "<MODE>")])
+ 
+diff --git a/gcc/config/loongarch/loongarch-protos.h b/gcc/config/loongarch/loongarch-protos.h
+index 2a31df90b8e..5e9d5dba569 100644
+--- a/gcc/config/loongarch/loongarch-protos.h
++++ b/gcc/config/loongarch/loongarch-protos.h
+@@ -116,8 +116,9 @@ extern rtx loongarch_return_addr (int, rtx);
+ 
+ extern bool loongarch_const_vector_same_val_p (rtx, machine_mode);
+ extern bool loongarch_const_vector_same_bytes_p (rtx, machine_mode);
+-extern bool loongarch_const_vector_same_int_p (rtx, machine_mode, HOST_WIDE_INT,
+-					  HOST_WIDE_INT);
++extern bool loongarch_const_vector_same_int_p (rtx, machine_mode,
++			   HOST_WIDE_INT low = HOST_WIDE_INT_MIN,
++			   HOST_WIDE_INT high = HOST_WIDE_INT_MAX);
+ extern bool loongarch_const_vector_shuffle_set_p (rtx, machine_mode);
+ extern bool loongarch_const_vector_bitimm_set_p (rtx, machine_mode);
+ extern bool loongarch_const_vector_bitimm_clr_p (rtx, machine_mode);
+diff --git a/gcc/config/loongarch/lsx.md b/gcc/config/loongarch/lsx.md
+index 5ee5845e84b..a3f86d00b75 100644
+--- a/gcc/config/loongarch/lsx.md
++++ b/gcc/config/loongarch/lsx.md
+@@ -910,11 +910,23 @@
+   [(set (match_operand:ILSX 0 "register_operand" "=f,f")
+ 	(lshiftrt:ILSX
+ 	  (match_operand:ILSX 1 "register_operand" "f,f")
+-	  (match_operand:ILSX 2 "reg_or_vector_same_uimm6_operand" "f,Uuv6")))]
++	  (match_operand:ILSX 2 "reg_or_vector_same_uimm_operand" "f,Uuvx")))]
+   "ISA_HAS_LSX"
+-  "@
+-   vsrl.<lsxfmt>\t%w0,%w1,%w2
+-   vsrli.<lsxfmt>\t%w0,%w1,%E2"
++{
++  switch (which_alternative)
++    {
++    case 0:
++      return "vsrl.<lsxfmt>\t%w0,%w1,%w2";
++    case 1:
++      {
++	unsigned HOST_WIDE_INT val = UINTVAL (CONST_VECTOR_ELT (operands[2], 0));
++	operands[2] = GEN_INT (val & (GET_MODE_UNIT_BITSIZE (<MODE>mode) - 1));
++	return "vsrli.<lsxfmt>\t%w0,%w1,%d2";
++      }
++    default:
++      gcc_unreachable ();
++    }
++}
+   [(set_attr "type" "simd_shift")
+    (set_attr "mode" "<MODE>")])
+ 
+@@ -922,11 +934,23 @@
+   [(set (match_operand:ILSX 0 "register_operand" "=f,f")
+ 	(ashiftrt:ILSX
+ 	  (match_operand:ILSX 1 "register_operand" "f,f")
+-	  (match_operand:ILSX 2 "reg_or_vector_same_uimm6_operand" "f,Uuv6")))]
++	  (match_operand:ILSX 2 "reg_or_vector_same_uimm_operand" "f,Uuvx")))]
+   "ISA_HAS_LSX"
+-  "@
+-   vsra.<lsxfmt>\t%w0,%w1,%w2
+-   vsrai.<lsxfmt>\t%w0,%w1,%E2"
++{
++  switch (which_alternative)
++    {
++    case 0:
++      return "vsra.<lsxfmt>\t%w0,%w1,%w2";
++    case 1:
++      {
++	unsigned HOST_WIDE_INT val = UINTVAL (CONST_VECTOR_ELT (operands[2], 0));
++	operands[2] = GEN_INT (val & (GET_MODE_UNIT_BITSIZE (<MODE>mode) - 1));
++	return "vsrai.<lsxfmt>\t%w0,%w1,%d2";
++      }
++    default:
++      gcc_unreachable ();
++    }
++}
+   [(set_attr "type" "simd_shift")
+    (set_attr "mode" "<MODE>")])
+ 
+@@ -934,11 +958,23 @@
+   [(set (match_operand:ILSX 0 "register_operand" "=f,f")
+ 	(ashift:ILSX
+ 	  (match_operand:ILSX 1 "register_operand" "f,f")
+-	  (match_operand:ILSX 2 "reg_or_vector_same_uimm6_operand" "f,Uuv6")))]
++	  (match_operand:ILSX 2 "reg_or_vector_same_uimm_operand" "f,Uuvx")))]
+   "ISA_HAS_LSX"
+-  "@
+-   vsll.<lsxfmt>\t%w0,%w1,%w2
+-   vslli.<lsxfmt>\t%w0,%w1,%E2"
++{
++  switch (which_alternative)
++    {
++    case 0:
++      return "vsll.<lsxfmt>\t%w0,%w1,%w2";
++    case 1:
++      {
++	unsigned HOST_WIDE_INT val = UINTVAL (CONST_VECTOR_ELT (operands[2], 0));
++	operands[2] = GEN_INT (val & (GET_MODE_UNIT_BITSIZE (<MODE>mode) - 1));
++	return "vslli.<lsxfmt>\t%w0,%w1,%d2";
++      }
++    default:
++      gcc_unreachable ();
++    }
++}
+   [(set_attr "type" "simd_shift")
+    (set_attr "mode" "<MODE>")])
+ 
+diff --git a/gcc/config/loongarch/predicates.md b/gcc/config/loongarch/predicates.md
+index eba7f246c84..3e2f7e16848 100644
+--- a/gcc/config/loongarch/predicates.md
++++ b/gcc/config/loongarch/predicates.md
+@@ -636,10 +636,10 @@
+   return loongarch_const_vector_same_int_p (op, mode, -31, 31);
+ })
+ 
+-(define_predicate "const_vector_same_uimm6_operand"
++(define_predicate "const_vector_same_uimm_operand"
+   (match_code "const_vector")
+ {
+-  return loongarch_const_vector_same_int_p (op, mode, 0, 63);
++  return loongarch_const_vector_same_int_p (op, mode);
+ })
+ 
+ (define_predicate "par_const_vector_shf_set_operand"
+@@ -664,6 +664,6 @@
+   (ior (match_operand 0 "register_operand")
+        (match_operand 0 "const_vector_same_ximm5_operand")))
+ 
+-(define_predicate "reg_or_vector_same_uimm6_operand"
++(define_predicate "reg_or_vector_same_uimm_operand"
+   (ior (match_operand 0 "register_operand")
+-       (match_operand 0 "const_vector_same_uimm6_operand")))
++       (match_operand 0 "const_vector_same_uimm_operand")))
+diff --git a/gcc/testsuite/gcc.target/loongarch/vector/lasx/lasx-shift-sameimm-vec.c b/gcc/testsuite/gcc.target/loongarch/vector/lasx/lasx-shift-sameimm-vec.c
+new file mode 100644
+index 00000000000..5808b066d73
+--- /dev/null
++++ b/gcc/testsuite/gcc.target/loongarch/vector/lasx/lasx-shift-sameimm-vec.c
+@@ -0,0 +1,72 @@
++/* Test shift bits overflow in vector */
++/* { dg-do assemble } */
++/* { dg-options "-mlasx -O2 -save-temps" } */
++/* { dg-final { scan-assembler "xvslli.b.*,1" } } */
++/* { dg-final { scan-assembler "xvslli.b.*,7" } } */
++/* { dg-final { scan-assembler "xvslli.h.*,1" } } */
++/* { dg-final { scan-assembler "xvslli.h.*,15" } } */
++/* { dg-final { scan-assembler "xvslli.w.*,1" } } */
++/* { dg-final { scan-assembler "xvslli.w.*,31" } } */
++/* { dg-final { scan-assembler "xvslli.d.*,1" } } */
++/* { dg-final { scan-assembler "xvslli.d.*,63" } } */
++/* { dg-final { scan-assembler "xvsrli.b.*,1" } } */
++/* { dg-final { scan-assembler "xvsrli.b.*,7" } } */
++/* { dg-final { scan-assembler "xvsrli.h.*,1" } } */
++/* { dg-final { scan-assembler "xvsrli.h.*,15" } } */
++/* { dg-final { scan-assembler "xvsrli.w.*,1" } } */
++/* { dg-final { scan-assembler "xvsrli.w.*,31" } } */
++/* { dg-final { scan-assembler "xvsrli.d.*,1" } } */
++/* { dg-final { scan-assembler "xvsrli.d.*,63" } } */
++/* { dg-final { scan-assembler "xvsrai.b.*,1" } } */
++/* { dg-final { scan-assembler "xvsrai.b.*,7" } } */
++/* { dg-final { scan-assembler "xvsrai.h.*,1" } } */
++/* { dg-final { scan-assembler "xvsrai.h.*,15" } } */
++/* { dg-final { scan-assembler "xvsrai.w.*,1" } } */
++/* { dg-final { scan-assembler "xvsrai.w.*,31" } } */
++/* { dg-final { scan-assembler "xvsrai.d.*,1" } } */
++/* { dg-final { scan-assembler "xvsrai.d.*,63" } } */
++
++typedef signed char v32i8 __attribute__ ((vector_size (32), aligned (32)));
++typedef short v16i16 __attribute__ ((vector_size (32), aligned (32)));
++typedef int v8i32 __attribute__ ((vector_size (32), aligned (32)));
++typedef long long v4i64 __attribute__ ((vector_size (32), aligned (32)));
++
++#define TWICE(_) _, _
++#define V32I8_RVAL(_) (v32i8)   {TWICE(TWICE(TWICE(TWICE(TWICE(_)))))}
++#define V16I16_RVAL(_) (v16i16) {TWICE(TWICE(TWICE(TWICE(_))))}
++#define V8I32_RVAL(_) (v8i32)   {TWICE(TWICE(TWICE(_)))}
++#define V4I64_RVAL(_) (v4i64)   {TWICE(TWICE(_))}
++
++#define TEST_FUNC(typ, key, inst, rept, val)    \
++typ                                             \
++_##key##inst (typ _)                            \
++{                                               \
++  return __builtin_lasx_##inst(_, rept(val));   \
++}
++
++TEST_FUNC(v32i8, pos, xvsll_b, V32I8_RVAL, 65)
++TEST_FUNC(v32i8, neg, xvsll_b, V32I8_RVAL, -65)
++TEST_FUNC(v16i16, pos, xvsll_h, V16I16_RVAL, 65)
++TEST_FUNC(v16i16, neg, xvsll_h, V16I16_RVAL, -65)
++TEST_FUNC(v8i32, pos, xvsll_w, V8I32_RVAL, 65)
++TEST_FUNC(v8i32, neg, xvsll_w, V8I32_RVAL, -65)
++TEST_FUNC(v4i64, pos, xvsll_d, V4I64_RVAL, 65)
++TEST_FUNC(v4i64, neg, xvsll_d, V4I64_RVAL, -65)
++
++TEST_FUNC(v32i8, pos, xvsrl_b, V32I8_RVAL, 65)
++TEST_FUNC(v32i8, neg, xvsrl_b, V32I8_RVAL, -65)
++TEST_FUNC(v16i16, pos, xvsrl_h, V16I16_RVAL, 65)
++TEST_FUNC(v16i16, neg, xvsrl_h, V16I16_RVAL, -65)
++TEST_FUNC(v8i32, pos, xvsrl_w, V8I32_RVAL, 65)
++TEST_FUNC(v8i32, neg, xvsrl_w, V8I32_RVAL, -65)
++TEST_FUNC(v4i64, pos, xvsrl_d, V4I64_RVAL, 65)
++TEST_FUNC(v4i64, neg, xvsrl_d, V4I64_RVAL, -65)
++
++TEST_FUNC(v32i8, pos, xvsra_b, V32I8_RVAL, 65)
++TEST_FUNC(v32i8, neg, xvsra_b, V32I8_RVAL, -65)
++TEST_FUNC(v16i16, pos, xvsra_h, V16I16_RVAL, 65)
++TEST_FUNC(v16i16, neg, xvsra_h, V16I16_RVAL, -65)
++TEST_FUNC(v8i32, pos, xvsra_w, V8I32_RVAL, 65)
++TEST_FUNC(v8i32, neg, xvsra_w, V8I32_RVAL, -65)
++TEST_FUNC(v4i64, pos, xvsra_d, V4I64_RVAL, 65)
++TEST_FUNC(v4i64, neg, xvsra_d, V4I64_RVAL, -65)
+diff --git a/gcc/testsuite/gcc.target/loongarch/vector/lsx/lsx-shift-sameimm-vec.c b/gcc/testsuite/gcc.target/loongarch/vector/lsx/lsx-shift-sameimm-vec.c
+new file mode 100644
+index 00000000000..c87deee1e90
+--- /dev/null
++++ b/gcc/testsuite/gcc.target/loongarch/vector/lsx/lsx-shift-sameimm-vec.c
+@@ -0,0 +1,72 @@
++/* Test shift bits overflow in vector */
++/* { dg-do assemble } */
++/* { dg-options "-mlsx -O2 -save-temps" } */
++/* { dg-final { scan-assembler "vslli.b.*,1" } } */
++/* { dg-final { scan-assembler "vslli.b.*,7" } } */
++/* { dg-final { scan-assembler "vslli.h.*,1" } } */
++/* { dg-final { scan-assembler "vslli.h.*,15" } } */
++/* { dg-final { scan-assembler "vslli.w.*,1" } } */
++/* { dg-final { scan-assembler "vslli.w.*,31" } } */
++/* { dg-final { scan-assembler "vslli.d.*,1" } } */
++/* { dg-final { scan-assembler "vslli.d.*,63" } } */
++/* { dg-final { scan-assembler "vsrli.b.*,1" } } */
++/* { dg-final { scan-assembler "vsrli.b.*,7" } } */
++/* { dg-final { scan-assembler "vsrli.h.*,1" } } */
++/* { dg-final { scan-assembler "vsrli.h.*,15" } } */
++/* { dg-final { scan-assembler "vsrli.w.*,1" } } */
++/* { dg-final { scan-assembler "vsrli.w.*,31" } } */
++/* { dg-final { scan-assembler "vsrli.d.*,1" } } */
++/* { dg-final { scan-assembler "vsrli.d.*,63" } } */
++/* { dg-final { scan-assembler "vsrai.b.*,1" } } */
++/* { dg-final { scan-assembler "vsrai.b.*,7" } } */
++/* { dg-final { scan-assembler "vsrai.h.*,1" } } */
++/* { dg-final { scan-assembler "vsrai.h.*,15" } } */
++/* { dg-final { scan-assembler "vsrai.w.*,1" } } */
++/* { dg-final { scan-assembler "vsrai.w.*,31" } } */
++/* { dg-final { scan-assembler "vsrai.d.*,1" } } */
++/* { dg-final { scan-assembler "vsrai.d.*,63" } } */
++
++typedef signed char v16i8 __attribute__ ((vector_size (16), aligned (16)));
++typedef short v8i16 __attribute__ ((vector_size (16), aligned (16)));
++typedef int v4i32 __attribute__ ((vector_size (16), aligned (16)));
++typedef long long v2i64 __attribute__ ((vector_size (16), aligned (16)));
++
++#define TWICE(_) _, _
++#define V16I8_RVAL(_) (v16i8) {TWICE(TWICE(TWICE(TWICE(_))))}
++#define V8I16_RVAL(_) (v8i16) {TWICE(TWICE(TWICE(_)))}
++#define V4I32_RVAL(_) (v4i32) {TWICE(TWICE(_))}
++#define V2I64_RVAL(_) (v2i64) {TWICE(_)}
++
++#define TEST_FUNC(typ, key, inst, rept, val)    \
++typ                                             \
++_##key##inst (typ _)                            \
++{                                               \
++  return __builtin_lsx_##inst(_, rept(val));    \
++}
++
++TEST_FUNC(v16i8, pos, vsll_b, V16I8_RVAL, 65)
++TEST_FUNC(v16i8, neg, vsll_b, V16I8_RVAL, -65)
++TEST_FUNC(v8i16, pos, vsll_h, V8I16_RVAL, 65)
++TEST_FUNC(v8i16, neg, vsll_h, V8I16_RVAL, -65)
++TEST_FUNC(v4i32, pos, vsll_w, V4I32_RVAL, 65)
++TEST_FUNC(v4i32, neg, vsll_w, V4I32_RVAL, -65)
++TEST_FUNC(v2i64, pos, vsll_d, V2I64_RVAL, 65)
++TEST_FUNC(v2i64, neg, vsll_d, V2I64_RVAL, -65)
++
++TEST_FUNC(v16i8, pos, vsrl_b, V16I8_RVAL, 65)
++TEST_FUNC(v16i8, neg, vsrl_b, V16I8_RVAL, -65)
++TEST_FUNC(v8i16, pos, vsrl_h, V8I16_RVAL, 65)
++TEST_FUNC(v8i16, neg, vsrl_h, V8I16_RVAL, -65)
++TEST_FUNC(v4i32, pos, vsrl_w, V4I32_RVAL, 65)
++TEST_FUNC(v4i32, neg, vsrl_w, V4I32_RVAL, -65)
++TEST_FUNC(v2i64, pos, vsrl_d, V2I64_RVAL, 65)
++TEST_FUNC(v2i64, neg, vsrl_d, V2I64_RVAL, -65)
++
++TEST_FUNC(v16i8, pos, vsra_b, V16I8_RVAL, 65)
++TEST_FUNC(v16i8, neg, vsra_b, V16I8_RVAL, -65)
++TEST_FUNC(v8i16, pos, vsra_h, V8I16_RVAL, 65)
++TEST_FUNC(v8i16, neg, vsra_h, V8I16_RVAL, -65)
++TEST_FUNC(v4i32, pos, vsra_w, V4I32_RVAL, 65)
++TEST_FUNC(v4i32, neg, vsra_w, V4I32_RVAL, -65)
++TEST_FUNC(v2i64, pos, vsra_d, V2I64_RVAL, 65)
++TEST_FUNC(v2i64, neg, vsra_d, V2I64_RVAL, -65)
+-- 
+2.47.1
+

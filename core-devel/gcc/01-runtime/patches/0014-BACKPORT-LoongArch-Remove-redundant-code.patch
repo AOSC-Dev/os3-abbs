@@ -1,0 +1,173 @@
+From 7e5f7d5526ebc6710ac420d9a5e4afd857870e58 Mon Sep 17 00:00:00 2001
+From: Lulu Cheng <chenglulu@loongson.cn>
+Date: Sat, 2 Nov 2024 10:01:31 +0800
+Subject: [PATCH 14/40] BACKPORT: LoongArch: Remove redundant code.
+
+TARGET_ASM_ALIGNED_{HI,SI,QI}_OP are defined repeatedly and deleted.
+
+gcc/ChangeLog:
+
+	* config/loongarch/loongarch-builtins.cc
+	(loongarch_builtin_vectorized_function): Delete.
+	(LARCH_GET_BUILTIN): Delete.
+	* config/loongarch/loongarch-protos.h
+	(loongarch_builtin_vectorized_function): Delete.
+	* config/loongarch/loongarch.cc
+	(TARGET_ASM_ALIGNED_HI_OP): Delete.
+	(TARGET_ASM_ALIGNED_SI_OP): Delete.
+	(TARGET_ASM_ALIGNED_DI_OP): Delete.
+
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ gcc/config/loongarch/loongarch-builtins.cc | 102 ---------------------
+ gcc/config/loongarch/loongarch-protos.h    |   1 -
+ gcc/config/loongarch/loongarch.cc          |   8 --
+ 3 files changed, 111 deletions(-)
+
+diff --git a/gcc/config/loongarch/loongarch-builtins.cc b/gcc/config/loongarch/loongarch-builtins.cc
+index 8a635938dee..25e53c72163 100644
+--- a/gcc/config/loongarch/loongarch-builtins.cc
++++ b/gcc/config/loongarch/loongarch-builtins.cc
+@@ -2530,108 +2530,6 @@ loongarch_builtin_decl (unsigned int code, bool initialize_p ATTRIBUTE_UNUSED)
+   return loongarch_builtin_decls[code];
+ }
+ 
+-/* Implement TARGET_VECTORIZE_BUILTIN_VECTORIZED_FUNCTION.  */
+-
+-tree
+-loongarch_builtin_vectorized_function (unsigned int fn, tree type_out,
+-				       tree type_in)
+-{
+-  machine_mode in_mode, out_mode;
+-  int in_n, out_n;
+-
+-  if (TREE_CODE (type_out) != VECTOR_TYPE
+-      || TREE_CODE (type_in) != VECTOR_TYPE
+-      || !ISA_HAS_LSX)
+-    return NULL_TREE;
+-
+-  out_mode = TYPE_MODE (TREE_TYPE (type_out));
+-  out_n = TYPE_VECTOR_SUBPARTS (type_out);
+-  in_mode = TYPE_MODE (TREE_TYPE (type_in));
+-  in_n = TYPE_VECTOR_SUBPARTS (type_in);
+-
+-  /* INSN is the name of the associated instruction pattern, without
+-     the leading CODE_FOR_.  */
+-#define LARCH_GET_BUILTIN(INSN) \
+-  loongarch_builtin_decls[loongarch_get_builtin_decl_index[CODE_FOR_##INSN]]
+-
+-  switch (fn)
+-    {
+-    CASE_CFN_CEIL:
+-      if (out_mode == DFmode && in_mode == DFmode)
+-    {
+-      if (out_n == 2 && in_n == 2)
+-	return LARCH_GET_BUILTIN (lsx_vfrintrp_d);
+-      if (out_n == 4 && in_n == 4)
+-	return LARCH_GET_BUILTIN (lasx_xvfrintrp_d);
+-    }
+-      if (out_mode == SFmode && in_mode == SFmode)
+-    {
+-      if (out_n == 4 && in_n == 4)
+-	return LARCH_GET_BUILTIN (lsx_vfrintrp_s);
+-      if (out_n == 8 && in_n == 8)
+-	return LARCH_GET_BUILTIN (lasx_xvfrintrp_s);
+-    }
+-      break;
+-
+-    CASE_CFN_TRUNC:
+-      if (out_mode == DFmode && in_mode == DFmode)
+-    {
+-      if (out_n == 2 && in_n == 2)
+-	return LARCH_GET_BUILTIN (lsx_vfrintrz_d);
+-      if (out_n == 4 && in_n == 4)
+-	return LARCH_GET_BUILTIN (lasx_xvfrintrz_d);
+-    }
+-      if (out_mode == SFmode && in_mode == SFmode)
+-    {
+-      if (out_n == 4 && in_n == 4)
+-	return LARCH_GET_BUILTIN (lsx_vfrintrz_s);
+-      if (out_n == 8 && in_n == 8)
+-	return LARCH_GET_BUILTIN (lasx_xvfrintrz_s);
+-    }
+-      break;
+-
+-    CASE_CFN_RINT:
+-    CASE_CFN_ROUND:
+-      if (out_mode == DFmode && in_mode == DFmode)
+-    {
+-      if (out_n == 2 && in_n == 2)
+-	return LARCH_GET_BUILTIN (lsx_vfrint_d);
+-      if (out_n == 4 && in_n == 4)
+-	return LARCH_GET_BUILTIN (lasx_xvfrint_d);
+-    }
+-      if (out_mode == SFmode && in_mode == SFmode)
+-    {
+-      if (out_n == 4 && in_n == 4)
+-	return LARCH_GET_BUILTIN (lsx_vfrint_s);
+-      if (out_n == 8 && in_n == 8)
+-	return LARCH_GET_BUILTIN (lasx_xvfrint_s);
+-    }
+-      break;
+-
+-    CASE_CFN_FLOOR:
+-      if (out_mode == DFmode && in_mode == DFmode)
+-    {
+-      if (out_n == 2 && in_n == 2)
+-	return LARCH_GET_BUILTIN (lsx_vfrintrm_d);
+-      if (out_n == 4 && in_n == 4)
+-	return LARCH_GET_BUILTIN (lasx_xvfrintrm_d);
+-    }
+-      if (out_mode == SFmode && in_mode == SFmode)
+-    {
+-      if (out_n == 4 && in_n == 4)
+-	return LARCH_GET_BUILTIN (lsx_vfrintrm_s);
+-      if (out_n == 8 && in_n == 8)
+-	return LARCH_GET_BUILTIN (lasx_xvfrintrm_s);
+-    }
+-      break;
+-
+-    default:
+-      break;
+-    }
+-
+-  return NULL_TREE;
+-}
+-
+ /* Take argument ARGNO from EXP's argument list and convert it into
+    an expand operand.  Store the operand in *OP.  */
+ 
+diff --git a/gcc/config/loongarch/loongarch-protos.h b/gcc/config/loongarch/loongarch-protos.h
+index e238d795a73..2a31df90b8e 100644
+--- a/gcc/config/loongarch/loongarch-protos.h
++++ b/gcc/config/loongarch/loongarch-protos.h
+@@ -206,7 +206,6 @@ extern void loongarch_atomic_assign_expand_fenv (tree *, tree *, tree *);
+ extern tree loongarch_builtin_decl (unsigned int, bool);
+ extern rtx loongarch_expand_builtin (tree, rtx, rtx subtarget ATTRIBUTE_UNUSED,
+ 				     machine_mode, int);
+-extern tree loongarch_builtin_vectorized_function (unsigned int, tree, tree);
+ extern rtx loongarch_gen_const_int_vector_shuffle (machine_mode, int);
+ extern tree loongarch_build_builtin_va_list (void);
+ 
+diff --git a/gcc/config/loongarch/loongarch.cc b/gcc/config/loongarch/loongarch.cc
+index 4b456e3ef1f..1d41e577217 100644
+--- a/gcc/config/loongarch/loongarch.cc
++++ b/gcc/config/loongarch/loongarch.cc
+@@ -8184,14 +8184,6 @@ loongarch_set_handled_components (sbitmap components)
+ 	cfun->machine->reg_is_wrapped_separately[regno] = true;
+ }
+ 
+-/* Initialize the GCC target structure.  */
+-#undef TARGET_ASM_ALIGNED_HI_OP
+-#define TARGET_ASM_ALIGNED_HI_OP "\t.half\t"
+-#undef TARGET_ASM_ALIGNED_SI_OP
+-#define TARGET_ASM_ALIGNED_SI_OP "\t.word\t"
+-#undef TARGET_ASM_ALIGNED_DI_OP
+-#define TARGET_ASM_ALIGNED_DI_OP "\t.dword\t"
+-
+ /* Use the vshuf instruction to implement all 128-bit constant vector
+    permuatation.  */
+ 
+-- 
+2.47.1
+

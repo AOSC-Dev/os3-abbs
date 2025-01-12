@@ -1,0 +1,157 @@
+From b5e3b9d02b4e6eab3b1da91feb1f978003a37bc6 Mon Sep 17 00:00:00 2001
+From: Guo Jie <guojie@loongson.cn>
+Date: Mon, 30 Dec 2024 10:37:57 +0800
+Subject: [PATCH 27/40] BACKPORT: LoongArch: Fix bugs in insn patterns
+ lasx_xvrepl128vei_b/h/w/d_internal
+
+There are two aspects that affect the matching of instruction templates:
+
+1. vec_duplicate is redundant in the following operations.
+    set (match_operand:V4DI ...)
+	(vec_duplicate:V4DI (vec_select:V4DI ...))
+
+2. The range of values for testing predicate const_8_to_15_operand and
+const_16_to_31_operand should be [8, 15] and [16, 31] respectively.
+
+However, there is currently no suitable testcase to verify.
+
+gcc/ChangeLog:
+
+	* config/loongarch/lasx.md: Remove useless vec_select.
+	* config/loongarch/predicates.md: Correct error predicate.
+
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ gcc/config/loongarch/lasx.md       | 76 ++++++++++++++----------------
+ gcc/config/loongarch/predicates.md |  4 +-
+ 2 files changed, 38 insertions(+), 42 deletions(-)
+
+diff --git a/gcc/config/loongarch/lasx.md b/gcc/config/loongarch/lasx.md
+index e32e84d347c..cccdbde0ba4 100644
+--- a/gcc/config/loongarch/lasx.md
++++ b/gcc/config/loongarch/lasx.md
+@@ -2387,21 +2387,20 @@
+ 
+ (define_insn "lasx_xvrepl128vei_b_internal"
+   [(set (match_operand:V32QI 0 "register_operand" "=f")
+-	(vec_duplicate:V32QI
+-	  (vec_select:V32QI
+-	    (match_operand:V32QI 1 "register_operand" "f")
+-	    (parallel [(match_operand 2 "const_uimm4_operand" "")
+-		       (match_dup 2) (match_dup 2) (match_dup 2)
+-		       (match_dup 2) (match_dup 2) (match_dup 2)
+-		       (match_dup 2) (match_dup 2) (match_dup 2)
+-		       (match_dup 2) (match_dup 2) (match_dup 2)
+-		       (match_dup 2) (match_dup 2) (match_dup 2)
+-		       (match_operand 3 "const_16_to_31_operand" "")
+-		       (match_dup 3) (match_dup 3) (match_dup 3)
+-		       (match_dup 3) (match_dup 3) (match_dup 3)
+-		       (match_dup 3) (match_dup 3) (match_dup 3)
+-		       (match_dup 3) (match_dup 3) (match_dup 3)
+-		       (match_dup 3) (match_dup 3) (match_dup 3)]))))]
++	(vec_select:V32QI
++	  (match_operand:V32QI 1 "register_operand" "f")
++	  (parallel [(match_operand 2 "const_uimm4_operand" "")
++		     (match_dup 2) (match_dup 2) (match_dup 2)
++		     (match_dup 2) (match_dup 2) (match_dup 2)
++		     (match_dup 2) (match_dup 2) (match_dup 2)
++		     (match_dup 2) (match_dup 2) (match_dup 2)
++		     (match_dup 2) (match_dup 2) (match_dup 2)
++		     (match_operand 3 "const_16_to_31_operand" "")
++		     (match_dup 3) (match_dup 3) (match_dup 3)
++		     (match_dup 3) (match_dup 3) (match_dup 3)
++		     (match_dup 3) (match_dup 3) (match_dup 3)
++		     (match_dup 3) (match_dup 3) (match_dup 3)
++		     (match_dup 3) (match_dup 3) (match_dup 3)])))]
+   "ISA_HAS_LASX && ((INTVAL (operands[3]) - INTVAL (operands[2])) == 16)"
+   "xvrepl128vei.b\t%u0,%u1,%2"
+   [(set_attr "type" "simd_splat")
+@@ -2409,17 +2408,16 @@
+ 
+ (define_insn "lasx_xvrepl128vei_h_internal"
+   [(set (match_operand:V16HI 0 "register_operand" "=f")
+-	(vec_duplicate:V16HI
+-	  (vec_select:V16HI
+-	    (match_operand:V16HI 1 "register_operand" "f")
+-	    (parallel [(match_operand 2 "const_uimm3_operand" "")
+-		       (match_dup 2) (match_dup 2) (match_dup 2)
+-		       (match_dup 2) (match_dup 2) (match_dup 2)
+-		       (match_dup 2)
+-		       (match_operand 3 "const_8_to_15_operand" "")
+-		       (match_dup 3) (match_dup 3) (match_dup 3)
+-		       (match_dup 3) (match_dup 3) (match_dup 3)
+-		       (match_dup 3)]))))]
++	(vec_select:V16HI
++	  (match_operand:V16HI 1 "register_operand" "f")
++	  (parallel [(match_operand 2 "const_uimm3_operand" "")
++		     (match_dup 2) (match_dup 2) (match_dup 2)
++		     (match_dup 2) (match_dup 2) (match_dup 2)
++		     (match_dup 2)
++		     (match_operand 3 "const_8_to_15_operand" "")
++		     (match_dup 3) (match_dup 3) (match_dup 3)
++		     (match_dup 3) (match_dup 3) (match_dup 3)
++		     (match_dup 3)])))]
+   "ISA_HAS_LASX && ((INTVAL (operands[3]) - INTVAL (operands[2])) == 8)"
+   "xvrepl128vei.h\t%u0,%u1,%2"
+   [(set_attr "type" "simd_splat")
+@@ -2427,13 +2425,12 @@
+ 
+ (define_insn "lasx_xvrepl128vei_w_internal"
+   [(set (match_operand:V8SI 0 "register_operand" "=f")
+-	(vec_duplicate:V8SI
+-	  (vec_select:V8SI
+-	    (match_operand:V8SI 1 "register_operand" "f")
+-	    (parallel [(match_operand 2 "const_0_to_3_operand" "")
+-		       (match_dup 2) (match_dup 2) (match_dup 2)
+-		       (match_operand 3 "const_4_to_7_operand" "")
+-		       (match_dup 3) (match_dup 3) (match_dup 3)]))))]
++	(vec_select:V8SI
++	  (match_operand:V8SI 1 "register_operand" "f")
++	  (parallel [(match_operand 2 "const_0_to_3_operand" "")
++		     (match_dup 2) (match_dup 2) (match_dup 2)
++		     (match_operand 3 "const_4_to_7_operand" "")
++		     (match_dup 3) (match_dup 3) (match_dup 3)])))]
+   "ISA_HAS_LASX && ((INTVAL (operands[3]) - INTVAL (operands[2])) == 4)"
+   "xvrepl128vei.w\t%u0,%u1,%2"
+   [(set_attr "type" "simd_splat")
+@@ -2441,13 +2438,12 @@
+ 
+ (define_insn "lasx_xvrepl128vei_d_internal"
+   [(set (match_operand:V4DI 0 "register_operand" "=f")
+-	(vec_duplicate:V4DI
+-	  (vec_select:V4DI
+-	    (match_operand:V4DI 1 "register_operand" "f")
+-	    (parallel [(match_operand 2 "const_0_or_1_operand" "")
+-		       (match_dup 2)
+-		       (match_operand 3 "const_2_or_3_operand" "")
+-		       (match_dup 3)]))))]
++	(vec_select:V4DI
++	  (match_operand:V4DI 1 "register_operand" "f")
++	  (parallel [(match_operand 2 "const_0_or_1_operand" "")
++		     (match_dup 2)
++		     (match_operand 3 "const_2_or_3_operand" "")
++		     (match_dup 3)])))]
+   "ISA_HAS_LASX && ((INTVAL (operands[3]) - INTVAL (operands[2])) == 2)"
+   "xvrepl128vei.d\t%u0,%u1,%2"
+   [(set_attr "type" "simd_splat")
+diff --git a/gcc/config/loongarch/predicates.md b/gcc/config/loongarch/predicates.md
+index 3e2f7e16848..3a89aaae2b3 100644
+--- a/gcc/config/loongarch/predicates.md
++++ b/gcc/config/loongarch/predicates.md
+@@ -267,11 +267,11 @@
+ 
+ (define_predicate "const_8_to_15_operand"
+   (and (match_code "const_int")
+-       (match_test "IN_RANGE (INTVAL (op), 0, 7)")))
++       (match_test "IN_RANGE (INTVAL (op), 8, 15)")))
+ 
+ (define_predicate "const_16_to_31_operand"
+   (and (match_code "const_int")
+-       (match_test "IN_RANGE (INTVAL (op), 0, 7)")))
++       (match_test "IN_RANGE (INTVAL (op), 16, 31)")))
+ 
+ (define_predicate "qi_mask_operand"
+   (and (match_code "const_int")
+-- 
+2.47.1
+

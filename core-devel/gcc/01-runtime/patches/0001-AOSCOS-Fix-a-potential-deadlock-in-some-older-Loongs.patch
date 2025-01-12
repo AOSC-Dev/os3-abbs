@@ -1,8 +1,8 @@
-From 86b0a8b18aa2d68b5ed6b8400b353923b6d697e9 Mon Sep 17 00:00:00 2001
+From 046a924dc8182290897e5a7831b72652e9613851 Mon Sep 17 00:00:00 2001
 From: Paul Hua <paul.hua.gm@gmail.com>
 Date: Fri, 30 Nov 2018 20:45:57 +0800
-Subject: [PATCH 1/2] Fix a potential deadlock in some older Loongson3 MIPS
- processors.
+Subject: [PATCH 01/40] AOSCOS: Fix a potential deadlock in some older
+ Loongson3 MIPS processors.
 
 In some older Loongson3 processors there is a LL/SC errata that can
 cause the CPU to deadlock occasionally.  The details are very
@@ -36,16 +36,18 @@ gcc/
 gcc/testsuite/
 	* gcc.target/mips/fix-loongson3-llsc.c: New test.
 	* gcc.target/mips/mips.exp (option): Add fix-loongson3-llsc.
+
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
 ---
  gcc/config.gcc                                | 19 +++++++++++++++++--
  gcc/config/mips/mips.cc                       | 13 +++++++++++--
  gcc/config/mips/mips.h                        |  4 +++-
  gcc/config/mips/mips.opt                      |  4 ++++
  gcc/doc/install.texi                          |  4 ++++
- gcc/doc/invoke.texi                           |  8 ++++++++
+ gcc/doc/invoke.texi                           |  9 +++++++++
  .../gcc.target/mips/fix-loongson3-llsc.c      | 10 ++++++++++
  gcc/testsuite/gcc.target/mips/mips.exp        |  1 +
- 8 files changed, 58 insertions(+), 5 deletions(-)
+ 8 files changed, 59 insertions(+), 5 deletions(-)
  create mode 100644 gcc/testsuite/gcc.target/mips/fix-loongson3-llsc.c
 
 diff --git a/gcc/config.gcc b/gcc/config.gcc
@@ -182,10 +184,18 @@ index 9f2e427be68..155aa79ac0d 100644
  On certain targets this option sets the default stack clash protection guard
  size as a power of two in bytes.  On AArch64 @var{size} is required to be either
 diff --git a/gcc/doc/invoke.texi b/gcc/doc/invoke.texi
-index f82f7d2817b..87460d3f48f 100644
+index f82f7d2817b..89bd1e61f9c 100644
 --- a/gcc/doc/invoke.texi
 +++ b/gcc/doc/invoke.texi
-@@ -1156,6 +1156,7 @@ Objective-C and Objective-C++ Dialects}.
+@@ -1106,6 +1106,7 @@ Objective-C and Objective-C++ Dialects}.
+ -mpic-data-is-text-relative}
+ 
+ @emph{MIPS Options}
++<<<<<<< HEAD
+ @gccoptlist{-EL  -EB  -march=@var{arch}  -mtune=@var{arch}
+ -mips1  -mips2  -mips3  -mips4  -mips32  -mips32r2  -mips32r3  -mips32r5
+ -mips32r6  -mips64  -mips64r2  -mips64r3  -mips64r5  -mips64r6
+@@ -1156,6 +1157,7 @@ Objective-C and Objective-C++ Dialects}.
  -mfix-r10000  -mno-fix-r10000  -mfix-rm7000  -mno-fix-rm7000
  -mfix-vr4120  -mno-fix-vr4120
  -mfix-vr4130  -mno-fix-vr4130  -mfix-sb1  -mno-fix-sb1
@@ -193,7 +203,7 @@ index f82f7d2817b..87460d3f48f 100644
  -mflush-func=@var{func}  -mno-flush-func
  -mbranch-cost=@var{num}  -mbranch-likely  -mno-branch-likely
  -mcompact-branches=@var{policy}
-@@ -28899,6 +28900,13 @@ controls GCC's implementation of this workaround.  It assumes that
+@@ -28899,6 +28901,13 @@ controls GCC's implementation of this workaround.  It assumes that
  aborted accesses to any byte in the following regions does not have
  side effects:
  

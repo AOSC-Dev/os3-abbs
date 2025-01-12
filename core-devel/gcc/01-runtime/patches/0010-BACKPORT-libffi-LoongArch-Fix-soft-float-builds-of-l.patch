@@ -1,0 +1,37 @@
+From f37f1e86052abce346016a0f33351127ca1a72d9 Mon Sep 17 00:00:00 2001
+From: Yang Yujie <yangyujie@loongson.cn>
+Date: Sat, 27 Jan 2024 15:09:46 +0800
+Subject: [PATCH 10/40] BACKPORT: libffi: LoongArch: Fix soft-float builds of
+ libffi
+
+This patch correspond to the upstream PR:
+https://github.com/libffi/libffi/pull/817
+And has been merged.
+
+libffi/ChangeLog:
+
+	* src/loongarch64/ffi.c: Avoid defining floats
+	in struct call_context if the ABI is soft-float.
+
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ libffi/src/loongarch64/ffi.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/libffi/src/loongarch64/ffi.c b/libffi/src/loongarch64/ffi.c
+index 140be3bc3dc..01c2e18a395 100644
+--- a/libffi/src/loongarch64/ffi.c
++++ b/libffi/src/loongarch64/ffi.c
+@@ -58,7 +58,9 @@
+ */
+ typedef struct call_context
+ {
++#if !defined(__loongarch_soft_float)
+   ABI_FLOAT fa[8];
++#endif
+   size_t a[10];
+ } call_context;
+ 
+-- 
+2.47.1
+

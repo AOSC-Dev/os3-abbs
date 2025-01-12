@@ -1,0 +1,969 @@
+From d7a72c009ba0ba207e5acad80f590c1ccc6d5912 Mon Sep 17 00:00:00 2001
+From: Guo Jie <guojie@loongson.cn>
+Date: Mon, 30 Dec 2024 10:38:51 +0800
+Subject: [PATCH 34/40] BACKPORT: LoongArch: Add some vector pack/unpack
+ patterns
+
+gcc/ChangeLog:
+
+	* config/loongarch/lasx.md (vec_unpacks_lo_<mode>): Redefine.
+	(vec_unpacku_lo_<mode>): Ditto.
+	(lasx_vext2xv_h<u>_b<u>): Replaced by vec_unpack<su>_lo_v32qi.
+	(vec_unpack<su>_lo_v32qi): New insn.
+	(lasx_vext2xv_w<u>_h<u>): Replaced by vec_unpack<su>_lo_v16hi.
+	(vec_unpack<su>_lo_v16qi_internal): New insn, for 128 bits.
+	(vec_unpack<su>_lo_v16hi): New insn.
+	(lasx_vext2xv_d<u>_w<u>): Replaced by vec_unpack<su>_lo_v8si.
+	(vec_unpack<su>_lo_v8hi_internal): New insn, for 128 bits.
+	(vec_unpack<su>_lo_v8si): New insn.
+	(vec_unpack<su>_lo_v4si_internal): New insn, for 128 bits.
+	(vec_packs_float_v4di): New expander.
+	(vec_pack_sfix_trunc_v4df): Ditto.
+	(vec_unpacks_float_hi_v8si): Ditto.
+	(vec_unpacks_float_lo_v8si): Ditto.
+	(vec_unpack_sfix_trunc_hi_v8sf): Ditto.
+	(vec_unpack_sfix_trunc_lo_v8sf): Ditto.
+	* config/loongarch/loongarch-builtins.cc
+	(CODE_FOR_lsx_vftintrz_w_d): Rename.
+	(CODE_FOR_lsx_vftintrzh_l_s): Ditto.
+	(CODE_FOR_lsx_vftintrzl_l_s): Ditto.
+	(CODE_FOR_lsx_vffint_s_l): Ditto.
+	(CODE_FOR_lsx_vffinth_d_w): Ditto.
+	(CODE_FOR_lsx_vffintl_d_w): Ditto.
+	(CODE_FOR_lsx_vexth_h_b): Ditto.
+	(CODE_FOR_lsx_vexth_w_h): Ditto.
+	(CODE_FOR_lsx_vexth_d_w): Ditto.
+	(CODE_FOR_lsx_vexth_hu_bu): Ditto.
+	(CODE_FOR_lsx_vexth_wu_hu): Ditto.
+	(CODE_FOR_lsx_vexth_du_wu): Ditto.
+	(CODE_FOR_lsx_vfcvth_d_s): Ditto.
+	(CODE_FOR_lsx_vfcvtl_d_s): Ditto.
+	(CODE_FOR_lasx_vext2xv_h_b): Ditto.
+	(CODE_FOR_lasx_vext2xv_w_h): Ditto.
+	(CODE_FOR_lasx_vext2xv_d_w): Ditto.
+	(CODE_FOR_lasx_vext2xv_hu_bu): Ditto.
+	(CODE_FOR_lasx_vext2xv_wu_hu): Ditto.
+	(CODE_FOR_lasx_vext2xv_du_wu): Ditto.
+	(loongarch_expand_builtin_insn): Swap source operands in
+	CODE_FOR_lsx_vftintrz_w_d and CODE_FOR_lsx_vffint_s_l.
+	* config/loongarch/loongarch-protos.h
+	(loongarch_expand_vec_unpack): Remove useless parameter high_p.
+	* config/loongarch/loongarch.cc (loongarch_expand_vec_unpack):
+	Rewrite.
+	* config/loongarch/lsx.md (vec_unpacks_hi_v4sf): Redefine.
+	(vec_unpacks_lo_v4sf): Ditto.
+	(vec_unpacks_hi_<mode>): Ditto.
+	(vec_unpacku_hi_<mode>): Ditto.
+	(lsx_vfcvth_d_s): Replaced by vec_unpacks_hi_v4sf.
+	(lsx_vfcvtl_d_s): Replaced by vec_unpacks_lo_v4sf.
+	(lsx_vffint_s_l): Replaced by vec_packs_float_v2di.
+	(vec_packs_float_v2di): New insn.
+	(lsx_vftintrz_w_d): Replaced by vec_pack_sfix_trunc_v2df.
+	(vec_pack_sfix_trunc_v2df): New insn.
+	(lsx_vffinth_d_w): Replaced by vec_unpacks_float_hi_v4si.
+	(vec_unpacks_float_hi_v4si): New insn.
+	(lsx_vffintl_d_w): Replaced by vec_unpacks_float_lo_v4si.
+	(vec_unpacks_float_lo_v4si): New insn.
+	(lsx_vftintrzh_l_s): Replaced by vec_unpack_sfix_trunc_hi_v4sf.
+	(vec_unpack_sfix_trunc_hi_v4sf): New insn.
+	(lsx_vftintrzl_l_s): Replaced by vec_unpack_sfix_trunc_lo_v4sf.
+	(vec_unpack_sfix_trunc_lo_v4sf): New insn.
+	(lsx_vexth_h<u>_b<u>): Replaced by vec_unpack<su>_hi_v16qi.
+	(vec_unpack<su>_hi_v16qi): New insn.
+	(lsx_vexth_w<u>_h<u>): Replaced by vec_unpack<su>_hi_v8hi.
+	(vec_unpack<su>_hi_v8hi): New insn.
+	(lsx_vexth_d<u>_w<u>): Replaced by vec_unpack<su>_hi_v4si.
+	(vec_unpack<su>_hi_v4si): New insn.
+
+gcc/testsuite/ChangeLog:
+
+	* gcc.target/loongarch/vec_pack_unpack_128.c: New test.
+	* gcc.target/loongarch/vec_pack_unpack_256.c: New test.
+
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ gcc/config/loongarch/lasx.md                  | 140 +++++++++++++++---
+ gcc/config/loongarch/loongarch-builtins.cc    |  22 +++
+ gcc/config/loongarch/loongarch-protos.h       |   2 +-
+ gcc/config/loongarch/loongarch.cc             |  49 ++----
+ gcc/config/loongarch/lsx.md                   | 120 ++++++---------
+ .../loongarch/vec_pack_unpack_128.c           | 120 +++++++++++++++
+ .../loongarch/vec_pack_unpack_256.c           | 118 +++++++++++++++
+ 7 files changed, 436 insertions(+), 135 deletions(-)
+ create mode 100644 gcc/testsuite/gcc.target/loongarch/vec_pack_unpack_128.c
+ create mode 100644 gcc/testsuite/gcc.target/loongarch/vec_pack_unpack_256.c
+
+diff --git a/gcc/config/loongarch/lasx.md b/gcc/config/loongarch/lasx.md
+index 0d04608fa60..f639d85f3eb 100644
+--- a/gcc/config/loongarch/lasx.md
++++ b/gcc/config/loongarch/lasx.md
+@@ -531,17 +531,7 @@
+    (match_operand:ILASX_WHB 1 "register_operand")]
+   "ISA_HAS_LASX"
+ {
+-  loongarch_expand_vec_unpack (operands, false/*unsigned_p*/,
+-			       true/*high_p*/);
+-  DONE;
+-})
+-
+-(define_expand "vec_unpacks_lo_<mode>"
+-  [(match_operand:<VDMODE256> 0 "register_operand")
+-   (match_operand:ILASX_WHB 1 "register_operand")]
+-  "ISA_HAS_LASX"
+-{
+-  loongarch_expand_vec_unpack (operands, false/*unsigned_p*/, false/*high_p*/);
++  loongarch_expand_vec_unpack (operands, false/*unsigned_p*/);
+   DONE;
+ })
+ 
+@@ -550,16 +540,7 @@
+    (match_operand:ILASX_WHB 1 "register_operand")]
+   "ISA_HAS_LASX"
+ {
+-  loongarch_expand_vec_unpack (operands, true/*unsigned_p*/, true/*high_p*/);
+-  DONE;
+-})
+-
+-(define_expand "vec_unpacku_lo_<mode>"
+-  [(match_operand:<VDMODE256> 0 "register_operand")
+-   (match_operand:ILASX_WHB 1 "register_operand")]
+-  "ISA_HAS_LASX"
+-{
+-  loongarch_expand_vec_unpack (operands, true/*unsigned_p*/, false/*high_p*/);
++  loongarch_expand_vec_unpack (operands, true/*unsigned_p*/);
+   DONE;
+ })
+ 
+@@ -2643,7 +2624,7 @@
+    (set_attr "mode" "<MODE>")])
+ 
+ ;; loongson-asx.
+-(define_insn "lasx_vext2xv_h<u>_b<u>"
++(define_insn "vec_unpack<su>_lo_v32qi"
+   [(set (match_operand:V16HI 0 "register_operand" "=f")
+ 	(any_extend:V16HI
+ 	  (vec_select:V16QI
+@@ -2661,7 +2642,21 @@
+   [(set_attr "type" "simd_shift")
+    (set_attr "mode" "V16HI")])
+ 
+-(define_insn "lasx_vext2xv_w<u>_h<u>"
++(define_insn "vec_unpack<su>_lo_v16qi_internal"
++  [(set (match_operand:V8HI 0 "register_operand" "=f")
++	(any_extend:V8HI
++	  (vec_select:V8QI
++	    (match_operand:V16QI 1 "register_operand" "f")
++	    (parallel [(const_int 0) (const_int 1)
++		       (const_int 2) (const_int 3)
++		       (const_int 4) (const_int 5)
++		       (const_int 6) (const_int 7)]))))]
++  "ISA_HAS_LASX"
++  "vext2xv.h<u>.b<u>\t%u0,%u1"
++  [(set_attr "type" "simd_shift")
++   (set_attr "mode" "V8HI")])
++
++(define_insn "vec_unpack<su>_lo_v16hi"
+   [(set (match_operand:V8SI 0 "register_operand" "=f")
+ 	(any_extend:V8SI
+ 	  (vec_select:V8HI
+@@ -2675,7 +2670,19 @@
+   [(set_attr "type" "simd_shift")
+    (set_attr "mode" "V8SI")])
+ 
+-(define_insn "lasx_vext2xv_d<u>_w<u>"
++(define_insn "vec_unpack<su>_lo_v8hi_internal"
++  [(set (match_operand:V4SI 0 "register_operand" "=f")
++	(any_extend:V4SI
++	  (vec_select:V4HI
++	    (match_operand:V8HI 1 "register_operand" "f")
++	    (parallel [(const_int 0) (const_int 1)
++		       (const_int 2) (const_int 3)]))))]
++  "ISA_HAS_LASX"
++  "vext2xv.w<u>.h<u>\t%u0,%u1"
++  [(set_attr "type" "simd_shift")
++   (set_attr "mode" "V4SI")])
++
++(define_insn "vec_unpack<su>_lo_v8si"
+   [(set (match_operand:V4DI 0 "register_operand" "=f")
+ 	(any_extend:V4DI
+ 	  (vec_select:V4SI
+@@ -2687,6 +2694,17 @@
+   [(set_attr "type" "simd_shift")
+    (set_attr "mode" "V4DI")])
+ 
++(define_insn "vec_unpack<su>_lo_v4si_internal"
++  [(set (match_operand:V2DI 0 "register_operand" "=f")
++	(any_extend:V2DI
++	  (vec_select:V2SI
++	    (match_operand:V4SI 1 "register_operand" "f")
++	    (parallel [(const_int 0) (const_int 1)]))))]
++  "ISA_HAS_LASX"
++  "vext2xv.d<u>.w<u>\t%u0,%u1"
++  [(set_attr "type" "simd_shift")
++   (set_attr "mode" "V2DI")])
++
+ (define_insn "lasx_vext2xv_w<u>_b<u>"
+   [(set (match_operand:V8SI 0 "register_operand" "=f")
+ 	(any_extend:V8SI
+@@ -3078,6 +3096,19 @@
+   [(set_attr "type" "simd_int_arith")
+    (set_attr "mode" "V4DF")])
+ 
++(define_expand "vec_packs_float_v4di"
++  [(match_operand:V8SF 0 "register_operand")
++   (match_operand:V4DI 1 "register_operand")
++   (match_operand:V4DI 2 "register_operand")]
++  "ISA_HAS_LASX"
++{
++  rtx tmp;
++  tmp = gen_reg_rtx (V8SFmode);
++  emit_insn (gen_lasx_xvffint_s_l (tmp, operands[2], operands[1]));
++  emit_insn (gen_lasx_xvpermi_d_v8sf (operands[0], tmp, GEN_INT (0xd8)));
++  DONE;
++})
++
+ (define_insn "lasx_xvffint_s_l"
+   [(set (match_operand:V8SF 0 "register_operand" "=f")
+ 	(unspec:V8SF [(match_operand:V4DI 1 "register_operand" "f")
+@@ -3088,6 +3119,19 @@
+   [(set_attr "type" "simd_int_arith")
+    (set_attr "mode" "V4DI")])
+ 
++(define_expand "vec_pack_sfix_trunc_v4df"
++  [(match_operand:V8SI 0 "register_operand")
++   (match_operand:V4DF 1 "register_operand")
++   (match_operand:V4DF 2 "register_operand")]
++  "ISA_HAS_LASX"
++{
++  rtx tmp;
++  tmp = gen_reg_rtx (V8SImode);
++  emit_insn (gen_lasx_xvftintrz_w_d (tmp, operands[2], operands[1]));
++  emit_insn (gen_lasx_xvpermi_d_v8si (operands[0], tmp, GEN_INT (0xd8)));
++  DONE;
++})
++
+ (define_insn "lasx_xvftintrz_w_d"
+   [(set (match_operand:V8SI 0 "register_operand" "=f")
+ 	(unspec:V8SI [(match_operand:V4DF 1 "register_operand" "f")
+@@ -3146,6 +3190,30 @@
+   [(set_attr "type" "simd_shift")
+    (set_attr "mode" "V8SF")])
+ 
++(define_expand "vec_unpacks_float_hi_v8si"
++  [(match_operand:V4DF 0 "register_operand")
++   (match_operand:V8SI 1 "register_operand")]
++  "ISA_HAS_LASX"
++{
++  rtx tmp;
++  tmp = gen_reg_rtx (V8SImode);
++  emit_insn (gen_lasx_xvpermi_d_v8si (tmp, operands[1], GEN_INT (0xe8)));
++  emit_insn (gen_lasx_xvffinth_d_w (operands[0], tmp));
++  DONE;
++})
++
++(define_expand "vec_unpacks_float_lo_v8si"
++  [(match_operand:V4DF 0 "register_operand")
++   (match_operand:V8SI 1 "register_operand")]
++  "ISA_HAS_LASX"
++{
++  rtx tmp;
++  tmp = gen_reg_rtx (V4DImode);
++  emit_insn (gen_vec_unpacks_lo_v8si (tmp, operands[1]));
++  emit_insn (gen_floatv4div4df2 (operands[0], tmp));
++  DONE;
++})
++
+ (define_insn "lasx_xvffinth_d_w"
+   [(set (match_operand:V4DF 0 "register_operand" "=f")
+ 	(unspec:V4DF [(match_operand:V8SI 1 "register_operand" "f")]
+@@ -3164,6 +3232,18 @@
+   [(set_attr "type" "simd_shift")
+    (set_attr "mode" "V8SI")])
+ 
++(define_expand "vec_unpack_sfix_trunc_hi_v8sf"
++  [(match_operand:V4DI 0 "register_operand")
++   (match_operand:V8SF 1 "register_operand")]
++  "ISA_HAS_LASX"
++{
++  rtx tmp;
++  tmp = gen_reg_rtx (V8SFmode);
++  emit_insn (gen_lasx_xvpermi_d_v8sf (tmp, operands[1], GEN_INT (0xe8)));
++  emit_insn (gen_lasx_xvftintrzh_l_s (operands[0], tmp));
++  DONE;
++})
++
+ (define_insn "lasx_xvftintrzh_l_s"
+   [(set (match_operand:V4DI 0 "register_operand" "=f")
+ 	(unspec:V4DI [(match_operand:V8SF 1 "register_operand" "f")]
+@@ -3173,6 +3253,18 @@
+   [(set_attr "type" "simd_shift")
+    (set_attr "mode" "V8SF")])
+ 
++(define_expand "vec_unpack_sfix_trunc_lo_v8sf"
++  [(match_operand:V4DI 0 "register_operand")
++   (match_operand:V8SF 1 "register_operand")]
++  "ISA_HAS_LASX"
++{
++  rtx tmp;
++  tmp = gen_reg_rtx (V8SFmode);
++  emit_insn (gen_lasx_xvpermi_d_v8sf (tmp, operands[1], GEN_INT (0xd4)));
++  emit_insn (gen_lasx_xvftintrzl_l_s (operands[0], tmp));
++  DONE;
++})
++
+ (define_insn "lasx_xvftintrzl_l_s"
+   [(set (match_operand:V4DI 0 "register_operand" "=f")
+ 	(unspec:V4DI [(match_operand:V8SF 1 "register_operand" "f")]
+diff --git a/gcc/config/loongarch/loongarch-builtins.cc b/gcc/config/loongarch/loongarch-builtins.cc
+index 261c5eb5546..593aca56a6d 100644
+--- a/gcc/config/loongarch/loongarch-builtins.cc
++++ b/gcc/config/loongarch/loongarch-builtins.cc
+@@ -282,10 +282,24 @@ AVAIL_ALL (lasx_frecipe, ISA_HAS_LASX && ISA_HAS_FRECIPE)
+ #define CODE_FOR_lsx_vftintrz_l_d CODE_FOR_fix_truncv2dfv2di2
+ #define CODE_FOR_lsx_vftintrz_wu_s CODE_FOR_fixuns_truncv4sfv4si2
+ #define CODE_FOR_lsx_vftintrz_lu_d CODE_FOR_fixuns_truncv2dfv2di2
++#define CODE_FOR_lsx_vftintrz_w_d CODE_FOR_vec_pack_sfix_trunc_v2df
++#define CODE_FOR_lsx_vftintrzh_l_s CODE_FOR_vec_unpack_sfix_trunc_hi_v4sf
++#define CODE_FOR_lsx_vftintrzl_l_s CODE_FOR_vec_unpack_sfix_trunc_lo_v4sf
+ #define CODE_FOR_lsx_vffint_s_w CODE_FOR_floatv4siv4sf2
+ #define CODE_FOR_lsx_vffint_d_l CODE_FOR_floatv2div2df2
+ #define CODE_FOR_lsx_vffint_s_wu CODE_FOR_floatunsv4siv4sf2
+ #define CODE_FOR_lsx_vffint_d_lu CODE_FOR_floatunsv2div2df2
++#define CODE_FOR_lsx_vffint_s_l CODE_FOR_vec_packs_float_v2di
++#define CODE_FOR_lsx_vffinth_d_w CODE_FOR_vec_unpacks_float_hi_v4si
++#define CODE_FOR_lsx_vffintl_d_w CODE_FOR_vec_unpacks_float_lo_v4si
++#define CODE_FOR_lsx_vexth_h_b CODE_FOR_vec_unpacks_hi_v16qi
++#define CODE_FOR_lsx_vexth_w_h CODE_FOR_vec_unpacks_hi_v8hi
++#define CODE_FOR_lsx_vexth_d_w CODE_FOR_vec_unpacks_hi_v4si
++#define CODE_FOR_lsx_vexth_hu_bu CODE_FOR_vec_unpacku_hi_v16qi
++#define CODE_FOR_lsx_vexth_wu_hu CODE_FOR_vec_unpacku_hi_v8hi
++#define CODE_FOR_lsx_vexth_du_wu CODE_FOR_vec_unpacku_hi_v4si
++#define CODE_FOR_lsx_vfcvth_d_s CODE_FOR_vec_unpacks_hi_v4sf
++#define CODE_FOR_lsx_vfcvtl_d_s CODE_FOR_vec_unpacks_lo_v4sf
+ #define CODE_FOR_lsx_vfsub_s CODE_FOR_subv4sf3
+ #define CODE_FOR_lsx_vfsub_d CODE_FOR_subv2df3
+ #define CODE_FOR_lsx_vfmul_s CODE_FOR_mulv4sf3
+@@ -563,6 +577,12 @@ AVAIL_ALL (lasx_frecipe, ISA_HAS_LASX && ISA_HAS_FRECIPE)
+ #define CODE_FOR_lasx_xvffint_d_l CODE_FOR_floatv4div4df2
+ #define CODE_FOR_lasx_xvffint_s_wu CODE_FOR_floatunsv8siv8sf2
+ #define CODE_FOR_lasx_xvffint_d_lu CODE_FOR_floatunsv4div4df2
++#define CODE_FOR_lasx_vext2xv_h_b CODE_FOR_vec_unpacks_lo_v32qi
++#define CODE_FOR_lasx_vext2xv_w_h CODE_FOR_vec_unpacks_lo_v16hi
++#define CODE_FOR_lasx_vext2xv_d_w CODE_FOR_vec_unpacks_lo_v8si
++#define CODE_FOR_lasx_vext2xv_hu_bu CODE_FOR_vec_unpacku_lo_v32qi
++#define CODE_FOR_lasx_vext2xv_wu_hu CODE_FOR_vec_unpacku_lo_v16hi
++#define CODE_FOR_lasx_vext2xv_du_wu CODE_FOR_vec_unpacku_lo_v8si
+ #define CODE_FOR_lasx_xvfsub_s CODE_FOR_subv8sf3
+ #define CODE_FOR_lasx_xvfsub_d CODE_FOR_subv4df3
+ #define CODE_FOR_lasx_xvfmul_s CODE_FOR_mulv8sf3
+@@ -2757,6 +2777,8 @@ loongarch_expand_builtin_insn (enum insn_code icode, unsigned int nops,
+     case CODE_FOR_lsx_vpickod_h:
+     case CODE_FOR_lsx_vpickod_w:
+     case CODE_FOR_lsx_vandn_v:
++    case CODE_FOR_lsx_vftintrz_w_d:
++    case CODE_FOR_lsx_vffint_s_l:
+     case CODE_FOR_lasx_xvilvh_b:
+     case CODE_FOR_lasx_xvilvh_h:
+     case CODE_FOR_lasx_xvilvh_w:
+diff --git a/gcc/config/loongarch/loongarch-protos.h b/gcc/config/loongarch/loongarch-protos.h
+index 5e9d5dba569..72a6743501a 100644
+--- a/gcc/config/loongarch/loongarch-protos.h
++++ b/gcc/config/loongarch/loongarch-protos.h
+@@ -174,7 +174,7 @@ extern void loongarch_expand_atomic_qihi (union loongarch_gen_fn_ptrs,
+ 
+ extern void loongarch_expand_vector_group_init (rtx, rtx);
+ extern void loongarch_expand_vector_init (rtx, rtx);
+-extern void loongarch_expand_vec_unpack (rtx op[2], bool, bool);
++extern void loongarch_expand_vec_unpack (rtx op[2], bool);
+ extern void loongarch_expand_vec_perm (rtx, rtx, rtx, rtx);
+ extern void loongarch_expand_vec_perm_1 (rtx[]);
+ extern void loongarch_expand_vector_extract (rtx, rtx, int);
+diff --git a/gcc/config/loongarch/loongarch.cc b/gcc/config/loongarch/loongarch.cc
+index 998e368dae9..c115f5f2a8a 100644
+--- a/gcc/config/loongarch/loongarch.cc
++++ b/gcc/config/loongarch/loongarch.cc
+@@ -9841,7 +9841,7 @@ loongarch_expand_vector_reduc (rtx (*fn) (rtx, rtx, rtx), rtx dest, rtx in)
+ /* Expand an integral vector unpack operation.  */
+ 
+ void
+-loongarch_expand_vec_unpack (rtx operands[2], bool unsigned_p, bool high_p)
++loongarch_expand_vec_unpack (rtx operands[2], bool unsigned_p)
+ {
+   machine_mode imode = GET_MODE (operands[1]);
+   rtx (*unpack) (rtx, rtx, rtx);
+@@ -9850,31 +9850,32 @@ loongarch_expand_vec_unpack (rtx operands[2], bool unsigned_p, bool high_p)
+   rtx (*swap_hi_lo) (rtx, rtx, rtx, rtx);
+   rtx tmp, dest;
+ 
++  /* In LASX, only vec_unpacks_hi_<mode> requires expander.  */
+   if (ISA_HAS_LASX && GET_MODE_SIZE (imode) == 32)
+     {
+       switch (imode)
+ 	{
+ 	case E_V8SImode:
+ 	  if (unsigned_p)
+-	    extend = gen_lasx_vext2xv_du_wu;
++	    extend = gen_vec_unpacku_lo_v8si;
+ 	  else
+-	    extend = gen_lasx_vext2xv_d_w;
++	    extend = gen_vec_unpacks_lo_v8si;
+ 	  swap_hi_lo = gen_lasx_xvpermi_q_v8si;
+ 	  break;
+ 
+ 	case E_V16HImode:
+ 	  if (unsigned_p)
+-	    extend = gen_lasx_vext2xv_wu_hu;
++	    extend = gen_vec_unpacku_lo_v16hi;
+ 	  else
+-	    extend = gen_lasx_vext2xv_w_h;
++	    extend = gen_vec_unpacks_lo_v16hi;
+ 	  swap_hi_lo = gen_lasx_xvpermi_q_v16hi;
+ 	  break;
+ 
+ 	case E_V32QImode:
+ 	  if (unsigned_p)
+-	    extend = gen_lasx_vext2xv_hu_bu;
++	    extend = gen_vec_unpacku_lo_v32qi;
+ 	  else
+-	    extend = gen_lasx_vext2xv_h_b;
++	    extend = gen_vec_unpacks_lo_v32qi;
+ 	  swap_hi_lo = gen_lasx_xvpermi_q_v32qi;
+ 	  break;
+ 
+@@ -9883,46 +9884,28 @@ loongarch_expand_vec_unpack (rtx operands[2], bool unsigned_p, bool high_p)
+ 	  break;
+ 	}
+ 
+-      if (high_p)
+-	{
+-	  tmp = gen_reg_rtx (imode);
+-	  emit_insn (swap_hi_lo (tmp, tmp, operands[1], const1_rtx));
+-	  emit_insn (extend (operands[0], tmp));
+-	  return;
+-	}
+-
+-      emit_insn (extend (operands[0], operands[1]));
++      tmp = gen_reg_rtx (imode);
++      emit_insn (swap_hi_lo (tmp, tmp, operands[1], const1_rtx));
++      emit_insn (extend (operands[0], tmp));
+       return;
+-
+     }
+-  else if (ISA_HAS_LSX)
++  /* In LSX, only vec_unpacks_lo_<mode> requires expander.  */
++  else if (ISA_HAS_LSX && !ISA_HAS_LASX)
+     {
+       switch (imode)
+ 	{
+ 	case E_V4SImode:
+-	  if (high_p != 0)
+-	    unpack = gen_lsx_vilvh_w;
+-	  else
+-	    unpack = gen_lsx_vilvl_w;
+-
++	  unpack = gen_lsx_vilvl_w;
+ 	  cmpFunc = gen_lsx_vslt_w;
+ 	  break;
+ 
+ 	case E_V8HImode:
+-	  if (high_p != 0)
+-	    unpack = gen_lsx_vilvh_h;
+-	  else
+-	    unpack = gen_lsx_vilvl_h;
+-
++	  unpack = gen_lsx_vilvl_h;
+ 	  cmpFunc = gen_lsx_vslt_h;
+ 	  break;
+ 
+ 	case E_V16QImode:
+-	  if (high_p != 0)
+-	    unpack = gen_lsx_vilvh_b;
+-	  else
+-	    unpack = gen_lsx_vilvl_b;
+-
++	  unpack = gen_lsx_vilvl_b;
+ 	  cmpFunc = gen_lsx_vslt_b;
+ 	  break;
+ 
+diff --git a/gcc/config/loongarch/lsx.md b/gcc/config/loongarch/lsx.md
+index b446772d0b3..5fccdf14ce1 100644
+--- a/gcc/config/loongarch/lsx.md
++++ b/gcc/config/loongarch/lsx.md
+@@ -76,16 +76,10 @@
+   UNSPEC_LSX_VMSKLTZ
+   UNSPEC_LSX_VSIGNCOV
+   UNSPEC_LSX_VFTINT_W_D
+-  UNSPEC_LSX_VFFINT_S_L
+-  UNSPEC_LSX_VFTINTRZ_W_D
+   UNSPEC_LSX_VFTINTRP_W_D
+   UNSPEC_LSX_VFTINTRM_W_D
+   UNSPEC_LSX_VFTINTRNE_W_D
+   UNSPEC_LSX_VFTINTL_L_S
+-  UNSPEC_LSX_VFFINTH_D_W
+-  UNSPEC_LSX_VFFINTL_D_W
+-  UNSPEC_LSX_VFTINTRZL_L_S
+-  UNSPEC_LSX_VFTINTRZH_L_S
+   UNSPEC_LSX_VFTINTRPL_L_S
+   UNSPEC_LSX_VFTINTRPH_L_S
+   UNSPEC_LSX_VFTINTRMH_L_S
+@@ -373,54 +367,15 @@
+   [(set_attr "type" "simd_permute")
+    (set_attr "mode" "<MODE>")])
+ 
+-(define_expand "vec_unpacks_hi_v4sf"
+-  [(set (match_operand:V2DF 0 "register_operand" "=f")
+-	(float_extend:V2DF
+-	  (vec_select:V2SF
+-	    (match_operand:V4SF 1 "register_operand" "f")
+-	    (match_dup 2))))]
+-  "ISA_HAS_LSX"
+-{
+-  operands[2] = loongarch_lsx_vec_parallel_const_half (V4SFmode,
+-      true/*high_p*/);
+-})
+-
+-(define_expand "vec_unpacks_lo_v4sf"
+-  [(set (match_operand:V2DF 0 "register_operand" "=f")
+-	(float_extend:V2DF
+-	  (vec_select:V2SF
+-	    (match_operand:V4SF 1 "register_operand" "f")
+-	    (match_dup 2))))]
+-  "ISA_HAS_LSX"
+-{
+-  operands[2] = loongarch_lsx_vec_parallel_const_half (V4SFmode,
+-      false/*high_p*/);
+-})
+-
+-(define_expand "vec_unpacks_hi_<mode>"
+-  [(match_operand:<VDMODE> 0 "register_operand")
+-   (match_operand:ILSX_WHB 1 "register_operand")]
+-  "ISA_HAS_LSX"
+-{
+-  loongarch_expand_vec_unpack (operands, false/*unsigned_p*/, true/*high_p*/);
+-  DONE;
+-})
+-
+ (define_expand "vec_unpacks_lo_<mode>"
+   [(match_operand:<VDMODE> 0 "register_operand")
+    (match_operand:ILSX_WHB 1 "register_operand")]
+   "ISA_HAS_LSX"
+ {
+-  loongarch_expand_vec_unpack (operands, false/*unsigned_p*/, false/*high_p*/);
+-  DONE;
+-})
+-
+-(define_expand "vec_unpacku_hi_<mode>"
+-  [(match_operand:<VDMODE> 0 "register_operand")
+-   (match_operand:ILSX_WHB 1 "register_operand")]
+-  "ISA_HAS_LSX"
+-{
+-  loongarch_expand_vec_unpack (operands, true/*unsigned_p*/, true/*high_p*/);
++  if (ISA_HAS_LASX)
++    emit_insn (gen_vec_unpacks_lo_<mode>_internal (operands[0], operands[1]));
++  else
++    loongarch_expand_vec_unpack (operands, false/*unsigned_p*/);
+   DONE;
+ })
+ 
+@@ -429,7 +384,10 @@
+    (match_operand:ILSX_WHB 1 "register_operand")]
+   "ISA_HAS_LSX"
+ {
+-  loongarch_expand_vec_unpack (operands, true/*unsigned_p*/, false/*high_p*/);
++  if (ISA_HAS_LASX)
++    emit_insn (gen_vec_unpacku_lo_<mode>_internal (operands[0], operands[1]));
++  else
++    loongarch_expand_vec_unpack (operands, true/*unsigned_p*/);
+   DONE;
+ })
+ 
+@@ -2162,7 +2120,7 @@
+   [(set_attr "type" "simd_fcvt")
+    (set_attr "mode" "V4SF")])
+ 
+-(define_insn "lsx_vfcvth_d_s"
++(define_insn "vec_unpacks_hi_v4sf"
+   [(set (match_operand:V2DF 0 "register_operand" "=f")
+ 	(float_extend:V2DF
+ 	(vec_select:V2SF
+@@ -2182,7 +2140,7 @@
+   [(set_attr "type" "simd_fcvt")
+    (set_attr "mode" "V4SF")])
+ 
+-(define_insn "lsx_vfcvtl_d_s"
++(define_insn "vec_unpacks_lo_v4sf"
+   [(set (match_operand:V2DF 0 "register_operand" "=f")
+ 	(float_extend:V2DF
+ 	(vec_select:V2SF
+@@ -2760,23 +2718,23 @@
+   [(set_attr "type" "simd_int_arith")
+    (set_attr "mode" "V2DF")])
+ 
+-(define_insn "lsx_vffint_s_l"
++(define_insn "vec_packs_float_v2di"
+   [(set (match_operand:V4SF 0 "register_operand" "=f")
+-	(unspec:V4SF [(match_operand:V2DI 1 "register_operand" "f")
+-		      (match_operand:V2DI 2 "register_operand" "f")]
+-		     UNSPEC_LSX_VFFINT_S_L))]
++	(vec_concat:V4SF
++	  (float:V2SF (match_operand:V2DI 1 "register_operand" "f"))
++	  (float:V2SF (match_operand:V2DI 2 "register_operand" "f"))))]
+   "ISA_HAS_LSX"
+-  "vffint.s.l\t%w0,%w1,%w2"
++  "vffint.s.l\t%w0,%w2,%w1"
+   [(set_attr "type" "simd_int_arith")
+    (set_attr "mode" "V2DI")])
+ 
+-(define_insn "lsx_vftintrz_w_d"
++(define_insn "vec_pack_sfix_trunc_v2df"
+   [(set (match_operand:V4SI 0 "register_operand" "=f")
+-	(unspec:V4SI [(match_operand:V2DF 1 "register_operand" "f")
+-		      (match_operand:V2DF 2 "register_operand" "f")]
+-		     UNSPEC_LSX_VFTINTRZ_W_D))]
++	(vec_concat:V4SI
++	  (fix:V2SI (match_operand:V2DF 1 "register_operand" "f"))
++	  (fix:V2SI (match_operand:V2DF 2 "register_operand" "f"))))]
+   "ISA_HAS_LSX"
+-  "vftintrz.w.d\t%w0,%w1,%w2"
++  "vftintrz.w.d\t%w0,%w2,%w1"
+   [(set_attr "type" "simd_int_arith")
+    (set_attr "mode" "V2DF")])
+ 
+@@ -2828,37 +2786,45 @@
+   [(set_attr "type" "simd_shift")
+    (set_attr "mode" "V4SF")])
+ 
+-(define_insn "lsx_vffinth_d_w"
++(define_insn "vec_unpacks_float_hi_v4si"
+   [(set (match_operand:V2DF 0 "register_operand" "=f")
+-	(unspec:V2DF [(match_operand:V4SI 1 "register_operand" "f")]
+-		     UNSPEC_LSX_VFFINTH_D_W))]
++	(float:V2DF
++	  (vec_select:V2SI
++	    (match_operand:V4SI 1 "register_operand" "f")
++	    (parallel [(const_int 2) (const_int 3)]))))]
+   "ISA_HAS_LSX"
+   "vffinth.d.w\t%w0,%w1"
+   [(set_attr "type" "simd_shift")
+    (set_attr "mode" "V4SI")])
+ 
+-(define_insn "lsx_vffintl_d_w"
++(define_insn "vec_unpacks_float_lo_v4si"
+   [(set (match_operand:V2DF 0 "register_operand" "=f")
+-	(unspec:V2DF [(match_operand:V4SI 1 "register_operand" "f")]
+-		     UNSPEC_LSX_VFFINTL_D_W))]
++	(float:V2DF
++	  (vec_select:V2SI
++	    (match_operand:V4SI 1 "register_operand" "f")
++	    (parallel [(const_int 0) (const_int 1)]))))]
+   "ISA_HAS_LSX"
+   "vffintl.d.w\t%w0,%w1"
+   [(set_attr "type" "simd_shift")
+    (set_attr "mode" "V4SI")])
+ 
+-(define_insn "lsx_vftintrzh_l_s"
++(define_insn "vec_unpack_sfix_trunc_hi_v4sf"
+   [(set (match_operand:V2DI 0 "register_operand" "=f")
+-	(unspec:V2DI [(match_operand:V4SF 1 "register_operand" "f")]
+-		     UNSPEC_LSX_VFTINTRZH_L_S))]
++	(fix:V2DI
++	  (vec_select:V2SF
++	    (match_operand:V4SF 1 "register_operand" "f")
++	    (parallel [(const_int 2) (const_int 3)]))))]
+   "ISA_HAS_LSX"
+   "vftintrzh.l.s\t%w0,%w1"
+   [(set_attr "type" "simd_shift")
+    (set_attr "mode" "V4SF")])
+ 
+-(define_insn "lsx_vftintrzl_l_s"
++(define_insn "vec_unpack_sfix_trunc_lo_v4sf"
+   [(set (match_operand:V2DI 0 "register_operand" "=f")
+-	(unspec:V2DI [(match_operand:V4SF 1 "register_operand" "f")]
+-		     UNSPEC_LSX_VFTINTRZL_L_S))]
++	(fix:V2DI
++	  (vec_select:V2SF
++	    (match_operand:V4SF 1 "register_operand" "f")
++	    (parallel [(const_int 0) (const_int 1)]))))]
+   "ISA_HAS_LSX"
+   "vftintrzl.l.s\t%w0,%w1"
+   [(set_attr "type" "simd_shift")
+@@ -4084,7 +4050,7 @@
+   [(set_attr "type" "simd_bit")
+    (set_attr "mode" "V16QI")])
+ 
+-(define_insn "lsx_vexth_h<u>_b<u>"
++(define_insn "vec_unpack<su>_hi_v16qi"
+   [(set (match_operand:V8HI 0 "register_operand" "=f")
+ 	(any_extend:V8HI
+ 	  (vec_select:V8QI
+@@ -4098,7 +4064,7 @@
+   [(set_attr "type" "simd_fcvt")
+    (set_attr "mode" "V8HI")])
+ 
+-(define_insn "lsx_vexth_w<u>_h<u>"
++(define_insn "vec_unpack<su>_hi_v8hi"
+   [(set (match_operand:V4SI 0 "register_operand" "=f")
+ 	(any_extend:V4SI
+ 	  (vec_select:V4HI
+@@ -4110,7 +4076,7 @@
+   [(set_attr "type" "simd_fcvt")
+    (set_attr "mode" "V4SI")])
+ 
+-(define_insn "lsx_vexth_d<u>_w<u>"
++(define_insn "vec_unpack<su>_hi_v4si"
+   [(set (match_operand:V2DI 0 "register_operand" "=f")
+ 	(any_extend:V2DI
+ 	  (vec_select:V2SI
+diff --git a/gcc/testsuite/gcc.target/loongarch/vec_pack_unpack_128.c b/gcc/testsuite/gcc.target/loongarch/vec_pack_unpack_128.c
+new file mode 100644
+index 00000000000..164b01e245d
+--- /dev/null
++++ b/gcc/testsuite/gcc.target/loongarch/vec_pack_unpack_128.c
+@@ -0,0 +1,120 @@
++/* { dg-do compile } */
++/* { dg-options "-mlsx -O3" } */
++
++#define N 128
++
++char c[N];
++short int h[N];
++int s[N];
++long l[N];
++float f[N];
++double d[N];
++unsigned char uc[N];
++unsigned short int uh[N];
++unsigned int us[N];
++unsigned long ul[N];
++
++/* { dg-final { scan-assembler-not "test_vec_pack_sfix_trunc_v2df:.*\tvftintrz\\.l\\.d.*-test_vec_pack_sfix_trunc_v2df\n" } } */
++/* { dg-final { scan-assembler-not "test_vec_pack_sfix_trunc_v2df:.*\tvpickev\\.w.*-test_vec_pack_sfix_trunc_v2df\n" } } */
++/* { dg-final { scan-assembler "test_vec_pack_sfix_trunc_v2df:.*\tvftintrz\\.w\\.d.*-test_vec_pack_sfix_trunc_v2df\n" } } */
++void
++test_vec_pack_sfix_trunc_v2df (void)
++{
++  for (int i = 0; i < N; i++)
++    s[i] = d[i];
++}
++
++/* { dg-final { scan-assembler-not "test_vec_packs_float_v2di:.*\tmovgr2fr\\.d.*-test_vec_packs_float_v2di" } } */
++/* { dg-final { scan-assembler "test_vec_packs_float_v2di:.*\tvffint\\.s\\.l.*-test_vec_packs_float_v2di" } } */
++void
++test_vec_packs_float_v2di (void)
++{
++  for (int i = 0; i < N; i++)
++    f[i] = l[i];
++}
++
++/* { dg-final { scan-assembler-not "test_vec_unpack_sfix_trunc_hi_lo_v4sf:.*\tftintrz\\.l\\.s.*-test_vec_unpack_sfix_trunc_hi_lo_v4sf" } } */
++/* { dg-final { scan-assembler "test_vec_unpack_sfix_trunc_hi_lo_v4sf:.*\tvftintrzh\\.l\\.s.*-test_vec_unpack_sfix_trunc_hi_lo_v4sf" } } */
++/* { dg-final { scan-assembler "test_vec_unpack_sfix_trunc_hi_lo_v4sf:.*\tvftintrzl\\.l\\.s.*-test_vec_unpack_sfix_trunc_hi_lo_v4sf" } } */
++void
++test_vec_unpack_sfix_trunc_hi_lo_v4sf (void)
++{
++  for (int i = 0; i < N; i++)
++    l[i] = f[i];
++}
++
++/* { dg-final { scan-assembler-not "test_vec_unpacks_float_hi_lo_v4si:.*\tvslti\\.w.*-test_vec_unpacks_float_hi_lo_v4si" } } */
++/* { dg-final { scan-assembler-not "test_vec_unpacks_float_hi_lo_v4si:.*\tvilvl\\.w.*-test_vec_unpacks_float_hi_lo_v4si" } } */
++/* { dg-final { scan-assembler-not "test_vec_unpacks_float_hi_lo_v4si:.*\tvilvh\\.w.*-test_vec_unpacks_float_hi_lo_v4si" } } */
++/* { dg-final { scan-assembler-not "test_vec_unpacks_float_hi_lo_v4si:.*\tvffint\\.d\\.l.*-test_vec_unpacks_float_hi_lo_v4si" } } */
++/* { dg-final { scan-assembler "test_vec_unpacks_float_hi_lo_v4si:.*\tvffinth\\.d\\.w.*-test_vec_unpacks_float_hi_lo_v4si" } } */
++/* { dg-final { scan-assembler "test_vec_unpacks_float_hi_lo_v4si:.*\tvffintl\\.d\\.w.*-test_vec_unpacks_float_hi_lo_v4si" } } */
++void
++test_vec_unpacks_float_hi_lo_v4si (void)
++{
++  for (int i = 0; i < N; i++)
++    d[i] = s[i];
++}
++
++/* { dg-final { scan-assembler-not "test_vec_unpacks_hi_lo_v4si:.*\tvilvh\\.w.*-test_vec_unpacks_hi_lo_v4si" } } */
++/* { dg-final { scan-assembler "test_vec_unpacks_hi_lo_v4si:.*\tvexth\\.d\\.w.*-test_vec_unpacks_hi_lo_v4si" } } */
++void
++test_vec_unpacks_hi_lo_v4si (void)
++{
++  for (int i = 0; i < N; i++)
++    l[i] = s[i];
++}
++
++/* { dg-final { scan-assembler-not "test_vec_unpacks_hi_lo_v8hi:.*\tvilvh\\.h.*-test_vec_unpacks_hi_lo_v8hi" } } */
++/* { dg-final { scan-assembler "test_vec_unpacks_hi_lo_v8hi:.*\tvexth\\.w\\.h.*-test_vec_unpacks_hi_lo_v8hi" } } */
++void
++test_vec_unpacks_hi_lo_v8hi (void)
++{
++  for (int i = 0; i < N; i++)
++    s[i] = h[i];
++}
++
++/* { dg-final { scan-assembler-not "test_vec_unpacks_hi_lo_v16qi:.*\tvilvh\\.b.*-test_vec_unpacks_hi_lo_v16qi" } } */
++/* { dg-final { scan-assembler "test_vec_unpacks_hi_lo_v16qi:.*\tvexth\\.h\\.b.*-test_vec_unpacks_hi_lo_v16qi" } } */
++void
++test_vec_unpacks_hi_lo_v16qi (void)
++{
++  for (int i = 0; i < N; i++)
++    h[i] = c[i];
++}
++
++/* { dg-final { scan-assembler "test_vec_unpacks_hi_lo_v4sf:.*\tvfcvtl\\.d\\.s.*-test_vec_unpacks_hi_lo_v4sf" } } */
++/* { dg-final { scan-assembler "test_vec_unpacks_hi_lo_v4sf:.*\tvfcvth\\.d\\.s.*-test_vec_unpacks_hi_lo_v4sf" } } */
++void
++test_vec_unpacks_hi_lo_v4sf (void)
++{
++  for (int i = 0; i < N; i++)
++    d[i] = f[i];
++}
++
++/* { dg-final { scan-assembler-not "test_vec_unpacku_hi_lo_v4si:.*\tvilvh\\.w.*-test_vec_unpacku_hi_lo_v4si" } } */
++/* { dg-final { scan-assembler "test_vec_unpacku_hi_lo_v4si:.*\tvexth\\.du\\.wu.*-test_vec_unpacku_hi_lo_v4si" } } */
++void
++test_vec_unpacku_hi_lo_v4si (void)
++{
++  for (int i = 0; i < N; i++)
++    ul[i] = us[i];
++}
++
++/* { dg-final { scan-assembler-not "test_vec_unpacku_hi_lo_v8hi:.*\tvilvh\\.h.*-test_vec_unpacku_hi_lo_v8hi" } } */
++/* { dg-final { scan-assembler "test_vec_unpacku_hi_lo_v8hi:.*\tvexth\\.wu\\.hu.*-test_vec_unpacku_hi_lo_v8hi" } } */
++void
++test_vec_unpacku_hi_lo_v8hi (void)
++{
++  for (int i = 0; i < N; i++)
++    us[i] = uh[i];
++}
++
++/* { dg-final { scan-assembler-not "test_vec_unpacku_hi_lo_v16qi:.*\tvilvh\\.b.*-test_vec_unpacku_hi_lo_v16qi" } } */
++/* { dg-final { scan-assembler "test_vec_unpacku_hi_lo_v16qi:.*\tvexth\\.hu\\.bu.*-test_vec_unpacku_hi_lo_v16qi" } } */
++void
++test_vec_unpacku_hi_lo_v16qi (void)
++{
++  for (int i = 0; i < N; i++)
++    uh[i] = uc[i];
++}
+diff --git a/gcc/testsuite/gcc.target/loongarch/vec_pack_unpack_256.c b/gcc/testsuite/gcc.target/loongarch/vec_pack_unpack_256.c
+new file mode 100644
+index 00000000000..506b7bdb03e
+--- /dev/null
++++ b/gcc/testsuite/gcc.target/loongarch/vec_pack_unpack_256.c
+@@ -0,0 +1,118 @@
++/* { dg-do compile } */
++/* { dg-options "-mlasx -O3" } */
++
++#define N 128
++
++char c[N];
++short int h[N];
++int s[N];
++long l[N];
++float f[N];
++double d[N];
++unsigned char uc[N];
++unsigned short int uh[N];
++unsigned int us[N];
++unsigned long ul[N];
++
++/* { dg-final { scan-assembler-not "test_vec_pack_sfix_trunc_v4df:.*\txvftintrz\\.l\\.d.*-test_vec_pack_sfix_trunc_v4df\n" } } */
++/* { dg-final { scan-assembler-not "test_vec_pack_sfix_trunc_v4df:.*\txvpickev\\.w.*-test_vec_pack_sfix_trunc_v4df\n" } } */
++/* { dg-final { scan-assembler "test_vec_pack_sfix_trunc_v4df:.*\txvftintrz\\.w\\.d.*-test_vec_pack_sfix_trunc_v4df\n" } } */
++void
++test_vec_pack_sfix_trunc_v4df (void)
++{
++  for (int i = 0; i < N; i++)
++    s[i] = d[i];
++}
++
++/* { dg-final { scan-assembler-not "test_vec_packs_float_v4di:.*\tmovgr2fr\\.d.*-test_vec_packs_float_v4di" } } */
++/* { dg-final { scan-assembler "test_vec_packs_float_v4di:.*\txvffint\\.s\\.l.*-test_vec_packs_float_v4di" } } */
++void
++test_vec_packs_float_v4di (void)
++{
++  for (int i = 0; i < N; i++)
++    f[i] = l[i];
++}
++
++/* { dg-final { scan-assembler-not "test_vec_unpack_sfix_trunc_hi_lo_v8sf:.*\tftintrz\\.l\\.s.*-test_vec_unpack_sfix_trunc_hi_lo_v8sf" } } */
++/* { dg-final { scan-assembler "test_vec_unpack_sfix_trunc_hi_lo_v8sf:.*\txvftintrzh\\.l\\.s.*-test_vec_unpack_sfix_trunc_hi_lo_v8sf" } } */
++/* { dg-final { scan-assembler "test_vec_unpack_sfix_trunc_hi_lo_v8sf:.*\txvftintrzl\\.l\\.s.*-test_vec_unpack_sfix_trunc_hi_lo_v8sf" } } */
++void
++test_vec_unpack_sfix_trunc_hi_lo_v8sf (void)
++{
++  for (int i = 0; i < N; i++)
++    l[i] = f[i];
++}
++
++/* { dg-final { scan-assembler "test_vec_unpacks_float_hi_lo_v8si:.*\txvpermi\\.d.*-test_vec_unpacks_float_hi_lo_v8si" } } */
++/* { dg-final { scan-assembler "test_vec_unpacks_float_hi_lo_v8si:.*\tvext2xv\\.d\\.w.*-test_vec_unpacks_float_hi_lo_v8si" } } */
++/* { dg-final { scan-assembler "test_vec_unpacks_float_hi_lo_v8si:.*\txvffint\\.d\\.l.*-test_vec_unpacks_float_hi_lo_v8si" } } */
++/* { dg-final { scan-assembler "test_vec_unpacks_float_hi_lo_v8si:.*\txvffinth\\.d\\.w.*-test_vec_unpacks_float_hi_lo_v8si" } } */
++void
++test_vec_unpacks_float_hi_lo_v8si (void)
++{
++  for (int i = 0; i < N; i++)
++    d[i] = s[i];
++}
++
++/* { dg-final { scan-assembler "test_vec_unpacks_hi_lo_v8si:.*\tvext2xv\\.d\\.w.*-test_vec_unpacks_hi_lo_v8si" } } */
++/* { dg-final { scan-assembler "test_vec_unpacks_hi_lo_v8si:.*\txvpermi\\.q.*-test_vec_unpacks_hi_lo_v8si" } } */
++void
++test_vec_unpacks_hi_lo_v8si (void)
++{
++  for (int i = 0; i < N; i++)
++    l[i] = s[i];
++}
++
++/* { dg-final { scan-assembler "test_vec_unpacks_hi_lo_v16hi:.*\tvext2xv\\.w\\.h.*-test_vec_unpacks_hi_lo_v16hi" } } */
++/* { dg-final { scan-assembler "test_vec_unpacks_hi_lo_v16hi:.*\txvpermi\\.q.*-test_vec_unpacks_hi_lo_v16hi" } } */
++void
++test_vec_unpacks_hi_lo_v16hi (void)
++{
++  for (int i = 0; i < N; i++)
++    s[i] = h[i];
++}
++
++/* { dg-final { scan-assembler "test_vec_unpacks_hi_lo_v32qi:.*\tvext2xv\\.h\\.b.*-test_vec_unpacks_hi_lo_v32qi" } } */
++/* { dg-final { scan-assembler "test_vec_unpacks_hi_lo_v32qi:.*\txvpermi\\.q.*-test_vec_unpacks_hi_lo_v32qi" } } */
++void
++test_vec_unpacks_hi_lo_v32qi (void)
++{
++  for (int i = 0; i < N; i++)
++    h[i] = c[i];
++}
++
++/* { dg-final { scan-assembler "test_vec_unpacks_hi_lo_v8sf:.*\txvfcvtl\\.d\\.s.*-test_vec_unpacks_hi_lo_v8sf" } } */
++/* { dg-final { scan-assembler "test_vec_unpacks_hi_lo_v8sf:.*\txvpermi\\.d.*-test_vec_unpacks_hi_lo_v8sf" } } */
++void
++test_vec_unpacks_hi_lo_v8sf (void)
++{
++  for (int i = 0; i < N; i++)
++    d[i] = f[i];
++}
++
++/* { dg-final { scan-assembler "test_vec_unpacku_hi_lo_v8si:.*\tvext2xv\\.du\\.wu.*-test_vec_unpacku_hi_lo_v8si" } } */
++/* { dg-final { scan-assembler "test_vec_unpacku_hi_lo_v8si:.*\txvpermi\\.q.*-test_vec_unpacku_hi_lo_v8si" } } */
++void
++test_vec_unpacku_hi_lo_v8si (void)
++{
++  for (int i = 0; i < N; i++)
++    ul[i] = us[i];
++}
++
++/* { dg-final { scan-assembler "test_vec_unpacku_hi_lo_v16hi:.*\tvext2xv\\.wu\\.hu.*-test_vec_unpacku_hi_lo_v16hi" } } */
++/* { dg-final { scan-assembler "test_vec_unpacku_hi_lo_v16hi:.*\txvpermi\\.q.*-test_vec_unpacku_hi_lo_v16hi" } } */
++void
++test_vec_unpacku_hi_lo_v16hi (void)
++{
++  for (int i = 0; i < N; i++)
++    us[i] = uh[i];
++}
++
++/* { dg-final { scan-assembler "test_vec_unpacku_hi_lo_v32qi:.*\tvext2xv\\.hu\\.bu.*-test_vec_unpacku_hi_lo_v32qi" } } */
++/* { dg-final { scan-assembler "test_vec_unpacku_hi_lo_v32qi:.*\txvpermi\\.q.*-test_vec_unpacku_hi_lo_v32qi" } } */
++void
++test_vec_unpacku_hi_lo_v32qi (void)
++{
++  for (int i = 0; i < N; i++)
++    uh[i] = uc[i];
++}
+-- 
+2.47.1
+

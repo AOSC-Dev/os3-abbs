@@ -1,0 +1,49 @@
+From e4f821dbe53d57478df9b05519abbfd4d4e28ddb Mon Sep 17 00:00:00 2001
+From: Xi Ruoyao <xry111@xry111.site>
+Date: Wed, 10 Jul 2024 12:15:23 +0800
+Subject: [PATCH 09/40] BACKPORT: LoongArch: Fix up r15-4130
+
+An earlier version of the patch (lacking the regeneration of some files)
+was pushed.  Fix it up now.
+
+gcc/ChangeLog:
+
+	* config/loongarch/loongarch.opt: Regenerate.
+	* config/loongarch/loongarch.opt.urls: Regenerate.
+
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ gcc/config/loongarch/loongarch.opt      | 2 +-
+ gcc/config/loongarch/loongarch.opt.urls | 3 +++
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/gcc/config/loongarch/loongarch.opt b/gcc/config/loongarch/loongarch.opt
+index 6a396b539c4..fae575452fe 100644
+--- a/gcc/config/loongarch/loongarch.opt
++++ b/gcc/config/loongarch/loongarch.opt
+@@ -312,7 +312,7 @@ HOST_WIDE_INT la_isa_evolution = 0
+ 
+ mannotate-tablejump
+ Target Mask(ANNOTATE_TABLEJUMP) Save
+-Annotate table jump instruction (jr {reg}) to correlate it with the jump table
++Annotate table jump instruction (jr {reg}) to correlate it with the jump table.
+ 
+ mfrecipe
+ Target Mask(ISA_FRECIPE) Var(la_isa_evolution)
+diff --git a/gcc/config/loongarch/loongarch.opt.urls b/gcc/config/loongarch/loongarch.opt.urls
+index 9ed5d7b5596..28034d97fdf 100644
+--- a/gcc/config/loongarch/loongarch.opt.urls
++++ b/gcc/config/loongarch/loongarch.opt.urls
+@@ -72,6 +72,9 @@ UrlSuffix(gcc/LoongArch-Options.html#index-mpass-mrelax-to-as)
+ mtls-dialect=
+ UrlSuffix(gcc/LoongArch-Options.html#index-mtls-dialect-1)
+ 
++mannotate-tablejump
++UrlSuffix(gcc/LoongArch-Options.html#index-mannotate-tablejump)
++
+ mfrecipe
+ UrlSuffix(gcc/LoongArch-Options.html#index-mfrecipe)
+ 
+-- 
+2.47.1
+

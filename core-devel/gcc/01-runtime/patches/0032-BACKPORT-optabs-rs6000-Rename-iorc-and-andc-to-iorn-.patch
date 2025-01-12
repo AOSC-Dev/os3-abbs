@@ -1,0 +1,296 @@
+From 16e69f46717088c5dc70d9fa791be14d4cce2de8 Mon Sep 17 00:00:00 2001
+From: Andrew Pinski <quic_apinski@quicinc.com>
+Date: Mon, 22 Jul 2024 21:23:38 -0700
+Subject: [PATCH 32/40] BACKPORT: optabs/rs6000: Rename iorc and andc to iorn
+ and andn
+
+When I was trying to add an scalar version of iorc and andc, the optab that
+got matched was for and/ior with the mode of csi and cdi instead of iorc and
+andc optabs for si and di modes. Since csi/cdi are the complex integer modes,
+we need to rename the optabs to be without c there. This changes c to n which
+is a neutral and known not to be first letter of a mode.
+
+Bootstrapped and tested on x86_64 and powerpc64le.
+
+gcc/ChangeLog:
+
+	* config/rs6000/rs6000-builtins.def: s/iorc/iorn/. s/andc/andn/
+	for the code.
+	* config/rs6000/rs6000-string.cc (expand_cmp_vec_sequence): Update
+	to iorn.
+	* config/rs6000/rs6000.md (andc<mode>3): Rename to ...
+	(andn<mode>3): This.
+	(iorc<mode>3): Rename to ...
+	(iorn<mode>3): This.
+	* doc/md.texi: Update documentation for the rename.
+	* internal-fn.def (BIT_ANDC): Rename to ...
+	(BIT_ANDN): This.
+	(BIT_IORC): Rename to ...
+	(BIT_IORN): This.
+	* optabs.def (andc_optab): Rename to ...
+	(andn_optab): This.
+	(iorc_optab): Rename to ...
+	(iorn_optab): This.
+	* gimple-isel.cc (gimple_expand_vec_cond_expr): Update for the
+	renamed internal functions, ANDC/IORC to ANDN/IORN.
+
+[Mingcong Bai: Resolved a minor merge conflict in gcc/doc/md.texi.]
+
+Signed-off-by: Andrew Pinski <quic_apinski@quicinc.com>
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ gcc/config/rs6000/rs6000-builtins.def | 44 +++++++++++++--------------
+ gcc/config/rs6000/rs6000-string.cc    |  2 +-
+ gcc/config/rs6000/rs6000.md           |  4 +--
+ gcc/doc/md.texi                       |  8 ++---
+ gcc/gimple-isel.cc                    | 12 ++++----
+ gcc/internal-fn.def                   |  4 +--
+ gcc/optabs.def                        | 10 ++++--
+ 7 files changed, 44 insertions(+), 40 deletions(-)
+
+diff --git a/gcc/config/rs6000/rs6000-builtins.def b/gcc/config/rs6000/rs6000-builtins.def
+index 736890fe6cb..d863de606e6 100644
+--- a/gcc/config/rs6000/rs6000-builtins.def
++++ b/gcc/config/rs6000/rs6000-builtins.def
+@@ -519,25 +519,25 @@
+     VAND_V8HI_UNS andv8hi3 {}
+ 
+   const vsc __builtin_altivec_vandc_v16qi (vsc, vsc);
+-    VANDC_V16QI andcv16qi3 {}
++    VANDC_V16QI andnv16qi3 {}
+ 
+   const vuc __builtin_altivec_vandc_v16qi_uns (vuc, vuc);
+-    VANDC_V16QI_UNS andcv16qi3 {}
++    VANDC_V16QI_UNS andnv16qi3 {}
+ 
+   const vf __builtin_altivec_vandc_v4sf (vf, vf);
+-    VANDC_V4SF andcv4sf3 {}
++    VANDC_V4SF andnv4sf3 {}
+ 
+   const vsi __builtin_altivec_vandc_v4si (vsi, vsi);
+-    VANDC_V4SI andcv4si3 {}
++    VANDC_V4SI andnv4si3 {}
+ 
+   const vui __builtin_altivec_vandc_v4si_uns (vui, vui);
+-    VANDC_V4SI_UNS andcv4si3 {}
++    VANDC_V4SI_UNS andnv4si3 {}
+ 
+   const vss __builtin_altivec_vandc_v8hi (vss, vss);
+-    VANDC_V8HI andcv8hi3 {}
++    VANDC_V8HI andnv8hi3 {}
+ 
+   const vus __builtin_altivec_vandc_v8hi_uns (vus, vus);
+-    VANDC_V8HI_UNS andcv8hi3 {}
++    VANDC_V8HI_UNS andnv8hi3 {}
+ 
+   const vsc __builtin_altivec_vavgsb (vsc, vsc);
+     VAVGSB avgv16qi3_ceil {}
+@@ -1221,13 +1221,13 @@
+     VAND_V2DI_UNS andv2di3 {}
+ 
+   const vd __builtin_altivec_vandc_v2df (vd, vd);
+-    VANDC_V2DF andcv2df3 {}
++    VANDC_V2DF andnv2df3 {}
+ 
+   const vsll __builtin_altivec_vandc_v2di (vsll, vsll);
+-    VANDC_V2DI andcv2di3 {}
++    VANDC_V2DI andnv2di3 {}
+ 
+   const vull __builtin_altivec_vandc_v2di_uns (vull, vull);
+-    VANDC_V2DI_UNS andcv2di3 {}
++    VANDC_V2DI_UNS andnv2di3 {}
+ 
+   const vd __builtin_altivec_vnor_v2df (vd, vd);
+     VNOR_V2DF norv2df3 {}
+@@ -2147,40 +2147,40 @@
+     NEG_V2DI negv2di2 {}
+ 
+   const vsc __builtin_altivec_orc_v16qi (vsc, vsc);
+-    ORC_V16QI iorcv16qi3 {}
++    ORC_V16QI iornv16qi3 {}
+ 
+   const vuc __builtin_altivec_orc_v16qi_uns (vuc, vuc);
+-    ORC_V16QI_UNS iorcv16qi3 {}
++    ORC_V16QI_UNS iornv16qi3 {}
+ 
+   const vsq __builtin_altivec_orc_v1ti (vsq, vsq);
+-    ORC_V1TI iorcv1ti3 {}
++    ORC_V1TI iornv1ti3 {}
+ 
+   const vuq __builtin_altivec_orc_v1ti_uns (vuq, vuq);
+-    ORC_V1TI_UNS iorcv1ti3 {}
++    ORC_V1TI_UNS iornv1ti3 {}
+ 
+   const vd __builtin_altivec_orc_v2df (vd, vd);
+-    ORC_V2DF iorcv2df3 {}
++    ORC_V2DF iornv2df3 {}
+ 
+   const vsll __builtin_altivec_orc_v2di (vsll, vsll);
+-    ORC_V2DI iorcv2di3 {}
++    ORC_V2DI iornv2di3 {}
+ 
+   const vull __builtin_altivec_orc_v2di_uns (vull, vull);
+-    ORC_V2DI_UNS iorcv2di3 {}
++    ORC_V2DI_UNS iornv2di3 {}
+ 
+   const vf __builtin_altivec_orc_v4sf (vf, vf);
+-    ORC_V4SF iorcv4sf3 {}
++    ORC_V4SF iornv4sf3 {}
+ 
+   const vsi __builtin_altivec_orc_v4si (vsi, vsi);
+-    ORC_V4SI iorcv4si3 {}
++    ORC_V4SI iornv4si3 {}
+ 
+   const vui __builtin_altivec_orc_v4si_uns (vui, vui);
+-    ORC_V4SI_UNS iorcv4si3 {}
++    ORC_V4SI_UNS iornv4si3 {}
+ 
+   const vss __builtin_altivec_orc_v8hi (vss, vss);
+-    ORC_V8HI iorcv8hi3 {}
++    ORC_V8HI iornv8hi3 {}
+ 
+   const vus __builtin_altivec_orc_v8hi_uns (vus, vus);
+-    ORC_V8HI_UNS iorcv8hi3 {}
++    ORC_V8HI_UNS iornv8hi3 {}
+ 
+   const vsc __builtin_altivec_vclzb (vsc);
+     VCLZB clzv16qi2 {}
+diff --git a/gcc/config/rs6000/rs6000-string.cc b/gcc/config/rs6000/rs6000-string.cc
+index c4c62e8e2f9..42f51725d96 100644
+--- a/gcc/config/rs6000/rs6000-string.cc
++++ b/gcc/config/rs6000/rs6000-string.cc
+@@ -743,7 +743,7 @@ expand_cmp_vec_sequence (unsigned HOST_WIDE_INT bytes_to_compare,
+ 	      rtx cmp_combined = gen_reg_rtx (load_mode);
+ 	      emit_insn (gen_altivec_eqv16qi (cmp_res, s1data, s2data));
+ 	      emit_insn (gen_altivec_eqv16qi (cmp_zero, s1data, zero_reg));
+-	      emit_insn (gen_iorcv16qi3 (vec_result, cmp_zero, cmp_res));
++	      emit_insn (gen_iornv16qi3 (vec_result, cmp_zero, cmp_res));
+ 	      emit_insn (gen_altivec_vcmpequb_p (cmp_combined, vec_result, zero_reg));
+ 	    }
+ 	}
+diff --git a/gcc/config/rs6000/rs6000.md b/gcc/config/rs6000/rs6000.md
+index 64bc2f518b5..2e86d475cb1 100644
+--- a/gcc/config/rs6000/rs6000.md
++++ b/gcc/config/rs6000/rs6000.md
+@@ -7300,7 +7300,7 @@
+   ""
+   "")
+ 
+-(define_expand "andc<mode>3"
++(define_expand "andn<mode>3"
+   [(set (match_operand:BOOL_128 0 "vlogical_operand")
+         (and:BOOL_128
+ 	 (not:BOOL_128 (match_operand:BOOL_128 2 "vlogical_operand"))
+@@ -7328,7 +7328,7 @@
+ 
+ ;; The canonical form is to have the negated element first, so we need to
+ ;; reverse arguments.
+-(define_expand "iorc<mode>3"
++(define_expand "iorn<mode>3"
+   [(set (match_operand:BOOL_128 0 "vlogical_operand")
+ 	(ior:BOOL_128
+ 	 (not:BOOL_128 (match_operand:BOOL_128 2 "vlogical_operand"))
+diff --git a/gcc/doc/md.texi b/gcc/doc/md.texi
+index fb448c946cd..5387fd86e83 100644
+--- a/gcc/doc/md.texi
++++ b/gcc/doc/md.texi
+@@ -5543,13 +5543,13 @@ means of constraints requiring operands 1 and 0 to be the same location.
+ @itemx @samp{and@var{m}3}, @samp{ior@var{m}3}, @samp{xor@var{m}3}
+ Similar, for other arithmetic operations.
+ 
+-@cindex @code{andc@var{m}3} instruction pattern
+-@item @samp{andc@var{m}3}
++@cindex @code{andn@var{m}3} instruction pattern
++@item @samp{andn@var{m}3}
+ Like @code{and@var{m}3}, but it uses bitwise-complement of operand 2
+ rather than operand 2 itself.
+ 
+-@cindex @code{iorc@var{m}3} instruction pattern
+-@item @samp{iorc@var{m}3}
++@cindex @code{iorn@var{m}3} instruction pattern
++@item @samp{iorn@var{m}3}
+ Like @code{ior@var{m}3}, but it uses bitwise-complement of operand 2
+ rather than operand 2 itself.
+ 
+diff --git a/gcc/gimple-isel.cc b/gcc/gimple-isel.cc
+index e4ab42ad05b..57f7281bb50 100644
+--- a/gcc/gimple-isel.cc
++++ b/gcc/gimple-isel.cc
+@@ -286,28 +286,28 @@ gimple_expand_vec_cond_expr (struct function *fun, gimple_stmt_iterator *gsi,
+ 		}
+ 	      bool op1_zerop = integer_zerop (op1);
+ 	      bool op2_minus_onep = integer_minus_onep (op2);
+-	      /* Try to fold r = c ? 0 : z to r = .BIT_ANDC (z, c).  */
++	      /* Try to fold r = c ? 0 : z to r = .BIT_ANDN (z, c).  */
+ 	      if (op1_zerop
+-		  && (direct_internal_fn_supported_p (IFN_BIT_ANDC, vtype,
++		  && (direct_internal_fn_supported_p (IFN_BIT_ANDN, vtype,
+ 						      OPTIMIZE_FOR_BOTH)))
+ 		{
+ 		  tree conv_op = build1 (VIEW_CONVERT_EXPR, vtype, op0);
+ 		  tree new_op = make_ssa_name (vtype);
+ 		  gassign *new_stmt = gimple_build_assign (new_op, conv_op);
+ 		  gsi_insert_seq_before (gsi, new_stmt, GSI_SAME_STMT);
+-		  return gimple_build_call_internal (IFN_BIT_ANDC, 2, op2,
++		  return gimple_build_call_internal (IFN_BIT_ANDN, 2, op2,
+ 						     new_op);
+ 		}
+-	      /* Try to fold r = c ? z : -1 to r = .BIT_IORC (z, c).  */
++	      /* Try to fold r = c ? z : -1 to r = .BIT_IORN (z, c).  */
+ 	      else if (op2_minus_onep
+-		       && (direct_internal_fn_supported_p (IFN_BIT_IORC, vtype,
++		       && (direct_internal_fn_supported_p (IFN_BIT_IORN, vtype,
+ 							   OPTIMIZE_FOR_BOTH)))
+ 		{
+ 		  tree conv_op = build1 (VIEW_CONVERT_EXPR, vtype, op0);
+ 		  tree new_op = make_ssa_name (vtype);
+ 		  gassign *new_stmt = gimple_build_assign (new_op, conv_op);
+ 		  gsi_insert_seq_before (gsi, new_stmt, GSI_SAME_STMT);
+-		  return gimple_build_call_internal (IFN_BIT_IORC, 2, op1,
++		  return gimple_build_call_internal (IFN_BIT_IORN, 2, op1,
+ 						     new_op);
+ 		}
+ 	    }
+diff --git a/gcc/internal-fn.def b/gcc/internal-fn.def
+index 6d2757845cc..845a2ccab99 100644
+--- a/gcc/internal-fn.def
++++ b/gcc/internal-fn.def
+@@ -586,8 +586,8 @@ DEF_INTERNAL_FN (FLOATTOBITINT, ECF_LEAF | ECF_NOTHROW, ". O . . ")
+ DEF_INTERNAL_FN (BITINTTOFLOAT, ECF_PURE | ECF_LEAF, ". R . ")
+ 
+ /* Bitwise functions.  */
+-DEF_INTERNAL_OPTAB_FN (BIT_ANDC, ECF_CONST, andc, binary)
+-DEF_INTERNAL_OPTAB_FN (BIT_IORC, ECF_CONST, iorc, binary)
++DEF_INTERNAL_OPTAB_FN (BIT_ANDN, ECF_CONST, andn, binary)
++DEF_INTERNAL_OPTAB_FN (BIT_IORN, ECF_CONST, iorn, binary)
+ 
+ #undef DEF_INTERNAL_WIDENING_OPTAB_FN
+ #undef DEF_INTERNAL_SIGNED_COND_FN
+diff --git a/gcc/optabs.def b/gcc/optabs.def
+index 48c924a26ec..6e97ce94521 100644
+--- a/gcc/optabs.def
++++ b/gcc/optabs.def
+@@ -39,7 +39,11 @@ along with GCC; see the file COPYING3.  If not see
+ 
+    The pattern may be NULL if the optab exists only for the libcalls
+    that we plan to attach to it, and there are no named patterns in
+-   the md files.  */
++   the md files.
++   WARNING: do not have a pattern name have a `c` right before a possible scalar mode,
++   csi, cdi are valid modes (complex si/di) and the match is based on which pattern is done
++   first. For an example `andc$a3` and `and$a3` with `andcsi3` will match which one comes first
++   here.  */
+ 
+ /* The extension libcalls are used for float extension.  */
+ OPTAB_CL(sext_optab, "extend$b$a2", SIGN_EXTEND, "extend", gen_extend_conv_libfunc)
+@@ -540,5 +544,5 @@ OPTAB_D (vec_shl_insert_optab, "vec_shl_insert_$a")
+ OPTAB_D (len_load_optab, "len_load_$a")
+ OPTAB_D (len_store_optab, "len_store_$a")
+ OPTAB_D (select_vl_optab, "select_vl$a")
+-OPTAB_D (andc_optab, "andc$a3")
+-OPTAB_D (iorc_optab, "iorc$a3")
++OPTAB_D (andn_optab, "andn$a3")
++OPTAB_D (iorn_optab, "iorn$a3")
+-- 
+2.47.1
+

@@ -1,14 +1,8 @@
 PKGNAME=maturin
 PKGSEC=python
-PKGDES="A tool building rust binaries as python packages"
-PKGDEP="python-3 typing-extensions"
-BUILDDEP="wheel python-build python-installer setuptools setuptools-rust llvm rustc"
+PKGDES="A tool for building Rust binaries as Python packages"
+PKGDEP="python-3 typing-extensions patchelf bzip2 xz"
+BUILDDEP="rustc llvm"
 
-ABTYPE=pep517
-NOPYTHON2=1
-
-# lld not available in LOONGARCH64 yet
-NOLTO__LOONGARCH64=1
-
-# rustc lto not available in LOONGSON3 yet
+# FIXME: ld.lld: relocation R_MIPS_64 cannot be used against local symbol
 NOLTO__LOONGSON3=1

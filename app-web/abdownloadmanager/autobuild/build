@@ -1,0 +1,20 @@
+abinfo "Building ab-download-manager..."
+chmod -v +x "$SRCDIR"/gradlew
+"$SRCDIR"/gradlew createReleaseDistributable
+
+abinfo "Installing ab-download-manager..."
+install -dvm755 "$PKGDIR/usr/lib/ab-download-manager"
+cp -rv "$SRCDIR"/desktop/app/build/compose/binaries/main-release/app/ABDownloadManager/* \
+    "$PKGDIR"/usr/lib/ab-download-manager/
+
+abinfo "Creating symbolic link to Java runtime ..."
+rm -rv  "$PKGDIR"/usr/lib/ab-download-manager/lib/runtime/
+ln -sv ../../java \
+    "$PKGDIR"/usr/lib/ab-download-manager/lib/runtime
+install -dvm755 "$PKGDIR"/usr/bin
+ln -sv ../lib/ab-download-manager/bin/ABDownloadManager \
+    "$PKGDIR"/usr/bin/ABDownloadManager
+
+abinfo "Extracting desktop icon..."
+install -Dvm644 "$SRCDIR"/desktop/app/build/compose/binaries/main-release/app/ABDownloadManager/lib/ABDownloadManager.png \
+    "$PKGDIR"/usr/share/pixmaps/ABDownloadManager.png

@@ -1,0 +1,10 @@
+PKGNAME=ab-download-manager
+PKGSEC=web
+PKGDES="A multifunctional file downloader"
+BUILDDEP="openjdk"
+PKGDEP="openjdk gcc-runtime"
+
+PKGPROV=abdownloadmanager
+
+# FIXME: kotlinMultiplatform only supported on amd64, arm64.
+FAIL_ARCH="!(amd64|arm64)"

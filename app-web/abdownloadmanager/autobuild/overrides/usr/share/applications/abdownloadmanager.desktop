@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=AB Download Manager
+Comment=Multifunctional file downloader
+Comment[zh_CN]=多功能下载器
+Comment[zh_TW]=多功能下載器
+Exec=/usr/bin/ABDownloadManager
+Icon=ABDownloadManager
+Terminal=false
+Categories=Utility;Network;
+StartupWMClass=com-abdownloadmanager-desktop-AppKt

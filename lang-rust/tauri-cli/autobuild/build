@@ -1,0 +1,10 @@
+abinfo "Building ..."
+cargo build --release \
+	-p tauri-cli \
+	--config 'profile.release.lto = true' \
+	--config 'profile.release.incremental = false' \
+	--config 'profile.release.codegen-units = 1' \
+	--config 'profile.release.strip = false'
+
+abinfo "Installing ..."
+install -Dvm755 "$SRCDIR"/target/release/cargo-tauri -t "$PKGDIR"/usr/bin/

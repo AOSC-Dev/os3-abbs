@@ -6,9 +6,13 @@ PKGSUG="openscad"
 BUILDDEP="swig pybind11 eigen-3 utfcpp doxygen"
 PKGSEC="graphics"
 PKGDES="Parametric 3D CAD modeler"
-NOLTO_LOONGSON3=1
-ABTYPE=cmakeninja
 
+#FIXME: Errors similar to the following when compiling libFreeCADGui.so:
+#/var/cache/acbs/build/acbs.6r_tjrqj/freecad/src/Gui/ViewProviderLink.cpp:2767:(.text+0x69b8c4): relocation truncated to fit: R_MIPS_TLS_LDM against `guard variable for Gui::ViewProviderLink::startEditing(int)::_editingTransform'
+#loongson3 only
+NOLTO_LOONGSON3=1
+
+ABTYPE=cmakeninja
 CMAKE_AFTER="-DCMAKE_SKIP_INSTALL_RPATH=OFF \
              -DCMAKE_INSTALL_PREFIX=/usr/lib/freecad \
              -DCMAKE_INSTALL_BINDIR=/usr/lib/freecad/bin \

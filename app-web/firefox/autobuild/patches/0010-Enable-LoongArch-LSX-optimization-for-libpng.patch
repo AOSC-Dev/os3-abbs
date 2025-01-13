@@ -1,7 +1,7 @@
-From d1a0b48707ddbd168659098bcd8c402d0854f78d Mon Sep 17 00:00:00 2001
+From bc5bcc02fdeb78b3cd302f4da60154dafb845eab Mon Sep 17 00:00:00 2001
 From: WANG Xuerui <xen0n@gentoo.org>
 Date: Wed, 4 Sep 2024 16:51:22 +0800
-Subject: [PATCH 10/12] Enable LoongArch LSX optimization for libpng
+Subject: [PATCH 10/11] Enable LoongArch LSX optimization for libpng
 
 Signed-off-by: WANG Xuerui <xen0n@gentoo.org>
 ---
@@ -10,7 +10,7 @@ Signed-off-by: WANG Xuerui <xen0n@gentoo.org>
  2 files changed, 14 insertions(+)
 
 diff --git a/media/libpng/moz.build b/media/libpng/moz.build
-index 663eb929fe..4ff8fa8841 100644
+index 663eb929fe2a..4ff8fa884115 100644
 --- a/media/libpng/moz.build
 +++ b/media/libpng/moz.build
 @@ -50,6 +50,13 @@ if CONFIG['INTEL_ARCHITECTURE']:
@@ -28,7 +28,7 @@ index 663eb929fe..4ff8fa8841 100644
      DEFINES['MOZ_PNG_USE_MIPS_MSA'] = True
      UNIFIED_SOURCES += [
 diff --git a/media/libpng/pnglibconf.h b/media/libpng/pnglibconf.h
-index 1cbb828436..8ef91386ff 100644
+index 1cbb828436de..8ef91386ffe4 100644
 --- a/media/libpng/pnglibconf.h
 +++ b/media/libpng/pnglibconf.h
 @@ -54,6 +54,13 @@
@@ -46,5 +46,5 @@ index 1cbb828436..8ef91386ff 100644
  #  undef PNG_MIPS_MSA_OPT
  #  define PNG_ALIGNED_MEMORY_SUPPORTED
 -- 
-2.47.0
+2.47.1
 

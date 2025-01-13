@@ -1,4 +1,4 @@
-From d4d253b782966181ab562268a292d240c3f72794 Mon Sep 17 00:00:00 2001
+From 5f4e5eed6ffa96e5875cf45de59f833e5e84ace1 Mon Sep 17 00:00:00 2001
 From: miwu04 <mail@alanlin.icu>
 Date: Sun, 24 Nov 2024 17:50:25 +0800
 Subject: [PATCH 2/6] Remove check update UI
@@ -95,5 +95,5 @@ index c595074..f74e4c9 100644
            <Switch
              size="sm"
 -- 
-2.47.1
+2.48.0
 

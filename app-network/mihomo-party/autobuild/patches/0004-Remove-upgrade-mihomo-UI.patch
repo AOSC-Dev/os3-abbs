@@ -1,4 +1,4 @@
-From ee4bf73c6bc2585ee741d1b8ce3cf7d826050775 Mon Sep 17 00:00:00 2001
+From dc95490fa32112d04019015f1414a2026ed83069 Mon Sep 17 00:00:00 2001
 From: miwu04 <mail@alanlin.icu>
 Date: Tue, 17 Dec 2024 00:04:04 +0800
 Subject: [PATCH 4/6] Remove upgrade mihomo UI
@@ -52,5 +52,5 @@ index d4d1d5b..02b05d0 100644
            >
              <Select
 -- 
-2.47.1
+2.48.0
 

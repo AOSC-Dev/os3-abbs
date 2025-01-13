@@ -1,4 +1,4 @@
-From db51dbc9de05bbdecda838853842d456c0cab815 Mon Sep 17 00:00:00 2001
+From 0e43fff4b2d9643d1827a5ffe00e81bd2cc3a8af Mon Sep 17 00:00:00 2001
 From: miwu04 <mail@alanlin.icu>
 Date: Tue, 17 Dec 2024 00:54:50 +0800
 Subject: [PATCH 6/6] Do not find Mihomo(Clash Meta) binary in sidecar dir
@@ -22,5 +22,5 @@ index 0ea3566..8ba99d4 100644
  
  export function mihomoCorePath(core: string): string {
 -- 
-2.47.1
+2.48.0
 

@@ -1,4 +1,4 @@
-From f0067e9c89fcaab91d961d8fd9a22dcc21a8a742 Mon Sep 17 00:00:00 2001
+From 4c311f5bb3e56d4c2559c3c04f62ae4e66e2994d Mon Sep 17 00:00:00 2001
 From: miwu04 <mail@alanlin.icu>
 Date: Tue, 17 Dec 2024 00:01:33 +0800
 Subject: [PATCH 3/6] Drop clash-meta-alpha support
@@ -30,5 +30,5 @@ index 9f24eaa..d4d1d5b 100644
            </SettingItem>
            <SettingItem title="混合端口" divider>
 -- 
-2.47.1
+2.48.0
 

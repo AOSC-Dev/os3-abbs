@@ -1,7 +1,7 @@
-From dfab64f3291f8b091e4e61d3627df5d62148dd3e Mon Sep 17 00:00:00 2001
+From 13c58add533b0ecb2336e305dcac09a9bfd27945 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Fri, 22 Mar 2024 17:26:12 +0800
-Subject: [PATCH 04/13] fix(scripts): use ABI2 (New-World) Mihomo binary for
+Subject: [PATCH 03/16] fix(scripts): use ABI2 (New-World) Mihomo binary for
  loongarch64
 
 Currently, only the alpha Mihomo binary distinguishes between abi1 (old-world)
@@ -11,10 +11,10 @@ and abi2 (new-world) binaries.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/scripts/check.mjs b/scripts/check.mjs
-index 19e2ac6..ccf6e89 100644
+index 54ec19c2..6f785e6d 100644
 --- a/scripts/check.mjs
 +++ b/scripts/check.mjs
-@@ -68,7 +68,7 @@ const META_ALPHA_MAP = {
+@@ -71,7 +71,7 @@ const META_ALPHA_MAP = {
    "linux-arm64": "mihomo-linux-arm64",
    "linux-arm": "mihomo-linux-armv7",
    "linux-riscv64": "mihomo-linux-riscv64",
@@ -24,5 +24,5 @@ index 19e2ac6..ccf6e89 100644
  
  // Fetch the latest alpha release version from the version.txt file
 -- 
-2.47.0
+2.47.1
 

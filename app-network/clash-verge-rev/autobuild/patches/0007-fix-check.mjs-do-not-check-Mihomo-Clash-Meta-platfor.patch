@@ -1,0 +1,39 @@
+From 90a0fee6640a71fadeaf02b1590bafc9e55d9924 Mon Sep 17 00:00:00 2001
+From: eatradish <sakiiily@aosc.io>
+Date: Mon, 13 Jan 2025 14:36:28 +0800
+Subject: [PATCH 07/16] fix(check.mjs): do not check Mihomo (Clash Meta)
+ platform support
+
+---
+ scripts/check.mjs | 15 ---------------
+ 1 file changed, 15 deletions(-)
+
+diff --git a/scripts/check.mjs b/scripts/check.mjs
+index 2a1d32d8..becd7a0d 100644
+--- a/scripts/check.mjs
++++ b/scripts/check.mjs
+@@ -148,21 +148,6 @@ async function getLatestReleaseVersion() {
+   }
+ }
+ 
+-/*
+- * check available
+- */
+-if (!META_MAP[`${platform}-${arch}`]) {
+-  throw new Error(
+-    `clash meta alpha unsupported platform "${platform}-${arch}"`,
+-  );
+-}
+-
+-if (!META_ALPHA_MAP[`${platform}-${arch}`]) {
+-  throw new Error(
+-    `clash meta alpha unsupported platform "${platform}-${arch}"`,
+-  );
+-}
+-
+ /**
+  * core info
+  */
+-- 
+2.47.1
+

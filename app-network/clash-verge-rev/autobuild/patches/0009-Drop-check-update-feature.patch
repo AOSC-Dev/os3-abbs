@@ -1,0 +1,174 @@
+From d233b30b4a84ae613570765d8902c399a8281233 Mon Sep 17 00:00:00 2001
+From: eatradish <sakiiily@aosc.io>
+Date: Fri, 14 Jun 2024 23:05:46 +0800
+Subject: [PATCH 09/16] Drop check update feature
+
+---
+ src/components/layout/update-button.tsx  | 47 ------------------------
+ src/components/setting/setting-verge.tsx | 32 +---------------
+ src/pages/_layout.tsx                    |  2 -
+ 3 files changed, 2 insertions(+), 79 deletions(-)
+ delete mode 100644 src/components/layout/update-button.tsx
+
+diff --git a/src/components/layout/update-button.tsx b/src/components/layout/update-button.tsx
+deleted file mode 100644
+index 93f9c3b6..00000000
+--- a/src/components/layout/update-button.tsx
++++ /dev/null
+@@ -1,47 +0,0 @@
+-import useSWR from "swr";
+-import { useRef } from "react";
+-import { Button } from "@mui/material";
+-import { check } from "@tauri-apps/plugin-updater";
+-import { UpdateViewer } from "../setting/mods/update-viewer";
+-import { DialogRef } from "../base";
+-import { useVerge } from "@/hooks/use-verge";
+-
+-interface Props {
+-  className?: string;
+-}
+-
+-export const UpdateButton = (props: Props) => {
+-  const { className } = props;
+-  const { verge } = useVerge();
+-  const { auto_check_update } = verge || {};
+-
+-  const viewerRef = useRef<DialogRef>(null);
+-
+-  const { data: updateInfo } = useSWR(
+-    auto_check_update || auto_check_update === null ? "checkUpdate" : null,
+-    check,
+-    {
+-      errorRetryCount: 2,
+-      revalidateIfStale: false,
+-      focusThrottleInterval: 36e5, // 1 hour
+-    }
+-  );
+-
+-  if (!updateInfo?.available) return null;
+-
+-  return (
+-    <>
+-      <UpdateViewer ref={viewerRef} />
+-
+-      <Button
+-        color="error"
+-        variant="contained"
+-        size="small"
+-        className={className}
+-        onClick={() => viewerRef.current?.open()}
+-      >
+-        New
+-      </Button>
+-    </>
+-  );
+-};
+diff --git a/src/components/setting/setting-verge.tsx b/src/components/setting/setting-verge.tsx
+index 3af4e0be..fcc59776 100644
+--- a/src/components/setting/setting-verge.tsx
++++ b/src/components/setting/setting-verge.tsx
+@@ -10,10 +10,9 @@ import {
+   openDevTools,
+   copyClashEnv,
+ } from "@/services/cmds";
+-import { check as checkUpdate } from "@tauri-apps/plugin-updater";
+ import { useVerge } from "@/hooks/use-verge";
+ import { version } from "@root/package.json";
+-import { DialogRef, Notice } from "@/components/base";
++import { DialogRef } from "@/components/base";
+ import { SettingList, SettingItem } from "./mods/setting-comp";
+ import { ThemeModeSwitch } from "./mods/theme-mode-switch";
+ import { ConfigViewer } from "./mods/config-viewer";
+@@ -22,8 +21,6 @@ import { MiscViewer } from "./mods/misc-viewer";
+ import { ThemeViewer } from "./mods/theme-viewer";
+ import { GuardState } from "./mods/guard-state";
+ import { LayoutViewer } from "./mods/layout-viewer";
+-import { UpdateViewer } from "./mods/update-viewer";
+-import { BackupViewer } from "./mods/backup-viewer";
+ import getSystem from "@/utils/get-system";
+ import { routers } from "@/pages/_routers";
+ import { TooltipIcon } from "@/components/base/base-tooltip-icon";
+@@ -52,31 +49,12 @@ const SettingVerge = ({ onError }: Props) => {
+   const miscRef = useRef<DialogRef>(null);
+   const themeRef = useRef<DialogRef>(null);
+   const layoutRef = useRef<DialogRef>(null);
+-  const updateRef = useRef<DialogRef>(null);
+   const backupRef = useRef<DialogRef>(null);
+ 
+   const onChangeData = (patch: Partial<IVergeConfig>) => {
+     mutateVerge({ ...verge, ...patch }, false);
+   };
+ 
+-  const onCheckUpdate = async () => {
+-    try {
+-      const info = await checkUpdate();
+-      if (!info?.available) {
+-        Notice.success(t("Currently on the Latest Version"));
+-      } else {
+-        updateRef.current?.open();
+-      }
+-    } catch (err: any) {
+-      Notice.error(err.message || err.toString());
+-    }
+-  };
+-
+-  const onCopyClashEnv = useCallback(async () => {
+-    await copyClashEnv();
+-    Notice.success(t("Copy Success"), 1000);
+-  }, []);
+-
+   return (
+     <SettingList title={t("Verge Setting")}>
+       <ThemeViewer ref={themeRef} />
+@@ -84,8 +62,6 @@ const SettingVerge = ({ onError }: Props) => {
+       <HotkeyViewer ref={hotkeyRef} />
+       <MiscViewer ref={miscRef} />
+       <LayoutViewer ref={layoutRef} />
+-      <UpdateViewer ref={updateRef} />
+-      <BackupViewer ref={backupRef} />
+ 
+       <SettingItem label={t("Language")}>
+         <GuardState
+@@ -136,9 +112,7 @@ const SettingVerge = ({ onError }: Props) => {
+ 
+       <SettingItem
+         label={t("Copy Env Type")}
+-        extra={
+-          <TooltipIcon icon={ContentCopyRounded} onClick={onCopyClashEnv} />
+-        }
++        extra={<TooltipIcon icon={ContentCopyRounded} onClick={copyClashEnv} />}
+       >
+         <GuardState
+           value={env_type ?? (OS === "windows" ? "powershell" : "bash")}
+@@ -272,8 +246,6 @@ const SettingVerge = ({ onError }: Props) => {
+ 
+       <SettingItem onClick={openLogsDir} label={t("Open Logs Dir")} />
+ 
+-      <SettingItem onClick={onCheckUpdate} label={t("Check for Updates")} />
+-
+       <SettingItem onClick={openDevTools} label={t("Open Dev Tools")} />
+ 
+       <SettingItem
+diff --git a/src/pages/_layout.tsx b/src/pages/_layout.tsx
+index 1f02b1cd..c537ee15 100644
+--- a/src/pages/_layout.tsx
++++ b/src/pages/_layout.tsx
+@@ -18,7 +18,6 @@ import { Notice } from "@/components/base";
+ import { LayoutItem } from "@/components/layout/layout-item";
+ import { LayoutControl } from "@/components/layout/layout-control";
+ import { LayoutTraffic } from "@/components/layout/layout-traffic";
+-import { UpdateButton } from "@/components/layout/update-button";
+ import { useCustomTheme } from "@/components/layout/use-custom-theme";
+ import getSystem from "@/utils/get-system";
+ import "dayjs/locale/ru";
+@@ -160,7 +159,6 @@ const Layout = () => {
+                 />
+                 <LogoSvg fill={isDark ? "white" : "black"} />
+               </div>
+-              {<UpdateButton className="the-newbtn" />}
+             </div>
+ 
+             <List className="the-menu">
+-- 
+2.47.1
+

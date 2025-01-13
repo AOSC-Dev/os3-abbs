@@ -1,0 +1,25 @@
+From f2e9333fe58f8596e5bd0f21a2a15cc03261b00a Mon Sep 17 00:00:00 2001
+From: eatradish <sakiiily@aosc.io>
+Date: Mon, 13 Jan 2025 14:33:30 +0800
+Subject: [PATCH 02/16] fix(tauri.conf.json): disable bundle distribution
+
+---
+ src-tauri/tauri.conf.json | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src-tauri/tauri.conf.json b/src-tauri/tauri.conf.json
+index e6614ea7..cab24195 100755
+--- a/src-tauri/tauri.conf.json
++++ b/src-tauri/tauri.conf.json
+@@ -1,7 +1,7 @@
+ {
+   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+   "bundle": {
+-    "active": true,
++    "active": false,
+     "longDescription": "Clash Verge Rev",
+     "icon": [
+       "icons/32x32.png",
+-- 
+2.47.1
+

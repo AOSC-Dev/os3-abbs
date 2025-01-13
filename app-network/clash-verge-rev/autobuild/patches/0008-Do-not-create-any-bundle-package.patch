@@ -1,0 +1,53 @@
+From e21adbf6efb7909a987ecfacb401466291c64a42 Mon Sep 17 00:00:00 2001
+From: eatradish <sakiiily@aosc.io>
+Date: Mon, 13 Jan 2025 14:49:46 +0800
+Subject: [PATCH 08/16] Do not create any bundle package
+
+---
+ src-tauri/tauri.linux.conf.json | 30 ------------------------------
+ 1 file changed, 30 deletions(-)
+
+diff --git a/src-tauri/tauri.linux.conf.json b/src-tauri/tauri.linux.conf.json
+index db6fa1a9..078896b6 100644
+--- a/src-tauri/tauri.linux.conf.json
++++ b/src-tauri/tauri.linux.conf.json
+@@ -1,36 +1,6 @@
+ {
+   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+   "identifier": "io.github.clash-verge-rev.clash-verge-rev",
+-  "bundle": {
+-    "targets": ["deb", "rpm"],
+-    "linux": {
+-      "deb": {
+-        "depends": ["openssl"],
+-        "desktopTemplate": "./packages/linux/clash-verge.desktop",
+-        "provides": ["clash-verge"],
+-        "conflicts": ["clash-verge"],
+-        "replaces": ["clash-verge"],
+-        "postInstallScript": "./packages/linux/post-install.sh",
+-        "preRemoveScript": "./packages/linux/pre-remove.sh"
+-      },
+-      "rpm": {
+-        "depends": ["openssl"],
+-        "desktopTemplate": "./packages/linux/clash-verge.desktop",
+-        "provides": ["clash-verge"],
+-        "conflicts": ["clash-verge"],
+-        "obsoletes": ["clash-verge"],
+-        "postInstallScript": "./packages/linux/post-install.sh",
+-        "preRemoveScript": "./packages/linux/pre-remove.sh"
+-      }
+-    },
+-    "externalBin": [
+-      "./resources/clash-verge-service",
+-      "./resources/install-service",
+-      "./resources/uninstall-service",
+-      "./sidecar/verge-mihomo",
+-      "./sidecar/verge-mihomo-alpha"
+-    ]
+-  },
+   "app": {
+     "trayIcon": {
+       "iconPath": "icons/tray-icon.ico"
+-- 
+2.47.1
+

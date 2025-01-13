@@ -1,0 +1,26 @@
+From d61c229fa9b97dbdfdce9e00acaf960b35539859 Mon Sep 17 00:00:00 2001
+From: eatradish <sakiiily@aosc.io>
+Date: Mon, 13 Jan 2025 14:34:52 +0800
+Subject: [PATCH 06/16] fix(src-tauri/tauri.conf.json): disable Mihomo (Clash
+ Meta) bundling
+
+---
+ src-tauri/tauri.conf.json | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/src-tauri/tauri.conf.json b/src-tauri/tauri.conf.json
+index cab24195..95f1ff65 100755
+--- a/src-tauri/tauri.conf.json
++++ b/src-tauri/tauri.conf.json
+@@ -11,8 +11,6 @@
+       "icons/icon.ico"
+     ],
+     "resources": ["resources"],
+-    "publisher": "Clash Verge Rev",
+-    "externalBin": ["sidecar/verge-mihomo", "sidecar/verge-mihomo-alpha"],
+     "copyright": "GNU General Public License v3.0",
+     "category": "DeveloperTool",
+     "shortDescription": "Clash Verge Rev",
+-- 
+2.47.1
+

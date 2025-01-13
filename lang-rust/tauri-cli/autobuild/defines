@@ -1,0 +1,7 @@
+PKGNAME="tauri-cli"
+PKGDES="Command line interface for building Tauri apps"
+PKGSEC=devel
+PKGDEP="bzip2 gcc-runtime glibc xz"
+BUILDDEP="rustc llvm"
+
+CARGO_AFTER="-p tauri-cli"

@@ -1,4 +1,4 @@
-VER=2.48.0
+VER=2.48.1
 
 # Use this for stable releases.
 #REL=1
@@ -9,5 +9,5 @@ SRCS="https://cdn.kernel.org/pub/software/scm/git/git-$VER.tar.gz"
 #REL=0.${RC}
 #SRCS="https://cdn.kernel.org/pub/software/scm/git/testing/git-$VER.rc$RC.tar.xz"
 
-CHKSUMS="sha256::430c94c0927a6fe5a2b57072060db545e2b151944e00180694cf301c9eb0a859"
+CHKSUMS="sha256::51b4d03b1e311ba673591210f94f24a4c5781453e1eb188822e3d9cdc04c2212"
 CHKUPDATE="anitya::id=5350"

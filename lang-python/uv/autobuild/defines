@@ -1,0 +1,8 @@
+PKGNAME=uv
+PKGSEC=utils
+BUILDDEP="llvm rustc maturin"
+PKGDEP="glibc gcc-runtime zlib bzip2"
+PKGDES="A Python package and project manager"
+
+# FIXME: ld.lld doesn't work properly on loongson3
+NOLTO__LOONGSON3=1

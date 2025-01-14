@@ -11,18 +11,18 @@ Description: Gamemode User Group Configuration
  .
  Make 'gamemode' enabled by default using
  .
- systemctl --user enable gamemoded
+ systemctl --user enable --now gamemoded
 Description-zh_CN.UTF-8: Gamemode 用户组配置要求
- 要启用 'gamemode' 的所有功能,需将用户添加到 'gamemode' 用户组。
+ 要启用‘gamemode’的所有功能，需将用户添加到‘gamemode’用户组。
  .
- 您可以使用以下命令将用户添加到 'gamemode' 用户组：
+ 您可以使用以下命令将用户添加到’gamemode‘用户组：
  .
- sudo usermod -aG gamemode <用户名>
+ sudo usermod -aG gamemode <username>
  .
- 添加用户到组,您需要注销并重新登录以使更改生效。
+ 添加用户到组，您需要注销并重新登录以使更改生效。
  .
- 设置
+ 设置：
  .
- systemctl --user enable gamemoded
+ systemctl --user enable --now gamemoded
  .
- 使得'gamemode'默认启动
+ 使得’gamemode‘默认启动。

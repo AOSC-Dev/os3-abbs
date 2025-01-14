@@ -1,4 +1,4 @@
-From 4192ee24367a1f81f6606255d6458d8a7a915eea Mon Sep 17 00:00:00 2001
+From b63bff899ec71762c76de7c26dc96e8dc1fd3217 Mon Sep 17 00:00:00 2001
 From: Student Main <studentmain@aosc.io>
 Date: Wed, 2 Oct 2024 21:29:55 +0000
 Subject: [PATCH 2/2] don't create uninstaller, adjust desktop file
@@ -8,7 +8,7 @@ Subject: [PATCH 2/2] don't create uninstaller, adjust desktop file
  1 file changed, 4 insertions(+), 34 deletions(-)
 
 diff --git a/src/calibre/linux.py b/src/calibre/linux.py
-index 8b5e69be84..51061f1f21 100644
+index 5d5a6fdef5..58704df47a 100644
 --- a/src/calibre/linux.py
 +++ b/src/calibre/linux.py
 @@ -783,8 +783,6 @@ def __init__(self, opts, info=prints, warn=None, manifest=None):
@@ -66,8 +66,8 @@ index 8b5e69be84..51061f1f21 100644
 +            if mt and 'chemical' not in mt and 'text' not in mt and 'pdf' not in mt and 'xhtml' not in mt:
                  mimetypes.add(mt)
          mimetypes.discard('application/octet-stream')
- 
-@@ -965,12 +939,8 @@ def write_mimetypes(f, extra=''):
+         mimetypes = sorted(mimetypes)
+@@ -967,12 +941,8 @@ def write_mimetypes(f, extra=''):
          MIME_BASE = 'calibre-mimetypes.xml'
          MIME = P(MIME_BASE)
          self.mime_resources.append(MIME_BASE)
@@ -82,7 +82,7 @@ index 8b5e69be84..51061f1f21 100644
      # }}}
  
  
-@@ -1134,7 +1104,7 @@ def opts_and_exts(name, op, exts, cover_opts=('--cover',), opf_opts=(),
+@@ -1135,7 +1105,7 @@ def opts_and_exts(name, op, exts, cover_opts=('--cover',), opf_opts=(),
  [Desktop Entry]
  Version=1.0
  Type=Application
@@ -92,5 +92,5 @@ index 8b5e69be84..51061f1f21 100644
  Comment=E-book library management: Convert, view, share, catalogue all your e-books
  TryExec=calibre
 -- 
-2.46.2
+2.48.1
 

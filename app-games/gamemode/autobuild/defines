@@ -3,5 +3,3 @@ PKGDES="A daemon/lib combo that allows games to request a set of optimisations b
 PKGSEC=games
 PKGDEP="glibc gcc gcc-runtime dbus libnih polkit"
 BUILDDEP="meson debconf"
-
-ABSPLITDBG=0

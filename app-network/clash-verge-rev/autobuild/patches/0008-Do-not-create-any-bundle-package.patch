@@ -1,7 +1,7 @@
 From e21adbf6efb7909a987ecfacb401466291c64a42 Mon Sep 17 00:00:00 2001
 From: eatradish <sakiiily@aosc.io>
 Date: Mon, 13 Jan 2025 14:49:46 +0800
-Subject: [PATCH 08/19] Do not create any bundle package
+Subject: [PATCH 08/20] Do not create any bundle package
 
 ---
  src-tauri/tauri.linux.conf.json | 30 ------------------------------

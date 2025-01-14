@@ -1,7 +1,7 @@
 From d233b30b4a84ae613570765d8902c399a8281233 Mon Sep 17 00:00:00 2001
 From: eatradish <sakiiily@aosc.io>
 Date: Fri, 14 Jun 2024 23:05:46 +0800
-Subject: [PATCH 09/19] Drop check update feature
+Subject: [PATCH 09/20] Drop check update feature
 
 ---
  src/components/layout/update-button.tsx  | 47 ------------------------

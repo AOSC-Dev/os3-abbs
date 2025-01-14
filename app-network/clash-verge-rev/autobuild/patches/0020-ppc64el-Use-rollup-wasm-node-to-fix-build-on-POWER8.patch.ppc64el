@@ -1,0 +1,29 @@
+From aed2221caa45b8550bfaef2f7061e8d0162a93a3 Mon Sep 17 00:00:00 2001
+From: eatradish <sakiiily@aosc.io>
+Date: Tue, 14 Jan 2025 12:09:38 +0800
+Subject: [PATCH 20/20] (ppc64el) Use `@rollup/wasm-node` to fix build on
+ POWER8
+
+---
+ package.json | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/package.json b/package.json
+index f556b2d4..e1df92ff 100644
+--- a/package.json
++++ b/package.json
+@@ -101,5 +101,10 @@
+     "endOfLine": "lf"
+   },
+   "type": "module",
+-  "packageManager": "pnpm@9.13.2"
++  "packageManager": "pnpm@9.13.2",
++  "pnpm": {
++    "overrides": {
++      "rollup": "npm:@rollup/wasm-node"
++    }
++  }
+ }
+-- 
+2.48.0
+

@@ -1,7 +1,7 @@
 From 3e01a2a50c79bef392e3794bc9ec2432c4d06472 Mon Sep 17 00:00:00 2001
 From: eatradish <sakiiily@aosc.io>
 Date: Mon, 13 Jan 2025 16:52:29 +0800
-Subject: [PATCH 15/19] Unset all release profile
+Subject: [PATCH 15/20] Unset all release profile
 
 ---
  src-tauri/Cargo.toml | 7 -------

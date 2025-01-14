@@ -1,7 +1,7 @@
 From 7d2f8ceefc92371838137d5d74715989c0cb7a97 Mon Sep 17 00:00:00 2001
 From: eatradish <sakiiily@aosc.io>
 Date: Tue, 14 Jan 2025 10:16:54 +0800
-Subject: [PATCH 17/19] Drop "Upgrade core" button
+Subject: [PATCH 17/20] Drop "Upgrade core" button
 
 ---
  .../setting/mods/clash-core-viewer.tsx        | 25 +------------------

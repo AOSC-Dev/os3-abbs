@@ -1,7 +1,7 @@
 From f7e97cfd2b8f9e83dd4cabccd56d4ac915041398 Mon Sep 17 00:00:00 2001
 From: eatradish <sakiiily@aosc.io>
 Date: Mon, 13 Jan 2025 17:20:33 +0800
-Subject: [PATCH 16/19] Do not use gcc
+Subject: [PATCH 16/20] Do not use gcc
 
 ---
  .cargo/config.toml | 5 -----

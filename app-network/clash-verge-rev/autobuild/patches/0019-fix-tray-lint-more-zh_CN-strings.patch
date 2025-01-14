@@ -1,7 +1,7 @@
 From 0b6395efb3181e44b382e36222e524d458119f3d Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 14 Jan 2025 11:15:40 +0800
-Subject: [PATCH 19/19] fix(tray): lint more zh_CN strings
+Subject: [PATCH 19/20] fix(tray): lint more zh_CN strings
 
 ---
  src-tauri/src/core/tray.rs | 6 +++---

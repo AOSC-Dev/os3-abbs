@@ -1,7 +1,7 @@
 From adf0a917db0c4a809d44601c96b48c4a4804a58f Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 14 Jan 2025 10:53:57 +0800
-Subject: [PATCH 18/19] fix(locales): clean up typesetting
+Subject: [PATCH 18/20] fix(locales): clean up typesetting
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit

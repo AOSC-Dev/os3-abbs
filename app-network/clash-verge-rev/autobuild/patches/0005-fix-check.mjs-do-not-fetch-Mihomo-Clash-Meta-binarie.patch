@@ -1,7 +1,7 @@
 From 7639d6f3811ec3da2482ad0642a177b87c2de2f0 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Sat, 23 Mar 2024 11:45:21 +0800
-Subject: [PATCH 05/19] fix(check.mjs): do not fetch Mihomo (Clash Meta)
+Subject: [PATCH 05/20] fix(check.mjs): do not fetch Mihomo (Clash Meta)
  binaries
 
 We use a system copy for this purpose.

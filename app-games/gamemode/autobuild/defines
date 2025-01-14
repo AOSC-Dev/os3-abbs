@@ -1,5 +1,6 @@
 PKGNAME=gamemode
-PKGDES="A daemon/lib combo that allows games to request a set of optimisations be temporarily applied to the host OS"
+PKGDES="A daemon to temporarily apply optimized system parameters for gaming workloads"
 PKGSEC=games
-PKGDEP="glibc gcc gcc-runtime dbus libnih polkit"
-BUILDDEP="meson debconf"
+PKGDEP="glibc gcc gcc-runtime dbus libnih polkit debconf"
+BUILDDEP="meson"
+

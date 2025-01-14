@@ -1,7 +1,7 @@
 From 9425e3af4e11139d6d716a55990e01d6899d159a Mon Sep 17 00:00:00 2001
 From: eatradish <sakiiily@aosc.io>
 Date: Mon, 13 Jan 2025 14:57:51 +0800
-Subject: [PATCH 10/16] Set core binary name as mihomo
+Subject: [PATCH 10/19] Set core binary name as mihomo
 
 ---
  scripts/check.mjs                             |  8 +++----
@@ -209,5 +209,5 @@ index 1574cc51..cfef80b2 100644
    const onCoreChange = useLockFn(async (core: string) => {
      if (core === clash_core) return;
 -- 
-2.47.1
+2.48.0
 

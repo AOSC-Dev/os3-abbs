@@ -1,7 +1,7 @@
 From f2e9333fe58f8596e5bd0f21a2a15cc03261b00a Mon Sep 17 00:00:00 2001
 From: eatradish <sakiiily@aosc.io>
 Date: Mon, 13 Jan 2025 14:33:30 +0800
-Subject: [PATCH 02/16] fix(tauri.conf.json): disable bundle distribution
+Subject: [PATCH 02/19] fix(tauri.conf.json): disable bundle distribution
 
 ---
  src-tauri/tauri.conf.json | 2 +-
@@ -21,5 +21,5 @@ index e6614ea7..cab24195 100755
      "icon": [
        "icons/32x32.png",
 -- 
-2.47.1
+2.48.0
 

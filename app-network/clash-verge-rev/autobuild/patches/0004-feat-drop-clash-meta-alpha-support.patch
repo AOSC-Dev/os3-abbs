@@ -1,7 +1,7 @@
 From 78c987f55f8960c7de5c9d526b3ab325f2a1edcf Mon Sep 17 00:00:00 2001
 From: eatradish <sakiiily@aosc.io>
 Date: Fri, 22 Mar 2024 22:45:34 +0800
-Subject: [PATCH 04/16] feat: drop clash-meta-alpha support
+Subject: [PATCH 04/19] feat: drop clash-meta-alpha support
 
 ---
  src/components/setting/mods/clash-core-viewer.tsx | 1 -
@@ -20,5 +20,5 @@ index c2301e59..1574cc51 100644
  
  export const ClashCoreViewer = forwardRef<DialogRef>((props, ref) => {
 -- 
-2.47.1
+2.48.0
 

@@ -1,7 +1,7 @@
 From 2ed6d89518ec25f724799b847e1ed54ed8721938 Mon Sep 17 00:00:00 2001
 From: eatradish <sakiiily@aosc.io>
 Date: Mon, 13 Jan 2025 16:03:51 +0800
-Subject: [PATCH 13/16] Set service install/uninstall script to /usr/libexec
+Subject: [PATCH 13/19] Set service install/uninstall script to /usr/libexec
 
 ---
  src-tauri/src/core/service.rs | 6 ++++--
@@ -28,5 +28,5 @@ index 308b5aa2..d0887276 100644
      if !install_path.exists() {
          bail!(format!("installer not found: {install_path:?}"));
 -- 
-2.47.1
+2.48.0
 

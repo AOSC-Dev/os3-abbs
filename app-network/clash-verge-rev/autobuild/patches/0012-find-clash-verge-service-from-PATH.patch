@@ -1,7 +1,7 @@
 From 1891e98a9b9f0fc00ab90d13398fef5a23129c6d Mon Sep 17 00:00:00 2001
 From: eatradish <sakiiily@aosc.io>
 Date: Mon, 13 Jan 2025 16:02:52 +0800
-Subject: [PATCH 12/16] find `clash-verge-service` from `$PATH`
+Subject: [PATCH 12/19] find `clash-verge-service` from `$PATH`
 
 ---
  src-tauri/Cargo.lock          | 29 +++++++++++++++++++++++++++--
@@ -134,5 +134,5 @@ index befdce90..308b5aa2 100644
      map.insert("config_file", config_file);
      map.insert("log_file", log_path);
 -- 
-2.47.1
+2.48.0
 

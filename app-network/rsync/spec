@@ -1,5 +1,4 @@
-VER=3.2.7
-SRCS="tbl::https://download.samba.org/pub/rsync/src/rsync-$VER.tar.gz"
-CHKSUMS="sha256::4e7d9d3f6ed10878c58c5fb724a67dacf4b6aac7340b13e488fb2dc41346f2bb"
+VER=3.4.0
+SRCS="tbl::https://download.samba.org/pub/rsync/rsync-$VER.tar.gz"
+CHKSUMS="sha256::8e942f95a44226a012fe822faffa6c7fc38c34047add3a0c941e9bc8b8b93aa4"
 CHKUPDATE="anitya::id=4217"
-REL=3

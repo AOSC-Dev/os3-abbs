@@ -1,7 +1,7 @@
 From 1c661ef6a7d56eaece9a5fecc8a4dad92419b34c Mon Sep 17 00:00:00 2001
 From: eatradish <sakiiily@aosc.io>
 Date: Mon, 13 Jan 2025 16:38:11 +0800
-Subject: [PATCH] Update nix to 0.29.0 to fix build on loongarch64
+Subject: [PATCH 1/2] Update nix to 0.29.0 to fix build on loongarch64
 
 ---
  Cargo.lock         | 25 +++++++++++++++++++++----
@@ -100,5 +100,5 @@ index e147711..ce472be 100644
  use parking_lot::Mutex;
  use std::collections::HashMap;
 -- 
-2.47.1
+2.48.0
 

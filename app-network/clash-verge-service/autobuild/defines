@@ -11,4 +11,4 @@ NOLTO__LOONGARCH64=1
 USECLANG__LOONGARCH64=0
 
 # clash-verge-rev does not support architecture
-FAIL_ARCH=!(amd64|arm64|loongarch64|ppc64el)
+FAIL_ARCH="!(amd64|arm64|loongarch64|ppc64el)"

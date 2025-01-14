@@ -1,4 +1,4 @@
-VER=2.2.7
+VER=2.3.0
 SRCS="tbl::https://github.com/openzfs/zfs/releases/download/zfs-$VER/zfs-$VER.tar.gz"
-CHKSUMS="sha256::b2b8e3bfabf2a6407a0132243726cb6762547a5bd095b1b1f37eaf2a9d8f7672"
+CHKSUMS="sha256::6e8787eab55f24c6b9c317f3fe9b0da9a665eb34c31df88ff368d9a92e9356a6"
 CHKUPDATE="anitya::id=11706"

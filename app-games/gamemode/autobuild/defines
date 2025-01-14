@@ -1,5 +1,5 @@
 PKGNAME=gamemode
 PKGDES="A daemon to temporarily apply optimized system parameters for gaming workloads"
 PKGSEC=games
-PKGDEP="glibc gcc-runtime dbus polkit debconf inih"
+PKGDEP="glibc gcc-runtime dbus polkit debconf inih systemd"
 BUILDDEP="meson"

@@ -1,4 +1,4 @@
-VER=3.0.14
+VER=3.0.18
 SRCS="tbl::https://download.sourceforge.net/gnu-efi/gnu-efi-$VER.tar.bz2"
-CHKSUMS="sha256::b73b643a0d5697d1f396d7431448e886dd805668789578e3e1a28277c9528435"
+CHKSUMS="sha256::7f212c96ee66547eeefb531267b641e5473d7d8529f0bd8ccdefd33cf7413f5c"
 CHKUPDATE="anitya::id=1202"

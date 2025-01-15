@@ -1,5 +1,5 @@
-VER=0.8.0
-REL=1
-SRCS="git::commit=v$VER;copy-repo=true::https://github.com/daeuniverse/daed.git"
-CHKSUMS="SKIP"
+VER=0.9.0
+SRCS="tbl::https://github.com/daeuniverse/daed/releases/download/v0.9.0/daed-full-src.zip"
+CHKSUMS="sha256::4ad31c5b3640906a6ef301ee06f94162cb2f5e577b1bd579f47476cae4b2dbf8"
 CHKUPDATE="anitya::id=375373"
+SUBDIR=.

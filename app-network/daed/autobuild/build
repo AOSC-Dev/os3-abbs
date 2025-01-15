@@ -13,5 +13,5 @@ install -dv "$PKGDIR"/etc/daed
 
 abinfo "Linking to geofile directory ..."
 install -dv "$PKGDIR"/usr/share/daed
-ln -sv /usr/share/v2ray-rules-dat/{geoip.dat,geosite.dat} \
+ln -sv ../v2ray-rules-dat/{geoip.dat,geosite.dat} \
     "$PKGDIR"/usr/share/daed

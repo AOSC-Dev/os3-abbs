@@ -11,7 +11,7 @@ install -Dvm644 "$SRCDIR"/example.dae "$PKGDIR"/etc/dae/config.dae.example
 
 abinfo "Linking to geofile directory ..."
 install -dv "$PKGDIR"/usr/share/dae
-ln -sv /usr/share/v2ray-rules-dat/{geoip.dat,geosite.dat} \
+ln -sv ../v2ray-rules-dat/{geoip.dat,geosite.dat} \
     "$PKGDIR"/usr/share/dae
 
 abinfo "Installing completion files ..."

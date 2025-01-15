@@ -1,5 +1,5 @@
 abinfo "Building xray ..."
-go build -o xray -ldflags "-s -w -buildid=" "$SRCDIR"/main 
+go build -o xray -ldflags "-s -w -buildid=" "$SRCDIR"/main
 
 abinfo "Installing xray ..."
 install -Dvm755 "$SRCDIR"/xray -t "$PKGDIR"/usr/bin/
@@ -7,5 +7,5 @@ install -dv "$PKGDIR"/etc/xray
 install -dv "$PKGDIR"/usr/share/xray
 
 abinfo "Linking to geofile directory ..."
-ln -sv /usr/share/v2ray-rules-dat/{geoip.dat,geosite.dat} \
+ln -sv ../v2ray-rules-dat/{geoip.dat,geosite.dat} \
     "$PKGDIR"/usr/share/xray

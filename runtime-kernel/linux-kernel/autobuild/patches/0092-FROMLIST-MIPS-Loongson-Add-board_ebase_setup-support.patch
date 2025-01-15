@@ -1,4 +1,4 @@
-From 240d55b8f530141cdde8fc8d79c52d5c126ff712 Mon Sep 17 00:00:00 2001
+From 4cba92f6cc20f3f4ae276f7163880db8e8ab4df7 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 12 Mar 2020 17:41:57 +0800
 Subject: [PATCH 092/291] FROMLIST: MIPS: Loongson: Add board_ebase_setup()

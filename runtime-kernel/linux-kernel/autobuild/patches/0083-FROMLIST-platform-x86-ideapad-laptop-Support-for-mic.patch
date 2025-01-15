@@ -1,4 +1,4 @@
-From 06f270e1472922d4be083626bfe99c344aeedf54 Mon Sep 17 00:00:00 2001
+From abbb478322cdc6c0e3ef4dcec01404448cc89261 Mon Sep 17 00:00:00 2001
 From: Jackie Dong <xy-jackie@139.com>
 Date: Thu, 19 Dec 2024 18:15:30 +0800
 Subject: [PATCH 083/291] FROMLIST: platform/x86: ideapad-laptop: Support for

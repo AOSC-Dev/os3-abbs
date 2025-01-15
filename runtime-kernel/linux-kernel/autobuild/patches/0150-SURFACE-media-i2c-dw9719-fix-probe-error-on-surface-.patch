@@ -1,4 +1,4 @@
-From bc26d9f681ab37e0effa662392baea4eda7e8ad2 Mon Sep 17 00:00:00 2001
+From 1de550805bf48dd7ab8fd8e9f9355132d4f52bb0 Mon Sep 17 00:00:00 2001
 From: mojyack <mojyack@gmail.com>
 Date: Tue, 26 Mar 2024 05:55:44 +0900
 Subject: [PATCH 150/291] SURFACE: media: i2c: dw9719: fix probe error on

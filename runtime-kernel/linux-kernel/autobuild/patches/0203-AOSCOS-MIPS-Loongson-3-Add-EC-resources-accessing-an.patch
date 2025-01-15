@@ -1,4 +1,4 @@
-From 30b29ed667da6a97d7e36fe602caaec08819a8ac Mon Sep 17 00:00:00 2001
+From bbb832d444b6b80ebae0964e93cf324438ee572b Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 203/291] AOSCOS: MIPS: Loongson 3: Add EC resources accessing

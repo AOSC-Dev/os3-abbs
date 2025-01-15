@@ -1,4 +1,4 @@
-From 367d29b57f922722d3af6f0123c143610653b6c0 Mon Sep 17 00:00:00 2001
+From 382f577005939bf4a96f6218046d04bd01d4a8bf Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Thu, 26 Dec 2024 10:13:42 +0800
 Subject: [PATCH 177/291] AOSCOS: platform: ideapad-laptop: fix if branch

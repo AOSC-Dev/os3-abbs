@@ -1,4 +1,4 @@
-From ac907132f3f77916881f205ad9ac3a71fcde61ed Mon Sep 17 00:00:00 2001
+From 8c05eeb612e848b14967640ca2bfff3f05c7cee6 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 4 Dec 2024 15:49:04 +0800
 Subject: [PATCH 192/291] AOSCOS: platform: emc1412: mark non-prototyped

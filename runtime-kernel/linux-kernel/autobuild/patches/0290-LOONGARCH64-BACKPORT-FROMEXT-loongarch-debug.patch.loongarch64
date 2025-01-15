@@ -1,4 +1,4 @@
-From d1cf178578bd4f2701c25b34ee43d0c06c7d0e5a Mon Sep 17 00:00:00 2001
+From 4b988a0dc8f3bee8d86bb1ed81bdc0cc4d2f7056 Mon Sep 17 00:00:00 2001
 From: shangyatsen <429839446@qq.com>
 Date: Mon, 11 Mar 2024 00:14:58 +0800
 Subject: [PATCH 290/291] LOONGARCH64: BACKPORT: FROMEXT: loongarch debug
@@ -288,7 +288,7 @@ index 1b97d90aadda..f11142054c1a 100644
  
  	while (size) {
 diff --git a/drivers/gpu/drm/xe/xe_query.c b/drivers/gpu/drm/xe/xe_query.c
-index 1c96375bd7df..ed041ec9f963 100644
+index 6fec5d1a1eb4..3944529703a9 100644
 --- a/drivers/gpu/drm/xe/xe_query.c
 +++ b/drivers/gpu/drm/xe/xe_query.c
 @@ -344,7 +344,7 @@ static int query_config(struct xe_device *xe, struct drm_xe_device_query *query)

@@ -1,4 +1,4 @@
-From 458b7474e3f45f6c59979100e83db94cf53aa834 Mon Sep 17 00:00:00 2001
+From 5ff3ef24a7419ad2a9f89fa2768f05fdb61524fc Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 181/291] AOSCOS: tty: serial_core: Clear TTY_IO_ERROR if

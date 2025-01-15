@@ -1,4 +1,4 @@
-From 13613cabca6a279c4c9c8dc274e284ff1d32b8d6 Mon Sep 17 00:00:00 2001
+From 590548e67d9ace2640fb1a6a07b5e6bb1a548b86 Mon Sep 17 00:00:00 2001
 From: Alex Deucher <alexander.deucher@amd.com>
 Date: Tue, 12 Nov 2024 16:37:13 -0500
 Subject: [PATCH 076/291] FROMLIST: drm/amd/display: add clear_tiling mi

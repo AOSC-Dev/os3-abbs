@@ -1,4 +1,4 @@
-From b4b57a58cee12a7a6065d296b9d1a36b7caa0f01 Mon Sep 17 00:00:00 2001
+From 46c51633c27138ef0b4c42325872145f12fb8aeb Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Mon, 16 Apr 2018 15:13:09 +0800
 Subject: [PATCH 268/291] AOSCOS: Loongson: Add LS7A pwm driver support

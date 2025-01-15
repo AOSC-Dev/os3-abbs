@@ -1,4 +1,4 @@
-From 00e8573597ae4662143960c86cd49a307482ad28 Mon Sep 17 00:00:00 2001
+From 43e3e757815025eb1bb2eae99d9914a1db4bd9d7 Mon Sep 17 00:00:00 2001
 From: Jackie Dong <xy-jackie@139.com>
 Date: Thu, 19 Dec 2024 18:15:31 +0800
 Subject: [PATCH 084/291] FROMLIST: ALSA : hda : Support for Ideapad hotkey

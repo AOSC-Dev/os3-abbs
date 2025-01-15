@@ -1,4 +1,4 @@
-From 9d961f0934f5a75a000976abd74e643defa01dba Mon Sep 17 00:00:00 2001
+From 93e1df26db9a42872be26bbdfb88f4463b842510 Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Sun, 22 Sep 2024 03:42:30 +0800
 Subject: [PATCH 156/291] AOSCOS: net: phytium: Adapt struct

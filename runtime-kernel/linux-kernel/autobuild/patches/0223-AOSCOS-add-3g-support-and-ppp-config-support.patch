@@ -1,4 +1,4 @@
-From f1128ebc6ad14994d7b4e46f50c1bf60c0774f22 Mon Sep 17 00:00:00 2001
+From f109cb4a229db7c8e9e2577127633903d11efa08 Mon Sep 17 00:00:00 2001
 From: xiangy <xiangy@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 223/291] AOSCOS: add 3g support and ppp config support
@@ -14,7 +14,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 1 insertion(+)
 
 diff --git a/drivers/usb/serial/option.c b/drivers/usb/serial/option.c
-index 64317b390d22..782855aba881 100644
+index 1e2ae0c6c41c..479a06a078e0 100644
 --- a/drivers/usb/serial/option.c
 +++ b/drivers/usb/serial/option.c
 @@ -2067,6 +2067,7 @@ static const struct usb_device_id option_ids[] = {

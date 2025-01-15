@@ -1,4 +1,4 @@
-From f356fd5359141212e729e35ebf6ca1063977d926 Mon Sep 17 00:00:00 2001
+From b4c51005e89dc195993f0c094a23dcccd60ce74b Mon Sep 17 00:00:00 2001
 From: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 Date: Tue, 12 Nov 2024 22:33:07 +0530
 Subject: [PATCH 004/291] UPSTREAM: platform/x86/amd: amd_3d_vcache: Add sysfs

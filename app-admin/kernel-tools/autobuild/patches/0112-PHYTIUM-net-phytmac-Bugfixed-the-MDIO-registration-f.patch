@@ -1,4 +1,4 @@
-From 1463238e67b068fe359eeee06b2e01ebd6d072ce Mon Sep 17 00:00:00 2001
+From 10b893c98e595b4d2f72753b34fbebb8d6688eb0 Mon Sep 17 00:00:00 2001
 From: Li Wencheng <liwencheng@phytium.com.cn>
 Date: Fri, 29 Mar 2024 16:45:04 +0800
 Subject: [PATCH 112/291] PHYTIUM: net/phytmac: Bugfixed the MDIO registration

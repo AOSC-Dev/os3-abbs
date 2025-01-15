@@ -1,4 +1,4 @@
-From 486dea5f9c7cebe9d77ab25312ae0af8b24c3514 Mon Sep 17 00:00:00 2001
+From 96ec0f42a129f974921472494cab9be26b2bf050 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Thu, 12 Dec 2024 16:05:51 +0800
 Subject: [PATCH 282/291] AOSCOS: MIPS: select ARCH_FORCE_MAX_ORDER >= 11 if

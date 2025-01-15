@@ -1,19 +1,19 @@
-VER=6.12.9
+VER=6.12.10
 
 # Note: For use inside autobuild/.
 __VER="${VER}"
 
 # Use this for stable releases.
-REL=3
+#REL=1
 # Note: In specific cases, `www.kernel.org` is faster than `cdn.kernel.org`. Change the host when appropriate.
-SRCS="tbl::https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${VER%%.0}.tar.xz"
+#SRCS="tbl::https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${VER%%.0}.tar.xz"
 
 # Use this for stable RC releases.
-#RC=1
+RC=1
 # To RFC: Increment by 0.1 per RC release, i.e., RC3 = 0.3.
-#REL=0.${RC}
-#COMMIT="cab9a964396de70339b5d65f9666da355b6c164e"
-#SRCS="tbl::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git/snapshot/linux-stable-rc-${COMMIT}.tar.gz"
+REL=0.${RC}
+COMMIT="d056ad259f16555e7fe0d129820d01fa6b6c468c"
+SRCS="tbl::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git/snapshot/linux-stable-rc-${COMMIT}.tar.gz"
 
 # Use this for mainline RC releases.
 #RC=1
@@ -21,5 +21,5 @@ SRCS="tbl::https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${VER%%.0}.tar.xz"
 #REL=0.${RC}
 #SRCS="tbl::https://git.kernel.org/torvalds/t/linux-${VER%%.0}-rc${RC}.tar.gz"
 
-CHKSUMS="sha256::87be0360df0931b340d2bac35161a548070fbc3a8c352c49e21e96666c26aeb4"
+CHKSUMS="sha256::dcc22d52cb662e998c93f830d2776b3866221dcc5daf3669121b2c2be96cbbd8"
 CHKUPDATE="anitya::id=6501"

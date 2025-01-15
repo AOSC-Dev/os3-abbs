@@ -1,4 +1,4 @@
-From a3be8022ccd4a717b05d3a89101c5278885f4494 Mon Sep 17 00:00:00 2001
+From b12b64f1952d982cd899ab6da86e5c02f1bdc0d3 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 11 Dec 2024 13:49:12 +0800
 Subject: [PATCH 249/291] AOSCOS: staging: sb105x: add missing function

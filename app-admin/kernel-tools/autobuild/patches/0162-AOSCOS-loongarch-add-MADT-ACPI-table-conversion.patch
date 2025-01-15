@@ -1,4 +1,4 @@
-From 455d906efc491e1ea6d50f13be62e5b7b4879e2e Mon Sep 17 00:00:00 2001
+From 3c239d8cdd99f042ed13cd232b653fbb82e4a63c Mon Sep 17 00:00:00 2001
 From: Miao Wang <shankerwangmiao@gmail.com>
 Date: Sat, 20 Jul 2024 06:32:15 +0800
 Subject: [PATCH 162/291] AOSCOS: loongarch: add MADT ACPI table conversion

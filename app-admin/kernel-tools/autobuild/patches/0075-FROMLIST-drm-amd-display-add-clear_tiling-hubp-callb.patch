@@ -1,4 +1,4 @@
-From a9911065c9be2e64d5af1413740a00952d3fcd5f Mon Sep 17 00:00:00 2001
+From 823d422f300aafad79775d148d44f1b5a2194bed Mon Sep 17 00:00:00 2001
 From: Alex Deucher <alexander.deucher@amd.com>
 Date: Tue, 12 Nov 2024 16:37:12 -0500
 Subject: [PATCH 075/291] FROMLIST: drm/amd/display: add clear_tiling hubp

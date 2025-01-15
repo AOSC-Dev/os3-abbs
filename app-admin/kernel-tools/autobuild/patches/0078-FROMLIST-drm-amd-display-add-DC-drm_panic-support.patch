@@ -1,4 +1,4 @@
-From ecf1772634ddc29fbcca19622b5dd982e34e5e84 Mon Sep 17 00:00:00 2001
+From 48cc0432ca54178b3e356c8d5a179390c96b64c5 Mon Sep 17 00:00:00 2001
 From: Jocelyn Falempe <jfalempe@redhat.com>
 Date: Tue, 12 Nov 2024 16:37:15 -0500
 Subject: [PATCH 078/291] FROMLIST: drm/amd/display: add DC drm_panic support

@@ -1,4 +1,4 @@
-From 135a8c8ed23d4c95d1582fe6424096f3dd2aa715 Mon Sep 17 00:00:00 2001
+From bc948c30eca8fff5ec12ba58768280bed9318720 Mon Sep 17 00:00:00 2001
 From: Haowei Zheng <zhenghaowei@loongson.cn>
 Date: Mon, 26 Aug 2024 10:47:03 +0800
 Subject: [PATCH 069/291] FROMLIST: dt-bindings: serial: Add Loongson UART

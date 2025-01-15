@@ -1,4 +1,4 @@
-From 9b8ebcc10d70dde783021210e432e0a44799a5e9 Mon Sep 17 00:00:00 2001
+From 98fcd9374549af000d29fa5e650791251cefe718 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 4 Dec 2024 17:54:37 +0800
 Subject: [PATCH 202/291] AOSCOS: input: atkbd: disable

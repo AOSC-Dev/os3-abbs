@@ -1,4 +1,4 @@
-From 1cfdd5bc19db89212ad7a8e270b4393e4c3d655e Mon Sep 17 00:00:00 2001
+From 03a2437a5ec1589bd509be2297ef2dc6bbeb4de4 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 11 Dec 2024 14:52:57 +0800
 Subject: [PATCH 251/291] AOSCOS: staging: sb105x: rename state to __state in

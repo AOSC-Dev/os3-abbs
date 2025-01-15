@@ -1,4 +1,4 @@
-From ef98c022eef8b3407289080e1c3a5d1048ce1830 Mon Sep 17 00:00:00 2001
+From ea26aff53738b534e995ecbf8aa6c764c31a4a8a Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Wed, 1 Aug 2018 14:39:20 +0800
 Subject: [PATCH 242/291] AOSCOS: drm/radeon: Modify GART TLB setting to fix

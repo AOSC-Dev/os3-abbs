@@ -1,4 +1,4 @@
-From ab72f956f49ccc1a8da7fa2fcb6b97ecc6f30b94 Mon Sep 17 00:00:00 2001
+From 14f94d0e67ed796d3d868058cb7516c11d6d9b46 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <baimingcong@uniontech.com>
 Date: Fri, 28 Jun 2024 11:45:05 +0800
 Subject: [PATCH 128/291] DEEPIN: net: ethernet: phytium: fix phytmac_platform

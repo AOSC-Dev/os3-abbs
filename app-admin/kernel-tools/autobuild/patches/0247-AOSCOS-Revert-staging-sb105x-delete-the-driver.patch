@@ -1,4 +1,4 @@
-From 4dd8d8af3e8228ef3d3b5fa8dcada04b148bce71 Mon Sep 17 00:00:00 2001
+From 86da59b68373edc9f7f5106b883211855fcee36d Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 247/291] AOSCOS: Revert "staging: sb105x: delete the driver"

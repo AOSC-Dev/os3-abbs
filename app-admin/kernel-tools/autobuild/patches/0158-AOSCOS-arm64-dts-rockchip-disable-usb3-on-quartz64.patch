@@ -1,4 +1,4 @@
-From 80bd623323f1a4f3bdef92a15956b1ebe932b8a4 Mon Sep 17 00:00:00 2001
+From 68b85db9644a655393cf77cb6404c7d91d78a82d Mon Sep 17 00:00:00 2001
 From: Icenowy Zheng <icenowy@aosc.io>
 Date: Sun, 22 Sep 2024 04:13:54 +0800
 Subject: [PATCH 158/291] AOSCOS: arm64: dts: rockchip: disable usb3 on

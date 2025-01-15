@@ -1,4 +1,4 @@
-From ba19b5e944e33a1e1c700bf44fd817178d9ebf81 Mon Sep 17 00:00:00 2001
+From 2dd9361c2f5e43d82f63af40c19342e0ab557a52 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Fri, 29 Nov 2019 09:11:38 +0800
 Subject: [PATCH 182/291] AOSCOS: MIPS: Loongson: Add constant timer support

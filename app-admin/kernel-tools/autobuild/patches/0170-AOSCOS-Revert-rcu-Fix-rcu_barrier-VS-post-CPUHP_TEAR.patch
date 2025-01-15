@@ -1,4 +1,4 @@
-From 0c9039a2590a1aa40f6f45cda4bc1fb81c973e40 Mon Sep 17 00:00:00 2001
+From 0041cc1c9b29510c5503649d9b3dd4c6f9dceb88 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 15 Oct 2024 20:32:21 +0800
 Subject: [PATCH 170/291] AOSCOS: Revert "rcu: Fix rcu_barrier() VS post

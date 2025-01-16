@@ -1,0 +1,6 @@
+abinfo "Building nexttrace ..."
+go build -ldflags "-s -w -buildid= -linkmode external \
+    -X 'github.com/nxtrace/NTrace-core/config.Version=$PKGVER' \
+    -X 'github.com/nxtrace/NTrace-core/config.CommitID=$commit' \
+    -X 'github.com/nxtrace/NTrace-core/config.BuildDate=$date'" \
+    -o "$PKGDIR"/usr/bin/nexttrace

@@ -1,0 +1,3 @@
+abinfo "Setting build information ..."
+export commit=$(git rev-parse --short HEAD)
+export date=$(date --utc +"%Y-%m-%dT%H:%M:%SZ")

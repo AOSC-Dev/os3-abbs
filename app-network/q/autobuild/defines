@@ -1,0 +1,8 @@
+PKGNAME="q"
+PKGSEC=net
+PKGDES="Command line DNS client with support for multiple protocols"
+PKGDEP="gcc-runtime"
+BUILDDEP="go"
+
+# FIXME: Autobuild does not yet support splitting debug symbols from Go executables.
+ABSPLITDBG=0

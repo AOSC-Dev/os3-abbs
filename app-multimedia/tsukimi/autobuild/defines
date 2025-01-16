@@ -7,3 +7,7 @@ PKGDEP="gcc-runtime gdk-pixbuf glib graphene gstreamer gtk-4 libadwaita mpv open
 ABTYPE=meson
 
 USECLANG=1
+
+# FIXME: ld.lld does not support loongson3
+NOLTO__LOONGSON3=1
+USECLANG__LOONGSON3=0

@@ -1,7 +1,7 @@
 From 80d7a2cf0cac578a840163fe53e989a261a6de28 Mon Sep 17 00:00:00 2001
 From: Henry Chen <henry.chen@oss.cipunited.com>
 Date: Tue, 8 Oct 2024 16:40:04 +0800
-Subject: [PATCH 37/46] kern/efi/mm: mips64: allocate more memory at
+Subject: [PATCH 37/47] kern/efi/mm: mips64: allocate more memory at
  initialization
 
 ---
@@ -9,7 +9,7 @@ Subject: [PATCH 37/46] kern/efi/mm: mips64: allocate more memory at
  1 file changed, 65 insertions(+)
 
 diff --git a/grub-core/kern/efi/mm.c b/grub-core/kern/efi/mm.c
-index 6a6fba891..9bd82c223 100644
+index 6a6fba89..9bd82c22 100644
 --- a/grub-core/kern/efi/mm.c
 +++ b/grub-core/kern/efi/mm.c
 @@ -39,7 +39,11 @@
@@ -93,5 +93,5 @@ index 6a6fba891..9bd82c223 100644
  grub_efi_mm_init (void)
  {
 -- 
-2.47.0
+2.48.0.rc2.windows.1
 

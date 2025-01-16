@@ -1,7 +1,7 @@
 From 59e7ba1bf0d63ddcd8e3d40888bcac0b7223e70e Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.xyz>
 Date: Thu, 28 Dec 2023 22:26:57 -0800
-Subject: [PATCH 14/46] grub-core: drop GRUB title from the menu
+Subject: [PATCH 14/47] grub-core: drop GRUB title from the menu
 
 We did not display it before, and it's really not very useful since we don't
 encourage reinstalling GRUB anyway.
@@ -10,7 +10,7 @@ encourage reinstalling GRUB anyway.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/grub-core/normal/main.c b/grub-core/normal/main.c
-index bd4431000..8b8565f24 100644
+index bd443100..8b8565f2 100644
 --- a/grub-core/normal/main.c
 +++ b/grub-core/normal/main.c
 @@ -209,7 +209,7 @@ grub_normal_init_page (struct grub_term_output *term,
@@ -23,5 +23,5 @@ index bd4431000..8b8565f24 100644
      return;
  
 -- 
-2.47.0
+2.48.0.rc2.windows.1
 

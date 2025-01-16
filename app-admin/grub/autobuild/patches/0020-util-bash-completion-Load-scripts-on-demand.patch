@@ -1,7 +1,7 @@
 From b69e36efa6f9745e73e9312d2db26875ce83a8fc Mon Sep 17 00:00:00 2001
 From: Gary Lin <glin@suse.com>
 Date: Tue, 30 Jan 2024 14:41:10 +0800
-Subject: [PATCH 20/46] util/bash-completion: Load scripts on demand
+Subject: [PATCH 20/47] util/bash-completion: Load scripts on demand
 
 There are two system directories for bash-completion scripts. One is
 /usr/share/bash-completion/completions/ and the other is
@@ -47,7 +47,7 @@ Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
  create mode 100644 util/bash-completion.d/grub-sparc64-setup.bash.in
 
 diff --git a/util/bash-completion.d/Makefile.am b/util/bash-completion.d/Makefile.am
-index 136287cf1..33fff9546 100644
+index 136287cf..33fff954 100644
 --- a/util/bash-completion.d/Makefile.am
 +++ b/util/bash-completion.d/Makefile.am
 @@ -1,13 +1,117 @@
@@ -175,7 +175,7 @@ index 136287cf1..33fff9546 100644
 +	$(top_builddir)/config.status --file=$@:$<
 diff --git a/util/bash-completion.d/grub-bios-setup.bash.in b/util/bash-completion.d/grub-bios-setup.bash.in
 new file mode 100644
-index 000000000..2d362b5e2
+index 00000000..2d362b5e
 --- /dev/null
 +++ b/util/bash-completion.d/grub-bios-setup.bash.in
 @@ -0,0 +1,30 @@
@@ -210,7 +210,7 @@ index 000000000..2d362b5e2
 +# End:
 +# ex: ts=4 sw=4 et filetype=sh
 diff --git a/util/bash-completion.d/grub-completion.bash.in b/util/bash-completion.d/grub-completion.bash.in
-index 213ce1e57..4c88ee901 100644
+index 213ce1e5..4c88ee90 100644
 --- a/util/bash-completion.d/grub-completion.bash.in
 +++ b/util/bash-completion.d/grub-completion.bash.in
 @@ -150,7 +150,7 @@ __grub_list_modules () {
@@ -425,7 +425,7 @@ index 213ce1e57..4c88ee901 100644
  # mode: shell-script
 diff --git a/util/bash-completion.d/grub-editenv.bash.in b/util/bash-completion.d/grub-editenv.bash.in
 new file mode 100644
-index 000000000..29b1333ea
+index 00000000..29b1333e
 --- /dev/null
 +++ b/util/bash-completion.d/grub-editenv.bash.in
 @@ -0,0 +1,30 @@
@@ -461,7 +461,7 @@ index 000000000..29b1333ea
 +# ex: ts=4 sw=4 et filetype=sh
 diff --git a/util/bash-completion.d/grub-install.bash.in b/util/bash-completion.d/grub-install.bash.in
 new file mode 100644
-index 000000000..a89fc614a
+index 00000000..a89fc614
 --- /dev/null
 +++ b/util/bash-completion.d/grub-install.bash.in
 @@ -0,0 +1,30 @@
@@ -497,7 +497,7 @@ index 000000000..a89fc614a
 +# ex: ts=4 sw=4 et filetype=sh
 diff --git a/util/bash-completion.d/grub-mkconfig.bash.in b/util/bash-completion.d/grub-mkconfig.bash.in
 new file mode 100644
-index 000000000..862e0c58f
+index 00000000..862e0c58
 --- /dev/null
 +++ b/util/bash-completion.d/grub-mkconfig.bash.in
 @@ -0,0 +1,30 @@
@@ -533,7 +533,7 @@ index 000000000..862e0c58f
 +# ex: ts=4 sw=4 et filetype=sh
 diff --git a/util/bash-completion.d/grub-mkfont.bash.in b/util/bash-completion.d/grub-mkfont.bash.in
 new file mode 100644
-index 000000000..17baccdf5
+index 00000000..17baccdf
 --- /dev/null
 +++ b/util/bash-completion.d/grub-mkfont.bash.in
 @@ -0,0 +1,30 @@
@@ -569,7 +569,7 @@ index 000000000..17baccdf5
 +# ex: ts=4 sw=4 et filetype=sh
 diff --git a/util/bash-completion.d/grub-mkimage.bash.in b/util/bash-completion.d/grub-mkimage.bash.in
 new file mode 100644
-index 000000000..a383ed3e9
+index 00000000..a383ed3e
 --- /dev/null
 +++ b/util/bash-completion.d/grub-mkimage.bash.in
 @@ -0,0 +1,30 @@
@@ -605,7 +605,7 @@ index 000000000..a383ed3e9
 +# ex: ts=4 sw=4 et filetype=sh
 diff --git a/util/bash-completion.d/grub-mkpasswd-pbkdf2.bash.in b/util/bash-completion.d/grub-mkpasswd-pbkdf2.bash.in
 new file mode 100644
-index 000000000..32b8fd6eb
+index 00000000..32b8fd6e
 --- /dev/null
 +++ b/util/bash-completion.d/grub-mkpasswd-pbkdf2.bash.in
 @@ -0,0 +1,30 @@
@@ -641,7 +641,7 @@ index 000000000..32b8fd6eb
 +# ex: ts=4 sw=4 et filetype=sh
 diff --git a/util/bash-completion.d/grub-mkrescue.bash.in b/util/bash-completion.d/grub-mkrescue.bash.in
 new file mode 100644
-index 000000000..5968ba00e
+index 00000000..5968ba00
 --- /dev/null
 +++ b/util/bash-completion.d/grub-mkrescue.bash.in
 @@ -0,0 +1,30 @@
@@ -677,7 +677,7 @@ index 000000000..5968ba00e
 +# ex: ts=4 sw=4 et filetype=sh
 diff --git a/util/bash-completion.d/grub-probe.bash.in b/util/bash-completion.d/grub-probe.bash.in
 new file mode 100644
-index 000000000..08400f2f1
+index 00000000..08400f2f
 --- /dev/null
 +++ b/util/bash-completion.d/grub-probe.bash.in
 @@ -0,0 +1,30 @@
@@ -713,7 +713,7 @@ index 000000000..08400f2f1
 +# ex: ts=4 sw=4 et filetype=sh
 diff --git a/util/bash-completion.d/grub-reboot.bash.in b/util/bash-completion.d/grub-reboot.bash.in
 new file mode 100644
-index 000000000..154aecea9
+index 00000000..154aecea
 --- /dev/null
 +++ b/util/bash-completion.d/grub-reboot.bash.in
 @@ -0,0 +1,30 @@
@@ -749,7 +749,7 @@ index 000000000..154aecea9
 +# ex: ts=4 sw=4 et filetype=sh
 diff --git a/util/bash-completion.d/grub-script-check.bash.in b/util/bash-completion.d/grub-script-check.bash.in
 new file mode 100644
-index 000000000..22d376832
+index 00000000..22d37683
 --- /dev/null
 +++ b/util/bash-completion.d/grub-script-check.bash.in
 @@ -0,0 +1,30 @@
@@ -785,7 +785,7 @@ index 000000000..22d376832
 +# ex: ts=4 sw=4 et filetype=sh
 diff --git a/util/bash-completion.d/grub-set-default.bash.in b/util/bash-completion.d/grub-set-default.bash.in
 new file mode 100644
-index 000000000..14501b4fb
+index 00000000..14501b4f
 --- /dev/null
 +++ b/util/bash-completion.d/grub-set-default.bash.in
 @@ -0,0 +1,30 @@
@@ -821,7 +821,7 @@ index 000000000..14501b4fb
 +# ex: ts=4 sw=4 et filetype=sh
 diff --git a/util/bash-completion.d/grub-sparc64-setup.bash.in b/util/bash-completion.d/grub-sparc64-setup.bash.in
 new file mode 100644
-index 000000000..6123d7b7c
+index 00000000..6123d7b7
 --- /dev/null
 +++ b/util/bash-completion.d/grub-sparc64-setup.bash.in
 @@ -0,0 +1,30 @@
@@ -856,5 +856,5 @@ index 000000000..6123d7b7c
 +# End:
 +# ex: ts=4 sw=4 et filetype=sh
 -- 
-2.47.0
+2.48.0.rc2.windows.1
 

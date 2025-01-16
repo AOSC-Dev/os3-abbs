@@ -1,7 +1,7 @@
 From 44a244b939e79586ebda49b9ab74bc03ec930295 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Thu, 10 Oct 2024 14:40:32 +0800
-Subject: [PATCH 39/46] fix(util/grub-mkrescue): fix EFI executable name for
+Subject: [PATCH 39/47] fix(util/grub-mkrescue): fix EFI executable name for
  mips64el-efi
 
 Loongson 3A4000/3B4000 firmware expects BOOTMIPS.EFI, not bootmips64el.efi.
@@ -10,7 +10,7 @@ Loongson 3A4000/3B4000 firmware expects BOOTMIPS.EFI, not bootmips64el.efi.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/util/grub-mkrescue.c b/util/grub-mkrescue.c
-index 25b861f1f..3759f522d 100644
+index 25b861f1..3759f522 100644
 --- a/util/grub-mkrescue.c
 +++ b/util/grub-mkrescue.c
 @@ -830,7 +830,7 @@ main (int argc, char *argv[])
@@ -23,5 +23,5 @@ index 25b861f1f..3759f522d 100644
        free (imgname);
  
 -- 
-2.47.0
+2.48.0.rc2.windows.1
 

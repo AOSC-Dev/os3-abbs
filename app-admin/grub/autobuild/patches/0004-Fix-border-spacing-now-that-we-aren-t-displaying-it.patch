@@ -1,14 +1,14 @@
 From e5c241ea0ea922abbb2ecb8b3140518a6e2a03cd Mon Sep 17 00:00:00 2001
 From: William Jon McCann <william.jon.mccann@gmail.com>
 Date: Fri, 7 Jun 2013 14:08:23 -0400
-Subject: [PATCH 04/46] Fix border spacing now that we aren't displaying it
+Subject: [PATCH 04/47] Fix border spacing now that we aren't displaying it
 
 ---
  grub-core/normal/menu_text.c | 6 +++---
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/grub-core/normal/menu_text.c b/grub-core/normal/menu_text.c
-index b147e0657..e5960fd65 100644
+index b147e065..e5960fd6 100644
 --- a/grub-core/normal/menu_text.c
 +++ b/grub-core/normal/menu_text.c
 @@ -334,12 +334,12 @@ grub_menu_init_page (int nested, int edit,
@@ -28,5 +28,5 @@ index b147e0657..e5960fd65 100644
    geo->timeout_lines = 2;
  
 -- 
-2.47.0
+2.48.0.rc2.windows.1
 

@@ -1,4 +1,4 @@
-VER=2.3.4
+VER=3.1.0
 REL=3
 SRCS="git::commit=tags/v$VER::https://github.com/devttys0/binwalk"
 CHKSUMS="SKIP"

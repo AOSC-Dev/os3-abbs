@@ -1,8 +1,6 @@
 PKGNAME=binwalk
 PKGSEC=devel
-PKGDEP="python-3"
-PKGSUG="bzip2 cabextract capstone cpio gzip p7zip squashfs-tools tar unrar xz"
+PKGDEP="bzip2 gcc-runtime freetype fontconfig xz python-3"
+PKGSUG="cabextract capstone cpio gzip p7zip squashfs-tools tar unrar"
 PKGDES="A tool for searching a given binary image for embedded files"
-
-NOPYTHON2=1
-ABHOST=noarch
+BUILDDEP="rustc llvm"

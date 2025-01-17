@@ -1,0 +1,7 @@
+abinfo "Installing completion files ..."
+mkdir -pv "$PKGDIR"/usr/share/bash-completion/completions
+"$PKGDIR"/usr/bin/nali completion bash > "$PKGDIR"/usr/share/bash-completion/completions/nali
+mkdir -pv "$PKGDIR"/usr/share/zsh/site-functions
+"$PKGDIR"/usr/bin/nali completion zsh > "$PKGDIR"/usr/share/zsh/site-functions/_nali
+mkdir -pv "$PKGDIR"/usr/share/fish/vendor_completions.d
+"$PKGDIR"/usr/bin/nali completion fish > "$PKGDIR"/usr/share/fish/vendor_completions.d/nali.fish

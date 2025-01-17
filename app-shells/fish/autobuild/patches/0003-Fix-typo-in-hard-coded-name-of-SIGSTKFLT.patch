@@ -1,0 +1,39 @@
+From 995e033e75eae5f4741247a965e2860c1be1e897 Mon Sep 17 00:00:00 2001
+From: Mahmoud Al-Qudsi <mqudsi@neosmart.net>
+Date: Mon, 23 Dec 2024 14:29:00 -0600
+Subject: [PATCH 3/3] Fix typo in hard-coded name of SIGSTKFLT
+
+---
+ Cargo.lock    | 2 +-
+ src/signal.rs | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index c5d216c53..394e7d328 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -112,7 +112,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "fish"
+-version = "4.0.0-alpha1"
++version = "4.0.0-beta.1"
+ dependencies = [
+  "bitflags",
+  "cc",
+diff --git a/src/signal.rs b/src/signal.rs
+index 699ff455c..26f4b19c2 100644
+--- a/src/signal.rs
++++ b/src/signal.rs
+@@ -402,7 +402,7 @@ const SIGNAL_TABLE : &[LookupEntry] = &[
+     LookupEntry::new(libc::SIGINFO,   L!("SIGINFO"), L!("Information request")),
+ 
+     #[cfg(all(target_os = "linux", not(target_arch = "mips64")))]
+-    LookupEntry::new(libc::SIGSTKFLT, L!("SISTKFLT"), L!("Stack fault")),
++    LookupEntry::new(libc::SIGSTKFLT, L!("SIGSTKFLT"), L!("Stack fault")),
+ 
+     #[cfg(target_os = "linux")]
+     LookupEntry::new(libc::SIGIOT,   L!("SIGIOT"), L!("Abort (Alias for SIGABRT)")),
+-- 
+2.47.1
+

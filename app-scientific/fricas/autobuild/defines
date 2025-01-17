@@ -1,0 +1,7 @@
+PKGNAME=fricas
+PKGSEC=math
+PKGDEP="gawk x11-lib ecl"
+PKGSUG="texlive"
+PKGDES="An advanced computer algebra system"
+
+AUTOTOOLS_AFTER=" --prefix=/usr --with-lisp=/usr/bin/ecl"

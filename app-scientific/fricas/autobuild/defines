@@ -1,0 +1,53 @@
+PKGNAME=fricas
+PKGSEC=math
+
+# Note: x11-lib is used in the HyperDoc.
+PKGDEP__SBCL="gawk x11-lib sbcl"
+PKGDEP__ECL="gawk x11-lib ecl"
+PKGDEP__AMD64="$PKGDEP__SBCL"
+
+# FIXME: Continue out of heap while build with sbcl on PPC64EL and ARM64
+#PKGDEP__PPC64EL="$PKGDEP__SBCL"
+#PKGDEP__ARM64="$PKGDEP__SBCL"
+PKGDEP="$PKGDEP__ECL"
+
+# Note: Ref. https://fricas.github.io/install.html#latex-optional
+PKGSUG="texlive emacs"
+
+# Note: In order to build the graphical examples, xvfb
+# must be used, it is in this package. From FriCAS document
+# 
+#     If you compile FriCAS from the FriCAS git repository, 
+#     and configure does not detect the xvfb-run program, 
+#     then graphic examples will not be built. This results 
+#     in broken HyperDoc pages – all graphic examples will 
+#     be missing (and trying to access them will crash hypertex).
+#
+# Ref. https://fricas.github.io/install.html#hyperdoc-and-graphics
+#
+# FIXME: Disable now, since fricas2d have bug related to
+# "double free or corruption (!prev)", and I can't fix it:P
+#
+#BUILDDEP="xorg-server"
+
+PKGDES="General purpose computer algebra system"
+
+AUTOTOOLS_AFTER__ECL=(
+    --with-lisp=ecl
+)
+AUTOTOOLS_AFTER__SBCL=(
+    --with-lisp='sbcl --dynamic-space-size 4096'
+    --enable-gmp
+)
+AUTOTOOLS_AFTER__AMD64=("${AUTOTOOLS_AFTER__SBCL[@]}")
+
+# FIXME: Continue out of heap while build with sbcl on PPC64EL and ARM64
+#AUTOTOOLS_AFTER__ARM64="$AUTOTOOLS_AFTER__SBCL"
+#AUTOTOOLS_AFTER__PPC64EL="$AUTOTOOLS_AFTER__SBCL"
+AUTOTOOLS_AFTER=("${AUTOTOOLS_AFTER__ECL[@]}")
+
+# Note: Else sbcl version of the software will not run,
+# it seems FRICASsys got a lot of things inside.
+ABSTRIP__AMD64=0
+ABSTRIP__PPC64EL=0
+ABSTRIP__ARM64=0

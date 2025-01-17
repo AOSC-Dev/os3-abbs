@@ -1,7 +1,7 @@
 From e4e7a42521c5b178a86caf1ac950dfc1f79e0a30 Mon Sep 17 00:00:00 2001
 From: Heiher <r@hev.cc>
 Date: Fri, 13 Jan 2017 16:02:41 +0800
-Subject: [PATCH 27/46] mips64: Add support for Loongson.
+Subject: [PATCH 27/47] mips64: Add support for Loongson.
 
 ---
  configure.ac                            |   6 +-
@@ -21,7 +21,7 @@ Subject: [PATCH 27/46] mips64: Add support for Loongson.
  create mode 100644 include/grub/mips64/efi/loongson.h
 
 diff --git a/configure.ac b/configure.ac
-index 9a29936a7..50154e2b6 100644
+index 9a29936a..50154e2b 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -110,15 +110,15 @@ case "$target_cpu" in
@@ -44,7 +44,7 @@ index 9a29936a7..50154e2b6 100644
  		;;
    arm*)		target_cpu=arm ;;
 diff --git a/grub-core/Makefile.am b/grub-core/Makefile.am
-index 6b6089817..2d8c1b982 100644
+index 6b608981..2d8c1b98 100644
 --- a/grub-core/Makefile.am
 +++ b/grub-core/Makefile.am
 @@ -243,6 +243,7 @@ if COND_mips64_efi
@@ -56,7 +56,7 @@ index 6b6089817..2d8c1b982 100644
  
  if COND_powerpc_ieee1275
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index a0152bb71..3ee912c45 100644
+index a0152bb7..3ee912c4 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
 @@ -337,6 +337,9 @@ kernel = {
@@ -70,7 +70,7 @@ index a0152bb71..3ee912c45 100644
    powerpc_ieee1275 = kern/powerpc/cache.S;
    powerpc_ieee1275 = kern/powerpc/dl.c;
 diff --git a/grub-core/kern/mips64/efi/init.c b/grub-core/kern/mips64/efi/init.c
-index 074736db9..9a4e68727 100644
+index 074736db..9a4e6872 100644
 --- a/grub-core/kern/mips64/efi/init.c
 +++ b/grub-core/kern/mips64/efi/init.c
 @@ -24,21 +24,61 @@
@@ -139,7 +139,7 @@ index 074736db9..9a4e68727 100644
  }
 diff --git a/grub-core/kern/mips64/efi/loongson.c b/grub-core/kern/mips64/efi/loongson.c
 new file mode 100644
-index 000000000..542294a98
+index 00000000..542294a9
 --- /dev/null
 +++ b/grub-core/kern/mips64/efi/loongson.c
 @@ -0,0 +1,32 @@
@@ -177,7 +177,7 @@ index 000000000..542294a98
 +}
 diff --git a/grub-core/lib/mips64/efi/loongson.c b/grub-core/lib/mips64/efi/loongson.c
 new file mode 100644
-index 000000000..19eefeb4a
+index 00000000..19eefeb4
 --- /dev/null
 +++ b/grub-core/lib/mips64/efi/loongson.c
 @@ -0,0 +1,492 @@
@@ -675,7 +675,7 @@ index 000000000..19eefeb4a
 +}
 diff --git a/grub-core/lib/mips64/efi/loongson_asm.S b/grub-core/lib/mips64/efi/loongson_asm.S
 new file mode 100644
-index 000000000..c3d1c91dd
+index 00000000..c3d1c91d
 --- /dev/null
 +++ b/grub-core/lib/mips64/efi/loongson_asm.S
 @@ -0,0 +1,60 @@
@@ -740,7 +740,7 @@ index 000000000..c3d1c91dd
 +
 +	.set		pop
 diff --git a/grub-core/loader/mips64/linux.c b/grub-core/loader/mips64/linux.c
-index 84f9f2f81..afa508f81 100644
+index 84f9f2f8..afa508f8 100644
 --- a/grub-core/loader/mips64/linux.c
 +++ b/grub-core/loader/mips64/linux.c
 @@ -27,19 +27,24 @@
@@ -1080,7 +1080,7 @@ index 84f9f2f81..afa508f81 100644
        goto fail;
 diff --git a/include/grub/mips64/efi/loongson.h b/include/grub/mips64/efi/loongson.h
 new file mode 100644
-index 000000000..a5aaec263
+index 00000000..a5aaec26
 --- /dev/null
 +++ b/include/grub/mips64/efi/loongson.h
 @@ -0,0 +1,305 @@
@@ -1390,7 +1390,7 @@ index 000000000..a5aaec263
 +EXPORT_FUNC (grub_efi_loongson_memmap_sort) (struct memmap array[], grub_uint32_t length, mem_map * bpmem, grub_uint32_t index, grub_uint32_t memtype);
 +#endif /* ! GRUB_EFI_LOONGSON_HEADER */
 diff --git a/include/grub/mips64/efi/memory.h b/include/grub/mips64/efi/memory.h
-index 52e6ae6eb..e4063783f 100644
+index 52e6ae6e..e4063783 100644
 --- a/include/grub/mips64/efi/memory.h
 +++ b/include/grub/mips64/efi/memory.h
 @@ -1,6 +1,6 @@
@@ -1402,5 +1402,5 @@ index 52e6ae6eb..e4063783f 100644
  
  #endif /* ! GRUB_MEMORY_CPU_HEADER */
 -- 
-2.47.0
+2.48.0.rc2.windows.1
 

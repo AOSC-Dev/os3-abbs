@@ -1,7 +1,7 @@
 From 828d7983742c9336e8a512b1bd4ec74cb3e4ec33 Mon Sep 17 00:00:00 2001
 From: "Lain \"Fearyncess\" Yang" <fsf@live.com>
 Date: Mon, 28 Aug 2023 12:03:46 +0800
-Subject: [PATCH 30/46] loader/mips64/linux: drop argv[] args when calling
+Subject: [PATCH 30/47] loader/mips64/linux: drop argv[] args when calling
  grub_initrd_load()
 
 ---
@@ -9,7 +9,7 @@ Subject: [PATCH 30/46] loader/mips64/linux: drop argv[] args when calling
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/grub-core/loader/mips64/linux.c b/grub-core/loader/mips64/linux.c
-index 226207303..514335e47 100644
+index 22620730..514335e4 100644
 --- a/grub-core/loader/mips64/linux.c
 +++ b/grub-core/loader/mips64/linux.c
 @@ -523,7 +523,7 @@ grub_cmd_initrd (grub_command_t cmd __attribute__ ((unused)),
@@ -22,5 +22,5 @@ index 226207303..514335e47 100644
  
    grub_snprintf ((char *) linux_args_addr + rd_addr_arg_off,
 -- 
-2.47.0
+2.48.0.rc2.windows.1
 

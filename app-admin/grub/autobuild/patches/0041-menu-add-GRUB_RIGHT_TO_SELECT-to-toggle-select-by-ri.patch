@@ -1,7 +1,7 @@
 From e4beb231ba77c3cd3a0afa182c707d8cce1197ff Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Thu, 14 Nov 2024 19:33:38 +0800
-Subject: [PATCH 41/46] menu: add GRUB_RIGHT_TO_SELECT to toggle
+Subject: [PATCH 41/47] menu: add GRUB_RIGHT_TO_SELECT to toggle
  select-by-right-arrow-key
 
 Normally, GRUB allows using a combination of the Return/Enter (`\n' and
@@ -23,7 +23,7 @@ Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
  4 files changed, 29 insertions(+), 4 deletions(-)
 
 diff --git a/docs/grub.texi b/docs/grub.texi
-index acf6f4428..7ae4f4886 100644
+index acf6f442..7ae4f488 100644
 --- a/docs/grub.texi
 +++ b/docs/grub.texi
 @@ -1593,6 +1593,10 @@ This option may be set to a list of GRUB module names separated by spaces.
@@ -38,7 +38,7 @@ index acf6f4428..7ae4f4886 100644
  
  The following options are still accepted for compatibility with existing
 diff --git a/grub-core/normal/menu.c b/grub-core/normal/menu.c
-index 6a90e091f..78566b264 100644
+index 6a90e091..78566b26 100644
 --- a/grub-core/normal/menu.c
 +++ b/grub-core/normal/menu.c
 @@ -32,6 +32,7 @@
@@ -88,7 +88,7 @@ index 6a90e091f..78566b264 100644
  	    case GRUB_TERM_ESC:
  	      if (nested)
 diff --git a/util/grub-mkconfig.in b/util/grub-mkconfig.in
-index 73a973b25..b15bfc13a 100644
+index 73a973b2..b15bfc13 100644
 --- a/util/grub-mkconfig.in
 +++ b/util/grub-mkconfig.in
 @@ -254,7 +254,8 @@ export GRUB_DEFAULT \
@@ -102,7 +102,7 @@ index 73a973b25..b15bfc13a 100644
  if test "x${grub_cfg}" != "x"; then
    rm -f "${grub_cfg}.new"
 diff --git a/util/grub.d/00_header.in b/util/grub.d/00_header.in
-index 5e17a9db4..0adf84019 100644
+index 5e17a9db..0adf8401 100644
 --- a/util/grub.d/00_header.in
 +++ b/util/grub.d/00_header.in
 @@ -37,6 +37,7 @@ if [ "x${GRUB_DEFAULT}" = "x" ] ; then GRUB_DEFAULT=0 ; fi
@@ -123,5 +123,5 @@ index 5e17a9db4..0adf84019 100644
 +set right_to_select=${GRUB_RIGHT_TO_SELECT}
 +EOF
 -- 
-2.47.0
+2.48.0.rc2.windows.1
 

@@ -1,7 +1,7 @@
 From e5d36fc00b3467b49851f20effb4e9c3400e73ce Mon Sep 17 00:00:00 2001
 From: "Lain \"Fearyncess\" Yang" <fsf@live.com>
 Date: Mon, 28 Aug 2023 11:59:42 +0800
-Subject: [PATCH 28/46] loader/mips64/linux: fix missing type args while
+Subject: [PATCH 28/47] loader/mips64/linux: fix missing type args while
  loading kernel
 
 ---
@@ -9,7 +9,7 @@ Subject: [PATCH 28/46] loader/mips64/linux: fix missing type args while
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/grub-core/loader/mips64/linux.c b/grub-core/loader/mips64/linux.c
-index afa508f81..226207303 100644
+index afa508f8..22620730 100644
 --- a/grub-core/loader/mips64/linux.c
 +++ b/grub-core/loader/mips64/linux.c
 @@ -21,6 +21,7 @@
@@ -30,5 +30,5 @@ index afa508f81..226207303 100644
      return grub_errno;
  
 -- 
-2.47.0
+2.48.0.rc2.windows.1
 

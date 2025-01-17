@@ -1,0 +1,32 @@
+From ebbcb82e52d2882396c50eac2366b63e648b8ca4 Mon Sep 17 00:00:00 2001
+From: "jingyu.li01" <jingyu.li01@sophgo.com>
+Date: Tue, 2 Jan 2024 10:09:53 +0800
+Subject: [PATCH 47/47] SOPHGO: include/grub/riscv64: modify efi_max_usable
+ addr
+
+This is a temporary solution for relocation overflow on a segmented memory
+layout.
+
+Signed-off-by: jingyu.li01 <jingyu.li01@sophgo.com>
+
+Link: https://github.com/sophgo/grub/commit/7ab0dc548f8221a9c336a1682df9f729b975c7ff
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ include/grub/riscv64/efi/memory.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/grub/riscv64/efi/memory.h b/include/grub/riscv64/efi/memory.h
+index c6cb3241..eb6f1bb8 100644
+--- a/include/grub/riscv64/efi/memory.h
++++ b/include/grub/riscv64/efi/memory.h
+@@ -1,6 +1,6 @@
+ #ifndef GRUB_MEMORY_CPU_HEADER
+ #include <grub/efi/memory.h>
+ 
+-#define GRUB_EFI_MAX_USABLE_ADDRESS 0xffffffffffffULL
++#define GRUB_EFI_MAX_USABLE_ADDRESS 0xffffffffULL
+ 
+ #endif /* ! GRUB_MEMORY_CPU_HEADER */
+-- 
+2.48.0.rc2.windows.1
+

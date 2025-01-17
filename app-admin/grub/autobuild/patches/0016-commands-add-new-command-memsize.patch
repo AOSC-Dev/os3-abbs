@@ -1,7 +1,7 @@
 From 71cb4fcc6a76c5cdc3a629351097a73c664fb6f5 Mon Sep 17 00:00:00 2001
 From: Xinhui Yang <cyan@cyano.uk>
 Date: Fri, 10 Nov 2023 10:57:02 +0800
-Subject: [PATCH 16/46] commands: add new command memsize
+Subject: [PATCH 16/47] commands: add new command memsize
 
 - This command traverses the entire GRUB memory map, adds the size of each
   region together. The result is the total amount of system memory
@@ -41,7 +41,7 @@ Signed-off-by: Xinhui Yang <cyan@cyano.uk>
  create mode 100644 grub-core/commands/memsize.c
 
 diff --git a/docs/grub.texi b/docs/grub.texi
-index 974bc0ddb..acf6f4428 100644
+index 974bc0dd..acf6f442 100644
 --- a/docs/grub.texi
 +++ b/docs/grub.texi
 @@ -4379,6 +4379,7 @@ you forget a command, you can run the command @command{help}
@@ -122,7 +122,7 @@ index 974bc0ddb..acf6f4428 100644
  @subsection md5sum
  
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 1571421d7..b3b847766 100644
+index 1571421d..b3b84776 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
 @@ -1033,6 +1033,11 @@ module = {
@@ -139,7 +139,7 @@ index 1571421d7..b3b847766 100644
    common = commands/minicmd.c;
 diff --git a/grub-core/commands/memsize.c b/grub-core/commands/memsize.c
 new file mode 100644
-index 000000000..b5ab52f4b
+index 00000000..b5ab52f4
 --- /dev/null
 +++ b/grub-core/commands/memsize.c
 @@ -0,0 +1,233 @@
@@ -377,5 +377,5 @@ index 000000000..b5ab52f4b
 +  grub_unregister_extcmd (cmd);
 +}
 -- 
-2.47.0
+2.48.0.rc2.windows.1
 

@@ -1,7 +1,7 @@
 From 0ec6cd51f5f49d1c2b82737279589431427f3838 Mon Sep 17 00:00:00 2001
 From: Xinhui Yang <cyan@cyano.uk>
 Date: Fri, 12 Jan 2024 22:21:55 +0800
-Subject: [PATCH 19/46] po: add patch to disable parallel execution
+Subject: [PATCH 19/47] po: add patch to disable parallel execution
 
 - `msgfilter' might fail while processing de.po to generate de_CH.po, if
   there are too many prarallel jobs.
@@ -17,7 +17,7 @@ Subject: [PATCH 19/46] po: add patch to disable parallel execution
  create mode 100644 po/gettext-patches/0005-po-Makefile.in.in-disable-parallel-execution.patch
 
 diff --git a/bootstrap.conf b/bootstrap.conf
-index 7a7813d28..a7b3c657f 100644
+index 7a7813d2..a7b3c657 100644
 --- a/bootstrap.conf
 +++ b/bootstrap.conf
 @@ -90,7 +90,8 @@ bootstrap_post_import_hook () {
@@ -31,7 +31,7 @@ index 7a7813d28..a7b3c657f 100644
        < "po/gettext-patches/$patchname.patch"
    done
 diff --git a/conf/Makefile.extra-dist b/conf/Makefile.extra-dist
-index 5e7126f98..d21702f11 100644
+index 5e7126f9..d21702f1 100644
 --- a/conf/Makefile.extra-dist
 +++ b/conf/Makefile.extra-dist
 @@ -112,6 +112,7 @@ EXTRA_DIST += po/gettext-patches/0001-Support-POTFILES-shell.patch
@@ -44,7 +44,7 @@ index 5e7126f98..d21702f11 100644
  EXTRA_DIST += po/README
 diff --git a/po/gettext-patches/0005-po-Makefile.in.in-disable-parallel-execution.patch b/po/gettext-patches/0005-po-Makefile.in.in-disable-parallel-execution.patch
 new file mode 100644
-index 000000000..0cef9fafe
+index 00000000..0cef9faf
 --- /dev/null
 +++ b/po/gettext-patches/0005-po-Makefile.in.in-disable-parallel-execution.patch
 @@ -0,0 +1,27 @@
@@ -76,5 +76,5 @@ index 000000000..0cef9fafe
 +2.39.1
 +
 -- 
-2.47.0
+2.48.0.rc2.windows.1
 

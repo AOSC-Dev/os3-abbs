@@ -1,14 +1,14 @@
 From cb1215b5499cb16020d9cca639d95ca0ba31b642 Mon Sep 17 00:00:00 2001
 From: Henry Chen <chenx97@aosc.io>
 Date: Mon, 7 Oct 2024 15:32:14 +0800
-Subject: [PATCH 36/46] loader/mips64: fix warnings and style
+Subject: [PATCH 36/47] loader/mips64: fix warnings and style
 
 ---
  grub-core/loader/mips64/linux.c | 82 ++++++++++++++++++---------------
  1 file changed, 44 insertions(+), 38 deletions(-)
 
 diff --git a/grub-core/loader/mips64/linux.c b/grub-core/loader/mips64/linux.c
-index 514335e47..6b6cac273 100644
+index 514335e4..6b6cac27 100644
 --- a/grub-core/loader/mips64/linux.c
 +++ b/grub-core/loader/mips64/linux.c
 @@ -124,11 +124,11 @@ grub_linux_boot (void)
@@ -141,5 +141,5 @@ index 514335e47..6b6cac273 100644
    if (linux_size == 0)
      return grub_errno;
 -- 
-2.47.0
+2.48.0.rc2.windows.1
 

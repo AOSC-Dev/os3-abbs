@@ -1,7 +1,7 @@
 From 8ea6cc861054a03a1b437356a0b9b114a0d21adf Mon Sep 17 00:00:00 2001
 From: Peter Jones <pjones@redhat.com>
 Date: Fri, 21 Jun 2013 14:44:08 -0400
-Subject: [PATCH 07/46] Use -2 instead of -1 for our right-hand margin, so
+Subject: [PATCH 07/47] Use -2 instead of -1 for our right-hand margin, so
  linewrapping works (#976643).
 
 Signed-off-by: Peter Jones <grub2-owner@fedoraproject.org>
@@ -10,7 +10,7 @@ Signed-off-by: Peter Jones <grub2-owner@fedoraproject.org>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/grub-core/normal/menu_text.c b/grub-core/normal/menu_text.c
-index 371524bf2..f83f7ca54 100644
+index 371524bf..f83f7ca5 100644
 --- a/grub-core/normal/menu_text.c
 +++ b/grub-core/normal/menu_text.c
 @@ -337,7 +337,7 @@ grub_menu_init_page (int nested, int edit,
@@ -23,5 +23,5 @@ index 371524bf2..f83f7ca54 100644
    geo->first_entry_y = 3; /* three empty lines*/
  
 -- 
-2.47.0
+2.48.0.rc2.windows.1
 

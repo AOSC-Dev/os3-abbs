@@ -1,14 +1,14 @@
 From c8aa509735011d988096e8166075244ee47d8650 Mon Sep 17 00:00:00 2001
 From: Xinhui Yang <cyan@cyano.uk>
 Date: Sat, 16 Nov 2024 21:50:12 +0800
-Subject: [PATCH 43/46] gitignore: reconsider PO files and grub.pot template
+Subject: [PATCH 43/47] gitignore: reconsider PO files and grub.pot template
 
 ---
  .gitignore | 3 ---
  1 file changed, 3 deletions(-)
 
 diff --git a/.gitignore b/.gitignore
-index 4d0dfb700..7523b9895 100644
+index 4d0dfb70..7523b989 100644
 --- a/.gitignore
 +++ b/.gitignore
 @@ -245,8 +245,6 @@ widthspec.bin
@@ -29,5 +29,5 @@ index 4d0dfb700..7523b9895 100644
  /po/stamp-po
  /printf_test
 -- 
-2.47.0
+2.48.0.rc2.windows.1
 

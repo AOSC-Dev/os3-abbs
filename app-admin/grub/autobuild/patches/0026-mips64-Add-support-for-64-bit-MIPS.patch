@@ -1,7 +1,7 @@
 From 61a3db3ad1e300a531aaa7dcdd4bf496f1b5be65 Mon Sep 17 00:00:00 2001
 From: Heiher <r@hev.cc>
 Date: Mon, 9 Jan 2017 14:42:41 +0800
-Subject: [PATCH 26/46] mips64: Add support for 64-bit MIPS.
+Subject: [PATCH 26/47] mips64: Add support for 64-bit MIPS.
 
 ---
  configure.ac                         |  21 +-
@@ -73,7 +73,7 @@ Subject: [PATCH 26/46] mips64: Add support for 64-bit MIPS.
  create mode 100644 include/grub/mips64/types.h
 
 diff --git a/configure.ac b/configure.ac
-index cd667a2eb..9a29936a7 100644
+index cd667a2e..9a29936a 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -109,7 +109,11 @@ case "$target_cpu" in
@@ -143,7 +143,7 @@ index cd667a2eb..9a29936a7 100644
    fi
    grub_CHECK_LINK_DIR
 diff --git a/gentpl.py b/gentpl.py
-index bfab2113a..3a1968705 100644
+index bfab2113..3a196870 100644
 --- a/gentpl.py
 +++ b/gentpl.py
 @@ -29,7 +29,7 @@ import re
@@ -173,7 +173,7 @@ index bfab2113a..3a1968705 100644
  GROUPS["ieee1275"]   = [ "i386_ieee1275", "sparc64_ieee1275", "powerpc_ieee1275" ]
  GROUPS["uboot"] = [ "arm_uboot" ]
 diff --git a/grub-core/Makefile.am b/grub-core/Makefile.am
-index f18550c1c..6b6089817 100644
+index f18550c1..6b608981 100644
 --- a/grub-core/Makefile.am
 +++ b/grub-core/Makefile.am
 @@ -239,6 +239,12 @@ KERNEL_HEADER_FILES += $(top_builddir)/include/grub/machine/memory.h
@@ -190,7 +190,7 @@ index f18550c1c..6b6089817 100644
  KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/ieee1275/ieee1275.h
  KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/ieee1275/alloc.h
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 542262731..a0152bb71 100644
+index 54226273..a0152bb7 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
 @@ -113,6 +113,9 @@ kernel = {
@@ -267,7 +267,7 @@ index 542262731..a0152bb71 100644
  module = {
 diff --git a/grub-core/kern/mips64/cache.S b/grub-core/kern/mips64/cache.S
 new file mode 100644
-index 000000000..e88338a8a
+index 00000000..e88338a8
 --- /dev/null
 +++ b/grub-core/kern/mips64/cache.S
 @@ -0,0 +1,22 @@
@@ -295,7 +295,7 @@ index 000000000..e88338a8a
 +	jr.hb	$ra
 diff --git a/grub-core/kern/mips64/dl.c b/grub-core/kern/mips64/dl.c
 new file mode 100644
-index 000000000..049d3187c
+index 00000000..049d3187
 --- /dev/null
 +++ b/grub-core/kern/mips64/dl.c
 @@ -0,0 +1,149 @@
@@ -450,7 +450,7 @@ index 000000000..049d3187c
 +}
 diff --git a/grub-core/kern/mips64/efi/init.c b/grub-core/kern/mips64/efi/init.c
 new file mode 100644
-index 000000000..074736db9
+index 00000000..074736db
 --- /dev/null
 +++ b/grub-core/kern/mips64/efi/init.c
 @@ -0,0 +1,44 @@
@@ -500,7 +500,7 @@ index 000000000..074736db9
 +}
 diff --git a/grub-core/kern/mips64/efi/startup.S b/grub-core/kern/mips64/efi/startup.S
 new file mode 100644
-index 000000000..d49df16ce
+index 00000000..d49df16c
 --- /dev/null
 +++ b/grub-core/kern/mips64/efi/startup.S
 @@ -0,0 +1,46 @@
@@ -552,7 +552,7 @@ index 000000000..d49df16ce
 +	.set		pop
 diff --git a/grub-core/kern/mips64/init.c b/grub-core/kern/mips64/init.c
 new file mode 100644
-index 000000000..8fd0a88a5
+index 00000000..8fd0a88a
 --- /dev/null
 +++ b/grub-core/kern/mips64/init.c
 @@ -0,0 +1,47 @@
@@ -604,7 +604,7 @@ index 000000000..8fd0a88a5
 +  grub_install_get_time_ms (grub_rtc_get_time_ms);
 +}
 diff --git a/grub-core/lib/efi/halt.c b/grub-core/lib/efi/halt.c
-index a58a747e5..0dbf13682 100644
+index a58a747e..0dbf1368 100644
 --- a/grub-core/lib/efi/halt.c
 +++ b/grub-core/lib/efi/halt.c
 @@ -30,7 +30,7 @@ grub_halt (void)
@@ -618,7 +618,7 @@ index a58a747e5..0dbf13682 100644
  #endif
 diff --git a/grub-core/lib/mips64/relocator.c b/grub-core/lib/mips64/relocator.c
 new file mode 100644
-index 000000000..9712b6f73
+index 00000000..9712b6f7
 --- /dev/null
 +++ b/grub-core/lib/mips64/relocator.c
 @@ -0,0 +1,169 @@
@@ -793,7 +793,7 @@ index 000000000..9712b6f73
 +}
 diff --git a/grub-core/lib/mips64/relocator_asm.S b/grub-core/lib/mips64/relocator_asm.S
 new file mode 100644
-index 000000000..78d40ef9e
+index 00000000..78d40ef9
 --- /dev/null
 +++ b/grub-core/lib/mips64/relocator_asm.S
 @@ -0,0 +1,56 @@
@@ -855,7 +855,7 @@ index 000000000..78d40ef9e
 +	.set pop
 diff --git a/grub-core/lib/mips64/setjmp.S b/grub-core/lib/mips64/setjmp.S
 new file mode 100644
-index 000000000..a3d0a6320
+index 00000000..a3d0a632
 --- /dev/null
 +++ b/grub-core/lib/mips64/setjmp.S
 @@ -0,0 +1,69 @@
@@ -929,7 +929,7 @@ index 000000000..a3d0a6320
 +	jr $ra
 +	nop
 diff --git a/grub-core/lib/relocator.c b/grub-core/lib/relocator.c
-index e0478ae5b..8745fca7a 100644
+index e0478ae5..8745fca7 100644
 --- a/grub-core/lib/relocator.c
 +++ b/grub-core/lib/relocator.c
 @@ -1266,6 +1266,9 @@ grub_relocator_alloc_chunk_addr (struct grub_relocator *rel,
@@ -943,7 +943,7 @@ index e0478ae5b..8745fca7a 100644
        if (malloc_in_range (rel, target, max_addr, 1, size, chunk, 1, 0))
  	break;
 diff --git a/grub-core/lib/setjmp.S b/grub-core/lib/setjmp.S
-index ffb26df79..c213cc111 100644
+index ffb26df7..c213cc11 100644
 --- a/grub-core/lib/setjmp.S
 +++ b/grub-core/lib/setjmp.S
 @@ -9,7 +9,11 @@
@@ -960,7 +960,7 @@ index ffb26df79..c213cc111 100644
  #elif defined(__ia64__)
 diff --git a/grub-core/loader/mips64/linux.c b/grub-core/loader/mips64/linux.c
 new file mode 100644
-index 000000000..84f9f2f81
+index 00000000..84f9f2f8
 --- /dev/null
 +++ b/grub-core/loader/mips64/linux.c
 @@ -0,0 +1,335 @@
@@ -1300,7 +1300,7 @@ index 000000000..84f9f2f81
 +  grub_unregister_command (cmd_initrd);
 +}
 diff --git a/grub-core/term/serial.c b/grub-core/term/serial.c
-index 8260dcb7a..1e507a734 100644
+index 8260dcb7..1e507a73 100644
 --- a/grub-core/term/serial.c
 +++ b/grub-core/term/serial.c
 @@ -22,7 +22,7 @@
@@ -1340,7 +1340,7 @@ index 8260dcb7a..1e507a734 100644
  #endif
  #ifdef GRUB_MACHINE_IEEE1275
 diff --git a/include/grub/cache.h b/include/grub/cache.h
-index 7aa8d7933..a4fda155c 100644
+index 7aa8d793..a4fda155 100644
 --- a/include/grub/cache.h
 +++ b/include/grub/cache.h
 @@ -35,7 +35,7 @@ void EXPORT_FUNC(grub_arch_sync_caches) (void *address, grub_size_t len);
@@ -1353,7 +1353,7 @@ index 7aa8d7933..a4fda155c 100644
  #elif defined (__i386__) || defined (__x86_64__)
  static inline void
 diff --git a/include/grub/dl.h b/include/grub/dl.h
-index cd1f46c8b..8db1922e5 100644
+index cd1f46c8..8db1922e 100644
 --- a/include/grub/dl.h
 +++ b/include/grub/dl.h
 @@ -188,7 +188,7 @@ struct grub_dl
@@ -1391,7 +1391,7 @@ index cd1f46c8b..8db1922e5 100644
      (defined(__riscv) && (__riscv_xlen == 64))
  #define GRUB_ARCH_DL_TRAMP_ALIGN 8
 diff --git a/include/grub/efi/pe32.h b/include/grub/efi/pe32.h
-index 4e6e9d254..5609d9bc9 100644
+index 4e6e9d25..5609d9bc 100644
 --- a/include/grub/efi/pe32.h
 +++ b/include/grub/efi/pe32.h
 @@ -84,6 +84,7 @@ struct grub_pe32_coff_header
@@ -1415,7 +1415,7 @@ index 4e6e9d254..5609d9bc9 100644
  #define GRUB_PE32_REL_BASED_SECTION		6
 diff --git a/include/grub/mips64/asm.h b/include/grub/mips64/asm.h
 new file mode 100644
-index 000000000..062bdf5e9
+index 00000000..062bdf5e
 --- /dev/null
 +++ b/include/grub/mips64/asm.h
 @@ -0,0 +1,10 @@
@@ -1431,10 +1431,10 @@ index 000000000..062bdf5e9
 +#endif
 diff --git a/include/grub/mips64/efi/boot.h b/include/grub/mips64/efi/boot.h
 new file mode 100644
-index 000000000..e69de29bb
+index 00000000..e69de29b
 diff --git a/include/grub/mips64/efi/loader.h b/include/grub/mips64/efi/loader.h
 new file mode 100644
-index 000000000..71a015977
+index 00000000..71a01597
 --- /dev/null
 +++ b/include/grub/mips64/efi/loader.h
 @@ -0,0 +1,25 @@
@@ -1465,7 +1465,7 @@ index 000000000..71a015977
 +#endif /* ! GRUB_LOADER_MACHINE_HEADER */
 diff --git a/include/grub/mips64/efi/memory.h b/include/grub/mips64/efi/memory.h
 new file mode 100644
-index 000000000..52e6ae6eb
+index 00000000..52e6ae6e
 --- /dev/null
 +++ b/include/grub/mips64/efi/memory.h
 @@ -0,0 +1,6 @@
@@ -1477,10 +1477,10 @@ index 000000000..52e6ae6eb
 +#endif /* ! GRUB_MEMORY_CPU_HEADER */
 diff --git a/include/grub/mips64/efi/time.h b/include/grub/mips64/efi/time.h
 new file mode 100644
-index 000000000..e69de29bb
+index 00000000..e69de29b
 diff --git a/include/grub/mips64/io.h b/include/grub/mips64/io.h
 new file mode 100644
-index 000000000..5f341037a
+index 00000000..5f341037
 --- /dev/null
 +++ b/include/grub/mips64/io.h
 @@ -0,0 +1,62 @@
@@ -1548,7 +1548,7 @@ index 000000000..5f341037a
 +#endif /* _SYS_IO_H */
 diff --git a/include/grub/mips64/kernel.h b/include/grub/mips64/kernel.h
 new file mode 100644
-index 000000000..909d5397d
+index 00000000..909d5397
 --- /dev/null
 +++ b/include/grub/mips64/kernel.h
 @@ -0,0 +1,24 @@
@@ -1578,7 +1578,7 @@ index 000000000..909d5397d
 +#endif /* ! GRUB_KERNEL_MACHINE_HEADER */
 diff --git a/include/grub/mips64/memory.h b/include/grub/mips64/memory.h
 new file mode 100644
-index 000000000..573a70f79
+index 00000000..573a70f7
 --- /dev/null
 +++ b/include/grub/mips64/memory.h
 @@ -0,0 +1,56 @@
@@ -1640,7 +1640,7 @@ index 000000000..573a70f79
 +#endif
 diff --git a/include/grub/mips64/mips.h b/include/grub/mips64/mips.h
 new file mode 100644
-index 000000000..a13c709e0
+index 00000000..a13c709e
 --- /dev/null
 +++ b/include/grub/mips64/mips.h
 @@ -0,0 +1,30 @@
@@ -1676,7 +1676,7 @@ index 000000000..a13c709e0
 +#endif
 diff --git a/include/grub/mips64/relocator.h b/include/grub/mips64/relocator.h
 new file mode 100644
-index 000000000..88153142a
+index 00000000..88153142
 --- /dev/null
 +++ b/include/grub/mips64/relocator.h
 @@ -0,0 +1,38 @@
@@ -1720,7 +1720,7 @@ index 000000000..88153142a
 +#endif /* ! GRUB_RELOCATOR_CPU_HEADER */
 diff --git a/include/grub/mips64/setjmp.h b/include/grub/mips64/setjmp.h
 new file mode 100644
-index 000000000..d9a0776b6
+index 00000000..d9a0776b
 --- /dev/null
 +++ b/include/grub/mips64/setjmp.h
 @@ -0,0 +1,27 @@
@@ -1753,7 +1753,7 @@ index 000000000..d9a0776b6
 +#endif /* ! GRUB_SETJMP_CPU_HEADER */
 diff --git a/include/grub/mips64/time.h b/include/grub/mips64/time.h
 new file mode 100644
-index 000000000..c9a733488
+index 00000000..c9a73348
 --- /dev/null
 +++ b/include/grub/mips64/time.h
 @@ -0,0 +1,39 @@
@@ -1798,7 +1798,7 @@ index 000000000..c9a733488
 +#endif
 diff --git a/include/grub/mips64/types.h b/include/grub/mips64/types.h
 new file mode 100644
-index 000000000..fc896c83b
+index 00000000..fc896c83
 --- /dev/null
 +++ b/include/grub/mips64/types.h
 @@ -0,0 +1,38 @@
@@ -1841,7 +1841,7 @@ index 000000000..fc896c83b
 +
 +#endif /* ! GRUB_TYPES_CPU_HEADER */
 diff --git a/include/grub/misc.h b/include/grub/misc.h
-index 1b35a167f..237764d2f 100644
+index 1b35a167..237764d2 100644
 --- a/include/grub/misc.h
 +++ b/include/grub/misc.h
 @@ -460,7 +460,7 @@ void grub_reboot (void) __attribute__ ((noreturn));
@@ -1854,7 +1854,7 @@ index 1b35a167f..237764d2f 100644
  #else
  void grub_halt (void) __attribute__ ((noreturn));
 diff --git a/include/grub/serial.h b/include/grub/serial.h
-index d7e063578..c83d91781 100644
+index d7e06357..c83d9178 100644
 --- a/include/grub/serial.h
 +++ b/include/grub/serial.h
 @@ -21,7 +21,7 @@
@@ -1885,7 +1885,7 @@ index d7e063578..c83d91781 100644
  struct grub_serial_port *grub_ns8250_spcr_init (void);
  struct grub_serial_port *grub_serial_ns8250_add_port (grub_port_t port,
 diff --git a/include/grub/util/install.h b/include/grub/util/install.h
-index 35cf17a8d..03b176985 100644
+index 35cf17a8..03b17698 100644
 --- a/include/grub/util/install.h
 +++ b/include/grub/util/install.h
 @@ -110,6 +110,7 @@ enum grub_install_plat
@@ -1897,7 +1897,7 @@ index 35cf17a8d..03b176985 100644
    };
  
 diff --git a/util/grub-install-common.c b/util/grub-install-common.c
-index ce854d86f..3fc91148b 100644
+index ce854d86..3fc91148 100644
 --- a/util/grub-install-common.c
 +++ b/util/grub-install-common.c
 @@ -914,6 +914,7 @@ static struct
@@ -1909,7 +1909,7 @@ index ce854d86f..3fc91148b 100644
      [GRUB_INSTALL_PLATFORM_POWERPC_IEEE1275] = { "powerpc",     "ieee1275"  },
      [GRUB_INSTALL_PLATFORM_IA64_EFI] =         { "ia64",        "efi"       },
 diff --git a/util/grub-install.c b/util/grub-install.c
-index 6a5f86b09..fabba39fc 100644
+index 6a5f86b0..fabba39f 100644
 --- a/util/grub-install.c
 +++ b/util/grub-install.c
 @@ -322,7 +322,11 @@ get_default_platform (void)
@@ -2009,7 +2009,7 @@ index 6a5f86b09..fabba39fc 100644
        {
  	char *dst = grub_util_path_concat (2, efidir, efi_file);
 diff --git a/util/grub-mkimagexx.c b/util/grub-mkimagexx.c
-index e50b29533..1969f1f90 100644
+index e50b2953..1969f1f9 100644
 --- a/util/grub-mkimagexx.c
 +++ b/util/grub-mkimagexx.c
 @@ -842,7 +842,11 @@ SUFFIX (relocate_addrs) (Elf_Ehdr *e, struct section_metadata *smd,
@@ -2347,7 +2347,7 @@ index e50b29533..1969f1f90 100644
        }
  
 diff --git a/util/grub-mknetdir.c b/util/grub-mknetdir.c
-index 46f304c2b..e97518ae5 100644
+index 46f304c2..e97518ae 100644
 --- a/util/grub-mknetdir.c
 +++ b/util/grub-mknetdir.c
 @@ -111,6 +111,7 @@ static const struct
@@ -2359,7 +2359,7 @@ index 46f304c2b..e97518ae5 100644
  
  static void
 diff --git a/util/grub-mkrescue.c b/util/grub-mkrescue.c
-index cfb749967..25b861f1f 100644
+index cfb74996..25b861f1 100644
 --- a/util/grub-mkrescue.c
 +++ b/util/grub-mkrescue.c
 @@ -566,6 +566,7 @@ main (int argc, char *argv[])
@@ -2390,7 +2390,7 @@ index cfb749967..25b861f1f 100644
  	{
  	  imgname = grub_util_path_concat (2, efidir_efi_boot, "boot.efi");
 diff --git a/util/grub-module-verifier.c b/util/grub-module-verifier.c
-index 91d9e8f88..6beca0802 100644
+index 91d9e8f8..6beca080 100644
 --- a/util/grub-module-verifier.c
 +++ b/util/grub-module-verifier.c
 @@ -209,6 +209,19 @@ struct grub_module_verifier_arch archs[] = {
@@ -2414,7 +2414,7 @@ index 91d9e8f88..6beca0802 100644
  
  struct platform_whitelist {
 diff --git a/util/grub-module-verifierXX.c b/util/grub-module-verifierXX.c
-index a42c20bd1..886c31983 100644
+index a42c20bd..886c3198 100644
 --- a/util/grub-module-verifierXX.c
 +++ b/util/grub-module-verifierXX.c
 @@ -378,7 +378,14 @@ section_check_relocations (const char * const modname,
@@ -2434,7 +2434,7 @@ index a42c20bd1..886c31983 100644
        if (arch->machine == EM_SPARCV9)
  	type &= 0xff;
 diff --git a/util/mkimage.c b/util/mkimage.c
-index 4237383ac..53a3fd107 100644
+index 4237383a..53a3fd10 100644
 --- a/util/mkimage.c
 +++ b/util/mkimage.c
 @@ -622,6 +622,22 @@ static const struct grub_install_image_target_desc image_targets[] =
@@ -2461,5 +2461,5 @@ index 4237383ac..53a3fd107 100644
        .dirname = "loongarch64-efi",
        .names = { "loongarch64-efi", NULL },
 -- 
-2.47.0
+2.48.0.rc2.windows.1
 

@@ -1,0 +1,41 @@
+PKGNAME=fricas
+PKGSEC=math
+
+# x11-lib is used in the HyperDoc.
+PKGDEP__SBCL="gawk x11-lib sbcl"
+PKGDEP__ECL="gawk x11-lib ecl"
+PKGDEP__AMD64="$PKGDEP__SBCL"
+
+# FIXME: Continue out of heap while build
+#PKGDEP__PPC64EL="$PKGDEP__SBCL"
+#PKGDEP__ARM64="$PKGDEP__SBCL"
+PKGDEP="$PKGDEP__ECL"
+
+PKGSUG="texlive emacs"
+
+# In order to build the graphic examples, xvfb
+# must be used, it is in this package.
+#
+# FIXME: Disable now, since fricas2d have bug related to
+# "double free or corruption (!prev)", and I can't fix it:P
+#
+# BUILDDEP="xorg-server"
+
+PKGDES="An advanced computer algebra system"
+
+AUTOTOOLS_AFTER__ECL=(
+    "--with-lisp=ecl"
+)
+AUTOTOOLS_AFTER__SBCL=(
+    "--with-lisp="sbcl --dynamic-space-size 4096""
+    "--enable-gmp"
+)
+AUTOTOOLS_AFTER__AMD64="$AUTOTOOLS_AFTER__SBCL"
+#AUTOTOOLS_AFTER__ARM64="$AUTOTOOLS_AFTER__SBCL"
+#AUTOTOOLS_AFTER__PPC64EL="$AUTOTOOLS_AFTER__SBCL"
+AUTOTOOLS_AFTER="$AUTOTOOLS_AFTER__ECL"
+
+# Else sbcl version of the software will not run,
+# it seems FRICASsys got a lot of things inside.
+ABSTRIP=0
+

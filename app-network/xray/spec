@@ -3,3 +3,4 @@ REL=1
 SRCS="git::commit=v$VER;copy-repo=true::https://github.com/XTLS/Xray-core"
 CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=231005"
+REL=1

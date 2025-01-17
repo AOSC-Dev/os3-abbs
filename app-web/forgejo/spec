@@ -3,3 +3,4 @@ VER=9.0.0
 SRCS="git::commit=tags/v$VER;copy-repo=true::https://codeberg.org/forgejo/forgejo"
 CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=370527"
+REL=1

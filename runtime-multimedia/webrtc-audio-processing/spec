@@ -1,5 +1,4 @@
-VER=0.3
-REL=3
+VER=2.0
 SRCS="tbl::https://freedesktop.org/software/pulseaudio/webrtc-audio-processing/webrtc-audio-processing-$VER.tar.xz"
-CHKSUMS="sha256::756e291d4f557d88cd50c4fe3b8454ec238362d22cedb3e6173240d90f0a80fa"
+CHKSUMS="sha256::7ea5b079073a9e8bfb55d2dc59471d6507dec1cf2fc697f1fdc53e2da1a2f77b"
 CHKUPDATE="anitya::id=15929"

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Fricas
+Keywords=computer algebra system;CAS;
+Keywords[zh_CN]=计算机代数系统;CAS;
+Comment=Fricas Computer Algebra System
+Comment[zh_CN]=Fricas 计算机代数系统
+Exec=fricas
+Icon=fricas
+Terminal=true
+Type=Application
+Categories=Education;Math;

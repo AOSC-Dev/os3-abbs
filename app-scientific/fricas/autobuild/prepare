@@ -1,0 +1,5 @@
+CFLAGS+=" -Wno-incompatible-pointer-types"
+sed -e "s|^CCF=.*|CCF=$CFLAGS|" -i $SRCDIR/configure -i $SRCDIR/config/var-def.mk
+sed -e "s|^LDF=.*|LDF=$LDFLAGS|" -i $SRCDIR/configure -i $SRCDIR/config/var-def.mk
+sed -e "s|^FRICAS_X11_LDFLAGS = |FRICAS_X11_LDFLAGS = $LDFLAGS |" -i $SRCDIR/config/var-def.mk
+sed -e "s|\$(fricas_c_runtime_extra)| \$(fricas_c_runtime_extra) \$(LDF)|g" -i $SRCDIR/src/lib/Makefile.in

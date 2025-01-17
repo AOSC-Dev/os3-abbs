@@ -1,0 +1,14 @@
+PKGNAME=fricas
+PKGSEC=math
+PKGDEP="gawk x11-lib"
+BUILDDEP="ecl texlive"
+PKGSUG="texlive"
+PKGDES="A advanced computer algebra system"
+
+AUTOTOOLS_AFTER=" --prefix=/usr --with-lisp=/usr/bin/ecl --enable-gmp"
+
+ABSHADOW=no
+NOPARALLEL=0
+NOLTO=1
+
+ABSPLITDBG=0

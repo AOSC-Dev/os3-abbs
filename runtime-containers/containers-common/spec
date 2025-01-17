@@ -1,9 +1,9 @@
-UPSTREAM_VER=0.61.0
+UPSTREAM_VER=0.61.1
 # Find dependency versions at
 #
 # https://github.com/containers/common/blob/v$PKGVER/go.sum
-__IMAGE_VER=5.33.0
-__STORAGE_VER=1.56.0
+__IMAGE_VER=5.33.1
+__STORAGE_VER=1.56.1
 # FIXME: the following two dependencies are not in the go.sum file above.
 __SHORTNAMES_VER=2023.02.20
 __SKOPEO_VER=1.17.0

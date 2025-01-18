@@ -1,0 +1,5 @@
+abinfo "building ..."
+make
+
+abinfo "Installing ..."
+install -Dvm755 "SRCDIR"/bin/musicfox -t "PKGDIR"/usr/bin/

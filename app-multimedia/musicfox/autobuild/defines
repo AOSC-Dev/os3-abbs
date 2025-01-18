@@ -1,0 +1,5 @@
+PKGNAME=musicfox
+PKGDES="an unofficial netease music TUI client"
+PKGDEP="alsa-lib flac glibc"
+BUILDDEP="go"
+PKGDES="sound"

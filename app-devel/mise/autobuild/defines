@@ -1,0 +1,7 @@
+PKGNAME=mise
+PKGDES="Polyglot runtime and development tool version manager"
+PKGSEC=devel
+PKGDEP="bzip2 gcc-runtime openssl zlib"
+BUILDDEP="rustc llvm"
+
+USECLANG=1

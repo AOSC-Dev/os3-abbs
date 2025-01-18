@@ -1,7 +1,7 @@
-From 3a83f0342e545a638aba06f27bba76938ef251ab Mon Sep 17 00:00:00 2001
+From 8575cfa9cb29a2a59676dee611747a7ad3944371 Mon Sep 17 00:00:00 2001
 From: mengqinggang <mengqinggang@loongson.cn>
 Date: Fri, 28 Jun 2024 14:24:19 +0800
-Subject: [PATCH] LoongArch: Add support for OUTPUT_FORMAT("binary")
+Subject: [PATCH 2/5] LoongArch: Add support for OUTPUT_FORMAT("binary")
 
 In binary output format, loongarch_elf_hash_table return NULL and result
 in segment fault.
@@ -37,10 +37,10 @@ The tests of binutils, glibc and gcc is ok.
  create mode 100644 ld/testsuite/ld-loongarch-elf/binary.s
 
 diff --git a/bfd/elfnn-loongarch.c b/bfd/elfnn-loongarch.c
-index db6d419a052e..71fa8fa6f015 100644
+index 731af6a79a6..e8180fc2071 100644
 --- a/bfd/elfnn-loongarch.c
 +++ b/bfd/elfnn-loongarch.c
-@@ -157,9 +157,7 @@ loongarch_elf_new_section_hook (bfd *abfd, asection *sec)
+@@ -163,9 +163,7 @@ loongarch_elf_new_section_hook (bfd *abfd, asection *sec)
  
  /* Get the LoongArch ELF linker hash table from a link_info structure.  */
  #define loongarch_elf_hash_table(p)					\
@@ -52,7 +52,7 @@ index db6d419a052e..71fa8fa6f015 100644
  #define MINUS_ONE ((bfd_vma) 0 - 1)
  
 diff --git a/ld/emultempl/loongarchelf.em b/ld/emultempl/loongarchelf.em
-index 2da405820087..8a1a898f9e75 100644
+index 2da40582008..8a1a898f9e7 100644
 --- a/ld/emultempl/loongarchelf.em
 +++ b/ld/emultempl/loongarchelf.em
 @@ -102,23 +102,7 @@ gld${EMULATION_NAME}_after_allocation (void)
@@ -81,14 +81,14 @@ index 2da405820087..8a1a898f9e75 100644
 -LDEMUL_CREATE_OUTPUT_SECTION_STATEMENTS=larch_create_output_section_statements
 diff --git a/ld/testsuite/ld-loongarch-elf/binary.ld b/ld/testsuite/ld-loongarch-elf/binary.ld
 new file mode 100644
-index 000000000000..73cd4f2c1fc4
+index 00000000000..73cd4f2c1fc
 --- /dev/null
 +++ b/ld/testsuite/ld-loongarch-elf/binary.ld
 @@ -0,0 +1 @@
 +OUTPUT_FORMAT(binary);
 diff --git a/ld/testsuite/ld-loongarch-elf/binary.s b/ld/testsuite/ld-loongarch-elf/binary.s
 new file mode 100644
-index 000000000000..b0aeb62af1cf
+index 00000000000..b0aeb62af1c
 --- /dev/null
 +++ b/ld/testsuite/ld-loongarch-elf/binary.s
 @@ -0,0 +1,4 @@
@@ -97,7 +97,7 @@ index 000000000000..b0aeb62af1cf
 +.data
 +  .4byte 0x12345678
 diff --git a/ld/testsuite/ld-loongarch-elf/ld-loongarch-elf.exp b/ld/testsuite/ld-loongarch-elf/ld-loongarch-elf.exp
-index fb34eeb80cbb..16d89cd5a432 100644
+index 09c4c9fd5b2..d80014d9563 100644
 --- a/ld/testsuite/ld-loongarch-elf/ld-loongarch-elf.exp
 +++ b/ld/testsuite/ld-loongarch-elf/ld-loongarch-elf.exp
 @@ -118,6 +118,18 @@ if [istarget "loongarch64-*-*"] {
@@ -119,3 +119,6 @@ index fb34eeb80cbb..16d89cd5a432 100644
  }
  
  if [istarget "loongarch64-*-*"] {
+-- 
+2.48.1
+

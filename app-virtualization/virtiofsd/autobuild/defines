@@ -1,0 +1,7 @@
+PKGNAME=virtiofsd
+PKGSEC=utils
+PKGDEP="qemu libcap-ng libseccomp"
+BUILDDEP="rustc llvm"
+PKGDES="Virtio-fs device backend for vhost-user"
+
+USECLANG=1

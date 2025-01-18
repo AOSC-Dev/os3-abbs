@@ -1,0 +1,10 @@
+abinfo "Moving /usr/bin to /usr/libexec ..."
+mv -v "$PKGDIR"/usr/bin "$PKGDIR"/usr/libexec
+
+abinfo "Installing vhost-user JSON ..."
+install -Dvm 644 50-virtiofsd.json \
+    "$PKGDIR"/usr/share/qemu/vhost-user/50-virtiofsd.json
+
+abinfo "Installing documentations ..."
+install -Dvm 644 "$SRCDIR"/doc/*.md \
+    -t "$PKGDIR"/usr/share/doc/virtiofsd/

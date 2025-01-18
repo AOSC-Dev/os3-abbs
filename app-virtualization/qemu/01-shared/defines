@@ -6,7 +6,7 @@ PKGDEP="pixman libcacard libjpeg-turbo libpng sdl alsa-lib nss \
         usbredir curl spice libssh libnfs brltty dtc jemalloc \
         capstone liburing virglrenderer vte-gtk3 sdl2 glu snappy \
         multipath-tools sndio ndctl lzfse rdma-core libu2f-emu \
-        canokey-qemu fuse-3 libblkio"
+        canokey-qemu fuse-3 libblkio virtiofsd"
 BUILDDEP="spice-protocol xmlto doxygen dtc sphinx jack glib-static \
           libgcrypt-static libgpg-error-static libnfs-static pcre-static \
           zlib-static zstd-static acpica-unix linux+api"

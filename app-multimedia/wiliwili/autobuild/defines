@@ -1,0 +1,15 @@
+PKGNAME="wiliwili"
+PKGSEC="video"
+PKGDES="A desktop client for Bilibili"
+PKGDEP="curl dbus gcc-runtime libwebp mpv opencc zlib hicolor-icon-theme"
+BUILDDEP="extra-cmake-modules"
+ABTYPE=cmake
+
+CMAKE_AFTER=(
+        '-DINSTALL=ON'
+        '-DPLATFORM_DESKTOP=ON'
+        '-DGLFW_BUILD_WAYLAND=ON'
+        '-DGLFW_BUILD_X11=ON'
+        '-DUSE_SYSTEM_CURL=ON'
+        '-DUSE_SYSTEM_OPENCC=ON'
+)

@@ -1,0 +1,2 @@
+abinfo "Removing redundant file ..."
+rm -v "$PKGDIR"/usr/share/wiliwili/resources/.gitignore

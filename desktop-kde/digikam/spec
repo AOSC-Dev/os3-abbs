@@ -1,5 +1,4 @@
-VER=8.4.0
-REL=2
+VER=8.5.0
 SRCS="tbl::http://download.kde.org/stable/digikam/$VER/digiKam-$VER.tar.xz \
       file::rename=shapepredictor.dat::http://cdn.files.kde.org/digikam/facesengine/shape-predictor/shapepredictor.dat \
       file::rename=yolov3-face.cfg::http://cdn.files.kde.org/digikam/facesengine/dnnface/yolov3-face.cfg \
@@ -13,7 +12,7 @@ SRCS="tbl::http://download.kde.org/stable/digikam/$VER/digiKam-$VER.tar.xz \
       file::rename=resnet50.onnx::https://files.kde.org/digikam/autotags/resnet50.onnx \
       file::rename=yolov5n_batch_16_s320.onnx::https://files.kde.org/digikam/autotags/yolov5n_batch_16_s320.onnx \
       file::rename=yolov5x_batch_16_s320.onnx::https://files.kde.org/digikam/autotags/yolov5x_batch_16_s320.onnx"
-CHKSUMS="sha256::53c8aca5a2f660173e29a860d8b13844bd0ec748ef3f618c42f7689476494481 \
+CHKSUMS="sha256::5c4eaafbca59425a0fe8cb41e7d7a08446defbbb967528bb1148aed0e0d0e975 \
          sha256::6f3d2a59dc30c7c9166983224dcf5732b25de734fff1e36ff1f3047ef90ed82b \
          sha256::f6563bd6923fd6500d2c2d6025f32ebdba916a85e5c9798351d916909f62aaf5 \
          sha256::a88f3b3882e3cce1e553a81d42beef6202cb9afc3db88e7944f9ffbcc369e7df \

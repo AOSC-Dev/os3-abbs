@@ -1,7 +1,7 @@
-From d233b30b4a84ae613570765d8902c399a8281233 Mon Sep 17 00:00:00 2001
+From e6b88a6cd307e2433d7ef414e5b568b1fb02dfe4 Mon Sep 17 00:00:00 2001
 From: eatradish <sakiiily@aosc.io>
 Date: Fri, 14 Jun 2024 23:05:46 +0800
-Subject: [PATCH 09/20] Drop check update feature
+Subject: [PATCH 09/18] Drop check update feature
 
 ---
  src/components/layout/update-button.tsx  | 47 ------------------------
@@ -64,7 +64,7 @@ index 93f9c3b6..00000000
 -  );
 -};
 diff --git a/src/components/setting/setting-verge.tsx b/src/components/setting/setting-verge.tsx
-index 3af4e0be..fcc59776 100644
+index f4f922b0..88de9257 100644
 --- a/src/components/setting/setting-verge.tsx
 +++ b/src/components/setting/setting-verge.tsx
 @@ -10,10 +10,9 @@ import {
@@ -88,7 +88,7 @@ index 3af4e0be..fcc59776 100644
  import getSystem from "@/utils/get-system";
  import { routers } from "@/pages/_routers";
  import { TooltipIcon } from "@/components/base/base-tooltip-icon";
-@@ -52,31 +49,12 @@ const SettingVerge = ({ onError }: Props) => {
+@@ -66,31 +63,12 @@ const SettingVerge = ({ onError }: Props) => {
    const miscRef = useRef<DialogRef>(null);
    const themeRef = useRef<DialogRef>(null);
    const layoutRef = useRef<DialogRef>(null);
@@ -120,7 +120,7 @@ index 3af4e0be..fcc59776 100644
    return (
      <SettingList title={t("Verge Setting")}>
        <ThemeViewer ref={themeRef} />
-@@ -84,8 +62,6 @@ const SettingVerge = ({ onError }: Props) => {
+@@ -98,8 +76,6 @@ const SettingVerge = ({ onError }: Props) => {
        <HotkeyViewer ref={hotkeyRef} />
        <MiscViewer ref={miscRef} />
        <LayoutViewer ref={layoutRef} />
@@ -129,7 +129,7 @@ index 3af4e0be..fcc59776 100644
  
        <SettingItem label={t("Language")}>
          <GuardState
-@@ -136,9 +112,7 @@ const SettingVerge = ({ onError }: Props) => {
+@@ -151,9 +127,7 @@ const SettingVerge = ({ onError }: Props) => {
  
        <SettingItem
          label={t("Copy Env Type")}
@@ -140,7 +140,7 @@ index 3af4e0be..fcc59776 100644
        >
          <GuardState
            value={env_type ?? (OS === "windows" ? "powershell" : "bash")}
-@@ -272,8 +246,6 @@ const SettingVerge = ({ onError }: Props) => {
+@@ -288,8 +262,6 @@ const SettingVerge = ({ onError }: Props) => {
  
        <SettingItem onClick={openLogsDir} label={t("Open Logs Dir")} />
  
@@ -170,5 +170,5 @@ index 1f02b1cd..c537ee15 100644
  
              <List className="the-menu">
 -- 
-2.48.0
+2.48.1
 

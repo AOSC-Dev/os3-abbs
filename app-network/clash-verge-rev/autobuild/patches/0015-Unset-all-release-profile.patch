@@ -1,17 +1,17 @@
-From 3e01a2a50c79bef392e3794bc9ec2432c4d06472 Mon Sep 17 00:00:00 2001
+From c30099aedb7a25b2fda7ff5fd0a7ff8acd339cea Mon Sep 17 00:00:00 2001
 From: eatradish <sakiiily@aosc.io>
 Date: Mon, 13 Jan 2025 16:52:29 +0800
-Subject: [PATCH 15/20] Unset all release profile
+Subject: [PATCH 15/18] Unset all release profile
 
 ---
  src-tauri/Cargo.toml | 7 -------
  1 file changed, 7 deletions(-)
 
 diff --git a/src-tauri/Cargo.toml b/src-tauri/Cargo.toml
-index 38aba38d..6932848b 100755
+index 5523272b..c67e3c96 100755
 --- a/src-tauri/Cargo.toml
 +++ b/src-tauri/Cargo.toml
-@@ -83,13 +83,6 @@ default = ["custom-protocol"]
+@@ -91,13 +91,6 @@ default = ["custom-protocol"]
  custom-protocol = ["tauri/custom-protocol"]
  verge-dev = []
  
@@ -26,5 +26,5 @@ index 38aba38d..6932848b 100755
  incremental = true
  
 -- 
-2.48.0
+2.48.1
 

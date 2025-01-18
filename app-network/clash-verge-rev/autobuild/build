@@ -25,3 +25,7 @@ install -Dvm644 "$SRCDIR"/src/assets/image/logo.svg \
 abinfo "Installing .desktop entry ..."
 install -Dvm644 "$SRCDIR"/src/assets/xdg/io.github.clash-verge-rev.desktop \
     "$PKGDIR"/usr/share/applications/io.github.clash-verge-rev.desktop
+
+abinfo "Installing resources ..."
+install -Dvm644 "$SRCDIR"/src-tauri/resources/locales/* \
+	-t "$PKGDIR"/usr/lib/'Clash Verge'/resources/locales/

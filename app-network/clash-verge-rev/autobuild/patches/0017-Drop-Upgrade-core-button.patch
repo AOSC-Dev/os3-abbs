@@ -1,7 +1,7 @@
-From 7d2f8ceefc92371838137d5d74715989c0cb7a97 Mon Sep 17 00:00:00 2001
+From 18d2028faeff37dddf99d40419d13849a8dc26d3 Mon Sep 17 00:00:00 2001
 From: eatradish <sakiiily@aosc.io>
 Date: Tue, 14 Jan 2025 10:16:54 +0800
-Subject: [PATCH 17/20] Drop "Upgrade core" button
+Subject: [PATCH 17/18] Drop "Upgrade core" button
 
 ---
  .../setting/mods/clash-core-viewer.tsx        | 25 +------------------
@@ -76,5 +76,5 @@ index 2eec99d9..15dd899d 100644
  export const getRules = async () => {
    const instance = await getAxios();
 -- 
-2.48.0
+2.48.1
 

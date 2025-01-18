@@ -1,30 +1,35 @@
 _majorver=${PKGVER%.*}
 
+abinfo "Building lua ..."
 make MYCFLAGS="$CFLAGS" MYLDFLAGS="$LDFLAGS" linux $ABMK &&
 
-mkdir -vp abdist/usr/share/man/man1
-
+abinfo "Installing lua ..."
+mkdir -vp "$PKGDIR"/usr/share/man/man1
 make \
      TO_BIN='lua5.1 luac5.1' \
      TO_LIB="liblua5.1.a liblua5.1.so liblua5.1.so.5.1 liblua5.1.so.5.1.5" \
      INSTALL_DATA='cp -d' \
-     INSTALL_TOP=../abdist/usr \
-     INSTALL_INC=../abdist/usr/include/lua5.1 \
-     INSTALL_MAN=../abdist/usr/share/man/man1 \
+     INSTALL_TOP="$PKGDIR"/usr \
+     INSTALL_INC="$PKGDIR"/usr/include/lua5.1 \
+     INSTALL_MAN="$PKGDIR"/usr/share/man/man1 \
      install &&
 
-install -Dvm644 etc/lua.pc "abdist"/usr/lib/pkgconfig/lua.pc
-install -dv "abdist/usr/share/doc/lua"
-install -vm644 doc/*.{gif,png,css,html} "abdist"/usr/share/doc/lua
-install -Dvm644 COPYRIGHT "abdist"/usr/share/licenses/lua/COPYRIGHT
+abinfo "Installing pkg-config for lua ..."
+install -Dvm644 etc/lua.pc "$PKGDIR"/usr/lib/pkgconfig/lua.pc
 
-ln -sv liblua5.1.so "abdist"/usr/lib/liblua.so.5.1
-ln -sv liblua5.1.so "abdist"/usr/lib/liblua.so.5.1.5
+abinfo "Installing docs ..."
+install -dv "$PKGDIR"/usr/share/doc/lua
+install -vm644 doc/*.{gif,png,css,html} "$PKGDIR"/usr/share/doc/lua
+install -Dvm644 COPYRIGHT "$PKGDIR"/usr/share/licenses/lua/COPYRIGHT
 
-ln -sv lua5.1 abdist/usr/bin/lua
-ln -sv luac5.1 abdist/usr/bin/luac
+abinfo "Installing version symbolic links ..."
+ln -sv liblua5.1.so "$PKGDIR"/usr/lib/liblua.so.5.1
+ln -sv liblua5.1.so"$PKGDIR"/usr/lib/liblua.so.5.1.5
+ln -sv lua5.1 "$PKGDIR"/usr/bin/lua
+ln -sv luac5.1 "$PKGDIR"/usr/bin/luac
 
-cd abdist/usr/include/lua5.1
+abinfo "Installing header symbolic links ..."
+cd "$PKGDIR"/usr/include/lua5.1
 for i in *; do
     ln -sv /usr/include/lua5.1/$i ../$i
 done

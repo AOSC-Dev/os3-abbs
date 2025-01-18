@@ -1,5 +1,8 @@
-abinfo "Moving /usr/bin to /usr/libexec ..."
-mv -v "$PKGDIR"/usr/bin "$PKGDIR"/usr/libexec
+abinfo "Making symbolic links in /usr/libexec ..."
+# The path in libexec is used by many programs and the vhost-user json
+mkdir -vp "$PKGDIR"/usr/libexec
+ln -sv /usr/bin/virtiofsd \
+    "$PKGDIR"/usr/libexec/virtiofsd
 
 abinfo "Installing vhost-user JSON ..."
 install -Dvm 644 50-virtiofsd.json \

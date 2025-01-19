@@ -1,27 +1,18 @@
-From 80bd92d033a562475512265da50f1f3aba13803b Mon Sep 17 00:00:00 2001
+From 18d7019e5705d493d1abe5d145b4e724a48bdda8 Mon Sep 17 00:00:00 2001
 From: eatradish <sakiiily@aosc.io>
 Date: Tue, 7 May 2024 17:55:11 +0800
-Subject: [PATCH 8/8] po: add translation for AOSC OS
+Subject: [PATCH 8/8] AOSCOS: po: add translation for AOSC OS
  --{add,remove}-architecture options
 
 Co-authored-by: Mingcong Bai <jeffbai@aosc.io>
 ---
- po/zh_CN.po | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ po/zh_CN.po | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/po/zh_CN.po b/po/zh_CN.po
-index 79493ed6..6083334c 100644
+index a81efd85e..8a4ecfc50 100644
 --- a/po/zh_CN.po
 +++ b/po/zh_CN.po
-@@ -17,7 +17,7 @@ msgstr ""
- "Project-Id-Version: dpkg 1.21.20\n"
- "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
- "POT-Creation-Date: 2024-07-18 05:55+0800\n"
--"PO-Revision-Date: 2023-01-27 15:39-0500\n"
-+"PO-Revision-Date: 2024-05-07 03:09-0700\n"
- "Last-Translator: Boyuan Yang <073plan@gmail.com>\n"
- "Language-Team: Chinese (simplified) <debian-l10n-chinese@lists.debian.org>\n"
- "Language: zh_CN\n"
 @@ -25,7 +25,7 @@ msgstr ""
  "Content-Type: text/plain; charset=UTF-8\n"
  "Content-Transfer-Encoding: 8bit\n"
@@ -31,7 +22,7 @@ index 79493ed6..6083334c 100644
  
  #: lib/dpkg/ar.c
  msgid "failed to fstat archive"
-@@ -5461,12 +5461,15 @@ msgid ""
+@@ -5524,12 +5524,15 @@ msgid ""
  "--add-architecture is not supported in AOSC OS. Please contact AOSC OS "
  "maintainers for any problems encountered."
  msgstr ""
@@ -48,5 +39,5 @@ index 79493ed6..6083334c 100644
  #: src/main/main.c
  #, c-format
 -- 
-2.45.2
+2.48.1
 

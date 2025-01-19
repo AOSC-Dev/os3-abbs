@@ -1,13 +1,15 @@
-From 1d8e3481a17c2825b7472e296d8c925ab34e644e Mon Sep 17 00:00:00 2001
-From: Kexy Biscuit <kexybiscuit@aosc.io>
-Date: Thu, 18 Jul 2024 06:02:26 +0800
-Subject: [PATCH 7/8] po: update translation catalogue
+From 6d8c1c1c1dec728f7da4d9450e9f416adda36b72 Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.io>
+Date: Sun, 19 Jan 2025 23:50:54 +0800
+Subject: [PATCH 7/8] AOSCOS: po: update translation catalogue
 
 This is done with `make update-po', re-generate this patch in future versions.
 
 DO NOT CHERRY-PICK.
 
 Co-authored-by: eatradish <sakiiily@aosc.io>
+Co-authored-by: Kexy Biscuit <kexybiscuit@aosc.io>
+Co-authored-by: Mingcong bai <jeffbai@aosc.io>
 ---
  dselect/po/bs.po        |  2 +-
  dselect/po/ca.po        |  2 +-
@@ -73,7 +75,7 @@ Co-authored-by: eatradish <sakiiily@aosc.io>
  po/pa.po                | 27 ++++++--------------
  po/pl.po                | 51 +++++++++++++++++++++-----------------
  po/pt.po                | 53 ++++++++++++++++++++++-----------------
- po/pt_BR.po             | 33 +++++++++----------------
+ po/pt_BR.po             | 53 ++++++++++++++++++++++-----------------
  po/ro.po                | 51 +++++++++++++++++++++-----------------
  po/ru.po                | 54 +++++++++++++++++++++++-----------------
  po/sk.po                | 52 +++++++++++++++++++++-----------------
@@ -94,444 +96,444 @@ Co-authored-by: eatradish <sakiiily@aosc.io>
  scripts/po/pt.po        |  2 +-
  scripts/po/ru.po        |  2 +-
  scripts/po/sv.po        |  2 +-
- 85 files changed, 913 insertions(+), 970 deletions(-)
+ 85 files changed, 931 insertions(+), 972 deletions(-)
 
 diff --git a/dselect/po/bs.po b/dselect/po/bs.po
-index dbaaffb6..12d25077 100644
+index 0f90a50c8..aa2d18d3f 100644
 --- a/dselect/po/bs.po
 +++ b/dselect/po/bs.po
 @@ -8,7 +8,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dselect 1.13\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2006-02-17 08:55+0200\n"
  "Last-Translator: Safir Šećerović <sapphire@linux.org.ba>\n"
  "Language-Team: Bosnian <lokal@linux.org.ba>\n"
 diff --git a/dselect/po/ca.po b/dselect/po/ca.po
-index 4babe456..c90e4838 100644
+index 105168617..5bccdab58 100644
 --- a/dselect/po/ca.po
 +++ b/dselect/po/ca.po
 @@ -10,7 +10,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dselect 1.21.10\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2023-12-17 19:34+0100\n"
  "Last-Translator: Guillem Jover <guillem@debian.org>\n"
  "Language-Team: Catalan <debian-l10n-catalan@lists.debian.org>\n"
 diff --git a/dselect/po/cs.po b/dselect/po/cs.po
-index 7318cd96..ef23a288 100644
+index 55e75cf30..5722d887e 100644
 --- a/dselect/po/cs.po
 +++ b/dselect/po/cs.po
 @@ -11,7 +11,7 @@ msgid ""
  msgstr ""
- "Project-Id-Version: dselect 1.17.0\n"
+ "Project-Id-Version: dselect 1.22.11\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
- "PO-Revision-Date: 2023-01-26 13:52+0100\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
+ "PO-Revision-Date: 2024-11-04 12:21+0100\n"
  "Last-Translator: Miroslav Kure <kurem@debian.cz>\n"
  "Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
 diff --git a/dselect/po/da.po b/dselect/po/da.po
-index f30c430e..e7aca450 100644
+index 8330b4e0c..77b2b866d 100644
 --- a/dselect/po/da.po
 +++ b/dselect/po/da.po
 @@ -10,7 +10,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dselect 1.17.22\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2014-11-27 02:33+0200\n"
  "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
  "Language-Team: Danish <debian-l10n-danish@lists.debian.org>\n"
 diff --git a/dselect/po/de.po b/dselect/po/de.po
-index 1e194088..907b59b1 100644
+index ab7634c7b..33b365969 100644
 --- a/dselect/po/de.po
 +++ b/dselect/po/de.po
 @@ -12,7 +12,7 @@ msgid ""
  msgstr ""
- "Project-Id-Version: dselect 1.22.0~\n"
+ "Project-Id-Version: dselect 1.22.12~\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
- "PO-Revision-Date: 2023-04-25 20:26+0200\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
+ "PO-Revision-Date: 2024-12-25 09:07+0100\n"
  "Last-Translator: Sven Joachim <svenjoac@gmx.de>\n"
  "Language-Team: German <debian-l10n-german@lists.debian.org>\n"
 diff --git a/dselect/po/dselect.pot b/dselect/po/dselect.pot
-index 73a40ae0..bf03856a 100644
+index e588ab6fe..c442af2f5 100644
 --- a/dselect/po/dselect.pot
 +++ b/dselect/po/dselect.pot
 @@ -6,9 +6,9 @@
  #, fuzzy
  msgid ""
  msgstr ""
--"Project-Id-Version: dpkg 1.22.7\n"
-+"Project-Id-Version: dpkg 1.22.7-6-g73c7\n"
+-"Project-Id-Version: dpkg 1.22.14\n"
++"Project-Id-Version: dpkg 1.22.14-7-gfe853\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
  "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
  "Language-Team: LANGUAGE <LL@li.org>\n"
 diff --git a/dselect/po/el.po b/dselect/po/el.po
-index 10be82cc..b2cc6824 100644
+index 73f0d1f5e..85e611f0f 100644
 --- a/dselect/po/el.po
 +++ b/dselect/po/el.po
 @@ -12,7 +12,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dselect 1.17.0\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2006-02-17 08:56+0200\n"
  "Last-Translator: quad-nrg.net <galaxico@quad-nrg.net>\n"
  "Language-Team: Greek <debian-l10n-greek@lists.debian.org>\n"
 diff --git a/dselect/po/es.po b/dselect/po/es.po
-index a8f2b638..b0e10554 100644
+index 8db652e0c..87368fb44 100644
 --- a/dselect/po/es.po
 +++ b/dselect/po/es.po
 @@ -40,7 +40,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dselect 1.21.20\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2023-01-27 22:48+0100\n"
  "Last-Translator: Javier Fernández-Sanguino <jfs@debian.org>\n"
  "Language-Team: Spanish <debian-l10n-spanish@lists.debian.org>\n"
 diff --git a/dselect/po/et.po b/dselect/po/et.po
-index a9aea103..bd544129 100644
+index 288af3801..9f6b3d6d1 100644
 --- a/dselect/po/et.po
 +++ b/dselect/po/et.po
 @@ -8,7 +8,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dselect 1.14.5\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2007-07-13 08:22+0300\n"
  "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
  "Language-Team: Estonian <et@li.org>\n"
 diff --git a/dselect/po/eu.po b/dselect/po/eu.po
-index 9dfccae7..d379ff09 100644
+index 2774768fc..1422352c5 100644
 --- a/dselect/po/eu.po
 +++ b/dselect/po/eu.po
 @@ -9,7 +9,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dselect 1.16.8\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2012-09-01 12:21+0200\n"
  "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@zundan.com>\n"
  "Language-Team: Basque <debian-l10n-basque@lists.debian.org>\n"
 diff --git a/dselect/po/fr.po b/dselect/po/fr.po
-index 1d5d1fea..9d9367da 100644
+index 1eb8a6067..40b1372aa 100644
 --- a/dselect/po/fr.po
 +++ b/dselect/po/fr.po
 @@ -49,7 +49,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dselect 1.21.20\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2023-02-05 23:47+0100\n"
  "Last-Translator: Sébastien Poher <sebastien@volted.net>\n"
  "Language-Team: French <debian-l10n-french@lists.debian.org>\n"
 diff --git a/dselect/po/gl.po b/dselect/po/gl.po
-index e68a9004..9478b3b9 100644
+index ddf6dc6d0..ead066a34 100644
 --- a/dselect/po/gl.po
 +++ b/dselect/po/gl.po
 @@ -9,7 +9,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dselect 1.17.0\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2008-12-27 15:56+0100\n"
  "Last-Translator: mvillarino <mvillarino@users.sourceforge.net>\n"
  "Language-Team: Galician <proxecto@trasno.net>\n"
 diff --git a/dselect/po/hu.po b/dselect/po/hu.po
-index 02d94ab8..b5b7e571 100644
+index e2306e813..a6c202ac4 100644
 --- a/dselect/po/hu.po
 +++ b/dselect/po/hu.po
 @@ -4,7 +4,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dselect 1.17.0\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2006-10-06 03:48+0100\n"
  "Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
  "Language-Team: Hungarian <debian-l10n-hungarian@lists.debian.org>\n"
 diff --git a/dselect/po/id.po b/dselect/po/id.po
-index cd1b8f10..51e8a982 100644
+index 8a379b7c7..55d102c9c 100644
 --- a/dselect/po/id.po
 +++ b/dselect/po/id.po
 @@ -10,7 +10,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dselect 1.13\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2006-10-06 20:20+0700\n"
  "Last-Translator: Arief S Fitrianto <arief@gurame.fisika.ui.ac.id>\n"
  "Language-Team: Indonesian <debian-l10n-indonesian@lists.debian.org>\n"
 diff --git a/dselect/po/it.po b/dselect/po/it.po
-index 114254af..e81b77de 100644
+index 88b8e2ff7..effce387c 100644
 --- a/dselect/po/it.po
 +++ b/dselect/po/it.po
 @@ -42,7 +42,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dselect 1.10.22\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2006-10-06 22:01+0200\n"
  "Last-Translator: Stefano Canepa <sc@linux.it>\n"
  "Language-Team: Italian <debian-l10n-italian@lists.debian.org>\n"
 diff --git a/dselect/po/ja.po b/dselect/po/ja.po
-index a1ab7d97..eabdbc2e 100644
+index cae51d402..03a09316f 100644
 --- a/dselect/po/ja.po
 +++ b/dselect/po/ja.po
 @@ -11,7 +11,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dselect 1.17.22\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2016-03-31 12:44+0900\n"
  "Last-Translator: Takuma Yamada <tyamada@takumayamada.com>\n"
  "Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
 diff --git a/dselect/po/ko.po b/dselect/po/ko.po
-index de40cecb..4a54b627 100644
+index 3cc454855..a0dff4cdd 100644
 --- a/dselect/po/ko.po
 +++ b/dselect/po/ko.po
 @@ -11,7 +11,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dselect 1.21.20\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2023-01-29 11:18+0100\n"
  "Last-Translator: Sangdo Jun <sebuls@gmail.com>\n"
  "Language-Team: Korean <debian-l10n-korean@lists.debian.org>\n"
 diff --git a/dselect/po/nb.po b/dselect/po/nb.po
-index f5244866..8352f1a2 100644
+index 42140db67..ac5d41004 100644
 --- a/dselect/po/nb.po
 +++ b/dselect/po/nb.po
 @@ -9,7 +9,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dselect 1.17.0\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2014-12-05 13:25+0200\n"
  "Last-Translator: Hans Fredrik Nordhaug <hans@nordhaug.priv.no>\n"
  "Language-Team: Norwegian Bokmål <i18n-nb@lister.ping.uio.no>\n"
 diff --git a/dselect/po/nl.po b/dselect/po/nl.po
-index f0647cdf..e928c671 100644
+index 1c20ecbad..fde5c5060 100644
 --- a/dselect/po/nl.po
 +++ b/dselect/po/nl.po
 @@ -10,7 +10,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dselect 1.22.0\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2023-09-11 21:13+0200\n"
  "Last-Translator: Frans Spiesschaert <Frans.Spiesschaert@yucom.be>\n"
  "Language-Team: Debian Dutch l10n Team <debian-l10n-dutch@lists.debian.org>\n"
 diff --git a/dselect/po/nn.po b/dselect/po/nn.po
-index bcea9e19..d3f765bc 100644
+index 8f95aa083..1a5a877d9 100644
 --- a/dselect/po/nn.po
 +++ b/dselect/po/nn.po
 @@ -7,7 +7,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dselect 1.17.0\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2006-02-17 08:57+0200\n"
  "Last-Translator: Håvard Korsvoll <korsvoll@skulelinux.no>\n"
  "Language-Team: Norwegian Nynorsk <i18n-nn@lister.ping.uio.no>\n"
 diff --git a/dselect/po/pl.po b/dselect/po/pl.po
-index 794b0a43..039b94b6 100644
+index 14f745f5c..ff1690451 100644
 --- a/dselect/po/pl.po
 +++ b/dselect/po/pl.po
 @@ -14,7 +14,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dselect 1.15.4\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2014-12-21 20:58+0100\n"
  "Last-Translator: Łukasz Dulny <bartekchom@poczta.onet.pl>\n"
  "Language-Team: Polish <debian-l10n-polish@lists.debian.org>\n"
 diff --git a/dselect/po/pt.po b/dselect/po/pt.po
-index 0982a3aa..0e2b90fd 100644
+index 2deb13f2a..c3aaf224c 100644
 --- a/dselect/po/pt.po
 +++ b/dselect/po/pt.po
 @@ -8,7 +8,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dselect 1.17.0\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2014-11-30 13:28+0000\n"
  "Last-Translator: Miguel Figueiredo <elmig@debianpt.org>\n"
  "Language-Team: Portuguese <traduz@debianpt.org>\n"
 diff --git a/dselect/po/pt_BR.po b/dselect/po/pt_BR.po
-index 0bfa3491..3e98fafe 100644
+index e8355b836..b73f41a8e 100644
 --- a/dselect/po/pt_BR.po
 +++ b/dselect/po/pt_BR.po
-@@ -13,7 +13,7 @@ msgid ""
+@@ -14,7 +14,7 @@ msgid ""
  msgstr ""
- "Project-Id-Version: dselect 1.13\n"
+ "Project-Id-Version: dselect 1.22.11\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
- "PO-Revision-Date: 2008-06-09 02:53-0300\n"
- "Last-Translator: Felipe Augusto van de Wiel <faw@debian.org>\n"
- "Language-Team: Brazilian Portuguese <debian-l10n-portuguese@lists.debian."
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
+ "PO-Revision-Date: 2025-01-16 03:03+0100\n"
+ "Last-Translator: Paulo Henrique de Lima Santana (phls) <phls@debian.org>\n"
+ "Language-Team: Brazilian Portuguese <debian-l10n-"
 diff --git a/dselect/po/ro.po b/dselect/po/ro.po
-index da5ef47a..dae41b74 100644
+index 3beadbcce..f93702e25 100644
 --- a/dselect/po/ro.po
 +++ b/dselect/po/ro.po
 @@ -18,7 +18,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dselect 1.22.0\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2023-09-13 20:15+0200\n"
  "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
  "Language-Team: Romanian <debian-l10n-romanian@lists.debian.org>\n"
 diff --git a/dselect/po/ru.po b/dselect/po/ru.po
-index 29fbc1e1..a1041927 100644
+index 4a7f7df06..45a7495ee 100644
 --- a/dselect/po/ru.po
 +++ b/dselect/po/ru.po
 @@ -9,7 +9,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dselect 1.21.20\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2023-01-31 22:38+0100\n"
  "Last-Translator: Yuri Kozlov <yuray@komyakino.ru>\n"
  "Language-Team: Russian <debian-l10n-russian@lists.debian.org>\n"
 diff --git a/dselect/po/sk.po b/dselect/po/sk.po
-index c9105609..01b4c012 100644
+index 55e649879..760dfb5a8 100644
 --- a/dselect/po/sk.po
 +++ b/dselect/po/sk.po
 @@ -10,7 +10,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dselect 1.13\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2012-07-03 01:09+0100\n"
  "Last-Translator: Ivan Masár <helix84@centrum.sk>\n"
  "Language-Team: Slovak <debian-l10n-slovak@lists.debian.org>\n"
 diff --git a/dselect/po/sv.po b/dselect/po/sv.po
-index 0032a9cf..717df525 100644
+index 2f49896f3..aedccb294 100644
 --- a/dselect/po/sv.po
 +++ b/dselect/po/sv.po
 @@ -9,7 +9,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dselect 1.22.0\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2023-10-24 18:29+0100\n"
  "Last-Translator: Peter Krefting <peter@softwolves.pp.se>\n"
  "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 diff --git a/dselect/po/tl.po b/dselect/po/tl.po
-index 3de74ed7..a76e3347 100644
+index 208f72508..c675e26c0 100644
 --- a/dselect/po/tl.po
 +++ b/dselect/po/tl.po
 @@ -8,7 +8,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dselect 1.13\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2006-02-17 08:58+0200\n"
  "Last-Translator: Eric Pareja <xenos@upm.edu.ph>\n"
  "Language-Team: Tagalog <debian-tl@banwa.upm.edu.ph>\n"
 diff --git a/dselect/po/vi.po b/dselect/po/vi.po
-index 16e1d524..618c386d 100644
+index bac061747..476ab9359 100644
 --- a/dselect/po/vi.po
 +++ b/dselect/po/vi.po
 @@ -9,7 +9,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dselect 1.17.22\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2014-12-01 08:20+0700\n"
  "Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
  "Language-Team: Vietnamese <debian-l10n-vietnamese@lists.debian.org>\n"
 diff --git a/dselect/po/zh_CN.po b/dselect/po/zh_CN.po
-index 4175e569..18e83b5c 100644
+index a8f28e657..24bfb49e5 100644
 --- a/dselect/po/zh_CN.po
 +++ b/dselect/po/zh_CN.po
 @@ -12,7 +12,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dselect 1.21.20\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2023-01-27 15:29-0500\n"
  "Last-Translator: Boyuan Yang <073plan@gmail.com>\n"
  "Language-Team: Chinese (simplified) <debian-l10n-chinese@lists.debian.org>\n"
 diff --git a/dselect/po/zh_TW.po b/dselect/po/zh_TW.po
-index e801038d..e243b1d8 100644
+index 481fe378c..c76f2848a 100644
 --- a/dselect/po/zh_TW.po
 +++ b/dselect/po/zh_TW.po
 @@ -6,7 +6,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dselect 1.13\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2023-01-28 15:57+0800\n"
  "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
  "Language-Team: Chinese (traditional) <debian-l10n-chinese@lists.debian.org>\n"
 diff --git a/man/po/dpkg-man.pot b/man/po/dpkg-man.pot
-index d3b41b47..4dde58f6 100644
+index 9b9ca3485..9d8640770 100644
 --- a/man/po/dpkg-man.pot
 +++ b/man/po/dpkg-man.pot
 @@ -6,9 +6,9 @@
  #, fuzzy
  msgid ""
  msgstr ""
--"Project-Id-Version: dpkg-man 1.22.7\n"
-+"Project-Id-Version: dpkg-man 1.22.7-6-g73c7\n"
+-"Project-Id-Version: dpkg-man 1.22.14\n"
++"Project-Id-Version: dpkg-man 1.22.14-7-gfe853\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:58+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
  "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
  "Language-Team: LANGUAGE <LL@li.org>\n"
 diff --git a/po/ast.po b/po/ast.po
-index 16262350..d5c1294b 100644
+index ee80ea9f6..4ba11ca96 100644
 --- a/po/ast.po
 +++ b/po/ast.po
 @@ -8,7 +8,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.14.22\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2015-04-07 09:47+0200\n"
- "Last-Translator: Marcos Alvarez Costales <marcos.alvarez.costales@gmail."
- "com>\n"
-@@ -6205,29 +6205,15 @@ msgid "status logger"
+ "Last-Translator: Marcos Alvarez Costales "
+ "<marcos.alvarez.costales@gmail.com>\n"
+@@ -6231,29 +6231,15 @@ msgid "status logger"
  msgstr "estáu"
  
  #: src/main/main.c
@@ -567,7 +569,7 @@ index 16262350..d5c1294b 100644
  msgstr ""
  
  #: src/main/main.c
-@@ -7807,6 +7793,11 @@ msgstr ""
+@@ -7833,6 +7819,11 @@ msgstr ""
  msgid "Authentication is required to run update-alternatives"
  msgstr ""
  
@@ -576,23 +578,23 @@ index 16262350..d5c1294b 100644
 +#~ msgid "cannot remove non-foreign architecture '%s'"
 +#~ msgstr "nun se puede desaniciar el ficheru `%.250s'"
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "fallu al abrir el ficheru de desvíos"
- 
+ #, c-format
+ #~ msgid "open component '%.255s' (in %.255s) failed in an unexpected way"
+ #~ msgstr ""
 diff --git a/po/bs.po b/po/bs.po
-index a1b00fe8..9f51fcda 100644
+index 802dfb477..85cf2ecb9 100644
 --- a/po/bs.po
 +++ b/po/bs.po
 @@ -8,7 +8,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.13\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2015-04-07 10:02+0200\n"
  "Last-Translator: Safir Šećerović <sapphire@linux.org.ba>\n"
  "Language-Team: Bosnian <lokal@linux.org.ba>\n"
-@@ -5242,28 +5242,15 @@ msgid "status logger"
+@@ -5282,28 +5282,15 @@ msgid "status logger"
  msgstr ""
  
  #: src/main/main.c
@@ -628,19 +630,19 @@ index a1b00fe8..9f51fcda 100644
  
  #: src/main/main.c
 diff --git a/po/ca.po b/po/ca.po
-index 9b9b5951..f2abf9bc 100644
+index 0fd5316f7..7568f922c 100644
 --- a/po/ca.po
 +++ b/po/ca.po
 @@ -11,7 +11,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.21.18\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
- "PO-Revision-Date: 2023-12-17 20:02+0100\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
+ "PO-Revision-Date: 2024-07-21 19:57+0200\n"
  "Last-Translator: Guillem Jover <guillem@debian.org>\n"
  "Language-Team: Catalan <debian-l10n-catalan@lists.debian.org>\n"
-@@ -5774,29 +5774,16 @@ msgid "status logger"
+@@ -5824,29 +5824,16 @@ msgid "status logger"
  msgstr "registre d'estat"
  
  #: src/main/main.c
@@ -678,7 +680,7 @@ index 9b9b5951..f2abf9bc 100644
  
  #: src/main/main.c
  #, c-format
-@@ -7223,6 +7210,28 @@ msgstr ""
+@@ -7273,6 +7260,28 @@ msgstr ""
  msgid "Authentication is required to run update-alternatives"
  msgstr "Es requereix autenticació per a executar update-alternatives"
  
@@ -704,23 +706,23 @@ index 9b9b5951..f2abf9bc 100644
 +#~ msgstr ""
 +#~ "no es pot esborrar l'arquitectura «%s» que és en ús a la base de dades"
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "no s'ha pogut obrir el fitxer de desviacions"
- 
+ #, c-format
+ #~ msgid "open component '%.255s' (in %.255s) failed in an unexpected way"
+ #~ msgstr ""
 diff --git a/po/cs.po b/po/cs.po
-index 33278c6e..98ecc60d 100644
+index e07fce3cc..317ea6e34 100644
 --- a/po/cs.po
 +++ b/po/cs.po
 @@ -11,7 +11,7 @@ msgid ""
  msgstr ""
- "Project-Id-Version: dpkg 1.21.20\n"
+ "Project-Id-Version: dpkg 1.22.11\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
- "PO-Revision-Date: 2023-02-01 23:14+0100\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
+ "PO-Revision-Date: 2024-11-04 20:37+0100\n"
  "Last-Translator: Miroslav Kure <kurem@debian.cz>\n"
  "Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
-@@ -5543,29 +5543,16 @@ msgid "status logger"
+@@ -5585,29 +5585,16 @@ msgid "status logger"
  msgstr "záznam stavů"
  
  #: src/main/main.c
@@ -758,7 +760,7 @@ index 33278c6e..98ecc60d 100644
  
  #: src/main/main.c
  #, c-format
-@@ -6933,6 +6920,26 @@ msgstr "Spustí update-alternatives pro úpravu systémových alternativ"
+@@ -6973,6 +6960,26 @@ msgstr "Spustí update-alternatives pro úpravu systémových alternativ"
  msgid "Authentication is required to run update-alternatives"
  msgstr "Pro spuštění update-alternatives je vyžadováno ověření"
  
@@ -782,23 +784,23 @@ index 33278c6e..98ecc60d 100644
 +#~ msgid "cannot remove architecture '%s' currently in use by the database"
 +#~ msgstr "nelze odstranit aktuálně používanou architekturu „%s“"
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "nelze otevřít soubor s odsuny"
- 
+ #, c-format
+ #~ msgid "open component '%.255s' (in %.255s) failed in an unexpected way"
+ #~ msgstr ""
 diff --git a/po/da.po b/po/da.po
-index 78d69391..b1bddcea 100644
+index 94ee69251..ce489b5f1 100644
 --- a/po/da.po
 +++ b/po/da.po
 @@ -22,7 +22,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.17.22\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2015-04-07 09:48+0200\n"
  "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
  "Language-Team: Danish <debian-l10n-danish@lists.debian.org>\n"
-@@ -6005,29 +6005,16 @@ msgid "status logger"
+@@ -6040,29 +6040,16 @@ msgid "status logger"
  msgstr "statuslogger"
  
  #: src/main/main.c
@@ -836,7 +838,7 @@ index 78d69391..b1bddcea 100644
  
  #: src/main/main.c
  #, c-format
-@@ -7471,6 +7458,26 @@ msgstr ""
+@@ -7506,6 +7493,26 @@ msgstr ""
  msgid "Authentication is required to run update-alternatives"
  msgstr ""
  
@@ -860,23 +862,23 @@ index 78d69391..b1bddcea 100644
 +#~ msgid "cannot remove architecture '%s' currently in use by the database"
 +#~ msgstr "kan ikke fjerne arkitektur '%s' aktuelt i brug af databasen"
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "kunne ikke åbne omdirigeringsfil"
- 
+ #, c-format
+ #~ msgid "open component '%.255s' (in %.255s) failed in an unexpected way"
+ #~ msgstr ""
 diff --git a/po/de.po b/po/de.po
-index d56a4fdf..516c3676 100644
+index e4af30a0a..eceee5200 100644
 --- a/po/de.po
 +++ b/po/de.po
 @@ -13,7 +13,7 @@ msgid ""
  msgstr ""
- "Project-Id-Version: dpkg 1.22.7~\n"
+ "Project-Id-Version: dpkg 1.22.13\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
- "PO-Revision-Date: 2024-04-29 18:35+0200\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
+ "PO-Revision-Date: 2025-01-05 08:34+0100\n"
  "Last-Translator: Sven Joachim <svenjoac@gmx.de>\n"
  "Language-Team: German <debian-l10n-german@lists.debian.org>\n"
-@@ -5733,31 +5733,16 @@ msgid "status logger"
+@@ -5752,31 +5752,16 @@ msgid "status logger"
  msgstr "Statuslogger"
  
  #: src/main/main.c
@@ -915,7 +917,7 @@ index d56a4fdf..516c3676 100644
  
  #: src/main/main.c
  #, c-format
-@@ -7178,6 +7163,29 @@ msgstr ""
+@@ -7197,6 +7182,29 @@ msgstr ""
  msgid "Authentication is required to run update-alternatives"
  msgstr "Authentifizierung ist erforderlich, um update-alternatives auszuführen"
  
@@ -942,26 +944,26 @@ index d56a4fdf..516c3676 100644
 +#~ "Architektur »%s«, derzeit verwendet von der Datenbank, kann nicht "
 +#~ "entfernt werden"
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "Öffnen der diversions-Datei fehlgeschlagen"
- 
+ #, c-format
+ #~ msgid "open component '%.255s' (in %.255s) failed in an unexpected way"
+ #~ msgstr ""
 diff --git a/po/dpkg.pot b/po/dpkg.pot
-index 69f98896..1b3255f6 100644
+index 32136361c..22afef202 100644
 --- a/po/dpkg.pot
 +++ b/po/dpkg.pot
 @@ -6,9 +6,9 @@
  #, fuzzy
  msgid ""
  msgstr ""
--"Project-Id-Version: dpkg 1.22.7\n"
-+"Project-Id-Version: dpkg 1.22.7-6-g73c7\n"
+-"Project-Id-Version: dpkg 1.22.14\n"
++"Project-Id-Version: dpkg 1.22.14-7-gfe853\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
  "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
  "Language-Team: LANGUAGE <LL@li.org>\n"
-@@ -5018,28 +5018,15 @@ msgid "status logger"
+@@ -5038,28 +5038,15 @@ msgid "status logger"
  msgstr ""
  
  #: src/main/main.c
@@ -997,19 +999,19 @@ index 69f98896..1b3255f6 100644
  
  #: src/main/main.c
 diff --git a/po/dz.po b/po/dz.po
-index d83a6c63..8728d5af 100644
+index 063b39e44..cfa374ece 100644
 --- a/po/dz.po
 +++ b/po/dz.po
 @@ -9,7 +9,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.17.0\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2015-04-07 09:48+0200\n"
  "Last-Translator: Tshewang Norbu <bumthap2006@hotmail.com>\n"
  "Language-Team: Dzongkha <pgeyleg@dit.gov.bt>\n"
-@@ -5913,29 +5913,15 @@ msgid "status logger"
+@@ -5938,29 +5938,15 @@ msgid "status logger"
  msgstr ""
  
  #: src/main/main.c
@@ -1045,7 +1047,7 @@ index d83a6c63..8728d5af 100644
  msgstr ""
  
  #: src/main/main.c
-@@ -7405,6 +7391,11 @@ msgstr ""
+@@ -7430,6 +7416,11 @@ msgstr ""
  msgid "Authentication is required to run update-alternatives"
  msgstr ""
  
@@ -1054,23 +1056,23 @@ index d83a6c63..8728d5af 100644
 +#~ msgid "cannot remove non-foreign architecture '%s'"
 +#~ msgstr "ཡིག་སྣོད་ `%.250s' རྩ་བསྐྲད་གཏང་མི་ཚུགས།"
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "ཁ་སྒྱུར་ཡིག་སྣོད་ཁ་ཕྱེ་ནི་འཐུས་ཤོར་བྱུང་ཡོད།"
- 
+ #, c-format
+ #~ msgid "open component '%.255s' (in %.255s) failed in an unexpected way"
+ #~ msgstr ""
 diff --git a/po/el.po b/po/el.po
-index aec47b82..3337e371 100644
+index 0f800cc03..eba119c51 100644
 --- a/po/el.po
 +++ b/po/el.po
 @@ -12,7 +12,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.17.0\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2015-04-07 09:48+0200\n"
  "Last-Translator: quad-nrg.net <yodesy@quad-nrg.net>\n"
  "Language-Team: Greek <debian-l10n-greek@lists.debian.org>\n"
-@@ -6191,29 +6191,15 @@ msgid "status logger"
+@@ -6217,29 +6217,15 @@ msgid "status logger"
  msgstr ""
  
  #: src/main/main.c
@@ -1106,7 +1108,7 @@ index aec47b82..3337e371 100644
  msgstr ""
  
  #: src/main/main.c
-@@ -7768,6 +7754,11 @@ msgstr ""
+@@ -7794,6 +7780,11 @@ msgstr ""
  msgid "Authentication is required to run update-alternatives"
  msgstr ""
  
@@ -1115,23 +1117,23 @@ index aec47b82..3337e371 100644
 +#~ msgid "cannot remove non-foreign architecture '%s'"
 +#~ msgstr "αδύνατη η αφαίρεση του αρχείου `%.250s'"
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "αποτυχία κατά το άνοιγμα του αρχείου diversions"
- 
+ #, c-format
+ #~ msgid "open component '%.255s' (in %.255s) failed in an unexpected way"
+ #~ msgstr ""
 diff --git a/po/eo.po b/po/eo.po
-index ee6c7d2d..ac231c9c 100644
+index 836bef053..b7505985b 100644
 --- a/po/eo.po
 +++ b/po/eo.po
 @@ -8,7 +8,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.17.0\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2015-04-07 09:49+0200\n"
  "Last-Translator: Felipe Castro <fefcas@gmail.com>\n"
  "Language-Team: Esperanto <debian-l10n-esperanto@lists.debian.org>\n"
-@@ -5965,29 +5965,16 @@ msgid "status logger"
+@@ -6000,29 +6000,16 @@ msgid "status logger"
  msgstr "stat-registrilo"
  
  #: src/main/main.c
@@ -1169,7 +1171,7 @@ index ee6c7d2d..ac231c9c 100644
  
  #: src/main/main.c
  #, c-format
-@@ -7433,6 +7420,26 @@ msgstr ""
+@@ -7468,6 +7455,26 @@ msgstr ""
  msgid "Authentication is required to run update-alternatives"
  msgstr ""
  
@@ -1193,23 +1195,23 @@ index ee6c7d2d..ac231c9c 100644
 +#~ msgid "cannot remove architecture '%s' currently in use by the database"
 +#~ msgstr "ne eblas forigi arkitekturon '%s', nune uzata de datumbazo"
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "malsukcesis malfermi dosieron diversions"
- 
+ #, c-format
+ #~ msgid "open component '%.255s' (in %.255s) failed in an unexpected way"
+ #~ msgstr "malfermi elementon '%.255s' (en %.255s) malsukcesis neatendite"
 diff --git a/po/es.po b/po/es.po
-index 250054c4..f15d6be4 100644
+index c5ef9213a..6d45b09f5 100644
 --- a/po/es.po
 +++ b/po/es.po
 @@ -38,7 +38,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.16.0\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2017-11-08 00:59+0100\n"
  "Last-Translator: Javier Fernandez-Sanguino <jfs@debian.org>\n"
  "Language-Team: Spanish <debian-l10n-spanish@lists.debian.org>\n"
-@@ -6195,32 +6195,16 @@ msgid "status logger"
+@@ -6228,32 +6228,16 @@ msgid "status logger"
  msgstr "registro de estado"
  
  #: src/main/main.c
@@ -1248,7 +1250,7 @@ index 250054c4..f15d6be4 100644
  
  #: src/main/main.c
  #, c-format
-@@ -7703,6 +7687,29 @@ msgstr ""
+@@ -7736,6 +7720,29 @@ msgstr ""
  msgid "Authentication is required to run update-alternatives"
  msgstr "Es necesario autenticarse para ejecutar `update-alternatives'"
  
@@ -1275,23 +1277,23 @@ index 250054c4..f15d6be4 100644
 +#~ "no se puede eliminar la arquitectura '%s' puesto que está en uso "
 +#~ "actualmente en la base de datos"
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "fallo al abrir fichero de desvíos"
- 
+ #, c-format
+ #~ msgid "open component '%.255s' (in %.255s) failed in an unexpected way"
+ #~ msgstr ""
 diff --git a/po/et.po b/po/et.po
-index b337fa64..71d268f0 100644
+index 7cace9560..888c39749 100644
 --- a/po/et.po
 +++ b/po/et.po
 @@ -8,7 +8,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.14.5\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2015-04-07 09:49+0200\n"
  "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
  "Language-Team: Estonian <et@li.org>\n"
-@@ -5550,28 +5550,15 @@ msgid "status logger"
+@@ -5577,28 +5577,15 @@ msgid "status logger"
  msgstr ""
  
  #: src/main/main.c
@@ -1327,19 +1329,19 @@ index b337fa64..71d268f0 100644
  
  #: src/main/main.c
 diff --git a/po/eu.po b/po/eu.po
-index 73a05385..a4ca94c3 100644
+index 5ebd946f7..d113a527b 100644
 --- a/po/eu.po
 +++ b/po/eu.po
 @@ -10,7 +10,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.17.22\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2015-04-07 09:49+0200\n"
  "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@zundan.com>\n"
  "Language-Team: Basque <debian-l10n-basque@lists.debian.org>\n"
-@@ -6083,29 +6083,16 @@ msgid "status logger"
+@@ -6116,29 +6116,16 @@ msgid "status logger"
  msgstr "egoeraren egunkaria"
  
  #: src/main/main.c
@@ -1377,7 +1379,7 @@ index 73a05385..a4ca94c3 100644
  
  #: src/main/main.c
  #, c-format
-@@ -7568,6 +7555,26 @@ msgstr ""
+@@ -7601,6 +7588,26 @@ msgstr ""
  msgid "Authentication is required to run update-alternatives"
  msgstr ""
  
@@ -1401,23 +1403,23 @@ index 73a05385..a4ca94c3 100644
 +#~ msgid "cannot remove architecture '%s' currently in use by the database"
 +#~ msgstr "ezin da '%s' arkitektura kendu datu-baseak unean darabilelako"
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "huts egin du desbideratzeen fitxategia irekitzean"
- 
+ #, c-format
+ #~ msgid "open component '%.255s' (in %.255s) failed in an unexpected way"
+ #~ msgstr ""
 diff --git a/po/fr.po b/po/fr.po
-index 4675a75e..72dc3b7e 100644
+index e9a02cccf..505477cc8 100644
 --- a/po/fr.po
 +++ b/po/fr.po
 @@ -12,7 +12,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.21.20\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2023-02-05 23:47+0100\n"
  "Last-Translator: Sébastien Poher <sebastien@volted.net>\n"
  "Language-Team: French <debian-l10n-french@lists.debian.org>\n"
-@@ -5887,33 +5887,16 @@ msgid "status logger"
+@@ -5948,33 +5948,16 @@ msgid "status logger"
  msgstr "journaliseur de l'état"
  
  #: src/main/main.c
@@ -1457,7 +1459,7 @@ index 4675a75e..72dc3b7e 100644
  
  #: src/main/main.c
  #, c-format
-@@ -7355,6 +7338,30 @@ msgstr ""
+@@ -7416,6 +7399,30 @@ msgstr ""
  msgid "Authentication is required to run update-alternatives"
  msgstr "Une authentification est requise pour exécuter update-alternatives"
  
@@ -1485,23 +1487,23 @@ index 4675a75e..72dc3b7e 100644
 +#~ "impossible de supprimer l'architecture « %s » actuellement utilisée dans "
 +#~ "la base de données"
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "impossible d'ouvrir le fichier des détournements"
- 
+ #, c-format
+ #~ msgid "open component '%.255s' (in %.255s) failed in an unexpected way"
+ #~ msgstr ""
 diff --git a/po/gl.po b/po/gl.po
-index d35b584e..a18d286c 100644
+index a8dedbbb6..e37f817b1 100644
 --- a/po/gl.po
 +++ b/po/gl.po
 @@ -9,7 +9,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.17.0\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2015-04-07 09:49+0200\n"
  "Last-Translator: mvillarino <mvillarino@users.sourceforge.net>\n"
  "Language-Team: Galician <proxecto@trasno.net>\n"
-@@ -6152,29 +6152,15 @@ msgid "status logger"
+@@ -6178,29 +6178,15 @@ msgid "status logger"
  msgstr ""
  
  #: src/main/main.c
@@ -1537,7 +1539,7 @@ index d35b584e..a18d286c 100644
  msgstr ""
  
  #: src/main/main.c
-@@ -7724,6 +7710,11 @@ msgstr ""
+@@ -7750,6 +7736,11 @@ msgstr ""
  msgid "Authentication is required to run update-alternatives"
  msgstr ""
  
@@ -1546,23 +1548,23 @@ index d35b584e..a18d286c 100644
 +#~ msgid "cannot remove non-foreign architecture '%s'"
 +#~ msgstr "non se pode borrar o ficheiro \"%.250s\""
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "non se puido abrir o ficheiro de desvíos"
- 
+ #, c-format
+ #~ msgid "open component '%.255s' (in %.255s) failed in an unexpected way"
+ #~ msgstr ""
 diff --git a/po/hu.po b/po/hu.po
-index 2f3bf1ff..a3bc8709 100644
+index 9dcfe6cea..b63261b88 100644
 --- a/po/hu.po
 +++ b/po/hu.po
 @@ -10,7 +10,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.21.20\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2023-02-05 23:44+0100\n"
  "Last-Translator: Nagy Elemér Károly <nagy.elemer.karoly@gmail.com>\n"
  "Language-Team: Hungarian <debian-l10n-hungarian@lists.debian.org>\n"
-@@ -5777,29 +5777,15 @@ msgid "status logger"
+@@ -5801,29 +5801,15 @@ msgid "status logger"
  msgstr ""
  
  #: src/main/main.c
@@ -1598,7 +1600,7 @@ index 2f3bf1ff..a3bc8709 100644
  msgstr ""
  
  #: src/main/main.c
-@@ -7224,6 +7210,11 @@ msgstr ""
+@@ -7248,6 +7234,11 @@ msgstr ""
  msgid "Authentication is required to run update-alternatives"
  msgstr ""
  
@@ -1607,23 +1609,23 @@ index 2f3bf1ff..a3bc8709 100644
 +#~ msgid "cannot remove non-foreign architecture '%s'"
 +#~ msgstr "nem törölhető fájl: `%.250s'"
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "eltérítés fájl megnyitása sikertelen"
- 
+ #, c-format
+ #~ msgid "open component '%.255s' (in %.255s) failed in an unexpected way"
+ #~ msgstr ""
 diff --git a/po/id.po b/po/id.po
-index d5ebd29e..cf11b069 100644
+index bf0540512..0fe2582fc 100644
 --- a/po/id.po
 +++ b/po/id.po
 @@ -10,7 +10,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.15\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2015-06-26 16:12+0200\n"
  "Last-Translator: Arief S Fitrianto <arief@gurame.fisika.ui.ac.id>\n"
  "Language-Team: Indonesian <debian-l10n-indonesian@lists.debian.org>\n"
-@@ -6172,28 +6172,15 @@ msgid "status logger"
+@@ -6205,28 +6205,15 @@ msgid "status logger"
  msgstr "status"
  
  #: src/main/main.c
@@ -1659,19 +1661,19 @@ index d5ebd29e..cf11b069 100644
  
  #: src/main/main.c
 diff --git a/po/it.po b/po/it.po
-index d4e38739..4d859edb 100644
+index 3c0d519db..a9e209710 100644
 --- a/po/it.po
 +++ b/po/it.po
 @@ -26,7 +26,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.19.3\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2018-12-04 12:15+0100\n"
  "Last-Translator: Milo Casagrande <milo@milo.name>\n"
  "Language-Team: Italian <tp@lists.linux.it>\n"
-@@ -6084,30 +6084,16 @@ msgid "status logger"
+@@ -6116,30 +6116,16 @@ msgid "status logger"
  msgstr "logger di stato"
  
  #: src/main/main.c
@@ -1709,7 +1711,7 @@ index d4e38739..4d859edb 100644
  
  #: src/main/main.c
  #, c-format
-@@ -7580,6 +7566,28 @@ msgstr ""
+@@ -7612,6 +7598,28 @@ msgstr ""
  msgid "Authentication is required to run update-alternatives"
  msgstr ""
  
@@ -1735,23 +1737,23 @@ index d4e38739..4d859edb 100644
 +#~ "impossibile rimuovere l'architettura \"%s\" attualmente in uso dal "
 +#~ "database"
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "apertura del file con le deviazioni non riuscita"
- 
+ # (ndt) non mi è molto chiara
+ # se fosse: il componente aperto ... ?
+ #, c-format
 diff --git a/po/ja.po b/po/ja.po
-index 19d1061c..6678e91e 100644
+index a604cca09..b22aa1ad7 100644
 --- a/po/ja.po
 +++ b/po/ja.po
 @@ -11,7 +11,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.18.3\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2022-11-03 20:08+0100\n"
  "Last-Translator: Takuma Yamada <tyamada@takumayamada.com>\n"
  "Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
-@@ -6018,29 +6018,16 @@ msgid "status logger"
+@@ -6051,29 +6051,16 @@ msgid "status logger"
  msgstr "状態記録"
  
  #: src/main/main.c
@@ -1789,7 +1791,7 @@ index 19d1061c..6678e91e 100644
  
  #: src/main/main.c
  #, c-format
-@@ -7494,6 +7481,26 @@ msgstr ""
+@@ -7527,6 +7514,26 @@ msgstr ""
  msgid "Authentication is required to run update-alternatives"
  msgstr ""
  
@@ -1813,23 +1815,23 @@ index 19d1061c..6678e91e 100644
 +#~ msgid "cannot remove architecture '%s' currently in use by the database"
 +#~ msgstr "データベースで現在使用中のアーキテクチャ '%s' を削除できません"
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "diversions ファイルのオープンに失敗しました"
- 
+ #, c-format
+ #~ msgid "open component '%.255s' (in %.255s) failed in an unexpected way"
+ #~ msgstr ""
 diff --git a/po/km.po b/po/km.po
-index 89d7e350..b77bfdab 100644
+index 02f20fede..0a0ac8030 100644
 --- a/po/km.po
 +++ b/po/km.po
 @@ -8,7 +8,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.17.0\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2015-04-07 09:50+0200\n"
  "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
  "Language-Team: Khmer <support@khmeros.info>\n"
-@@ -5821,29 +5821,15 @@ msgid "status logger"
+@@ -5848,29 +5848,15 @@ msgid "status logger"
  msgstr ""
  
  #: src/main/main.c
@@ -1865,7 +1867,7 @@ index 89d7e350..b77bfdab 100644
  msgstr ""
  
  #: src/main/main.c
-@@ -7287,6 +7273,11 @@ msgstr ""
+@@ -7314,6 +7300,11 @@ msgstr ""
  msgid "Authentication is required to run update-alternatives"
  msgstr ""
  
@@ -1874,23 +1876,23 @@ index 89d7e350..b77bfdab 100644
 +#~ msgid "cannot remove non-foreign architecture '%s'"
 +#~ msgstr "មិន​អាច​យក​ឯកសារ​ចេញ `%.250s'"
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "បាន​បរាជ័យ​ក្នុង​ការ​បើក​ឯកសារ​បង្វែរ"
- 
+ #, c-format
+ #~ msgid "open component '%.255s' (in %.255s) failed in an unexpected way"
+ #~ msgstr "បើក​សមាសភាគ​`%.255s' (នៅ %.255s)​ បានបរាជ័យ​តាម​វិធី​ដែលមិន​បាន​រំពឹង​ទុក"
 diff --git a/po/ko.po b/po/ko.po
-index 083fb1e8..6403bd11 100644
+index 9484c48c4..f270ecfb7 100644
 --- a/po/ko.po
 +++ b/po/ko.po
 @@ -10,7 +10,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.17.0\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2015-06-26 16:12+0200\n"
  "Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
  "Language-Team: Korean <debian-l10n-korean@lists.debian.org>\n"
-@@ -6198,28 +6198,15 @@ msgid "status logger"
+@@ -6231,28 +6231,15 @@ msgid "status logger"
  msgstr "상태"
  
  #: src/main/main.c
@@ -1926,19 +1928,19 @@ index 083fb1e8..6403bd11 100644
  
  # fdopen() 실패 상황
 diff --git a/po/ku.po b/po/ku.po
-index b4c0891b..76686669 100644
+index 0700cf0f8..990fba6fe 100644
 --- a/po/ku.po
 +++ b/po/ku.po
 @@ -8,7 +8,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.17.0\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2015-04-07 09:50+0200\n"
  "Last-Translator: Erdal Ronahi <erdal.ronahi@gmail.com>\n"
  "Language-Team: Kurdish <ku@li.org>\n"
-@@ -5192,28 +5192,15 @@ msgid "status logger"
+@@ -5212,28 +5212,15 @@ msgid "status logger"
  msgstr ""
  
  #: src/main/main.c
@@ -1974,19 +1976,19 @@ index b4c0891b..76686669 100644
  
  #: src/main/main.c
 diff --git a/po/lt.po b/po/lt.po
-index cf953afd..38e60f98 100644
+index bf09ec5fe..1dcd8c476 100644
 --- a/po/lt.po
 +++ b/po/lt.po
 @@ -9,7 +9,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.17.0\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2015-04-07 09:50+0200\n"
  "Last-Translator: Gintautas Miliauskas <gintas@akl.lt>\n"
  "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
-@@ -5707,28 +5707,15 @@ msgid "status logger"
+@@ -5734,28 +5734,15 @@ msgid "status logger"
  msgstr ""
  
  #: src/main/main.c
@@ -2022,19 +2024,19 @@ index cf953afd..38e60f98 100644
  
  #: src/main/main.c
 diff --git a/po/mr.po b/po/mr.po
-index d60fd60a..8bd87857 100644
+index 293e8d932..d3ae717a0 100644
 --- a/po/mr.po
 +++ b/po/mr.po
 @@ -7,7 +7,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.17.0\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2015-04-07 09:51+0200\n"
  "Last-Translator: Priti Patil <prithisd@gmail.com>\n"
  "Language-Team: Marathi <janabhaaratii@cdacmumbai.in>\n"
-@@ -5780,29 +5780,15 @@ msgid "status logger"
+@@ -5807,29 +5807,15 @@ msgid "status logger"
  msgstr ""
  
  #: src/main/main.c
@@ -2070,7 +2072,7 @@ index d60fd60a..8bd87857 100644
  msgstr ""
  
  #: src/main/main.c
-@@ -7263,6 +7249,11 @@ msgstr ""
+@@ -7290,6 +7276,11 @@ msgstr ""
  msgid "Authentication is required to run update-alternatives"
  msgstr ""
  
@@ -2079,23 +2081,23 @@ index d60fd60a..8bd87857 100644
 +#~ msgid "cannot remove non-foreign architecture '%s'"
 +#~ msgstr "`%.250s' फाइल काढणे अशक्य"
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "डाइव्हर्जन्स फाइल उघडण्यास अयशस्वी"
- 
+ #, c-format
+ #~ msgid "open component '%.255s' (in %.255s) failed in an unexpected way"
+ #~ msgstr "चालू असलेला घटक `%.255s' (%.255s मधील) अनपेक्षित रित्या बंद पडला"
 diff --git a/po/nb.po b/po/nb.po
-index a085d9cc..8bf22c4c 100644
+index bd8d46c1c..a9efb0dad 100644
 --- a/po/nb.po
 +++ b/po/nb.po
 @@ -9,7 +9,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.17.0\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2015-04-07 09:51+0200\n"
  "Last-Translator: Hans Fredrik Nordhaug <hans@nordhaug.priv.no>\n"
  "Language-Team: Norwegian Bokmål <i18n-nb@lister.ping.uio.no>\n"
-@@ -6182,29 +6182,15 @@ msgid "status logger"
+@@ -6216,29 +6216,15 @@ msgid "status logger"
  msgstr "status"
  
  #: src/main/main.c
@@ -2131,7 +2133,7 @@ index a085d9cc..8bf22c4c 100644
  msgstr ""
  
  #: src/main/main.c
-@@ -7780,6 +7766,11 @@ msgstr ""
+@@ -7814,6 +7800,11 @@ msgstr ""
  msgid "Authentication is required to run update-alternatives"
  msgstr ""
  
@@ -2140,23 +2142,23 @@ index a085d9cc..8bf22c4c 100644
 +#~ msgid "cannot remove non-foreign architecture '%s'"
 +#~ msgstr "klarte ikke fjerne fila «%.250s»"
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "klarte ikke åpne omdirigeringsfil"
- 
+ #, c-format
+ #~ msgid "open component '%.255s' (in %.255s) failed in an unexpected way"
+ #~ msgstr ""
 diff --git a/po/ne.po b/po/ne.po
-index 5e699ad3..6a7c98fb 100644
+index 241bb9489..398f482ba 100644
 --- a/po/ne.po
 +++ b/po/ne.po
 @@ -9,7 +9,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.17.0\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2015-04-07 09:51+0200\n"
  "Last-Translator: Nabin Gautam <nabin@mpp.org.np>\n"
  "Language-Team: Nepali <info@mpp.org.np>\n"
-@@ -5867,29 +5867,15 @@ msgid "status logger"
+@@ -5894,29 +5894,15 @@ msgid "status logger"
  msgstr ""
  
  #: src/main/main.c
@@ -2192,7 +2194,7 @@ index 5e699ad3..6a7c98fb 100644
  msgstr ""
  
  #: src/main/main.c
-@@ -7343,6 +7329,11 @@ msgstr ""
+@@ -7370,6 +7356,11 @@ msgstr ""
  msgid "Authentication is required to run update-alternatives"
  msgstr ""
  
@@ -2201,23 +2203,23 @@ index 5e699ad3..6a7c98fb 100644
 +#~ msgid "cannot remove non-foreign architecture '%s'"
 +#~ msgstr "फाइल `%.250s' हटाउन सक्दैन"
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "diversions फाइल खोल्न असफल"
- 
+ #, c-format
+ #~ msgid "open component '%.255s' (in %.255s) failed in an unexpected way"
+ #~ msgstr "अवयव`%.255s' (in %.255s)खोल्न अप्रत्यासित रुपले असफल"
 diff --git a/po/nl.po b/po/nl.po
-index 4a5bdea0..4e3abf89 100644
+index d372a22cf..e72b4ad13 100644
 --- a/po/nl.po
 +++ b/po/nl.po
 @@ -8,7 +8,7 @@ msgid ""
  msgstr ""
- "Project-Id-Version: dpkg 1.22.1\n"
+ "Project-Id-Version: dpkg 1.22.11\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
- "PO-Revision-Date: 2023-12-03 17:45+0100\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
+ "PO-Revision-Date: 2024-11-05 18:04+0100\n"
  "Last-Translator: Frans Spiesschaert <Frans.Spiesschaert@yucom.be>\n"
  "Language-Team: Debian Dutch l10n Team <debian-l10n-dutch@lists.debian.org>\n"
-@@ -5699,33 +5699,16 @@ msgid "status logger"
+@@ -5749,33 +5749,16 @@ msgid "status logger"
  msgstr "statuslogger"
  
  #: src/main/main.c
@@ -2257,10 +2259,11 @@ index 4a5bdea0..4e3abf89 100644
  
  #: src/main/main.c
  #, c-format
-@@ -7157,6 +7140,30 @@ msgstr ""
+@@ -7206,3 +7189,27 @@ msgstr ""
+ #: utils/update-alternatives.polkit.in
  msgid "Authentication is required to run update-alternatives"
  msgstr "Authenticatie is nodig voor het uitvoeren van update-alternatives"
- 
++
 +#, c-format
 +#~ msgid "architecture '%s' is illegal: %s"
 +#~ msgstr "architectuur '%s' is ongeldig: %s"
@@ -2284,24 +2287,20 @@ index 4a5bdea0..4e3abf89 100644
 +#~ msgstr ""
 +#~ "kan architectuur '%s' die momenteel door de database gebruikt wordt, niet "
 +#~ "verwijderen"
-+
- #~ msgid "failed to open diversions file"
- #~ msgstr "kon omleidingenbestand niet openen"
- 
 diff --git a/po/nn.po b/po/nn.po
-index 81b0189c..f872f1a2 100644
+index 939b8aa73..861a628bf 100644
 --- a/po/nn.po
 +++ b/po/nn.po
 @@ -7,7 +7,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.17.0\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2015-04-07 09:51+0200\n"
  "Last-Translator: Håvard Korsvoll <korsvoll@skulelinux.no>\n"
  "Language-Team: Norwegian Nynorsk <i18n-nn@lister.ping.uio.no>\n"
-@@ -5732,29 +5732,15 @@ msgid "status logger"
+@@ -5756,29 +5756,15 @@ msgid "status logger"
  msgstr ""
  
  #: src/main/main.c
@@ -2337,7 +2336,7 @@ index 81b0189c..f872f1a2 100644
  msgstr ""
  
  #: src/main/main.c
-@@ -7140,6 +7126,11 @@ msgstr ""
+@@ -7164,6 +7150,11 @@ msgstr ""
  msgid "Authentication is required to run update-alternatives"
  msgstr ""
  
@@ -2346,23 +2345,23 @@ index 81b0189c..f872f1a2 100644
 +#~ msgid "cannot remove non-foreign architecture '%s'"
 +#~ msgstr "klarte ikkje fjerna fila «%.250s»"
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "klarte ikkje opna omdirigeringsfil"
- 
+ #, c-format
+ #~ msgid "open component '%.255s' (in %.255s) failed in an unexpected way"
+ #~ msgstr ""
 diff --git a/po/oc.po b/po/oc.po
-index da4b013c..e3896c7d 100644
+index d641982ab..e6f7bcb49 100644
 --- a/po/oc.po
 +++ b/po/oc.po
 @@ -8,7 +8,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.21.20\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2023-02-05 23:42+0100\n"
  "Last-Translator: Quentin PAGÈS <quentinantonin@free.fr>\n"
  "Language-Team: Occitan\n"
-@@ -5191,28 +5191,15 @@ msgid "status logger"
+@@ -5221,28 +5221,15 @@ msgid "status logger"
  msgstr ""
  
  #: src/main/main.c
@@ -2397,7 +2396,7 @@ index da4b013c..e3896c7d 100644
  msgstr ""
  
  #: src/main/main.c
-@@ -6514,6 +6501,14 @@ msgstr ""
+@@ -6544,6 +6531,14 @@ msgstr ""
  msgid "Authentication is required to run update-alternatives"
  msgstr ""
  
@@ -2409,23 +2408,23 @@ index da4b013c..e3896c7d 100644
 +#~ msgid "architecture '%s' is reserved and cannot be added"
 +#~ msgstr "l'arquitectura « %s » es reservada e se pòt pas apondre"
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "impossible de dobrir lo fichièr dels detornaments"
- 
+ #, c-format
+ #~ msgid "cannot open '%.255s' (in '%.255s')"
+ #~ msgstr "impossible de dobrir « %.255s » (dins « %.255s »)"
 diff --git a/po/pa.po b/po/pa.po
-index 61141da8..e3129afa 100644
+index 67068a60b..e4f3a3e33 100644
 --- a/po/pa.po
 +++ b/po/pa.po
 @@ -6,7 +6,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.17.0\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2015-04-07 09:51+0200\n"
  "Last-Translator: A S Alam <apbrar@gmail.com>\n"
  "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
-@@ -5455,28 +5455,15 @@ msgid "status logger"
+@@ -5477,28 +5477,15 @@ msgid "status logger"
  msgstr ""
  
  #: src/main/main.c
@@ -2461,19 +2460,19 @@ index 61141da8..e3129afa 100644
  
  #: src/main/main.c
 diff --git a/po/pl.po b/po/pl.po
-index fd3ffde2..035dff00 100644
+index e25207f00..fb78b2c38 100644
 --- a/po/pl.po
 +++ b/po/pl.po
 @@ -16,7 +16,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.20.7\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2021-04-24 19:50+0200\n"
  "Last-Translator: Łukasz Dulny <bartekchom@poczta.onet.pl>\n"
  "Language-Team: Polish <debian-l10n-polish@lists.debian.org>\n"
-@@ -5885,30 +5885,16 @@ msgid "status logger"
+@@ -5918,30 +5918,16 @@ msgid "status logger"
  msgstr "status programu logującego"
  
  #: src/main/main.c
@@ -2511,7 +2510,7 @@ index fd3ffde2..035dff00 100644
  
  #: src/main/main.c
  #, c-format
-@@ -7360,6 +7346,27 @@ msgstr "Uruchom update-alternatives, aby zmienić wybór alternatyw w systemie"
+@@ -7393,6 +7379,27 @@ msgstr "Uruchom update-alternatives, aby zmienić wybór alternatyw w systemie"
  msgid "Authentication is required to run update-alternatives"
  msgstr "Uruchomienie update-alternatives wymaga uwierzytelnienia"
  
@@ -2536,23 +2535,23 @@ index fd3ffde2..035dff00 100644
 +#~ msgstr ""
 +#~ "nie można usunąć architektury \"%s\" używanej aktualnie przez bazę danych"
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "nie można otworzyć listy ominiętych plików"
- 
+ #, c-format
+ #~ msgid "open component '%.255s' (in %.255s) failed in an unexpected way"
+ #~ msgstr ""
 diff --git a/po/pt.po b/po/pt.po
-index 52792e36..519d9963 100644
+index d15c7717d..4627dad2b 100644
 --- a/po/pt.po
 +++ b/po/pt.po
 @@ -7,7 +7,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.21.20\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2023-02-04 14:11+0000\n"
  "Last-Translator: Miguel Figueiredo <elmig@debianpt.org>\n"
  "Language-Team: Portuguese <traduz@debianpt.org>\n"
-@@ -5683,32 +5683,16 @@ msgid "status logger"
+@@ -5746,32 +5746,16 @@ msgid "status logger"
  msgstr "registador de estado"
  
  #: src/main/main.c
@@ -2591,7 +2590,7 @@ index 52792e36..519d9963 100644
  
  #: src/main/main.c
  #, c-format
-@@ -7113,6 +7097,29 @@ msgstr ""
+@@ -7176,6 +7160,29 @@ msgstr ""
  msgid "Authentication is required to run update-alternatives"
  msgstr "É necessária autenticação para correr update-alternatives"
  
@@ -2618,48 +2617,48 @@ index 52792e36..519d9963 100644
 +#~ "nao pode remover a arquitectura '%s' actualmente em utilização pela base "
 +#~ "de dados"
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "falhou abrir ficheiro diversions"
- 
+ #, c-format
+ #~ msgid "open component '%.255s' (in %.255s) failed in an unexpected way"
+ #~ msgstr ""
 diff --git a/po/pt_BR.po b/po/pt_BR.po
-index 0d37f168..430a9087 100644
+index cc3eaaa3b..7f520c3a8 100644
 --- a/po/pt_BR.po
 +++ b/po/pt_BR.po
-@@ -14,7 +14,7 @@ msgid ""
+@@ -17,7 +17,7 @@ msgid ""
  msgstr ""
- "Project-Id-Version: dpkg 1.13\n"
+ "Project-Id-Version: dpkg 1.22.11\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
- "PO-Revision-Date: 2015-04-07 09:52+0200\n"
- "Last-Translator: Felipe Augusto van de Wiel (faw) <faw@debian.org>\n"
- "Language-Team: Brazilian Portuguese <debian-l10n-portuguese@lists.debian."
-@@ -6128,29 +6128,15 @@ msgid "status logger"
- msgstr ""
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
+ "PO-Revision-Date: 2024-12-31 23:42+0100\n"
+ "Last-Translator: Paulo Henrique de Lima Santana (phls) <phls@debian.org>\n"
+ "Language-Team: Brazilian Portuguese <debian-l10n-"
+@@ -5769,31 +5769,16 @@ msgid "status logger"
+ msgstr "registrador de estado"
  
  #: src/main/main.c
 -#, c-format
 -msgid "architecture '%s' is illegal: %s"
--msgstr ""
+-msgstr "arquitetura '%s' é ilegal: %s"
 -
 -#: src/main/main.c
 -#, c-format
 -msgid "architecture '%s' is reserved and cannot be added"
--msgstr ""
+-msgstr "arquitetura '%s' está reservado e não pode ser adicionada"
 -
 -#: src/main/main.c
--#, fuzzy, c-format
--#| msgid "cannot remove file `%.250s'"
+-#, c-format
 -msgid "cannot remove non-foreign architecture '%s'"
--msgstr "não foi possível remover arquivo '%.250s'"
+-msgstr "não foi possível remover a arquitetura não exótica '%s'"
 -
 -#: src/main/main.c
 -#, c-format
 -msgid "removing architecture '%s' currently in use by database"
+-msgstr "removendo a arquitetura '%s' atualmente em uso pelo banco de dados"
 +msgid ""
 +"--add-architecture is not supported in AOSC OS. Please contact AOSC OS "
 +"maintainers for any problems encountered."
- msgstr ""
++msgstr ""
  
  #: src/main/main.c
 -#, c-format
@@ -2668,34 +2667,54 @@ index 0d37f168..430a9087 100644
 +"--remove-architecture is not supported in AOSC OS. Please contact AOSC OS "
 +"maintainers for any problems encountered."
  msgstr ""
+-"não foi possível remover a arquitetura '%s' atualmente em uso pelo banco de "
+-"dados"
  
  #: src/main/main.c
-@@ -7692,6 +7678,11 @@ msgstr ""
+ #, c-format
+@@ -7199,6 +7184,28 @@ msgstr ""
  msgid "Authentication is required to run update-alternatives"
- msgstr ""
+ msgstr "Autenticação é necessária para executar update-alternatives"
  
-+#, fuzzy, c-format
-+#~| msgid "cannot remove file `%.250s'"
++#, c-format
++#~ msgid "architecture '%s' is illegal: %s"
++#~ msgstr "arquitetura '%s' é ilegal: %s"
++
++#, c-format
++#~ msgid "architecture '%s' is reserved and cannot be added"
++#~ msgstr "arquitetura '%s' está reservado e não pode ser adicionada"
++
++#, c-format
 +#~ msgid "cannot remove non-foreign architecture '%s'"
-+#~ msgstr "não foi possível remover arquivo '%.250s'"
++#~ msgstr "não foi possível remover a arquitetura não exótica '%s'"
++
++#, c-format
++#~ msgid "removing architecture '%s' currently in use by database"
++#~ msgstr "removendo a arquitetura '%s' atualmente em uso pelo banco de dados"
++
++#, c-format
++#~ msgid "cannot remove architecture '%s' currently in use by the database"
++#~ msgstr ""
++#~ "não foi possível remover a arquitetura '%s' atualmente em uso pelo banco "
++#~ "de dados"
 +
  #~ msgid "failed to open diversions file"
  #~ msgstr "falhou ao abrir arquivo de desvios"
  
 diff --git a/po/ro.po b/po/ro.po
-index c8887f81..fb51f694 100644
+index e2d59bce3..090981979 100644
 --- a/po/ro.po
 +++ b/po/ro.po
 @@ -23,7 +23,7 @@ msgid ""
  msgstr ""
- "Project-Id-Version: dpkg 1.22.0\n"
+ "Project-Id-Version: dpkg 1.22.11\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
- "PO-Revision-Date: 2023-10-04 11:08+0200\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
+ "PO-Revision-Date: 2024-12-03 03:57+0100\n"
  "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
  "Language-Team: Romanian <debian-l10n-romanian@lists.debian.org>\n"
-@@ -6019,30 +6019,16 @@ msgid "status logger"
+@@ -6079,30 +6079,16 @@ msgid "status logger"
  msgstr "jurnalul de stare"
  
  #: src/main/main.c
@@ -2733,7 +2752,7 @@ index c8887f81..fb51f694 100644
  
  #: src/main/main.c
  #, c-format
-@@ -7474,6 +7460,27 @@ msgstr ""
+@@ -7533,6 +7519,27 @@ msgstr ""
  msgid "Authentication is required to run update-alternatives"
  msgstr "Autentificarea este necesară pentru a rula «update-alternatives»"
  
@@ -2758,23 +2777,23 @@ index c8887f81..fb51f694 100644
 +#~ msgstr ""
 +#~ "nu se poate elimina arhitectura „%s” folosită în prezent de baza de date"
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "eșec la deschiderea fișierului de redirecționări"
- 
+ #, c-format
+ #~ msgid "open component '%.255s' (in %.255s) failed in an unexpected way"
+ #~ msgstr ""
 diff --git a/po/ru.po b/po/ru.po
-index 66b5e43f..fc427a24 100644
+index 776565814..2c04a5a8b 100644
 --- a/po/ru.po
 +++ b/po/ru.po
 @@ -9,7 +9,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.21.20\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2023-02-06 00:01+0100\n"
  "Last-Translator: Yuri Kozlov <yuray@komyakino.ru>\n"
  "Language-Team: Russian <debian-l10n-russian@lists.debian.org>\n"
-@@ -5710,31 +5710,16 @@ msgid "status logger"
+@@ -5772,31 +5772,16 @@ msgid "status logger"
  msgstr "протоколировщик состояния"
  
  #: src/main/main.c
@@ -2813,7 +2832,7 @@ index 66b5e43f..fc427a24 100644
  
  #: src/main/main.c
  #, c-format
-@@ -7133,6 +7118,29 @@ msgstr ""
+@@ -7195,6 +7180,29 @@ msgstr ""
  msgid "Authentication is required to run update-alternatives"
  msgstr "Для запуска update-alternatives требуется аутентификация"
  
@@ -2840,23 +2859,23 @@ index 66b5e43f..fc427a24 100644
 +#~ "невозможно удалить архитектуру «%s», которая в данный момент используется "
 +#~ "в базе данных"
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "не удалось открыть файл diversions"
- 
+ #, c-format
+ #~ msgid "open component '%.255s' (in %.255s) failed in an unexpected way"
+ #~ msgstr ""
 diff --git a/po/sk.po b/po/sk.po
-index d03d28af..4fb5fce8 100644
+index 919665dc3..79783291e 100644
 --- a/po/sk.po
 +++ b/po/sk.po
 @@ -9,7 +9,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.17.0\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2015-04-07 10:01+0200\n"
  "Last-Translator: Ivan Masár <helix84@centrum.sk>\n"
  "Language-Team: Slovak <debian-l10n-slovak@lists.debian.org>\n"
-@@ -6056,29 +6056,16 @@ msgid "status logger"
+@@ -6091,29 +6091,16 @@ msgid "status logger"
  msgstr "záznam stavu"
  
  #: src/main/main.c
@@ -2894,7 +2913,7 @@ index d03d28af..4fb5fce8 100644
  
  #: src/main/main.c
  #, c-format
-@@ -7552,6 +7539,27 @@ msgstr ""
+@@ -7587,6 +7574,27 @@ msgstr ""
  msgid "Authentication is required to run update-alternatives"
  msgstr ""
  
@@ -2919,23 +2938,23 @@ index d03d28af..4fb5fce8 100644
 +#~ msgstr ""
 +#~ "nemožno odstrániť architektúru „%s“, ktorú momentálne používa databáza"
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "zlyhalo otvorenie súboru s odchýlkami"
- 
+ #, c-format
+ #~ msgid "open component '%.255s' (in %.255s) failed in an unexpected way"
+ #~ msgstr "otvorenie zložky „%.255s“ (v %.255s) zlyhalo neočakávaným spôsobom"
 diff --git a/po/sv.po b/po/sv.po
-index 884255e7..8bb29e8f 100644
+index fae3c93de..7b3435106 100644
 --- a/po/sv.po
 +++ b/po/sv.po
 @@ -9,7 +9,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.22.0\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
- "PO-Revision-Date: 2024-04-28 14:30+0100\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
+ "PO-Revision-Date: 2024-09-29 17:15+0100\n"
  "Last-Translator: Peter Krefting <peter@softwolves.pp.se>\n"
- "Language-Team: Svenska <tp-sv@listor.tp-sv.se>\n"
-@@ -5551,30 +5551,16 @@ msgid "status logger"
+ "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+@@ -5602,30 +5602,16 @@ msgid "status logger"
  msgstr "statusloggare"
  
  #: src/main/main.c
@@ -2973,11 +2992,10 @@ index 884255e7..8bb29e8f 100644
  
  #: src/main/main.c
  #, c-format
-@@ -6946,3 +6932,24 @@ msgstr "Kör update-alternatives för att ändra systemets val av alternativ"
- #: utils/update-alternatives.polkit.in
+@@ -6998,6 +6984,27 @@ msgstr "Kör update-alternatives för att ändra systemets val av alternativ"
  msgid "Authentication is required to run update-alternatives"
  msgstr "Autentisering krävs för att köra update-alternatives"
-+
+ 
 +#, c-format
 +#~ msgid "architecture '%s' is illegal: %s"
 +#~ msgstr "arkitekturen ”%s” är ogiltig: %s"
@@ -2998,20 +3016,24 @@ index 884255e7..8bb29e8f 100644
 +#~ msgid "cannot remove architecture '%s' currently in use by the database"
 +#~ msgstr ""
 +#~ "kan inte ta bort arkitekturen ”%s” som för närvarande används av databasen"
++
+ #, c-format
+ #~ msgid "open component '%.255s' (in %.255s) failed in an unexpected way"
+ #~ msgstr ""
 diff --git a/po/th.po b/po/th.po
-index 37f3d759..5227dc10 100644
+index 08898bbc8..2ba70bc69 100644
 --- a/po/th.po
 +++ b/po/th.po
 @@ -8,7 +8,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.21.20\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2023-02-05 23:45+0100\n"
  "Last-Translator: Theppitak Karoonboonyanan <thep@debian.org>\n"
  "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
-@@ -5472,29 +5472,16 @@ msgid "status logger"
+@@ -5535,29 +5535,16 @@ msgid "status logger"
  msgstr "เครื่องมือบันทึกปูมของสถานะ"
  
  #: src/main/main.c
@@ -3049,7 +3071,7 @@ index 37f3d759..5227dc10 100644
  
  #: src/main/main.c
  #, c-format
-@@ -6838,6 +6825,26 @@ msgstr "เรียก update-alternatives เพื่อเปลี่ยน
+@@ -6901,6 +6888,26 @@ msgstr "เรียก update-alternatives เพื่อเปลี่ยน
  msgid "Authentication is required to run update-alternatives"
  msgstr "ต้องยืนยันตัวบุคคลเพื่อเรียกทำงาน update-alternatives"
  
@@ -3073,23 +3095,23 @@ index 37f3d759..5227dc10 100644
 +#~ msgid "cannot remove architecture '%s' currently in use by the database"
 +#~ msgstr "ไม่สามารถลบสถาปัตยกรรม '%s' ซึ่งกำลังใช้งานอยู่ในฐานข้อมูล"
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "ไม่สามารถเปิดแฟ้ม diversions"
- 
+ #, c-format
+ #~ msgid "open component '%.255s' (in %.255s) failed in an unexpected way"
+ #~ msgstr "เปิดองค์ประกอบ '%.255s' (ใน %.255s) ไม่สำเร็จ โดยได้ผลลัพธ์ที่ไม่คาดคิด"
 diff --git a/po/tl.po b/po/tl.po
-index 4efe7573..d63cf7d4 100644
+index 5309049eb..a778cfa6a 100644
 --- a/po/tl.po
 +++ b/po/tl.po
 @@ -8,7 +8,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.13\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2015-04-07 09:53+0200\n"
  "Last-Translator: Eric Pareja <xenos@upm.edu.ph>\n"
  "Language-Team: Tagalog <debian-tl@banwa.upm.edu.ph>\n"
-@@ -5857,29 +5857,15 @@ msgid "status logger"
+@@ -5881,29 +5881,15 @@ msgid "status logger"
  msgstr ""
  
  #: src/main/main.c
@@ -3125,7 +3147,7 @@ index 4efe7573..d63cf7d4 100644
  msgstr ""
  
  #: src/main/main.c
-@@ -7288,6 +7274,11 @@ msgstr ""
+@@ -7312,6 +7298,11 @@ msgstr ""
  msgid "Authentication is required to run update-alternatives"
  msgstr ""
  
@@ -3134,23 +3156,23 @@ index 4efe7573..d63cf7d4 100644
 +#~ msgid "cannot remove non-foreign architecture '%s'"
 +#~ msgstr "hindi matanggal ang talaksang `%.250s'"
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "bigo sa pagbukas ng talaksang dibersyon"
- 
+ #, c-format
+ #~ msgid "open component '%.255s' (in %.255s) failed in an unexpected way"
+ #~ msgstr ""
 diff --git a/po/tr.po b/po/tr.po
-index 9faf7a9e..1f136904 100644
+index 98d05fb5a..2f71522f1 100644
 --- a/po/tr.po
 +++ b/po/tr.po
 @@ -7,7 +7,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.17.10\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2018-01-03 16:44+0300\n"
  "Last-Translator: Mert Dirik <mertdirik@gmail.com>\n"
  "Language-Team: Turkish <debian-l10n-turkish@lists.debian.org>\n"
-@@ -5982,30 +5982,16 @@ msgid "status logger"
+@@ -6015,30 +6015,16 @@ msgid "status logger"
  msgstr "durum günlükçüsü"
  
  #: src/main/main.c
@@ -3188,7 +3210,7 @@ index 9faf7a9e..1f136904 100644
  
  #: src/main/main.c
  #, c-format
-@@ -7472,6 +7458,27 @@ msgid "Authentication is required to run update-alternatives"
+@@ -7505,6 +7491,27 @@ msgid "Authentication is required to run update-alternatives"
  msgstr ""
  "update-alternatives komutunu çalıştırmak için kimlik doğrulama gerekmektedir"
  
@@ -3213,23 +3235,23 @@ index 9faf7a9e..1f136904 100644
 +#~ msgstr ""
 +#~ "veritabanı tarafından hâlâ kullanılmakta olan '%s' mimarisi kaldırılamıyor"
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "yönlendirme dosyası açılamadı"
- 
+ #, c-format
+ #~ msgid "open component '%.255s' (in %.255s) failed in an unexpected way"
+ #~ msgstr ""
 diff --git a/po/vi.po b/po/vi.po
-index 5710e861..0191f110 100644
+index dedf44392..34456dd96 100644
 --- a/po/vi.po
 +++ b/po/vi.po
 @@ -9,7 +9,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.18.2\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2016-01-14 08:22+0700\n"
  "Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
  "Language-Team: Vietnamese <debian-l10n-vietnamese@lists.debian.org>\n"
-@@ -6032,30 +6032,16 @@ msgid "status logger"
+@@ -6067,30 +6067,16 @@ msgid "status logger"
  msgstr "bộ ghi nhật ký trạng thái"
  
  #: src/main/main.c
@@ -3267,7 +3289,7 @@ index 5710e861..0191f110 100644
  
  #: src/main/main.c
  #, c-format
-@@ -7490,6 +7476,27 @@ msgstr ""
+@@ -7525,6 +7511,27 @@ msgstr ""
  msgid "Authentication is required to run update-alternatives"
  msgstr ""
  
@@ -3292,23 +3314,23 @@ index 5710e861..0191f110 100644
 +#~ msgstr ""
 +#~ "không thể gỡ bỏ kiến trúc “%s” hiện tại đang được dùng bởi cơ sở dữ liệu"
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "lỗi mở tập tin diversions (sự trệch đi)"
- 
+ #, c-format
+ #~ msgid "open component '%.255s' (in %.255s) failed in an unexpected way"
+ #~ msgstr ""
 diff --git a/po/zh_CN.po b/po/zh_CN.po
-index 74bf30e1..79493ed6 100644
+index 8b60f11f3..a81efd85e 100644
 --- a/po/zh_CN.po
 +++ b/po/zh_CN.po
 @@ -16,7 +16,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.21.20\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2023-01-27 15:39-0500\n"
  "Last-Translator: Boyuan Yang <073plan@gmail.com>\n"
  "Language-Team: Chinese (simplified) <debian-l10n-chinese@lists.debian.org>\n"
-@@ -5457,29 +5457,16 @@ msgid "status logger"
+@@ -5520,29 +5520,16 @@ msgid "status logger"
  msgstr "状态日志记录器"
  
  #: src/main/main.c
@@ -3346,7 +3368,7 @@ index 74bf30e1..79493ed6 100644
  
  #: src/main/main.c
  #, c-format
-@@ -6819,6 +6806,26 @@ msgstr "运行 update-alternatives 工具以修改系统可选项的选择情况
+@@ -6882,6 +6869,26 @@ msgstr "运行 update-alternatives 工具以修改系统可选项的选择情况
  msgid "Authentication is required to run update-alternatives"
  msgstr "需要认证后才能执行 update-alternatives"
  
@@ -3370,23 +3392,23 @@ index 74bf30e1..79493ed6 100644
 +#~ msgid "cannot remove architecture '%s' currently in use by the database"
 +#~ msgstr "无法移除体系结构 %s ，当前它仍被数据库使用"
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "无法打开转移文件"
- 
+ #, c-format
+ #~ msgid "open component '%.255s' (in %.255s) failed in an unexpected way"
+ #~ msgstr "打开组件 %.255s (于 %.255s 目录)出乎意料地失败"
 diff --git a/po/zh_TW.po b/po/zh_TW.po
-index 279a488e..bd677900 100644
+index 4ec35c430..20b683b43 100644
 --- a/po/zh_TW.po
 +++ b/po/zh_TW.po
 @@ -10,7 +10,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg 1.13\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:09+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:55+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2018-04-15 07:06+0800\n"
  "Last-Translator: 林博仁 <Buo.Ren.Lin@gmail.com>\n"
  "Language-Team: Chinese (traditional) <debian-l10n-chinese@lists.debian.org>\n"
-@@ -5808,29 +5808,16 @@ msgid "status logger"
+@@ -5843,29 +5843,16 @@ msgid "status logger"
  msgstr "狀態記錄器"
  
  #: src/main/main.c
@@ -3424,7 +3446,7 @@ index 279a488e..bd677900 100644
  
  #: src/main/main.c
  #, c-format
-@@ -7237,6 +7224,26 @@ msgstr ""
+@@ -7272,6 +7259,26 @@ msgstr ""
  msgid "Authentication is required to run update-alternatives"
  msgstr ""
  
@@ -3448,142 +3470,142 @@ index 279a488e..bd677900 100644
 +#~ msgid "cannot remove architecture '%s' currently in use by the database"
 +#~ msgstr "無法移除資料庫正在使用的 '%s' 硬體平台"
 +
- #~ msgid "failed to open diversions file"
- #~ msgstr "無法開啟移轉檔"
- 
+ #, c-format
+ #~ msgid "open component '%.255s' (in %.255s) failed in an unexpected way"
+ #~ msgstr "在開啟元件 `%.255s'（位於 %.255s）時以意想不到的方式失敗了"
 diff --git a/scripts/po/ca.po b/scripts/po/ca.po
-index 8a958fd4..4a83db94 100644
+index 8aeea0759..af13df977 100644
 --- a/scripts/po/ca.po
 +++ b/scripts/po/ca.po
 @@ -9,7 +9,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg-dev 1.21.18\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
- "PO-Revision-Date: 2023-12-17 20:30+0100\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
+ "PO-Revision-Date: 2024-07-21 19:57+0200\n"
  "Last-Translator: Guillem Jover <guillem@debian.org>\n"
  "Language-Team: Catalan <debian-l10n-catalan@lists.debian.org>\n"
 diff --git a/scripts/po/de.po b/scripts/po/de.po
-index 9b11a8e8..a7c98d93 100644
+index ba7a16780..6f6dde705 100644
 --- a/scripts/po/de.po
 +++ b/scripts/po/de.po
 @@ -6,7 +6,7 @@ msgid ""
  msgstr ""
- "Project-Id-Version: dpkg-dev 1.22.6\n"
+ "Project-Id-Version: dpkg-dev 1.22.14\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
- "PO-Revision-Date: 2024-07-03 21:25+0200\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
+ "PO-Revision-Date: 2025-01-04 21:38+0100\n"
  "Last-Translator: Helge Kreutzmann <debian@helgefjell.de>\n"
  "Language-Team: German <debian-l10n-german@lists.debian.org>\n"
 diff --git a/scripts/po/dpkg-dev.pot b/scripts/po/dpkg-dev.pot
-index 5b7f1d13..a9de079b 100644
+index f1c601854..a6d29dead 100644
 --- a/scripts/po/dpkg-dev.pot
 +++ b/scripts/po/dpkg-dev.pot
 @@ -6,9 +6,9 @@
  #, fuzzy
  msgid ""
  msgstr ""
--"Project-Id-Version: dpkg 1.22.7\n"
-+"Project-Id-Version: dpkg 1.22.7-6-g73c7\n"
+-"Project-Id-Version: dpkg 1.22.14\n"
++"Project-Id-Version: dpkg 1.22.14-7-gfe853\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
  "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
  "Language-Team: LANGUAGE <LL@li.org>\n"
 diff --git a/scripts/po/es.po b/scripts/po/es.po
-index a6695b4c..e4b5fddc 100644
+index 019ef7b2d..1f46f44c5 100644
 --- a/scripts/po/es.po
 +++ b/scripts/po/es.po
 @@ -31,7 +31,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg-dev 1.16.8\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2014-12-02 20:24+0100\n"
  "Last-Translator: Omar Campagne <ocampagne@gmail.com>\n"
  "Language-Team: Spanish <debian-l10n-spanish@lists.debian.org>\n"
 diff --git a/scripts/po/fr.po b/scripts/po/fr.po
-index 2b9bb545..2d137113 100644
+index 265de01ac..8ab5c8b90 100644
 --- a/scripts/po/fr.po
 +++ b/scripts/po/fr.po
 @@ -11,7 +11,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg-dev 1.21.20\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2023-02-10 02:16+0100\n"
  "Last-Translator: Sébastien Poher <sebastien@volted.net>\n"
  "Language-Team: French <debian-l10n-french@lists.debian.org>\n"
 diff --git a/scripts/po/nl.po b/scripts/po/nl.po
-index 4d856760..f73d59e7 100644
+index 7df969e2e..8ae6ab668 100644
 --- a/scripts/po/nl.po
 +++ b/scripts/po/nl.po
 @@ -8,7 +8,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg-dev 1.21.19\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2023-02-02 17:51+0100\n"
  "Last-Translator: Frans Spiesschaert <Frans.Spiesschaert@yucom.be>\n"
  "Language-Team: \n"
 diff --git a/scripts/po/pl.po b/scripts/po/pl.po
-index 595de07b..27ac5cdc 100644
+index fb372b911..ec0fb10b5 100644
 --- a/scripts/po/pl.po
 +++ b/scripts/po/pl.po
 @@ -10,7 +10,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg-dev 1.15.4\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2015-04-07 07:05+0200\n"
  "Last-Translator: Łukasz Dulny <BartekChom@poczta.onet.pl>\n"
  "Language-Team: Polish <debian-l10n-polish@lists.debian.org>\n"
 diff --git a/scripts/po/pt.po b/scripts/po/pt.po
-index 6be16187..9123b809 100644
+index ce10796e5..b89455785 100644
 --- a/scripts/po/pt.po
 +++ b/scripts/po/pt.po
 @@ -7,7 +7,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg-dev 1.22.0\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2023-03-08 22:31+0000\n"
  "Last-Translator: Américo Monteiro <a_monteiro@gmx.com>\n"
  "Language-Team: Portuguese <>\n"
 diff --git a/scripts/po/ru.po b/scripts/po/ru.po
-index dc62f1f4..18453063 100644
+index 6c5c29899..f68d697b1 100644
 --- a/scripts/po/ru.po
 +++ b/scripts/po/ru.po
 @@ -7,7 +7,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg-dev 1.17.23\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
  "PO-Revision-Date: 2015-04-07 07:02+0200\n"
  "Last-Translator: Yuri Kozlov <yuray@komyakino.ru>\n"
  "Language-Team: Russian <debian-l10n-russian@lists.debian.org>\n"
 diff --git a/scripts/po/sv.po b/scripts/po/sv.po
-index 163f373c..420acb08 100644
+index c258e7f32..0c6c32094 100644
 --- a/scripts/po/sv.po
 +++ b/scripts/po/sv.po
 @@ -7,7 +7,7 @@ msgid ""
  msgstr ""
  "Project-Id-Version: dpkg-dev 1.22.0\n"
  "Report-Msgid-Bugs-To: debian-dpkg@lists.debian.org\n"
--"POT-Creation-Date: 2024-07-17 01:10+0200\n"
-+"POT-Creation-Date: 2024-07-18 05:55+0800\n"
- "PO-Revision-Date: 2024-04-28 14:34+0100\n"
+-"POT-Creation-Date: 2025-01-16 03:56+0100\n"
++"POT-Creation-Date: 2025-01-19 23:50+0800\n"
+ "PO-Revision-Date: 2024-09-29 17:34+0100\n"
  "Last-Translator: Peter Krefting <peter@softwolves.pp.se>\n"
- "Language-Team: Svenska <tp-sv@listor.tp-sv.se>\n"
+ "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 -- 
-2.45.2
+2.48.1
 

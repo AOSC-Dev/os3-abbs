@@ -42,6 +42,6 @@ AUTOTOOLS_AFTER__RETRO=" \
                  --disable-dbus-service"
 
 MAKE_AFTER="python3dir=/usr/lib/python${ABPY3VER}/site-packages \
-            PYTHON_PREFIX=/usr
+            PYTHON_PREFIX=/usr"
 
 PKGPROV="device-mapper"

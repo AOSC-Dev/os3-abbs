@@ -1,0 +1,4 @@
+PKGNAME="libipt"
+PKGDES="Intel(R) Processor Trace decoder library"
+PKGDEP="glibc"
+PKGSEC=libs

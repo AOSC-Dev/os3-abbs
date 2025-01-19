@@ -1,0 +1,10 @@
+PKGNAME="gcompris"
+PKGSEC="games"
+PKGDES="An educational software suite"
+PKGDEP="qt-5 gstreamer hicolor-icon-theme"
+BUILDDEP="extra-cmake-modules"
+
+CMAKE_AFTER=(
+        '-DCMAKE_INSTALL_PREFIX=/usr'
+        '-DCOMPILE_DOC=ON'
+)

@@ -22,36 +22,35 @@ BUILDDEP__POWERPC="${BUILDDEP__RETRO}"
 BUILDDEP__PPC64="${BUILDDEP__RETRO}"
 PKGDES="A modern concurrent version control system"
 
-AUTOTOOLS_AFTER="--with-apr=/usr \
-                 --with-apr-util=/usr \
-                 --with-zlib=/usr \
-                 --with-serf=/usr \
-                 --with-apxs \
-                 --with-sqlite=/usr \
-                 --without-gnome-keyring \
-                 --without-kwallet \
-                 --disable-javahl \
-                 --with-apache-libexecdir=/usr/lib/httpd/modules \
-                 --disable-static \
-                 --enable-bdb6"
-AUTOTOOLS_AFTER__RETRO=" \
-                 ${AUTOTOOLS_AFTER} \
-                 --without-apxs"
-AUTOTOOLS_AFTER__ARMV4=" \
-                 ${AUTOTOOLS_AFTER__RETRO}"
-AUTOTOOLS_AFTER__ARMV6HF=" \
-                 ${AUTOTOOLS_AFTER__RETRO}"
-AUTOTOOLS_AFTER__ARMV7HF=" \
-                 ${AUTOTOOLS_AFTER__RETRO}"
-AUTOTOOLS_AFTER__I486=" \
-                 ${AUTOTOOLS_AFTER__RETRO}"
-AUTOTOOLS_AFTER__LOONGSON2F=" \
-                 ${AUTOTOOLS_AFTER__RETRO}"
-AUTOTOOLS_AFTER__M68K=" \
-                 ${AUTOTOOLS_AFTER__RETRO}"
-AUTOTOOLS_AFTER__POWERPC=" \
-                 ${AUTOTOOLS_AFTER__RETRO}"
-AUTOTOOLS_AFTER__PPC64=" \
-                 ${AUTOTOOLS_AFTER__RETRO}"
+AUTOTOOLS_AFTER=(
+    --with-apr=/usr
+    --with-apr-util=/usr
+    --with-zlib=/usr
+    --with-serf=/usr
+    --with-apxs
+    --with-sqlite=/usr
+    --without-gnome-keyring
+    --without-kwallet
+    --disable-javahl
+    --with-apache-libexecdir=/usr/lib/httpd/modules
+    --disable-static
+    --enable-bdb6
+)
+AUTOTOOLS_AFTER__RETRO=(
+    "${AUTOTOOLS_AFTER[@]}"
+    --without-apxs
+)
+AUTOTOOLS_AFTER__ARMV4=("${AUTOTOOLS_AFTER__RETRO[@]}")
+AUTOTOOLS_AFTER__ARMV6HF=("${AUTOTOOLS_AFTER__RETRO[@]}")
+AUTOTOOLS_AFTER__ARMV7HF=("${AUTOTOOLS_AFTER__RETRO[@]}")
+AUTOTOOLS_AFTER__I486=("${AUTOTOOLS_AFTER__RETRO[@]}")
+AUTOTOOLS_AFTER__LOONGSON2F=("${AUTOTOOLS_AFTER__RETRO[@]}")
+AUTOTOOLS_AFTER__M68K=("${AUTOTOOLS_AFTER__RETRO[@]}")
+AUTOTOOLS_AFTER__POWERPC=("${AUTOTOOLS_AFTER__RETRO[@]}")
+AUTOTOOLS_AFTER__PPC64=("${AUTOTOOLS_AFTER__RETRO[@]}")
+# FIXME: although loongarch64 is not retro, but apxs building fails on it
+AUTOTOOLS_AFTER__LOONGARCH64=("${AUTOTOOLS_AFTER__RETRO[@]}")
 
-NOPARALLEL=1
+# FIXME: without this the build system will write some broken C files
+# for the python binding to $SRCDIR/abbuild/~ and the correct C files to $SRCDIR/~
+ABSHADOW=0

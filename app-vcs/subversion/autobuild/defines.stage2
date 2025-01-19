@@ -4,18 +4,20 @@ PKGDEP="file serf sqlite systemd bash-completion python-3 libutf8proc"
 BUILDDEP="httpd perl swig py3c"
 PKGDES="A modern concurrent version control system"
 
-AUTOTOOLS_AFTER="--with-apr=/usr \
-                 --with-apr-util=/usr \
-                 --with-zlib=/usr \
-                 --with-serf=/usr \
-                 --with-apxs \
-                 --with-sqlite=/usr \
-                 --without-gnome-keyring \
-                 --without-kwallet \
-                 --disable-javahl \
-                 --with-apache-libexecdir=/usr/lib/httpd/modules \
-                 --disable-static \
-                 --enable-bdb6"
+AUTOTOOLS_AFTER=(
+    --with-apr=/usr
+    --with-apr-util=/usr
+    --with-zlib=/usr
+    --with-serf=/usr
+    --with-apxs
+    --with-sqlite=/usr
+    --without-gnome-keyring
+    --without-kwallet
+    --disable-javahl
+    --with-apache-libexecdir=/usr/lib/httpd/modules
+    --disable-static
+    --enable-bdb6
+)
 
 PKGDEP__RETRO="file serf sqlite systemd bash-completion libutf8proc"
 PKGDEP__ARMV4="${PKGDEP__RETRO}"
@@ -35,3 +37,6 @@ BUILDDEP__POWERPC="${BUILDDEP__RETRO}"
 BUILDDEP__PPC64="${BUILDDEP__RETRO}"
 
 NOPARALLEL=1
+# FIXME: without this the build system will write some broken C files
+# for the python binding to $SRCDIR/abbuild/~ and the correct C files to $SRCDIR/~
+ABSHADOW=0

@@ -1,2 +1,10 @@
-rm "$PKGDIR"/usr/share/man/man3/history.3
-cp "$PKGDIR"/usr/share/man/man3/editline.3 "$PKGDIR"/usr/share/man/man3/el.3
+abinfo "Adjusting man pages ..."
+rm -v "$PKGDIR"/usr/share/man/man3/history.3
+ln -sv editline.3 \
+    "$PKGDIR"/usr/share/man/man3/el.3
+
+# Note: Debian introduced a SONAME change in 2016 without specific
+# mentioning of an ABI breakage.
+abinfo "Creating a compatibility symlink to Debian-specific libedit.so.2 ..."
+ln -sv libedit.so.0 \
+    "$PKGDIR"/usr/lib/libedit.so.2

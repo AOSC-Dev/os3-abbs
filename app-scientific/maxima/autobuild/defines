@@ -1,20 +1,37 @@
 PKGNAME=maxima
 PKGSEC=math
-PKGDEP="gnuplot texinfo ecl tk rlwrap"
+
+PKGDEP__SBCL="gnuplot texinfo tk rlwrap sbcl"
+PKGDEP__ECL="gnuplot texinfo tk rlwrap ecl"
+PKGDEP__AMD64="$PKGDEP__SBCL"
+PKGDEP__ARM64="$PKGDEP__SBCL"
+PKGDEP__PPC64EL="$PKGDEP__SBCL"
+PKGDEP="$PKGDEP__ECL"
+
 BUILDDEP="emacs"
 PKGDES="A sophisticated computer algebra system"
 
-AUTOTOOLS_AFTER=" --prefix=/usr \
-    --mandir=/usr/share/man \
-    --infodir=/usr/share/info \
-    --enable-ecl \
-    --with-default-lisp=ecl"
-
-ABSHADOW=no
-RECONF=0
-NOPARALLEL=1
-NOLTO=1
-
-ABSPLITDBG=0
+AUTOTOOLS_AFTER__SBCL=(
+    "--mandir=/usr/share/man"
+    "--infodir=/usr/share/info"
+    "--enable-sbcl"
+    "--with-default-lisp=sbcl"
+)
+AUTOTOOLS_AFTER__ECL=(
+    "--mandir=/usr/share/man"
+    "--infodir=/usr/share/info"
+    "--enable-ecl"
+    "--with-default-lisp=ecl"
+)
+AUTOTOOLS_AFTER__AMD64="$AUTOTOOLS_AFTER__SBCL"
+AUTOTOOLS_AFTER__ARM64="$AUTOTOOLS_AFTER__SBCL"
+AUTOTOOLS_AFTER__PPC64EL="$AUTOTOOLS_AFTER__SBCL"
+AUTOTOOLS_AFTER="$AUTOTOOLS_AFTER__ECL"
 
 MAKE_AFTER="emacsdir=/usr/share/emacs/site-lisp/maxima"
+
+# ECL does not support out-of-tree build
+ABSHADOW=no
+
+# Since pure lisp code...
+ABSPLITDBG=0

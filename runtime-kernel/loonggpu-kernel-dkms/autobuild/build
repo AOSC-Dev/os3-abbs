@@ -1,0 +1,7 @@
+abinfo "Unpacking loonggpu-kernel-dkms ..."
+dpkg -x "$SRCDIR"/loonggpu-kernel-dkms_${__UPSTREAM_VER}_loong64.deb \
+    "$PKGDIR"/
+
+abinfo "Patching module sources to fix build with newer kernel versions ..."
+cd "$PKGDIR"/usr/src/loonggpu-${__UPSTREAM_VER%%-*}/
+ab_apply_patches "$SRCDIR"/autobuild/patches/*.deferred

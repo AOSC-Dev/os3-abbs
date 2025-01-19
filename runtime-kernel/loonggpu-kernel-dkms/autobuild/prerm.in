@@ -1,0 +1,4 @@
+VER=%PKGVER%
+unset ARCH
+
+dkms remove loonggpu/${VER} --all || true > /dev/null

@@ -1,0 +1,9 @@
+abinfo "Unpacking firmware-loongson-graphics ..."
+dpkg -x "$SRCDIR"/firmware-loongson-graphics_${__UPSTREAM_VER}_loong64.deb \
+    "$PKGDIR"/
+
+abinfo "Moving firmware to the correct location ..."
+mkdir -pv "$PKGDIR"/usr/lib
+mv -v "$PKGDIR"/lib/firmware \
+    "$PKGDIR"/usr/lib/
+rm -rv "$PKGDIR"/lib

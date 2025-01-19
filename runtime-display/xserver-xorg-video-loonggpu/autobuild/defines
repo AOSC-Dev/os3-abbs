@@ -1,0 +1,14 @@
+PKGNAME=xserver-xorg-video-loonggpu
+PKGSEC=libs
+PKGDEP="glibc ldrm libdrm systemd xorg-server"
+PKGDES="X.Org DDX (Device Dependent X) driver for LoongGPU"
+
+# Note: Binary packaging.
+ABSTRIP=0
+ABSPIRAL=0
+
+# Note: AOSC OS conventions.
+PKGPROV="xf86-video-loonggpu"
+
+# Note: LoongArch-specific.
+FAIL_ARCH="!(loongarch64)"

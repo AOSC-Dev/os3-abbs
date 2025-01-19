@@ -1,0 +1,14 @@
+PKGNAME=ldrm
+PKGSEC=libs
+PKGDEP="glibc"
+PKGDES="DRM (Direct Rendering Manager) interface library for LoongGPU"
+
+# Note: Binary packaging.
+ABSTRIP=0
+ABSPIRAL=0
+
+# Note: Loongnix compatibility.
+PKGPROV="libldrm"
+
+# Note: LoongArch-specific.
+FAIL_ARCH="!(loongarch64)"

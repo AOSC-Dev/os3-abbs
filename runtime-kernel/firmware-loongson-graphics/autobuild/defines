@@ -1,0 +1,8 @@
+PKGNAME=firmware-loongson-graphics
+PKGSEC=libs
+PKGDEP=""
+PKGDES="Device-specific firmware for LoongGPU"
+
+# Note: LoongArch-specific.
+ABSPLITDBG=0
+FAIL_ARCH="!(loongarch64)"

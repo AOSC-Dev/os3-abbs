@@ -1,0 +1,7 @@
+abinfo "Exporting necessary environment variables ..."
+export PYTHON=/usr/bin/python3
+
+BUILD_FINAL() {
+    abinfo "Installing binaries (to system) ..."
+    make install
+}

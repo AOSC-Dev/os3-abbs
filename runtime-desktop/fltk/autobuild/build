@@ -13,14 +13,17 @@ make -C documentation html
 abinfo "Installing fltk ..."
 build_cmake_install
 
-# From Arch Linux.
-for app in {blocks,checkers,sudoku}; do
-    install -Dvm755 "$BLDDIR"/bin/examples/$app \
-        -t "$PKGDIR"/usr/bin/
-    install -Dvm644 "$SRCDIR"/test/desktop/$app.desktop \
-        -t "$PKGDIR"/usr/share/applications/
-    install -Dvm644 "$SRCDIR"/test/desktop/$app-32.png \
-        "$PKGDIR"/usr/share/icons/hicolor/32x32/apps/$app.png
-    install -Dvm 644 "$SRCDIR"/test/desktop/$app-128.png \
-        "$PKGDIR"/usr/share/icons/hicolor/128x128/apps/$app.png
-done
+if ! ab_match_archgroup retro; then
+    # From Arch Linux.
+    abinfo "Installing example applications ..."
+    for app in {blocks,checkers,sudoku}; do
+        install -Dvm755 "$BLDDIR"/bin/test/$app \
+            -t "$PKGDIR"/usr/bin/
+        install -Dvm644 "$SRCDIR"/test/desktop/$app.desktop \
+            -t "$PKGDIR"/usr/share/applications/
+        install -Dvm644 "$SRCDIR"/test/desktop/$app-32.png \
+            "$PKGDIR"/usr/share/icons/hicolor/32x32/apps/$app.png
+        install -Dvm644 "$SRCDIR"/test/desktop/$app-128.png \
+            "$PKGDIR"/usr/share/icons/hicolor/128x128/apps/$app.png
+    done
+fi

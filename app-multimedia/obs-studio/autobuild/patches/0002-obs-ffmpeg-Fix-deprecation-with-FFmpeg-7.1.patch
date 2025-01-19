@@ -1,7 +1,7 @@
-From 28d9509dea76e271a5dc1b58c310f4d6c45a9cfc Mon Sep 17 00:00:00 2001
+From 9a118787f58026900b25fe03146f8e9f1f1b8063 Mon Sep 17 00:00:00 2001
 From: tytan652 <tytan652@tytanium.xyz>
 Date: Mon, 11 Nov 2024 19:47:03 +0100
-Subject: [PATCH 2/3] obs-ffmpeg: Fix deprecation with FFmpeg 7.1
+Subject: [PATCH 2/2] obs-ffmpeg: Fix deprecation with FFmpeg 7.1
 
 ---
  .../obs-ffmpeg/obs-ffmpeg-audio-encoders.c    | 23 +++++++++---
@@ -140,5 +140,5 @@ index 28a0dda03..9615abee7 100644
  	stream->time_base = context->time_base;
  
 -- 
-2.47.1
+2.48.1
 

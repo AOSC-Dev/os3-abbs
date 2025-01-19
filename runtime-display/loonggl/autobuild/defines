@@ -1,0 +1,11 @@
+PKGNAME=loonggl
+PKGSEC=libs
+PKGDEP="elfutils expat gcc-runtime glibc ldrm libdrm lm-sensors x11-lib zlib"
+PKGDES="OpenGL runtime components for LoongGPU"
+
+# Note: Binary packaging.
+ABSTRIP=0
+ABSPIRAL=0
+
+# Note: LoongArch-specific.
+FAIL_ARCH="!(loongarch64)"

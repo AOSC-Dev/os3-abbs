@@ -1,0 +1,2 @@
+echo "Enabling LoongGPU switching utility service ..."
+systemctl enable loonggl-sw --now

@@ -1,4 +1,4 @@
-VER=4.0.46
+VER=4.0.47
 SRCS="https://ftp.gnu.org/gnu/mtools/mtools-$VER.tar.gz"
-CHKSUMS="sha256::4243e79af24133525755f37fc85e9c09fd904c89561ee19cd669454fc5b28ded"
+CHKSUMS="sha256::e0111d863f9ef55715582f4b69a7ffd261645e0c89417cefeb308cd080002e04"
 CHKUPDATE="anitya::id=2028"

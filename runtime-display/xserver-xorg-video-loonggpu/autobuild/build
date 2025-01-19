@@ -1,0 +1,3 @@
+abinfo "Unpacking xserver-xorg-video-loonggpu ..."
+dpkg -x "$SRCDIR"/xserver-xorg-video-loonggpu_${__UPSTREAM_VER}_loong64.deb \
+    "$PKGDIR"/

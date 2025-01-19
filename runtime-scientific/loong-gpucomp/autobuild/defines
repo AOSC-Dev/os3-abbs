@@ -1,0 +1,14 @@
+PKGNAME=loong-gpucomp
+PKGSEC=libs
+PKGDEP="gcc-runtime glibc libedit ncurses zlib"
+PKGDES="GPU compute runtime for LoongGPU"
+
+# Note: Binary packaging.
+ABSTRIP=0
+ABSPIRAL=0
+
+# Note: Loongnix compatibility.
+PKGPROV="libloong-gpucomp"
+
+# Note: LoongArch-specific.
+FAIL_ARCH="!(loongarch64)"

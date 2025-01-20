@@ -1,5 +1,4 @@
-VER=0.23.1
-REL=1
+VER=2025.118.151840
 SRCS="git::commit=tags/v${VER};copy-repo=true::https://github.com/LizardByte/Sunshine"
 CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=236300"

@@ -1,4 +1,5 @@
 VER=2.1.1
+REL=1
 SRCS="tbl::https://www.qcustomplot.com/release/$VER/QCustomPlot.tar.gz \
      file::rename=sharedlib.tar.gz::https://www.qcustomplot.com/release/$VER/QCustomPlot-sharedlib.tar.gz"
 CHKSUMS="sha256::9afc16e70e8bd8c8d5b13020387716f5e063e115b6599f0421a3846dc6ec312a \

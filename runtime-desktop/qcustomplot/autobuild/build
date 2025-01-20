@@ -9,5 +9,5 @@ install -vdm 755 "$PKGDIR"/usr/lib/
 cp -av "$SRCDIR"/libqcustomplot.so* "$PKGDIR"/usr/lib/
 install -vDm 644 "$SRCDIR"/changelog.txt -t "$PKGDIR"/usr/share/doc/qcustomplot/
 install -vDm 644 "$SRCDIR"/documentation/*.qch -t "$PKGDIR"/usr/share/doc/qt/
-find "$SRCDIR"/examples -type f -exec install -vDm 644 {} "$PKGDIR"/usr/share/doc/qcustomplot/{} \; 
-find "$SRCDIR"/documentation/html -type f -exec install -vDm 644 {} "$PKGDIR"/usr/share/doc/qcustomplot/{} \;
+cp -vR "$SRCDIR"/documentation/html "$PKGDIR"/usr/share/doc/qcustomplot
+cp -vR "$SRCDIR"/examples/* -t "$PKGDIR"/usr/share/doc/qcustomplot

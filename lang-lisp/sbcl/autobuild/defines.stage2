@@ -9,3 +9,5 @@ PKGDES="Steel Bank Common Lisp"
 # loongson3/mips64r6el: invalid magic number in core
 # riscv64: infinite hang
 FAIL_ARCH="!(amd64|arm64|ppc64el)"
+
+PKGBREAK="maxima<=5.46.0-1"

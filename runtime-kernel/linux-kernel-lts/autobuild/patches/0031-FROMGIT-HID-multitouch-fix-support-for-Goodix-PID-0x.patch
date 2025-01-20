@@ -1,0 +1,42 @@
+From 4d0646dae61dfaed9254a72b74668e69a6ac6327 Mon Sep 17 00:00:00 2001
+From: Jiri Kosina <jkosina@suse.com>
+Date: Thu, 12 Dec 2024 10:19:32 +0100
+Subject: [PATCH 031/294] FROMGIT: HID: multitouch: fix support for Goodix PID
+ 0x01e9
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Commit c8000deb68365b ("HID: multitouch: Add support for GT7868Q") added
+support for 0x01e8 and 0x01e9, but the mt_device[] entries were added
+twice for 0x01e8 and there was none added for 0x01e9. Fix that.
+
+Fixes: c8000deb68365b ("HID: multitouch: Add support for GT7868Q")
+Reported-by: He Lugang <helugang@uniontech.com>
+Reported-by: WangYuli <wangyuli@uniontech.com>
+Reported-by: Ulrich Müller <ulm@gentoo.org>
+Signed-off-by: Jiri Kosina <jkosina@suse.com>
+
+(cherry picked from commit 8ade5e05bd094485ce370fad66a6a3fb6f50bfbc
+ https://git.kernel.org/pub/scm/linux/kernel/git/hid/hid.git for-6.13/upstream-fixes)
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ drivers/hid/hid-multitouch.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/hid/hid-multitouch.c b/drivers/hid/hid-multitouch.c
+index d1b7ccfb3e05..e07d63db5e1f 100644
+--- a/drivers/hid/hid-multitouch.c
++++ b/drivers/hid/hid-multitouch.c
+@@ -2078,7 +2078,7 @@ static const struct hid_device_id mt_devices[] = {
+ 		     I2C_DEVICE_ID_GOODIX_01E8) },
+ 	{ .driver_data = MT_CLS_WIN_8_FORCE_MULTI_INPUT_NSMU,
+ 	  HID_DEVICE(BUS_I2C, HID_GROUP_ANY, I2C_VENDOR_ID_GOODIX,
+-		     I2C_DEVICE_ID_GOODIX_01E8) },
++		     I2C_DEVICE_ID_GOODIX_01E9) },
+ 
+ 	/* GoodTouch panels */
+ 	{ .driver_data = MT_CLS_NSMU,
+-- 
+2.48.1
+

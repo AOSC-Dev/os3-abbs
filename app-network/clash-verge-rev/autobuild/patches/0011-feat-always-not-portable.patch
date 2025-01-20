@@ -1,7 +1,7 @@
-From 8752515fb2d70760f8761353784702dee875534a Mon Sep 17 00:00:00 2001
+From d90f3b33e39d567cb78b01e3ecd038ee5bf9961d Mon Sep 17 00:00:00 2001
 From: eatradish <sakiiily@aosc.io>
 Date: Mon, 13 Jan 2025 15:14:51 +0800
-Subject: [PATCH 11/20] feat: always not portable
+Subject: [PATCH 11/18] feat: always not portable
 
 ---
  src-tauri/src/utils/dirs.rs | 10 ----------
@@ -29,5 +29,5 @@ index d4d8ddbf..b7e4c61d 100644
      Ok(())
  }
 -- 
-2.48.0
+2.48.1
 

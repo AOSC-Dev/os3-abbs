@@ -1,7 +1,7 @@
-From 9425e3af4e11139d6d716a55990e01d6899d159a Mon Sep 17 00:00:00 2001
+From 9e980ea5f1ab1bb54f5e6bf5ae04d925493e98f0 Mon Sep 17 00:00:00 2001
 From: eatradish <sakiiily@aosc.io>
 Date: Mon, 13 Jan 2025 14:57:51 +0800
-Subject: [PATCH 10/20] Set core binary name as mihomo
+Subject: [PATCH 10/18] Set core binary name as mihomo
 
 ---
  scripts/check.mjs                             |  8 +++----
@@ -16,7 +16,7 @@ Subject: [PATCH 10/20] Set core binary name as mihomo
  9 files changed, 28 insertions(+), 28 deletions(-)
 
 diff --git a/scripts/check.mjs b/scripts/check.mjs
-index becd7a0d..8e237ad5 100644
+index 2b8deac5..694e1878 100644
 --- a/scripts/check.mjs
 +++ b/scripts/check.mjs
 @@ -160,8 +160,8 @@ function clashMetaAlpha() {
@@ -124,23 +124,23 @@ index 8aab55fe..38d0d4ad 100644
    ${EndIf}
  
 diff --git a/src-tauri/src/config/verge.rs b/src-tauri/src/config/verge.rs
-index 596f8c2a..ad74b6cf 100644
+index 54496252..6e890883 100644
 --- a/src-tauri/src/config/verge.rs
 +++ b/src-tauri/src/config/verge.rs
-@@ -214,7 +214,7 @@ impl IVerge {
+@@ -232,7 +232,7 @@ impl IVerge {
  
      pub fn template() -> Self {
          Self {
 -            clash_core: Some("verge-mihomo".into()),
 +            clash_core: Some("mihomo".into()),
-             language: Some("zh".into()),
+             language: Some(Self::get_system_language()),
              theme_mode: Some("system".into()),
              #[cfg(not(target_os = "windows"))]
 diff --git a/src-tauri/src/core/core.rs b/src-tauri/src/core/core.rs
-index ae3d71d3..82548048 100644
+index 4b0d4162..cedc6b20 100644
 --- a/src-tauri/src/core/core.rs
 +++ b/src-tauri/src/core/core.rs
-@@ -37,7 +37,7 @@ impl CoreManager {
+@@ -38,7 +38,7 @@ impl CoreManager {
          let config_path = dirs::path_to_str(&config_path)?;
  
          let clash_core = { Config::verge().latest().clash_core.clone() };
@@ -149,7 +149,7 @@ index ae3d71d3..82548048 100644
  
          let test_dir = dirs::app_home_dir()?.join("test");
          let test_dir = dirs::path_to_str(&test_dir)?;
-@@ -110,7 +110,7 @@ impl CoreManager {
+@@ -115,7 +115,7 @@ impl CoreManager {
      /// 切换核心
      pub async fn change_core(&self, clash_core: Option<String>) -> Result<()> {
          let clash_core = clash_core.ok_or(anyhow::anyhow!("clash core is null"))?;
@@ -209,5 +209,5 @@ index 1574cc51..cfef80b2 100644
    const onCoreChange = useLockFn(async (core: string) => {
      if (core === clash_core) return;
 -- 
-2.48.0
+2.48.1
 

@@ -1,7 +1,7 @@
-From e21adbf6efb7909a987ecfacb401466291c64a42 Mon Sep 17 00:00:00 2001
+From 93d2a8f28074dca57fd95b937c5e1f8e7e2a98f4 Mon Sep 17 00:00:00 2001
 From: eatradish <sakiiily@aosc.io>
 Date: Mon, 13 Jan 2025 14:49:46 +0800
-Subject: [PATCH 08/20] Do not create any bundle package
+Subject: [PATCH 08/18] Do not create any bundle package
 
 ---
  src-tauri/tauri.linux.conf.json | 30 ------------------------------
@@ -49,5 +49,5 @@ index db6fa1a9..078896b6 100644
      "trayIcon": {
        "iconPath": "icons/tray-icon.ico"
 -- 
-2.48.0
+2.48.1
 

@@ -1,0 +1,64 @@
+From 8b5b876bbafc653ad61f3fe31c739ff7acb1722d Mon Sep 17 00:00:00 2001
+From: Peter Zijlstra <peterz@infradead.org>
+Date: Thu, 28 Nov 2024 10:39:02 +0100
+Subject: [PATCH 011/340] FROMGIT: x86: Convert unreachable() to BUG()
+
+Avoid unreachable() as it can (and will in the absence of UBSAN)
+generate fallthrough code. Use BUG() so we get a UD2 trap (with
+unreachable annotation).
+
+Signed-off-by: Peter Zijlstra (Intel) <peterz@infradead.org>
+Acked-by: Josh Poimboeuf <jpoimboe@kernel.org>
+Link: https://lore.kernel.org/r/20241128094312.028316261@infradead.org
+
+(cherry picked from commit 2190966fbc14ca2cd4ea76eefeb96a47d8e390df
+ https://git.kernel.org/pub/scm/linux/kernel/git/tip/tip.git objtool/core)
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ arch/x86/kernel/process.c | 2 +-
+ arch/x86/kernel/reboot.c  | 2 +-
+ arch/x86/kvm/svm/sev.c    | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/arch/x86/kernel/process.c b/arch/x86/kernel/process.c
+index f63f8fd00a91..15507e739c25 100644
+--- a/arch/x86/kernel/process.c
++++ b/arch/x86/kernel/process.c
+@@ -838,7 +838,7 @@ void __noreturn stop_this_cpu(void *dummy)
+ #ifdef CONFIG_SMP
+ 	if (smp_ops.stop_this_cpu) {
+ 		smp_ops.stop_this_cpu();
+-		unreachable();
++		BUG();
+ 	}
+ #endif
+ 
+diff --git a/arch/x86/kernel/reboot.c b/arch/x86/kernel/reboot.c
+index 615922838c51..dc1dd3f3e67f 100644
+--- a/arch/x86/kernel/reboot.c
++++ b/arch/x86/kernel/reboot.c
+@@ -883,7 +883,7 @@ static int crash_nmi_callback(unsigned int val, struct pt_regs *regs)
+ 
+ 	if (smp_ops.stop_this_cpu) {
+ 		smp_ops.stop_this_cpu();
+-		unreachable();
++		BUG();
+ 	}
+ 
+ 	/* Assume hlt works */
+diff --git a/arch/x86/kvm/svm/sev.c b/arch/x86/kvm/svm/sev.c
+index 943bd074a5d3..fe6cc763fd51 100644
+--- a/arch/x86/kvm/svm/sev.c
++++ b/arch/x86/kvm/svm/sev.c
+@@ -3820,7 +3820,7 @@ static int snp_begin_psc(struct vcpu_svm *svm, struct psc_buffer *psc)
+ 		goto next_range;
+ 	}
+ 
+-	unreachable();
++	BUG();
+ }
+ 
+ static int __sev_snp_update_protected_guest_state(struct kvm_vcpu *vcpu)
+-- 
+2.48.1
+

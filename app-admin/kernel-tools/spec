@@ -1,4 +1,4 @@
-VER=6.12.10
+VER=6.13.0
 
 # Note: For use inside autobuild/.
 __VER="${VER}"
@@ -12,14 +12,14 @@ SRCS="tbl::https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${VER%%.0}.tar.xz"
 #RC=1
 # To RFC: Increment by 0.1 per RC release, i.e., RC3 = 0.3.
 #REL=0.${RC}
-#COMMIT="d056ad259f16555e7fe0d129820d01fa6b6c468c"
+#COMMIT="cecd751a2d94beedbaab82f5eb42ed19b0bbff41"
 #SRCS="tbl::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git/snapshot/linux-stable-rc-${COMMIT}.tar.gz"
 
 # Use this for mainline RC releases.
-#RC=1
+#RC=7
 # To RFC: Increment by 0.1 per RC release, i.e., RC3 = 0.3.
 #REL=0.${RC}
 #SRCS="tbl::https://git.kernel.org/torvalds/t/linux-${VER%%.0}-rc${RC}.tar.gz"
 
-CHKSUMS="sha256::4a516e5ed748537a73cb42ec47fbbeb6df8b1298e8892c29c0e91de79095b297"
+CHKSUMS="sha256::e79dcc6eb86695c6babfb07c2861912b635d5075c6cd1cd0567d1ea155f80d6e"
 CHKUPDATE="anitya::id=6501"

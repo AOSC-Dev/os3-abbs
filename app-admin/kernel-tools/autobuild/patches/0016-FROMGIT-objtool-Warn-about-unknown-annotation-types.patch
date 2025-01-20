@@ -1,0 +1,55 @@
+From a36ceb59ba20aa919674c2b1f3f3aa54fdbb5bc8 Mon Sep 17 00:00:00 2001
+From: Peter Zijlstra <peterz@infradead.org>
+Date: Thu, 28 Nov 2024 10:39:07 +0100
+Subject: [PATCH 016/340] FROMGIT: objtool: Warn about unknown annotation types
+
+Signed-off-by: Peter Zijlstra (Intel) <peterz@infradead.org>
+Acked-by: Josh Poimboeuf <jpoimboe@kernel.org>
+Link: https://lore.kernel.org/r/20241128094312.611961175@infradead.org
+
+(cherry picked from commit e7e0eb53c2f0f68fe2577472ce2802a4efd9d7ce
+ https://git.kernel.org/pub/scm/linux/kernel/git/tip/tip.git objtool/core)
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ tools/objtool/check.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/tools/objtool/check.c b/tools/objtool/check.c
+index ae27dd0255be..4cba9f617c30 100644
+--- a/tools/objtool/check.c
++++ b/tools/objtool/check.c
+@@ -2335,6 +2335,10 @@ static int __annotate_ifc(struct objtool_file *file, int type, struct instructio
+ static int __annotate_late(struct objtool_file *file, int type, struct instruction *insn)
+ {
+ 	switch (type) {
++	case ANNOTYPE_NOENDBR:
++		/* early */
++		break;
++
+ 	case ANNOTYPE_RETPOLINE_SAFE:
+ 		if (insn->type != INSN_JUMP_DYNAMIC &&
+ 		    insn->type != INSN_CALL_DYNAMIC &&
+@@ -2359,11 +2363,20 @@ static int __annotate_late(struct objtool_file *file, int type, struct instructi
+ 		insn->unret = 1;
+ 		break;
+ 
++	case ANNOTYPE_IGNORE_ALTS:
++		/* early */
++		break;
++
++	case ANNOTYPE_INTRA_FUNCTION_CALL:
++		/* ifc */
++		break;
++
+ 	case ANNOTYPE_REACHABLE:
+ 		insn->dead_end = false;
+ 		break;
+ 
+ 	default:
++		WARN_INSN(insn, "Unknown annotation type: %d", type);
+ 		break;
+ 	}
+ 
+-- 
+2.48.1
+

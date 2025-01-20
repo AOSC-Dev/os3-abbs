@@ -1,0 +1,119 @@
+From 91654be69fd6d78dbbd224f7a6fca3628a2dc8ad Mon Sep 17 00:00:00 2001
+From: Peter Zijlstra <peterz@infradead.org>
+Date: Thu, 28 Nov 2024 10:38:56 +0100
+Subject: [PATCH 005/340] FROMGIT: objtool: Convert VALIDATE_UNRET_BEGIN to
+ ANNOTATE
+
+Signed-off-by: Peter Zijlstra (Intel) <peterz@infradead.org>
+Acked-by: Josh Poimboeuf <jpoimboe@kernel.org>
+Link: https://lore.kernel.org/r/20241128094311.358508242@infradead.org
+
+(cherry picked from commit 18aa6118a1689b4d73c5ebbd917ae3f20c9c0db1
+ https://git.kernel.org/pub/scm/linux/kernel/git/tip/tip.git objtool/core)
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ include/linux/objtool.h             |  9 +++------
+ include/linux/objtool_types.h       |  1 +
+ tools/include/linux/objtool_types.h |  1 +
+ tools/objtool/check.c               | 28 +++++-----------------------
+ 4 files changed, 10 insertions(+), 29 deletions(-)
+
+diff --git a/include/linux/objtool.h b/include/linux/objtool.h
+index 89c67cd7eebe..5f0bf8052dc7 100644
+--- a/include/linux/objtool.h
++++ b/include/linux/objtool.h
+@@ -130,15 +130,12 @@
+  * NOTE: The macro must be used at the beginning of a global symbol, otherwise
+  * it will be ignored.
+  */
+-.macro VALIDATE_UNRET_BEGIN
+ #if defined(CONFIG_NOINSTR_VALIDATION) && \
+ 	(defined(CONFIG_MITIGATION_UNRET_ENTRY) || defined(CONFIG_MITIGATION_SRSO))
+-.Lhere_\@:
+-	.pushsection .discard.validate_unret
+-	.long	.Lhere_\@ - .
+-	.popsection
++#define VALIDATE_UNRET_BEGIN	ANNOTATE type=ANNOTYPE_UNRET_BEGIN
++#else
++#define VALIDATE_UNRET_BEGIN
+ #endif
+-.endm
+ 
+ .macro REACHABLE
+ .Lhere_\@:
+diff --git a/include/linux/objtool_types.h b/include/linux/objtool_types.h
+index d4d68dd36f7a..16236a56364b 100644
+--- a/include/linux/objtool_types.h
++++ b/include/linux/objtool_types.h
+@@ -61,5 +61,6 @@ struct unwind_hint {
+ #define ANNOTYPE_RETPOLINE_SAFE		2
+ #define ANNOTYPE_INSTR_BEGIN		3
+ #define ANNOTYPE_INSTR_END		4
++#define ANNOTYPE_UNRET_BEGIN		5
+ 
+ #endif /* _LINUX_OBJTOOL_TYPES_H */
+diff --git a/tools/include/linux/objtool_types.h b/tools/include/linux/objtool_types.h
+index d4d68dd36f7a..16236a56364b 100644
+--- a/tools/include/linux/objtool_types.h
++++ b/tools/include/linux/objtool_types.h
+@@ -61,5 +61,6 @@ struct unwind_hint {
+ #define ANNOTYPE_RETPOLINE_SAFE		2
+ #define ANNOTYPE_INSTR_BEGIN		3
+ #define ANNOTYPE_INSTR_END		4
++#define ANNOTYPE_UNRET_BEGIN		5
+ 
+ #endif /* _LINUX_OBJTOOL_TYPES_H */
+diff --git a/tools/objtool/check.c b/tools/objtool/check.c
+index 2a012378277d..e3bc9ec77f3e 100644
+--- a/tools/objtool/check.c
++++ b/tools/objtool/check.c
+@@ -2458,33 +2458,15 @@ static int __annotate_instr(int type, struct instruction *insn)
+ 	return 0;
+ }
+ 
+-static int read_validate_unret_hints(struct objtool_file *file)
++static int __annotate_unret(int type, struct instruction *insn)
+ {
+-	struct section *rsec;
+-	struct instruction *insn;
+-	struct reloc *reloc;
+-
+-	rsec = find_section_by_name(file->elf, ".rela.discard.validate_unret");
+-	if (!rsec)
++	if (type != ANNOTYPE_UNRET_BEGIN)
+ 		return 0;
+ 
+-	for_each_reloc(rsec, reloc) {
+-		if (reloc->sym->type != STT_SECTION) {
+-			WARN("unexpected relocation symbol type in %s", rsec->name);
+-			return -1;
+-		}
+-
+-		insn = find_insn(file, reloc->sym->sec, reloc_addend(reloc));
+-		if (!insn) {
+-			WARN("bad .discard.instr_end entry");
+-			return -1;
+-		}
+-		insn->unret = 1;
+-	}
+-
++	insn->unret = 1;
+ 	return 0;
+-}
+ 
++}
+ 
+ static int read_intra_function_calls(struct objtool_file *file)
+ {
+@@ -2705,7 +2687,7 @@ static int decode_sections(struct objtool_file *file)
+ 	if (ret)
+ 		return ret;
+ 
+-	ret = read_validate_unret_hints(file);
++	ret = read_annotate(file, __annotate_unret);
+ 	if (ret)
+ 		return ret;
+ 
+-- 
+2.48.1
+

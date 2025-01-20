@@ -15,3 +15,8 @@ NOLTO=1
 
 RECONF=0
 ABSPLITDBG=0
+
+PKGBREAK="maxima<=5.46.0-2 sagemath<=10.4"
+
+# Or not seek out the configure file
+ABTYPE=autotools

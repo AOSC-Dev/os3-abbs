@@ -1,7 +1,7 @@
-From e96d64260d2eafc4e8aca0d65e7c50799c948cab Mon Sep 17 00:00:00 2001
+From ce5051cd4413b8fe1bbbe29fc0482f05337c275c Mon Sep 17 00:00:00 2001
 From: Bibo Mao <maobibo@loongson.cn>
 Date: Wed, 13 Nov 2024 16:18:27 +0800
-Subject: [PATCH 029/291] UPSTREAM: irqchip/loongson-eiointc: Add virt
+Subject: [PATCH 029/294] UPSTREAM: irqchip/loongson-eiointc: Add virt
  extension support
 
 Interrupts can be routed to maximal four virtual CPUs with real HW

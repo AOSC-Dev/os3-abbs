@@ -1,7 +1,7 @@
-From 975f80054dc5fa6bb3194593730b9f7bbf254f58 Mon Sep 17 00:00:00 2001
+From 4a893bd2e7d432c977646d30770c7dba313e049f Mon Sep 17 00:00:00 2001
 From: Mario Limonciello <mario.limonciello@amd.com>
 Date: Sat, 12 Oct 2024 12:45:19 -0500
-Subject: [PATCH 002/291] UPSTREAM: cpufreq/amd-pstate: Drop needless EPP
+Subject: [PATCH 002/294] UPSTREAM: cpufreq/amd-pstate: Drop needless EPP
  initialization
 
 The EPP value doesn't need to be cached to the CPPC request in

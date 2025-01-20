@@ -1,7 +1,7 @@
 From 69a8ab9133a1d2369bfe60c00c8afbdda49df3ee Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Sat, 16 Nov 2024 22:46:05 +0800
-Subject: [PATCH 46/46] po: update zh_TW translations
+Subject: [PATCH 46/47] po: update zh_TW translations
 
 Add translation for UEFI Settings.
 ---
@@ -9687,5 +9687,5 @@ index 8713a1ac1..6e863c161 100644
 +#~ msgid "cannot guess the root device. Specify the option `--root-device'"
 +#~ msgstr "無法猜測根裝置。請指定「--root-device」選項"
 -- 
-2.47.0
+2.48.1
 

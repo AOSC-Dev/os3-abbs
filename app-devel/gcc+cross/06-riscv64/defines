@@ -9,6 +9,9 @@ PKGDES="GNU Compiler Collection (cross compiler for RISC-V 64-bit GNU/Linux targ
 
 NOSTATIC=0
 
+# FIXME: Relocation truncated to fit.
+NOLTO__LOONGSON3=1
+
 # Note: Sync from core-devel/gcc.
 TARGET_OPTIONS="""
    --with-arch=rv64gc

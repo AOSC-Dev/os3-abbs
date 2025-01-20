@@ -1,7 +1,7 @@
-From 19e303bcbca959cdce2cd4044b90dabb54810264 Mon Sep 17 00:00:00 2001
+From a7e28db107adb9cc633b2daa0a6dcec594489683 Mon Sep 17 00:00:00 2001
 From: Xianglai Li <lixianglai@loongson.cn>
 Date: Wed, 13 Nov 2024 16:18:27 +0800
-Subject: [PATCH 023/291] UPSTREAM: LoongArch: KVM: Add EIOINTC read and write
+Subject: [PATCH 023/294] UPSTREAM: LoongArch: KVM: Add EIOINTC read and write
  functions
 
 Add implementation of EIOINTC interrupt controller's address space read

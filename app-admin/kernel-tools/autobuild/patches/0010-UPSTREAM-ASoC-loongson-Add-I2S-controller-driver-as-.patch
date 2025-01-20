@@ -1,7 +1,7 @@
-From ef5e9d750d142bc68c8ffad94657e687c393510c Mon Sep 17 00:00:00 2001
+From b8630085ba57883ccfa747c8da3e94bf4bcb0c1b Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Wed, 9 Oct 2024 15:52:38 +0800
-Subject: [PATCH 010/291] UPSTREAM: ASoC: loongson: Add I2S controller driver
+Subject: [PATCH 010/294] UPSTREAM: ASoC: loongson: Add I2S controller driver
  as platform device
 
 The Loongson I2S controller exists not only in PCI form (LS7A bridge

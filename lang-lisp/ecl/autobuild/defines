@@ -15,3 +15,8 @@ NOLTO=1
 
 RECONF=0
 ABSPLITDBG=0
+
+PKGBREAK="maxima<=5.46.0-1 sagemath<=10.3"
+
+# FIXME: OR not seek out the configure file
+ABTYPE=autotools

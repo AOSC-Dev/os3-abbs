@@ -11,17 +11,19 @@ PKGDEP="$PKGDEP__ECL"
 BUILDDEP="emacs"
 PKGDES="A sophisticated computer algebra system"
 
-AUTOTOOLS_AFTER__SBCL=(
+AUTOTOOLS_AFTER=(
     "--mandir=/usr/share/man"
     "--infodir=/usr/share/info"
-    "--enable-sbcl"
-    "--with-default-lisp=sbcl"
 )
 AUTOTOOLS_AFTER__ECL=(
-    "--mandir=/usr/share/man"
-    "--infodir=/usr/share/info"
+    "${AUTOTOOLS_AFTER[@]}"
     "--enable-ecl"
     "--with-default-lisp=ecl"
+)
+AUTOTOOLS_AFTER__SBCL=(
+    "${AUTOTOOLS_AFTER[@]}"
+    "--enable-sbcl"
+    "--with-default-lisp=sbcl"
 )
 AUTOTOOLS_AFTER__AMD64="$AUTOTOOLS_AFTER__SBCL"
 AUTOTOOLS_AFTER__ARM64="$AUTOTOOLS_AFTER__SBCL"
@@ -30,8 +32,8 @@ AUTOTOOLS_AFTER="$AUTOTOOLS_AFTER__ECL"
 
 MAKE_AFTER="emacsdir=/usr/share/emacs/site-lisp/maxima"
 
-# ECL does not support out-of-tree build
+# Note: ECL does not support out-of-tree build
 ABSHADOW=no
 
-# Since pure lisp code...
+# Note: Since pure lisp code...
 ABSPLITDBG=0

@@ -1,0 +1,28 @@
+From 66a309e12ffa6c3bd3680565508132d106e47545 Mon Sep 17 00:00:00 2001
+From: Juergen Hoetzel <juergen@hoetzel.info>
+Date: Tue, 12 Mar 2024 23:17:02 +0100
+Subject: [PATCH] ECL: Fix autoconf options on whitespace
+---
+ src/maxima.system | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+diff --git a/src/maxima.system b/src/maxima.system
+index 458565085..4202fc8f4 100644
+--- a/src/maxima.system
++++ b/src/maxima.system
+@@ -79,12 +79,12 @@
+ 			  :ld-flags
+ 			  (let ((x (symbol-value (find-symbol "*AUTOCONF-LD-FLAGS*"
+ 							      (find-package "MAXIMA")))))
+-			    (if (and x (not (string= x ""))) (list x))))
++			    (if (and x (not (string= x ""))) (c::split-program-options x))))
+ 	(c::build-program "binary-ecl/maxima" :lisp-files obj
+ 			  :ld-flags
+ 			  (let ((x (symbol-value (find-symbol "*AUTOCONF-LD-FLAGS*"
+ 							      (find-package "MAXIMA")))))
+-			    (if (and x (not (string= x ""))) (list x)))
++			    (if (and x (not (string= x ""))) (c::split-program-options x)))
+ 			  :epilogue-code '(progn (cl-user::run)))))))
+ 
+ (defun maxima-binary-pathname ()
+-- 
+2.44.0

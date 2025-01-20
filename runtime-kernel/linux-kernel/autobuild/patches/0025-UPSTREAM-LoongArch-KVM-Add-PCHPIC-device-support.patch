@@ -1,7 +1,7 @@
-From 96cb47b4c7aa3c057852c58700e560a59ab23c59 Mon Sep 17 00:00:00 2001
+From 2acdc21e6648496a84e9bd67d3c980ca71fcce5c Mon Sep 17 00:00:00 2001
 From: Xianglai Li <lixianglai@loongson.cn>
 Date: Wed, 13 Nov 2024 16:18:27 +0800
-Subject: [PATCH 025/291] UPSTREAM: LoongArch: KVM: Add PCHPIC device support
+Subject: [PATCH 025/294] UPSTREAM: LoongArch: KVM: Add PCHPIC device support
 
 Add device model for PCHPIC interrupt controller, implemente basic
 create & destroy interface, and register device model to kvm device

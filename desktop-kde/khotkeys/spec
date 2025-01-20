@@ -1,5 +1,0 @@
-VER=5.27.11
-SRCS="tbl::https://download.kde.org/stable/plasma/$VER/khotkeys-$VER.tar.xz"
-CHKSUMS="sha256::8b497c68e546874feb9350f1f17df5b285d5c41d2cb4c1fd8e4e665f84804459"
-CHKUPDATE="anitya::id=8761"
-REL=1

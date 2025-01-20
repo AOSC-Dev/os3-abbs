@@ -1,7 +1,7 @@
-From 5a1c912e5d8e4668c3597a47f2aa48122f55c43b Mon Sep 17 00:00:00 2001
+From 59f54154bb87b569174e26b3d177ad0412bad745 Mon Sep 17 00:00:00 2001
 From: Xianglai Li <lixianglai@loongson.cn>
 Date: Wed, 13 Nov 2024 16:18:27 +0800
-Subject: [PATCH 019/291] UPSTREAM: LoongArch: KVM: Add IPI device support
+Subject: [PATCH 019/294] UPSTREAM: LoongArch: KVM: Add IPI device support
 
 Add device model for IPI interrupt controller, implement basic create &
 destroy interfaces, and register device model to kvm device table.

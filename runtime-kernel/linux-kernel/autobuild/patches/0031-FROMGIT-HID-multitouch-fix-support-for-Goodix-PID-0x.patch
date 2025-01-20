@@ -1,7 +1,7 @@
-From 3effb9a83ab6440353a45f2fbef80f5aa7c8e084 Mon Sep 17 00:00:00 2001
+From 4d0646dae61dfaed9254a72b74668e69a6ac6327 Mon Sep 17 00:00:00 2001
 From: Jiri Kosina <jkosina@suse.com>
 Date: Thu, 12 Dec 2024 10:19:32 +0100
-Subject: [PATCH 031/291] FROMGIT: HID: multitouch: fix support for Goodix PID
+Subject: [PATCH 031/294] FROMGIT: HID: multitouch: fix support for Goodix PID
  0x01e9
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

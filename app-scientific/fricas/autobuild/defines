@@ -21,7 +21,7 @@ AUTOTOOLS_AFTER__ECL=(
     "--with-lisp=ecl"
 )
 AUTOTOOLS_AFTER__SBCL=(
-    "--with-lisp='sbcl --dynamic-space-size 4096'"
+    "--with-lisp="sbcl --dynamic-space-size 4096""
     "--enable-gmp"
 )
 AUTOTOOLS_AFTER__AMD64="$AUTOTOOLS_AFTER__SBCL"

@@ -13,7 +13,11 @@ PKGSUG="texlive emacs"
 
 # In order to build the graphic examples, xvfb
 # must be used, it is in this package.
-BUILDDEP="xorg-server"
+#
+# FIXME: Disable now, since fricas2d have bug related to
+# "double free or corruption (!prev)", and I can't fix it:P
+#
+# BUILDDEP="xorg-server"
 
 PKGDES="An advanced computer algebra system"
 
@@ -33,4 +37,3 @@ AUTOTOOLS_AFTER="$AUTOTOOLS_AFTER__ECL"
 # it seems FRICASsys got a lot of things inside.
 ABSTRIP=0
 
-NOLTO=1

@@ -1,0 +1,17 @@
+Patch status: limbo, but should be fixed when GLX code is removed again
+
+chromium has removed some GLX code which Qt has temporarily(?)
+restored in [1]. This however seems to misses some headers and
+only works with some configurations and fails with others[2].
+So add the headers here as a quick fix for now.
+
+[1] https://github.com/qt/qtwebengine-chromium/commit/f2b407a61bea122d18a012f0049ba193725f0461
+[2] https://bugs.gentoo.org/928508
+--- a/qtwebengine/src/3rdparty/chromium/ui/gl/gl_context.h
++++ b/qtwebengine/src/3rdparty/chromium/ui/gl/gl_context.h
+@@ -24,4 +24,5 @@
+ #include "ui/gl/gl_workarounds.h"
+ #include "ui/gl/gpu_preference.h"
++#include "ui/gl/gl_surface.h"
+ 
+ namespace gl {

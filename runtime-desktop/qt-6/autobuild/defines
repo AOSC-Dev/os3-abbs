@@ -2,7 +2,7 @@ PKGNAME=qt-6
 PKGSEC=x11
 PKGDES="Qt version 6"
 PKGDEP="alsa-lib bluez cups dbus desktop-file-utils double-conversion ffmpeg \
-        fontconfig geoclue glib gst-plugins-base-1-0 harfbuzz \
+        fontconfig geoclue2 glib gst-plugins-base-1-0 harfbuzz \
         hicolor-icon-theme hyphen icu lcms2 libb2 libdrm libevent libinput \
         libglvnd libjpeg-turbo libmng libpng libproxy libvpx libwebp \
         libxkbcommon libxml2 libxslt mesa minizip opus pciutils pcre2 perl \
@@ -20,7 +20,7 @@ BUILDDEP__PPC64EL="${BUILDDEP__NOWEBENGINE}"
 BUILDDEP__RISCV64="${BUILDDEP__NOWEBENGINE}"
 
 PKGDEP__NOWEBENGINE="alsa-lib bluez cups dbus desktop-file-utils
-        double-conversion fontconfig geoclue gst-plugins-base-1-0 glib \
+        double-conversion fontconfig geoclue2 gst-plugins-base-1-0 glib \
         harfbuzz hicolor-icon-theme hyphen icu libb2 libdrm libinput \
         libglvnd libjpeg-turbo libmng libpng libproxy libxkbcommon libxslt \
         mesa pcre2 perl protobuf pulseaudio re2 snappy sqlite srtp systemd \
@@ -95,7 +95,8 @@ CMAKE_AFTER__MIPS64R6EL="${CMAKE_AFTER__NOWEBENGINE}"
 # FIXME: qtquick3dphysics' PhysX bindings is not supported on loongarch64, ppc*, riscv64.
 CMAKE_AFTER__LOONGARCH64=" \
                       ${CMAKE_AFTER} \
-                      -DBUILD_qtquick3dphysics=OFF"
+                      -DBUILD_qtquick3dphysics=OFF \
+                      -DQT_FEATURE_webengine_jumbo_build=OFF"
 CMAKE_AFTER__PPC64EL="${CMAKE_AFTER__NOWEBENGINE} \
                       -DBUILD_qtquick3dphysics=OFF"
 CMAKE_AFTER__RISCV64="${CMAKE_AFTER__NOWEBENGINE} \

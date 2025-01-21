@@ -10,5 +10,6 @@ Comment[ja]=あなたの個人的な研究助手
 Comment[ko]=귀하의 개인 연구 조교
 Icon=zotero
 Exec=/usr/bin/zotero %f
-Categories=Office
+Categories=Office;
 Terminal=false
+MimeType=text/plain;x-scheme-handler/zotero;application/x-research-info-systems;text/x-research-info-systems;text/ris;application/x-endnote-refer;application/x-inst-for-Scientific-info;application/mods+xml;application/rdf+xml;application/x-bibtex;text/x-bibtex;application/marc;application/vnd.citationstyles.style+xml

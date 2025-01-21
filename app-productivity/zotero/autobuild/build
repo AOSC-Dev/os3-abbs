@@ -1,36 +1,27 @@
-pushd "${SRCDIR}/zotero-client"
-abinfo "Building zotero JavaScript components ..."
+abinfo "Installing Node.js modules ..."
 npm ci
-npm run build
-popd
 
-pushd "${SRCDIR}/zotero-standalone-build"
 abinfo "Building zotero application host ..."
-./fetch_xulrunner.sh -p l
-./fetch_pdftools
-./scripts/dir_build
-popd
+npm run build
+"$SRCDIR"/app/scripts/dir_build
 
 abinfo "Installing zotero binary ..."
-mkdir -pv "${PKGDIR}/usr/bin"
-mkdir -pv "${PKGDIR}/usr/lib/zotero"
-cp -rv "${SRCDIR}/zotero-standalone-build/staging/Zotero_linux-x86_64"/* \
-       "${PKGDIR}/usr/lib/zotero"
+install -dvm755 "$PKGDIR"/usr/lib/zotero
+cp -rv "$SRCDIR"/app/staging/Zotero_linux-x86_64/* \
+       "$PKGDIR"/usr/lib/zotero/
 
-abinfo "Creating symlinks and application icons ..."
-ln -vs "/usr/lib/zotero/zotero" "${PKGDIR}/usr/bin/zotero"
-for i in 16 32 48 256; do
-    install -Dvm644 "${PKGDIR}/usr/lib/zotero/chrome/icons/default/default${i}.png" \
-        "${PKGDIR}/usr/share/icons/hicolor/${i}x${i}/apps/zotero.png"
+abinfo "Creating symbolic link ..."
+install -dvm755 "$PKGDIR"/usr/bin
+ln -sv ../lib/zotero/zotero "$PKGDIR"/usr/bin/zotero
+
+abinfo "Installing application icon ..."
+for i in 32 64 128; do
+    install -Dvm644 "$PKGDIR"/usr/lib/zotero/icons/icon${i}.png \
+        "$PKGDIR"/usr/share/icons/hicolor/${i}x${i}/apps/zotero.png
 done
+install -Dvm644 "$PKGDIR"/usr/lib/zotero/icons/symbolic.svg \
+        "$PKGDIR"/usr/share/icons/hicolor/symbolic/apps/zotero.svg
 
-abinfo "Fixing permissions problems for library signature files ..."
-find "${PKGDIR}/usr/lib/zotero" -name "*.so.sig" -exec chmod -v 755 {} +
-
-abinfo "Disabling update checks ..."
-sed -e '/pref("app.update.enabled", true);/c\pref("app.update.enabled", false);' \
-    -i "${PKGDIR}"/usr/lib/zotero/defaults/preferences/prefs.js
-
-abinfo "Installing licenses ..."
-install -Dvm644 "${SRCDIR}/zotero-client/COPYING" \
-    "${PKGDIR}/usr/share/doc/zotero/COPYING"
+abinfo "Installing license ..."
+install -Dvm644 "$SRCDIR"/COPYING \
+    "$PKGDIR"/usr/share/doc/zotero/COPYING

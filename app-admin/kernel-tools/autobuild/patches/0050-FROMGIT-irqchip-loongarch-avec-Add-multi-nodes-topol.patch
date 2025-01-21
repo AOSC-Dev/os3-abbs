@@ -1,7 +1,7 @@
 From 923b6e7aa70b6178d65f81fa02b157e142586ec1 Mon Sep 17 00:00:00 2001
 From: Tianyang Zhang <zhangtianyang@loongson.cn>
 Date: Sat, 11 Jan 2025 10:37:04 +0800
-Subject: [PATCH 050/314] FROMGIT: irqchip/loongarch-avec: Add multi-nodes
+Subject: [PATCH 050/315] FROMGIT: irqchip/loongarch-avec: Add multi-nodes
  topology support
 
 avecintc_init() enables the Advanced Interrupt Controller (AVEC) of

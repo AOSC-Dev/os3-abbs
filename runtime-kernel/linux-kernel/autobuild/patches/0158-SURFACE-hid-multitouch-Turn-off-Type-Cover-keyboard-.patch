@@ -1,7 +1,7 @@
 From 8bf8bc4d2611be65850e5f29116da7c7088d7488 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jonas=20Dre=C3=9Fler?= <verdre@v0yd.nl>
 Date: Thu, 5 Nov 2020 13:09:45 +0100
-Subject: [PATCH 158/314] SURFACE: hid/multitouch: Turn off Type Cover keyboard
+Subject: [PATCH 158/315] SURFACE: hid/multitouch: Turn off Type Cover keyboard
  backlight when suspending
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

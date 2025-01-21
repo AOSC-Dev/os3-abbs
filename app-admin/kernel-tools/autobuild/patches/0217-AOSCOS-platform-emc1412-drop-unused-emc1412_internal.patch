@@ -1,7 +1,7 @@
 From c663665f4e1f19f6e529b706b56a4d3c004003ba Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 4 Dec 2024 15:56:33 +0800
-Subject: [PATCH 217/314] AOSCOS: platform: emc1412: drop unused
+Subject: [PATCH 217/315] AOSCOS: platform: emc1412: drop unused
  emc1412_internal_temp() function
 
 This function was not used anywhere and triggered -Werror=unused-function.

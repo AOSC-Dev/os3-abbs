@@ -4,7 +4,7 @@ VER=6.13.0
 __VER="${VER}"
 
 # Use this for stable releases.
-REL=2
+REL=4
 # Note: In specific cases, `www.kernel.org` is faster than `cdn.kernel.org`. Change the host when appropriate.
 SRCS="tbl::https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${VER%%.0}.tar.xz"
 
@@ -23,3 +23,5 @@ SRCS="tbl::https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${VER%%.0}.tar.xz"
 
 CHKSUMS="sha256::e79dcc6eb86695c6babfb07c2861912b635d5075c6cd1cd0567d1ea155f80d6e"
 CHKUPDATE="anitya::id=6501"
+
+ENVREQ__LOONGARCH64="core=32"

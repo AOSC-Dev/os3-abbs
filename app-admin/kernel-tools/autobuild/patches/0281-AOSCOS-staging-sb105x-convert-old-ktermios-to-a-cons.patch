@@ -1,7 +1,7 @@
 From 706bad4fb93bbd8b3d4f5143c3265092bf575463 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 11 Dec 2024 16:58:16 +0800
-Subject: [PATCH 281/314] AOSCOS: staging: sb105x: convert old ktermios to a
+Subject: [PATCH 281/315] AOSCOS: staging: sb105x: convert old ktermios to a
  const
 
 Per commit a8c11c152034 ("tty: Make ->set_termios() old ktermios const"),

@@ -1,7 +1,7 @@
 From 5d10776392b8a07832fefde166551241840dbb23 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 11 Dec 2024 14:58:57 +0800
-Subject: [PATCH 275/314] AOSCOS: staging: sb105x: replace deprecated strlcpy()
+Subject: [PATCH 275/315] AOSCOS: staging: sb105x: replace deprecated strlcpy()
  with strscpy()
 
 The string function strlcpy() was removed in commit d26270061ae6 ("string:

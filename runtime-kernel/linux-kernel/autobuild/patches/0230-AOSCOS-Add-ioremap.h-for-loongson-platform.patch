@@ -1,7 +1,7 @@
 From b63a80b9e64a39ede47e6bc0b6f73bc4e9d64f2f Mon Sep 17 00:00:00 2001
 From: chenj <chenj@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
-Subject: [PATCH 230/314] AOSCOS: Add ioremap.h for loongson platform
+Subject: [PATCH 230/315] AOSCOS: Add ioremap.h for loongson platform
 
 Add loongson specific plat_ioremap to utilize uncached acceleration
 feature.

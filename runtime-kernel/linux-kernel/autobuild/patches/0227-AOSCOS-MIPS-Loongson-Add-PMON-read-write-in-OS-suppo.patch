@@ -1,7 +1,7 @@
 From 9c787bfd829de0ef6528674f993aa8024b0ee6e8 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
-Subject: [PATCH 227/314] AOSCOS: MIPS: Loongson: Add PMON read/write in OS
+Subject: [PATCH 227/315] AOSCOS: MIPS: Loongson: Add PMON read/write in OS
  support
 
 PMON is the firmware(BIOS) of Loongson.

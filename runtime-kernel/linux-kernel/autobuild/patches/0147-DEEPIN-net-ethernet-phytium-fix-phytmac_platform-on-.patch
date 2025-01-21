@@ -1,7 +1,7 @@
 From cbbf0c3fbbfe2926ccf0f235c56031d375dcc3a0 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <baimingcong@uniontech.com>
 Date: Fri, 28 Jun 2024 11:45:05 +0800
-Subject: [PATCH 147/314] DEEPIN: net: ethernet: phytium: fix phytmac_platform
+Subject: [PATCH 147/315] DEEPIN: net: ethernet: phytium: fix phytmac_platform
  on 6.9
 
 Add missing <linux/platform_device.h> include.

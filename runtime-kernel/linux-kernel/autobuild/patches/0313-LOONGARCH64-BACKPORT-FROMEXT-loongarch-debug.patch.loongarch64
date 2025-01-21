@@ -1,7 +1,7 @@
 From 31450caea9a3489a653c487c817ae0c76966c06f Mon Sep 17 00:00:00 2001
 From: shangyatsen <429839446@qq.com>
 Date: Mon, 11 Mar 2024 00:14:58 +0800
-Subject: [PATCH 313/314] LOONGARCH64: BACKPORT: FROMEXT: loongarch debug
+Subject: [PATCH 313/315] LOONGARCH64: BACKPORT: FROMEXT: loongarch debug
 
 Signed-off-by: shangyatsen <429839446@qq.com>
 Link: https://github.com/FanFansfan/loongson-linux/commit/22c55ab3931c32410a077b3ddb6dca3f28223360

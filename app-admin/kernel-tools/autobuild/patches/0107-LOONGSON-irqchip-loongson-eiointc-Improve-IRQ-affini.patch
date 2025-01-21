@@ -1,7 +1,7 @@
 From 6d516dd6ee64b103e250a841dfcec339a6bcec24 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Wed, 9 Nov 2022 17:24:11 +0800
-Subject: [PATCH 107/314] LOONGSON: irqchip/loongson-eiointc: Improve IRQ
+Subject: [PATCH 107/315] LOONGSON: irqchip/loongson-eiointc: Improve IRQ
  affinity setting
 
 On multiple bridge platform, a MSIX vector is often affinitive with only

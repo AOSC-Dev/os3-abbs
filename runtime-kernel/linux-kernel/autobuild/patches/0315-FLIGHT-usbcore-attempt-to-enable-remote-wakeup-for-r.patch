@@ -1,4 +1,4 @@
-From 4103a8c8045d719c6cc91e6fcadf9bd867b32ff5 Mon Sep 17 00:00:00 2001
+From d43b8bbbdf3ce7b2dc1a7138e2c8c76f88d7953c Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 21 Jan 2025 12:28:46 +0800
 Subject: [PATCH] FLIGHT: usbcore: attempt to enable remote wakeup for each
@@ -10,7 +10,7 @@ Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
  1 file changed, 11 insertions(+)
 
 diff --git a/drivers/usb/core/hub.c b/drivers/usb/core/hub.c
-index 21ac9b464696..39ab8bd6c21e 100644
+index 21ac9b464696..f670d1481ef9 100644
 --- a/drivers/usb/core/hub.c
 +++ b/drivers/usb/core/hub.c
 @@ -3471,6 +3471,9 @@ int usb_port_suspend(struct usb_device *udev, pm_message_t msg)
@@ -33,7 +33,7 @@ index 21ac9b464696..39ab8bd6c21e 100644
 +		while (i_udev) {
 +			usb_enable_remote_wakeup(i_udev);
 +			i_hub = usb_hub_to_struct_hub(i_udev->parent);
-+			i_udev = i_hub->hdev;
++			i_udev = i_hub ? i_hub->hdev : NULL;
 +		}
  	}
  

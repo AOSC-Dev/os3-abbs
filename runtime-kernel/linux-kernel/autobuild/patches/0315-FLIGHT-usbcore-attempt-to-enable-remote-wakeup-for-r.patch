@@ -1,4 +1,4 @@
-From c92629be862d6c1c10ed2b0a6b5463f7bb762dc4 Mon Sep 17 00:00:00 2001
+From 4103a8c8045d719c6cc91e6fcadf9bd867b32ff5 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 21 Jan 2025 12:28:46 +0800
 Subject: [PATCH] FLIGHT: usbcore: attempt to enable remote wakeup for each
@@ -6,19 +6,35 @@ Subject: [PATCH] FLIGHT: usbcore: attempt to enable remote wakeup for each
 
 Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
 ---
- drivers/usb/core/hub.c | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/usb/core/hub.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
 diff --git a/drivers/usb/core/hub.c b/drivers/usb/core/hub.c
-index 21ac9b464696..dbfb38d13651 100644
+index 21ac9b464696..39ab8bd6c21e 100644
 --- a/drivers/usb/core/hub.c
 +++ b/drivers/usb/core/hub.c
-@@ -3479,6 +3479,8 @@ int usb_port_suspend(struct usb_device *udev, pm_message_t msg)
+@@ -3471,6 +3471,9 @@ int usb_port_suspend(struct usb_device *udev, pm_message_t msg)
+ 	 * we don't explicitly enable it here.
+ 	 */
+ 	if (udev->do_remote_wakeup) {
++		struct usb_hub *i_hub;
++		struct usb_device *i_udev;
++
+ 		status = usb_enable_remote_wakeup(udev);
+ 		if (status) {
+ 			dev_dbg(&udev->dev, "won't remote wakeup, status %d\n",
+@@ -3479,6 +3482,14 @@ int usb_port_suspend(struct usb_device *udev, pm_message_t msg)
  			if (PMSG_IS_AUTO(msg))
  				goto err_wakeup;
  		}
-+		usb_enable_remote_wakeup(hub->hdev);
-+		usb_enable_remote_wakeup(udev->bus->root_hub);
++
++		i_udev = hub->hdev;
++
++		while (i_udev) {
++			usb_enable_remote_wakeup(i_udev);
++			i_hub = usb_hub_to_struct_hub(i_udev->parent);
++			i_udev = i_hub->hdev;
++		}
  	}
  
  	/* disable USB2 hardware LPM */

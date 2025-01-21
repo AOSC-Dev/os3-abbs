@@ -1,0 +1,38 @@
+From 3f1b934be90ec662c4930439d3f62a8cdc615c61 Mon Sep 17 00:00:00 2001
+From: Xi Ruoyao <xry111@xry111.site>
+Date: Wed, 12 Jun 2024 11:01:53 +0800
+Subject: [PATCH 36/40] BACKPORT: LoongArch: Fix mode size comparision in
+ loongarch_expand_conditional_move
+
+We were comparing a mode size with word_mode, but word_mode is an enum
+value thus this does not really make any sense.  (Un)luckily E_DImode
+happens to be 8 so this seemed to work, but let's make it correct so it
+won't blow up when we add LA32 support or add another machine mode...
+
+gcc/ChangeLog:
+
+	* config/loongarch/loongarch.cc
+	(loongarch_expand_conditional_move): Compare mode size with
+	UNITS_PER_WORD instead of word_mode.
+
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ gcc/config/loongarch/loongarch.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gcc/config/loongarch/loongarch.cc b/gcc/config/loongarch/loongarch.cc
+index c115f5f2a8a..070cb7e415e 100644
+--- a/gcc/config/loongarch/loongarch.cc
++++ b/gcc/config/loongarch/loongarch.cc
+@@ -5352,7 +5352,7 @@ loongarch_expand_conditional_move (rtx *operands)
+     loongarch_emit_float_compare (&code, &op0, &op1);
+   else
+     {
+-      if (GET_MODE_SIZE (GET_MODE (op0)) < word_mode)
++      if (GET_MODE_SIZE (GET_MODE (op0)) < UNITS_PER_WORD)
+ 	{
+ 	  promote_op[0] = (REG_P (op0) && REG_P (operands[2]) &&
+ 			   REGNO (op0) == REGNO (operands[2]));
+-- 
+2.47.1
+

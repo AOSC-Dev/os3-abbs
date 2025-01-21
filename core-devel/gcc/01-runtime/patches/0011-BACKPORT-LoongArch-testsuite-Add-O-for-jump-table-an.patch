@@ -1,0 +1,35 @@
+From eae12b2fdb7d7144aa0011ad67dd71c0109ff604 Mon Sep 17 00:00:00 2001
+From: Xi Ruoyao <xry111@xry111.site>
+Date: Sat, 2 Nov 2024 01:26:47 +0800
+Subject: [PATCH 11/40] BACKPORT: LoongArch: testsuite: Add -O for
+ jump-table-annotate.c
+
+Without optimization, GCC does not emit a jump table for the test case.
+
+I'm not sure if the test case has been wrong in the first place or
+something has changed in these months...
+
+gcc/testsuite/ChangeLog:
+
+	* gcc.target/loongarch/jump-table-annotate.c
+	(dg-additional-options): Add -O.
+
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ gcc/testsuite/gcc.target/loongarch/jump-table-annotate.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gcc/testsuite/gcc.target/loongarch/jump-table-annotate.c b/gcc/testsuite/gcc.target/loongarch/jump-table-annotate.c
+index 9d58e60e39a..1895f6f03b8 100644
+--- a/gcc/testsuite/gcc.target/loongarch/jump-table-annotate.c
++++ b/gcc/testsuite/gcc.target/loongarch/jump-table-annotate.c
+@@ -1,5 +1,5 @@
+ /* { dg-do compile } */
+-/* { dg-additional-options "-mannotate-tablejump" } */
++/* { dg-additional-options "-O -mannotate-tablejump" } */
+ 
+ extern void asdf(int);
+ void foo(int x) {
+-- 
+2.47.1
+

@@ -1,0 +1,51 @@
+From 0cfb2b0d304f5a73ddc5c31e194f565145ac4865 Mon Sep 17 00:00:00 2001
+From: Xi Ruoyao <xry111@xry111.site>
+Date: Mon, 2 Dec 2024 14:48:24 +0800
+Subject: [PATCH 18/40] BACKPORT: LoongArch: Remove QHSD and use QHWD instead
+
+QHSD and QHWD are basically the same thing, but QHSD will be incorrect
+when we start to add LA32 support.  So it's just better to always use
+QHWD.
+
+gcc/ChangeLog:
+
+	* config/loongarch/loongarch.md (QHSD): Remove.
+	(loongarch_<crc>_w_<size>_w): Use QHSD instead of QHWD.
+	(loongarch_<crc>_w_<size>_w_extended): Likewise.
+
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ gcc/config/loongarch/loongarch.md | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/gcc/config/loongarch/loongarch.md b/gcc/config/loongarch/loongarch.md
+index 71ae8e35a57..060d09e5640 100644
+--- a/gcc/config/loongarch/loongarch.md
++++ b/gcc/config/loongarch/loongarch.md
+@@ -4445,13 +4445,12 @@
+ 
+ 
+ 
+-(define_mode_iterator QHSD [QI HI SI DI])
+ (define_int_iterator CRC [UNSPEC_CRC UNSPEC_CRCC])
+ (define_int_attr crc [(UNSPEC_CRC "crc") (UNSPEC_CRCC "crcc")])
+ 
+ (define_insn "loongarch_<crc>_w_<size>_w"
+   [(set (match_operand:SI 0 "register_operand" "=r")
+-	(unspec:SI [(match_operand:QHSD 1 "register_operand" "r")
++	(unspec:SI [(match_operand:QHWD 1 "register_operand" "r")
+ 		   (match_operand:SI 2 "register_operand" "r")]
+ 		     CRC))]
+   ""
+@@ -4462,7 +4461,7 @@
+ (define_insn "loongarch_<crc>_w_<size>_w_extended"
+   [(set (match_operand:DI 0 "register_operand" "=r")
+ 	(sign_extend:DI
+-	  (unspec:SI [(match_operand:QHSD 1 "register_operand" "r")
++	  (unspec:SI [(match_operand:QHWD 1 "register_operand" "r")
+ 		      (match_operand:SI 2 "register_operand" "r")]
+ 		     CRC)))]
+   "TARGET_64BIT"
+-- 
+2.47.1
+

@@ -1,0 +1,309 @@
+From 1c1f76493c2d36909b0893b522688a368a278130 Mon Sep 17 00:00:00 2001
+From: Jiahao Xu <xujiahao@loongson.cn>
+Date: Wed, 18 Dec 2024 15:45:17 +0800
+Subject: [PATCH 24/40] BACKPORT: LoongArch: Support immediate_operand for
+ vec_cmp
+
+We can't vectorize the code into instructions like vslti.w that compare
+with immediate_operand, because we miss immediate_operand support for
+integer comparisons.
+
+gcc/ChangeLog:
+
+	* config/loongarch/lasx.md (vec_cmp<mode><mode256_i>): Remove.
+	(vec_cmpu<ILASX:mode><mode256_i>): Remove.
+	* config/loongarch/loongarch.cc (loongarch_expand_lsx_cmp):
+	Ensure vector comparison instructions support CMP_OP1.
+	* config/loongarch/lsx.md (vec_cmp<mode><mode_i>): Remove.
+	(vec_cmpu<ILSX:mode><mode_i>): Remove.
+	* config/loongarch/simd.md (ALLVEC, allmode_i): New mode iterators.
+	(vec_cmp<mode><allmode_i>): New define_expand.
+	(vec_cmpu<mode><allmode_i>): Likewise.
+
+gcc/testsuite/ChangeLog:
+
+	* gcc.target/loongarch/vector/lasx/lasx-vcond-3.c: New test.
+
+[Mingcong Bai: Resolved minor merge conflicts in
+gcc/config/loongarch/lasx.md, gcc/config/loongarch/lsx.md.]
+
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ gcc/config/loongarch/lasx.md                  | 22 -----
+ gcc/config/loongarch/loongarch.cc             | 12 +++
+ gcc/config/loongarch/lsx.md                   | 22 -----
+ gcc/config/loongarch/simd.md                  | 40 +++++++++
+ .../loongarch/vector/lasx/lasx-vcond-3.c      | 81 +++++++++++++++++++
+ 5 files changed, 133 insertions(+), 44 deletions(-)
+ create mode 100644 gcc/testsuite/gcc.target/loongarch/vector/lasx/lasx-vcond-3.c
+
+diff --git a/gcc/config/loongarch/lasx.md b/gcc/config/loongarch/lasx.md
+index b42bfd128f2..7933dd97648 100644
+--- a/gcc/config/loongarch/lasx.md
++++ b/gcc/config/loongarch/lasx.md
+@@ -1402,28 +1402,6 @@
+   [(set_attr "type" "simd_int_arith")
+    (set_attr "mode" "<MODE>")])
+ 
+-(define_expand "vec_cmp<mode><mode256_i>"
+-  [(set (match_operand:<VIMODE256> 0 "register_operand")
+-	(match_operator 1 ""
+-	  [(match_operand:LASX 2 "register_operand")
+-	   (match_operand:LASX 3 "register_operand")]))]
+-  "ISA_HAS_LASX"
+-{
+-  loongarch_expand_vec_cmp (operands);
+-  DONE;
+-})
+-
+-(define_expand "vec_cmpu<ILASX:mode><mode256_i>"
+-  [(set (match_operand:<VIMODE256> 0 "register_operand")
+-	(match_operator 1 ""
+-	  [(match_operand:ILASX 2 "register_operand")
+-	   (match_operand:ILASX 3 "register_operand")]))]
+-  "ISA_HAS_LASX"
+-{
+-  loongarch_expand_vec_cmp (operands);
+-  DONE;
+-})
+-
+ (define_insn "lasx_xvfclass_<flasxfmt>"
+   [(set (match_operand:<VIMODE256> 0 "register_operand" "=f")
+ 	(unspec:<VIMODE256> [(match_operand:FLASX 1 "register_operand" "f")]
+diff --git a/gcc/config/loongarch/loongarch.cc b/gcc/config/loongarch/loongarch.cc
+index f5ec404e822..998e368dae9 100644
+--- a/gcc/config/loongarch/loongarch.cc
++++ b/gcc/config/loongarch/loongarch.cc
+@@ -10481,19 +10481,29 @@ loongarch_expand_lsx_cmp (rtx dest, enum rtx_code cond, rtx op0, rtx op1)
+       switch (cond)
+ 	{
+ 	case NE:
++	  if (!loongarch_const_vector_same_int_p (op1, cmp_mode, -16, 15))
++	    op1 = force_reg (cmp_mode, op1);
+ 	  cond = reverse_condition (cond);
+ 	  negate = true;
+ 	  break;
+ 	case EQ:
+ 	case LT:
+ 	case LE:
++	  if (!loongarch_const_vector_same_int_p (op1, cmp_mode, -16, 15))
++	    op1 = force_reg (cmp_mode, op1);
++	  break;
+ 	case LTU:
+ 	case LEU:
++	  if (!loongarch_const_vector_same_int_p (op1, cmp_mode, 0, 31))
++	    op1 = force_reg (cmp_mode, op1);
+ 	  break;
+ 	case GE:
+ 	case GT:
+ 	case GEU:
+ 	case GTU:
++	  /* Only supports reg-reg comparison.  */
++	  if (!register_operand (op1, cmp_mode))
++	    op1 = force_reg (cmp_mode, op1);
+ 	  std::swap (op0, op1);
+ 	  cond = swap_condition (cond);
+ 	  break;
+@@ -10509,6 +10519,8 @@ loongarch_expand_lsx_cmp (rtx dest, enum rtx_code cond, rtx op0, rtx op1)
+     case E_V2DFmode:
+     case E_V8SFmode:
+     case E_V4DFmode:
++      if (!register_operand (op1, cmp_mode))
++	op1 = force_reg (cmp_mode, op1);
+       loongarch_emit_binary (cond, dest, op0, op1);
+       break;
+ 
+diff --git a/gcc/config/loongarch/lsx.md b/gcc/config/loongarch/lsx.md
+index a3f86d00b75..672d877b4c5 100644
+--- a/gcc/config/loongarch/lsx.md
++++ b/gcc/config/loongarch/lsx.md
+@@ -511,28 +511,6 @@
+   DONE;
+ })
+ 
+-(define_expand "vec_cmp<mode><mode_i>"
+-  [(set (match_operand:<VIMODE> 0 "register_operand")
+-	(match_operator 1 ""
+-	  [(match_operand:LSX 2 "register_operand")
+-	   (match_operand:LSX 3 "register_operand")]))]
+-  "ISA_HAS_LSX"
+-{
+-  loongarch_expand_vec_cmp (operands);
+-  DONE;
+-})
+-
+-(define_expand "vec_cmpu<ILSX:mode><mode_i>"
+-  [(set (match_operand:<VIMODE> 0 "register_operand")
+-	(match_operator 1 ""
+-	  [(match_operand:ILSX 2 "register_operand")
+-	   (match_operand:ILSX 3 "register_operand")]))]
+-  "ISA_HAS_LSX"
+-{
+-  loongarch_expand_vec_cmp (operands);
+-  DONE;
+-})
+-
+ (define_expand "vcondu<LSX:mode><ILSX:mode>"
+   [(match_operand:LSX 0 "register_operand")
+    (match_operand:LSX 1 "reg_or_m1_operand")
+diff --git a/gcc/config/loongarch/simd.md b/gcc/config/loongarch/simd.md
+index 45ea114220e..fc3d98a4340 100644
+--- a/gcc/config/loongarch/simd.md
++++ b/gcc/config/loongarch/simd.md
+@@ -29,12 +29,21 @@
+ ;; FP modes supported by LASX
+ (define_mode_iterator FLASX   [V4DF V8SF])
+ 
++;; All modes supported by LSX
++(define_mode_iterator LSX    [ILSX FLSX])
++
++;; ALL modes supported by LASX
++(define_mode_iterator LASX   [ILASX FLASX])
++
+ ;; All integer modes available
+ (define_mode_iterator IVEC    [(ILSX "ISA_HAS_LSX") (ILASX "ISA_HAS_LASX")])
+ 
+ ;; All FP modes available
+ (define_mode_iterator FVEC    [(FLSX "ISA_HAS_LSX") (FLASX "ISA_HAS_LASX")])
+ 
++;; All vector modes available
++(define_mode_iterator ALLVEC  [(LSX "ISA_HAS_LSX") (LASX "ISA_HAS_LASX")])
++
+ ;; Mnemonic prefix, "x" for LASX modes.
+ (define_mode_attr x [(V2DI "") (V4SI "") (V8HI "") (V16QI "")
+ 		     (V2DF "") (V4SF "")
+@@ -72,6 +81,14 @@
+ (define_mode_attr vimode [(V2DF "v2di") (V4SF "v4si")
+ 			  (V4DF "v4di") (V8SF "v8si")])
+ 
++;; Integer vector modes with the same size, in lower-case.
++(define_mode_attr allmode_i [(V2DI "v2di") (V4SI "v4si")
++              (V8HI "v8hi") (V16QI "v16qi")
++              (V2DF "v2di") (V4SF "v4si")
++              (V4DI "v4di") (V8SI "v8si")
++              (V16HI "v16hi") (V32QI "v32qi")
++              (V4DF "v4di") (V8SF "v8si")])
++
+ ;; Suffix for LSX or LASX instructions.
+ (define_mode_attr simdfmt [(V2DF "d") (V4DF "d")
+ 			   (V4SF "s") (V8SF "s")
+@@ -476,6 +493,29 @@
+   [(set_attr "type" "simd_logic")
+    (set_attr "mode" "<MODE>")])
+ 
++;; vector compare
++(define_expand "vec_cmp<mode><allmode_i>"
++  [(set (match_operand:<VIMODE> 0 "register_operand")
++    (match_operator 1 ""
++      [(match_operand:ALLVEC 2 "register_operand")
++       (match_operand:ALLVEC 3 "nonmemory_operand")]))]
++  ""
++{
++  loongarch_expand_vec_cmp (operands);
++  DONE;
++})
++
++(define_expand "vec_cmpu<mode><allmode_i>"
++  [(set (match_operand:<VIMODE> 0 "register_operand")
++    (match_operator 1 ""
++      [(match_operand:IVEC 2 "register_operand")
++       (match_operand:IVEC 3 "nonmemory_operand")]))]
++  ""
++{
++  loongarch_expand_vec_cmp (operands);
++  DONE;
++})
++
+ ; The LoongArch SX Instructions.
+ (include "lsx.md")
+ 
+diff --git a/gcc/testsuite/gcc.target/loongarch/vector/lasx/lasx-vcond-3.c b/gcc/testsuite/gcc.target/loongarch/vector/lasx/lasx-vcond-3.c
+new file mode 100644
+index 00000000000..17545f44521
+--- /dev/null
++++ b/gcc/testsuite/gcc.target/loongarch/vector/lasx/lasx-vcond-3.c
+@@ -0,0 +1,81 @@
++/* { dg-do compile } */
++/* { dg-options "-O2 -ftree-vectorize -fno-unroll-loops -fno-vect-cost-model -mlasx" } */
++
++#include <stdint-gcc.h>
++
++#define DEF_VCOND_VAR(DATA_TYPE, CMP_TYPE, COND, SUFFIX, IMM)	\
++  void __attribute__ ((noinline, noclone))			\
++  vcond_var_##CMP_TYPE##_##SUFFIX (DATA_TYPE *__restrict__ r,	\
++				   DATA_TYPE *__restrict__ x,	\
++				   DATA_TYPE *__restrict__ y,	\
++				   CMP_TYPE *__restrict__ a,	\
++				   int n)			\
++  {								\
++    for (int i = 0; i < n; i++)					\
++      {								\
++	DATA_TYPE xval = x[i], yval = y[i];			\
++	CMP_TYPE aval = a[i], bval = IMM;			\
++	r[i] = aval COND bval ? xval : yval;			\
++      }								\
++  }
++
++#define TEST_COND_VAR_SIGNED_ALL(T, COND, SUFFIX)	\
++  T (int8_t, int8_t, COND, SUFFIX, 0)			\
++  T (int16_t, int16_t, COND, SUFFIX, 0)			\
++  T (int32_t, int32_t, COND, SUFFIX, 0)			\
++  T (int64_t, int64_t, COND, SUFFIX, 0)			\
++  T (float, int32_t, COND, SUFFIX##_float, 0)		\
++  T (double, int64_t, COND, SUFFIX##_double, 0)
++
++#define TEST_COND_VAR_UNSIGNED_ALL(T, COND, SUFFIX)	\
++  T (uint8_t, uint8_t, COND, SUFFIX, 2)			\
++  T (uint16_t, uint16_t, COND, SUFFIX, 2)		\
++  T (uint32_t, uint32_t, COND, SUFFIX, 2)		\
++  T (uint64_t, uint64_t, COND, SUFFIX, 2)		\
++  T (float, uint32_t, COND, SUFFIX##_float, 2)		\
++  T (double, uint64_t, COND, SUFFIX##_double, 2)
++
++#define TEST_COND_VAR_ALL(T, COND, SUFFIX)	 \
++  TEST_COND_VAR_SIGNED_ALL (T, COND, SUFFIX)	 \
++  TEST_COND_VAR_UNSIGNED_ALL (T, COND, SUFFIX)
++
++#define TEST_VAR_ALL(T)				\
++  TEST_COND_VAR_ALL (T, <, _lt)			\
++  TEST_COND_VAR_ALL (T, <=, _le)		\
++  TEST_COND_VAR_ALL (T, ==, _eq)		\
++  TEST_COND_VAR_ALL (T, !=, _ne)
++
++TEST_VAR_ALL (DEF_VCOND_VAR)
++
++/* { dg-final { scan-assembler-times {\txvslti\.b\t} 1 } } */
++/* { dg-final { scan-assembler-times {\txvslti\.h\t} 1 } } */
++/* { dg-final { scan-assembler-times {\txvslti\.w\t} 2 } } */
++/* { dg-final { scan-assembler-times {\txvslti\.d\t} 2 } } */
++/* { dg-final { scan-assembler-times {\tvslti\.b\t} 1 } } */
++/* { dg-final { scan-assembler-times {\tvslti\.h\t} 1 } } */
++/* { dg-final { scan-assembler-times {\tvslti\.w\t} 2 } } */
++/* { dg-final { scan-assembler-times {\tvslti\.d\t} 2 } } */
++/* { dg-final { scan-assembler-times {\txvslei\.b\t} 1 } } */
++/* { dg-final { scan-assembler-times {\txvslei\.h\t} 1 } } */
++/* { dg-final { scan-assembler-times {\txvslei\.w\t} 2 } } */
++/* { dg-final { scan-assembler-times {\txvslei\.d\t} 2 } } */
++/* { dg-final { scan-assembler-times {\tvslei\.b\t} 1 } } */
++/* { dg-final { scan-assembler-times {\tvslei\.h\t} 1 } } */
++/* { dg-final { scan-assembler-times {\tvslei\.w\t} 2 } } */
++/* { dg-final { scan-assembler-times {\tvslei\.d\t} 2 } } */
++/* { dg-final { scan-assembler-times {\txvslei\.bu\t} 2 } } */
++/* { dg-final { scan-assembler-times {\txvslei\.hu\t} 2 } } */
++/* { dg-final { scan-assembler-times {\txvslei\.wu\t} 4 } } */
++/* { dg-final { scan-assembler-times {\txvslei\.du\t} 4 } } */
++/* { dg-final { scan-assembler-times {\tvslei\.bu\t} 2 } } */
++/* { dg-final { scan-assembler-times {\tvslei\.hu\t} 2 } } */
++/* { dg-final { scan-assembler-times {\tvslei\.wu\t} 4 } } */
++/* { dg-final { scan-assembler-times {\tvslei\.du\t} 4 } } */
++/* { dg-final { scan-assembler-times {\txvseqi\.b\t} 4 } } */
++/* { dg-final { scan-assembler-times {\txvseqi\.h\t} 4 } } */
++/* { dg-final { scan-assembler-times {\txvseqi\.w\t} 8 } } */
++/* { dg-final { scan-assembler-times {\txvseqi\.d\t} 8 } } */
++/* { dg-final { scan-assembler-times {\tvseqi\.b\t} 4 } } */
++/* { dg-final { scan-assembler-times {\tvseqi\.h\t} 4 } } */
++/* { dg-final { scan-assembler-times {\tvseqi\.w\t} 8 } } */
++/* { dg-final { scan-assembler-times {\tvseqi\.d\t} 8 } } */
+-- 
+2.47.1
+

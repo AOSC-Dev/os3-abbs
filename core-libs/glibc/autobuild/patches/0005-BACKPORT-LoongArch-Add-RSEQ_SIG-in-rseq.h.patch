@@ -1,0 +1,57 @@
+From 836167aea8cf5c3e3f86324270aa5afa45a8ec3c Mon Sep 17 00:00:00 2001
+From: caiyinyu <caiyinyu@loongson.cn>
+Date: Sat, 26 Oct 2024 16:33:07 +0800
+Subject: [PATCH 5/9] BACKPORT: LoongArch: Add RSEQ_SIG in rseq.h.
+
+Signed-off-by: caiyinyu <caiyinyu@loongson.cn>
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ sysdeps/unix/sysv/linux/loongarch/bits/rseq.h | 36 +++++++++++++++++++
+ 1 file changed, 36 insertions(+)
+ create mode 100644 sysdeps/unix/sysv/linux/loongarch/bits/rseq.h
+
+diff --git a/sysdeps/unix/sysv/linux/loongarch/bits/rseq.h b/sysdeps/unix/sysv/linux/loongarch/bits/rseq.h
+new file mode 100644
+index 0000000000..7468a05243
+--- /dev/null
++++ b/sysdeps/unix/sysv/linux/loongarch/bits/rseq.h
+@@ -0,0 +1,36 @@
++/* Restartable Sequences Linux LoongArch architecture header.
++   Copyright (C) 2024 Free Software Foundation, Inc.
++
++   The GNU C Library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Lesser General Public
++   License as published by the Free Software Foundation; either
++   version 2.1 of the License, or (at your option) any later version.
++
++   The GNU C Library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++   Lesser General Public License for more details.
++
++   You should have received a copy of the GNU Lesser General Public
++   License along with the GNU C Library; if not, see
++   <https://www.gnu.org/licenses/>.  */
++
++#ifndef _SYS_RSEQ_H
++# error "Never use <bits/rseq.h> directly; include <sys/rseq.h> instead."
++#endif
++
++/* RSEQ_SIG is a signature required before each abort handler code.
++
++   It is a 32-bit value that maps to actual architecture code compiled
++   into applications and libraries.  It needs to be defined for each
++   architecture.  When choosing this value, it needs to be taken into
++   account that generating invalid instructions may have ill effects on
++   tools like objdump, and may also have impact on the CPU speculative
++   execution efficiency in some cases.
++
++   RSEQ_SIG uses the following break instruction:
++
++   0x002a0010	break	0x10
++*/
++
++#define RSEQ_SIG        0x002a0010
+-- 
+2.47.1
+

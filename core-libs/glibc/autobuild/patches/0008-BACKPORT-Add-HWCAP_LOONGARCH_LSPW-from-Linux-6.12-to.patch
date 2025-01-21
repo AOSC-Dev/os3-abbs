@@ -1,0 +1,28 @@
+From e0e7e21f73efd1ef1440731d167ec8d13da072d5 Mon Sep 17 00:00:00 2001
+From: Joseph Myers <josmyers@redhat.com>
+Date: Fri, 20 Dec 2024 11:47:03 +0000
+Subject: [PATCH 8/9] BACKPORT: Add HWCAP_LOONGARCH_LSPW from Linux 6.12 to
+ bits/hwcap.h
+
+Add the new Linux 6.12 HWCAP_LOONGARCH_LSPW to the corresponding
+bits/hwcap.h.
+
+Tested with build-many-glibcs.py for loongarch64-linux-gnu-lp64d.
+
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ sysdeps/unix/sysv/linux/loongarch/bits/hwcap.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/sysdeps/unix/sysv/linux/loongarch/bits/hwcap.h b/sysdeps/unix/sysv/linux/loongarch/bits/hwcap.h
+index 16d17faecd..fa843f3b8e 100644
+--- a/sysdeps/unix/sysv/linux/loongarch/bits/hwcap.h
++++ b/sysdeps/unix/sysv/linux/loongarch/bits/hwcap.h
+@@ -36,3 +36,4 @@
+ #define HWCAP_LOONGARCH_LBT_ARM         (1 << 11)
+ #define HWCAP_LOONGARCH_LBT_MIPS        (1 << 12)
+ #define HWCAP_LOONGARCH_PTW             (1 << 13)
++#define HWCAP_LOONGARCH_LSPW            (1 << 14)
+-- 
+2.47.1
+

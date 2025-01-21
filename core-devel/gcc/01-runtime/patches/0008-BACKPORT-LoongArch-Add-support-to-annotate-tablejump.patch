@@ -1,0 +1,156 @@
+From 2ee62c9207c0b57c486a7bb9dd7ee8648e9a4ae9 Mon Sep 17 00:00:00 2001
+From: Xi Ruoyao <xry111@xry111.site>
+Date: Thu, 11 Jul 2024 19:43:48 +0800
+Subject: [PATCH 08/40] BACKPORT: LoongArch: Add support to annotate tablejump
+
+This is per the request from the kernel developers.  For generating the
+ORC unwind info, the objtool program needs to analysis the control flow
+of a .o file.  If a jump table is used, objtool has to correlate the
+jump instruction with the table.
+
+On x86 (where objtool was initially developed) it's simple: a relocation
+entry natrually correlates them because one single instruction is used
+for table-based jump.  But on an RISC machine objtool would have to
+reconstruct the data flow if it must find out the correlation on its
+own.
+
+So, emit an additional section to store the correlation info as pairs of
+addresses, each pair contains the address of a jump instruction (jr) and
+the address of the jump table.  This is very trivial to implement in
+GCC.
+
+gcc/ChangeLog:
+
+	* config/loongarch/genopts/loongarch.opt.in
+	(mannotate-tablejump): New option.
+	* config/loongarch/loongarch.opt: Regenerate.
+	* config/loongarch/loongarch.md (tablejump<mode>): Emit
+	additional correlation info between the jump instruction and the
+	jump table, if -mannotate-tablejump.
+	* doc/invoke.texi: Document -mannotate-tablejump.
+
+gcc/testsuite/ChangeLog:
+
+	* gcc.target/loongarch/jump-table-annotate.c: New test.
+
+Suggested-by: Tiezhu Yang <yangtiezhu@loongson.cn>
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ gcc/config/loongarch/genopts/loongarch.opt.in     |  4 ++++
+ gcc/config/loongarch/loongarch.md                 | 12 +++++++++++-
+ gcc/config/loongarch/loongarch.opt                |  4 ++++
+ gcc/doc/invoke.texi                               | 13 ++++++++++++-
+ .../gcc.target/loongarch/jump-table-annotate.c    | 15 +++++++++++++++
+ 5 files changed, 46 insertions(+), 2 deletions(-)
+ create mode 100644 gcc/testsuite/gcc.target/loongarch/jump-table-annotate.c
+
+diff --git a/gcc/config/loongarch/genopts/loongarch.opt.in b/gcc/config/loongarch/genopts/loongarch.opt.in
+index d00950cb4f4..d5bbf01d85e 100644
+--- a/gcc/config/loongarch/genopts/loongarch.opt.in
++++ b/gcc/config/loongarch/genopts/loongarch.opt.in
+@@ -301,3 +301,7 @@ default value is 4.
+ ; CPUCFG independently, so we use bit flags to specify them.
+ TargetVariable
+ HOST_WIDE_INT la_isa_evolution = 0
++
++mannotate-tablejump
++Target Mask(ANNOTATE_TABLEJUMP) Save
++Annotate table jump instruction (jr {reg}) to correlate it with the jump table.
+diff --git a/gcc/config/loongarch/loongarch.md b/gcc/config/loongarch/loongarch.md
+index b45cd45363c..71ae8e35a57 100644
+--- a/gcc/config/loongarch/loongarch.md
++++ b/gcc/config/loongarch/loongarch.md
+@@ -3597,12 +3597,22 @@
+   DONE;
+ })
+ 
++(define_mode_attr mode_size [(DI "8") (SI "4")])
++
+ (define_insn "@tablejump<mode>"
+   [(set (pc)
+ 	(match_operand:P 0 "register_operand" "e"))
+    (use (label_ref (match_operand 1 "" "")))]
+   ""
+-  "jr\t%0"
++  {
++    return TARGET_ANNOTATE_TABLEJUMP
++      ? "1:jr\t%0\n\t"
++	".pushsection\t.discard.tablejump_annotate\n\t"
++	"\t.<mode_size>byte\t1b\n\t"
++	"\t.<mode_size>byte\t%1\n\t"
++	".popsection"
++      : "jr\t%0";
++  }
+   [(set_attr "type" "jump")
+    (set_attr "mode" "none")])
+ 
+diff --git a/gcc/config/loongarch/loongarch.opt b/gcc/config/loongarch/loongarch.opt
+index 91cb5236ad8..6a396b539c4 100644
+--- a/gcc/config/loongarch/loongarch.opt
++++ b/gcc/config/loongarch/loongarch.opt
+@@ -310,6 +310,10 @@ default value is 4.
+ TargetVariable
+ HOST_WIDE_INT la_isa_evolution = 0
+ 
++mannotate-tablejump
++Target Mask(ANNOTATE_TABLEJUMP) Save
++Annotate table jump instruction (jr {reg}) to correlate it with the jump table
++
+ mfrecipe
+ Target Mask(ISA_FRECIPE) Var(la_isa_evolution)
+ Support frecipe.{s/d} and frsqrte.{s/d} instructions.
+diff --git a/gcc/doc/invoke.texi b/gcc/doc/invoke.texi
+index 89bd1e61f9c..6635407a2e3 100644
+--- a/gcc/doc/invoke.texi
++++ b/gcc/doc/invoke.texi
+@@ -1062,7 +1062,7 @@ Objective-C and Objective-C++ Dialects}.
+ -mcmodel=@var{code-model} -mrelax -mpass-mrelax-to-as
+ -mrecip  -mrecip=@var{opt} -mfrecipe -mno-frecipe -mdiv32 -mno-div32
+ -mlam-bh -mno-lam-bh -mlamcas -mno-lamcas -mld-seq-sa -mno-ld-seq-sa
+--mtls-dialect=@var{opt}}
++-mtls-dialect=@var{opt} -mannotate-tablejump -mno-annotate-tablejump}
+ 
+ @emph{M32R/D Options}
+ @gccoptlist{-m32r2  -m32rx  -m32r
+@@ -27218,6 +27218,17 @@ Whether a load-load barrier (@code{dbar 0x700}) is needed.  When build with
+ This option controls which tls dialect may be used for general dynamic and
+ local dynamic TLS models.
+ 
++@opindex mannotate-tablejump
++@opindex mno-annotate-tablejump
++@item -mannotate-tablejump
++@itemx -mno-annotate-tablejump
++Create an annotation section @code{.discard.tablejump_annotate} to
++correlate the @code{jirl} instruction and the jump table when a jump
++table is used to optimize the @code{switch} statement.  Some external
++tools, for example @file{objtool} of the Linux kernel building system,
++need the annotation to analysis the control flow.  The default is
++@option{-mno-annotate-tablejump}.
++
+ @table @samp
+ @item trad
+ Use traditional TLS. This is the default.
+diff --git a/gcc/testsuite/gcc.target/loongarch/jump-table-annotate.c b/gcc/testsuite/gcc.target/loongarch/jump-table-annotate.c
+new file mode 100644
+index 00000000000..9d58e60e39a
+--- /dev/null
++++ b/gcc/testsuite/gcc.target/loongarch/jump-table-annotate.c
+@@ -0,0 +1,15 @@
++/* { dg-do compile } */
++/* { dg-additional-options "-mannotate-tablejump" } */
++
++extern void asdf(int);
++void foo(int x) {
++  switch (x) {
++  case 0: asdf(10); break;
++  case 1: asdf(11); break;
++  case 2: asdf(12); break;
++  case 3: asdf(13); break;
++  case 4: asdf(14); break;
++  }
++}
++
++/* { dg-final { scan-assembler "\\.discard\\.tablejump_annotate" } } */
+-- 
+2.47.1
+

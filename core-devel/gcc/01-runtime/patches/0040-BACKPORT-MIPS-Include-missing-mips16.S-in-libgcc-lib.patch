@@ -1,7 +1,8 @@
-From 75892d97979f397a66730b97e8279941169e0316 Mon Sep 17 00:00:00 2001
+From b04aaba0ed5cd83f6544c56cde1b943780a576d7 Mon Sep 17 00:00:00 2001
 From: YunQiang Su <syq@gcc.gnu.org>
 Date: Fri, 23 Aug 2024 23:46:16 +0800
-Subject: [PATCH] MIPS: Include missing mips16.S in libgcc/lib1funcs.S
+Subject: [PATCH 40/40] BACKPORT: MIPS: Include missing mips16.S in
+ libgcc/lib1funcs.S
 
 mips16.S was missing since
 commit 29b74545531f6afbee9fc38c267524326dbfbedf
@@ -17,6 +18,7 @@ libgcc/ChangeLog:
 	* config/mips/lib1funcs.S: Includes mips16.S.
 
 (cherry picked from commit 9522fc8bb7812f2ad50eb038e0938bfd958e730f)
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
 ---
  libgcc/config/mips/lib1funcs.S | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)

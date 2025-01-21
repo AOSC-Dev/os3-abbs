@@ -1,0 +1,414 @@
+From 8d729937346f41329bee8c011b0cc5ad63a134d5 Mon Sep 17 00:00:00 2001
+From: Guo Jie <guojie@loongson.cn>
+Date: Mon, 30 Dec 2024 15:12:02 +0800
+Subject: [PATCH 35/40] BACKPORT: LoongArch: Add standard patterns uabd and
+ sabd
+
+gcc/ChangeLog:
+
+	* config/loongarch/lasx.md (lasx_xvabsd_s_<lasxfmt>): Remove.
+	(<su>abd<mode>3): New insn pattern.
+	(lasx_xvabsd_u_<lasxfmt_u>): Remove.
+	* config/loongarch/loongarch-builtins.cc (CODE_FOR_lsx_vabsd_b):
+	Rename.
+	(CODE_FOR_lsx_vabsd_h): Ditto.
+	(CODE_FOR_lsx_vabsd_w): Ditto.
+	(CODE_FOR_lsx_vabsd_d): Ditto.
+	(CODE_FOR_lsx_vabsd_bu): Ditto.
+	(CODE_FOR_lsx_vabsd_hu): Ditto.
+	(CODE_FOR_lsx_vabsd_wu): Ditto.
+	(CODE_FOR_lsx_vabsd_du): Ditto.
+	(CODE_FOR_lasx_xvabsd_b): Ditto.
+	(CODE_FOR_lasx_xvabsd_h): Ditto.
+	(CODE_FOR_lasx_xvabsd_w): Ditto.
+	(CODE_FOR_lasx_xvabsd_d): Ditto.
+	(CODE_FOR_lasx_xvabsd_bu): Ditto.
+	(CODE_FOR_lasx_xvabsd_hu): Ditto.
+	(CODE_FOR_lasx_xvabsd_wu): Ditto.
+	(CODE_FOR_lasx_xvabsd_du): Ditto.
+	* config/loongarch/loongarch.md (u): Add smax/umax.
+	* config/loongarch/lsx.md (SU_MAX): New iterator.
+	(su_min): New attr.
+	(lsx_vabsd_s_<lsxfmt>): Remove.
+	(<su>abd<mode>3): New insn pattern.
+	(lsx_vabsd_u_<lsxfmt_u>): Remove.
+
+gcc/testsuite/ChangeLog:
+
+	* gcc.target/loongarch/abd-lasx.c: New test.
+	* gcc.target/loongarch/abd-lsx.c: New test.
+
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ gcc/config/loongarch/lasx.md                  | 30 +++------
+ gcc/config/loongarch/loongarch-builtins.cc    | 32 ++++-----
+ gcc/config/loongarch/loongarch.md             |  6 +-
+ gcc/config/loongarch/lsx.md                   | 37 +++++-----
+ gcc/testsuite/gcc.target/loongarch/abd-lasx.c | 67 +++++++++++++++++++
+ gcc/testsuite/gcc.target/loongarch/abd-lsx.c  | 67 +++++++++++++++++++
+ 6 files changed, 182 insertions(+), 57 deletions(-)
+ create mode 100644 gcc/testsuite/gcc.target/loongarch/abd-lasx.c
+ create mode 100644 gcc/testsuite/gcc.target/loongarch/abd-lsx.c
+
+diff --git a/gcc/config/loongarch/lasx.md b/gcc/config/loongarch/lasx.md
+index f639d85f3eb..a93fc679120 100644
+--- a/gcc/config/loongarch/lasx.md
++++ b/gcc/config/loongarch/lasx.md
+@@ -20,8 +20,6 @@
+ ;;
+ 
+ (define_c_enum "unspec" [
+-  UNSPEC_LASX_XVABSD_S
+-  UNSPEC_LASX_XVABSD_U
+   UNSPEC_LASX_XVAVG_S
+   UNSPEC_LASX_XVAVG_U
+   UNSPEC_LASX_XVAVGR_S
+@@ -1227,23 +1225,17 @@
+   [(set_attr "type" "simd_int_arith")
+    (set_attr "mode" "<MODE>")])
+ 
+-(define_insn "lasx_xvabsd_s_<lasxfmt>"
++(define_insn "<su>abd<mode>3"
+   [(set (match_operand:ILASX 0 "register_operand" "=f")
+-	(unspec:ILASX [(match_operand:ILASX 1 "register_operand" "f")
+-		       (match_operand:ILASX 2 "register_operand" "f")]
+-		      UNSPEC_LASX_XVABSD_S))]
+-  "ISA_HAS_LASX"
+-  "xvabsd.<lasxfmt>\t%u0,%u1,%u2"
+-  [(set_attr "type" "simd_int_arith")
+-   (set_attr "mode" "<MODE>")])
+-
+-(define_insn "lasx_xvabsd_u_<lasxfmt_u>"
+-  [(set (match_operand:ILASX 0 "register_operand" "=f")
+-	(unspec:ILASX [(match_operand:ILASX 1 "register_operand" "f")
+-		       (match_operand:ILASX 2 "register_operand" "f")]
+-		      UNSPEC_LASX_XVABSD_U))]
++	(minus:ILASX
++	  (SU_MAX:ILASX
++	    (match_operand:ILASX 1 "register_operand" "f")
++	    (match_operand:ILASX 2 "register_operand" "f"))
++	  (<su_min>:ILASX
++	    (match_dup 1)
++	    (match_dup 2))))]
+   "ISA_HAS_LASX"
+-  "xvabsd.<lasxfmt_u>\t%u0,%u1,%u2"
++  "xvabsd.<lasxfmt><u>\t%u0,%u1,%u2"
+   [(set_attr "type" "simd_int_arith")
+    (set_attr "mode" "<MODE>")])
+ 
+@@ -5032,7 +5024,7 @@
+   rtx t1 = gen_reg_rtx (V32QImode);
+   rtx t2 = gen_reg_rtx (V16HImode);
+   rtx t3 = gen_reg_rtx (V8SImode);
+-  emit_insn (gen_lasx_xvabsd_u_bu (t1, operands[1], operands[2]));
++  emit_insn (gen_uabdv32qi3 (t1, operands[1], operands[2]));
+   emit_insn (gen_lasx_xvhaddw_hu_bu (t2, t1, t1));
+   emit_insn (gen_lasx_xvhaddw_wu_hu (t3, t2, t2));
+   emit_insn (gen_addv8si3 (operands[0], t3, operands[3]));
+@@ -5049,7 +5041,7 @@
+   rtx t1 = gen_reg_rtx (V32QImode);
+   rtx t2 = gen_reg_rtx (V16HImode);
+   rtx t3 = gen_reg_rtx (V8SImode);
+-  emit_insn (gen_lasx_xvabsd_s_b (t1, operands[1], operands[2]));
++  emit_insn (gen_sabdv32qi3 (t1, operands[1], operands[2]));
+   emit_insn (gen_lasx_xvhaddw_hu_bu (t2, t1, t1));
+   emit_insn (gen_lasx_xvhaddw_wu_hu (t3, t2, t2));
+   emit_insn (gen_addv8si3 (operands[0], t3, operands[3]));
+diff --git a/gcc/config/loongarch/loongarch-builtins.cc b/gcc/config/loongarch/loongarch-builtins.cc
+index 593aca56a6d..b7579ea1b91 100644
+--- a/gcc/config/loongarch/loongarch-builtins.cc
++++ b/gcc/config/loongarch/loongarch-builtins.cc
+@@ -462,14 +462,14 @@ AVAIL_ALL (lasx_frecipe, ISA_HAS_LASX && ISA_HAS_FRECIPE)
+ #define CODE_FOR_lsx_vssub_hu CODE_FOR_lsx_vssub_u_hu
+ #define CODE_FOR_lsx_vssub_wu CODE_FOR_lsx_vssub_u_wu
+ #define CODE_FOR_lsx_vssub_du CODE_FOR_lsx_vssub_u_du
+-#define CODE_FOR_lsx_vabsd_b CODE_FOR_lsx_vabsd_s_b
+-#define CODE_FOR_lsx_vabsd_h CODE_FOR_lsx_vabsd_s_h
+-#define CODE_FOR_lsx_vabsd_w CODE_FOR_lsx_vabsd_s_w
+-#define CODE_FOR_lsx_vabsd_d CODE_FOR_lsx_vabsd_s_d
+-#define CODE_FOR_lsx_vabsd_bu CODE_FOR_lsx_vabsd_u_bu
+-#define CODE_FOR_lsx_vabsd_hu CODE_FOR_lsx_vabsd_u_hu
+-#define CODE_FOR_lsx_vabsd_wu CODE_FOR_lsx_vabsd_u_wu
+-#define CODE_FOR_lsx_vabsd_du CODE_FOR_lsx_vabsd_u_du
++#define CODE_FOR_lsx_vabsd_b CODE_FOR_sabdv16qi3
++#define CODE_FOR_lsx_vabsd_h CODE_FOR_sabdv8hi3
++#define CODE_FOR_lsx_vabsd_w CODE_FOR_sabdv4si3
++#define CODE_FOR_lsx_vabsd_d CODE_FOR_sabdv2di3
++#define CODE_FOR_lsx_vabsd_bu CODE_FOR_uabdv16qi3
++#define CODE_FOR_lsx_vabsd_hu CODE_FOR_uabdv8hi3
++#define CODE_FOR_lsx_vabsd_wu CODE_FOR_uabdv4si3
++#define CODE_FOR_lsx_vabsd_du CODE_FOR_uabdv2di3
+ #define CODE_FOR_lsx_vftint_wu_s CODE_FOR_lsx_vftint_u_wu_s
+ #define CODE_FOR_lsx_vftint_lu_d CODE_FOR_lsx_vftint_u_lu_d
+ #define CODE_FOR_lsx_vandn_v CODE_FOR_andnv16qi3
+@@ -742,14 +742,14 @@ AVAIL_ALL (lasx_frecipe, ISA_HAS_LASX && ISA_HAS_FRECIPE)
+ #define CODE_FOR_lasx_xvssub_hu CODE_FOR_lasx_xvssub_u_hu
+ #define CODE_FOR_lasx_xvssub_wu CODE_FOR_lasx_xvssub_u_wu
+ #define CODE_FOR_lasx_xvssub_du CODE_FOR_lasx_xvssub_u_du
+-#define CODE_FOR_lasx_xvabsd_b CODE_FOR_lasx_xvabsd_s_b
+-#define CODE_FOR_lasx_xvabsd_h CODE_FOR_lasx_xvabsd_s_h
+-#define CODE_FOR_lasx_xvabsd_w CODE_FOR_lasx_xvabsd_s_w
+-#define CODE_FOR_lasx_xvabsd_d CODE_FOR_lasx_xvabsd_s_d
+-#define CODE_FOR_lasx_xvabsd_bu CODE_FOR_lasx_xvabsd_u_bu
+-#define CODE_FOR_lasx_xvabsd_hu CODE_FOR_lasx_xvabsd_u_hu
+-#define CODE_FOR_lasx_xvabsd_wu CODE_FOR_lasx_xvabsd_u_wu
+-#define CODE_FOR_lasx_xvabsd_du CODE_FOR_lasx_xvabsd_u_du
++#define CODE_FOR_lasx_xvabsd_b CODE_FOR_sabdv32qi3
++#define CODE_FOR_lasx_xvabsd_h CODE_FOR_sabdv16hi3
++#define CODE_FOR_lasx_xvabsd_w CODE_FOR_sabdv8si3
++#define CODE_FOR_lasx_xvabsd_d CODE_FOR_sabdv4di3
++#define CODE_FOR_lasx_xvabsd_bu CODE_FOR_uabdv32qi3
++#define CODE_FOR_lasx_xvabsd_hu CODE_FOR_uabdv16hi3
++#define CODE_FOR_lasx_xvabsd_wu CODE_FOR_uabdv8si3
++#define CODE_FOR_lasx_xvabsd_du CODE_FOR_uabdv4di3
+ #define CODE_FOR_lasx_xvavg_b CODE_FOR_lasx_xvavg_s_b
+ #define CODE_FOR_lasx_xvavg_h CODE_FOR_lasx_xvavg_s_h
+ #define CODE_FOR_lasx_xvavg_w CODE_FOR_lasx_xvavg_s_w
+diff --git a/gcc/config/loongarch/loongarch.md b/gcc/config/loongarch/loongarch.md
+index fa3057ea54a..31b24550342 100644
+--- a/gcc/config/loongarch/loongarch.md
++++ b/gcc/config/loongarch/loongarch.md
+@@ -541,13 +541,15 @@
+ 		     (gt "") (gtu "u")
+ 		     (ge "") (geu "u")
+ 		     (lt "") (ltu "u")
+-		     (le "") (leu "u")])
++		     (le "") (leu "u")
++		     (smax "") (umax "u")])
+ 
+ ;; <U> is like <u> except uppercase.
+ (define_code_attr U [(sign_extend "") (zero_extend "U")])
+ 
+ ;; <su> is like <u>, but the signed form expands to "s" rather than "".
+-(define_code_attr su [(sign_extend "s") (zero_extend "u")])
++(define_code_attr su [(sign_extend "s") (zero_extend "u")
++                      (smax "s") (umax "u")])
+ 
+ (define_code_attr u_bool [(sign_extend "false") (zero_extend "true")])
+ 
+diff --git a/gcc/config/loongarch/lsx.md b/gcc/config/loongarch/lsx.md
+index 5fccdf14ce1..87290aac41d 100644
+--- a/gcc/config/loongarch/lsx.md
++++ b/gcc/config/loongarch/lsx.md
+@@ -20,8 +20,6 @@
+ ;;
+ 
+ (define_c_enum "unspec" [
+-  UNSPEC_LSX_ABSD_S
+-  UNSPEC_LSX_VABSD_U
+   UNSPEC_LSX_VAVG_S
+   UNSPEC_LSX_VAVG_U
+   UNSPEC_LSX_VAVGR_S
+@@ -216,6 +214,11 @@
+    (V4SI "V8HI")
+    (V2DI "V4SI")])
+ 
++;; Signed and unsigned max operations.
++(define_code_iterator SU_MAX [smax umax])
++
++(define_code_attr su_min [(smax "smin") (umax "umin")])
++
+ ;; The attribute gives double modes for vector modes.
+ (define_mode_attr VDMODE
+   [(V2DI "V2DI")
+@@ -1041,23 +1044,17 @@
+   [(set_attr "type" "simd_int_arith")
+    (set_attr "mode" "<MODE>")])
+ 
+-(define_insn "lsx_vabsd_s_<lsxfmt>"
++(define_insn "<su>abd<mode>3"
+   [(set (match_operand:ILSX 0 "register_operand" "=f")
+-	(unspec:ILSX [(match_operand:ILSX 1 "register_operand" "f")
+-		      (match_operand:ILSX 2 "register_operand" "f")]
+-		     UNSPEC_LSX_ABSD_S))]
+-  "ISA_HAS_LSX"
+-  "vabsd.<lsxfmt>\t%w0,%w1,%w2"
+-  [(set_attr "type" "simd_int_arith")
+-   (set_attr "mode" "<MODE>")])
+-
+-(define_insn "lsx_vabsd_u_<lsxfmt_u>"
+-  [(set (match_operand:ILSX 0 "register_operand" "=f")
+-	(unspec:ILSX [(match_operand:ILSX 1 "register_operand" "f")
+-		      (match_operand:ILSX 2 "register_operand" "f")]
+-		     UNSPEC_LSX_VABSD_U))]
+-  "ISA_HAS_LSX"
+-  "vabsd.<lsxfmt_u>\t%w0,%w1,%w2"
++	(minus:ILSX
++	  (SU_MAX:ILSX
++	    (match_operand:ILSX 1 "register_operand" "f")
++	    (match_operand:ILSX 2 "register_operand" "f"))
++	  (<su_min>:ILSX
++	    (match_dup 1)
++	    (match_dup 2))))]
++  "ISA_HAS_LSX"
++  "vabsd.<lsxfmt><u>\t%w0,%w1,%w2"
+   [(set_attr "type" "simd_int_arith")
+    (set_attr "mode" "<MODE>")])
+ 
+@@ -3250,7 +3247,7 @@
+   rtx t1 = gen_reg_rtx (V16QImode);
+   rtx t2 = gen_reg_rtx (V8HImode);
+   rtx t3 = gen_reg_rtx (V4SImode);
+-  emit_insn (gen_lsx_vabsd_u_bu (t1, operands[1], operands[2]));
++  emit_insn (gen_uabdv16qi3 (t1, operands[1], operands[2]));
+   emit_insn (gen_lsx_vhaddw_hu_bu (t2, t1, t1));
+   emit_insn (gen_lsx_vhaddw_wu_hu (t3, t2, t2));
+   emit_insn (gen_addv4si3 (operands[0], t3, operands[3]));
+@@ -3267,7 +3264,7 @@
+   rtx t1 = gen_reg_rtx (V16QImode);
+   rtx t2 = gen_reg_rtx (V8HImode);
+   rtx t3 = gen_reg_rtx (V4SImode);
+-  emit_insn (gen_lsx_vabsd_s_b (t1, operands[1], operands[2]));
++  emit_insn (gen_sabdv16qi3 (t1, operands[1], operands[2]));
+   emit_insn (gen_lsx_vhaddw_hu_bu (t2, t1, t1));
+   emit_insn (gen_lsx_vhaddw_wu_hu (t3, t2, t2));
+   emit_insn (gen_addv4si3 (operands[0], t3, operands[3]));
+diff --git a/gcc/testsuite/gcc.target/loongarch/abd-lasx.c b/gcc/testsuite/gcc.target/loongarch/abd-lasx.c
+new file mode 100644
+index 00000000000..0cb639b969a
+--- /dev/null
++++ b/gcc/testsuite/gcc.target/loongarch/abd-lasx.c
+@@ -0,0 +1,67 @@
++/* { dg-do compile } */
++/* { dg-options "-O3 -mlasx -fdump-rtl-expand-all" } */
++
++#define ABD(x, y) ((x - y > 0) ? (x - y) : -(x - y))
++#define MAX(x, y) ((x) > (y) ? (x) : (y))
++#define MIN(x, y) ((x) < (y) ? (x) : (y))
++#define N 1024
++
++#define FUNC1(T)                                                              \
++  void									      \
++  sabd1_##T (signed T *restrict a, signed T *restrict b,                      \
++             signed T *restrict out)                                          \
++  {                                                                           \
++    for (int i = 0; i < N; i++)                                               \
++      out[i] = ABD (a[i], b[i]);                                              \
++  }                                                                           \
++                                                                              \
++  void									      \
++  uabd1_##T (unsigned T *restrict a, unsigned T *restrict b,                  \
++             unsigned T *restrict out)                                        \
++  {                                                                           \
++    for (int i = 0; i < N; i++)                                               \
++      out[i] = ABD (a[i], b[i]);                                              \
++  }
++
++#define FUNC2(T)                                                              \
++  void									      \
++  sabd2_##T (signed T *restrict a, signed T *restrict b,                      \
++             signed T *restrict out)                                          \
++  {                                                                           \
++    for (int i = 0; i < N; i++)                                               \
++      out[i] = MAX (a[i], b[i]) - MIN (a[i], b[i]);                           \
++  }                                                                           \
++                                                                              \
++  void									      \
++  uabd2_##T (unsigned T *restrict a, unsigned T *restrict b,                  \
++             unsigned T *restrict out)                                        \
++  {                                                                           \
++    for (int i = 0; i < N; i++)                                               \
++      out[i] = MAX (a[i], b[i]) - MIN (a[i], b[i]);                           \
++  }
++
++/* Verify if the expand pass fits standard pattern name.  */
++FUNC1 (char)
++FUNC1 (short)
++FUNC1 (int)
++FUNC1 (long)
++
++/* Verify if the combiner works well.  */
++FUNC2 (char)
++FUNC2 (short)
++FUNC2 (int)
++FUNC2 (long)
++/* { dg-final { scan-rtl-dump "Function sabd1_char.*ABD.*Function uabd1_char" "expand" } } */
++/* { dg-final { scan-rtl-dump "Function uabd1_char.*ABD.*Function sabd1_short" "expand" } } */
++/* { dg-final { scan-rtl-dump "Function sabd1_short.*ABD.*Function uabd1_short" "expand" } } */
++/* { dg-final { scan-rtl-dump "Function uabd1_short.*ABD.*Function sabd1_int" "expand" } } */
++/* { dg-final { scan-rtl-dump "Function sabd1_int.*ABD.*Function uabd1_int" "expand" } } */
++/* { dg-final { scan-rtl-dump "Function sabd1_long.*ABD.*Function uabd1_long" "expand" } } */
++/* { dg-final { scan-assembler-times "sabd2_char:.*\txvabsd\\.b.*-sabd2_char" 1 } } */
++/* { dg-final { scan-assembler-times "uabd2_char:.*\txvabsd\\.bu.*-uabd2_char" 1 } } */
++/* { dg-final { scan-assembler-times "sabd2_short:.*\txvabsd\\.h.*-sabd2_short" 1 } } */
++/* { dg-final { scan-assembler-times "uabd2_short:.*\txvabsd\\.hu.*-uabd2_short" 1 } } */
++/* { dg-final { scan-assembler-times "sabd2_int:.*\txvabsd\\.w.*-sabd2_int" 1 } } */
++/* { dg-final { scan-assembler-times "uabd2_int:.*\txvabsd\\.wu.*-uabd2_int" 1 } } */
++/* { dg-final { scan-assembler-times "sabd2_long:.*\txvabsd\\.d.*-sabd2_long" 1 } } */
++/* { dg-final { scan-assembler-times "uabd2_long:.*\txvabsd\\.du.*-uabd2_long" 1 } } */
+diff --git a/gcc/testsuite/gcc.target/loongarch/abd-lsx.c b/gcc/testsuite/gcc.target/loongarch/abd-lsx.c
+new file mode 100644
+index 00000000000..c036888e3e4
+--- /dev/null
++++ b/gcc/testsuite/gcc.target/loongarch/abd-lsx.c
+@@ -0,0 +1,67 @@
++/* { dg-do compile } */
++/* { dg-options "-O3 -mlsx -fdump-rtl-expand-all" } */
++
++#define ABD(x, y) ((x - y > 0) ? (x - y) : -(x - y))
++#define MAX(x, y) ((x) > (y) ? (x) : (y))
++#define MIN(x, y) ((x) < (y) ? (x) : (y))
++#define N 1024
++
++#define FUNC1(T)                                                              \
++  void									      \
++  sabd1_##T (signed T *restrict a, signed T *restrict b,                      \
++             signed T *restrict out)                                          \
++  {                                                                           \
++    for (int i = 0; i < N; i++)                                               \
++      out[i] = ABD (a[i], b[i]);                                              \
++  }                                                                           \
++                                                                              \
++  void									      \
++  uabd1_##T (unsigned T *restrict a, unsigned T *restrict b,                  \
++             unsigned T *restrict out)                                        \
++  {                                                                           \
++    for (int i = 0; i < N; i++)                                               \
++      out[i] = ABD (a[i], b[i]);                                              \
++  }
++
++#define FUNC2(T)                                                              \
++  void									      \
++  sabd2_##T (signed T *restrict a, signed T *restrict b,                      \
++             signed T *restrict out)                                          \
++  {                                                                           \
++    for (int i = 0; i < N; i++)                                               \
++      out[i] = MAX (a[i], b[i]) - MIN (a[i], b[i]);                           \
++  }                                                                           \
++                                                                              \
++  void									      \
++  uabd2_##T (unsigned T *restrict a, unsigned T *restrict b,                  \
++             unsigned T *restrict out)                                        \
++  {                                                                           \
++    for (int i = 0; i < N; i++)                                               \
++      out[i] = MAX (a[i], b[i]) - MIN (a[i], b[i]);                           \
++  }
++
++/* Verify if the expand pass fits standard pattern name.  */
++FUNC1 (char)
++FUNC1 (short)
++FUNC1 (int)
++FUNC1 (long)
++
++/* Verify if the combiner works well.  */
++FUNC2 (char)
++FUNC2 (short)
++FUNC2 (int)
++FUNC2 (long)
++/* { dg-final { scan-rtl-dump "Function sabd1_char.*ABD.*Function uabd1_char" "expand" } } */
++/* { dg-final { scan-rtl-dump "Function uabd1_char.*ABD.*Function sabd1_short" "expand" } } */
++/* { dg-final { scan-rtl-dump "Function sabd1_short.*ABD.*Function uabd1_short" "expand" } } */
++/* { dg-final { scan-rtl-dump "Function uabd1_short.*ABD.*Function sabd1_int" "expand" } } */
++/* { dg-final { scan-rtl-dump "Function sabd1_int.*ABD.*Function uabd1_int" "expand" } } */
++/* { dg-final { scan-rtl-dump "Function sabd1_long.*ABD.*Function uabd1_long" "expand" } } */
++/* { dg-final { scan-assembler-times "sabd2_char:.*\tvabsd\\.b.*-sabd2_char" 1 } } */
++/* { dg-final { scan-assembler-times "uabd2_char:.*\tvabsd\\.bu.*-uabd2_char" 1 } } */
++/* { dg-final { scan-assembler-times "sabd2_short:.*\tvabsd\\.h.*-sabd2_short" 1 } } */
++/* { dg-final { scan-assembler-times "uabd2_short:.*\tvabsd\\.hu.*-uabd2_short" 1 } } */
++/* { dg-final { scan-assembler-times "sabd2_int:.*\tvabsd\\.w.*-sabd2_int" 1 } } */
++/* { dg-final { scan-assembler-times "uabd2_int:.*\tvabsd\\.wu.*-uabd2_int" 1 } } */
++/* { dg-final { scan-assembler-times "sabd2_long:.*\tvabsd\\.d.*-sabd2_long" 1 } } */
++/* { dg-final { scan-assembler-times "uabd2_long:.*\tvabsd\\.du.*-uabd2_long" 1 } } */
+-- 
+2.47.1
+

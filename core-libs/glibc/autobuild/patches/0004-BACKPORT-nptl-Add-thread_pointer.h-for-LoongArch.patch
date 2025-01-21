@@ -1,0 +1,68 @@
+From ebc3d4523065e4cf9b446d2cd43701df925a454c Mon Sep 17 00:00:00 2001
+From: Michael Jeanson <mjeanson@efficios.com>
+Date: Wed, 23 Oct 2024 16:18:06 -0400
+Subject: [PATCH 4/9] BACKPORT: nptl: Add <thread_pointer.h> for LoongArch
+
+This will be required by the rseq extensible ABI implementation on all
+Linux architectures exposing the '__rseq_size' and '__rseq_offset'
+symbols to set the initial value of the 'cpu_id' field which can be used
+by applications to test if rseq is available and registered. As long as
+the symbols are exposed it is valid for an application to perform this
+test even if rseq is not yet implemented in libc for this architecture.
+
+Both code paths are compile tested with build-many-glibcs.py but I don't
+have access to any hardware to run the tests.
+
+Signed-off-by: Michael Jeanson <mjeanson@efficios.com>
+Reviewed-by: Arjun Shankar <arjun@redhat.com>
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ sysdeps/loongarch/nptl/thread_pointer.h | 36 +++++++++++++++++++++++++
+ 1 file changed, 36 insertions(+)
+ create mode 100644 sysdeps/loongarch/nptl/thread_pointer.h
+
+diff --git a/sysdeps/loongarch/nptl/thread_pointer.h b/sysdeps/loongarch/nptl/thread_pointer.h
+new file mode 100644
+index 0000000000..5dec2ef4c6
+--- /dev/null
++++ b/sysdeps/loongarch/nptl/thread_pointer.h
+@@ -0,0 +1,36 @@
++/* __thread_pointer definition.  loongarch version.
++   Copyright (C) 2021-2024 Free Software Foundation, Inc.
++   This file is part of the GNU C Library.
++
++   The GNU C Library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Lesser General Public
++   License as published by the Free Software Foundation; either
++   version 2.1 of the License, or (at your option) any later version.
++
++   The GNU C Library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++   Lesser General Public License for more details.
++
++   You should have received a copy of the GNU Lesser General Public
++   License along with the GNU C Library.  If not, see
++   <https://www.gnu.org/licenses/>.  */
++
++#ifndef _SYS_THREAD_POINTER_H
++#define _SYS_THREAD_POINTER_H
++
++#include <sys/cdefs.h>
++
++static inline void *
++__thread_pointer (void)
++{
++#if __glibc_has_builtin (__builtin_thread_pointer)
++  return __builtin_thread_pointer ();
++#else
++  void *__thread_register;
++  __asm__ ("move %0, $tp" : "=r" (__thread_register));
++  return __thread_register;
++#endif
++}
++
++#endif /* _SYS_THREAD_POINTER_H */
+-- 
+2.47.1
+

@@ -1,0 +1,30 @@
+From 6f4694d9043d3ea763506b1099f3fe28ea625b8a Mon Sep 17 00:00:00 2001
+From: mengqinggang <mengqinggang@loongson.cn>
+Date: Fri, 3 Jan 2025 15:49:43 +0800
+Subject: [PATCH 9/9] BACKPORT: LoongArch: Regenerate preconfigure. [bug 32521]
+
+Add "mtls_descriptor=desc" to preconfigure.ac and regenerate preconfigure.
+Fix failure: elf/tst-gnu2-tls2.
+
+Reported-by: Joseph S. Myers <josmyers@redhat.com>
+Reported-by: Andreas K. Huettel <dilfridge@gentoo.org>
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ sysdeps/loongarch/preconfigure.ac | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/sysdeps/loongarch/preconfigure.ac b/sysdeps/loongarch/preconfigure.ac
+index 67e4357013..df07dbf41f 100644
+--- a/sysdeps/loongarch/preconfigure.ac
++++ b/sysdeps/loongarch/preconfigure.ac
+@@ -41,6 +41,7 @@ loongarch*)
+     AC_DEFINE_UNQUOTED([LOONGARCH_ABI_FRLEN], [$abi_flen])
+ 
+     base_machine=loongarch
++    mtls_descriptor=desc
+     ;;
+ esac
+ 
+-- 
+2.47.1
+

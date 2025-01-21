@@ -1,0 +1,85 @@
+From 75c58bb1995647c0d01e70f9389e7f104cf5b4eb Mon Sep 17 00:00:00 2001
+From: Xi Ruoyao <xry111@xry111.site>
+Date: Thu, 5 Dec 2024 14:19:02 +0800
+Subject: [PATCH 21/40] BACKPORT: LoongArch: Combine xor and crc instructions
+
+For a textbook-style CRC implementation:
+
+    uint32_t crc = 0xffffffffu;
+    for (size_t k = 0; k < len; k++)
+      {
+	crc ^= data[k];
+	for (int i = 0; i < 8 * sizeof (T); i++)
+	  if (crc & 1)
+	    crc = (crc >> 1) ^ poly;
+	  else
+	    crc >>= 1;
+      }
+    return crc;
+
+The generic code reports:
+
+    Data and CRC are xor-ed before for loop.  Initializing data with 0.
+
+resulting in:
+
+    ld.bu     $t1, $a0, 0
+    xor       $t0, $t0, $t1
+    crc.w.b.w $t0, $zero, $t0
+
+But it's just better to use
+
+    ld.bu     $t1, $a0, 0
+    crc.w.b.w $t0, $t1, $t0
+
+instead.  Implement this optimization now.
+
+gcc/ChangeLog:
+
+	* config/loongarch/loongarch.md (*crc_combine): New
+	define_insn_and_split.
+
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ gcc/config/loongarch/loongarch.md | 25 +++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
+
+diff --git a/gcc/config/loongarch/loongarch.md b/gcc/config/loongarch/loongarch.md
+index 019cb954d14..b9d268169d3 100644
+--- a/gcc/config/loongarch/loongarch.md
++++ b/gcc/config/loongarch/loongarch.md
+@@ -4577,6 +4577,31 @@
+     DONE;
+   })
+ 
++(define_insn_and_split "*crc_combine"
++  [(set (match_operand:SI 0 "register_operand" "=r,r")
++	(unspec:SI
++	  [(reg:SUBDI 0)
++	   (subreg:SI
++	     (xor:DI
++	       (match_operand:DI 1 "register_operand" "r,r")
++	       ; Our LOAD_EXTEND_OP makes this same as sign_extend
++	       ; if SUBDI is SI, or zero_extend if SUBDI is QI or HI.
++	       ; For the former the high bits in rk are ignored by
++	       ; crc.w.w.w anyway, for the latter the zero extension is
++	       ; necessary for the correctness of this transformation.
++	       (subreg:DI
++		 (match_operand:SUBDI 2 "memory_operand" "m,k") 0)) 0)]
++	  CRC))]
++  "TARGET_64BIT && loongarch_pre_reload_split ()"
++  "#"
++  "&& true"
++  [(set (match_dup 3) (match_dup 2))
++   (set (match_dup 0)
++	(unspec:SI [(match_dup 3) (subreg:SI (match_dup 1) 0)] CRC))]
++  {
++    operands[3] = gen_reg_rtx (<MODE>mode);
++  })
++
+ ;; With normal or medium code models, if the only use of a pc-relative
+ ;; address is for loading or storing a value, then relying on linker
+ ;; relaxation is not better than emitting the machine instruction directly.
+-- 
+2.47.1
+

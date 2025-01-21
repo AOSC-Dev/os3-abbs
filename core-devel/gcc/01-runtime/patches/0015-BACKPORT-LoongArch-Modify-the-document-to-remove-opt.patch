@@ -1,0 +1,47 @@
+From 54b2adf8cb97db463e778b6f9df390d285edd50d Mon Sep 17 00:00:00 2001
+From: Lulu Cheng <chenglulu@loongson.cn>
+Date: Wed, 9 Oct 2024 15:50:13 +0800
+Subject: [PATCH 15/40] BACKPORT: LoongArch: Modify the document to remove
+ options that don't exist.
+
+gcc/ChangeLog:
+
+	* doc/invoke.texi: Remove the non-existent option
+	'-msmall-data-limit' and add a description of '-G'.
+
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ gcc/doc/invoke.texi | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/gcc/doc/invoke.texi b/gcc/doc/invoke.texi
+index 6635407a2e3..bf83ad95e1d 100644
+--- a/gcc/doc/invoke.texi
++++ b/gcc/doc/invoke.texi
+@@ -1055,7 +1055,7 @@ Objective-C and Objective-C++ Dialects}.
+ -mbranch-cost=@var{n}  -mcheck-zero-division -mno-check-zero-division
+ -mcond-move-int  -mno-cond-move-int
+ -mcond-move-float  -mno-cond-move-float
+--memcpy  -mno-memcpy -mstrict-align -mno-strict-align
++-memcpy  -mno-memcpy -mstrict-align -mno-strict-align -G @var{num}
+ -mmax-inline-memcpy-size=@var{n}
+ -mexplicit-relocs=@var{style} -mexplicit-relocs -mno-explicit-relocs
+ -mdirect-extern-access -mno-direct-extern-access
+@@ -27021,10 +27021,10 @@ Avoid or allow generating memory accesses that may not be aligned on a natural
+ object boundary as described in the architecture specification. The default is
+ @option{-mno-strict-align}.
+ 
+-@opindex msmall-data-limit
+-@item -msmall-data-limit=@var{number}
+-Put global and static data smaller than @var{number} bytes into a special
+-section (on some targets).  The default value is 0.
++@opindex G
++@item -G @var{num}
++Put global and static data smaller than @var{num} bytes into a small data
++section.  The default value is 0.
+ 
+ @opindex mmax-inline-memcpy-size
+ @item -mmax-inline-memcpy-size=@var{n}
+-- 
+2.47.1
+

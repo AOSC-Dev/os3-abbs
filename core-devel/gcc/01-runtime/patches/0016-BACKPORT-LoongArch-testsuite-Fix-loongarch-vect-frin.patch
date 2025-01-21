@@ -1,0 +1,43 @@
+From 952d4ec31dec50eb3f2fe4eeba7bb57e68d5b53c Mon Sep 17 00:00:00 2001
+From: Lulu Cheng <chenglulu@loongson.cn>
+Date: Tue, 26 Nov 2024 14:51:30 +0800
+Subject: [PATCH 16/40] BACKPORT: LoongArch: testsuite: Fix
+ loongarch/vect-frint-scalar.c.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+In r15-5327, change the default language version for C compilation from
+-std=gnu17 to -std=gnu23.
+
+ISO C99 and C11 allow ceil, floor, round and trunc, and their float and
+long double variants, to raise the “inexact” exception,
+but ISO/IEC TS 18661-1:2014, the C bindings to IEEE 754-2008, as
+integrated into ISO C23, does not allow these functions to do so.
+
+So add '-ffp-int-builtin-inexact' to this test case.
+
+gcc/testsuite/ChangeLog:
+
+	* gcc.target/loongarch/vect-frint-scalar.c: Add
+	'-ffp-int-builtin-inexact'.
+
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ gcc/testsuite/gcc.target/loongarch/vect-frint-scalar.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gcc/testsuite/gcc.target/loongarch/vect-frint-scalar.c b/gcc/testsuite/gcc.target/loongarch/vect-frint-scalar.c
+index c7cb40be7d4..dbcb9065ad4 100644
+--- a/gcc/testsuite/gcc.target/loongarch/vect-frint-scalar.c
++++ b/gcc/testsuite/gcc.target/loongarch/vect-frint-scalar.c
+@@ -1,5 +1,5 @@
+ /* { dg-do compile } */
+-/* { dg-options "-O2 -mlsx" } */
++/* { dg-options "-O2 -mlsx -ffp-int-builtin-inexact" } */
+ 
+ #define test(func, suffix) \
+ __typeof__ (1.##suffix) \
+-- 
+2.47.1
+

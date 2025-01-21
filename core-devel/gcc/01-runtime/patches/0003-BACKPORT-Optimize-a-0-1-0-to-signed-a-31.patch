@@ -1,0 +1,352 @@
+From 39d6def3e4e7c81f5913f3371822d3a902c1ee7d Mon Sep 17 00:00:00 2001
+From: liuhongt <hongtao.liu@intel.com>
+Date: Thu, 20 Jun 2024 12:41:13 +0800
+Subject: [PATCH 03/40] BACKPORT: Optimize a < 0 ? -1 : 0 to (signed)a >> 31.
+
+Try to optimize x < 0 ? -1 : 0 into (signed) x >> 31
+and x < 0 ? 1 : 0 into (unsigned) x >> 31.
+
+Move the optimization did in ix86_expand_int_vcond to match.pd
+
+gcc/ChangeLog:
+
+	PR target/114189
+	* match.pd: Simplify a < 0 ? -1 : 0 to (signed) >> 31 and a <
+	0 ? 1 : 0 to (unsigned) a >> 31 for vector integer type.
+
+gcc/testsuite/ChangeLog:
+
+	* gcc.target/i386/avx2-pr115517.c: New test.
+	* gcc.target/i386/avx512-pr115517.c: New test.
+	* g++.target/i386/avx2-pr115517.C: New test.
+	* g++.target/i386/avx512-pr115517.C: New test.
+	* g++.dg/tree-ssa/pr88152-1.C: Adjust testcase.
+
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ gcc/match.pd                                  | 30 ++++++++
+ gcc/testsuite/g++.dg/tree-ssa/pr88152-1.C     |  2 +-
+ gcc/testsuite/g++.target/i386/avx2-pr115517.C | 60 ++++++++++++++++
+ .../g++.target/i386/avx512-pr115517.C         | 70 +++++++++++++++++++
+ gcc/testsuite/gcc.target/i386/avx2-pr115517.c | 33 +++++++++
+ .../gcc.target/i386/avx512-pr115517.c         | 70 +++++++++++++++++++
+ 6 files changed, 264 insertions(+), 1 deletion(-)
+ create mode 100644 gcc/testsuite/g++.target/i386/avx2-pr115517.C
+ create mode 100644 gcc/testsuite/g++.target/i386/avx512-pr115517.C
+ create mode 100644 gcc/testsuite/gcc.target/i386/avx2-pr115517.c
+ create mode 100644 gcc/testsuite/gcc.target/i386/avx512-pr115517.c
+
+diff --git a/gcc/match.pd b/gcc/match.pd
+index 4a0aa80cee1..29e3504cb55 100644
+--- a/gcc/match.pd
++++ b/gcc/match.pd
+@@ -5744,6 +5744,36 @@ DEFINE_INT_AND_FLOAT_ROUND_FN (RINT)
+    (if (VECTOR_INTEGER_TYPE_P (type)
+        && target_supports_op_p (type, MINMAX, optab_vector))
+     (minmax @0 @1))))
++
++/* Try to optimize x < 0 ? -1 : 0 into (signed) x >> 31
++   and x < 0 ? 1 : 0 into (unsigned) x >> 31.  */
++(simplify
++  (vec_cond (lt @0 integer_zerop) integer_all_onesp integer_zerop)
++   (if (VECTOR_INTEGER_TYPE_P (TREE_TYPE (@0))
++       && !TYPE_UNSIGNED (TREE_TYPE (@0))
++       && tree_nop_conversion_p (type, TREE_TYPE (@0))
++       && target_supports_op_p (TREE_TYPE (@0), RSHIFT_EXPR, optab_scalar))
++    (with
++      {
++       unsigned int prec = element_precision (TREE_TYPE (@0));
++      }
++    (view_convert
++      (rshift @0 { build_int_cst (integer_type_node, prec - 1);})))))
++
++(simplify
++  (vec_cond (lt @0 integer_zerop) integer_onep integer_zerop)
++   (if (VECTOR_INTEGER_TYPE_P (TREE_TYPE (@0))
++       && !TYPE_UNSIGNED (TREE_TYPE (@0))
++       && tree_nop_conversion_p (type, TREE_TYPE (@0)))
++    (with
++     {
++       unsigned int prec = element_precision (TREE_TYPE (@0));
++       tree utype = unsigned_type_for (TREE_TYPE (@0));
++     }
++     (if (target_supports_op_p (utype, RSHIFT_EXPR, optab_scalar))
++      (view_convert
++	(rshift (view_convert:utype @0)
++		{ build_int_cst (integer_type_node, prec - 1);}))))))
+ #endif
+ 
+ (for cnd (cond vec_cond)
+diff --git a/gcc/testsuite/g++.dg/tree-ssa/pr88152-1.C b/gcc/testsuite/g++.dg/tree-ssa/pr88152-1.C
+index 423ec897c1d..21299b886f0 100644
+--- a/gcc/testsuite/g++.dg/tree-ssa/pr88152-1.C
++++ b/gcc/testsuite/g++.dg/tree-ssa/pr88152-1.C
+@@ -1,7 +1,7 @@
+ // PR target/88152
+ // { dg-do compile }
+ // { dg-options "-O2 -std=c++14 -fdump-tree-forwprop1" }
+-// { dg-final { scan-tree-dump-times " (?:<|>=) \{ 0\[, ]" 120 "forwprop1" } }
++// { dg-final { scan-tree-dump-times " (?:(?:<|>=) \{ 0\[, \]|>> (?:7|15|31|63))" 120 "forwprop1" } }
+ 
+ template <typename T, int N>
+ using V [[gnu::vector_size (sizeof (T) * N)]] = T;
+diff --git a/gcc/testsuite/g++.target/i386/avx2-pr115517.C b/gcc/testsuite/g++.target/i386/avx2-pr115517.C
+new file mode 100644
+index 00000000000..ec000c57542
+--- /dev/null
++++ b/gcc/testsuite/g++.target/i386/avx2-pr115517.C
+@@ -0,0 +1,60 @@
++/* { dg-do compile } */
++/* { dg-options "-mavx2 -O2" } */
++/* { dg-final { scan-assembler-times "vpsrlq" 2 } } */
++/* { dg-final { scan-assembler-times "vpsrld" 2 } } */
++/* { dg-final { scan-assembler-times "vpsrlw" 2 } } */
++
++typedef short v8hi __attribute__((vector_size(16)));
++typedef short v16hi __attribute__((vector_size(32)));
++typedef int v4si __attribute__((vector_size(16)));
++typedef int v8si __attribute__((vector_size(32)));
++typedef long long v2di __attribute__((vector_size(16)));
++typedef long long v4di __attribute__((vector_size(32)));
++
++v8hi
++foo (v8hi a)
++{
++  v8hi const1_op = __extension__(v8hi){1,1,1,1,1,1,1,1};
++  v8hi const0_op = __extension__(v8hi){0,0,0,0,0,0,0,0};
++  return a < const0_op ? const1_op : const0_op;
++}
++
++v16hi
++foo2 (v16hi a)
++{
++  v16hi const1_op = __extension__(v16hi){1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
++  v16hi const0_op = __extension__(v16hi){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
++  return a < const0_op ? const1_op : const0_op;
++}
++
++v4si
++foo3 (v4si a)
++{
++  v4si const1_op = __extension__(v4si){1,1,1,1};
++  v4si const0_op = __extension__(v4si){0,0,0,0};
++  return a < const0_op ? const1_op : const0_op;
++}
++
++v8si
++foo4 (v8si a)
++{
++  v8si const1_op = __extension__(v8si){1,1,1,1,1,1,1,1};
++  v8si const0_op = __extension__(v8si){0,0,0,0,0,0,0,0};
++  return a < const0_op ? const1_op : const0_op;
++}
++
++v2di
++foo3 (v2di a)
++{
++  v2di const1_op = __extension__(v2di){1,1};
++  v2di const0_op = __extension__(v2di){0,0};
++  return a < const0_op ? const1_op : const0_op;
++}
++
++v4di
++foo4 (v4di a)
++{
++  v4di const1_op = __extension__(v4di){1,1,1,1};
++  v4di const0_op = __extension__(v4di){0,0,0,0};
++  return a < const0_op ? const1_op : const0_op;
++}
+diff --git a/gcc/testsuite/g++.target/i386/avx512-pr115517.C b/gcc/testsuite/g++.target/i386/avx512-pr115517.C
+new file mode 100644
+index 00000000000..22df41bbdc9
+--- /dev/null
++++ b/gcc/testsuite/g++.target/i386/avx512-pr115517.C
+@@ -0,0 +1,70 @@
++/* { dg-do compile } */
++/* { dg-options "-mavx512bw -mavx512vl -O2" } */
++/* { dg-final { scan-assembler-times "vpsrad" 3 } } */
++/* { dg-final { scan-assembler-times "vpsraw" 3 } } */
++/* { dg-final { scan-assembler-times "vpsraq" 3 } } */
++
++typedef short v8hi __attribute__((vector_size(16)));
++typedef short v16hi __attribute__((vector_size(32)));
++typedef short v32hi __attribute__((vector_size(64)));
++typedef int v4si __attribute__((vector_size(16)));
++typedef int v8si __attribute__((vector_size(32)));
++typedef int v16si __attribute__((vector_size(64)));
++typedef long long v2di __attribute__((vector_size(16)));
++typedef long long v4di __attribute__((vector_size(32)));
++typedef long long v8di __attribute__((vector_size(64)));
++
++v8hi
++foo (v8hi a)
++{
++  return a < __extension__(v8hi) { 0, 0, 0, 0, 0, 0, 0, 0};
++}
++
++v16hi
++foo2 (v16hi a)
++{
++  return a < __extension__(v16hi) { 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0};
++}
++
++v32hi
++foo3 (v32hi a)
++{
++  return a < __extension__(v32hi) { 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0,
++    0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0};
++}
++
++v4si
++foo4 (v4si a)
++{
++  return a < __extension__(v4si) { 0, 0, 0, 0};
++}
++
++v8si
++foo5 (v8si a)
++{
++  return a < __extension__(v8si) { 0, 0, 0, 0, 0, 0, 0, 0};
++}
++
++v16si
++foo6 (v16si a)
++{
++  return a < __extension__(v16si) { 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0};
++}
++
++v2di
++foo7 (v2di a)
++{
++  return a < __extension__(v2di) { 0, 0};
++}
++
++v4di
++foo8 (v4di a)
++{
++  return a < __extension__(v4di) { 0, 0, 0, 0};
++}
++
++v8di
++foo9 (v8di a)
++{
++  return a < __extension__(v8di) { 0, 0, 0, 0, 0, 0, 0, 0};
++}
+diff --git a/gcc/testsuite/gcc.target/i386/avx2-pr115517.c b/gcc/testsuite/gcc.target/i386/avx2-pr115517.c
+new file mode 100644
+index 00000000000..5b2620b0dc1
+--- /dev/null
++++ b/gcc/testsuite/gcc.target/i386/avx2-pr115517.c
+@@ -0,0 +1,33 @@
++/* { dg-do compile } */
++/* { dg-options "-mavx2 -O2" } */
++/* { dg-final { scan-assembler-times "vpsrad" 2 } } */
++/* { dg-final { scan-assembler-times "vpsraw" 2 } } */
++
++typedef short v8hi __attribute__((vector_size(16)));
++typedef short v16hi __attribute__((vector_size(32)));
++typedef int v4si __attribute__((vector_size(16)));
++typedef int v8si __attribute__((vector_size(32)));
++
++v8hi
++foo (v8hi a)
++{
++  return a < __extension__(v8hi) { 0, 0, 0, 0, 0, 0, 0, 0};
++}
++
++v16hi
++foo2 (v16hi a)
++{
++  return a < __extension__(v16hi) { 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0};
++}
++
++v4si
++foo3 (v4si a)
++{
++  return a < __extension__(v4si) { 0, 0, 0, 0};
++}
++
++v8si
++foo4 (v8si a)
++{
++  return a < __extension__(v8si) { 0, 0, 0, 0, 0, 0, 0, 0};
++}
+diff --git a/gcc/testsuite/gcc.target/i386/avx512-pr115517.c b/gcc/testsuite/gcc.target/i386/avx512-pr115517.c
+new file mode 100644
+index 00000000000..22df41bbdc9
+--- /dev/null
++++ b/gcc/testsuite/gcc.target/i386/avx512-pr115517.c
+@@ -0,0 +1,70 @@
++/* { dg-do compile } */
++/* { dg-options "-mavx512bw -mavx512vl -O2" } */
++/* { dg-final { scan-assembler-times "vpsrad" 3 } } */
++/* { dg-final { scan-assembler-times "vpsraw" 3 } } */
++/* { dg-final { scan-assembler-times "vpsraq" 3 } } */
++
++typedef short v8hi __attribute__((vector_size(16)));
++typedef short v16hi __attribute__((vector_size(32)));
++typedef short v32hi __attribute__((vector_size(64)));
++typedef int v4si __attribute__((vector_size(16)));
++typedef int v8si __attribute__((vector_size(32)));
++typedef int v16si __attribute__((vector_size(64)));
++typedef long long v2di __attribute__((vector_size(16)));
++typedef long long v4di __attribute__((vector_size(32)));
++typedef long long v8di __attribute__((vector_size(64)));
++
++v8hi
++foo (v8hi a)
++{
++  return a < __extension__(v8hi) { 0, 0, 0, 0, 0, 0, 0, 0};
++}
++
++v16hi
++foo2 (v16hi a)
++{
++  return a < __extension__(v16hi) { 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0};
++}
++
++v32hi
++foo3 (v32hi a)
++{
++  return a < __extension__(v32hi) { 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0,
++    0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0};
++}
++
++v4si
++foo4 (v4si a)
++{
++  return a < __extension__(v4si) { 0, 0, 0, 0};
++}
++
++v8si
++foo5 (v8si a)
++{
++  return a < __extension__(v8si) { 0, 0, 0, 0, 0, 0, 0, 0};
++}
++
++v16si
++foo6 (v16si a)
++{
++  return a < __extension__(v16si) { 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0};
++}
++
++v2di
++foo7 (v2di a)
++{
++  return a < __extension__(v2di) { 0, 0};
++}
++
++v4di
++foo8 (v4di a)
++{
++  return a < __extension__(v4di) { 0, 0, 0, 0};
++}
++
++v8di
++foo9 (v8di a)
++{
++  return a < __extension__(v8di) { 0, 0, 0, 0, 0, 0, 0, 0};
++}
+-- 
+2.47.1
+

@@ -1,7 +1,7 @@
 From 4f8a2abef6f2ebc601cc7bfb8e4d9d454cae03d4 Mon Sep 17 00:00:00 2001
 From: Jiaxun Yang <jiaxun.yang@flygoat.com>
 Date: Fri, 3 Jan 2025 12:07:43 +0000
-Subject: [PATCH 109/314] LOONGSON: LoongArch: Derive timer max_delta from
+Subject: [PATCH 109/315] LOONGSON: LoongArch: Derive timer max_delta from
  PRCFG1's timer_bits
 
 As per arch spec, maximum timer bits is configurable and should not be

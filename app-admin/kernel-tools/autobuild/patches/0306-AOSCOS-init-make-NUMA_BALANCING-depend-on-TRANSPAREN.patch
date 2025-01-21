@@ -1,7 +1,7 @@
 From 593cabcdcb6f163c8d1d75710cfb46333dbf633e Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Thu, 12 Dec 2024 16:07:57 +0800
-Subject: [PATCH 306/314] AOSCOS: init: make NUMA_BALANCING depend on
+Subject: [PATCH 306/315] AOSCOS: init: make NUMA_BALANCING depend on
  TRANSPARENT_HUGEPAGE if MIPS
 
 This should suppress an assertion failure during build. Further

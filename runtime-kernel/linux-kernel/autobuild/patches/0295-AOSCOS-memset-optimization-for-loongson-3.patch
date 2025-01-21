@@ -1,7 +1,7 @@
 From 9ae24e28ce1a226b792e51f5cdbfba3527a5120d Mon Sep 17 00:00:00 2001
 From: chenj <chenj@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
-Subject: [PATCH 295/314] AOSCOS: memset optimization for loongson-3
+Subject: [PATCH 295/315] AOSCOS: memset optimization for loongson-3
 
 [Mingcong Bai: Resolved a minor conflict in
 arch/mips/loongson64/Makefile.]

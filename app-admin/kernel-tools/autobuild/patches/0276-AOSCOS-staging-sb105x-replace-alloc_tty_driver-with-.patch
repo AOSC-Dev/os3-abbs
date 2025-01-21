@@ -1,7 +1,7 @@
 From 7d34e8d79fe832338511b1e57bbb79d39c187207 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 11 Dec 2024 15:21:26 +0800
-Subject: [PATCH 276/314] AOSCOS: staging: sb105x: replace alloc_tty_driver()
+Subject: [PATCH 276/315] AOSCOS: staging: sb105x: replace alloc_tty_driver()
  with tty_alloc_driver()
 
 Per commit 39b7b42be4a8 ("tty: stop using alloc_tty_driver"), all

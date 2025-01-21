@@ -1,7 +1,7 @@
 From d7e685a0e66451624579f2d36aa6d2771ead2939 Mon Sep 17 00:00:00 2001
 From: Jiaxun Yang <jiaxun.yang@flygoat.com>
 Date: Tue, 22 Oct 2024 12:55:46 +0100
-Subject: [PATCH 196/314] AOSCOS: MIPS: Check address space in ADE
+Subject: [PATCH 196/315] AOSCOS: MIPS: Check address space in ADE
 
 Signed-off-by: Jiaxun Yang <jiaxun.yang@flygoat.com>
 

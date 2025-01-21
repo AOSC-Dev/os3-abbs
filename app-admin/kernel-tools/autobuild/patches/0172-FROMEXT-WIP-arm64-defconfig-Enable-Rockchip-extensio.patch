@@ -1,7 +1,7 @@
 From 31de0b7c12240e4df3c28091647e2b9caa1448b2 Mon Sep 17 00:00:00 2001
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Date: Thu, 11 Jul 2024 14:48:43 +0300
-Subject: [PATCH 172/314] FROMEXT: [WIP] arm64: defconfig: Enable Rockchip
+Subject: [PATCH 172/315] FROMEXT: [WIP] arm64: defconfig: Enable Rockchip
  extensions for Synopsys DW HDMI QP
 
 Enable Rockchip specific extensions for the Synopsys DesignWare HDMI QP

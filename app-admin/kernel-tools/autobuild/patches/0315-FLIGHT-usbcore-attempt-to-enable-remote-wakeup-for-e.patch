@@ -1,0 +1,26 @@
+From b65cfb83e16a4656efcc99fd1367ca4d85e0ee2c Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.io>
+Date: Tue, 21 Jan 2025 12:28:46 +0800
+Subject: [PATCH 315/315] FLIGHT: usbcore: attempt to enable remote wakeup for
+ each device
+
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ drivers/usb/core/hub.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/usb/core/hub.c b/drivers/usb/core/hub.c
+index 21ac9b464696..a9212d1364d2 100644
+--- a/drivers/usb/core/hub.c
++++ b/drivers/usb/core/hub.c
+@@ -3479,6 +3479,7 @@ int usb_port_suspend(struct usb_device *udev, pm_message_t msg)
+ 			if (PMSG_IS_AUTO(msg))
+ 				goto err_wakeup;
+ 		}
++		usb_enable_remote_wakeup(hub->hdev);
+ 	}
+ 
+ 	/* disable USB2 hardware LPM */
+-- 
+2.48.1
+

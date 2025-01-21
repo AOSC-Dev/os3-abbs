@@ -1,8 +1,19 @@
 PKGNAME=freeciv
 PKGDES="A Civilization clone"
 PKGSEC=games
-PKGDEP="sdl gtk-3 sdl-mixer gtk-2"
+PKGDEP="sdl gtk-4 sdl-mixer sqlite"
 
+# FIXME: Else it will run ./configure twice,
+# and failed, said:
+#
+# configure: error: source directory already configured; run "make distclean" there first 
+#
 ABSHADOW=0
-AUTOTOOLS_AFTER="--enable-client=gtk2,gtk3 \
-                 --enable-fcmp=gtk2,gtk3"
+
+AUTOTOOLS_AFTER=(
+	"--enable-client=gtk4"
+        "--enable-fcmp=gtk4"
+	"--enable-fcdb=sqlite3"
+	"--enable-shared"
+	"--enable-aimodules"
+)

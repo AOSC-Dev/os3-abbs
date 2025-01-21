@@ -1,0 +1,40 @@
+From 23ccd63fba26553d8b6181b8c6a15f044601c2c6 Mon Sep 17 00:00:00 2001
+From: Kaiyang Wu <self@origincode.me>
+Date: Tue, 21 Jan 2025 14:47:44 -0800
+Subject: [PATCH] Disable updater
+
+Signed-off-by: Kaiyang Wu <self@origincode.me>
+---
+ app/build.sh        | 3 ---
+ app/linux/mozconfig | 1 +
+ 2 files changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/app/build.sh b/app/build.sh
+index a697778c4..349f2eb42 100755
+--- a/app/build.sh
++++ b/app/build.sh
+@@ -888,9 +888,6 @@ if [ $BUILD_LINUX == 1 ]; then
+ 		cp "$CALLDIR/linux/set_launcher_icon" "$APPDIR"
+ 		
+ 		# Use our own updater, because Mozilla's requires updates signed by Mozilla
+-		check_lfs_file "$CALLDIR/linux/updater.tar.xz"
+-		tar xf "$CALLDIR/linux/updater.tar.xz" --to-stdout updater-$arch > "$APPDIR/updater"
+-		chmod 755 "$APPDIR/updater"
+ 
+ 		# Copy app files
+ 		rsync -a "$base_dir/" "$APPDIR/"
+diff --git a/app/linux/mozconfig b/app/linux/mozconfig
+index 8e7fa5cf8..5e2720318 100644
+--- a/app/linux/mozconfig
++++ b/app/linux/mozconfig
+@@ -11,6 +11,7 @@ ac_add_options MOZ_ENABLE_JS_DUMP=1
+ ac_add_options MOZ_ENABLE_FORKSERVER=
+ ac_add_options MOZ_TELEMETRY_REPORTING=
+ ac_add_options MOZ_DATA_REPORTING=
++ac_add_options --disable-updater
+ ac_add_options --disable-tests
+ ac_add_options --disable-debug
+ ac_add_options --disable-debug-symbols
+-- 
+2.48.1
+

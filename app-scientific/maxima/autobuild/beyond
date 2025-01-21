@@ -1,3 +1,6 @@
-# FIXME: fixed version
-abinfo "Installing maxima's fas module for ecl ..."
-install -Dm755 src/binary-ecl/maxima.fas "$PKGDIR"/usr/lib/ecl-21.2.1/maxima.fas
+# Need to rebuild when ecl changes version...
+if !(ab_math_arch amd64 || ab_math_arch arm64 || ab_math_arch ppc64el); then
+	abinfo "Installing maxima's fas module for ecl..."
+	install -Dm755 src/binary-ecl/maxima.fas "$PKGDIR"/usr/lib/ecl-`ecl --version | grep -Po '\d+.\d+.\d+'`/maxima.fas
+fi
+

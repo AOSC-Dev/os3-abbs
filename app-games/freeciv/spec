@@ -1,4 +1,4 @@
-VER=2.6.5
-SRCS="tbl::https://prdownloads.sourceforge.net/freeciv/freeciv-$VER.tar.bz2"
-CHKSUMS="sha256::2e64e1c74dae12acb17bbf5daa980efc7e9fd57820afed5135319ca95291ec59"
+VER=3.1.4
+SRCS="tbl::https://files.freeciv.org/stable/freeciv-$VER.tar.xz"
+CHKSUMS="sha256::14999bb903c4507cc287d5a8dd1b89eee623bb41b4e01e0836567fb5f13296e4"
 CHKUPDATE="anitya::id=8561"

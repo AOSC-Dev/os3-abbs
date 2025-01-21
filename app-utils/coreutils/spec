@@ -1,5 +1,4 @@
-VER=9.5
+VER=9.6
 SRCS="tbl::https://ftp.gnu.org/gnu/coreutils/coreutils-$VER.tar.xz"
-CHKSUMS="sha256::cd328edeac92f6a665de9f323c93b712af1858bc2e0d88f3f7100469470a1b8a"
+CHKSUMS="sha256::7a0124327b398fd9eb1a6abde583389821422c744ffa10734b24f557610d3283"
 CHKUPDATE="anitya::id=343"
-REL=2

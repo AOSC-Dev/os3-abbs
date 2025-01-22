@@ -1,4 +1,4 @@
-From b1be8e4776aa284cd62404289cdad9a451f374a5 Mon Sep 17 00:00:00 2001
+From 4afbe045213982c5a07e64d068c37583bb05872d Mon Sep 17 00:00:00 2001
 From: chenj <chenj@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 277/296] AOSCOS: memset optimization for loongson-3

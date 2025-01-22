@@ -1,4 +1,4 @@
-From 971cd3358d949c67b82fb2cc4b6c8b2970bfe954 Mon Sep 17 00:00:00 2001
+From 16f7af70af45c1f6eb5d9cdb2c100b2d3ef74c54 Mon Sep 17 00:00:00 2001
 From: Alex Deucher <alexander.deucher@amd.com>
 Date: Wed, 30 Oct 2024 17:27:23 -0400
 Subject: [PATCH 032/296] FROMGIT: drm/amdgpu: add generic display panic helper

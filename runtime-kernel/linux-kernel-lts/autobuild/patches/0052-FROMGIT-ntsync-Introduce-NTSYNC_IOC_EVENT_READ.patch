@@ -1,4 +1,4 @@
-From c19e068201820a8712f9cda0b8b7a35e92324af0 Mon Sep 17 00:00:00 2001
+From 5a768172047ad28ac3b225eb22cad6429ff7751e Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:55 -0600
 Subject: [PATCH 052/296] FROMGIT: ntsync: Introduce NTSYNC_IOC_EVENT_READ.

@@ -1,4 +1,4 @@
-From 35f61b770c165f58f9ce1129baf85ca6dc53b940 Mon Sep 17 00:00:00 2001
+From baf6ab0294ea6ffdaa09b8163f831fc59c387851 Mon Sep 17 00:00:00 2001
 From: Mario Limonciello <mario.limonciello@amd.com>
 Date: Sat, 12 Oct 2024 12:45:18 -0500
 Subject: [PATCH 001/296] UPSTREAM: cpufreq/amd-pstate: Use

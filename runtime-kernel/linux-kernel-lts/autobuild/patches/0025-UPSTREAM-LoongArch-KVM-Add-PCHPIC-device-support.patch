@@ -1,4 +1,4 @@
-From 63d83eb2d1182c8d472f3e2173f4a112b7c3e7e6 Mon Sep 17 00:00:00 2001
+From d6907112618a8ec6be4df2b1293db8969ba19d5d Mon Sep 17 00:00:00 2001
 From: Xianglai Li <lixianglai@loongson.cn>
 Date: Wed, 13 Nov 2024 16:18:27 +0800
 Subject: [PATCH 025/296] UPSTREAM: LoongArch: KVM: Add PCHPIC device support

@@ -1,4 +1,4 @@
-From 15531a18cb6b68c0d811be337be70c7dcf0b00a5 Mon Sep 17 00:00:00 2001
+From 8fc8790b71e8eb824d3a4d3ae979d402ac68e7bb Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <baimingcong@uniontech.com>
 Date: Sun, 22 Sep 2024 01:07:11 +0800
 Subject: [PATCH 158/296] AOSCOS: drm: amdgpu: radeon: disable cache flush

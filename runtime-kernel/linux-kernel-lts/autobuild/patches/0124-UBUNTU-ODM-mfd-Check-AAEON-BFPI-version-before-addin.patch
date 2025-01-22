@@ -1,4 +1,4 @@
-From 4d876cc3b9126bf338103f631269c0756f8c422a Mon Sep 17 00:00:00 2001
+From 4fbce781a793cb3b002ce93a1302d1dc69672d8b Mon Sep 17 00:00:00 2001
 From: Kunyang_Fan <kunyang_fan@asus.com>
 Date: Tue, 24 Aug 2021 15:26:59 +0800
 Subject: [PATCH 124/296] UBUNTU: ODM: mfd: Check AAEON BFPI version before

@@ -1,4 +1,4 @@
-From 9d3ddacb896cf3d1d09b4ad3c40ec50829765268 Mon Sep 17 00:00:00 2001
+From eaf609d4f9d4a77ef6caf6295fdc5e3efe02b54a Mon Sep 17 00:00:00 2001
 From: Hans de Goede <hdegoede@redhat.com>
 Date: Sun, 10 Oct 2021 20:56:57 +0200
 Subject: [PATCH 145/296] SURFACE: ACPI: delay enumeration of devices with a

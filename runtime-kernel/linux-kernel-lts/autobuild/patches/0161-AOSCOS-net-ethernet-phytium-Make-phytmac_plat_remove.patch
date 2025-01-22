@@ -1,4 +1,4 @@
-From 16198d09c0fb272a2faf527deb98cfb35b137cf1 Mon Sep 17 00:00:00 2001
+From 3a0d5bf1e2d1f3d1294d9261fdf596fa3e8f1c03 Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Sun, 22 Sep 2024 03:57:43 +0800
 Subject: [PATCH 161/296] AOSCOS: net: ethernet: phytium: Make

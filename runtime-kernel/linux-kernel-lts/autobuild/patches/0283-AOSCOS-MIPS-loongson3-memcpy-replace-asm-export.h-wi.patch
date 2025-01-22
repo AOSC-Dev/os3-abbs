@@ -1,4 +1,4 @@
-From 43a5493e7a2e23a371256d51fbfafbc466ab8a23 Mon Sep 17 00:00:00 2001
+From dd6781722e998cf02046241c758101a507a2051f Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Thu, 12 Dec 2024 14:04:20 +0800
 Subject: [PATCH 283/296] AOSCOS: MIPS: loongson3-memcpy: replace

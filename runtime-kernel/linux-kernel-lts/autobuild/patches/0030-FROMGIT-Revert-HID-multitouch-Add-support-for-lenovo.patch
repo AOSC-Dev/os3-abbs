@@ -1,4 +1,4 @@
-From 3cebf88ea4edd09141cbd68b5755d00d35df6097 Mon Sep 17 00:00:00 2001
+From 99a756f722633b73677db5b82bc715ae4acbc661 Mon Sep 17 00:00:00 2001
 From: Jiri Kosina <jkosina@suse.com>
 Date: Thu, 12 Dec 2024 09:53:10 +0100
 Subject: [PATCH 030/296] FROMGIT: Revert "HID: multitouch: Add support for

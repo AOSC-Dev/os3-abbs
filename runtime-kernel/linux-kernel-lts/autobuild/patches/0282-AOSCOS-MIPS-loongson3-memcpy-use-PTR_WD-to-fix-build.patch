@@ -1,4 +1,4 @@
-From 806c588d80e7aee5198b9c388c3e22da17c4ba83 Mon Sep 17 00:00:00 2001
+From b653a675fc728e9264cf1817d41433be08208e92 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Thu, 12 Dec 2024 14:03:01 +0800
 Subject: [PATCH 282/296] AOSCOS: MIPS: loongson3-memcpy: use PTR_WD to fix

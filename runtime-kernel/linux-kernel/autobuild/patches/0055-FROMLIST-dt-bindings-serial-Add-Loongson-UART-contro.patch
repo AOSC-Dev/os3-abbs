@@ -1,7 +1,7 @@
 From 792385948f7154f40cb1f2bc751466e9408c5d68 Mon Sep 17 00:00:00 2001
 From: Haowei Zheng <zhenghaowei@loongson.cn>
 Date: Mon, 26 Aug 2024 10:47:03 +0800
-Subject: [PATCH 055/314] FROMLIST: dt-bindings: serial: Add Loongson UART
+Subject: [PATCH 055/316] FROMLIST: dt-bindings: serial: Add Loongson UART
  controller
 
 Add Loongson UART controller binding with DT schema format using

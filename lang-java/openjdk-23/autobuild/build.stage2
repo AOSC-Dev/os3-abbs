@@ -163,6 +163,7 @@ install -dv -m 755 "$SRCDIR"/image
 sh "$SRCDIR"/configure \
     --with-boot-jdk="$JDKBOOTDIR" \
     --prefix="$SRCDIR"/image \
+    --with-conf-name=aosc \
     --with-version-pre='' \
     --with-version-opt="AOSC" \
     --with-stdc++lib=dynamic \
@@ -180,7 +181,9 @@ sh "$SRCDIR"/configure \
     --with-extra-cxxflags="${EXTRA_CPP_FLAGS}" \
     --with-extra-cflags="${EXTRA_CFLAGS}" \
     --with-extra-ldflags="${LDFLAGS}" \
-    JOBS=$(nproc)
+    --with-vendor-bug-url="https://github.com/AOSC-Dev/aosc-os-abbs/issues" \
+    --with-vendor-vm-bug-url="https://github.com/AOSC-Dev/aosc-os-abbs/issues" \
+    --with-native-debug-symbols=zipped
 
 abinfo "Building OpenJDK ..."
 make product-images docs
@@ -189,7 +192,7 @@ mkdir -pv "$PKGDIR"/usr/lib/java
 mkdir -pv "$PKGDIR/etc/"
 install -dv -m 755 "$PKGDIR"/usr/share/doc
 
-IMAGE_FOLDER="$(readlink -f build/linux-*-*-release/images/)"
+IMAGE_FOLDER=build/aosc/images/
 abinfo "Copying JDK images ..."
 cp -rv "${IMAGE_FOLDER}"/jdk/* "$PKGDIR"/usr/lib/java/
 cp -rv "${IMAGE_FOLDER}"/docs "$PKGDIR"/usr/share/doc/openjdk/

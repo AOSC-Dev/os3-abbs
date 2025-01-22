@@ -1,0 +1,41 @@
+From 213d8d342b380a1c0ed63b5e6cf9549bb9202462 Mon Sep 17 00:00:00 2001
+From: chengyangyang <chengyangyang-hf@loongson.cn>
+Date: Tue, 10 Dec 2024 07:14:31 +0000
+Subject: [PATCH 12/14] Bug 1935611 - Fix skia build failed for loongarch64.
+ r=lsalzman
+
+Differential Revision: https://phabricator.services.mozilla.com/D231464
+---
+ gfx/skia/generate_mozbuild.py | 2 ++
+ gfx/skia/moz.build            | 2 ++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/gfx/skia/generate_mozbuild.py b/gfx/skia/generate_mozbuild.py
+index 77bd379508b0..4f83992c2261 100755
+--- a/gfx/skia/generate_mozbuild.py
++++ b/gfx/skia/generate_mozbuild.py
+@@ -28,6 +28,8 @@ if CONFIG['MOZ_OPTIMIZE']:
+         skia_opt_flags += ['-O2']
+     elif CONFIG['CC_TYPE'] in ('clang', 'gcc'):
+         skia_opt_flags += ['-O3']
++if CONFIG['TARGET_CPU'] in ('loongarch64'):
++    skia_opt_flags += ['-mno-lsx']
+ 
+ """
+ 
+diff --git a/gfx/skia/moz.build b/gfx/skia/moz.build
+index 7faf44add786..95a1f1e1e460 100644
+--- a/gfx/skia/moz.build
++++ b/gfx/skia/moz.build
+@@ -21,6 +21,8 @@ if CONFIG['MOZ_OPTIMIZE']:
+         skia_opt_flags += ['-O2']
+     elif CONFIG['CC_TYPE'] in ('clang', 'gcc'):
+         skia_opt_flags += ['-O3']
++if CONFIG['TARGET_CPU'] in ('loongarch64'):
++    skia_opt_flags += ['-mno-lsx']
+ 
+ UNIFIED_SOURCES += [
+     'skia/src/base/SkArenaAlloc.cpp',
+-- 
+2.48.1
+

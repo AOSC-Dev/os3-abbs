@@ -1,4 +1,4 @@
-From 149d7c15ec270829ab08155e1559bbbbf17a1ae1 Mon Sep 17 00:00:00 2001
+From 738382da69a72705ad4b3d11485b8602f978322a Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 10 Dec 2024 18:06:52 +0800
 Subject: [PATCH 240/296] AOSCOS: Revert "drm/ttm: remove

@@ -1,4 +1,4 @@
-From 69a3f71e3db9ab6d4bad22cf72be97ccd1ab86f1 Mon Sep 17 00:00:00 2001
+From b765068122ae15dfee66baf4d8205f7f3f957054 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:35:10 -0600
 Subject: [PATCH 067/296] FROMGIT: docs: ntsync: Add documentation for the

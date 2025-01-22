@@ -1,4 +1,4 @@
-From 140cc171523fb0a726c9aadb68928241f9d1b1de Mon Sep 17 00:00:00 2001
+From 60b966b3086a3c475c5a258b41cca976fe2cedf8 Mon Sep 17 00:00:00 2001
 From: Bibo Mao <maobibo@loongson.cn>
 Date: Wed, 13 Nov 2024 16:18:27 +0800
 Subject: [PATCH 029/296] UPSTREAM: irqchip/loongson-eiointc: Add virt

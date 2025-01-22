@@ -1,4 +1,4 @@
-From 13efa1cc8926e86aa94ee533137cce6db538505d Mon Sep 17 00:00:00 2001
+From 5b7af838b0e296be03c9b2a5a088ce6b3ab0fc12 Mon Sep 17 00:00:00 2001
 From: Icenowy Zheng <uwu@icenowy.me>
 Date: Tue, 17 Dec 2024 01:35:14 +0800
 Subject: [PATCH 083/296] FROMLIST: mips: disable CRASH_DUMP by default

@@ -1,4 +1,4 @@
-From 225f805e59ca80be6dd39cdfda3b15f26ab7bbd7 Mon Sep 17 00:00:00 2001
+From 057f99b08b56c5f205fcf6ccd11678fadee600c3 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 11 Dec 2024 23:29:38 +0800
 Subject: [PATCH 274/296] AOSCOS: MIPS: ls7a_fan: use register addresses in

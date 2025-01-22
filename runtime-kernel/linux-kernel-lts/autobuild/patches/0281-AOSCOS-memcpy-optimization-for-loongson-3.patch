@@ -1,4 +1,4 @@
-From cc90e96100088d5d2a27f5c89a4f9f3404de4418 Mon Sep 17 00:00:00 2001
+From f94c8dca2fa950984ecec40477758dffd34b88e4 Mon Sep 17 00:00:00 2001
 From: chenj <chenj@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 281/296] AOSCOS: memcpy optimization for loongson-3

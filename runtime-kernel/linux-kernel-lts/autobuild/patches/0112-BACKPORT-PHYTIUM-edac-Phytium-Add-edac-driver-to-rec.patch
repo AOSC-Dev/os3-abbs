@@ -1,4 +1,4 @@
-From 6bf8e312357b4444252608824b52fbbc71f7c189 Mon Sep 17 00:00:00 2001
+From 1bff7b3905d14dca248dc732fb9eaabd74986edf Mon Sep 17 00:00:00 2001
 From: Zhu Honglei <zhuhonglei1714@phytium.com.cn>
 Date: Wed, 20 Mar 2024 14:53:55 +0800
 Subject: [PATCH 112/296] BACKPORT: PHYTIUM: edac: Phytium: Add edac driver to

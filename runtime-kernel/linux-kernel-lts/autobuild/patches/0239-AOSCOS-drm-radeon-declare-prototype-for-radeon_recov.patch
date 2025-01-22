@@ -1,4 +1,4 @@
-From dc92b6287b854f10ed1aca35e6d75c69088bd355 Mon Sep 17 00:00:00 2001
+From 3ba34bf64fa7b9cb15d1355106e851a9b00bc435 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 10 Dec 2024 17:55:36 +0800
 Subject: [PATCH 239/296] AOSCOS: drm: radeon: declare prototype for

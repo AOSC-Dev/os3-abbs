@@ -1,4 +1,4 @@
-From cea969bb15ef3038f85222001234bede9263e027 Mon Sep 17 00:00:00 2001
+From 8663ef2175c04e94f6a0ae57063b92a4b9204926 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 9 Nov 2017 10:31:55 +0800
 Subject: [PATCH 203/296] AOSCOS: MIPS: Loongson: Add ACPI Power Button driver

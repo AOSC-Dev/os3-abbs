@@ -1,4 +1,4 @@
-From d56cf61a39d43419ce1d4f47fc1e5193a1d75e81 Mon Sep 17 00:00:00 2001
+From 6ba591c2a360b402568e9ba88d2700f277dbda2e Mon Sep 17 00:00:00 2001
 From: Dorian Stoll <dorian.stoll@tmsp.io>
 Date: Sun, 11 Dec 2022 12:00:59 +0100
 Subject: [PATCH 142/296] SURFACE: hid: Add support for Intel Precise Touch and

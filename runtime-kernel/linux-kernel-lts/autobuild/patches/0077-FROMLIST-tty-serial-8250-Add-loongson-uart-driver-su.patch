@@ -1,4 +1,4 @@
-From 5ac0f06a2d083be97e0fa7cdc2d33903f248c134 Mon Sep 17 00:00:00 2001
+From 2dcfa51ccb941f2aa4b0111f932c769d99d52a52 Mon Sep 17 00:00:00 2001
 From: Haowei Zheng <zhenghaowei@loongson.cn>
 Date: Mon, 26 Aug 2024 10:47:04 +0800
 Subject: [PATCH 077/296] FROMLIST: tty: serial: 8250: Add loongson uart driver

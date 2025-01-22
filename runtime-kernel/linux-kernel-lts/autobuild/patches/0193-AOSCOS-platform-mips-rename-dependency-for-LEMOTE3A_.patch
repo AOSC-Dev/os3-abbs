@@ -1,4 +1,4 @@
-From b7238b661aaf2be00e660c07d80c6adaaefc5ab1 Mon Sep 17 00:00:00 2001
+From f7bc873c06c90d6c1f32b3c2a1b44dad01d417c6 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 4 Dec 2024 15:16:04 +0800
 Subject: [PATCH 193/296] AOSCOS: platform: mips: rename dependency for

@@ -1,4 +1,4 @@
-From 465547705bbd3c35481a7dc43e7e61cae551026a Mon Sep 17 00:00:00 2001
+From 364a2b93a0303c3b00e807ecd7e2f11ca0ab6fb7 Mon Sep 17 00:00:00 2001
 From: Jiaxun Yang <jiaxun.yang@flygoat.com>
 Date: Fri, 18 Oct 2024 20:51:39 +0800
 Subject: [PATCH 175/296] AOSCOS: MIPS: Temporarily disable Loongson3 LL/SC

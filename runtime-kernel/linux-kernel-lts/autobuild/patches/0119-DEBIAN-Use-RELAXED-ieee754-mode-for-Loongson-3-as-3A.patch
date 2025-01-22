@@ -1,4 +1,4 @@
-From 6b3524dc78a6a62f816891c972ebf5dfbeb4c605 Mon Sep 17 00:00:00 2001
+From a66d1c81661d971e45e1f5c0fe3748db37434568 Mon Sep 17 00:00:00 2001
 From: YunQiang Su <syq@debian.org>
 Date: Mon, 16 Nov 2020 09:11:00 +0800
 Subject: [PATCH 119/296] DEBIAN: Use RELAXED ieee754 mode for Loongson-3 as 3A

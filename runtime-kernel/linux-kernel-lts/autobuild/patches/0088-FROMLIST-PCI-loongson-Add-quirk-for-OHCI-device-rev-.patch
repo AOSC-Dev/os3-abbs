@@ -1,4 +1,4 @@
-From 625ec3f2465571a8544b67ccce1226b5fd243140 Mon Sep 17 00:00:00 2001
+From 4cf889217dfdd0557cc7758b9d647ebaf423add7 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Tue, 21 Jan 2025 19:42:25 +0800
 Subject: [PATCH 088/296] FROMLIST: PCI: loongson: Add quirk for OHCI device

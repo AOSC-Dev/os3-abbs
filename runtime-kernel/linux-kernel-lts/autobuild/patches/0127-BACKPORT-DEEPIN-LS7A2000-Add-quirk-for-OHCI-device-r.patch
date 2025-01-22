@@ -1,4 +1,4 @@
-From e52afde0080093569e6756c0e1d99919fb2eaec6 Mon Sep 17 00:00:00 2001
+From 3edc427b06af13ed3fbff85d91860c5a2919c4ce Mon Sep 17 00:00:00 2001
 From: Yanteng Si <siyanteng@loongson.cn>
 Date: Mon, 20 May 2024 10:20:21 +0800
 Subject: [PATCH 127/294] BACKPORT: DEEPIN: LS7A2000: Add quirk for OHCI device

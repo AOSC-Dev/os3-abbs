@@ -1,4 +1,4 @@
-From 7f4b78135433d96555fe6b578fd5c0a44ba579d9 Mon Sep 17 00:00:00 2001
+From 62a7f29732abf578883bad6f359e9a20dd18f5b2 Mon Sep 17 00:00:00 2001
 From: Yanteng Si <siyanteng@loongson.cn>
 Date: Wed, 17 Jul 2024 18:25:37 +0800
 Subject: [PATCH 126/294] BACKPORT: DEEPIN: ethernet: Add motorcomm yt6801

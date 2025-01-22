@@ -1,4 +1,4 @@
-From e9919749ae0e8da4f172cece4c04517e0c449dfa Mon Sep 17 00:00:00 2001
+From 8137a91861385e2186114cf4f03e210df536b430 Mon Sep 17 00:00:00 2001
 From: Jiaxun Yang <jiaxun.yang@flygoat.com>
 Date: Thu, 19 Jan 2023 20:42:56 +0000
 Subject: [PATCH 183/294] AOSCOS: wifi: rt2x00: Condition interface type

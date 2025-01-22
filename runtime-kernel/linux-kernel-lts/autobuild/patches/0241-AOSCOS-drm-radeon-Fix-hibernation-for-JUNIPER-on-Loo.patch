@@ -1,4 +1,4 @@
-From 711ee3142083a3a9710873e4cc3ce27f6dd0f18b Mon Sep 17 00:00:00 2001
+From 4354520d136ccc089e48483d1f6a55ea7a8f7f43 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 241/294] AOSCOS: drm/radeon: Fix hibernation for JUNIPER on

@@ -1,4 +1,4 @@
-From d2a94223aac5b5ffe56014ef2a6abe3020496a4b Mon Sep 17 00:00:00 2001
+From 267946695490295398c156e96d530d7e2dac1d86 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?=E5=BF=98=E6=80=80?= <guanwentao@uniontech.com>
 Date: Tue, 9 Jul 2024 17:17:48 +0800
 Subject: [PATCH 125/294] DEEPIN: net: stmmac: dwmac-phytium: compat some

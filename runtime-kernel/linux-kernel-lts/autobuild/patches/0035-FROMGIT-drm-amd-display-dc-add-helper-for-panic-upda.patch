@@ -1,4 +1,4 @@
-From 8148be82f4beb12484bb69886373a5d766d65366 Mon Sep 17 00:00:00 2001
+From 3e0e66f10cb58c70a765ac089e99057f7104733d Mon Sep 17 00:00:00 2001
 From: Alex Deucher <alexander.deucher@amd.com>
 Date: Tue, 12 Nov 2024 16:19:18 -0500
 Subject: [PATCH 035/294] FROMGIT: drm/amd/display/dc: add helper for panic

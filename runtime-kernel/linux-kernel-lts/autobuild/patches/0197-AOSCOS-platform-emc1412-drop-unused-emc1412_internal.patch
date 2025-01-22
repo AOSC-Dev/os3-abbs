@@ -1,4 +1,4 @@
-From 70895e0bb0b34379fb3c9ab6cc792ceddc68415c Mon Sep 17 00:00:00 2001
+From 73acba569d7acf5f4e78e897f1d5f7f80654324f Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 4 Dec 2024 15:56:33 +0800
 Subject: [PATCH 197/294] AOSCOS: platform: emc1412: drop unused

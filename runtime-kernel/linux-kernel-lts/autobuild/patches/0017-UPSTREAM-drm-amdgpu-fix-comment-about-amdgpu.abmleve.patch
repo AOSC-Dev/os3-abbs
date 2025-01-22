@@ -1,4 +1,4 @@
-From 991dcfca0bf86802d33bd04adc7310874f0d77ea Mon Sep 17 00:00:00 2001
+From b62529faadc085d2b5d593fabb42d70c1afc7a21 Mon Sep 17 00:00:00 2001
 From: "jeffbai@aosc.io" <jeffbai@aosc.io>
 Date: Thu, 24 Oct 2024 21:07:18 +0800
 Subject: [PATCH 017/294] UPSTREAM: drm/amdgpu: fix comment about

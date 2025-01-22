@@ -1,4 +1,4 @@
-From 939380e843ec05afc1af1a2286cd5b014c001af7 Mon Sep 17 00:00:00 2001
+From 64680938d5218dad0a36cbd0645eec14edf0fabb Mon Sep 17 00:00:00 2001
 From: Daniel Scally <djrscally@gmail.com>
 Date: Sun, 10 Oct 2021 20:57:02 +0200
 Subject: [PATCH 145/294] SURFACE: platform/x86: int3472: Enable I2c daisy

@@ -1,4 +1,4 @@
-From e58a48f5477f86e0d13955a7e1b91875e564e47c Mon Sep 17 00:00:00 2001
+From ab8075cf5439c7cb51b8eac2c6ab185d7ae2c001 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 4 Dec 2024 16:47:07 +0800
 Subject: [PATCH 200/294] AOSCOS: platform: sbx00_fan: add missing definitions

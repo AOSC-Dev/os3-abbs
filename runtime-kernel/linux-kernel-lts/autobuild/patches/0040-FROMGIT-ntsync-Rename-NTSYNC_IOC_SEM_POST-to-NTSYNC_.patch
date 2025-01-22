@@ -1,7 +1,7 @@
 From 7a7a007036c6fe9169ef9a5023dd7fde80c4518b Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:43 -0600
-Subject: [PATCH 040/294] FROMGIT: ntsync: Rename NTSYNC_IOC_SEM_POST to
+Subject: [PATCH 040/296] FROMGIT: ntsync: Rename NTSYNC_IOC_SEM_POST to
  NTSYNC_IOC_SEM_RELEASE.
 
 Use the more common "release" terminology, which is also the term used by NT,

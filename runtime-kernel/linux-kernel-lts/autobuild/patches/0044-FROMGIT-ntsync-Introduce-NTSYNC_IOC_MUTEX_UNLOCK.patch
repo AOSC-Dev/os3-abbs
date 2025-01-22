@@ -1,7 +1,7 @@
 From 7b2f40531bf7fc070fedbf3f55dea66804ca2a12 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:47 -0600
-Subject: [PATCH 044/294] FROMGIT: ntsync: Introduce NTSYNC_IOC_MUTEX_UNLOCK.
+Subject: [PATCH 044/296] FROMGIT: ntsync: Introduce NTSYNC_IOC_MUTEX_UNLOCK.
 
 This corresponds to the NT syscall NtReleaseMutant().
 

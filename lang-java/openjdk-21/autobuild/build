@@ -1,5 +1,4 @@
 ##### Control part variables
-SJAVAC=0
 EXTRA_FEATURES="jfr"
 OPENJDK_SUFFIX="-21"
 
@@ -18,14 +17,9 @@ OPENJDK_SUFFIX="-21"
 
 if [[ -z "${JDK_HAS_JIT:-}" ]]; then
     config_zero="--with-jvm-variants=zero --enable-precompiled-headers"
-    SJAVAC=0
 else
     config_zero=" "
     EXTRA_FEATURES+=",shenandoahgc,zgc"
-fi
-
-if [[ "${SJAVAC}" == "1" ]]; then
-    use_sjavac="--enable-sjavac" # Just a simple switch. And sjavac.jar is not needed, since JDK 8 has built-in a similar routine
 fi
 
 if [[ "${CROSS:-$ARCH}" = "armv7hf" ]]; then
@@ -39,6 +33,7 @@ abinfo "Configuring OpenJDK ${PKGVER} ..."
 install -dv -m 755 "$SRCDIR"/image
 sh "$SRCDIR"/configure \
     --prefix="$SRCDIR"/image \
+    --with-conf-name=aosc \
     --with-version-pre='' \
     --with-version-opt="AOSC" \
     --with-stdc++lib=dynamic \
@@ -49,14 +44,16 @@ sh "$SRCDIR"/configure \
     --with-libpng=system \
     --with-libjpeg=system \
     --with-giflib=system \
-    ${config_zero} ${use_sjavac} \
+    ${config_zero} \
     ${config_bits} \
     --with-jvm-features="${EXTRA_FEATURES}" \
     --enable-precompiled-headers \
     --with-extra-cxxflags="${EXTRA_CPP_FLAGS}" \
     --with-extra-cflags="${EXTRA_CFLAGS}" \
     --with-extra-ldflags="${LDFLAGS}" \
-    JOBS=$(nproc)
+    --with-vendor-bug-url="https://github.com/AOSC-Dev/aosc-os-abbs/issues" \
+    --with-vendor-vm-bug-url="https://github.com/AOSC-Dev/aosc-os-abbs/issues" \
+    --with-native-debug-symbols=zipped
 
 abinfo "Building OpenJDK ..."
 make product-images docs
@@ -65,7 +62,7 @@ mkdir -pv "$PKGDIR"/usr/lib/java
 mkdir -pv "$PKGDIR/etc/"
 install -dv -m 755 "$PKGDIR"/usr/share/doc
 
-IMAGE_FOLDER="$(readlink -f build/linux-*-*-release/images/)"
+IMAGE_FOLDER=build/aosc/images/
 abinfo "Copying JDK images ..."
 cp -rv "${IMAGE_FOLDER}"/jdk/* "$PKGDIR"/usr/lib/java/
 cp -rv "${IMAGE_FOLDER}"/docs "$PKGDIR"/usr/share/doc/openjdk/

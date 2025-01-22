@@ -1,4 +1,4 @@
-From 3e3d8db6efdbb98ae2add2fe8f5c3719359f60a4 Mon Sep 17 00:00:00 2001
+From 8f272f10741592c28fbddbcffad1bd1453ecdee4 Mon Sep 17 00:00:00 2001
 From: Hunter Laux <hunterlaux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Date: Wed, 6 Apr 2016 00:54:05 -0700
 Subject: [PATCH 073/294] FROMLIST: usb: phy: tegra: Add 38.4MHz clock table

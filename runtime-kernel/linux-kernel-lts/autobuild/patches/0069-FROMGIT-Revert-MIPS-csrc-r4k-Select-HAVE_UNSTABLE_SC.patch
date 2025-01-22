@@ -1,4 +1,4 @@
-From 36f5cc9d312f32079f6efcc3334006d8b79ed39c Mon Sep 17 00:00:00 2001
+From 3e38edd8a11a4cf5ce40d5f4ff52b495320e8f8c Mon Sep 17 00:00:00 2001
 From: Xi Ruoyao <xry111@xry111.site>
 Date: Mon, 23 Dec 2024 17:20:41 +0800
 Subject: [PATCH 069/294] FROMGIT: Revert "MIPS: csrc-r4k: Select

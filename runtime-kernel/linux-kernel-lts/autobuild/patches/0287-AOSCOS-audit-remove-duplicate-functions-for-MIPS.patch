@@ -1,4 +1,4 @@
-From 10b11399e1038d16eaf2caf43e9113886fa72796 Mon Sep 17 00:00:00 2001
+From c7331effd821347d6be74c1ac2f269a3a952fa8e Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Sun, 15 Dec 2024 11:21:54 +0800
 Subject: [PATCH 287/294] AOSCOS: audit: remove duplicate functions for MIPS

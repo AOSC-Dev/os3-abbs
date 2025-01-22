@@ -1,4 +1,4 @@
-From 9a1fa1e9afd7fd9867f04ebca7aca93bfd427d20 Mon Sep 17 00:00:00 2001
+From 8da4ed64ce24ef70bd5670ee119f7f16c57b6895 Mon Sep 17 00:00:00 2001
 From: Xianglai Li <lixianglai@loongson.cn>
 Date: Wed, 13 Nov 2024 16:18:27 +0800
 Subject: [PATCH 022/294] UPSTREAM: LoongArch: KVM: Add EIOINTC device support

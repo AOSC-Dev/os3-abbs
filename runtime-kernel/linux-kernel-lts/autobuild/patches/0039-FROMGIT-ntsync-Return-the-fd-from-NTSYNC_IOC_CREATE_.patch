@@ -1,4 +1,4 @@
-From c9b418ae21905478c63df2a7f96a615532869dcd Mon Sep 17 00:00:00 2001
+From 9f98ef58d81c24fbc9e79ead18e7b268689ad637 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:42 -0600
 Subject: [PATCH 039/294] FROMGIT: ntsync: Return the fd from

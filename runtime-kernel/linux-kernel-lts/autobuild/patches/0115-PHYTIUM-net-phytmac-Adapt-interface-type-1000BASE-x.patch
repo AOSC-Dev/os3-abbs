@@ -1,4 +1,4 @@
-From a18a903b267fd97edd67e2fd18a612ed85b81709 Mon Sep 17 00:00:00 2001
+From 6c8d2a4aa5d8238088df139db0a7cb6199c2b6e5 Mon Sep 17 00:00:00 2001
 From: Li Wencheng <liwencheng@phytium.com.cn>
 Date: Fri, 29 Mar 2024 16:49:17 +0800
 Subject: [PATCH 115/294] PHYTIUM: net/phytmac: Adapt interface type 1000BASE-x

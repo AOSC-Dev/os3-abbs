@@ -1,4 +1,4 @@
-From e8631a1a59504d1ed7e10412906773119a4b7024 Mon Sep 17 00:00:00 2001
+From 522a6ddc07d69676ff883cce355e603e3e73f791 Mon Sep 17 00:00:00 2001
 From: Alex Deucher <alexander.deucher@amd.com>
 Date: Thu, 31 Oct 2024 13:20:19 -0400
 Subject: [PATCH 034/294] FROMGIT: drm/amd/display: add clear_tiling mi

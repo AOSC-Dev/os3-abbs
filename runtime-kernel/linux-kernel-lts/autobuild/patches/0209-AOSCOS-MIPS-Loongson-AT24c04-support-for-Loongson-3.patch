@@ -1,4 +1,4 @@
-From de971df9c18416b47f125d5a56d3c40731b2fd03 Mon Sep 17 00:00:00 2001
+From faeadbd3929a9bdfcbf7d698304a36019f4d0d02 Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubb@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 209/294] AOSCOS: MIPS: Loongson: AT24c04 support for

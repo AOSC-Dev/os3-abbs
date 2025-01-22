@@ -1,4 +1,4 @@
-From de3f8ec2df4a30f6074f446827554c597bce0e67 Mon Sep 17 00:00:00 2001
+From d8f2ecf836ca786c9e06f1e3153904ff6c276854 Mon Sep 17 00:00:00 2001
 From: Yanteng Si <siyanteng@loongson.cn>
 Date: Mon, 27 May 2024 10:20:21 +0800
 Subject: [PATCH 124/294] DEEPIN: net: stmmac: fix potential double free of dma

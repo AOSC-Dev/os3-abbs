@@ -1,4 +1,4 @@
-From 45c5c7ae9e04bb7da13c060324b150b113373bcf Mon Sep 17 00:00:00 2001
+From 597f9cdb6f336b4e40043c914d24e6cd5676a663 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 229/294] AOSCOS: E1000E: Detect and recover weird rx hang bug

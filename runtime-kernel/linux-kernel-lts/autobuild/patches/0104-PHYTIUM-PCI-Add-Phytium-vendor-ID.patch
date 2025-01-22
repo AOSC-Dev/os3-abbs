@@ -1,4 +1,4 @@
-From 51f78285526d8b4a685434f63f0e8cd2473fb951 Mon Sep 17 00:00:00 2001
+From a9e516e8d02abfb5864fb5117b6355178bd52dbd Mon Sep 17 00:00:00 2001
 From: Chen Baozi <chenbaozi@phytium.com.cn>
 Date: Fri, 14 Jul 2023 08:33:59 +0800
 Subject: [PATCH 104/294] PHYTIUM: PCI: Add Phytium vendor ID

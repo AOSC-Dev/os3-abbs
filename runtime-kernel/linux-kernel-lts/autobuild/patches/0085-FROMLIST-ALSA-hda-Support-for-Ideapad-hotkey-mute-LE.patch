@@ -1,4 +1,4 @@
-From 7179a67d67592e907ddccf0d002fd6a7ef82388e Mon Sep 17 00:00:00 2001
+From 0d9bd701ed75469ce5bf476d299ab8bf6509b442 Mon Sep 17 00:00:00 2001
 From: Jackie Dong <xy-jackie@139.com>
 Date: Thu, 19 Dec 2024 18:15:31 +0800
 Subject: [PATCH 085/294] FROMLIST: ALSA : hda : Support for Ideapad hotkey
@@ -112,7 +112,7 @@ index 538c37a78a56..7a692644a4ce 100644
  	{ .id = CXT_PINCFG_LEMOTE_A1205, .name = "lemote-a1205" },
  	{ .id = CXT_FIXUP_OLPC_XO, .name = "olpc-xo" },
 diff --git a/sound/pci/hda/patch_realtek.c b/sound/pci/hda/patch_realtek.c
-index 3ed82f98e2de..edb6401439f9 100644
+index a9f6138b59b0..1cfbc88ab09e 100644
 --- a/sound/pci/hda/patch_realtek.c
 +++ b/sound/pci/hda/patch_realtek.c
 @@ -6924,6 +6924,16 @@ static void alc_fixup_thinkpad_acpi(struct hda_codec *codec,
@@ -153,7 +153,7 @@ index 3ed82f98e2de..edb6401439f9 100644
  	[ALC269_FIXUP_DMIC_THINKPAD_ACPI] = {
  		.type = HDA_FIXUP_FUNC,
  		.v.func = alc_fixup_inv_dmic,
-@@ -10881,6 +10898,7 @@ static const struct hda_quirk alc269_fixup_tbl[] = {
+@@ -10883,6 +10900,7 @@ static const struct hda_quirk alc269_fixup_tbl[] = {
  	SND_PCI_QUIRK(0x17aa, 0x3880, "Yoga S780-16 pro dual YC", ALC287_FIXUP_TAS2781_I2C),
  	SND_PCI_QUIRK(0x17aa, 0x3881, "YB9 dual power mode2 YC", ALC287_FIXUP_TAS2781_I2C),
  	SND_PCI_QUIRK(0x17aa, 0x3882, "Lenovo Yoga Pro 7 14APH8", ALC287_FIXUP_YOGA9_14IAP7_BASS_SPK_PIN),
@@ -161,7 +161,7 @@ index 3ed82f98e2de..edb6401439f9 100644
  	SND_PCI_QUIRK(0x17aa, 0x3884, "Y780 YG DUAL", ALC287_FIXUP_TAS2781_I2C),
  	SND_PCI_QUIRK(0x17aa, 0x3886, "Y780 VECO DUAL", ALC287_FIXUP_TAS2781_I2C),
  	SND_PCI_QUIRK(0x17aa, 0x3891, "Lenovo Yoga Pro 7 14AHP9", ALC287_FIXUP_YOGA9_14IAP7_BASS_SPK_PIN),
-@@ -11115,6 +11133,7 @@ static const struct hda_model_fixup alc269_fixup_models[] = {
+@@ -11118,6 +11136,7 @@ static const struct hda_model_fixup alc269_fixup_models[] = {
  	{.id = ALC290_FIXUP_MONO_SPEAKERS_HSJACK, .name = "mono-speakers"},
  	{.id = ALC290_FIXUP_SUBWOOFER_HSJACK, .name = "alc290-subwoofer"},
  	{.id = ALC269_FIXUP_THINKPAD_ACPI, .name = "thinkpad"},

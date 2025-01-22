@@ -1,0 +1,103 @@
+From 2caec892583d2771699c73669ca38455bd68ea2c Mon Sep 17 00:00:00 2001
+From: chengyangyang <chengyangyang-hf@loongson.cn>
+Date: Wed, 25 Dec 2024 17:13:55 +0000
+Subject: [PATCH 14/14] Bug 1935611 - Fix libyuv/libpng link failed for
+ loongarch64. r=glandium,tnikkel,ng
+
+Differential Revision: https://phabricator.services.mozilla.com/D231469
+---
+ media/libpng/moz.build                        |  3 ++
+ .../05_fix_loongarch64_link_failed.patch      | 28 +++++++++++++++++++
+ media/libyuv/libyuv/libyuv.gyp                | 10 +++++++
+ media/libyuv/moz.yaml                         |  1 +
+ 4 files changed, 42 insertions(+)
+ create mode 100644 media/libyuv/05_fix_loongarch64_link_failed.patch
+
+diff --git a/media/libpng/moz.build b/media/libpng/moz.build
+index 4ff8fa884115..a316a0623772 100644
+--- a/media/libpng/moz.build
++++ b/media/libpng/moz.build
+@@ -72,6 +72,9 @@ if CONFIG['HAVE_ALTIVEC']:
+         'powerpc/powerpc_init.c'
+     ]
+ 
++if CONFIG['TARGET_CPU'] == 'loongarch64':
++    CFLAGS += ['-mno-lsx']
++
+ if CONFIG['MOZ_TREE_FREETYPE']:
+     DEFINES['FT_CONFIG_OPTION_USE_PNG'] = True
+ 
+diff --git a/media/libyuv/05_fix_loongarch64_link_failed.patch b/media/libyuv/05_fix_loongarch64_link_failed.patch
+new file mode 100644
+index 000000000000..6b462acab9b1
+--- /dev/null
++++ b/media/libyuv/05_fix_loongarch64_link_failed.patch
+@@ -0,0 +1,28 @@
++diff --git a/libyuv.gyp b/libyuv.gyp
++index 2e5c8af..8ea4a2f 100644
++--- a/libyuv.gyp
+++++ b/libyuv.gyp
++@@ -29,6 +29,7 @@
++     'mips_msa%': 0,  # Default to msa off.
++     'build_neon': 0,
++     'build_msa': 0,
+++    'build_lsx': 0,
++     'conditions': [
++        ['(target_arch == "armv7" or target_arch == "armv7s" or \
++        (target_arch == "arm" and arm_version >= 7) or target_arch == "arm64")\
++@@ -98,6 +99,15 @@
++             'LIBYUV_MSA',
++           ],
++         }],
+++        ['build_lsx == 0', {
+++          'conditions': [
+++            ['target_arch == "loongarch64"', {
+++              'cflags_mozilla': [
+++                '-mno-lsx',
+++              ],
+++            }],
+++          ],
+++        }],
++         ['build_with_mozilla == 1', {
++           'defines': [
++             'HAVE_JPEG'
+diff --git a/media/libyuv/libyuv/libyuv.gyp b/media/libyuv/libyuv/libyuv.gyp
+index 2e5c8af3d549..8ea4a2fe5d7c 100644
+--- a/media/libyuv/libyuv/libyuv.gyp
++++ b/media/libyuv/libyuv/libyuv.gyp
+@@ -29,6 +29,7 @@
+     'mips_msa%': 0,  # Default to msa off.
+     'build_neon': 0,
+     'build_msa': 0,
++    'build_lsx': 0,
+     'conditions': [
+        ['(target_arch == "armv7" or target_arch == "armv7s" or \
+        (target_arch == "arm" and arm_version >= 7) or target_arch == "arm64")\
+@@ -98,6 +99,15 @@
+             'LIBYUV_MSA',
+           ],
+         }],
++        ['build_lsx == 0', {
++          'conditions': [
++            ['target_arch == "loongarch64"', {
++              'cflags_mozilla': [
++                '-mno-lsx',
++              ],
++            }],
++          ],
++        }],
+         ['build_with_mozilla == 1', {
+           'defines': [
+             'HAVE_JPEG'
+diff --git a/media/libyuv/moz.yaml b/media/libyuv/moz.yaml
+index 71380b285d5b..7c5655292663 100644
+--- a/media/libyuv/moz.yaml
++++ b/media/libyuv/moz.yaml
+@@ -56,3 +56,4 @@ vendoring:
+     - 02_update_gyp.patch
+     - 03_add_neon64_and_sve_gyp_targets.patch
+     - 04_add_missing_volatile.patch
++    - 05_fix_loongarch64_link_failed.patch
+-- 
+2.48.1
+

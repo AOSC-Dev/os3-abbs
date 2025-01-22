@@ -1,0 +1,82 @@
+From ac2f3eabfab89f6e446cda1fea9f496749dd1c2b Mon Sep 17 00:00:00 2001
+From: Cheng Yangyang <chengyangyang-hf@loongson.cn>
+Date: Thu, 19 Dec 2024 09:00:03 +0000
+Subject: [PATCH 13/14] Bug 1935611 - Enable skia simd for loongarch64.
+ r=lsalzman,glandium
+
+Differential Revision: https://phabricator.services.mozilla.com/D232449
+---
+ gfx/skia/generate_mozbuild.py | 17 +++++++++++++++--
+ gfx/skia/moz.build            | 17 +++++++++++++++--
+ 2 files changed, 30 insertions(+), 4 deletions(-)
+
+diff --git a/gfx/skia/generate_mozbuild.py b/gfx/skia/generate_mozbuild.py
+index 4f83992c2261..ef4544614194 100755
+--- a/gfx/skia/generate_mozbuild.py
++++ b/gfx/skia/generate_mozbuild.py
+@@ -28,8 +28,8 @@ if CONFIG['MOZ_OPTIMIZE']:
+         skia_opt_flags += ['-O2']
+     elif CONFIG['CC_TYPE'] in ('clang', 'gcc'):
+         skia_opt_flags += ['-O3']
+-if CONFIG['TARGET_CPU'] in ('loongarch64'):
+-    skia_opt_flags += ['-mno-lsx']
++if CONFIG['TARGET_CPU'] == 'loongarch64':
++    skia_opt_flags += ['-mlasx']
+ 
+ """
+ 
+@@ -110,6 +110,19 @@ if CONFIG['TARGET_CPU'] in ('mips32', 'mips64'):
+ # Work around bug 1841199.
+ if CONFIG['TARGET_CPU'] in ('mips32', 'mips64', 'ppc64'):
+     DEFINES['musttail'] = 'nomusttail'
++
++if CONFIG['TARGET_CPU'] == 'loongarch64':
++    # In ABI1.0, the compilers disable 128bit SIMD defautly; in ABI2.0, it
++    # enable defaultly. The below flags can maintain compatibility.
++    CXXFLAGS += ['-mlsx']
++    if (
++        CONFIG['CC_TYPE'] == 'clang'
++        and int(CONFIG["CC_VERSION"].split(".")[0]) >= 18
++    ):
++        CXXFLAGS += ['-flax-vector-conversions=all']
++    else:
++        # gcc, clang8 for loongarch64.
++        CXXFLAGS += ['-flax-vector-conversions']
+ """
+ 
+ import json
+diff --git a/gfx/skia/moz.build b/gfx/skia/moz.build
+index 95a1f1e1e460..cd3fcc946764 100644
+--- a/gfx/skia/moz.build
++++ b/gfx/skia/moz.build
+@@ -21,8 +21,8 @@ if CONFIG['MOZ_OPTIMIZE']:
+         skia_opt_flags += ['-O2']
+     elif CONFIG['CC_TYPE'] in ('clang', 'gcc'):
+         skia_opt_flags += ['-O3']
+-if CONFIG['TARGET_CPU'] in ('loongarch64'):
+-    skia_opt_flags += ['-mno-lsx']
++if CONFIG['TARGET_CPU'] == 'loongarch64':
++    skia_opt_flags += ['-mlasx']
+ 
+ UNIFIED_SOURCES += [
+     'skia/src/base/SkArenaAlloc.cpp',
+@@ -650,3 +650,16 @@ if CONFIG['TARGET_CPU'] in ('mips32', 'mips64'):
+ # Work around bug 1841199.
+ if CONFIG['TARGET_CPU'] in ('mips32', 'mips64', 'ppc64'):
+     DEFINES['musttail'] = 'nomusttail'
++
++if CONFIG['TARGET_CPU'] == 'loongarch64':
++    # In ABI1.0, the compilers disable 128bit SIMD defautly; in ABI2.0, it
++    # enable defaultly. The below flags can maintain compatibility.
++    CXXFLAGS += ['-mlsx']
++    if (
++        CONFIG['CC_TYPE'] == 'clang'
++        and int(CONFIG["CC_VERSION"].split(".")[0]) >= 18
++    ):
++        CXXFLAGS += ['-flax-vector-conversions=all']
++    else:
++        # gcc, clang8 for loongarch64.
++        CXXFLAGS += ['-flax-vector-conversions']
+-- 
+2.48.1
+

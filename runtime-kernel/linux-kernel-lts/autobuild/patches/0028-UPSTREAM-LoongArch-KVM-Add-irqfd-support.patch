@@ -1,7 +1,7 @@
 From 5d5e494b95849080ea0667963e0feb30986092ac Mon Sep 17 00:00:00 2001
 From: Xianglai Li <lixianglai@loongson.cn>
 Date: Wed, 13 Nov 2024 16:18:27 +0800
-Subject: [PATCH 028/294] UPSTREAM: LoongArch: KVM: Add irqfd support
+Subject: [PATCH 028/296] UPSTREAM: LoongArch: KVM: Add irqfd support
 
 Enable the KVM_IRQ_ROUTING/KVM_IRQCHIP/KVM_MSI configuration items,
 add the KVM_CAP_IRQCHIP capability, and implement the query interface

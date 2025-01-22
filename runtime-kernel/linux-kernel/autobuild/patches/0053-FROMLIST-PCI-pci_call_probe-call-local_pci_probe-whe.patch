@@ -1,7 +1,7 @@
 From d4b8472695db825e22ed90b58b765fc79c4e78d7 Mon Sep 17 00:00:00 2001
 From: Hongchen Zhang <zhanghongchen@loongson.cn>
 Date: Thu, 13 Jun 2024 15:42:58 +0800
-Subject: [PATCH 053/314] FROMLIST: PCI: pci_call_probe: call local_pci_probe()
+Subject: [PATCH 053/316] FROMLIST: PCI: pci_call_probe: call local_pci_probe()
  when selected cpu is offline
 
 Call work_on_cpu(cpu, fn, arg) in pci_call_probe() while the argument

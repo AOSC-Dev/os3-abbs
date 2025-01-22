@@ -1,7 +1,7 @@
 From d1cf0a035dcbe9303ea971a36abaaabbdc579c88 Mon Sep 17 00:00:00 2001
 From: Heiko Stuebner <heiko.stuebner@cherry.de>
 Date: Fri, 6 Dec 2024 11:34:00 +0100
-Subject: [PATCH 060/314] FROMLIST: phy: phy-rockchip-samsung-hdptx: annotate
+Subject: [PATCH 060/316] FROMLIST: phy: phy-rockchip-samsung-hdptx: annotate
  regmap register-callback
 
 The variant of the driver in the vendor-tree contained those handy

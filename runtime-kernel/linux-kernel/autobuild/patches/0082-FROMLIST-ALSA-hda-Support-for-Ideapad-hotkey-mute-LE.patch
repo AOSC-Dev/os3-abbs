@@ -1,7 +1,7 @@
 From c2c2188094b9efd47b81ca8f3ed88dd9dac3817b Mon Sep 17 00:00:00 2001
 From: Jackie Dong <xy-jackie@139.com>
 Date: Thu, 19 Dec 2024 18:15:31 +0800
-Subject: [PATCH 082/314] FROMLIST: ALSA : hda : Support for Ideapad hotkey
+Subject: [PATCH 082/316] FROMLIST: ALSA : hda : Support for Ideapad hotkey
  mute LEDs
 
 New ideapad helper file with support for handling FN key mute LEDS.

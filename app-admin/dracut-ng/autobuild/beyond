@@ -12,9 +12,5 @@ mkdir -pv "$PKGDIR"/usr/lib/modules
 mkdir -pv "$PKGDIR"/usr/lib/dracut.conf.d/
 touch "$PKGDIR"/var/log/dracut.log
 
-abinfo "Installing distribution configuration ..."
-install -vm0644 "$SRCDIR"/dracut.conf.d/fedora.conf.example \
-    "$PKGDIR"/usr/lib/dracut.conf.d/01-dist.conf
-
 abinfo "Dropping SUSE man pages ..."
 rm -fv "$PKGDIR"/usr/share/man?/*suse*

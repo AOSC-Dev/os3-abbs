@@ -1,7 +1,7 @@
 From 1cf4bdc4a553150c8387aac55b0dcfb10d05d8bf Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Wed, 25 Dec 2024 10:29:19 +0800
-Subject: [PATCH 083/314] FROMLIST: LoongArch: Fix warnings during S3 suspend
+Subject: [PATCH 083/316] FROMLIST: LoongArch: Fix warnings during S3 suspend
 
 The enable_gpe_wakeup() function calls acpi_enable_all_wakeup_gpes(),
 and the later one may call the preempt_schedule_common() function,

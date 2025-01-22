@@ -1,7 +1,7 @@
 From cfabd55e50bbc2a422ed07619b1bd41fbeeb1757 Mon Sep 17 00:00:00 2001
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Date: Wed, 11 Dec 2024 01:06:14 +0200
-Subject: [PATCH 001/314] FROMGIT: drm/rockchip: dw_hdmi_qp: Add support for
+Subject: [PATCH 001/316] FROMGIT: drm/rockchip: dw_hdmi_qp: Add support for
  RK3588 HDMI1 output
 
 Provide the basic support required to enable the second HDMI TX port

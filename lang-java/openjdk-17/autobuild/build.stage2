@@ -1,5 +1,4 @@
 ##### Control part variables
-SJAVAC=0
 EXTRA_FEATURES="jfr"
 BOOTSTRAP_ADOPTIUM=17.0.9+9
 BOOTSTRAP_ALPINE="v3.20"
@@ -24,14 +23,9 @@ JDKBOOTDIR=""
 
 if [[ -z "${JDK_HAS_JIT:-}" ]]; then
     config_zero="--with-jvm-variants=zero --enable-precompiled-headers"
-    SJAVAC=0
 else
     config_zero=" "
     EXTRA_FEATURES+=",shenandoahgc,zgc"
-fi
-
-if [[ "${SJAVAC}" == "1" ]]; then
-    use_sjavac="--enable-sjavac" # Just a simple switch. And sjavac.jar is not needed, since JDK 8 has built-in a similar routine
 fi
 
 if [[ "${CROSS:-$ARCH}" = "armv7hf" ]]; then
@@ -179,14 +173,16 @@ sh "$SRCDIR"/configure \
     --with-libpng=system \
     --with-libjpeg=system \
     --with-giflib=system \
-    ${config_zero} ${use_sjavac} \
+    ${config_zero} \
     ${config_bits} \
     --with-jvm-features="${EXTRA_FEATURES}" \
     --enable-precompiled-headers \
     --with-extra-cxxflags="${EXTRA_CPP_FLAGS}" \
     --with-extra-cflags="${EXTRA_CFLAGS}" \
     --with-extra-ldflags="${LDFLAGS}" \
-    JOBS=$(nproc)
+    --with-vendor-bug-url="https://github.com/AOSC-Dev/aosc-os-abbs/issues" \
+    --with-vendor-vm-bug-url="https://github.com/AOSC-Dev/aosc-os-abbs/issues" \
+    --with-native-debug-symbols=zipped
 
 abinfo "Building OpenJDK ..."
 make product-images docs

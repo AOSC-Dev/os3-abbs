@@ -1,7 +1,7 @@
 From 4a23a2e1371d5f883d4934b246b9d2e2cedd1f40 Mon Sep 17 00:00:00 2001
 From: Alex Deucher <alexander.deucher@amd.com>
 Date: Wed, 30 Oct 2024 17:27:23 -0400
-Subject: [PATCH 004/314] FROMGIT: drm/amdgpu: add generic display panic helper
+Subject: [PATCH 004/316] FROMGIT: drm/amdgpu: add generic display panic helper
  code
 
 Pull this out of Jocelyn's patch and make it generic.

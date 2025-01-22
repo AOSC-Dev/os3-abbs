@@ -1,4 +1,4 @@
-VER=2025.118.2
+VER=2025.122.0
 SRCS="git::commit=tags/$VER::https://github.com/ppy/osu"
 CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=227666"

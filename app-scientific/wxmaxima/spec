@@ -1,5 +1,4 @@
-VER=22.05.0
-REL=1
+VER=24.11.0
 SRCS="tbl::https://github.com/wxMaxima-developers/wxmaxima/archive/Version-$VER.tar.gz"
-CHKSUMS="sha256::a0140b9f6171540556bd40c6b5617eb9ea224debe592014cbfabd0c095594b93"
+CHKSUMS="sha256::e01fd8ca9bb8054e38f6d973f619e2549ab6ab9d0aaebae70c4ed73580258055"
 CHKUPDATE="anitya::id=6366"

@@ -11,7 +11,7 @@ __VER="${VER}"
 # Use this for stable RC releases.
 RC=2
 # To RFC: Increment by 0.1 per RC release, i.e., RC3 = 0.3.
-REL=0.${RC}a
+REL=0.${RC}b
 COMMIT="0bde21f273434bad90411f296c22f02c62c07b2e"
 SRCS="tbl::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git/snapshot/linux-stable-rc-${COMMIT}.tar.gz"
 

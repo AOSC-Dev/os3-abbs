@@ -1,0 +1,40 @@
+From 673b5596719e3f45892059e09191d2ba8935248e Mon Sep 17 00:00:00 2001
+From: Kaiyang Wu <self@origincode.me>
+Date: Sat, 31 Aug 2024 00:01:16 -0700
+Subject: [PATCH 1/2] napi: prefer glibc instead of musl libc
+
+Signed-off-by: Kaiyang Wu <self@origincode.me>
+---
+ apps/desktop/desktop_native/napi/index.js | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/apps/desktop/desktop_native/napi/index.js b/apps/desktop/desktop_native/napi/index.js
+index acfd0dffb8..bfb0e4aa69 100644
+--- a/apps/desktop/desktop_native/napi/index.js
++++ b/apps/desktop/desktop_native/napi/index.js
+@@ -88,19 +88,19 @@ switch (platform) {
+     switch (arch) {
+       case "x64":
+         nativeBinding = loadFirstAvailable(
+-          ["desktop_napi.linux-x64-musl.node", "desktop_napi.linux-x64-gnu.node"],
++          ["desktop_napi.linux-x64-gnu.node", "desktop_napi.linux-x64-musl.node"],
+           "@bitwarden/desktop-napi-linux-x64-musl",
+         );
+         break;
+       case "arm64":
+         nativeBinding = loadFirstAvailable(
+-          ["desktop_napi.linux-arm64-musl.node", "desktop_napi.linux-arm64-gnu.node"],
++          ["desktop_napi.linux-arm64-gnu.node", "desktop_napi.linux-arm64-musl.node"],
+           "@bitwarden/desktop-napi-linux-arm64-musl",
+         );
+         break;
+       case "arm":
+         nativeBinding = loadFirstAvailable(
+-          ["desktop_napi.linux-arm-musl.node", "desktop_napi.linux-arm-gnu.node"],
++          ["desktop_napi.linux-arm-gnu.node", "desktop_napi.linux-arm-musl.node"],
+           "@bitwarden/desktop-napi-linux-arm-musl",
+         );
+         localFileExisted = existsSync(join(__dirname, "desktop_napi.linux-arm-gnueabihf.node"));
+-- 
+2.48.1
+

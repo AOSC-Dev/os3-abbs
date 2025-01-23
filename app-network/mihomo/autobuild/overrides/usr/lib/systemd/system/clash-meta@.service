@@ -4,9 +4,12 @@ After=network.target
 
 [Service]
 Type=exec
+LimitNPROC=500
+LimitNOFILE=1000000
 User=%i
 Restart=on-abort
 ExecStart=/usr/bin/mihomo
+ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]
 WantedBy=multi-user.target

@@ -1,4 +1,4 @@
-From c2919a10305ed4788afa8aa4cad250cdcfb8f120 Mon Sep 17 00:00:00 2001
+From 3a4f0212f358b5ed67c04f892adfc7c69d61e6f4 Mon Sep 17 00:00:00 2001
 From: chenj <chenj@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 253/316] AOSCOS: platform: export psmouse::touchpad led device
@@ -36,10 +36,10 @@ index fc60026bc674..f1c686ef7a54 100644
  /*
   * The reported battery die temperature.
 diff --git a/drivers/platform/mips/Kconfig b/drivers/platform/mips/Kconfig
-index 7ef9a47556d5..a5a80e0a399f 100644
+index 7ffcbc4f1fc5..1997d543a5a3 100644
 --- a/drivers/platform/mips/Kconfig
 +++ b/drivers/platform/mips/Kconfig
-@@ -49,6 +49,7 @@ config LEMOTE3A_LAPTOP
+@@ -50,6 +50,7 @@ config LEMOTE3A_LAPTOP
  	select INPUT_SPARSEKMAP
  	select INPUT_EVDEV
  	depends on INPUT

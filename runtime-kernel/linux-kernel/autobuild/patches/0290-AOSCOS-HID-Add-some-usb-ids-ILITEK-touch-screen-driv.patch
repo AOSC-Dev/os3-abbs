@@ -1,4 +1,4 @@
-From 9359c34049b0ea0351536055dc1fd862ca929c93 Mon Sep 17 00:00:00 2001
+From 66bacd4873458aa0776e3f33ff84eca9628a867e Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Tue, 18 Jul 2017 16:41:48 +0800
 Subject: [PATCH 290/316] AOSCOS: HID: Add some usb-ids ILITEK touch screen

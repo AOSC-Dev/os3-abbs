@@ -1,4 +1,4 @@
-From 8fb851e44ce2c8f808298a2822386d5592dd826b Mon Sep 17 00:00:00 2001
+From 7866d2d3b8e8e42130d787bd4c2a9f896c94647b Mon Sep 17 00:00:00 2001
 From: Xiang Yu <xiangy@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 249/316] AOSCOS: add rear mic support for CX20631

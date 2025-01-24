@@ -1,4 +1,4 @@
-From 84430b615c69e7fbbe8d677603fb691e98e1865e Mon Sep 17 00:00:00 2001
+From 1e44294bb4fae8b68efd100b70f5ee65902ea208 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 4 Dec 2024 15:00:14 +0800
 Subject: [PATCH 211/316] AOSCOS: MIPS: ec_wpce775l: add a missing prototype

@@ -1,4 +1,4 @@
-From 1c96746ffe8439d1ac64437389123aa2af18adab Mon Sep 17 00:00:00 2001
+From 27e27099579e3251b3fdf3de486eed9940506542 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 271/316] AOSCOS: IGB: Detect and recover weird rx hang bug

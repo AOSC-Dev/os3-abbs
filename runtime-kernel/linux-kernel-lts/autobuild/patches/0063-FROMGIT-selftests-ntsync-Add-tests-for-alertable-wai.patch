@@ -1,7 +1,7 @@
-From 2a86607580cc32a11deabd83b70a384430df1377 Mon Sep 17 00:00:00 2001
+From bb5b6eec88a36de095f8226e7944eb142760845b Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:35:06 -0600
-Subject: [PATCH 063/296] FROMGIT: selftests: ntsync: Add tests for alertable
+Subject: [PATCH 063/300] FROMGIT: selftests: ntsync: Add tests for alertable
  waits.
 
 Test the "alert" functionality of NTSYNC_IOC_WAIT_ALL and NTSYNC_IOC_WAIT_ANY,

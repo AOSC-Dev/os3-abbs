@@ -1,7 +1,7 @@
-From dedf6c5f2d4dd1f27e23cb301fbcf199e92cacdd Mon Sep 17 00:00:00 2001
+From 8c46aa905e9d06b55fda5d28c10d96a73aeb4440 Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Wed, 9 Oct 2024 15:51:43 +0800
-Subject: [PATCH 005/296] UPSTREAM: ASoC: dt-bindings: Add Everest ES8323 Codec
+Subject: [PATCH 005/300] UPSTREAM: ASoC: dt-bindings: Add Everest ES8323 Codec
 
 Add DT bindings documentation for the Everest-semi ES8323 codec.
 

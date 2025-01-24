@@ -1,7 +1,7 @@
-From 7c61ed67e74d4b7b4d9ce35d6ed54b3c7d33fd03 Mon Sep 17 00:00:00 2001
+From bb7496ccf53c67dcc753fcb9588c5ddbb3234b99 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:51 -0600
-Subject: [PATCH 048/296] FROMGIT: ntsync: Introduce NTSYNC_IOC_EVENT_RESET.
+Subject: [PATCH 048/300] FROMGIT: ntsync: Introduce NTSYNC_IOC_EVENT_RESET.
 
 This corresponds to the NT syscall NtResetEvent().
 

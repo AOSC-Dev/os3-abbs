@@ -1,4 +1,4 @@
-From 116c510d0334cb3a06fe974dad2a9eb2526c1de2 Mon Sep 17 00:00:00 2001
+From 5ef100d7ece7832a4a4e4b4c2e2c1a67cb1c6ee5 Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Mon, 23 Dec 2024 19:06:09 +0800
 Subject: [PATCH 312/316] AOSCOS: mips, crash: wrap more crash dumping code

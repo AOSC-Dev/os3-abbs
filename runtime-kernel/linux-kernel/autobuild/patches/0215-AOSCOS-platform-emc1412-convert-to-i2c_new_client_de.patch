@@ -1,4 +1,4 @@
-From d8053a9d27e6334fb2ca9493915d5f472c423a89 Mon Sep 17 00:00:00 2001
+From d7bf3a9cabad7202cbe5c7756cde5756fc1dd167 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 4 Dec 2024 15:46:26 +0800
 Subject: [PATCH 215/316] AOSCOS: platform: emc1412: convert to

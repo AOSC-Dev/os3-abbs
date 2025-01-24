@@ -1,4 +1,4 @@
-From 7db340dbe6ad06a5bcbad22f85f3b9874ee057ed Mon Sep 17 00:00:00 2001
+From ef539c4f3282bb5158b5faaa473b9d9850474f1b Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Mon, 9 Dec 2024 10:35:39 +0800
 Subject: [PATCH 234/316] AOSCOS: mvsas: Optimise performance and stability on

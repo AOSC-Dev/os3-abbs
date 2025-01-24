@@ -1,4 +1,4 @@
-From d1ac76fc01179d86dfeff6ac36ff0b0a15e30abd Mon Sep 17 00:00:00 2001
+From bc53c7a98eef81278cc0daa1e05a9da5041ea1cf Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Wed, 1 Aug 2018 14:31:19 +0800
 Subject: [PATCH 266/316] AOSCOS: drm/radeon: Reintroduce radeon_gart_restore()

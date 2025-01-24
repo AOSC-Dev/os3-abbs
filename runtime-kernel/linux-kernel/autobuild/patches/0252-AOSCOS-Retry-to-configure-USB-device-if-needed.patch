@@ -1,4 +1,4 @@
-From aa1f27d2239736398265803976af737f6fdc72b4 Mon Sep 17 00:00:00 2001
+From 8505f901198c40dee564776c71ac46421a7d5226 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 252/316] AOSCOS: Retry to configure USB device if needed

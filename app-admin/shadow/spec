@@ -1,4 +1,4 @@
-VER=4.17.1
+VER=4.17.2
 SRCS="tbl::https://github.com/shadow-maint/shadow/releases/download/$VER/shadow-$VER.tar.xz"
-CHKSUMS="sha256::4115a57f9404a038085e160920fb395827fe34363287f709bb9d8c1ed8cbce02"
+CHKSUMS="sha256::a21cf0d34bffc4314cede01cff258689174fab30ca494ae8f45784d3d56c9849"
 CHKUPDATE="anitya::id=4802"

@@ -1,7 +1,7 @@
-From ae00ea361fca4c923cb6e61f401e5d5a8801ea64 Mon Sep 17 00:00:00 2001
+From f57f03606f9d6dc406ee5d7b277f62c70c61f4ef Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:52 -0600
-Subject: [PATCH 049/296] FROMGIT: ntsync: Introduce NTSYNC_IOC_EVENT_PULSE.
+Subject: [PATCH 049/300] FROMGIT: ntsync: Introduce NTSYNC_IOC_EVENT_PULSE.
 
 This corresponds to the NT syscall NtPulseEvent().
 

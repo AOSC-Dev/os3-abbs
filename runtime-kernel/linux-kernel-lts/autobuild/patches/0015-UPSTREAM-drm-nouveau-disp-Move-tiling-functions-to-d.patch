@@ -1,7 +1,7 @@
-From 2de1d35680fb08ca4a8dee805c449aafc8466c33 Mon Sep 17 00:00:00 2001
+From 46443404d81ee55809e86db8d9ed27905e107dc0 Mon Sep 17 00:00:00 2001
 From: Jocelyn Falempe <jfalempe@redhat.com>
 Date: Tue, 22 Oct 2024 20:39:48 +0200
-Subject: [PATCH 015/296] UPSTREAM: drm/nouveau/disp: Move tiling functions to
+Subject: [PATCH 015/300] UPSTREAM: drm/nouveau/disp: Move tiling functions to
  dispnv50/tile.h
 
 Refactor, and move the tiling geometry functions to dispnv50/tile.h,

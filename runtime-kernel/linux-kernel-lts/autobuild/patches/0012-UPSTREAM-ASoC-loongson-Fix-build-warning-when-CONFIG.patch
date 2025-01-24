@@ -1,7 +1,7 @@
-From 8024e350624c444706640d81e0582c13e02e5da7 Mon Sep 17 00:00:00 2001
+From 272ff4f25f30930e3bdad1e32be8fdacbc3fb00b Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Sat, 12 Oct 2024 17:58:40 +0800
-Subject: [PATCH 012/296] UPSTREAM: ASoC: loongson: Fix build warning when
+Subject: [PATCH 012/300] UPSTREAM: ASoC: loongson: Fix build warning when
  !CONFIG_PCI
 
 Fixes the below if kernel config disable PCI support:

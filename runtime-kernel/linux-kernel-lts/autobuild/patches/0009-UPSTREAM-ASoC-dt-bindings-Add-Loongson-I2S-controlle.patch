@@ -1,7 +1,7 @@
-From cfb77605e0649cf44da6fa7ee513f175cc702135 Mon Sep 17 00:00:00 2001
+From 231f3cb71106a6bf167ef6fa9726e3b30e828d10 Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Wed, 9 Oct 2024 15:52:37 +0800
-Subject: [PATCH 009/296] UPSTREAM: ASoC: dt-bindings: Add Loongson I2S
+Subject: [PATCH 009/300] UPSTREAM: ASoC: dt-bindings: Add Loongson I2S
  controller
 
 Add Loongson I2S controller binding with DT schema format using

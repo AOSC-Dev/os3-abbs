@@ -1,7 +1,7 @@
 From 209e7b54143be03bf5d4190983df47224d39197b Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:35:10 -0600
-Subject: [PATCH 067/300] FROMGIT: docs: ntsync: Add documentation for the
+Subject: [PATCH 067/301] FROMGIT: docs: ntsync: Add documentation for the
  ntsync uAPI.
 
 Add an overall explanation of the driver architecture, and complete and precise

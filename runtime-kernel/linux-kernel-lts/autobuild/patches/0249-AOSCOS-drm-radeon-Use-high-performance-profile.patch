@@ -1,7 +1,7 @@
 From b4ff6b943390cfd83214ef6a70d809a4c713da3f Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Sat, 6 May 2017 09:28:30 +0800
-Subject: [PATCH 249/300] AOSCOS: drm/radeon: Use high performance profile
+Subject: [PATCH 249/301] AOSCOS: drm/radeon: Use high performance profile
 
 Signed-off-by: Ce Sun <sunc@lemote.com>
 Signed-off-by: Huacai Chen <chenhc@lemote.com>

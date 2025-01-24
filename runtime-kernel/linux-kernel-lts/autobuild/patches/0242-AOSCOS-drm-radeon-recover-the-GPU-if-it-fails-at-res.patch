@@ -1,7 +1,7 @@
 From 009cb430b756e3a99b2ccc1e821797940d371af1 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
-Subject: [PATCH 242/300] AOSCOS: drm/radeon: recover the GPU if it fails at
+Subject: [PATCH 242/301] AOSCOS: drm/radeon: recover the GPU if it fails at
  resume
 
 [Mingcong Bai: Resolved a minor merge conflict in

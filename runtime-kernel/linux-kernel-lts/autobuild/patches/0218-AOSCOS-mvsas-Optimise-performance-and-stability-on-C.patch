@@ -1,7 +1,7 @@
 From b2807b12eae9dfddd5783086b7995555a2ae7ef7 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Mon, 9 Dec 2024 10:35:39 +0800
-Subject: [PATCH 218/300] AOSCOS: mvsas: Optimise performance and stability on
+Subject: [PATCH 218/301] AOSCOS: mvsas: Optimise performance and stability on
  CPU_LOONGSON64
 
 Optimize this driver conditionally for MIPS-based Loongson 3

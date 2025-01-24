@@ -1,7 +1,7 @@
 From 87ff9f0b83b7052574e01ce15177d9888fab398f Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 10 Dec 2024 16:36:25 +0800
-Subject: [PATCH 239/300] AOSCOS: MIPS: audit: declare function prototypes for
+Subject: [PATCH 239/301] AOSCOS: MIPS: audit: declare function prototypes for
  audit_classify_syscall_*()
 
 Functions `audit_classify_syscall_n32()', `audit_classify_syscall_o32()`

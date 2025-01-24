@@ -1,7 +1,7 @@
 From 2522ce55d25455ba30732ea1b7364b8a970ac356 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Thu, 12 Dec 2024 13:33:50 +0800
-Subject: [PATCH 284/300] AOSCOS: MIPS: lib: exclude generic memset.o if
+Subject: [PATCH 284/301] AOSCOS: MIPS: lib: exclude generic memset.o if
  CPU_LOONGSON64 is set
 
 In "AOSCOS: memset optimization for loongson-3", a Loongson-3-specific

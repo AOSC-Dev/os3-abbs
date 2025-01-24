@@ -1,7 +1,7 @@
 From 7637442ac3d69acdf68978e1a95deaf3381b4fa4 Mon Sep 17 00:00:00 2001
 From: Alex Deucher <alexander.deucher@amd.com>
 Date: Thu, 31 Oct 2024 13:17:06 -0400
-Subject: [PATCH 033/300] BACKPORT: FROMGIT: drm/amd/display: add clear_tiling
+Subject: [PATCH 033/301] BACKPORT: FROMGIT: drm/amd/display: add clear_tiling
  hubp callbacks
 
 This adds clear_tiling callbacks to the hubp structure that

@@ -1,7 +1,7 @@
 From aa2a178e5e1457d756973c6634b9658bd0a52493 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 11 Dec 2024 16:19:05 +0800
-Subject: [PATCH 266/300] AOSCOS: staging: sb105x: drop TTY_DRIVER_MAGIC
+Subject: [PATCH 266/301] AOSCOS: staging: sb105x: drop TTY_DRIVER_MAGIC
  assignment
 
 Per commit 5052df99d3bc ("tty: remove TTY_DRIVER_MAGIC"), the magic number

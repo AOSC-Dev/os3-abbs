@@ -1,7 +1,7 @@
 From 5b3e0b7fb6e0f7c5c8bd70a075304e727b94ee41 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
-Subject: [PATCH 212/300] AOSCOS: MIPS: Loongson 3: Add EC resources accessing
+Subject: [PATCH 212/301] AOSCOS: MIPS: Loongson 3: Add EC resources accessing
  and programming support
 
 Signed-off-by: Huacai Chen <chenhc@lemote.com>

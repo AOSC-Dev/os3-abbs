@@ -1,7 +1,7 @@
 From 6b5ed60d02d97a4eff46c7d2e9a6f4a5c48d6a34 Mon Sep 17 00:00:00 2001
 From: Daniel Scally <dan.scally@ideasonboard.com>
 Date: Tue, 21 Mar 2023 13:45:26 +0000
-Subject: [PATCH 151/300] SURFACE: media: i2c: Clarify that gain is Analogue
+Subject: [PATCH 151/301] SURFACE: media: i2c: Clarify that gain is Analogue
  gain in OV7251
 
 Update the control ID for the gain control in the ov7251 driver to

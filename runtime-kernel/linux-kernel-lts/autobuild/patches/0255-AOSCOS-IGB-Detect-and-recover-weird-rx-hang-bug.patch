@@ -1,7 +1,7 @@
 From 59d1fb4a1e0960d216eee1770576be008b7d1dda Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
-Subject: [PATCH 255/300] AOSCOS: IGB: Detect and recover weird rx hang bug
+Subject: [PATCH 255/301] AOSCOS: IGB: Detect and recover weird rx hang bug
 
 Signed-off-by: Huacai Chen <chenhc@lemote.com>
 

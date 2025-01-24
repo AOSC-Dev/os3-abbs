@@ -1,7 +1,7 @@
 From f6a8248f6edc2500f5f73705834c2f4f736da116 Mon Sep 17 00:00:00 2001
 From: root <baimingcong@uniontech.com>
 Date: Tue, 23 Jul 2024 11:00:20 +0800
-Subject: [PATCH 132/300] DEEPIN: ethernet: yt6801: fix build on >= 6.8
+Subject: [PATCH 132/301] DEEPIN: ethernet: yt6801: fix build on >= 6.8
 
 Adapt to ethtool.h changes introduced in 6.8.
 

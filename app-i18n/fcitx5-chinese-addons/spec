@@ -1,7 +1,7 @@
-VER=5.1.7
+VER=5.1.8
 SRCS="git::commit=tags/$VER::https://github.com/fcitx/fcitx5-chinese-addons \
       tbl::https://download.fcitx-im.org/fcitx5/fcitx5-chinese-addons/fcitx5-chinese-addons-${VER}_dict.tar.zst"
 CHKSUMS="SKIP \
-         sha256::920ec6fb6abc93f80514eff3f7e64fce822dbd820a98afd816fe5039459520b3"
+         sha256::8306a2854be6a6d981271a9a1559517bb084e5ee018629571af4786038379a1a"
 CHKUPDATE="anitya::id=138238"
 SUBDIR="fcitx5-chinese-addons-$VER"

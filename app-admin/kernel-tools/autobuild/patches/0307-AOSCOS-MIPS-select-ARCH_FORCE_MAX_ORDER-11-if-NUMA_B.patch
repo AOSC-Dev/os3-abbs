@@ -1,4 +1,4 @@
-From 04f6ba7916c9b1351bdf296a177edc773bc9f5ac Mon Sep 17 00:00:00 2001
+From 6ab6711ed89023200e246f28cb5215dd5a5a1f87 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Thu, 12 Dec 2024 16:05:51 +0800
 Subject: [PATCH 307/316] AOSCOS: MIPS: select ARCH_FORCE_MAX_ORDER >= 11 if
@@ -16,7 +16,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/arch/mips/Kconfig b/arch/mips/Kconfig
-index d798ec7b8e68..ed798b62d3bf 100644
+index b90cdaf93757..2b3abafaa2c2 100644
 --- a/arch/mips/Kconfig
 +++ b/arch/mips/Kconfig
 @@ -2110,9 +2110,9 @@ config ZBOOT_LOAD_ADDRESS

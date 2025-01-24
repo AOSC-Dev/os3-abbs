@@ -1,4 +1,4 @@
-From 5da1f9a8d6962f91306f01b36214e013ad1a016b Mon Sep 17 00:00:00 2001
+From 67a30118c68460dc5f8cfabf418a16889b3628a7 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 4 Dec 2024 15:16:04 +0800
 Subject: [PATCH 213/316] AOSCOS: platform: mips: rename dependency for
@@ -15,10 +15,10 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/platform/mips/Kconfig b/drivers/platform/mips/Kconfig
-index 59b6027eeadf..7ef9a47556d5 100644
+index 81a09c673377..7ffcbc4f1fc5 100644
 --- a/drivers/platform/mips/Kconfig
 +++ b/drivers/platform/mips/Kconfig
-@@ -39,7 +39,7 @@ config LS2K_RESET
+@@ -40,7 +40,7 @@ config LS2K_RESET
  
  config LEMOTE3A_LAPTOP
  	tristate "Lemote Loongson-3A Laptop Driver"

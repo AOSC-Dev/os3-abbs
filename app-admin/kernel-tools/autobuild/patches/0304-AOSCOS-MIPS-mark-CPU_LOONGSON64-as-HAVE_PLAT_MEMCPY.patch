@@ -1,4 +1,4 @@
-From f5731743c5ce09d3d4f9d35228ee1b8b3da4a9eb Mon Sep 17 00:00:00 2001
+From bbc72a3fb8ee25f8a6ea59075b20b6f5efc71dec Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Thu, 12 Dec 2024 14:09:34 +0800
 Subject: [PATCH 304/316] AOSCOS: MIPS: mark CPU_LOONGSON64 as HAVE_PLAT_MEMCPY
@@ -15,7 +15,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 1 insertion(+)
 
 diff --git a/arch/mips/Kconfig b/arch/mips/Kconfig
-index 8043e1892ca5..d798ec7b8e68 100644
+index af0cf50feefe..b90cdaf93757 100644
 --- a/arch/mips/Kconfig
 +++ b/arch/mips/Kconfig
 @@ -1338,6 +1338,7 @@ config CPU_LOONGSON64

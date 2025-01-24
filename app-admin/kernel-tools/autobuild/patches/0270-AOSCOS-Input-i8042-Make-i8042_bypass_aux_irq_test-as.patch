@@ -1,4 +1,4 @@
-From 09f9440482de1d4725bc9554a82795467e5d97ae Mon Sep 17 00:00:00 2001
+From d6113159af2592bb94a187b65306803851e4b3cb Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 270/316] AOSCOS: Input: i8042 - Make i8042_bypass_aux_irq_test

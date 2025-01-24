@@ -1,4 +1,4 @@
-From 0c1ee83adb4526b2df9ddf1fd31373561bd713dc Mon Sep 17 00:00:00 2001
+From 76eb1e472843c2b74de22256032b0395199c328a Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 250/316] AOSCOS: add rear mic support for CX20641

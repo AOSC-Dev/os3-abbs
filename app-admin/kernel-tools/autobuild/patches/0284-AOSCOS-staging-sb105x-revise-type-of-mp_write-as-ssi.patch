@@ -1,4 +1,4 @@
-From 6758b3885ee9c84021934b9ff4c0fdebf8b887b4 Mon Sep 17 00:00:00 2001
+From 9199d32291969d27a18853e1f0d4a77f2a211783 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 11 Dec 2024 17:16:44 +0800
 Subject: [PATCH 284/316] AOSCOS: staging: sb105x: revise type of mp_write() as

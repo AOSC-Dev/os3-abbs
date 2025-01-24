@@ -1,4 +1,4 @@
-From 784b3b7d1ea24fee5b9002fca202b26dc10fc16e Mon Sep 17 00:00:00 2001
+From ba8ac4ea35063e6e719546faa2beacba7e9510c9 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 10 Dec 2024 16:39:13 +0800
 Subject: [PATCH 256/316] AOSCOS: MIPS: audit: replace magic audit syscall

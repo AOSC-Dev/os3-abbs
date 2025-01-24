@@ -1,7 +1,7 @@
-VER=5.1.11
+VER=5.1.12
 SRCS="git::commit=tags/$VER::https://github.com/fcitx/fcitx5 \
       tbl::https://download.fcitx-im.org/fcitx5/fcitx5/fcitx5-${VER}_dict.tar.zst"
 CHKSUMS="SKIP \
-         sha256::6d16ce1eea7a86eacbb8e738329b924469c93fee954e8851ec58aed906577d89"
+         sha256::19da94d26e66d7b1028ab6bd1b13dddde937a23c280798f3ba53747259c455ff"
 CHKUPDATE="anitya::id=138232"
 SUBDIR="fcitx5-$VER"

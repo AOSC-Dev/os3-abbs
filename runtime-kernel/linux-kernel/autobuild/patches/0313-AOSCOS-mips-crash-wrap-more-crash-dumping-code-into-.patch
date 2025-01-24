@@ -1,7 +1,7 @@
 From 0d79acea226add2bb1f8795ab796f002c1e688a8 Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Mon, 23 Dec 2024 19:06:09 +0800
-Subject: [PATCH 313/317] AOSCOS: mips, crash: wrap more crash dumping code
+Subject: [PATCH 313/318] AOSCOS: mips, crash: wrap more crash dumping code
  into crash related ifdefs
 
 In

@@ -1,7 +1,7 @@
 From fe8b3491341a9acaba30a945457b32e8979f80e7 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Tue, 7 Jan 2025 14:22:36 +0800
-Subject: [PATCH 090/317] FROMLIST: LoongArch: Correct the __switch_to()
+Subject: [PATCH 090/318] FROMLIST: LoongArch: Correct the __switch_to()
  prototype in comments
 
 Correct the __switch_to() prototype in comments, keep it be the same as

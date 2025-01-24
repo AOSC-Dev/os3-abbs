@@ -1,7 +1,7 @@
 From a608c1ba6bfab1daf80cd93d046be9fe57da4b1b Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 11 Dec 2024 13:49:12 +0800
-Subject: [PATCH 275/317] AOSCOS: staging: sb105x: add missing function
+Subject: [PATCH 275/318] AOSCOS: staging: sb105x: add missing function
  prototypes
 
 A few functions in drivers/staging/sb105x/sb_ser_core.h were missing

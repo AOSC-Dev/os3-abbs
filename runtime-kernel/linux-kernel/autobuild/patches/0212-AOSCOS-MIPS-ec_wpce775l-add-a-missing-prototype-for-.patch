@@ -1,7 +1,7 @@
 From d320db86d8270d59896d23131927154262493d8e Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 4 Dec 2024 15:00:14 +0800
-Subject: [PATCH 212/317] AOSCOS: MIPS: ec_wpce775l: add a missing prototype
+Subject: [PATCH 212/318] AOSCOS: MIPS: ec_wpce775l: add a missing prototype
  for ec_query_get_event_num()
 
 Add missing prototype for ec_query_get_event_num() to suppress a -Werror

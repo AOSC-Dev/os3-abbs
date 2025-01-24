@@ -1,7 +1,7 @@
 From ee22d6308c76da69ece43db663f0fceb1c0b54bd Mon Sep 17 00:00:00 2001
 From: Kate Hsuan <hpa@redhat.com>
 Date: Tue, 21 Mar 2023 23:37:17 +0800
-Subject: [PATCH 168/317] SURFACE: include: mfd: tps68470: Add masks for LEDA
+Subject: [PATCH 168/318] SURFACE: include: mfd: tps68470: Add masks for LEDA
  and LEDB
 
 Add flags for both LEDA(TPS68470_ILEDCTL_ENA), LEDB

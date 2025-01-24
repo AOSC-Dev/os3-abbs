@@ -1,7 +1,7 @@
 From 4904f5736358d653f9b0b58e474597f6d1bcad65 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Tue, 14 Jan 2025 20:42:28 +0800
-Subject: [PATCH 112/317] LOONGSON: LoongArch: Adjust SETUP_SLEEP and
+Subject: [PATCH 112/318] LOONGSON: LoongArch: Adjust SETUP_SLEEP and
  SETUP_WAKEUP
 
 SETUP_SLEEP should only save the GPR context, which is symmetric to

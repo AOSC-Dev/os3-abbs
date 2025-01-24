@@ -1,7 +1,7 @@
 From d819abc1fe87320edc48d09879db45d28c98da54 Mon Sep 17 00:00:00 2001
 From: Jackie Dong <xy-jackie@139.com>
 Date: Thu, 19 Dec 2024 18:15:30 +0800
-Subject: [PATCH 082/317] FROMLIST: platform/x86: ideapad-laptop: Support for
+Subject: [PATCH 082/318] FROMLIST: platform/x86: ideapad-laptop: Support for
  mic and audio leds.
 
 Implement Lenovo utility data WMI calls needed to make LEDs

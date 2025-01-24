@@ -1,7 +1,7 @@
 From c5b7c584f5dfd8fa21a37fe44da9ec7b9ab18a59 Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Sat, 25 Jan 2025 03:03:03 +0800
-Subject: [PATCH 204/317] AOSCOS: MIPS: loongson64: deselect
+Subject: [PATCH 204/318] AOSCOS: MIPS: loongson64: deselect
  ARCH_SUPPORTS_HUGETLBFS
 
 Disable HugeTLB support as it causes TLB exceptions and illegal memory

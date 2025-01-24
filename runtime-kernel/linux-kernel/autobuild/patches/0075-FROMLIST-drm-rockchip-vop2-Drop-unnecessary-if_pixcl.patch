@@ -1,7 +1,7 @@
 From 2ea8e885eb2d03fd5cc5ff29e336cf286e1283a8 Mon Sep 17 00:00:00 2001
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Date: Wed, 11 Dec 2024 12:15:06 +0200
-Subject: [PATCH 075/317] FROMLIST: drm/rockchip: vop2: Drop unnecessary
+Subject: [PATCH 075/318] FROMLIST: drm/rockchip: vop2: Drop unnecessary
  if_pixclk_rate computation
 
 The if_pixclk_rate variable is not being used outside of the if-block in

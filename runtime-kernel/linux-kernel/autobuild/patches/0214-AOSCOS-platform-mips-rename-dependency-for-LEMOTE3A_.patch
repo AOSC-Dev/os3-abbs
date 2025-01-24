@@ -1,7 +1,7 @@
 From db8c3a3b8dbfaf73de2c3e9a66dcb4a80c2e9607 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 4 Dec 2024 15:16:04 +0800
-Subject: [PATCH 214/317] AOSCOS: platform: mips: rename dependency for
+Subject: [PATCH 214/318] AOSCOS: platform: mips: rename dependency for
  LEMOTE3A_LAPTOP
 
 Rename LOONGSON_MACH3X => MACH_LOONGSON64 per commit 6fbde6b492df ("MIPS:

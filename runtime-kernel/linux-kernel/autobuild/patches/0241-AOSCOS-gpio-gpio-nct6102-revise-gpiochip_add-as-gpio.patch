@@ -1,7 +1,7 @@
 From cb28c71eef60eef8d8569b45272fa03848420fec Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Mon, 9 Dec 2024 17:34:17 +0800
-Subject: [PATCH 241/317] AOSCOS: gpio: gpio-nct6102: revise gpiochip_add() as
+Subject: [PATCH 241/318] AOSCOS: gpio: gpio-nct6102: revise gpiochip_add() as
  gpiochip_add_data()
 
 Per commit 3ff1180a39fb ("gpiolib: Remove data-less gpiochip_add()

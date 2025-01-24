@@ -1,7 +1,7 @@
 From 2a6bbe3d66a11a54e793d3b90c6e8b280352f17a Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Tue, 31 Dec 2024 15:56:52 +0800
-Subject: [PATCH 200/317] AOSCOS: drm/ls2kbmc: Add id_table for
+Subject: [PATCH 200/318] AOSCOS: drm/ls2kbmc: Add id_table for
  ls2kbmc_platform_driver
 
 Try to fix device binding for the driver.

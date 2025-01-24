@@ -1,4 +1,4 @@
-VER=125
+VER=126
 SRCS="git::commit=tags/$VER::https://github.com/polkit-org/polkit"
 CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=3682"

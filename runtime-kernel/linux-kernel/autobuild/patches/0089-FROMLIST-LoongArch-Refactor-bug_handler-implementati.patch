@@ -1,7 +1,7 @@
 From f47d0dba66f0963e6fedbfff1a0dc3605a910ed0 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Tue, 31 Dec 2024 15:53:53 +0800
-Subject: [PATCH 089/317] FROMLIST: LoongArch: Refactor bug_handler()
+Subject: [PATCH 089/318] FROMLIST: LoongArch: Refactor bug_handler()
  implementation
 
 1. Early return for user mode triggered exception with all types.

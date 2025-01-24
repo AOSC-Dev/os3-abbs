@@ -1,7 +1,7 @@
 From 81a7ace6ac1b5e6056d395eefb3b98f7402f4fb5 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Sun, 1 Nov 2020 11:33:56 +0800
-Subject: [PATCH 103/317] BACKPORT: FROMLIST: mips/mm: Add NUMA balancing
+Subject: [PATCH 103/318] BACKPORT: FROMLIST: mips/mm: Add NUMA balancing
  support
 
 NUMA balancing is available on nearly all architectures, but MIPS lacks

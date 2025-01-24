@@ -1,7 +1,7 @@
 From 7e9b28fceb8ba6fbdc22eb91383b7185f78402b4 Mon Sep 17 00:00:00 2001
 From: James Morse <james.morse@arm.com>
 Date: Mon, 22 Jan 2024 14:57:31 +0800
-Subject: [PATCH 136/317] BACKPORT: OPENEULER: arm64: cpufeature: discover CPU
+Subject: [PATCH 136/318] BACKPORT: OPENEULER: arm64: cpufeature: discover CPU
  support for MPAM
 
 maillist inclusion

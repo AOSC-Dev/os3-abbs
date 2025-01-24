@@ -1,7 +1,7 @@
 From c049d3c7b484ec28823f2b6b716f7c09b6d6f2fd Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 11 Dec 2024 16:02:01 +0800
-Subject: [PATCH 282/317] AOSCOS: staging: sb105x: drop upstream-removed
+Subject: [PATCH 282/318] AOSCOS: staging: sb105x: drop upstream-removed
  STD_COM_FLAGS
 
 Per commit 5691e03593cb ("tty: frv, remove unused serial macros"), the

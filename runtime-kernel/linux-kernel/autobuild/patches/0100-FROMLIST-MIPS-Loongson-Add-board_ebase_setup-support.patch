@@ -1,7 +1,7 @@
 From 498154be0eb6d97e2ca34169150ef39a33125b7d Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 12 Mar 2020 17:41:57 +0800
-Subject: [PATCH 100/317] FROMLIST: MIPS: Loongson: Add board_ebase_setup()
+Subject: [PATCH 100/318] FROMLIST: MIPS: Loongson: Add board_ebase_setup()
  support
 
 The EBase registers of old Loongson processor models before 3A2000 are

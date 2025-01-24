@@ -1,7 +1,7 @@
 From c17ae02f2522bb01b2de1dac04a931f404c200aa Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 24 Sep 2020 18:07:58 +0800
-Subject: [PATCH 102/317] BACKPORT: FROMLIST: MIPS: Reserve extra memory for
+Subject: [PATCH 102/318] BACKPORT: FROMLIST: MIPS: Reserve extra memory for
  crash dump
 
 Traditionally, MIPS's contiguous low memory can be as less as 256M, so

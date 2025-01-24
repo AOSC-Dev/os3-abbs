@@ -1,7 +1,7 @@
 From 874680b6a971ca18ca8a7d1d34769107a7c9a55c Mon Sep 17 00:00:00 2001
 From: Ming Wang <wangming01@loongson.cn>
 Date: Thu, 5 Dec 2024 19:43:07 +0800
-Subject: [PATCH 044/317] FROMGIT: rtc: loongson: clear TOY_MATCH0_REG in
+Subject: [PATCH 044/318] FROMGIT: rtc: loongson: clear TOY_MATCH0_REG in
  loongson_rtc_isr()
 
 The TOY_MATCH0_REG should be cleared to 0 in the RTC interrupt handler,

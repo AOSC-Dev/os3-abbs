@@ -1,7 +1,7 @@
 From e4832d8f0cdaffb26a8bba0f9eb8ed22a3b7e3e8 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Wed, 1 Aug 2018 14:31:19 +0800
-Subject: [PATCH 267/317] AOSCOS: drm/radeon: Reintroduce radeon_gart_restore()
+Subject: [PATCH 267/318] AOSCOS: drm/radeon: Reintroduce radeon_gart_restore()
 
 This revert commit a3eb06dbca08e3fdad7039021ae0 ("drm/radeon: Remove
 radeon_gart_restore()") and update code for the latest kernel. We do

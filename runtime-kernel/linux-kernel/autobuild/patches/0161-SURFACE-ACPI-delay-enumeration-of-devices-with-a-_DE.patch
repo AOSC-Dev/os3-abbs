@@ -1,7 +1,7 @@
 From 00753560b915054ed2bf55c2c5fe9112e170a822 Mon Sep 17 00:00:00 2001
 From: Hans de Goede <hdegoede@redhat.com>
 Date: Sun, 10 Oct 2021 20:56:57 +0200
-Subject: [PATCH 161/317] SURFACE: ACPI: delay enumeration of devices with a
+Subject: [PATCH 161/318] SURFACE: ACPI: delay enumeration of devices with a
  _DEP pointing to an INT3472 device
 
 The clk and regulator frameworks expect clk/regulator consumer-devices

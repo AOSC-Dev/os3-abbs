@@ -1,4 +1,4 @@
-VER=5.1.2
-SRCS="tbl::https://github.com/fcitx/fcitx5-sayura/archive/$VER.tar.gz"
-CHKSUMS="sha256::04f1015d52e85986c52976e1c79cecbd95fcb5d9f5313bae76ae0b3e698a8767"
+VER=5.1.3
+SRCS="git::commit=tags/$VER::https://github.com/fcitx/fcitx5-sayura"
+CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=174361"

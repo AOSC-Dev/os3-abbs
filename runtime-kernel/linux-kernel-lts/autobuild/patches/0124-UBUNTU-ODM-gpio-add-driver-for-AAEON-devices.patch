@@ -1,7 +1,7 @@
 From 5bcf7141c711ed4b00e27115bfb0787a972cea8b Mon Sep 17 00:00:00 2001
 From: Kunyang_Fan <kunyang_fan@asus.com>
 Date: Wed, 16 Jun 2021 13:56:59 +0800
-Subject: [PATCH 124/300] UBUNTU: ODM: gpio: add driver for AAEON devices
+Subject: [PATCH 124/301] UBUNTU: ODM: gpio: add driver for AAEON devices
 
 BugLink: https://bugs.launchpad.net/bugs/1929504
 

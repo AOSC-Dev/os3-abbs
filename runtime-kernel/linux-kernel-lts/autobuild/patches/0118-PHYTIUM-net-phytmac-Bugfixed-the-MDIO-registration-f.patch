@@ -1,7 +1,7 @@
 From 598a544a7fc070ad9f0d5cedfcc4a69140c4e453 Mon Sep 17 00:00:00 2001
 From: Li Wencheng <liwencheng@phytium.com.cn>
 Date: Fri, 29 Mar 2024 16:45:04 +0800
-Subject: [PATCH 118/300] PHYTIUM: net/phytmac: Bugfixed the MDIO registration
+Subject: [PATCH 118/301] PHYTIUM: net/phytmac: Bugfixed the MDIO registration
  failures
 
 When MDIO registration fails, it will double free netdev,

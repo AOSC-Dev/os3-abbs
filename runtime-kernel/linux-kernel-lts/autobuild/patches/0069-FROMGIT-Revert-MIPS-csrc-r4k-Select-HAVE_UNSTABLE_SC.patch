@@ -1,7 +1,7 @@
 From e01e3015dd2b2f26fb3f420fb77b1f7d6383836c Mon Sep 17 00:00:00 2001
 From: Xi Ruoyao <xry111@xry111.site>
 Date: Mon, 23 Dec 2024 17:20:41 +0800
-Subject: [PATCH 069/300] FROMGIT: Revert "MIPS: csrc-r4k: Select
+Subject: [PATCH 069/301] FROMGIT: Revert "MIPS: csrc-r4k: Select
  HAVE_UNSTABLE_SCHED_CLOCK if SMP && 64BIT"
 
 This reverts commit 426fa8e4fe7bb914b5977cbce453a9926bf5b2e6.

@@ -1,7 +1,7 @@
 From 6e9a35f188a53cfb84ff3bc2392aae0b427be9b3 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
-Subject: [PATCH 247/300] AOSCOS: drm/radeon: Fix hibernation for JUNIPER on
+Subject: [PATCH 247/301] AOSCOS: drm/radeon: Fix hibernation for JUNIPER on
  Loongson
 
 Signed-off-by: Huacai Chen <chenhc@lemote.com>

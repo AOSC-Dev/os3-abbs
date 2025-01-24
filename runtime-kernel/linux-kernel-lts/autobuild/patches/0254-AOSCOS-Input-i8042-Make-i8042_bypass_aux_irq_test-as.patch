@@ -1,7 +1,7 @@
 From 3eb3f7866fe2f034b96ab38d90ed0d468cc49847 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
-Subject: [PATCH 254/300] AOSCOS: Input: i8042 - Make i8042_bypass_aux_irq_test
+Subject: [PATCH 254/301] AOSCOS: Input: i8042 - Make i8042_bypass_aux_irq_test
  as a module parameter
 
 The original i8042_bypass_aux_irq_test is a variable which cannot be

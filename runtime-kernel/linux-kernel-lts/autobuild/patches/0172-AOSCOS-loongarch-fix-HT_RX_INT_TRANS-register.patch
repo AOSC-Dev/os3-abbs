@@ -1,7 +1,7 @@
 From 6d2ee32f5d407f32c4cdbda498026bc0159b747b Mon Sep 17 00:00:00 2001
 From: Miao Wang <shankerwangmiao@gmail.com>
 Date: Tue, 13 Aug 2024 22:33:01 +0800
-Subject: [PATCH 172/300] AOSCOS: loongarch: fix HT_RX_INT_TRANS register
+Subject: [PATCH 172/301] AOSCOS: loongarch: fix HT_RX_INT_TRANS register
 
 On machines with legacy firmware with BPI01000 version, the
 HT_RX_INT_TRANS register on the node 5, i.e. the node connected with the

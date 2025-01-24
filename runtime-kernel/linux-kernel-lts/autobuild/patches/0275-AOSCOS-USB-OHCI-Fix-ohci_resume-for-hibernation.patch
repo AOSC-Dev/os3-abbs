@@ -1,7 +1,7 @@
 From b275d8a47a348490e19245b9fe5dd1b93543d461 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Sat, 24 Nov 2018 15:28:13 +0800
-Subject: [PATCH 275/300] AOSCOS: USB: OHCI: Fix ohci_resume() for hibernation
+Subject: [PATCH 275/301] AOSCOS: USB: OHCI: Fix ohci_resume() for hibernation
 
 During hibernation restore, some OHCI controllers (such as in AMD RS780
 and Loongson LS7A) may generate RHSC interrupt. Once RHSC interrupt

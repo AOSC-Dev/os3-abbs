@@ -1,7 +1,7 @@
 From 7e7da90d60ceb590bad87847f6f90e3b8d2db2bc Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 10 Dec 2024 16:39:13 +0800
-Subject: [PATCH 240/300] AOSCOS: MIPS: audit: replace magic audit syscall
+Subject: [PATCH 240/301] AOSCOS: MIPS: audit: replace magic audit syscall
  class numbers with macros
 
 Follow commit 42f355ef59a2 ("audit: replace magic audit syscall class

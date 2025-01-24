@@ -1,7 +1,7 @@
 From c4ae9d6e5481aa77e1cb9d94acb10f7f43e4914a Mon Sep 17 00:00:00 2001
 From: Tianhao Chai <cth451@gmail.com>
 Date: Thu, 18 Jan 2024 18:07:58 -0500
-Subject: [PATCH 174/300] AOSCOS: la_ow_syscall: add kconfig for module
+Subject: [PATCH 174/301] AOSCOS: la_ow_syscall: add kconfig for module
 
 Signed-off-by: Tianhao Chai <cth451@gmail.com>
 Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>

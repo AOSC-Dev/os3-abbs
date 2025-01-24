@@ -1,4 +1,4 @@
-VER=1.35.1
+VER=1.37
 SRCS="tbl::https://mirrors.ocf.berkeley.edu/debian/pool/main/f/fakeroot/fakeroot_$VER.orig.tar.gz"
-CHKSUMS="sha256::6a0de53b2de05277d4e6d4a884eb0de7a8ad467b82c07a6f8f2f6a629e655fdc"
+CHKSUMS="sha256::9831cc912bc1da6dadac15699c5a07a82c00d6f0dd5c15ec02e20908dd527d3a"
 CHKUPDATE="anitya::id=12048"

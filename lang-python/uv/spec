@@ -1,4 +1,4 @@
-VER=0.5.23
+VER=0.5.24
 SRCS="git::commit=tags/$VER::https://github.com/astral-sh/uv"
 CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=372636"

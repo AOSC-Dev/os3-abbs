@@ -1,4 +1,4 @@
-From 9c0c74d12fec81b2ff5d27d2541f7b62a7ef6dfc Mon Sep 17 00:00:00 2001
+From bfccd69377f02400e46b9754f6cf753f77822b89 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Mon, 9 Dec 2024 18:04:57 +0800
 Subject: [PATCH 243/316] AOSCOS: hwmon: nct7511: revise .probe() in struct

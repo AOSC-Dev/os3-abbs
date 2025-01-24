@@ -1,4 +1,4 @@
-From 0d598c2a76abab12021fb91c0c18320ee4f4e13d Mon Sep 17 00:00:00 2001
+From 9ffe9ea61c5539ce0cb58a898e21abd509ed654f Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Thu, 12 Dec 2024 13:30:55 +0800
 Subject: [PATCH 299/316] AOSCOS: MIPS: loongson3-memset: use PTR_WD to fix

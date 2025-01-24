@@ -1,4 +1,4 @@
-From d201ef0dc4ee923538fede37e31fd2916321f189 Mon Sep 17 00:00:00 2001
+From bd23cc552c6c1b53d7532c054f9c5e7779ecadb2 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Thu, 12 Dec 2024 14:45:22 +0800
 Subject: [PATCH 306/316] AOSCOS: spi: spi-loongson: allow building on

@@ -1,4 +1,4 @@
-From 2ae51d212bbf3b27e6f99190f8f01a17fc6ed2b8 Mon Sep 17 00:00:00 2001
+From e089935c4b3b12268394509ac0d67fa5fb180663 Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Sat, 25 Jan 2025 04:22:54 +0800
 Subject: [PATCH 297/301] AOSCOS: MIPS: Loongson 3: build platform device

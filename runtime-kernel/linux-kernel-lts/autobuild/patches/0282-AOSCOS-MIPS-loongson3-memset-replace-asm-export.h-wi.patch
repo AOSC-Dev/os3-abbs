@@ -1,4 +1,4 @@
-From d0682057e212aca241f9ba03742182c755e3178a Mon Sep 17 00:00:00 2001
+From de2c558c4079f8d2587796de5cba845744937a40 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Thu, 12 Dec 2024 01:27:08 +0800
 Subject: [PATCH 282/301] AOSCOS: MIPS: loongson3-memset: replace

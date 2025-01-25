@@ -1,4 +1,4 @@
-From 9aa0da989736a6c57ece495924ebbfb210efddc6 Mon Sep 17 00:00:00 2001
+From 91354521927f712264a75b12d2167de724ac3ff6 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Thu, 12 Dec 2024 14:10:57 +0800
 Subject: [PATCH 289/301] AOSCOS: MIPS: loongson3-memcpy: adapt to

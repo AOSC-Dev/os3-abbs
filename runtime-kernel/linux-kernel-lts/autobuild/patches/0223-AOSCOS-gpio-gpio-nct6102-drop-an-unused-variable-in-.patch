@@ -1,4 +1,4 @@
-From 19b64e80f1540acbc7a2f08e41c467080b488bc6 Mon Sep 17 00:00:00 2001
+From 035666f028a1b7e9f5a5a4877b3ba88e43a14e99 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Mon, 9 Dec 2024 17:31:56 +0800
 Subject: [PATCH 223/301] AOSCOS: gpio: gpio-nct6102: drop an unused variable

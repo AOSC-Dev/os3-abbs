@@ -1,4 +1,4 @@
-From 9009e7b380bd91ae3bdd3ad50801a2a0c996bee2 Mon Sep 17 00:00:00 2001
+From fe8d2232bd2efa1343cac15723a5769b7cd58ab8 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 196/301] AOSCOS: MIPS: Loongson 3: Add platform device drivers
@@ -194,10 +194,10 @@ index be4853fad80f..649c5e1cf820 100644
  	for (i = 0; i < 20; i++) {
  		msleep(10);
 diff --git a/drivers/platform/mips/Kconfig b/drivers/platform/mips/Kconfig
-index 73431d65e143..81a09c673377 100644
+index fb4ac4b08e89..59b6027eeadf 100644
 --- a/drivers/platform/mips/Kconfig
 +++ b/drivers/platform/mips/Kconfig
-@@ -38,4 +38,20 @@ config LS2K_RESET
+@@ -37,4 +37,20 @@ config LS2K_RESET
  	help
  	  Loongson-2K1000 Reset Controller driver.
  

@@ -1,4 +1,4 @@
-From 2ccad7a6bcfb1a57e61b2a350e754082ee97a5db Mon Sep 17 00:00:00 2001
+From 1903da38a67a083382389d2c3700723b75df114b Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 190/301] AOSCOS: tty: serial_core: Clear TTY_IO_ERROR if

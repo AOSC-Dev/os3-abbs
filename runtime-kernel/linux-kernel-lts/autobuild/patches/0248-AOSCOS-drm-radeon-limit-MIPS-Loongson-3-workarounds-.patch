@@ -1,4 +1,4 @@
-From ccd77bebedd8706ebd98fe5022b032f5711c79ae Mon Sep 17 00:00:00 2001
+From 1b6ad05ccdd2dc41c19122c3b1c3fe1cdc323529 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 11 Dec 2024 11:20:38 +0800
 Subject: [PATCH 248/301] AOSCOS: drm: radeon: limit MIPS Loongson-3

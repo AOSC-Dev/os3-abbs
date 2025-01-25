@@ -1,7 +1,7 @@
 From a58c1269c9bb37034ff1e84cfe91e9bc7b5a1324 Mon Sep 17 00:00:00 2001
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Date: Wed, 11 Dec 2024 12:15:09 +0200
-Subject: [PATCH 078/316] FROMLIST: arm64: dts: rockchip: Add HDMI0 PHY PLL
+Subject: [PATCH 078/318] FROMLIST: arm64: dts: rockchip: Add HDMI0 PHY PLL
  clock source to VOP2 on RK3588
 
 VOP2 on RK3588 is able to use the HDMI PHY PLL as an alternative and

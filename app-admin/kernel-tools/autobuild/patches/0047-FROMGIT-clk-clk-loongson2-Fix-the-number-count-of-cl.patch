@@ -1,7 +1,7 @@
 From 5418d17d1e415e93332d5f3424b0aede29b57ed5 Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Tue, 14 Jan 2025 21:00:29 +0800
-Subject: [PATCH 047/316] FROMGIT: clk: clk-loongson2: Fix the number count of
+Subject: [PATCH 047/318] FROMGIT: clk: clk-loongson2: Fix the number count of
  clk provider
 
 Since commit 02fb4f008433 ("clk: clk-loongson2: Fix potential buffer

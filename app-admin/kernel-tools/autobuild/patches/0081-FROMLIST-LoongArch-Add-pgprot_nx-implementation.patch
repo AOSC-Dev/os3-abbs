@@ -1,7 +1,7 @@
 From 7cee1431134224fe309226d7068affae8e8405b4 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Tue, 17 Dec 2024 15:39:08 +0800
-Subject: [PATCH 081/316] FROMLIST: LoongArch: Add pgprot_nx() implementation
+Subject: [PATCH 081/318] FROMLIST: LoongArch: Add pgprot_nx() implementation
 
 Commit cca98e9f8b5ebcd964 ("mm: enforce that vmap can't map pages
 executable") enforces the W^X protection by not allowing remapping

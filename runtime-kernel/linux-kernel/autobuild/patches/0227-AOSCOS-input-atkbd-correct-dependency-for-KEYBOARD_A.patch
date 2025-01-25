@@ -1,4 +1,4 @@
-From 8927462f6bc74b430a91b20958bac8ac258aa4b1 Mon Sep 17 00:00:00 2001
+From a9e58d0761a1c4e7fb2f0088751ad92679319bde Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 4 Dec 2024 17:54:18 +0800
 Subject: [PATCH 227/318] AOSCOS: input: atkbd: correct dependency for

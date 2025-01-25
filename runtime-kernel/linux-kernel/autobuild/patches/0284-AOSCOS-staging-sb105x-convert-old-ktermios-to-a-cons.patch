@@ -1,4 +1,4 @@
-From a52ef1c44409613f774daa3442b9c54ca20468fe Mon Sep 17 00:00:00 2001
+From 422fb7af63d6012586a7c94795f803f85121b4b3 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 11 Dec 2024 16:58:16 +0800
 Subject: [PATCH 284/318] AOSCOS: staging: sb105x: convert old ktermios to a

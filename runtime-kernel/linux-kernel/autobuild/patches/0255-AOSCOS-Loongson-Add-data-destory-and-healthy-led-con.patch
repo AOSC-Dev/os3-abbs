@@ -1,4 +1,4 @@
-From 53987562e3f8dfa5153443db14f531c44c9bb266 Mon Sep 17 00:00:00 2001
+From fed6dae3bb8cea2df30a915abf5cf4ddcb34c82d Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Fri, 21 Apr 2017 15:38:39 +0800
 Subject: [PATCH 255/318] AOSCOS: Loongson: Add data destory and healthy led

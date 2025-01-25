@@ -1,4 +1,4 @@
-From bba756b40c93cdf957f246205c240cc30db7a0f1 Mon Sep 17 00:00:00 2001
+From 59d2c971e608446e6a7fd123f5741edec2510938 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 230/318] AOSCOS: MIPS: Loongson: Add PMON read/write in OS

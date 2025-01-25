@@ -1,4 +1,4 @@
-From ad6a97f484a5e4e61a6793987e21c98cd4fadeba Mon Sep 17 00:00:00 2001
+From 74b0361b07eb62b717a96d9ec9ed603d34d4acbb Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Thu, 12 Dec 2024 00:29:07 +0800
 Subject: [PATCH 296/318] AOSCOS: MIPS: math-emu: replace CPU_LOONGSON3

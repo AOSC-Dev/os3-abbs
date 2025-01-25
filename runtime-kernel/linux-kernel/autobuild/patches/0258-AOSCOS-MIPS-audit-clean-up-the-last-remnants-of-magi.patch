@@ -1,4 +1,4 @@
-From f78a404e7d74c6cd18881a493bb60a391af79bf6 Mon Sep 17 00:00:00 2001
+From 256e45b1a5c3f1bac2912d355f720c876aba1bdf Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 17 Dec 2024 02:00:03 +0800
 Subject: [PATCH 258/318] AOSCOS: MIPS: audit: clean up the last remnants of

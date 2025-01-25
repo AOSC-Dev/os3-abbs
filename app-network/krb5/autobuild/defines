@@ -18,7 +18,6 @@ AUTOTOOLS_AFTER="--localstatedir=/var/lib \
                  --with-system-et \
                  --with-system-ss \
                  --disable-rpath \
-                 --without-tcl \
                  --enable-dns-for-realm \
                  --with-ldap \
                  --without-system-verto"

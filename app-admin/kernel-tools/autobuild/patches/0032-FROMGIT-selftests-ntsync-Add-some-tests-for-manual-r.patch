@@ -1,7 +1,7 @@
 From 8ca932ad9c56ff0b1e9bae7ff4b3492548bb7df9 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:35:03 -0600
-Subject: [PATCH 032/318] FROMGIT: selftests: ntsync: Add some tests for
+Subject: [PATCH 032/317] FROMGIT: selftests: ntsync: Add some tests for
  manual-reset event state.
 
 Test event-specific ioctls NTSYNC_IOC_EVENT_SET, NTSYNC_IOC_EVENT_RESET,

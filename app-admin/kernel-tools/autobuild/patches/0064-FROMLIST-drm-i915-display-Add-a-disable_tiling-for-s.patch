@@ -1,0 +1,59 @@
+From 1162816cd1260e3915d122832baf3d91d1e2fd1f Mon Sep 17 00:00:00 2001
+From: Jocelyn Falempe <jfalempe@redhat.com>
+Date: Tue, 10 Dec 2024 10:28:43 +0100
+Subject: [PATCH 064/317] FROMLIST: drm/i915/display: Add a disable_tiling()
+ for skl planes
+
+drm_panic draws in linear framebuffer, so it's easier to re-use the
+current framebuffer, and disable tiling in the panic handler, to show
+the panic screen.
+
+Signed-off-by: Jocelyn Falempe <jfalempe@redhat.com>
+
+Link: https://lore.kernel.org/all/20241210093505.589893-4-jfalempe@redhat.com/
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ .../drm/i915/display/skl_universal_plane.c    | 20 +++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+
+diff --git a/drivers/gpu/drm/i915/display/skl_universal_plane.c b/drivers/gpu/drm/i915/display/skl_universal_plane.c
+index 038ca2ec5d7a..e2a54547a29d 100644
+--- a/drivers/gpu/drm/i915/display/skl_universal_plane.c
++++ b/drivers/gpu/drm/i915/display/skl_universal_plane.c
+@@ -2575,6 +2575,25 @@ static u8 skl_get_plane_caps(struct drm_i915_private *i915,
+ 	return caps;
+ }
+ 
++static void skl_disable_tiling(struct intel_plane *plane)
++{
++	u32 plane_ctl;
++	struct intel_plane_state *state = to_intel_plane_state(plane->base.state);
++	struct drm_i915_private *dev_priv = to_i915(plane->base.dev);
++	u32 stride = state->view.color_plane[0].scanout_stride / 64;
++
++	plane_ctl = intel_de_read(dev_priv, PLANE_CTL(plane->pipe, plane->id));
++	plane_ctl &= ~PLANE_CTL_TILED_MASK;
++
++	intel_de_write_fw(dev_priv, PLANE_STRIDE(plane->pipe, plane->id),
++			  PLANE_STRIDE_(stride));
++
++	intel_de_write_fw(dev_priv, PLANE_CTL(plane->pipe, plane->id), plane_ctl);
++
++	intel_de_write_fw(dev_priv, PLANE_SURF(plane->pipe, plane->id),
++			  skl_plane_surf(state, 0));
++}
++
+ struct intel_plane *
+ skl_universal_plane_create(struct drm_i915_private *dev_priv,
+ 			   enum pipe pipe, enum plane_id plane_id)
+@@ -2620,6 +2639,7 @@ skl_universal_plane_create(struct drm_i915_private *dev_priv,
+ 		plane->max_height = skl_plane_max_height;
+ 		plane->min_cdclk = skl_plane_min_cdclk;
+ 	}
++	plane->disable_tiling = skl_disable_tiling;
+ 
+ 	if (DISPLAY_VER(dev_priv) >= 13)
+ 		plane->max_stride = adl_plane_max_stride;
+-- 
+2.48.1
+

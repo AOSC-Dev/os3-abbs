@@ -1,12 +1,11 @@
 PKGNAME=maxima
 PKGSEC=math
 
-PKGDEP__SBCL="gnuplot texinfo tk rlwrap sbcl"
-PKGDEP__ECL="gnuplot texinfo tk rlwrap ecl"
-PKGDEP__AMD64="$PKGDEP__SBCL"
-PKGDEP__ARM64="$PKGDEP__SBCL"
-PKGDEP__PPC64EL="$PKGDEP__SBCL"
-PKGDEP="$PKGDEP__ECL"
+PKGDEP="gnuplot texinfo tk rlwrap"
+PKGDEP__AMD64="$PKGDEP sbcl"
+PKGDEP__ARM64="$PKGDEP sbcl"
+PKGDEP__PPC64EL="$PKGDEP sbcl"
+PKGDEP="$PKGDEP ecl"
 
 BUILDDEP="emacs"
 PKGDES="A sophisticated computer algebra system"

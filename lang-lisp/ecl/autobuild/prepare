@@ -1,7 +1,7 @@
 abinfo "Removing spurious executable bits ..."
 # Reference: https://src.fedoraproject.org/rpms/ecl/blob/rawhide/f/ecl.spec
-find src/c -type f -perm /0111 | xargs chmod a-x
-find src/h -type f -perm /0111 | xargs chmod a-x
+find c -type f -perm /0111 | xargs chmod a-x
+find h -type f -perm /0111 | xargs chmod a-x
 
 abinfo "Tweaking compiler flags ..."
 export CPPFLAGS="$(pkg-config --cflags libffi)"

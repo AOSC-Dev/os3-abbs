@@ -1,0 +1,8 @@
+PKGNAME=dongguanti
+PKGSEC=fonts
+PKGDEP="fontconfig"
+PKGDES="A font family inspired by the typeface used by Eastern Han classics stored in Dongguan"
+
+ABHOST=noarch
+
+PKGPROV="stdongguanti fonts-dongguanti fonts-stdongguanti ttf-dongguanti ttf-stdongguanti"

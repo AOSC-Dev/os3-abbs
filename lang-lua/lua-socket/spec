@@ -1,4 +1,5 @@
 VER=3.1.0
+REL=1
 SRCS="tbl::https://github.com/diegonehab/luasocket/archive/v${VER/+/-}.tar.gz"
 CHKSUMS="sha256::bf033aeb9e62bcaa8d007df68c119c966418e8c9ef7e4f2d7e96bddeca9cca6e"
 CHKUPDATE="anitya::id=6302"

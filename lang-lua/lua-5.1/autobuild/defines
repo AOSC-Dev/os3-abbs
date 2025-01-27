@@ -4,4 +4,3 @@ PKGDEP="readline"
 PKGDES="Powerful lightweight programming language designed for extending applications"
 
 PKGREP="lua<=1:5.1.5-5"
-PKGBREAK="lua<=1:5.1.5-5"

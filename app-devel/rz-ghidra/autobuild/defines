@@ -1,0 +1,11 @@
+PKGNAME=rz-ghidra
+PKGSEC=devel
+PKGDEP="cutter qt-5"
+PKGDES="Ghidra decompiler for rizin reverse engineering framework"
+
+CMAKE_AFTER="-DBUILD_CUTTER_PLUGIN=ON \
+	     -DCUTTER_INSTALL_PLUGDIR=/usr/share/rizin/cutter/plugins/native \
+	     -DCMAKE_SKIP_INSTALL_RPATH=OFF"
+
+# Ref: /rizin/librz/debug/p/native/linux/linux_debug.c
+FAIL_ARCH="!(amd64|arm64|ppc64el)"

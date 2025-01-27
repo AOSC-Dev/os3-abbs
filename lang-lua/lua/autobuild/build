@@ -1,1 +1,11 @@
-mkdir -v "$PKGDIR"
+# FIXME:
+#
+# Touch a transitional file to prevent accidental removal by dpkg, as it
+# would otherwise consider the package fully replaced (does not provide any
+# file), causing lua to be removed as a dependency whilst its reverse
+# dependencies continued to be configured - resulting in dpkg errors.
+#  
+# Is this a dpkg bug? Not sure.
+abinfo "Creating a dummy file ..."
+mkdir -pv "$PKGDIR"/usr/share/doc/lua
+touch "$PKGDIR"/usr/share/doc/lua/TRANSITIONAL

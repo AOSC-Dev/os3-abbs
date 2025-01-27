@@ -6,3 +6,5 @@ PKGDES="A font family inspired by the typeface used by Eastern Han classics stor
 ABHOST=noarch
 
 PKGPROV="stdongguanti fonts-dongguanti fonts-stdongguanti ttf-dongguanti ttf-stdongguanti"
+
+PKGEPOCH=1

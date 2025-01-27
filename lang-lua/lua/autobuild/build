@@ -1,1 +1,3 @@
-mkdir -v "$PKGDIR"
+abinfo "Creating a dummy file ..."
+mkdir -pv "$PKGDIR"/usr/share/doc/lua
+touch "$PKGDIR"/usr/share/doc/lua/TRANSITIONAL

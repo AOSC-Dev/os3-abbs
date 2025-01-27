@@ -1,4 +1,4 @@
-VER=1.8
+VER=1.9
 SRCS="tbl::https://downloads.sourceforge.net/project/qt5ct/qt5ct-$VER.tar.bz2"
-CHKSUMS="sha256::23b74054415ea4124328772ef9a6f95083a9b86569e128034a3ff75dfad808e9"
+CHKSUMS="sha256::dc10e6939d423b925981ce67febb1a015b6f61c022a9cc7e6c8b5efea4588bff"
 CHKUPDATE="anitya::id=10638"

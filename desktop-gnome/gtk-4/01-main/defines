@@ -3,9 +3,9 @@ PKGSEC=x11
 PKGDEP="cairo colord cups dconf desktop-file-utils fontconfig fribidi \
         gdk-pixbuf glib graphene gstreamer libpng libxkbcommon harfbuzz \
         iso-codes libcloudproviders libepoxy librsvg libtiff libjpeg-turbo \
-        pango shared-mime-info tracker vulkan-loader wayland x11-lib"
+        pango shared-mime-info vulkan-loader wayland x11-lib"
 BUILDDEP="docutils gi-docgen gobject-introspection gtk-doc sassc shaderc \
-          wayland-protocols vulkan"
+          tracker wayland-protocols vulkan"
 PKGDES="GIMP toolkit version 4"
 
 MESON_AFTER="-Dx11-backend=true \

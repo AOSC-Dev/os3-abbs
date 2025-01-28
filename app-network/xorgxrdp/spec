@@ -1,4 +1,4 @@
-VER=0.10.1
+VER=0.10.3
 SRCS="git::commit=tags/v$VER::https://github.com/neutrinolabs/xorgxrdp"
 CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=13478"

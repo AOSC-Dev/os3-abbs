@@ -1,5 +1,5 @@
 VER=2.4.5
-REL=1
+REL=2
 SRCS="tbl::https://downloads.sourceforge.net/project/sbcl/sbcl/$VER/sbcl-$VER-source.tar.bz2"
 CHKSUMS="sha256::4df68e90c9031807642b4b761988deb5bf6a1bd152c4723482834efa735a7bd1"
 CHKUPDATE="anitya::id=16339"

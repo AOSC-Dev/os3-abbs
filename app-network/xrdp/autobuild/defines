@@ -1,6 +1,6 @@
 PKGNAME=xrdp
 PKGSEC=net
-PKGDEP="fuse libjpeg-turbo pulseaudio tigervnc lame linux-pam"
+PKGDEP="fuse libjpeg-turbo pulseaudio tigervnc lame linux-pam x264 fuse-3"
 PKGRECOM="xorgxrdp"
 BUILDDEP__AMD64="nasm"
 PKGDES="An open source remote desktop protocol (RDP) server"
@@ -21,7 +21,8 @@ AUTOTOOLS_AFTER="--with-socketdir=/var/run/xrdp \
                  --disable-neutrinordp \
                  --disable-xrdpvr \
                  --enable-ipv6 \
-                 --enable-static"
+                 --enable-static \
+                 --enable-x264"
 ABSHADOW=0
 # For subprojects that cannot understand many parameters
 AUTOTOOLS_STRICT=0

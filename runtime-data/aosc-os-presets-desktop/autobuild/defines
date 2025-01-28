@@ -3,4 +3,5 @@ PKGSEC=misc
 PKGDEP=""
 PKGDES="Systemd presets for AOSC OS Desktop distributions"
 
+# Note: Architecture-agnostic.
 ABSPLITDBG=0

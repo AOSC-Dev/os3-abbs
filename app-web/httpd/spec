@@ -1,4 +1,4 @@
-VER=2.4.62
+VER=2.4.63
 SRCS="tbl::https://archive.apache.org/dist/httpd/httpd-$VER.tar.bz2"
-CHKSUMS="sha256::674188e7bf44ced82da8db522da946849e22080d73d16c93f7f4df89e25729ec"
+CHKSUMS="sha256::88fc236ab99b2864b248de7d49a008ec2afd7551e64dce8b95f58f32f94c46ab"
 CHKUPDATE="anitya::id=1335"

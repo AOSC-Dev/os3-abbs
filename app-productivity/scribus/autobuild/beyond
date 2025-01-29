@@ -1,1 +1,2 @@
-install -Dm644 scribus.desktop "$PKGDIR"/usr/share/applications/scribus.desktop
+abinfo "Installing desktop entry ..."
+install -Dvm644 scribus.desktop "$PKGDIR"/usr/share/applications/scribus.desktop

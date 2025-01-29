@@ -1,14 +1,14 @@
-From a3f4d045a6a70dbb6192161ac3eff01f27f3e2e7 Mon Sep 17 00:00:00 2001
+From 370f6fbab3a2d1563540d91a9ca6a62d399e6822 Mon Sep 17 00:00:00 2001
 From: xtex <xtexchooser@duck.com>
 Date: Sat, 12 Oct 2024 13:16:42 +0000
-Subject: [PATCH] FROM AOSC: Allow building bundled Firebird with LTO
+Subject: [PATCH 2/3] FROM AOSC: Allow building bundled Firebird with LTO
 
 ---
  external/firebird/ExternalProject_firebird.mk | 3 +++
  1 file changed, 3 insertions(+)
 
 diff --git a/external/firebird/ExternalProject_firebird.mk b/external/firebird/ExternalProject_firebird.mk
-index 16fe160a3af6a..3a972f2bea5fd 100644
+index 16fe160a3af6..3a972f2bea5f 100644
 --- a/external/firebird/ExternalProject_firebird.mk
 +++ b/external/firebird/ExternalProject_firebird.mk
 @@ -50,6 +50,7 @@ $(call gb_ExternalProject_get_state_target,firebird,build):
@@ -35,3 +35,6 @@ index 16fe160a3af6a..3a972f2bea5fd 100644
  			) \
  		" \
  		&& export LIBREOFFICE_ICU_LIB="$(gb_UnpackedTarball_workdir)/icu/source/lib" \
+-- 
+2.48.1
+

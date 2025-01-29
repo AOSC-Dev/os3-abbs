@@ -1,14 +1,15 @@
-From 41bb721f9ee878b31151c03340f4739fe904f19d Mon Sep 17 00:00:00 2001
+From db4427f0c557483bdeea860f285c8b5f9914b1c1 Mon Sep 17 00:00:00 2001
 From: xtex <xtexchooser@duck.com>
 Date: Sat, 12 Oct 2024 13:15:01 +0000
-Subject: [PATCH] FROM AOSC: Make pyuno work with system-wide module install
+Subject: [PATCH 1/3] FROM AOSC: Make pyuno work with system-wide module
+ install
 
 ---
  pyuno/source/module/uno.py | 8 +++++++-
  1 file changed, 7 insertions(+), 1 deletion(-)
 
 diff --git a/pyuno/source/module/uno.py b/pyuno/source/module/uno.py
-index b2a75bd039825..dde88af9ac417 100644
+index b2a75bd03982..dde88af9ac41 100644
 --- a/pyuno/source/module/uno.py
 +++ b/pyuno/source/module/uno.py
 @@ -16,8 +16,14 @@
@@ -27,3 +28,6 @@ index b2a75bd039825..dde88af9ac417 100644
  import traceback
  import warnings
  
+-- 
+2.48.1
+

@@ -1,4 +1,5 @@
 VER=24.8.4.2
+REL=1
 SRCS="tbl::https://download.documentfoundation.org/libreoffice/src/${VER:0:6}/libreoffice-$VER.tar.xz \
       file::rename=LibreOffice_${VER}_Linux_x86-64_rpm_helppack_am.tar.gz::https://downloadarchive.documentfoundation.org/libreoffice/old/${VER}/rpm/x86_64/LibreOffice_${VER}_Linux_x86-64_rpm_helppack_am.tar.gz \
       file::rename=LibreOffice_${VER}_Linux_x86-64_rpm_helppack_ar.tar.gz::https://downloadarchive.documentfoundation.org/libreoffice/old/${VER}/rpm/x86_64/LibreOffice_${VER}_Linux_x86-64_rpm_helppack_ar.tar.gz \
@@ -369,3 +370,4 @@ CHKSUMS="sha256::1564de2ea39aa91a66315c051058e43a0be4536ae88c43fdf0f8ce0ebe081a1
          sha256::00a5688217c194c9ba73a492551d17a584fa74c27aa918111d5609592044af00"
 SUBDIR="libreoffice-$VER"
 CHKUPDATE="anitya::id=6506"
+ENVREQ__ARM64="total_mem=60"

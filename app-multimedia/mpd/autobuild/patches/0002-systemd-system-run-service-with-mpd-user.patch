@@ -1,0 +1,25 @@
+From 5b259b78c69de535b1303d235ccd2f3a926e81e4 Mon Sep 17 00:00:00 2001
+From: Kaiyang Wu <self@origincode.me>
+Date: Wed, 29 Jan 2025 15:24:28 -0800
+Subject: [PATCH 2/2] systemd/system: run service with mpd user
+
+Signed-off-by: Kaiyang Wu <self@origincode.me>
+---
+ systemd/system/mpd.service.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/systemd/system/mpd.service.in b/systemd/system/mpd.service.in
+index 87bc88942..4b389ad18 100644
+--- a/systemd/system/mpd.service.in
++++ b/systemd/system/mpd.service.in
+@@ -4,6 +4,7 @@ Documentation=man:mpd(1) man:mpd.conf(5)
+ After=network.target sound.target
+ 
+ [Service]
++User=mpd
+ Type=notify
+ ExecStart=@prefix@/bin/mpd --systemd
+ 
+-- 
+2.48.1
+

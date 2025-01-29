@@ -1,7 +1,7 @@
-VER=2.7.7
+VER=2.8.5
 SRCS="file::rename=composer.phar::https://getcomposer.org/download/$VER/composer.phar \
       file::rename=LICENSE::https://github.com/composer/composer/raw/$VER/LICENSE"
-CHKSUMS="sha256::aab940cd53d285a54c50465820a2080fcb7182a4ba1e5f795abfb10414a4b4be \
+CHKSUMS="sha256::9cef18212e222351aeb476b81de7b2a5383f775336474467bf5c7ccfe84ab0cc \
          sha256::7855ac293067aebe7e51afdd23b9dea54b8be24187dbecc9b9142581c37f596c"
 CHKUPDATE="anitya::id=9710"
 SUBDIR=.

@@ -2,6 +2,3 @@ PKGNAME=wavpack
 PKGSEC=libs
 PKGDEP="glibc"
 PKGDES="Audio compression format with lossless, lossy and hybrid compression modes"
-
-AUTOTOOLS_AFTER="--disable-asm"
-ABSHADOW=no

@@ -22,3 +22,9 @@ CMAKE_AFTER="-DCMAKE_C_FLAGS_RELEASE=-DNDEBUG \
              -DWITH_PROFILING=OFF \
              -DCMAKE_SKIP_RPATH=OFF \
              -DPOPPLER_INCLUDE_DIR=/usr/include/poppler"
+
+# FIXME: /usr/include/boost/asio/detail/keyword_tss_ptr.hpp:48:(.text+0x154ec8):
+# relocation truncated to fit: R_MIPS_TLS_GD against
+# `boost::asio::detail::keyword_tss_ptr<boost::asio::detail::call_stack<boost::asio::detail::thread_context,
+# boost::asio::detail::thread_info_base>::context>::value_' 
+NOLTO__LOONGSON3=1

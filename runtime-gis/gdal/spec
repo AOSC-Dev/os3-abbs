@@ -1,5 +1,4 @@
-VER=3.8.4
-REL=3
+VER=3.10.1
 SRCS="tbl::https://download.osgeo.org/gdal/$VER/gdal-$VER.tar.xz"
-CHKSUMS="sha256::0c53ced95d29474236487202709b49015854f8e02e35e44ed0f4f4e12a7966ce"
+CHKSUMS="sha256::9211eac72b53f5f85d23cf6d83ee20245c6d818733405024e71f2af41e5c5f91"
 CHKUPDATE="anitya::id=881"

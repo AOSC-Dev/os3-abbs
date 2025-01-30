@@ -1,0 +1,15 @@
+abinfo "Installing systemd services..."
+install -Dvm644 "$SRCDIR"/release/config/sing-box.service \
+    -t "$PKGDIR"/usr/lib/systemd/system
+install -Dvm644 "$SRCDIR"/release/config/sing-box@.service \
+    -t "$PKGDIR"/usr/lib/systemd/system
+install -Dvm644 "$SRCDIR"/release/config/config.json \
+    -t "$PKGDIR"/etc/sing-box
+
+abinfo "Installing completion files ..."
+mkdir -pv "$PKGDIR"/usr/share/bash-completion/completions
+"$PKGDIR"/usr/bin/sing-box completion bash > "$PKGDIR"/usr/share/bash-completion/completions/sing-box
+mkdir -pv "$PKGDIR"/usr/share/zsh/site-functions
+"$PKGDIR"/usr/bin/sing-box completion zsh > "$PKGDIR"/usr/share/zsh/site-functions/_sing-box
+mkdir -pv "$PKGDIR"/usr/share/fish/vendor_completions.d
+"$PKGDIR"/usr/bin/sing-box completion fish > "$PKGDIR"/usr/share/fish/vendor_completions.d/sing-box.fish

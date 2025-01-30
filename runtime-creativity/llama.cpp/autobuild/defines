@@ -1,0 +1,17 @@
+PKGNAME=llama.cpp
+PKGDES="C++ implementation of LLM inference"
+PKGSEC=misc
+PKGDEP="vulkan-loader libcl gcc-runtime"
+BUILDDEP="shaderc glslang vulkan-headers opencl-registry-api"
+
+ABTYPE=cmakeninja
+CMAKE_AFTER="-DGGML_BACKEND_DL=ON \
+             -DGGML_NATIVE=OFF \
+             -DGGML_VULKAN=ON \
+             -DGGML_OPENCL=ON -DGGML_OPENCL_USE_ADRENO_KERNELS=OFF"
+
+CMAKE_AFTER__AMD64="${CMAKE_AFTER} \
+                    -DGGML_CPU_ALL_VARIANTS=ON"
+# FIXME: No runtime dispatch for RISC-V yet
+CMAKE_AFTER__RISCV64="${CMAKE_AFTER} \
+                      -DGGML_RVV=OFF"

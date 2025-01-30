@@ -1,0 +1,5 @@
+VER=4615
+# The build system uses git tags to determine version number
+SRCS="git::commit=tags/b${VER};copy-repo=true::https://github.com/ggerganov/llama.cpp.git"
+CHKSUMS="SKIP"
+CHKUPDATE="anitya::id=328681"

@@ -1,10 +1,9 @@
-abinfo "Enabling trimpath for a reproducible build ..."
-export GOFLAGS="${GOFLAGS} -trimpath"
+abinfo "Getting build information ..."
+commit=$(git describe --always --dirty)
 
-abinfo "Setting other GOFLAGS ..."
-export GOFLAGS="${GOFLAGS} -mod=readonly -modcacherw"
-
-if ! ab_match_arch loongson3; then
-    abinfo "Enabling buildmode=pie ..."
-    export GOFLAGS="${GOFLAGS} -buildmode=pie"
-fi
+abinfo "Setting GO_LDFLAGS ..."
+GO_LDFLAGS=(
+    -s -w
+    "-X 'github.com/xtls/xray-core/core.build=$commit'"
+    "-extldflags '-Wl,-z,relro -Wl,-z,now -specs=/usr/lib/autobuild3/specs/hardened-ld'"
+)

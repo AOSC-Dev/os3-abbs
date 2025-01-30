@@ -1,5 +1,11 @@
+# autobuild4's go template cannot specify a specific directory
+# to run `go get`
+
 abinfo "Building xray ..."
-go build -o xray -ldflags "-s -w -buildid=" "$SRCDIR"/main
+go build -v \
+    -ldflags "${GO_LDFLAGS[*]}" \
+    -o xray \
+    "$SRCDIR"/main
 
 abinfo "Installing xray ..."
 install -Dvm755 "$SRCDIR"/xray -t "$PKGDIR"/usr/bin/

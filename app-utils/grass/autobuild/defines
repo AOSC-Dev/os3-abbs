@@ -1,0 +1,11 @@
+PKGNAME=grass
+PKGSEC=utils
+PKGDEP="glibc"
+BUILDDEP="rustc llvm"
+PKGDES="A Sass compiler written in Rust"
+
+ABTYPE=rust
+USECLANG=1
+
+# FIXME: ld.lld is not yet available on loongson3
+NOLTO__LOONGSON3=1

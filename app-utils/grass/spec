@@ -1,0 +1,4 @@
+VER=0.13.4
+SRCS="git::commit=tags/$VER::https://github.com/connorskees/grass.git"
+CHKSUMS="SKIP"
+CHKUPDATE="anitya::id=376103"

@@ -1,0 +1,24 @@
+PKGNAME=glycin
+PKGSEC=gnome
+PKGDEP="lcms2 glib gtk-4 libseccomp fontconfig libjxl librsvg libheif cairo \
+        gdk-pixbuf pango"
+BUILDDEP="rustc llvm gobject-introspection vala gettext gi-docgen"
+PKGDES="A Sass compiler written in Rust"
+
+ABTYPE=meson
+USECLANG=1
+
+MESON_AFTER=(
+    -Dprofile=release
+    -Dglycin-loaders=true
+    -Dloaders=glycin-heif,glycin-image-rs,glycin-jxl,glycin-svg
+    -Dtests=false
+    -Dlibglycin=true
+    -Dintrospection=true
+    -Dvapi=true
+    -Dcapi_docs=true
+    -Dpython_tests=false
+)
+
+# FIXME: ld.lld is not yet available on loongson3
+NOLTO__LOONGSON3=1

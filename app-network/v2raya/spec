@@ -1,5 +1,4 @@
-VER=2.2.5.8
-REL=3
+VER=2.2.6.3
 SRCS="git::commit=tags/v$VER::https://github.com/v2rayA/v2rayA.git"
 CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=326097"

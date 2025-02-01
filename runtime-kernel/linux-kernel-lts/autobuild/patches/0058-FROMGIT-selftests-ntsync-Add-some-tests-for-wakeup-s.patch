@@ -1,72 +1,33 @@
-From 76d5db7f81df2ce73838896d2ce458ebd1878e20 Mon Sep 17 00:00:00 2001
+From bea7dc0254f65404145a9a76ee4716e9792490c6 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
-Date: Fri, 13 Dec 2024 13:35:01 -0600
-Subject: [PATCH 058/301] FROMGIT: selftests: ntsync: Add some tests for wakeup
- signaling with WINESYNC_IOC_WAIT_ANY.
+Date: Fri, 13 Dec 2024 13:35:02 -0600
+Subject: [PATCH 058/300] FROMGIT: selftests: ntsync: Add some tests for wakeup
+ signaling with WINESYNC_IOC_WAIT_ALL.
 
-Test contended "wait-for-any" waits, to make sure that scheduling and wakeup
-logic works correctly.
+Test contended "wait-for-all" waits, to make sure that scheduling and wakeup
+logic works correctly, and that the wait only exits once objects are all
+simultaneously signaled.
 
 Signed-off-by: Elizabeth Figura <zfigura@codeweavers.com>
-Link: https://lore.kernel.org/r/20241213193511.457338-21-zfigura@codeweavers.com
+Link: https://lore.kernel.org/r/20241213193511.457338-22-zfigura@codeweavers.com
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 
-(cherry picked from commit f23279852ad53c463442c952acb5a1df71b2e737
+(cherry picked from commit 72a651c13159247e051754c04b008f1d7f40b7a6
  https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/char-misc.git char-misc-next)
 Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
 ---
- .../testing/selftests/drivers/ntsync/ntsync.c | 143 ++++++++++++++++++
- 1 file changed, 143 insertions(+)
+ .../testing/selftests/drivers/ntsync/ntsync.c | 91 +++++++++++++++++++
+ 1 file changed, 91 insertions(+)
 
 diff --git a/tools/testing/selftests/drivers/ntsync/ntsync.c b/tools/testing/selftests/drivers/ntsync/ntsync.c
-index aba11eaf9a7c..ad3f031c0b92 100644
+index ad3f031c0b92..6bf0f10679d8 100644
 --- a/tools/testing/selftests/drivers/ntsync/ntsync.c
 +++ b/tools/testing/selftests/drivers/ntsync/ntsync.c
-@@ -532,4 +532,147 @@ TEST(test_wait_all)
+@@ -675,4 +675,95 @@ TEST(wake_any)
  	close(fd);
  }
  
-+struct wake_args {
-+	int fd;
-+	int obj;
-+};
-+
-+struct wait_args {
-+	int fd;
-+	unsigned long request;
-+	struct ntsync_wait_args *args;
-+	int ret;
-+	int err;
-+};
-+
-+static void *wait_thread(void *arg)
-+{
-+	struct wait_args *args = arg;
-+
-+	args->ret = ioctl(args->fd, args->request, args->args);
-+	args->err = errno;
-+	return NULL;
-+}
-+
-+static __u64 get_abs_timeout(unsigned int ms)
-+{
-+	struct timespec timeout;
-+	clock_gettime(CLOCK_MONOTONIC, &timeout);
-+	return (timeout.tv_sec * 1000000000) + timeout.tv_nsec + (ms * 1000000);
-+}
-+
-+static int wait_for_thread(pthread_t thread, unsigned int ms)
-+{
-+	struct timespec timeout;
-+
-+	clock_gettime(CLOCK_REALTIME, &timeout);
-+	timeout.tv_nsec += ms * 1000000;
-+	timeout.tv_sec += (timeout.tv_nsec / 1000000000);
-+	timeout.tv_nsec %= 1000000000;
-+	return pthread_timedjoin_np(thread, NULL, &timeout);
-+}
-+
-+TEST(wake_any)
++TEST(wake_all)
 +{
 +	struct ntsync_mutex_args mutex_args = {0};
 +	struct ntsync_wait_args wait_args = {0};
@@ -89,16 +50,13 @@ index aba11eaf9a7c..ad3f031c0b92 100644
 +	objs[1] = ioctl(fd, NTSYNC_IOC_CREATE_MUTEX, &mutex_args);
 +	EXPECT_LE(0, objs[1]);
 +
-+	/* test waking the semaphore */
-+
 +	wait_args.timeout = get_abs_timeout(1000);
 +	wait_args.objs = (uintptr_t)objs;
 +	wait_args.count = 2;
 +	wait_args.owner = 456;
-+	wait_args.index = 0xdeadbeef;
 +	thread_args.fd = fd;
 +	thread_args.args = &wait_args;
-+	thread_args.request = NTSYNC_IOC_WAIT_ANY;
++	thread_args.request = NTSYNC_IOC_WAIT_ALL;
 +	ret = pthread_create(&thread, NULL, wait_thread, &thread_args);
 +	EXPECT_EQ(0, ret);
 +
@@ -109,44 +67,35 @@ index aba11eaf9a7c..ad3f031c0b92 100644
 +	ret = release_sem(objs[0], &count);
 +	EXPECT_EQ(0, ret);
 +	EXPECT_EQ(0, count);
-+	check_sem_state(objs[0], 0, 3);
-+
-+	ret = wait_for_thread(thread, 100);
-+	EXPECT_EQ(0, ret);
-+	EXPECT_EQ(0, thread_args.ret);
-+	EXPECT_EQ(0, wait_args.index);
-+
-+	/* test waking the mutex */
-+
-+	/* first grab it again for owner 123 */
-+	ret = wait_any(fd, 1, &objs[1], 123, &index);
-+	EXPECT_EQ(0, ret);
-+	EXPECT_EQ(0, index);
-+
-+	wait_args.timeout = get_abs_timeout(1000);
-+	wait_args.owner = 456;
-+	ret = pthread_create(&thread, NULL, wait_thread, &thread_args);
-+	EXPECT_EQ(0, ret);
-+
-+	ret = wait_for_thread(thread, 100);
-+	EXPECT_EQ(ETIMEDOUT, ret);
-+
-+	ret = unlock_mutex(objs[1], 123, &count);
-+	EXPECT_EQ(0, ret);
-+	EXPECT_EQ(2, count);
 +
 +	ret = pthread_tryjoin_np(thread, NULL);
 +	EXPECT_EQ(EBUSY, ret);
 +
++	check_sem_state(objs[0], 1, 3);
++
++	ret = wait_any(fd, 1, &objs[0], 123, &index);
++	EXPECT_EQ(0, ret);
++	EXPECT_EQ(0, index);
++
 +	ret = unlock_mutex(objs[1], 123, &count);
 +	EXPECT_EQ(0, ret);
-+	EXPECT_EQ(1, mutex_args.count);
++	EXPECT_EQ(1, count);
++
++	ret = pthread_tryjoin_np(thread, NULL);
++	EXPECT_EQ(EBUSY, ret);
++
++	check_mutex_state(objs[1], 0, 0);
++
++	count = 2;
++	ret = release_sem(objs[0], &count);
++	EXPECT_EQ(0, ret);
++	EXPECT_EQ(0, count);
++	check_sem_state(objs[0], 1, 3);
 +	check_mutex_state(objs[1], 1, 456);
 +
 +	ret = wait_for_thread(thread, 100);
 +	EXPECT_EQ(0, ret);
 +	EXPECT_EQ(0, thread_args.ret);
-+	EXPECT_EQ(1, wait_args.index);
 +
 +	/* delete an object while it's being waited on */
 +

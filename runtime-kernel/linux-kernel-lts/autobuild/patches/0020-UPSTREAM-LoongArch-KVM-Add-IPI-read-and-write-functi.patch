@@ -1,7 +1,7 @@
-From 5d77e63e99a96fbeb84561083187493ae1527c64 Mon Sep 17 00:00:00 2001
+From 07fbdffc35c7b3a4b99aefb56000ab0f0311d5bd Mon Sep 17 00:00:00 2001
 From: Xianglai Li <lixianglai@loongson.cn>
 Date: Wed, 13 Nov 2024 16:18:27 +0800
-Subject: [PATCH 020/301] UPSTREAM: LoongArch: KVM: Add IPI read and write
+Subject: [PATCH 020/300] UPSTREAM: LoongArch: KVM: Add IPI read and write
  function
 
 Add implementation of IPI interrupt controller's address space read and

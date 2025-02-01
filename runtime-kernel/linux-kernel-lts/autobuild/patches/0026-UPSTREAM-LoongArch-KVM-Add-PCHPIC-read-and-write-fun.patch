@@ -1,7 +1,7 @@
-From e0ac92e1a9c62512a4699b6a87f4f716989d0e78 Mon Sep 17 00:00:00 2001
+From 4fed8ac4e024b7b121b2070a7146f1507ca5f818 Mon Sep 17 00:00:00 2001
 From: Xianglai Li <lixianglai@loongson.cn>
 Date: Wed, 13 Nov 2024 16:18:27 +0800
-Subject: [PATCH 026/301] UPSTREAM: LoongArch: KVM: Add PCHPIC read and write
+Subject: [PATCH 026/300] UPSTREAM: LoongArch: KVM: Add PCHPIC read and write
  functions
 
 Add implementation of IPI interrupt controller's address space read and

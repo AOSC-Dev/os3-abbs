@@ -1,7 +1,7 @@
-From 41b73c116ad259a84bc9da9b6134dbe248872fae Mon Sep 17 00:00:00 2001
+From 118439777a71c6698d47214bdac7690a5ff9ada6 Mon Sep 17 00:00:00 2001
 From: Tang Bin <tangbin@cmss.chinamobile.com>
 Date: Fri, 11 Oct 2024 15:31:15 +0800
-Subject: [PATCH 011/301] UPSTREAM: ASoC: codecs: Fix error check in
+Subject: [PATCH 011/300] UPSTREAM: ASoC: codecs: Fix error check in
  es8323_i2c_probe
 
 In the function es8323_i2c_probe(), devm_kzalloc() could

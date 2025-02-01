@@ -1,7 +1,7 @@
-From 1431c1ac3f3daad8a3b8f3a5b76d0323f4ee22a5 Mon Sep 17 00:00:00 2001
+From 590eaa796a90d80bf771a452b2ab8c08e8a4104a Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Wed, 9 Oct 2024 15:52:10 +0800
-Subject: [PATCH 006/301] UPSTREAM: ASoC: codecs: Add support for ES8323
+Subject: [PATCH 006/300] UPSTREAM: ASoC: codecs: Add support for ES8323
 
 Add a codec driver for the Everest ES8323. It supports two separate
 audio outputs and two separate audio inputs.
@@ -22,7 +22,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  create mode 100644 sound/soc/codecs/es8323.h
 
 diff --git a/sound/soc/codecs/Kconfig b/sound/soc/codecs/Kconfig
-index 7092842480ef..79b2a16e4202 100644
+index 0d9d1d250f2b..bab3617125ff 100644
 --- a/sound/soc/codecs/Kconfig
 +++ b/sound/soc/codecs/Kconfig
 @@ -112,6 +112,7 @@ config SND_SOC_ALL_CODECS

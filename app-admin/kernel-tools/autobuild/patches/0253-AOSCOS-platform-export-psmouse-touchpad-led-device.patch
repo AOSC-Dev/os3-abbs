@@ -1,4 +1,4 @@
-From d5b2251dc2dce537c58dc140a1e8881b742b16c8 Mon Sep 17 00:00:00 2001
+From 53ea3a29d1d47644850ad3817842f0709fa8a381 Mon Sep 17 00:00:00 2001
 From: chenj <chenj@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 253/317] AOSCOS: platform: export psmouse::touchpad led device

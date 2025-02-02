@@ -1,4 +1,4 @@
-From fdba10afd3734dff6e285ec92d36a06951972d96 Mon Sep 17 00:00:00 2001
+From b0fab91683b243bfc9d5478623f2f04b3c94c287 Mon Sep 17 00:00:00 2001
 From: Bibo Mao <maobibo@loongson.cn>
 Date: Mon, 13 Jan 2025 21:37:17 +0800
 Subject: [PATCH 048/317] FROMGIT: LoongArch: KVM: Add hypercall service

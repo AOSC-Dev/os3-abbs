@@ -1,4 +1,4 @@
-From 67d7469b42a56eb03aeedaef53e3cb09c7f4c786 Mon Sep 17 00:00:00 2001
+From 8c6f0dc57a2935001d78f5ca85b8eabcaa768835 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:35:07 -0600
 Subject: [PATCH 035/317] FROMGIT: selftests: ntsync: Add some tests for wakeup

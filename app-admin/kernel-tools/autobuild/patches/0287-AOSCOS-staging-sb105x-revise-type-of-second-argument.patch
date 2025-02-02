@@ -1,4 +1,4 @@
-From dd7962271755c86fd4f9f048598b6901907d18b2 Mon Sep 17 00:00:00 2001
+From e7c5caf6b41d0e52bf4d20aef3e47f82b0a28250 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 11 Dec 2024 17:25:55 +0800
 Subject: [PATCH 287/317] AOSCOS: staging: sb105x: revise type of second

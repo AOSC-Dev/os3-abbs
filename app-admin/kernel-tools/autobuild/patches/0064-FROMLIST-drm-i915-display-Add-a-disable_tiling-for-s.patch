@@ -1,4 +1,4 @@
-From 7e597a9be0cc31809e79787c07de2e92e0ee1c3a Mon Sep 17 00:00:00 2001
+From 16641b63eb9682c65b4661012334ee55326278ad Mon Sep 17 00:00:00 2001
 From: Jocelyn Falempe <jfalempe@redhat.com>
 Date: Tue, 10 Dec 2024 10:28:43 +0100
 Subject: [PATCH 064/317] FROMLIST: drm/i915/display: Add a disable_tiling()

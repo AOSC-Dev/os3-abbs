@@ -1,4 +1,4 @@
-From 780b62c6d69f57e3ef3dbf02a11cb1c0f0369c16 Mon Sep 17 00:00:00 2001
+From 423a29295c0f1f36357521a18f97fb779b232a8a Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:35:11 -0600
 Subject: [PATCH 039/317] FROMGIT: ntsync: No longer depend on BROKEN.

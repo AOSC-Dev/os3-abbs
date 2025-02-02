@@ -1,4 +1,4 @@
-From 566183a279d3a06897d48cd35d90ae1368dda706 Mon Sep 17 00:00:00 2001
+From e64abf0a1cedb39c815db1cf6f7bc0c362978a28 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Sun, 4 Aug 2024 09:24:18 +0800
 Subject: [PATCH 054/317] FROMLIST: PCI: Prevent LS7A Bus Master clearing on

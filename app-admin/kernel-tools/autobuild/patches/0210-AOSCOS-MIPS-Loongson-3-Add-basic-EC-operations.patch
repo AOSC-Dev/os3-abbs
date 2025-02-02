@@ -1,4 +1,4 @@
-From 43c1b3856f46323f06621bd6b4d317ba934bc6de Mon Sep 17 00:00:00 2001
+From ababf624da00a33f64cbbca6b35bc1f0fdd615a2 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 210/317] AOSCOS: MIPS: Loongson 3: Add basic EC operations

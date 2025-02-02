@@ -1,4 +1,4 @@
-From 02d0f52a7c519d2a3fa68c28cc4d151fd603a4c2 Mon Sep 17 00:00:00 2001
+From c56d2116cc3c8790c51a07b0cbb8a0a5350ec717 Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Sat, 11 Jan 2025 01:22:08 +0800
 Subject: [PATCH 041/317] FROMGIT: MIPS: Loongson64: remove ROM Size unit in

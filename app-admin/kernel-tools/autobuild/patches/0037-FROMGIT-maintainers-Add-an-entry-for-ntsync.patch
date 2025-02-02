@@ -1,4 +1,4 @@
-From 405f9969fe8a8def7859680b16680144f410dac0 Mon Sep 17 00:00:00 2001
+From 327c7bbea7fcba0d1c279a86318557a91f8d019f Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:35:09 -0600
 Subject: [PATCH 037/317] FROMGIT: maintainers: Add an entry for ntsync.

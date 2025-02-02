@@ -1,4 +1,4 @@
-From 9f865184c47c4675cd9e985bad3063fa5e975119 Mon Sep 17 00:00:00 2001
+From aa888aaf30e17bd732863a32a8638e0df37ba2d3 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Tue, 31 Dec 2024 15:53:53 +0800
 Subject: [PATCH 088/317] FROMLIST: LoongArch: Refactor bug_handler()

@@ -1,4 +1,4 @@
-From 9f599fb73840e8c7ab0550d54982e1d33fe5f857 Mon Sep 17 00:00:00 2001
+From 920c062fda727799afc93ca7d80bcb5fd9e0fee4 Mon Sep 17 00:00:00 2001
 From: Li Wencheng <liwencheng@phytium.com.cn>
 Date: Fri, 29 Mar 2024 16:46:54 +0800
 Subject: [PATCH 126/317] PHYTIUM: net/phytmac: Fixed the issue of pxe startup

@@ -1,4 +1,4 @@
-From cf12e4b4a211774e0c5b05fd09b35233d92ade49 Mon Sep 17 00:00:00 2001
+From d8064efebbcc5964d676bd3e1a79b55c75423c71 Mon Sep 17 00:00:00 2001
 From: Bibo Mao <maobibo@loongson.cn>
 Date: Mon, 13 Jan 2025 21:37:17 +0800
 Subject: [PATCH 047/317] FROMGIT: LoongArch: KVM: Clear LLBCTL if secondary

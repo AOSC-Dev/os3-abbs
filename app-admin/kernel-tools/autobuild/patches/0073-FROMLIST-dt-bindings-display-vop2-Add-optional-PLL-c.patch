@@ -1,4 +1,4 @@
-From b327d3fce4c0b96765a76bf3bf2a2aafb2e1a374 Mon Sep 17 00:00:00 2001
+From 538d2629e2aa1716898883ef38fafb64bb45a7f8 Mon Sep 17 00:00:00 2001
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Date: Wed, 11 Dec 2024 12:15:05 +0200
 Subject: [PATCH 073/317] FROMLIST: dt-bindings: display: vop2: Add optional

@@ -1,4 +1,4 @@
-From 5dc6e57d35ad46938fe17ab67f3ba0f0ae0f0e00 Mon Sep 17 00:00:00 2001
+From ee5071ef66cc55c3a674826c2fcdc3cd4f44bce4 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Tue, 14 Jan 2025 20:42:28 +0800
 Subject: [PATCH 111/317] LOONGSON: LoongArch: Adjust SETUP_SLEEP and

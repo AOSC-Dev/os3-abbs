@@ -1,4 +1,4 @@
-From 77739e6c0937df89fe25342e136219651f97aefc Mon Sep 17 00:00:00 2001
+From 040b4c1784bac9d2af34a61ea27991ba0249a7c1 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:53 -0600
 Subject: [PATCH 021/317] FROMGIT: ntsync: Introduce NTSYNC_IOC_SEM_READ.

@@ -1,4 +1,4 @@
-From 4a497c2c13c2139a2aab382a0eb1fa6fd83e7b9c Mon Sep 17 00:00:00 2001
+From c65f83f4c4334ac76f54c69e210ff4633b3caf04 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Mon, 11 Nov 2024 21:21:49 +0800
 Subject: [PATCH 059/317] FROMLIST: drm: Remove redundant statement in

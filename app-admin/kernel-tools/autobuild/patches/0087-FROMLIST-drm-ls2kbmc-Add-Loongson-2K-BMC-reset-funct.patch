@@ -1,4 +1,4 @@
-From e6221cb5c02120bc88c686f4d5df43047d375abb Mon Sep 17 00:00:00 2001
+From 4f4ff19412a8c7f1052fa70fef4f06d7a218ec75 Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Mon, 30 Dec 2024 17:31:36 +0800
 Subject: [PATCH 087/317] FROMLIST: drm/ls2kbmc: Add Loongson-2K BMC reset

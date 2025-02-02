@@ -1,4 +1,4 @@
-From 70d4f422f3248d9a8bd9072de018f02bd118ad67 Mon Sep 17 00:00:00 2001
+From c5ba14d49e18ed4172a9efb313ec9046920e0488 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 258/317] AOSCOS: drm/radeon: recover the GPU if it fails at

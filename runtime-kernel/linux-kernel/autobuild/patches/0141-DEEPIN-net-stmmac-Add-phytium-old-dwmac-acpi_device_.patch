@@ -1,4 +1,4 @@
-From e9fb033941ac592432dd51f596bebf3759fe5069 Mon Sep 17 00:00:00 2001
+From abe85dd45a2f6753d8d2dbe89cd9f1eed79ef357 Mon Sep 17 00:00:00 2001
 From: Wentao Guan <guanwentao@uniontech.com>
 Date: Wed, 8 May 2024 18:11:37 +0800
 Subject: [PATCH 141/317] DEEPIN: net: stmmac: Add phytium old dwmac

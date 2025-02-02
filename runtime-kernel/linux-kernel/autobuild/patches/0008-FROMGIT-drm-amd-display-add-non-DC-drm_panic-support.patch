@@ -1,4 +1,4 @@
-From 4438e7a914daa6ceaee31e66e967a6874574d498 Mon Sep 17 00:00:00 2001
+From 8bd7edf1ae80cd637d18c178d42143db24ba2629 Mon Sep 17 00:00:00 2001
 From: Alex Deucher <alexander.deucher@amd.com>
 Date: Thu, 31 Oct 2024 13:51:35 -0400
 Subject: [PATCH 008/317] FROMGIT: drm/amd/display: add non-DC drm_panic

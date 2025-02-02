@@ -1,4 +1,4 @@
-From 51a6aaecbba24e3986548a2d56adf66ed08cd965 Mon Sep 17 00:00:00 2001
+From ece98ad12deac80118f296fad3f9164f388c0b0d Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Sat, 24 Nov 2018 15:28:13 +0800
 Subject: [PATCH 291/317] AOSCOS: USB: OHCI: Fix ohci_resume() for hibernation

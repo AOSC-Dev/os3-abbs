@@ -1,4 +1,4 @@
-From 519ad8a9298b9a44386f5a27b017a56e25464977 Mon Sep 17 00:00:00 2001
+From 4ece66475089cba8a515439dd59de6718c8787e2 Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Tue, 17 Dec 2024 05:38:26 +0800
 Subject: [PATCH 310/317] AOSCOS: MIPS: remove duplicate defines of NR_syscalls

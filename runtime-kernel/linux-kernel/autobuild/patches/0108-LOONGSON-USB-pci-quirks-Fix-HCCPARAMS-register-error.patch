@@ -1,4 +1,4 @@
-From b7b82a10bab3d093306d0327e278b3ef9c5f4350 Mon Sep 17 00:00:00 2001
+From 43df1d26ec97128aa3c6ffa03a96e1defaac5837 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Wed, 22 Jan 2025 17:08:40 +0800
 Subject: [PATCH 108/317] LOONGSON: USB: pci-quirks: Fix HCCPARAMS register

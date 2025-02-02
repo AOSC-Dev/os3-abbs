@@ -1,4 +1,4 @@
-From 224f103110e9efae6775a107943595b24d6fc1e2 Mon Sep 17 00:00:00 2001
+From c05e109b58e8df30ffbddb07fb5a601a8729ead4 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 3 Dec 2024 16:52:14 +0800
 Subject: [PATCH 208/317] AOSCOS: MIPS: loongson64: fix constant timer build on

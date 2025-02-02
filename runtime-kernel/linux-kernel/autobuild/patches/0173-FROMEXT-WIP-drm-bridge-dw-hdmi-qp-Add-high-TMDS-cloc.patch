@@ -1,4 +1,4 @@
-From b9d44ec477f12e37cb21dd20bbdf38f07c408a19 Mon Sep 17 00:00:00 2001
+From c63a664b9c8ee6813163670d8b0c8dac96ce1591 Mon Sep 17 00:00:00 2001
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Date: Fri, 13 Sep 2024 17:30:35 +0300
 Subject: [PATCH 173/317] FROMEXT: [WIP] drm/bridge: dw-hdmi-qp: Add high TMDS

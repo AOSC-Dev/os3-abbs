@@ -1,4 +1,4 @@
-From 156a35c5a4a3547dbc720ff1426311518eec4e61 Mon Sep 17 00:00:00 2001
+From 29980f03024ec79b60dec432fa078a0f37f16fd2 Mon Sep 17 00:00:00 2001
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Date: Wed, 11 Dec 2024 12:15:08 +0200
 Subject: [PATCH 076/317] FROMLIST: arm64: dts: rockchip: Enable HDMI0 PHY clk

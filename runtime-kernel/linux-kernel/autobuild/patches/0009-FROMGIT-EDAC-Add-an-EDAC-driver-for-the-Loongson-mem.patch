@@ -1,4 +1,4 @@
-From 0f391d9522cb682f1b7be4c7dcf00693b6a0b24b Mon Sep 17 00:00:00 2001
+From c815633aacef88930492f7a66e6b3c374f175871 Mon Sep 17 00:00:00 2001
 From: Zhao Qunqin <zhaoqunqin@loongson.cn>
 Date: Thu, 19 Dec 2024 20:48:46 +0800
 Subject: [PATCH 009/317] FROMGIT: EDAC: Add an EDAC driver for the Loongson

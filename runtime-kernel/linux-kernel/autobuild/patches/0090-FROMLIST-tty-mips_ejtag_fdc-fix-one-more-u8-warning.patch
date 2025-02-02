@@ -1,4 +1,4 @@
-From b4c53f6cf9dc67968255466fd424c0df5a74c56e Mon Sep 17 00:00:00 2001
+From a17d9e062baa0e1400ee613e59eb9e94949a457d Mon Sep 17 00:00:00 2001
 From: "Jiri Slaby (SUSE)" <jirislaby@kernel.org>
 Date: Fri, 10 Jan 2025 12:52:28 +0100
 Subject: [PATCH 090/317] FROMLIST: tty: mips_ejtag_fdc: fix one more u8

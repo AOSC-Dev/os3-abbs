@@ -1,4 +1,4 @@
-From 8db38a371e8cab5695a24ac6ec170fd0d3d55fe2 Mon Sep 17 00:00:00 2001
+From 96ffbff5820139fcb1df36a722b36602ba83976c Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:49 -0600
 Subject: [PATCH 017/317] FROMGIT: ntsync: Introduce NTSYNC_IOC_CREATE_EVENT.

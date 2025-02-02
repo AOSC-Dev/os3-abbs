@@ -1,4 +1,4 @@
-From 77bd1aad23db839ba27493428d17c5989e496eb3 Mon Sep 17 00:00:00 2001
+From 8c8dba91e180027d4b4222c7ec855782ac0198af Mon Sep 17 00:00:00 2001
 From: Jocelyn Falempe <jfalempe@redhat.com>
 Date: Tue, 10 Dec 2024 10:28:42 +0100
 Subject: [PATCH 063/317] FROMLIST: drm/i915/display/i9xx: Add a

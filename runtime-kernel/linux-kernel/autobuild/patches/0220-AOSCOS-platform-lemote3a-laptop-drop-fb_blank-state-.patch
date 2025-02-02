@@ -1,4 +1,4 @@
-From 30b94d759406cec1be8f7f7c24f88fc008ebd2b5 Mon Sep 17 00:00:00 2001
+From 4034288b76d61126cad70fad8aaf84c95d870210 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 4 Dec 2024 16:14:17 +0800
 Subject: [PATCH 220/317] AOSCOS: platform: lemote3a-laptop: drop fb_blank

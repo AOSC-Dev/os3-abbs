@@ -1,4 +1,4 @@
-From 37d9d343b693898dcad9b84251d7683d4a1da3f1 Mon Sep 17 00:00:00 2001
+From 1660039b0d3a47cccfbf20dab524eeb74ee16c31 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Wed, 25 Dec 2024 10:29:19 +0800
 Subject: [PATCH 083/317] FROMLIST: LoongArch: Fix warnings during S3 suspend

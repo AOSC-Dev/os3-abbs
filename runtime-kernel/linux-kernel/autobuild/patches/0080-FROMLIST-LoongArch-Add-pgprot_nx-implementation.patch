@@ -1,4 +1,4 @@
-From 2251cada33275e9237c3736514f6e9103a080fd8 Mon Sep 17 00:00:00 2001
+From b9bac861fe35db73e2d958aa7da9dafa8e9d9a61 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Tue, 17 Dec 2024 15:39:08 +0800
 Subject: [PATCH 080/317] FROMLIST: LoongArch: Add pgprot_nx() implementation

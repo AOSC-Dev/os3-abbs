@@ -1,4 +1,4 @@
-From 085a880506d4ab79313b1d90fa38e57f3897eb9b Mon Sep 17 00:00:00 2001
+From 764a8400171c6a3faa509209f5c8590cd52cfcc4 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 4 Dec 2024 17:36:26 +0800
 Subject: [PATCH 224/317] AOSCOS: platform: rs780e-acpi: deprecate

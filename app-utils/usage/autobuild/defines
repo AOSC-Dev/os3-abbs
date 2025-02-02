@@ -1,0 +1,11 @@
+PKGNAME=usage
+PKGDES="Utility to work with Usage Specification-compliant CLI tools"
+PKGSEC=utils
+PKGDEP="gcc-runtime"
+BUILDDEP="rustc llvm"
+
+USECLANG=1
+CARGO_AFTER="-p usage-cli"
+
+# FIXME: ld.lld: error: relocation R_MIPS_64 cannot be used against local symbol; recompile with -fPIC
+NOLTO__LOONGSON3=1

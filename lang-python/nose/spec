@@ -1,6 +1,0 @@
-VER=1.3.7
-REL=8
-SRCS="tbl::https://pypi.python.org/packages/source/n/nose/nose-$VER.tar.gz"
-CHKSUMS="sha256::f1bffef9cbc82628f6e7d7b40d7e255aefaa1adb6a1b1d26c69a8b79e6208a98"
-SUBDIR=.
-CHKUPDATE="anitya::id=3938"

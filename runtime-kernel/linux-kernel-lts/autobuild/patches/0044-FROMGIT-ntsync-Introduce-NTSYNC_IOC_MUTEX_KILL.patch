@@ -1,4 +1,4 @@
-From dacfa8d3a67d40f29b3e5adc98ab06703ff6f957 Mon Sep 17 00:00:00 2001
+From 79309af27d9fa3a9bd334486b4f4bd8c9cca039c Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:48 -0600
 Subject: [PATCH 044/300] FROMGIT: ntsync: Introduce NTSYNC_IOC_MUTEX_KILL.

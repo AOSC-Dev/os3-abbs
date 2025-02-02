@@ -1,4 +1,4 @@
-From b4fe22c7fb8a5222fecb003263c43bb104f91ee5 Mon Sep 17 00:00:00 2001
+From ef356405f7a65e6a2f5abbf00bff11ca5b344f07 Mon Sep 17 00:00:00 2001
 From: Jocelyn Falempe <jfalempe@redhat.com>
 Date: Tue, 22 Oct 2024 20:39:48 +0200
 Subject: [PATCH 015/300] UPSTREAM: drm/nouveau/disp: Move tiling functions to

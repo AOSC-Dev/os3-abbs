@@ -1,4 +1,4 @@
-From 0493f86950e5b415e699d339c8c93127675d3a45 Mon Sep 17 00:00:00 2001
+From d886ab107212a76ad603b0e62d076e8ffcd29c76 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Tue, 21 Jan 2025 17:37:03 +0800
 Subject: [PATCH 088/300] FROMLIST: net: stmmac: dwmac-loongson: Set correct

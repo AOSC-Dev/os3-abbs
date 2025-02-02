@@ -1,4 +1,4 @@
-From 8012c8c4821760b6e8e2ea1beb2e53148b9dfa78 Mon Sep 17 00:00:00 2001
+From 2555f17e5f5ac5bd36c8205f5737593c70e174f7 Mon Sep 17 00:00:00 2001
 From: chenj <chenj@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 229/300] AOSCOS: snd/hda/conexant: add support for raw verbs

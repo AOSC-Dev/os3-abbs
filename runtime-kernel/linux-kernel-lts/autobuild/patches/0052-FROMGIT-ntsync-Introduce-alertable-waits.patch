@@ -1,4 +1,4 @@
-From 7f4bbc335194925a179978b0a957eb491196d817 Mon Sep 17 00:00:00 2001
+From 682f2578b807de85f073dd5825e5442c459a53f9 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:56 -0600
 Subject: [PATCH 052/300] FROMGIT: ntsync: Introduce alertable waits.

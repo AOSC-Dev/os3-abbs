@@ -1,4 +1,4 @@
-From 4606a342e25a022560e218f003f7a609eeb3a68a Mon Sep 17 00:00:00 2001
+From c642cf7fe0d74dc1dfdce00cf52863027b494db8 Mon Sep 17 00:00:00 2001
 From: Yao Wang <wangyao@lemote.com>
 Date: Fri, 5 Jan 2018 11:28:18 +0800
 Subject: [PATCH 218/300] AOSCOS: GPIO: Add NCT6102 GPIO driver support

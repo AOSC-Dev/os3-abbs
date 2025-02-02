@@ -1,4 +1,4 @@
-From 86d9c39b44b63bc97d62dfce1bf62ea83e77720c Mon Sep 17 00:00:00 2001
+From 3dfadd0a38715d05d91a8483ec92cd3d5cc16ddd Mon Sep 17 00:00:00 2001
 From: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 Date: Tue, 12 Nov 2024 22:33:06 +0530
 Subject: [PATCH 003/300] BACKPORT: platform/x86/amd: amd_3d_vcache: Add AMD 3D

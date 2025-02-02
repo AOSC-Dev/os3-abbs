@@ -1,4 +1,4 @@
-From 69ae4fb4db381315143306bb911b0f94753c4da8 Mon Sep 17 00:00:00 2001
+From 8fd438172b90272e026f2913e6176656be235207 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 4 Dec 2024 15:42:39 +0800
 Subject: [PATCH 197/300] AOSCOS: platform: sd5075: convert to

@@ -1,4 +1,4 @@
-From a707d2591b81e85e05e5f12f856ed0439afbf950 Mon Sep 17 00:00:00 2001
+From f6a2613079df8705ddc007582246a641831cac5f Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Mon, 9 Dec 2024 17:25:34 +0800
 Subject: [PATCH 220/300] AOSCOS: gpio: gpio-nct6102: add a missing include to

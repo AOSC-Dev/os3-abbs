@@ -1,4 +1,4 @@
-From 166152764e5bd509408aa7a3cd10f0357993ad80 Mon Sep 17 00:00:00 2001
+From 4c5c1b56e184b8b39fcc86b39fb422437b123393 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?=E5=BF=98=E6=80=80?= <otgwt@outlook.com>
 Date: Wed, 3 Jul 2024 03:13:45 +0000
 Subject: [PATCH 136/300] DEEPIN: net: phytium: convert and remove validate()

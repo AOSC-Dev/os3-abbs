@@ -1,4 +1,4 @@
-From 720055bd0ffe7a9c38f26d320461e72ae8d28afb Mon Sep 17 00:00:00 2001
+From 4b286e8241c884b989c3fe43bdd7aa49f47fe99a Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Tue, 10 Dec 2024 20:37:06 +0800
 Subject: [PATCH 082/300] FROMLIST: pwm: Add Loongson PWM controller support

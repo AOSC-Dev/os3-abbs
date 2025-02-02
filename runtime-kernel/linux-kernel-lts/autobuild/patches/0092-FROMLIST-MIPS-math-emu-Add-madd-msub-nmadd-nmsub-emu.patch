@@ -1,4 +1,4 @@
-From 28faca0c92193e8e348cc74279c96413020b144a Mon Sep 17 00:00:00 2001
+From 0c7075a627f7b10ecc1ab86e16ba836f7f50bd85 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Wed, 6 Feb 2019 20:03:14 +0800
 Subject: [PATCH 092/300] FROMLIST: MIPS: math-emu: Add madd/msub/nmadd/nmsub

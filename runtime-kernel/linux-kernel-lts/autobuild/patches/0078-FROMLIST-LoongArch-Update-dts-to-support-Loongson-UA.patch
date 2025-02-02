@@ -1,4 +1,4 @@
-From e1ff4babb7e8e187d907c32c141c58befed9fcd4 Mon Sep 17 00:00:00 2001
+From 960ffc9cab6c9e6300adc35c85a611257ab093b5 Mon Sep 17 00:00:00 2001
 From: Haowei Zheng <zhenghaowei@loongson.cn>
 Date: Mon, 26 Aug 2024 10:47:05 +0800
 Subject: [PATCH 078/300] FROMLIST: LoongArch: Update dts to support Loongson

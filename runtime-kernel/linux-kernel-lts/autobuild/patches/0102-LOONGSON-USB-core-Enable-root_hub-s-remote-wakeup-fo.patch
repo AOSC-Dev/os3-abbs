@@ -1,4 +1,4 @@
-From 63a39a5607a9453ab37a3ae0e7f741ea8b0e2525 Mon Sep 17 00:00:00 2001
+From bc9cbeb768fc29515d91b427b9c8d114c862b207 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Wed, 22 Jan 2025 15:33:50 +0800
 Subject: [PATCH 102/300] LOONGSON: USB: core: Enable root_hub's remote wakeup

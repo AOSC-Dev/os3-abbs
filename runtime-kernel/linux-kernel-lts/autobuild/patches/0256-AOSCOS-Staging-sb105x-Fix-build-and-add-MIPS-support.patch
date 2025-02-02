@@ -1,4 +1,4 @@
-From b5de40d667559c6114ad2af66e870a4b77b999b7 Mon Sep 17 00:00:00 2001
+From 8686dc37d6b340eb60297bd0fc1cb21f91838906 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 256/300] AOSCOS: Staging: sb105x: Fix build and add MIPS

@@ -1,4 +1,4 @@
-From 532e12156a97d278aecc164359126b3fafb07bc1 Mon Sep 17 00:00:00 2001
+From 4033e5c98a00aa6eb9a341984dcb9b5710841752 Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Tue, 14 Jan 2025 21:00:29 +0800
 Subject: [PATCH 071/300] FROMGIT: clk: clk-loongson2: Fix the number count of

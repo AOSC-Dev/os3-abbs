@@ -1,4 +1,4 @@
-From 9114c0cf7623df894895b4c7ae40e7dad40f339c Mon Sep 17 00:00:00 2001
+From 94dee63c34f288775072cfcc0234bc97cf7af270 Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Wed, 23 Oct 2024 16:38:05 +0800
 Subject: [PATCH 079/300] FROMLIST: Input: Add driver for PixArt PS/2 touchpad

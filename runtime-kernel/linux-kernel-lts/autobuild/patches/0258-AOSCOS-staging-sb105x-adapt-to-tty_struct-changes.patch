@@ -1,4 +1,4 @@
-From 65eb3e5a283590fef99c0fdf95b2793808d6b19e Mon Sep 17 00:00:00 2001
+From e650e19dc6d09efbdb6fa580493b124a433e9032 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 11 Dec 2024 14:44:52 +0800
 Subject: [PATCH 258/300] AOSCOS: staging: sb105x: adapt to tty_struct changes

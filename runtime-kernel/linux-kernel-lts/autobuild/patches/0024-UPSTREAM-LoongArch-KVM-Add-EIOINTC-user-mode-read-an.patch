@@ -1,4 +1,4 @@
-From 86855bfb30eb27a1b05a7631e1c5350fd9ff85b2 Mon Sep 17 00:00:00 2001
+From 6226ee7ae6d0af4a8e8925a08f6bbb21f90cbf7d Mon Sep 17 00:00:00 2001
 From: Xianglai Li <lixianglai@loongson.cn>
 Date: Wed, 13 Nov 2024 16:18:27 +0800
 Subject: [PATCH 024/300] UPSTREAM: LoongArch: KVM: Add EIOINTC user mode read

@@ -1,4 +1,4 @@
-From c4a57094ceb7eabccfaf6102dfa51c46baae6539 Mon Sep 17 00:00:00 2001
+From a0a47f7f6c7ad31d3563a3249ce69c1d4264f249 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Thu, 5 Dec 2024 16:19:39 +0800
 Subject: [PATCH 213/300] AOSCOS: platform: pmon_flash: mark init_flash()

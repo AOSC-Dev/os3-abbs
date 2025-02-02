@@ -1,4 +1,4 @@
-From 64449fa3f684ce2752a1085ec44568aab30c78df Mon Sep 17 00:00:00 2001
+From 27bc71fbf8f92b53facba5e007432dc5060b2430 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Sat, 25 Jan 2025 13:00:30 +0800
 Subject: [PATCH 186/300] AOSCOS: MIPS: platform: disable unreliable CSR-based

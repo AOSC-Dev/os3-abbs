@@ -1,4 +1,4 @@
-From af7cd7cd9cfdfa854e7eb2cb20d1d1ed050d7570 Mon Sep 17 00:00:00 2001
+From fe3db10960a3fbff0d691ee06d5f069c35fac898 Mon Sep 17 00:00:00 2001
 From: Miao Wang <shankerwangmiao@gmail.com>
 Date: Thu, 25 Jul 2024 16:09:19 +0800
 Subject: [PATCH 169/300] AOSCOS: loongarch: fix missing dependency info in

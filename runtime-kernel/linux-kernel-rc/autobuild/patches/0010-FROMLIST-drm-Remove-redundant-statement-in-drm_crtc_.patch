@@ -1,7 +1,7 @@
 From 8ef982894785cb222126689b321674acf6e38358 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Mon, 11 Nov 2024 21:21:49 +0800
-Subject: [PATCH 010/258] FROMLIST: drm: Remove redundant statement in
+Subject: [PATCH 010/260] FROMLIST: drm: Remove redundant statement in
  drm_crtc_helper_set_mode()
 
 Commit dbbfaf5f2641a ("drm: Remove bridge support from legacy helpers")

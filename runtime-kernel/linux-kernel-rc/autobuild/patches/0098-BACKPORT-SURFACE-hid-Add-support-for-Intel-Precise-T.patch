@@ -1,7 +1,7 @@
 From 294e1bc0ec61b1b5138b1d3c4aba340a630e67e4 Mon Sep 17 00:00:00 2001
 From: Dorian Stoll <dorian.stoll@tmsp.io>
 Date: Sun, 11 Dec 2022 12:00:59 +0100
-Subject: [PATCH 098/258] BACKPORT: SURFACE: hid: Add support for Intel Precise
+Subject: [PATCH 098/260] BACKPORT: SURFACE: hid: Add support for Intel Precise
  Touch and Stylus
 
 Based on linux-surface/intel-precise-touch@8abe268

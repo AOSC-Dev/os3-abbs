@@ -1,4 +1,4 @@
-From 6153f59ef0c65eeef55d36f2273c92db1c9f00a9 Mon Sep 17 00:00:00 2001
+From 965e62fc71290d2b1fe5cbea424726f4e4457080 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 12 Mar 2024 12:37:48 +0800
 Subject: [PATCH 06/10] FROM AOSC: chore: use the wheel group for hardware
@@ -928,10 +928,10 @@ index 9e20622ab..7e1431cf6 100644
      </message>
      <message>
 diff --git a/src/VBox/Frontends/VirtualBox/src/globals/UIMessageCenter.cpp b/src/VBox/Frontends/VirtualBox/src/globals/UIMessageCenter.cpp
-index 7486b0dc4..78c4757d0 100644
+index da79afcb4..2fea410cd 100644
 --- a/src/VBox/Frontends/VirtualBox/src/globals/UIMessageCenter.cpp
 +++ b/src/VBox/Frontends/VirtualBox/src/globals/UIMessageCenter.cpp
-@@ -2167,7 +2167,7 @@ void UIMessageCenter::prepare()
+@@ -2169,7 +2169,7 @@ void UIMessageCenter::prepare()
      /* Translations for Main.
       * Please make sure they corresponds to the strings coming from Main one-by-one symbol! */
      tr("Could not load the Host USB Proxy Service (VERR_FILE_NOT_FOUND). The service might not be installed on the host computer");
@@ -1059,7 +1059,7 @@ index a9dbcda58..fd0adce9d 100755
      # Remove any kernel modules left over from previously installed kernels.
      cleanup only_old
 diff --git a/src/VBox/Installer/solaris/vbox-ips.mog b/src/VBox/Installer/solaris/vbox-ips.mog
-index 03547eda0..f65086b51 100644
+index 6799a050f..2f7ef6e8e 100644
 --- a/src/VBox/Installer/solaris/vbox-ips.mog
 +++ b/src/VBox/Installer/solaris/vbox-ips.mog
 @@ -7,7 +7,7 @@ set name=variant.arch value=@UNAME_P@
@@ -1071,7 +1071,7 @@ index 03547eda0..f65086b51 100644
  # The data-xkb was renamed to xkeyboard-config in S11.4, so adjust this when
  # we have moved our builds away from S11.3.
  depend fmri=pkg:/x11/keyboard/data-xkb type=require
-@@ -62,7 +62,7 @@ $(HARDENED_ONLY)<transform file path=opt/VirtualBox/amd64/(VirtualBoxVM|VBoxHead
+@@ -66,7 +66,7 @@ $(HARDENED_ONLY)<transform file path=opt/VirtualBox/amd64/(VirtualBoxVM|VBoxHead
  <transform file path=platform/i86pc/kernel/drv/amd64/vboxdrv$ -> emit driver name=vboxdrv perms="* 0600 root sys" perms="vboxdrvu 0666 root sys" devlink=type=ddi_pseudo;name=vboxdrv;minor=vboxdrv\t\D devlink=type=ddi_pseudo;name=vboxdrv;minor=vboxdrvu\t\M0>
  <transform file path=platform/i86pc/kernel/drv/amd64/vboxnet$ -> emit driver name=vboxnet>
  <transform file path=platform/i86pc/kernel/drv/amd64/vboxbow$ -> emit driver name=vboxbow>
@@ -1124,10 +1124,10 @@ index b8352e5f0..a66e58d94 100644
      </message>
      <message>
 diff --git a/src/VBox/Main/src-client/ConsoleImplConfigCommon.cpp b/src/VBox/Main/src-client/ConsoleImplConfigCommon.cpp
-index f0b2ee0f0..b56d8fe7d 100644
+index 5baff1cfb..6cfc55936 100644
 --- a/src/VBox/Main/src-client/ConsoleImplConfigCommon.cpp
 +++ b/src/VBox/Main/src-client/ConsoleImplConfigCommon.cpp
-@@ -2619,7 +2619,7 @@ int Console::i_configNetwork(const char *pszDevice,
+@@ -2624,7 +2624,7 @@ int Console::i_configNetwork(const char *pszDevice,
                                                               "Failed to open '/dev/%s' for read/write access.  Please check the "
                                                               "permissions of that node, and that the net.link.tap.user_open "
                                                               "sysctl is set.  Either run 'chmod 0666 /dev/%s' or change the "
@@ -1150,5 +1150,5 @@ index 0440ae781..515e73fa5 100644
                  return setWarning(E_FAIL,
                                    tr("VirtualBox is not currently allowed to access USB devices.  You can change this by allowing your user to access the 'usbfs' folder and files.  Please see the user manual for a more detailed explanation"));
 -- 
-2.47.0
+2.48.1
 

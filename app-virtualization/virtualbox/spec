@@ -1,11 +1,10 @@
-VER=7.1.4
+VER=7.1.6a
 # Note: Sometimes Oracle seems to release fix-up tarballs.
-UBUNTU_VBOX_VER="165100~Ubuntu~noble"
-SRCS="tbl::https://download.virtualbox.org/virtualbox/$VER/VirtualBox-${VER}.tar.bz2 \
-      file::rename=virtualbox.deb::https://download.virtualbox.org/virtualbox/$VER/virtualbox-${VER%.*}_${VER}-${UBUNTU_VBOX_VER}_amd64.deb \
-      file::rename=VBoxGuestAdditions.iso::https://download.virtualbox.org/virtualbox/$VER/VBoxGuestAdditions_$VER.iso"
-CHKSUMS="sha256::872e7a42b41f8558abbf887f1bdc7aac932bb88b2764d07cbce270cab57e3b5e \
-         sha256::54c25c941678198b0baf78f5e4cf468b990fd625ec4e7b231cf1e8a6bace3d1a \
-         sha256::80c91d35742f68217cf47b13e5b50d53f54c22c485bacce41ad7fdc321649e61"
+UBUNTU_VBOX_VER="167084~Ubuntu~noble"
+SRCS="tbl::https://download.virtualbox.org/virtualbox/${VER%%[a-z]*}/VirtualBox-${VER}.tar.bz2 \
+      file::rename=virtualbox.deb::https://download.virtualbox.org/virtualbox/${VER%%[a-z]*}/virtualbox-${VER%.*}_${VER%%[a-z]*}-${UBUNTU_VBOX_VER}_amd64.deb \
+      file::rename=VBoxGuestAdditions.iso::https://download.virtualbox.org/virtualbox/${VER%%[a-z]*}/VBoxGuestAdditions_${VER%%[a-z]*}.iso"
+CHKSUMS="sha256::5a7b13066ec71990af0cc00a5eea9c7ec3c71ca5ed99bb549c85494ce2ea395d \
+         sha256::b1e8406c141ff40221cebe5a99224ec74f1960d1491986d3bb1300a99c4790a1 \
+         sha256::dbbda1645bc05c9260adfe9efc4949cb590ec5ec02680aff936375670cffcafc"
 CHKUPDATE="anitya::id=14449"
-REL=1

@@ -1,4 +1,4 @@
-From d8d69316378e220d08fecc603a087fef6e8d561b Mon Sep 17 00:00:00 2001
+From eecaacb52949eeebb9a2ba34702a5f00fc7ed03c Mon Sep 17 00:00:00 2001
 From: xtex <xtexchooser@duck.com>
 Date: Mon, 16 Sep 2024 20:28:29 +0800
 Subject: [PATCH 08/10] FROM AOSC: Link against vorbisenc
@@ -25,5 +25,5 @@ index 65791d554..6c7669005 100755
      cat > $ODIR.tmp_src.cc << EOF
  #include <cstdio>
 -- 
-2.47.0
+2.48.1
 

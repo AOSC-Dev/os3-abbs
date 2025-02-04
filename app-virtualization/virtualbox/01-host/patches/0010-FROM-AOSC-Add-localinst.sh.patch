@@ -1,4 +1,4 @@
-From d09c47d1b6dfe42d74f9dd71e1f3ff7a9e26ebc3 Mon Sep 17 00:00:00 2001
+From c4601380b0aa4cbc16b5b75370837e72ab787ee1 Mon Sep 17 00:00:00 2001
 From: xtex <xtexchooser@duck.com>
 Date: Mon, 30 Sep 2024 21:48:13 +0800
 Subject: [PATCH 10/10] FROM AOSC: Add localinst.sh
@@ -64,5 +64,5 @@ index 000000000..2073fcb25
 +install -vdm755 "$PKGDIR"/usr/lib/virtualbox/components
 +install -vm755 "$OUTPUTDIR"/components/* -t "$PKGDIR"/usr/lib/virtualbox/components
 -- 
-2.47.0
+2.48.1
 

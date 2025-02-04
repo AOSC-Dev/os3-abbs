@@ -1,4 +1,4 @@
-From 89fc798d9234a8a71e38e3b7912d3df5afdd631c Mon Sep 17 00:00:00 2001
+From 50cbf17b0b46940b3163fbe8296d660fc93fa242 Mon Sep 17 00:00:00 2001
 From: Christian Hesse <mail@eworm.de>
 Date: Tue, 17 Jan 2023 22:04:08 +0100
 Subject: [PATCH 02/10] FROM ARCHLINUX: properly handle i3wm
@@ -77,5 +77,5 @@ index e77a25ef5..9359d3d0b 100644
  
      /* Make sure we have no focus: */
 -- 
-2.47.0
+2.48.1
 

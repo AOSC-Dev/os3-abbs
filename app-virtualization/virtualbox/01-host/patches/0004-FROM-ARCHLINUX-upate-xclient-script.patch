@@ -1,4 +1,4 @@
-From d0d564a6b82ed1f0663fed56154087778f846928 Mon Sep 17 00:00:00 2001
+From 9e58b57a886693ccc9bb443cf5a010ba9db300ab Mon Sep 17 00:00:00 2001
 From: Christian Hesse <mail@eworm.de>
 Date: Mon, 17 Oct 2022 16:40:29 +0200
 Subject: [PATCH 04/10] FROM ARCHLINUX: upate xclient script
@@ -34,5 +34,5 @@ index 1e38d05c7..699dbdbb5 100755
 -    /usr/bin/VBoxClient --vmsvga-session # In case VMSVGA emulation is enabled
  fi
 -- 
-2.47.0
+2.48.1
 

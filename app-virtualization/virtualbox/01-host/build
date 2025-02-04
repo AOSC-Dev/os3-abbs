@@ -190,3 +190,17 @@ install -Dvm644 "$SRCDIR"/temp/usr/share/doc/virtualbox-${PKGVER%.*}/User* \
 abinfo "Installing Guest Additions ISO ..."
 install -Dvm644 "$SRCDIR"/../VBoxGuestAdditions.iso \
     "$PKGDIR"/usr/lib/virtualbox/additions/VBoxGuestAdditions.iso
+
+# FIXME: Wine processes may not exit cleanly post-build.
+processes=(
+    "wineserver"
+    "services.exe"
+    "explorer.exe"
+    "winedevice.exe"
+    "svchost.exe"
+    "plugplay.exe"
+)
+for process in "${processes[@]}"; do
+    abinfo "Killing unhandled Wine process: $i ..."
+    pgrep "$process" | xargs -r kill -9 || true
+done

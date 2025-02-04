@@ -1,5 +1,4 @@
-VER=0.18.3
-REL=1
+VER=0.19.3
 SRCS="git::commit=tags/v$VER::https://github.com/tsukinaha/tsukimi"
 CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=376111"

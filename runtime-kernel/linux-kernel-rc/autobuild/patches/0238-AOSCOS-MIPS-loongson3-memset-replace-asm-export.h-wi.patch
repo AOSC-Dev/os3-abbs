@@ -1,7 +1,7 @@
 From 8ab17bcc2c2653bbdfcabe547d136e3e50155d4e Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Thu, 12 Dec 2024 01:27:08 +0800
-Subject: [PATCH 238/257] AOSCOS: MIPS: loongson3-memset: replace
+Subject: [PATCH 238/258] AOSCOS: MIPS: loongson3-memset: replace
  <asm/export.h> with <linux/export.h>
 
 Per commit 9259e15b3f27 ("mips: replace #include <asm/export.h> with

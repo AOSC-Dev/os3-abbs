@@ -1,7 +1,7 @@
 From 4171222a6c7f96f799cc0e3fb3355021ab7dc69e Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 11 Dec 2024 14:44:52 +0800
-Subject: [PATCH 215/257] AOSCOS: staging: sb105x: adapt to tty_struct changes
+Subject: [PATCH 215/258] AOSCOS: staging: sb105x: adapt to tty_struct changes
 
 Per commit 6e94dbc7a4e4 ("tty: cumulate and document tty_struct::flow*
 members"), struct members `stopped' and `tco_stopped' were grouped under

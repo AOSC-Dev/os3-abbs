@@ -1,7 +1,7 @@
 From f3f004f17d517ce8b586f74c8b5c7b057a4d95aa Mon Sep 17 00:00:00 2001
 From: Jiaxun Yang <jiaxun.yang@flygoat.com>
 Date: Thu, 19 Jan 2023 20:42:56 +0000
-Subject: [PATCH 145/257] AOSCOS: wifi: rt2x00: Condition interface type
+Subject: [PATCH 145/258] AOSCOS: wifi: rt2x00: Condition interface type
  getters with config options
 
 When compiling this driver for platforms with partial clk

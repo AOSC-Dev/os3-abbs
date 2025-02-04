@@ -1,7 +1,7 @@
 From 8528fbbdd811cd47d6b749e22e947e39d376fc67 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Thu, 5 Dec 2024 16:19:39 +0800
-Subject: [PATCH 170/257] AOSCOS: platform: pmon_flash: mark init_flash()
+Subject: [PATCH 170/258] AOSCOS: platform: pmon_flash: mark init_flash()
  function as static
 
 Suppress a missing prototypes warning during build.

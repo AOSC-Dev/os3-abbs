@@ -1,7 +1,7 @@
 From a9935ce071f50e3eef2d802353b595069ff4242b Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Sat, 25 Jan 2025 04:22:54 +0800
-Subject: [PATCH 253/257] AOSCOS: MIPS: Loongson 3: build platform device
+Subject: [PATCH 253/258] AOSCOS: MIPS: Loongson 3: build platform device
  drivers with CPU_HWMON only
 
 Suggested-by: Mingcong Bai <jeffbai@aosc.io>

@@ -1,7 +1,7 @@
 From b1d5ae6e0c9859af766795a8d4f872a87be6e744 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 4 Dec 2024 17:36:26 +0800
-Subject: [PATCH 164/257] AOSCOS: platform: rs780e-acpi: deprecate
+Subject: [PATCH 164/258] AOSCOS: platform: rs780e-acpi: deprecate
  pci_get_bus_and_slot()
 
 The commit 5cf0c37a71da ("PCI: Remove pci_get_bus_and_slot() function")

@@ -1,7 +1,7 @@
 From 19fa12acf82d940bc5e63df336fa6d8ca3322abd Mon Sep 17 00:00:00 2001
 From: Miao Wang <shankerwangmiao@gmail.com>
 Date: Wed, 17 Jul 2024 09:03:32 +0800
-Subject: [PATCH 121/257] AOSCOS: loongarch: basic boot support for legacy
+Subject: [PATCH 121/258] AOSCOS: loongarch: basic boot support for legacy
  firmware
 
 The addresses passed from legacy firmware in efi system tables, the

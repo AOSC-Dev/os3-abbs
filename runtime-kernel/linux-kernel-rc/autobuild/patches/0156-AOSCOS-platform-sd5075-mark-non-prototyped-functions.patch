@@ -1,7 +1,7 @@
 From e5cd8d0f16ebf49774412e80db35cb8744aabbd6 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 4 Dec 2024 15:47:29 +0800
-Subject: [PATCH 156/257] AOSCOS: platform: sd5075: mark non-prototyped
+Subject: [PATCH 156/258] AOSCOS: platform: sd5075: mark non-prototyped
  functions as static
 
 Fix build error with -Werror due to missing prototypes.

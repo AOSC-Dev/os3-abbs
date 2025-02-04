@@ -1,7 +1,7 @@
 From 46e5d67175e114f10e10f99425e205995b5672a0 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
-Subject: [PATCH 212/257] AOSCOS: Revert "staging: sb105x: delete the driver"
+Subject: [PATCH 212/258] AOSCOS: Revert "staging: sb105x: delete the driver"
 
 This reverts commit aa98b772b7d32d91ec2a7f8779adfc31f0aaaf24.
 Lemote use this driver for MIPS/Loongson, so let me maintain it!

@@ -1,7 +1,7 @@
 From 7a3b645c86ab757554dd55cf280e6fe71154c04f Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Thu, 12 Dec 2024 14:03:01 +0800
-Subject: [PATCH 242/257] AOSCOS: MIPS: loongson3-memcpy: use PTR_WD to fix
+Subject: [PATCH 242/258] AOSCOS: MIPS: loongson3-memcpy: use PTR_WD to fix
  build
 
 Per commit fa62f39dc7e2 ("MIPS: Fix build error due to PTR used in more

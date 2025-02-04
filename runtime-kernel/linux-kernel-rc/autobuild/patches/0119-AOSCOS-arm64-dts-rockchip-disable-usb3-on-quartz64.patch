@@ -1,7 +1,7 @@
 From 6cef482f0f8bd36f3989d65e8f9b6b1c19df7b52 Mon Sep 17 00:00:00 2001
 From: Icenowy Zheng <icenowy@aosc.io>
 Date: Sun, 22 Sep 2024 04:13:54 +0800
-Subject: [PATCH 119/257] AOSCOS: arm64: dts: rockchip: disable usb3 on
+Subject: [PATCH 119/258] AOSCOS: arm64: dts: rockchip: disable usb3 on
  quartz64
 
 USB 3 ports on Quartz64 is of bad quality as it shares lines with SATA.

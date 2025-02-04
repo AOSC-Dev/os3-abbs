@@ -1,7 +1,7 @@
 From 368a1c70d41b92f150ac369d0be252ce22a74ec7 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Thu, 12 Dec 2024 16:05:51 +0800
-Subject: [PATCH 247/257] AOSCOS: MIPS: select ARCH_FORCE_MAX_ORDER >= 11 if
+Subject: [PATCH 247/258] AOSCOS: MIPS: select ARCH_FORCE_MAX_ORDER >= 11 if
  NUMA_BALANCING is selected
 
 This should suppress an assertion failure during build. Further

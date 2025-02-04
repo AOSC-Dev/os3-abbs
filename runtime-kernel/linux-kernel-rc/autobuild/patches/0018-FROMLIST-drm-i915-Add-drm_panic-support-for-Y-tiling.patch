@@ -1,7 +1,7 @@
 From ebb9d0e77a3cf6cd5c27710fad1a1290493ac4b0 Mon Sep 17 00:00:00 2001
 From: Jocelyn Falempe <jfalempe@redhat.com>
 Date: Tue, 10 Dec 2024 10:28:46 +0100
-Subject: [PATCH 018/260] FROMLIST: drm/i915: Add drm_panic support for
+Subject: [PATCH 018/261] FROMLIST: drm/i915: Add drm_panic support for
  Y-tiling with DPT
 
 On Alderlake and later, it's not possible to disable tiling when DPT

@@ -1,7 +1,7 @@
 From 02dd6d35fdc9f779445a902b15fa2dc80f6851d3 Mon Sep 17 00:00:00 2001
 From: Jocelyn Falempe <jfalempe@redhat.com>
 Date: Tue, 10 Dec 2024 10:28:43 +0100
-Subject: [PATCH 015/260] FROMLIST: drm/i915/display: Add a disable_tiling()
+Subject: [PATCH 015/261] FROMLIST: drm/i915/display: Add a disable_tiling()
  for skl planes
 
 drm_panic draws in linear framebuffer, so it's easier to re-use the

@@ -1,4 +1,4 @@
-From cd4dc0f1467b4a1529b3ee50ca2a03aa9f0acdf0 Mon Sep 17 00:00:00 2001
+From d41a6cddf6b3289320e8da3fe10a49c42cba44be Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Tue, 4 Feb 2025 12:31:07 +0800
 Subject: [PATCH 254/258] AOSCOS: mvsas: Rename .device_configure() into
@@ -11,9 +11,9 @@ Fixes: "AOSCOS: mvsas: Optimise performance and stability on CPU_LOONGSON64"
 Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
 ---
  drivers/scsi/mvsas/mv_init.c | 2 +-
- drivers/scsi/mvsas/mv_sas.c  | 2 +-
+ drivers/scsi/mvsas/mv_sas.c  | 4 ++--
  drivers/scsi/mvsas/mv_sas.h  | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+ 3 files changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/scsi/mvsas/mv_init.c b/drivers/scsi/mvsas/mv_init.c
 index 83cf8d637949..d6b1f893dec2 100644
@@ -29,10 +29,10 @@ index 83cf8d637949..d6b1f893dec2 100644
  	.scan_start		= mvs_scan_start,
  	.can_queue		= 1,
 diff --git a/drivers/scsi/mvsas/mv_sas.c b/drivers/scsi/mvsas/mv_sas.c
-index 2b22f30e39a6..aec63c8522d3 100644
+index 2b22f30e39a6..2a5813382c2b 100644
 --- a/drivers/scsi/mvsas/mv_sas.c
 +++ b/drivers/scsi/mvsas/mv_sas.c
-@@ -265,7 +265,7 @@ static void mvs_bytes_dmaed(struct mvs_info *mvi, int i, gfp_t gfp_flags)
+@@ -265,11 +265,11 @@ static void mvs_bytes_dmaed(struct mvs_info *mvi, int i, gfp_t gfp_flags)
  	sas_notify_port_event(sas_phy, PORTE_BYTES_DMAED, gfp_flags);
  }
  
@@ -41,6 +41,11 @@ index 2b22f30e39a6..aec63c8522d3 100644
  {
  	struct domain_device *dev = sdev_to_domain_dev(sdev);
  
+-	sas_device_configure(sdev, lim);
++	sas_sdev_configure(sdev, lim);
+ 
+ #if defined(CONFIG_MIPS) && defined(CONFIG_CPU_LOONGSON64)
+ 	if (!dev_is_sata(dev))
 diff --git a/drivers/scsi/mvsas/mv_sas.h b/drivers/scsi/mvsas/mv_sas.h
 index 30c7d450fb9d..2deae46b5b26 100644
 --- a/drivers/scsi/mvsas/mv_sas.h

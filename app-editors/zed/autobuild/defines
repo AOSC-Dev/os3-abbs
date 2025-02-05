@@ -15,5 +15,5 @@ FAIL_ARCH="!(amd64|arm64)"
 
 USECLANG=1
 
-CARGO_AFTER="--bin zed \
-             --bin cli"
+CARGO_AFTER="--package zed \
+             --package cli"

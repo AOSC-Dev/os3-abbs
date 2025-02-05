@@ -5,7 +5,7 @@ PKGDEP="libdrm pixman xcb-util xorg-server"
 PKGDES="XF86 driver for Intel GPUs"
 
 AUTOTOOLS_AFTER="--libexecdir=/usr/lib \
-                 --with-default-dri=2 \
+                 --with-default-dri=3 \
                  --enable-kms-only"
 
 AB_FLAGS_RRO=0

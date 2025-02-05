@@ -1,0 +1,36 @@
+From b7af823e20178048f287f0320dcf7418f7bd493f Mon Sep 17 00:00:00 2001
+From: Icenowy Zheng <uwu@icenowy.me>
+Date: Thu, 6 Feb 2025 01:27:19 +0800
+Subject: [PATCH] sna: default to DRI3 for gen2/3
+
+DRI3 is supported by the Gallium i915g driver for a long time and DRI2
+support is even going to be dropped from Mesa (currently it's already
+hidden by a 'legacy-x11' meson option).
+
+Default to DRI3 for gen2/3 now, otherwise Mesa built w/o manually
+enabling DRI2 will just silently fall back to llvmpipe, which isn't so
+adorable on devices with gen2/3 video (because they are bound to old and
+weak CPUs).
+
+Signed-off-by: Icenowy Zheng <uwu@icenowy.me>
+---
+ src/sna/sna_driver.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/sna/sna_driver.c b/src/sna/sna_driver.c
+index 137f29e8..984aa11c 100644
+--- a/src/sna/sna_driver.c
++++ b/src/sna/sna_driver.c
+@@ -444,8 +444,7 @@ static void setup_dri(struct sna *sna)
+ 	sna->dri3.override =
+ 		!sna->dri3.available ||
+ 		xf86IsOptionSet(sna->Options, OPTION_DRI);
+-	if (level >= 3 && (sna->kgem.gen >= 040 ||
+-			   xf86IsOptionSet(sna->Options, OPTION_DRI)))
++	if (level >= 3)
+ 		sna->dri3.enable = sna->dri3.available;
+ #endif
+ #if HAVE_DRI2
+-- 
+2.48.1
+

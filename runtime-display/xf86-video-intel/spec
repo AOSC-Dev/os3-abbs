@@ -1,6 +1,5 @@
-VER=2.99.917+git20210115
-_commit=31486f40f8e8f8923ca0799aea84b58799754564
-REL=1
+VER=2.99.917+git20230318
+_commit=ce811e78882d9f31636351dfe65351f4ded52c74
 SRCS="git::commit=${_commit}::https://gitlab.freedesktop.org/xorg/driver/xf86-video-intel"
 CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=5223"

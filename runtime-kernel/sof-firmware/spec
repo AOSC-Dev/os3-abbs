@@ -1,4 +1,4 @@
-VER=2024.09.1
+VER=2025.01
 SRCS="tbl::https://github.com/thesofproject/sof-bin/releases/download/v${VER}/sof-bin-${VER}.tar.gz"
-CHKSUMS="sha256::a9b94d96648ab139d8270c728522d0ad7470276bc6a30efaf3752650d21e84e6"
+CHKSUMS="sha256::34d565db757a32450106317cc51f38bf67962e0fc8b7f7c72e6e39fd89e99263"
 CHKUPDATE="anitya::id=246473"

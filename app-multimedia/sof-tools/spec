@@ -1,4 +1,4 @@
-VER=2.11.2
+VER=2.12
 SRCS="git::commit=tags/v$VER::https://github.com/thesofproject/sof"
 CHKSUMS="SKIP"
 SUBDIR="sof-tools/tools"

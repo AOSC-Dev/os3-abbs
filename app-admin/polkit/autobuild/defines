@@ -24,8 +24,7 @@ MESON_AFTER=" \
     -Dtests=false \
     -Dintrospection=true \
     -Dgtk_doc=true \
-    -Dman=true \
-    -Djs_engine=duktape"
+    -Dman=true
 MESON_AFTER__RETRO=" \
     ${MESON_AFTER} \
     -Dgtk_doc=false \

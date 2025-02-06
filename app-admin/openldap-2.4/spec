@@ -1,0 +1,5 @@
+UPSTREAM_VER=2_4_59
+VER=${UPSTREAM_VER//_/.}
+SRCS="tbl::https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-$VER.tgz"
+CHKSUMS="sha256::99f37d6747d88206c470067eda624d5e48c1011e943ec0ab217bae8712e22f34"
+# Note: No more branch update, no need for CHKUPDATE.

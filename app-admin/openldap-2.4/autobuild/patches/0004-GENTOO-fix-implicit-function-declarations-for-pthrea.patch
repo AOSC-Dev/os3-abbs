@@ -1,0 +1,60 @@
+From 4b4334f76f4a3da5bca6741e3d229412d3d07892 Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.io>
+Date: Fri, 7 Feb 2025 17:29:07 +0800
+Subject: [PATCH 4/4] GENTOO: fix implicit function declarations for pthread
+ functions
+
+Signed-off-by: Patrick McLean <chutzpah@gentoo.org>
+
+Link: https://gitweb.gentoo.org/repo/gentoo.git/commit/net-nds/openldap/files/openldap-2.4.47-warnings.patch?id=2d676affba9a313563bee463daba47235862724b
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ include/ldap.h            | 4 ++++
+ include/ldap_int_thread.h | 2 +-
+ libraries/libldap/tls2.c  | 2 ++
+ 3 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/include/ldap.h b/include/ldap.h
+index 389441031f..127135bab0 100644
+--- a/include/ldap.h
++++ b/include/ldap.h
+@@ -2040,6 +2040,10 @@ LDAP_F( int )
+ ldap_is_ldap_url LDAP_P((
+ 	LDAP_CONST char *url ));
+ 
++LDAP_F( int )
++ldap_is_ldapc_url LDAP_P((
++	LDAP_CONST char *url ));
++
+ LDAP_F( int )
+ ldap_is_ldaps_url LDAP_P((
+ 	LDAP_CONST char *url ));
+diff --git a/include/ldap_int_thread.h b/include/ldap_int_thread.h
+index ee85e6f44f..8abf731b46 100644
+--- a/include/ldap_int_thread.h
++++ b/include/ldap_int_thread.h
+@@ -33,7 +33,7 @@ LDAP_END_DECL
+  * definitions for POSIX Threads  *
+  *                                *
+  **********************************/
+-
++#define __USE_UNIX98
+ #include <pthread.h>
+ #ifdef HAVE_SCHED_H
+ #include <sched.h>
+diff --git a/libraries/libldap/tls2.c b/libraries/libldap/tls2.c
+index 253cf062c8..84d4a3247c 100644
+--- a/libraries/libldap/tls2.c
++++ b/libraries/libldap/tls2.c
+@@ -79,6 +79,8 @@ static oid_name oids[] = {
+ LDAP_F(int) ldap_pvt_tls_check_hostname LDAP_P(( LDAP *ld, void *s, const char *name_in ));
+ LDAP_F(int) ldap_pvt_tls_get_peercert LDAP_P(( void *s, struct berval *der ));
+ 
++int ldap_pvt_tls_check_hostname( LDAP *ld, void *s, const char *name_in );
++
+ void
+ ldap_pvt_tls_ctx_free ( void *c )
+ {
+-- 
+2.48.1
+

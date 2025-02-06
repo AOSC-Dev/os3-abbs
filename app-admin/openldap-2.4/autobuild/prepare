@@ -1,0 +1,2 @@
+abinfo "Appending flags to fix configure ..."
+export CFLAGS="${CFLAGS} -Wno-error=implicit-int -Wno-error=int-conversion -Wno-error=incompatible-pointer-types"

@@ -1,0 +1,70 @@
+From d83ee3425fc0580863378b2c637ea278fae17969 Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.io>
+Date: Thu, 6 Feb 2025 18:16:38 +0800
+Subject: [PATCH 1/4] GENTOO: fix build errors due to implicit function
+ declaration with GCC >= 14
+
+Closes: https://bugs.gentoo.org/show_bug.cgi?id=920380
+Closes: https://bugs.gentoo.org/show_bug.cgi?id=882183
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+Link: https://gitweb.gentoo.org/repo/gentoo.git/commit/net-nds/openldap/files/openldap-2.4.59-implicit-function.patch?id=783532d33df25206c20ecc175a6910ab6b0a29fb
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ servers/slapd/back-ldap/bind.c | 1 +
+ servers/slapd/back-meta/conn.c | 1 +
+ servers/slapd/config.c         | 1 +
+ servers/slapd/proto-slap.h     | 1 +
+ 4 files changed, 4 insertions(+)
+
+diff --git a/servers/slapd/back-ldap/bind.c b/servers/slapd/back-ldap/bind.c
+index 91c62cdc8d..c5ce52ce89 100644
+--- a/servers/slapd/back-ldap/bind.c
++++ b/servers/slapd/back-ldap/bind.c
+@@ -31,6 +31,7 @@
+ 
+ #define AVL_INTERNAL
+ #include "slap.h"
++#include "proto-slap.h"
+ #include "back-ldap.h"
+ #include "lutil.h"
+ #include "lutil_ldap.h"
+diff --git a/servers/slapd/back-meta/conn.c b/servers/slapd/back-meta/conn.c
+index ba87d01a53..c49c204d7e 100644
+--- a/servers/slapd/back-meta/conn.c
++++ b/servers/slapd/back-meta/conn.c
+@@ -31,6 +31,7 @@
+ 
+ #define AVL_INTERNAL
+ #include "slap.h"
++#include "proto-slap.h"
+ #include "../back-ldap/back-ldap.h"
+ #include "back-meta.h"
+ 
+diff --git a/servers/slapd/config.c b/servers/slapd/config.c
+index bd68a24218..8821bd1bd0 100644
+--- a/servers/slapd/config.c
++++ b/servers/slapd/config.c
+@@ -43,6 +43,7 @@
+ #endif
+ 
+ #include "slap.h"
++#include "proto-slap.h"
+ #ifdef LDAP_SLAPI
+ #include "slapi/slapi.h"
+ #endif
+diff --git a/servers/slapd/proto-slap.h b/servers/slapd/proto-slap.h
+index 7f8e604fa7..e86b1e98ea 100644
+--- a/servers/slapd/proto-slap.h
++++ b/servers/slapd/proto-slap.h
+@@ -739,6 +739,7 @@ LDAP_SLAPD_F (int) bindconf_unparse LDAP_P((
+ LDAP_SLAPD_F (int) bindconf_tls_set LDAP_P((
+ 	slap_bindconf *bc, LDAP *ld ));
+ LDAP_SLAPD_F (void) bindconf_free LDAP_P(( slap_bindconf *bc ));
++LDAP_SLAPD_F (void) slap_client_keepalive LDAP_P(( LDAP *ld, slap_keepalive *sk ));
+ LDAP_SLAPD_F (int) slap_client_connect LDAP_P(( LDAP **ldp, slap_bindconf *sb ));
+ LDAP_SLAPD_F (int) config_generic_wrapper LDAP_P(( Backend *be,
+ 	const char *fname, int lineno, int argc, char **argv ));
+-- 
+2.48.1
+

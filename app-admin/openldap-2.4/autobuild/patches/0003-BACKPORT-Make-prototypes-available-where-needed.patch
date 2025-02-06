@@ -1,0 +1,60 @@
+From 06544b5f4f806efca3f96b6219653c2eda2ac757 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ond=C5=99ej=20Kuzn=C3=ADk?= <ondra@openldap.org>
+Date: Tue, 19 Feb 2019 10:26:39 +0000
+Subject: [PATCH 3/4] BACKPORT: Make prototypes available where needed
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Ondřej Kuzník <ondra@openldap.org>
+
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ libraries/libldap/tls2.c   | 3 +++
+ servers/slapd/config.c     | 1 +
+ servers/slapd/proto-slap.h | 3 +++
+ 3 files changed, 7 insertions(+)
+
+diff --git a/libraries/libldap/tls2.c b/libraries/libldap/tls2.c
+index e100f1191e..253cf062c8 100644
+--- a/libraries/libldap/tls2.c
++++ b/libraries/libldap/tls2.c
+@@ -76,6 +76,9 @@ static oid_name oids[] = {
+ 
+ #ifdef HAVE_TLS
+ 
++LDAP_F(int) ldap_pvt_tls_check_hostname LDAP_P(( LDAP *ld, void *s, const char *name_in ));
++LDAP_F(int) ldap_pvt_tls_get_peercert LDAP_P(( void *s, struct berval *der ));
++
+ void
+ ldap_pvt_tls_ctx_free ( void *c )
+ {
+diff --git a/servers/slapd/config.c b/servers/slapd/config.c
+index 8821bd1bd0..b25b4c3ba0 100644
+--- a/servers/slapd/config.c
++++ b/servers/slapd/config.c
+@@ -49,6 +49,7 @@
+ #endif
+ #include "lutil.h"
+ #include "lutil_ldap.h"
++#include "ldif.h"
+ #include "config.h"
+ 
+ #ifdef _WIN32
+diff --git a/servers/slapd/proto-slap.h b/servers/slapd/proto-slap.h
+index e86b1e98ea..de1cabf32b 100644
+--- a/servers/slapd/proto-slap.h
++++ b/servers/slapd/proto-slap.h
+@@ -1657,6 +1657,9 @@ LDAP_SLAPD_F (int) slap_sasl_external( Connection *c,
+ 	slap_ssf_t ssf,	/* relative strength of external security */
+ 	struct berval *authid );	/* asserted authenication id */
+ 
++LDAP_SLAPD_F (int) slap_sasl_cbinding( Connection *c,
++	struct berval *cbv );
++
+ LDAP_SLAPD_F (int) slap_sasl_reset( Connection *c );
+ LDAP_SLAPD_F (int) slap_sasl_close( Connection *c );
+ 
+-- 
+2.48.1
+

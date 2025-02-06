@@ -1,0 +1,26 @@
+PKGNAME=openldap-2.4
+PKGSEC=net
+PKGDEP="e2fsprogs cyrus-sasl"
+BUILDDEP="groff"
+PKGDES="Lightweight Directory Access Protocol (LDAP) client/server (legacy 2.4 runtime)"
+
+RECONF=0
+ABSHADOW=0
+AUTOTOOLS_AFTER="--libdir=/usr/lib/legacy/openldap-2.4 \
+                 --libexecdir=/usr/libexec \
+                 --localstatedir=/var/lib/openldap \
+                 --enable-ipv6 \
+                 --enable-syslog \
+                 --enable-local \
+                 --enable-crypt \
+                 --enable-dynamic \
+                 --with-threads \
+                 --disable-wrappers \
+                 --without-fetch \
+                 --enable-spasswd \
+                 --with-cyrus-sasl \
+                 --enable-overlays=mod \
+                 --enable-modules=yes \
+                 --enable-static \
+                 --enable-slapd \
+                 --enable-slapi"

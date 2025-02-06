@@ -1,0 +1,8 @@
+abinfo "Removing non-runtime files ..."
+rm -rv "$PKGDIR"/{etc,usr/{bin,include,libexec,share},var}
+
+abinfo "Removing non-versioned libraries ..."
+rm -v "$PKGDIR"/usr/lib/legacy/openldap-2.4/*.so
+
+abinfo "Setting executable bits for shared libraries ..."
+chmod -v +x "$PKGDIR"/usr/lib/legacy/openldap-2.4/*.so*

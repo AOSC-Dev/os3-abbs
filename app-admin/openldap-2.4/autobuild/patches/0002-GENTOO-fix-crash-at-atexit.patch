@@ -1,0 +1,78 @@
+From 38c77b50d163b276ebc9bc67b247b5ca9c30e81b Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.io>
+Date: Thu, 6 Feb 2025 18:20:31 +0800
+Subject: [PATCH 2/4] GENTOO: fix crash at atexit()
+
+Port upstream commit 337455eb3a66176cc3f66d2c663a72cc7b4178bd to 2.4.59.
+
+With 2.4.x, gentoo-infra saw crashes in nsscache during exit.
+This patch was later reverted upstream because it was not portable to AIX And
+was fixed in a different way in 2.5 & 2.6 releases.
+
+original https://github.com/openldap/openldap/commit/337455eb3a66176cc3f66d2c663a72cc7b4178bd
+revert: https://github.com/openldap/openldap/commit/5e13ef87a94491f9339dbca709db29e76741f1a9
+AIX discussion: https://bugs.openldap.org/show_bug.cgi?id=10176
+
+Link: https://gitweb.gentoo.org/repo/gentoo.git/commit/net-nds/openldap/files/openldap-2.4.59-atexit-fix.patch?id=783532d33df25206c20ecc175a6910ab6b0a29fb
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ libraries/libldap/init.c |  3 ---
+ libraries/libldap/tls2.c | 14 +++++++++++++-
+ 2 files changed, 13 insertions(+), 4 deletions(-)
+
+diff --git a/libraries/libldap/init.c b/libraries/libldap/init.c
+index 182ef7d7ea..46e52f7f7c 100644
+--- a/libraries/libldap/init.c
++++ b/libraries/libldap/init.c
+@@ -508,9 +508,6 @@ ldap_int_destroy_global_options(void)
+ 		gopts->ldo_def_sasl_authcid = NULL;
+ 	}
+ #endif
+-#ifdef HAVE_TLS
+-	ldap_int_tls_destroy( gopts );
+-#endif
+ }
+ 
+ /* 
+diff --git a/libraries/libldap/tls2.c b/libraries/libldap/tls2.c
+index 82ca5272cc..e100f1191e 100644
+--- a/libraries/libldap/tls2.c
++++ b/libraries/libldap/tls2.c
+@@ -153,6 +153,14 @@ ldap_pvt_tls_destroy( void )
+ 	tls_imp->ti_tls_destroy();
+ }
+ 
++static void
++ldap_exit_tls_destroy( void )
++{
++	struct ldapoptions *lo = LDAP_INT_GLOBAL_OPT();
++
++	ldap_int_tls_destroy( lo );
++}
++
+ /*
+  * Initialize a particular TLS implementation.
+  * Called once per implementation.
+@@ -161,6 +169,7 @@ static int
+ tls_init(tls_impl *impl )
+ {
+ 	static int tls_initialized = 0;
++	int rc;
+ 
+ 	if ( !tls_initialized++ ) {
+ #ifdef LDAP_R_COMPILE
+@@ -173,7 +182,10 @@ tls_init(tls_impl *impl )
+ #ifdef LDAP_R_COMPILE
+ 	impl->ti_thr_init();
+ #endif
+-	return impl->ti_tls_init();
++	rc = impl->ti_tls_init();
++
++	atexit( ldap_exit_tls_destroy );
++	return rc;
+ }
+ 
+ /*
+-- 
+2.48.1
+

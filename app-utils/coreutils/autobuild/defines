@@ -25,3 +25,18 @@ AUTOTOOLS_AFTER="--enable-largefile \
                  --without-tty-group"
 
 PKGESS=1
+
+# FIXME: reconf failed because it extracts threadlib.m4 "serial 10" from
+# /usr/share/gettext/archive.dir.tar.xz (because
+# AM_GNU_GETTEXT_VERSION([0.19.2]) in configure.ac), overwriting the
+# shipped threadlib.m4 "serial 42".  Fedora uses a workaround:
+#
+#    sed -i 's/0.19.2/0.22.5/' bootstrap.conf configure.ac
+#
+# and LFS uses a different workaround (avoiding -i for autoreconf):
+#
+#    autoreconf -fv && automake -af
+#
+# But as we don't apply the Fedora i18n patch like them, we can simply
+# skip reconf here.
+RECONF=0

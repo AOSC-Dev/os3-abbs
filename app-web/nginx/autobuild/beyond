@@ -1,26 +1,26 @@
-install -Dm644 contrib/vim/ftdetect/nginx.vim \
-	"$PKGDIR"/usr/share/vim/vimfiles/ftdetect/nginx.vim
-install -Dm644 contrib/vim/syntax/nginx.vim \
-	"$PKGDIR"/usr/share/vim/vimfiles/syntax/nginx.vim
-install -Dm644 contrib/vim/indent/nginx.vim \
-	"$PKGDIR"/usr/share/vim/vimfiles/indent/nginx.vim
+abinfo "Installing Vim syntax highlighting and editor configurations ..."
+install -Dvm644 "$SRCDIR"/contrib/vim/ftdetect/nginx.vim \
+    "$PKGDIR"/usr/share/vim/vimfiles/ftdetect/nginx.vim
+install -Dvm644 "$SRCDIR"/contrib/vim/syntax/nginx.vim \
+    "$PKGDIR"/usr/share/vim/vimfiles/syntax/nginx.vim
+install -Dvm644 "$SRCDIR"/contrib/vim/indent/nginx.vim \
+    "$PKGDIR"/usr/share/vim/vimfiles/indent/nginx.vim
 
-sed -e 's|\<user\s\+\w\+;|user html;|g' \
-    -e '44s|html|/usr/share/nginx/html|' \
-    -e '54s|html|/usr/share/nginx/html|' \
-    -i "$PKGDIR"/etc/nginx/nginx.conf
+abinfo "Dropping .default templates ..."
+rm -v "$PKGDIR"/etc/nginx/*.default
 
-rm "$PKGDIR"/etc/nginx/*.default
+abinfo "Installing deamon directories ..."
+install -dv "$PKGDIR"/var/lib/nginx
+install -dvm700 "$PKGDIR"/var/lib/nginx/proxy
+chmod -v 750 "$PKGDIR"/var/log/nginx
+chown -v http:log "$PKGDIR"/var/log/nginx
 
-install -d "$PKGDIR"/var/lib/nginx
-install -dm700 "$PKGDIR"/var/lib/nginx/proxy
+abinfo "Installing documentation ..."
+install -dv "$PKGDIR"/usr/share/nginx
+cp -av "$PKGDIR"/etc/nginx/html/ \
+    "$PKGDIR"/usr/share/nginx
+rm -rv "$PKGDIR"/etc/nginx/html/
 
-chmod 750 "$PKGDIR"/var/log/nginx
-chown http:log "$PKGDIR"/var/log/nginx
-
-install -d "$PKGDIR"/usr/share/nginx
-cp -arv "$PKGDIR"/etc/nginx/html/ "$PKGDIR"/usr/share/nginx
-rm -rf "$PKGDIR"/etc/nginx/html/
-
-install -d "$PKGDIR"/usr/share/man/man8/
-cp man/nginx.8 "$PKGDIR"/usr/share/man/man8/nginx.8
+abinfo "Installing man page ..."
+install -Dvm644 "$SRCDIR"/man/nginx.8 \
+    "$PKGDIR"/usr/share/man/man8/nginx.8

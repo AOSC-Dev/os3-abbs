@@ -1,4 +1,4 @@
-VER=1.27.1
+VER=1.27.4
 SRCS="tbl::https://nginx.org/download/nginx-$VER.tar.gz"
-CHKSUMS="sha256::bd7ba68a6ce1ea3768b771c7e2ab4955a59fb1b1ae8d554fedb6c2304104bdfc"
+CHKSUMS="sha256::294816f879b300e621fa4edd5353dd1ec00badb056399eceb30de7db64b753b2"
 CHKUPDATE="anitya::id=5413"

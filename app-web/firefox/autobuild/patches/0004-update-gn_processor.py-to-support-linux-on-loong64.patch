@@ -1,7 +1,7 @@
-From 84515188a02fe49800b8b412cb3af413425147b8 Mon Sep 17 00:00:00 2001
+From ae94e0aeca6e6efe36ed1467165c9590ad6e597e Mon Sep 17 00:00:00 2001
 From: WANG Xuerui <xen0n@gentoo.org>
 Date: Tue, 3 Sep 2024 15:38:04 +0800
-Subject: [PATCH 04/14] update gn_processor.py to support linux on loong64
+Subject: [PATCH 04/11] update gn_processor.py to support linux on loong64
 
 Signed-off-by: WANG Xuerui <xen0n@gentoo.org>
 ---
@@ -9,7 +9,7 @@ Signed-off-by: WANG Xuerui <xen0n@gentoo.org>
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/python/mozbuild/mozbuild/gn_processor.py b/python/mozbuild/mozbuild/gn_processor.py
-index db7f780a1a17..3567e1d33a7a 100644
+index db7f780a1a..3567e1d33a 100644
 --- a/python/mozbuild/mozbuild/gn_processor.py
 +++ b/python/mozbuild/mozbuild/gn_processor.py
 @@ -183,6 +183,7 @@ def filter_gn_config(path, gn_result, sandbox_vars, input_vars, gn_target):

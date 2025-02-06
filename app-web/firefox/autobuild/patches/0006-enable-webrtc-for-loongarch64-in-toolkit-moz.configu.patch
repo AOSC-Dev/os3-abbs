@@ -1,7 +1,7 @@
-From 5e9318b1e044d9f7441760276e81a8bf0d3ea356 Mon Sep 17 00:00:00 2001
+From 78c13501b206f70c18133d59bc0843dcc06897a8 Mon Sep 17 00:00:00 2001
 From: WANG Xuerui <xen0n@gentoo.org>
 Date: Tue, 3 Sep 2024 15:39:18 +0800
-Subject: [PATCH 06/14] enable webrtc for loongarch64 in toolkit/moz.configure
+Subject: [PATCH 06/11] enable webrtc for loongarch64 in toolkit/moz.configure
 
 Signed-off-by: WANG Xuerui <xen0n@gentoo.org>
 ---
@@ -9,7 +9,7 @@ Signed-off-by: WANG Xuerui <xen0n@gentoo.org>
  1 file changed, 1 insertion(+)
 
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
-index 9c3bb513537f..fac9573f5612 100644
+index bd6648a89e..109aa81d04 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
 @@ -1456,6 +1456,7 @@ def webrtc_default(target):

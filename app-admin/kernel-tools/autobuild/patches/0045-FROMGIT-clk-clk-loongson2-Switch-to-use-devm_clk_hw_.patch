@@ -1,7 +1,7 @@
 From 9fee1d2cceed6af9950246edfc23aceff8112bda Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Tue, 14 Jan 2025 21:00:28 +0800
-Subject: [PATCH 045/317] FROMGIT: clk: clk-loongson2: Switch to use
+Subject: [PATCH 045/323] FROMGIT: clk: clk-loongson2: Switch to use
  devm_clk_hw_register_fixed_rate_parent_data()
 
 Since commit 706ae6446494 ("clk: fixed-rate: add

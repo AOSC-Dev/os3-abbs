@@ -1,0 +1,37 @@
+From d175520562ce1457019c3ef76935ad1820b55dd3 Mon Sep 17 00:00:00 2001
+From: Kexy Biscuit <kexybiscuit@aosc.io>
+Date: Thu, 6 Feb 2025 18:31:30 +0800
+Subject: [PATCH 320/323] Revert "x86/pkeys: Restore altstack access in
+ sigreturn()"
+
+This reverts commit d10b554919d4cc8fa8fe2e95b57ad2624728c8e4.
+---
+ arch/x86/kernel/signal_64.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/arch/x86/kernel/signal_64.c b/arch/x86/kernel/signal_64.c
+index ee9453891901..8a94053c5444 100644
+--- a/arch/x86/kernel/signal_64.c
++++ b/arch/x86/kernel/signal_64.c
+@@ -260,15 +260,15 @@ SYSCALL_DEFINE0(rt_sigreturn)
+ 
+ 	set_current_blocked(&set);
+ 
+-	if (restore_altstack(&frame->uc.uc_stack))
+-		goto badframe;
+-
+ 	if (!restore_sigcontext(regs, &frame->uc.uc_mcontext, uc_flags))
+ 		goto badframe;
+ 
+ 	if (restore_signal_shadow_stack())
+ 		goto badframe;
+ 
++	if (restore_altstack(&frame->uc.uc_stack))
++		goto badframe;
++
+ 	return regs->ax;
+ 
+ badframe:
+-- 
+2.48.1
+

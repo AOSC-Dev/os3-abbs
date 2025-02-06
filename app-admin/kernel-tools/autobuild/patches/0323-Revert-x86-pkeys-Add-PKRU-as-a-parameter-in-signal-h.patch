@@ -1,0 +1,81 @@
+From b5e652fe2568e1d1202d57332a8d6d77611a5095 Mon Sep 17 00:00:00 2001
+From: Kexy Biscuit <kexybiscuit@aosc.io>
+Date: Thu, 6 Feb 2025 18:31:34 +0800
+Subject: [PATCH 323/323] Revert "x86/pkeys: Add PKRU as a parameter in signal
+ handling functions"
+
+This reverts commit 24cf2bc982ffe02aeffb4a3885c71751a2c7023b.
+---
+ arch/x86/include/asm/fpu/signal.h | 2 +-
+ arch/x86/kernel/fpu/signal.c      | 6 +++---
+ arch/x86/kernel/signal.c          | 3 +--
+ 3 files changed, 5 insertions(+), 6 deletions(-)
+
+diff --git a/arch/x86/include/asm/fpu/signal.h b/arch/x86/include/asm/fpu/signal.h
+index eccc75bc9c4f..611fa41711af 100644
+--- a/arch/x86/include/asm/fpu/signal.h
++++ b/arch/x86/include/asm/fpu/signal.h
+@@ -29,7 +29,7 @@ fpu__alloc_mathframe(unsigned long sp, int ia32_frame,
+ 
+ unsigned long fpu__get_fpstate_size(void);
+ 
+-extern bool copy_fpstate_to_sigframe(void __user *buf, void __user *fp, int size, u32 pkru);
++extern bool copy_fpstate_to_sigframe(void __user *buf, void __user *fp, int size);
+ extern void fpu__clear_user_states(struct fpu *fpu);
+ extern bool fpu__restore_sig(void __user *buf, int ia32_frame);
+ 
+diff --git a/arch/x86/kernel/fpu/signal.c b/arch/x86/kernel/fpu/signal.c
+index 2b3b9e140dd4..247f2225aa9f 100644
+--- a/arch/x86/kernel/fpu/signal.c
++++ b/arch/x86/kernel/fpu/signal.c
+@@ -156,7 +156,7 @@ static inline bool save_xstate_epilog(void __user *buf, int ia32_frame,
+ 	return !err;
+ }
+ 
+-static inline int copy_fpregs_to_sigframe(struct xregs_state __user *buf, u32 pkru)
++static inline int copy_fpregs_to_sigframe(struct xregs_state __user *buf)
+ {
+ 	if (use_xsave())
+ 		return xsave_to_user_sigframe(buf);
+@@ -185,7 +185,7 @@ static inline int copy_fpregs_to_sigframe(struct xregs_state __user *buf, u32 pk
+  * For [f]xsave state, update the SW reserved fields in the [f]xsave frame
+  * indicating the absence/presence of the extended state to the user.
+  */
+-bool copy_fpstate_to_sigframe(void __user *buf, void __user *buf_fx, int size, u32 pkru)
++bool copy_fpstate_to_sigframe(void __user *buf, void __user *buf_fx, int size)
+ {
+ 	struct task_struct *tsk = current;
+ 	struct fpstate *fpstate = tsk->thread.fpu.fpstate;
+@@ -228,7 +228,7 @@ bool copy_fpstate_to_sigframe(void __user *buf, void __user *buf_fx, int size, u
+ 		fpregs_restore_userregs();
+ 
+ 	pagefault_disable();
+-	ret = copy_fpregs_to_sigframe(buf_fx, pkru);
++	ret = copy_fpregs_to_sigframe(buf_fx);
+ 	pagefault_enable();
+ 	fpregs_unlock();
+ 
+diff --git a/arch/x86/kernel/signal.c b/arch/x86/kernel/signal.c
+index 1f1e8e0ac5a3..31b6f5dddfc2 100644
+--- a/arch/x86/kernel/signal.c
++++ b/arch/x86/kernel/signal.c
+@@ -84,7 +84,6 @@ get_sigframe(struct ksignal *ksig, struct pt_regs *regs, size_t frame_size,
+ 	unsigned long math_size = 0;
+ 	unsigned long sp = regs->sp;
+ 	unsigned long buf_fx = 0;
+-	u32 pkru = read_pkru();
+ 
+ 	/* redzone */
+ 	if (!ia32_frame)
+@@ -140,7 +139,7 @@ get_sigframe(struct ksignal *ksig, struct pt_regs *regs, size_t frame_size,
+ 	}
+ 
+ 	/* save i387 and extended state */
+-	if (!copy_fpstate_to_sigframe(*fpstate, (void __user *)buf_fx, math_size, pkru))
++	if (!copy_fpstate_to_sigframe(*fpstate, (void __user *)buf_fx, math_size))
+ 		return (void __user *)-1L;
+ 
+ 	return (void __user *)sp;
+-- 
+2.48.1
+

@@ -1,7 +1,7 @@
 From 6488103b75b8fbe539eb5b0eca109d381d812f2d Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Tue, 21 Jan 2025 17:37:03 +0800
-Subject: [PATCH 092/317] FROMLIST: net: stmmac: dwmac-loongson: Set correct
+Subject: [PATCH 092/323] FROMLIST: net: stmmac: dwmac-loongson: Set correct
  {tx,rx}_fifo_size
 
 Now for dwmac-loongson {tx,rx}_fifo_size are uninitialised, which means

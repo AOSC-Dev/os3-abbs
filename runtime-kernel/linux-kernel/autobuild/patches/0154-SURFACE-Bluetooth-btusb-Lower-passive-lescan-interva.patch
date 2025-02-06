@@ -1,7 +1,7 @@
 From 9be3b50c25b20d121641b5f41b8855b0615c6b70 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jonas=20Dre=C3=9Fler?= <verdre@v0yd.nl>
 Date: Thu, 25 Mar 2021 11:33:02 +0100
-Subject: [PATCH 154/317] SURFACE: Bluetooth: btusb: Lower passive lescan
+Subject: [PATCH 154/323] SURFACE: Bluetooth: btusb: Lower passive lescan
  interval on Marvell 88W8897
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

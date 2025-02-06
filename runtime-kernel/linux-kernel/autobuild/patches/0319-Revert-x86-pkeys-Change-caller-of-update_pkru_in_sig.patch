@@ -1,0 +1,93 @@
+From 1eb6eeedefb174090e55d11584d20af6003deafb Mon Sep 17 00:00:00 2001
+From: Kexy Biscuit <kexybiscuit@aosc.io>
+Date: Thu, 6 Feb 2025 18:31:28 +0800
+Subject: [PATCH 319/323] Revert "x86/pkeys: Change caller of
+ update_pkru_in_sigframe()"
+
+This reverts commit 6a1853bdf17874392476b552398df261f75503e0.
+---
+ arch/x86/kernel/fpu/signal.c | 20 ++++++++++++++++++--
+ arch/x86/kernel/fpu/xstate.h | 15 +--------------
+ 2 files changed, 19 insertions(+), 16 deletions(-)
+
+diff --git a/arch/x86/kernel/fpu/signal.c b/arch/x86/kernel/fpu/signal.c
+index 8f62e0666dea..1065ab995305 100644
+--- a/arch/x86/kernel/fpu/signal.c
++++ b/arch/x86/kernel/fpu/signal.c
+@@ -63,6 +63,16 @@ static inline bool check_xstate_in_sigframe(struct fxregs_state __user *fxbuf,
+ 	return true;
+ }
+ 
++/*
++ * Update the value of PKRU register that was already pushed onto the signal frame.
++ */
++static inline int update_pkru_in_sigframe(struct xregs_state __user *buf, u32 pkru)
++{
++	if (unlikely(!cpu_feature_enabled(X86_FEATURE_OSPKE)))
++		return 0;
++	return __put_user(pkru, (unsigned int __user *)get_xsave_addr_user(buf, XFEATURE_PKRU));
++}
++
+ /*
+  * Signal frame handlers.
+  */
+@@ -158,8 +168,14 @@ static inline bool save_xstate_epilog(void __user *buf, int ia32_frame,
+ 
+ static inline int copy_fpregs_to_sigframe(struct xregs_state __user *buf, u32 pkru)
+ {
+-	if (use_xsave())
+-		return xsave_to_user_sigframe(buf, pkru);
++	int err = 0;
++
++	if (use_xsave()) {
++		err = xsave_to_user_sigframe(buf);
++		if (!err)
++			err = update_pkru_in_sigframe(buf, pkru);
++		return err;
++	}
+ 
+ 	if (use_fxsr())
+ 		return fxsave_to_user_sigframe((struct fxregs_state __user *) buf);
+diff --git a/arch/x86/kernel/fpu/xstate.h b/arch/x86/kernel/fpu/xstate.h
+index 6b2924fbe5b8..0b86a5002c84 100644
+--- a/arch/x86/kernel/fpu/xstate.h
++++ b/arch/x86/kernel/fpu/xstate.h
+@@ -69,16 +69,6 @@ static inline u64 xfeatures_mask_independent(void)
+ 	return fpu_kernel_cfg.independent_features;
+ }
+ 
+-/*
+- * Update the value of PKRU register that was already pushed onto the signal frame.
+- */
+-static inline int update_pkru_in_sigframe(struct xregs_state __user *buf, u32 pkru)
+-{
+-	if (unlikely(!cpu_feature_enabled(X86_FEATURE_OSPKE)))
+-		return 0;
+-	return __put_user(pkru, (unsigned int __user *)get_xsave_addr_user(buf, XFEATURE_PKRU));
+-}
+-
+ /* XSAVE/XRSTOR wrapper functions */
+ 
+ #ifdef CONFIG_X86_64
+@@ -266,7 +256,7 @@ static inline u64 xfeatures_need_sigframe_write(void)
+  * The caller has to zero buf::header before calling this because XSAVE*
+  * does not touch the reserved fields in the header.
+  */
+-static inline int xsave_to_user_sigframe(struct xregs_state __user *buf, u32 pkru)
++static inline int xsave_to_user_sigframe(struct xregs_state __user *buf)
+ {
+ 	/*
+ 	 * Include the features which are not xsaved/rstored by the kernel
+@@ -291,9 +281,6 @@ static inline int xsave_to_user_sigframe(struct xregs_state __user *buf, u32 pkr
+ 	XSTATE_OP(XSAVE, buf, lmask, hmask, err);
+ 	clac();
+ 
+-	if (!err)
+-		err = update_pkru_in_sigframe(buf, pkru);
+-
+ 	return err;
+ }
+ 
+-- 
+2.48.1
+

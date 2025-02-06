@@ -1,7 +1,7 @@
 From d3e3bf10d391a2cf1185a607ab840f9bdcbd4465 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 10 Dec 2024 17:55:36 +0800
-Subject: [PATCH 259/317] AOSCOS: drm: radeon: declare prototype for
+Subject: [PATCH 259/323] AOSCOS: drm: radeon: declare prototype for
  radeon_recover_callback()
 
 Declare radeon_recover_callback() in radeon_device.h to clean up function

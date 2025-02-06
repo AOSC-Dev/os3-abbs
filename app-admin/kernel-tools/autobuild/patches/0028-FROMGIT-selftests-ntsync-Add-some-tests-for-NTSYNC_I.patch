@@ -1,7 +1,7 @@
 From e96c32be7633a6db6de6944db58d7ad8fc2f0ebc Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:35:00 -0600
-Subject: [PATCH 028/317] FROMGIT: selftests: ntsync: Add some tests for
+Subject: [PATCH 028/323] FROMGIT: selftests: ntsync: Add some tests for
  NTSYNC_IOC_WAIT_ALL.
 
 Test basic synchronous functionality of NTSYNC_IOC_WAIT_ALL, and when objects

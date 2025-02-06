@@ -1,7 +1,7 @@
 From 84a82cbce8c1e576b93f278c1de5a76b1cf6a76d Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <baimingcong@uniontech.com>
 Date: Sun, 22 Sep 2024 01:07:11 +0800
-Subject: [PATCH 175/317] AOSCOS: drm: amdgpu: radeon: disable cache flush
+Subject: [PATCH 175/323] AOSCOS: drm: amdgpu: radeon: disable cache flush
  workaround for LoongArch and Loongson64
 
 This workaround causes instability for LoongArch/Loongson (MIPS) devices

@@ -1,7 +1,7 @@
 From c4a0839061c74b746e10abaa9c11a0783da7ecb5 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Thu, 26 Dec 2024 10:13:42 +0800
-Subject: [PATCH 198/317] AOSCOS: platform: ideapad-laptop: fix if branch
+Subject: [PATCH 198/323] AOSCOS: platform: ideapad-laptop: fix if branch
  syntax
 
 With "AOSCOS: platform: x86: ideapad-laptop: add fixes for ThinkBook 14+

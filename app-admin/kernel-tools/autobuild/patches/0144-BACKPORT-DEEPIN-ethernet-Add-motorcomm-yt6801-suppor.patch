@@ -1,7 +1,7 @@
 From 2d7989a8c7cf7d0507f26c3b0fcf5e2db14c2fd8 Mon Sep 17 00:00:00 2001
 From: Yanteng Si <siyanteng@loongson.cn>
 Date: Wed, 17 Jul 2024 18:25:37 +0800
-Subject: [PATCH 144/317] BACKPORT: DEEPIN: ethernet: Add motorcomm yt6801
+Subject: [PATCH 144/323] BACKPORT: DEEPIN: ethernet: Add motorcomm yt6801
  support
 
 - The Asus XC-LS3A6M motherboard(Loongson 3A6000),CE720Z2,CE720Z... uses

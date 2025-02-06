@@ -1,7 +1,7 @@
 From dfcc44ba0fd5c9b5547371dfca590e3af027caeb Mon Sep 17 00:00:00 2001
 From: Liban Hannan <liban.p@gmail.com>
 Date: Tue, 12 Apr 2022 23:31:12 +0100
-Subject: [PATCH 156/317] SURFACE: iommu: Use IOMMU passthrough mode for IPTS
+Subject: [PATCH 156/323] SURFACE: iommu: Use IOMMU passthrough mode for IPTS
 
 Adds a quirk so that IOMMU uses passthrough mode for the IPTS device.
 Otherwise, when IOMMU is enabled, IPTS produces DMAR errors like:

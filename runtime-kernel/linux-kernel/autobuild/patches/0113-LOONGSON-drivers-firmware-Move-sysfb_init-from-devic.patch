@@ -1,7 +1,7 @@
 From 9c5450ef1c6b61dd0554ee1b79f7a35195ef0f75 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Sun, 28 Jan 2024 14:07:46 +0800
-Subject: [PATCH 113/317] LOONGSON: drivers/firmware: Move sysfb_init() from
+Subject: [PATCH 113/323] LOONGSON: drivers/firmware: Move sysfb_init() from
  device_initcall to fs_initcall
 
 Consider a configuration like this:

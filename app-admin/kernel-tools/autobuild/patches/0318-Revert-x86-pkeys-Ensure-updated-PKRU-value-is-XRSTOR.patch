@@ -1,0 +1,51 @@
+From 392c3c07880ae61f8a37baefc77b915383891433 Mon Sep 17 00:00:00 2001
+From: Kexy Biscuit <kexybiscuit@aosc.io>
+Date: Thu, 6 Feb 2025 18:31:27 +0800
+Subject: [PATCH 318/323] Revert "x86/pkeys: Ensure updated PKRU value is
+ XRSTOR'd"
+
+This reverts commit ae6012d72fa60c9ff92de5bac7a8021a47458e5b.
+---
+ arch/x86/kernel/fpu/xstate.h | 16 ++--------------
+ 1 file changed, 2 insertions(+), 14 deletions(-)
+
+diff --git a/arch/x86/kernel/fpu/xstate.h b/arch/x86/kernel/fpu/xstate.h
+index aa16f1a1bbcf..6b2924fbe5b8 100644
+--- a/arch/x86/kernel/fpu/xstate.h
++++ b/arch/x86/kernel/fpu/xstate.h
+@@ -72,22 +72,10 @@ static inline u64 xfeatures_mask_independent(void)
+ /*
+  * Update the value of PKRU register that was already pushed onto the signal frame.
+  */
+-static inline int update_pkru_in_sigframe(struct xregs_state __user *buf, u64 mask, u32 pkru)
++static inline int update_pkru_in_sigframe(struct xregs_state __user *buf, u32 pkru)
+ {
+-	u64 xstate_bv;
+-	int err;
+-
+ 	if (unlikely(!cpu_feature_enabled(X86_FEATURE_OSPKE)))
+ 		return 0;
+-
+-	/* Mark PKRU as in-use so that it is restored correctly. */
+-	xstate_bv = (mask & xfeatures_in_use()) | XFEATURE_MASK_PKRU;
+-
+-	err =  __put_user(xstate_bv, &buf->header.xfeatures);
+-	if (err)
+-		return err;
+-
+-	/* Update PKRU value in the userspace xsave buffer. */
+ 	return __put_user(pkru, (unsigned int __user *)get_xsave_addr_user(buf, XFEATURE_PKRU));
+ }
+ 
+@@ -304,7 +292,7 @@ static inline int xsave_to_user_sigframe(struct xregs_state __user *buf, u32 pkr
+ 	clac();
+ 
+ 	if (!err)
+-		err = update_pkru_in_sigframe(buf, mask, pkru);
++		err = update_pkru_in_sigframe(buf, pkru);
+ 
+ 	return err;
+ }
+-- 
+2.48.1
+

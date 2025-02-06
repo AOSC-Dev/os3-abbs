@@ -1,7 +1,7 @@
 From c05ec4a57d376ca239ddd7832c259d27acd7590b Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 4 Dec 2024 15:49:40 +0800
-Subject: [PATCH 218/317] AOSCOS: platform: emc1412: drop unused
+Subject: [PATCH 218/323] AOSCOS: platform: emc1412: drop unused
  fixup_cpu_temp() function
 
 This function was not used anywhere and triggered -Werror=unused-function.

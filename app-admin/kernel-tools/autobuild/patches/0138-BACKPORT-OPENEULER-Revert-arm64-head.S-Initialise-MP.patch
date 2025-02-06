@@ -1,7 +1,7 @@
 From 856d693250b17c78d9ea396200277d49bd49a397 Mon Sep 17 00:00:00 2001
 From: Zeng Heng <zengheng4@huawei.com>
 Date: Tue, 24 Sep 2024 21:47:52 +0800
-Subject: [PATCH 138/317] BACKPORT: OPENEULER: Revert "arm64: head.S:
+Subject: [PATCH 138/323] BACKPORT: OPENEULER: Revert "arm64: head.S:
  Initialise MPAM EL2 registers and disable traps"
 
 hulk inclusion

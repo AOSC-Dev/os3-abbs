@@ -1,0 +1,104 @@
+From 8b685a83879dc8addec6b8140bf564e4620c8c8a Mon Sep 17 00:00:00 2001
+From: Kexy Biscuit <kexybiscuit@aosc.io>
+Date: Thu, 6 Feb 2025 18:31:32 +0800
+Subject: [PATCH 322/323] Revert "x86/pkeys: Add helper functions to update
+ PKRU on the sigframe"
+
+This reverts commit 84ee6e8d195e4af4c6c4c961bbf9266bdc8b90ac.
+---
+ arch/x86/kernel/fpu/signal.c | 10 ----------
+ arch/x86/kernel/fpu/xstate.c | 13 -------------
+ arch/x86/kernel/fpu/xstate.h |  2 --
+ arch/x86/kernel/signal.c     | 18 ------------------
+ 4 files changed, 43 deletions(-)
+
+diff --git a/arch/x86/kernel/fpu/signal.c b/arch/x86/kernel/fpu/signal.c
+index 931c5469d7f3..2b3b9e140dd4 100644
+--- a/arch/x86/kernel/fpu/signal.c
++++ b/arch/x86/kernel/fpu/signal.c
+@@ -63,16 +63,6 @@ static inline bool check_xstate_in_sigframe(struct fxregs_state __user *fxbuf,
+ 	return true;
+ }
+ 
+-/*
+- * Update the value of PKRU register that was already pushed onto the signal frame.
+- */
+-static inline int update_pkru_in_sigframe(struct xregs_state __user *buf, u32 pkru)
+-{
+-	if (unlikely(!cpu_feature_enabled(X86_FEATURE_OSPKE)))
+-		return 0;
+-	return __put_user(pkru, (unsigned int __user *)get_xsave_addr_user(buf, XFEATURE_PKRU));
+-}
+-
+ /*
+  * Signal frame handlers.
+  */
+diff --git a/arch/x86/kernel/fpu/xstate.c b/arch/x86/kernel/fpu/xstate.c
+index 22abb5ee0cf2..53d9f01d5988 100644
+--- a/arch/x86/kernel/fpu/xstate.c
++++ b/arch/x86/kernel/fpu/xstate.c
+@@ -999,19 +999,6 @@ void *get_xsave_addr(struct xregs_state *xsave, int xfeature_nr)
+ }
+ EXPORT_SYMBOL_GPL(get_xsave_addr);
+ 
+-/*
+- * Given an xstate feature nr, calculate where in the xsave buffer the state is.
+- * The xsave buffer should be in standard format, not compacted (e.g. user mode
+- * signal frames).
+- */
+-void __user *get_xsave_addr_user(struct xregs_state __user *xsave, int xfeature_nr)
+-{
+-	if (WARN_ON_ONCE(!xfeature_enabled(xfeature_nr)))
+-		return NULL;
+-
+-	return (void __user *)xsave + xstate_offsets[xfeature_nr];
+-}
+-
+ #ifdef CONFIG_ARCH_HAS_PKEYS
+ 
+ /*
+diff --git a/arch/x86/kernel/fpu/xstate.h b/arch/x86/kernel/fpu/xstate.h
+index 0b86a5002c84..afb404cd2059 100644
+--- a/arch/x86/kernel/fpu/xstate.h
++++ b/arch/x86/kernel/fpu/xstate.h
+@@ -54,8 +54,6 @@ extern int copy_sigframe_from_user_to_xstate(struct task_struct *tsk, const void
+ extern void fpu__init_cpu_xstate(void);
+ extern void fpu__init_system_xstate(unsigned int legacy_size);
+ 
+-extern void __user *get_xsave_addr_user(struct xregs_state __user *xsave, int xfeature_nr);
+-
+ static inline u64 xfeatures_mask_supervisor(void)
+ {
+ 	return fpu_kernel_cfg.max_features & XFEATURE_MASK_SUPERVISOR_SUPPORTED;
+diff --git a/arch/x86/kernel/signal.c b/arch/x86/kernel/signal.c
+index 9dc77ad03a0e..1f1e8e0ac5a3 100644
+--- a/arch/x86/kernel/signal.c
++++ b/arch/x86/kernel/signal.c
+@@ -60,24 +60,6 @@ static inline int is_x32_frame(struct ksignal *ksig)
+ 		ksig->ka.sa.sa_flags & SA_X32_ABI;
+ }
+ 
+-/*
+- * Enable all pkeys temporarily, so as to ensure that both the current
+- * execution stack as well as the alternate signal stack are writeable.
+- * The application can use any of the available pkeys to protect the
+- * alternate signal stack, and we don't know which one it is, so enable
+- * all. The PKRU register will be reset to init_pkru later in the flow,
+- * in fpu__clear_user_states(), and it is the application's responsibility
+- * to enable the appropriate pkey as the first step in the signal handler
+- * so that the handler does not segfault.
+- */
+-static inline u32 sig_prepare_pkru(void)
+-{
+-	u32 orig_pkru = read_pkru();
+-
+-	write_pkru(0);
+-	return orig_pkru;
+-}
+-
+ /*
+  * Set up a signal frame.
+  */
+-- 
+2.48.1
+

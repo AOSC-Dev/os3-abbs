@@ -1,7 +1,7 @@
 From 3d0f4b1b4db2457fe91cc9129938283fa0211390 Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubb@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
-Subject: [PATCH 231/317] AOSCOS: MIPS: Loongson: AT24c04 support for
+Subject: [PATCH 231/323] AOSCOS: MIPS: Loongson: AT24c04 support for
  Loongson-3
 
 Signed-off-by: Binbin Zhou <zhoubb@lemote.com>

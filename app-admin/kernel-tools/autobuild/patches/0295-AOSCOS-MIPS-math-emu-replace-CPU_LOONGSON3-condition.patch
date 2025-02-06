@@ -1,7 +1,7 @@
 From 601dd20a957264c0d13e42699a9812e27037a761 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Thu, 12 Dec 2024 00:29:07 +0800
-Subject: [PATCH 295/317] AOSCOS: MIPS: math-emu: replace CPU_LOONGSON3
+Subject: [PATCH 295/323] AOSCOS: MIPS: math-emu: replace CPU_LOONGSON3
  conditions with CPU_LOONGSON64
 
 Per commit 30ad29bb4888 ("MIPS: Loongson: Naming style cleanup and

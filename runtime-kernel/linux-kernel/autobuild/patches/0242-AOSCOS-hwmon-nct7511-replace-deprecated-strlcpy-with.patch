@@ -1,7 +1,7 @@
 From 3b8bdebcd9be6f3dc3a2fe0c8aa8ff091a3987ff Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Mon, 9 Dec 2024 17:58:37 +0800
-Subject: [PATCH 242/317] AOSCOS: hwmon: nct7511: replace deprecated strlcpy()
+Subject: [PATCH 242/323] AOSCOS: hwmon: nct7511: replace deprecated strlcpy()
  with strscpy()
 
 The string function strlcpy() was removed in commit d26270061ae6 ("string:

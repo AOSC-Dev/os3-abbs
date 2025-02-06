@@ -1,7 +1,7 @@
 From 116f0ce5d5db0c64290423f007f0419442f5abf8 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Wed, 22 Jan 2025 15:33:50 +0800
-Subject: [PATCH 107/317] LOONGSON: USB: core: Enable root_hub's remote wakeup
+Subject: [PATCH 107/323] LOONGSON: USB: core: Enable root_hub's remote wakeup
  for wakeup sources
 
 Now we only enable the remote wakeup function for the USB wakeup source

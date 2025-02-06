@@ -1,0 +1,69 @@
+From f77cce13674dd7ce5746070ed7c7b1c05ae8a2db Mon Sep 17 00:00:00 2001
+From: Kexy Biscuit <kexybiscuit@aosc.io>
+Date: Thu, 6 Feb 2025 18:31:31 +0800
+Subject: [PATCH 321/323] Revert "x86/pkeys: Update PKRU to enable all pkeys
+ before XSAVE"
+
+This reverts commit 70044df250d022572e26cd301bddf75eac1fe50e.
+---
+ arch/x86/kernel/fpu/signal.c | 11 ++---------
+ arch/x86/kernel/signal.c     | 12 ++----------
+ 2 files changed, 4 insertions(+), 19 deletions(-)
+
+diff --git a/arch/x86/kernel/fpu/signal.c b/arch/x86/kernel/fpu/signal.c
+index 1065ab995305..931c5469d7f3 100644
+--- a/arch/x86/kernel/fpu/signal.c
++++ b/arch/x86/kernel/fpu/signal.c
+@@ -168,15 +168,8 @@ static inline bool save_xstate_epilog(void __user *buf, int ia32_frame,
+ 
+ static inline int copy_fpregs_to_sigframe(struct xregs_state __user *buf, u32 pkru)
+ {
+-	int err = 0;
+-
+-	if (use_xsave()) {
+-		err = xsave_to_user_sigframe(buf);
+-		if (!err)
+-			err = update_pkru_in_sigframe(buf, pkru);
+-		return err;
+-	}
+-
++	if (use_xsave())
++		return xsave_to_user_sigframe(buf);
+ 	if (use_fxsr())
+ 		return fxsave_to_user_sigframe((struct fxregs_state __user *) buf);
+ 	else
+diff --git a/arch/x86/kernel/signal.c b/arch/x86/kernel/signal.c
+index 5f441039b572..9dc77ad03a0e 100644
+--- a/arch/x86/kernel/signal.c
++++ b/arch/x86/kernel/signal.c
+@@ -102,7 +102,7 @@ get_sigframe(struct ksignal *ksig, struct pt_regs *regs, size_t frame_size,
+ 	unsigned long math_size = 0;
+ 	unsigned long sp = regs->sp;
+ 	unsigned long buf_fx = 0;
+-	u32 pkru;
++	u32 pkru = read_pkru();
+ 
+ 	/* redzone */
+ 	if (!ia32_frame)
+@@ -157,17 +157,9 @@ get_sigframe(struct ksignal *ksig, struct pt_regs *regs, size_t frame_size,
+ 		return (void __user *)-1L;
+ 	}
+ 
+-	/* Update PKRU to enable access to the alternate signal stack. */
+-	pkru = sig_prepare_pkru();
+ 	/* save i387 and extended state */
+-	if (!copy_fpstate_to_sigframe(*fpstate, (void __user *)buf_fx, math_size, pkru)) {
+-		/*
+-		 * Restore PKRU to the original, user-defined value; disable
+-		 * extra pkeys enabled for the alternate signal stack, if any.
+-		 */
+-		write_pkru(pkru);
++	if (!copy_fpstate_to_sigframe(*fpstate, (void __user *)buf_fx, math_size, pkru))
+ 		return (void __user *)-1L;
+-	}
+ 
+ 	return (void __user *)sp;
+ }
+-- 
+2.48.1
+

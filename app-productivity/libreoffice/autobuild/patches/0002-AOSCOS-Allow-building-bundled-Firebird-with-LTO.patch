@@ -1,8 +1,9 @@
-From 370f6fbab3a2d1563540d91a9ca6a62d399e6822 Mon Sep 17 00:00:00 2001
+From 505c4450f1654682d839ee8995c4a4f7d4ca5454 Mon Sep 17 00:00:00 2001
 From: xtex <xtexchooser@duck.com>
 Date: Sat, 12 Oct 2024 13:16:42 +0000
-Subject: [PATCH 2/3] FROM AOSC: Allow building bundled Firebird with LTO
+Subject: [PATCH 2/4] AOSCOS: Allow building bundled Firebird with LTO
 
+Signed-off-by: Bingwu Zhang <xtex@aosc.io>
 ---
  external/firebird/ExternalProject_firebird.mk | 3 +++
  1 file changed, 3 insertions(+)

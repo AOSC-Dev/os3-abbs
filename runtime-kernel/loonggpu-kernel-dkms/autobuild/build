@@ -4,4 +4,4 @@ dpkg -x "$SRCDIR"/loonggpu-kernel-dkms_${__UPSTREAM_VER}_loong64.deb \
 
 abinfo "Patching module sources to fix build with newer kernel versions ..."
 cd "$PKGDIR"/usr/src/loonggpu-${__UPSTREAM_VER%%-*}/
-ab_apply_patches "$SRCDIR"/autobuild/patches/*.deferred
+ab_apply_patches "$SRCDIR"/autobuild/patches.deferred/*.patch

@@ -1,7 +1,7 @@
-From 095e20e815ab87cdf6e09b0eba61403925a16b22 Mon Sep 17 00:00:00 2001
+From d78344d1e4534a20fbe9a9691fb20c86fa605701 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 21 Jan 2025 11:51:25 +0800
-Subject: [PATCH 3/3] loonggpu: dkms: drop deprecated REMAKE_INITRD=yes option
+Subject: [PATCH 4/8] loonggpu: dkms: drop deprecated REMAKE_INITRD=yes option
 
 This option is marked deprecated and causes a warning during DKMS builds.
 

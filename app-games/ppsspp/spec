@@ -1,5 +1,5 @@
-VER=1.17.1
+VER=1.18.1
 REL=1
-SRCS="git::commit=tags/v$VER::https://github.com/hrydgard/ppsspp"
+SRCS="git::commit=tags/v$VER::https://github.com/AOSC-Tracking/ppsspp"
 CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=12295"

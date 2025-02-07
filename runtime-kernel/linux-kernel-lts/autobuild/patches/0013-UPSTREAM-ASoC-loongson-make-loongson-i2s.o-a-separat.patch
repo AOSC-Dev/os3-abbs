@@ -1,7 +1,7 @@
-From f450bcfc733c84017598b78905eccc7f391380e8 Mon Sep 17 00:00:00 2001
+From f40bb05f3f82313e761cb78c12fdfce5258c61bb Mon Sep 17 00:00:00 2001
 From: Arnd Bergmann <arnd@arndb.de>
 Date: Tue, 15 Oct 2024 15:09:54 +0000
-Subject: [PATCH 013/300] UPSTREAM: ASoC: loongson: make loongson-i2s.o a
+Subject: [PATCH 013/299] UPSTREAM: ASoC: loongson: make loongson-i2s.o a
  separate module
 
 An object file should not be linked into multiple modules and/or

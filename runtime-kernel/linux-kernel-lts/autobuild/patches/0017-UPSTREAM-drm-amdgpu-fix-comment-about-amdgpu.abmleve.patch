@@ -1,7 +1,7 @@
-From 24cd219b1c88561c3b908f48814b9dfdb6fc7298 Mon Sep 17 00:00:00 2001
+From c16fbb6dae007a394dbb751610f03c4522f8b722 Mon Sep 17 00:00:00 2001
 From: "jeffbai@aosc.io" <jeffbai@aosc.io>
 Date: Thu, 24 Oct 2024 21:07:18 +0800
-Subject: [PATCH 017/300] UPSTREAM: drm/amdgpu: fix comment about
+Subject: [PATCH 017/299] UPSTREAM: drm/amdgpu: fix comment about
  amdgpu.abmlevel defaults
 
 Since 040fdcde288a ("drm/amdgpu: respect the abmlevel module parameter value

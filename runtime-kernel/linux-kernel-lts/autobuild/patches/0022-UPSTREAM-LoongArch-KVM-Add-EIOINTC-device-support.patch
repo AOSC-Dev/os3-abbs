@@ -1,7 +1,7 @@
-From 2b7ad39a9a95dfded10e38ddee77e16c7d25da85 Mon Sep 17 00:00:00 2001
+From a4ee8e8eebe6499bdc1cf180f91efa2fd7fddea1 Mon Sep 17 00:00:00 2001
 From: Xianglai Li <lixianglai@loongson.cn>
 Date: Wed, 13 Nov 2024 16:18:27 +0800
-Subject: [PATCH 022/300] UPSTREAM: LoongArch: KVM: Add EIOINTC device support
+Subject: [PATCH 022/299] UPSTREAM: LoongArch: KVM: Add EIOINTC device support
 
 Add device model for EIOINTC interrupt controller, implement basic
 create & destroy interfaces, and register device model to kvm device

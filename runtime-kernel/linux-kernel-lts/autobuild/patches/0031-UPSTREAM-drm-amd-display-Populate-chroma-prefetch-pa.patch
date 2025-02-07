@@ -1,0 +1,137 @@
+From 6b02298073ad3880e2ca58b6345b5c34df0a70c6 Mon Sep 17 00:00:00 2001
+From: Ausef Yousof <Ausef.Yousof@amd.com>
+Date: Wed, 20 Nov 2024 12:38:11 -0500
+Subject: [PATCH 031/299] UPSTREAM: drm/amd/display: Populate chroma prefetch
+ parameters, DET buffer fix
+
+[WHY]
+Soft hang/lag observed during 10bit playback + moving cursor, corruption
+observed in other tickets for same reason, also failing MPO.
+
+1. Currently, we are always running
+   calculate_lowest_supported_state_for_temp_read which is only
+   necessary on dGPU
+2. Fast validate path does not apply DET buffer allocation policy
+3. Prefetch UrgBFactor chroma parameter not populated in prefetch
+   calculation
+
+[HOW]
+1. Add a check to see if we are on APU, if so, skip the code
+2. Add det buffer alloc policy checks to fast validate path
+3. Populate UrgentBurstChroma param in call to calculate
+   UrgBChroma prefetch values
+
+-revision commits: small formatting/brackets/null check addition + remove test change + dGPU code
+
+Reviewed-by: Charlene Liu <charlene.liu@amd.com>
+Signed-off-by: Ausef Yousof <Ausef.Yousof@amd.com>
+Signed-off-by: Fangzhi Zuo <jerry.zuo@amd.com>
+Tested-by: Daniel Wheeler <daniel.wheeler@amd.com>
+Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
+
+(cherry picked from commit 70fec46519fca859aa209f5f02e7e0a0123aca4a)
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ .../amd/display/dc/dml2/display_mode_core.c   |  5 ++-
+ .../drm/amd/display/dc/dml2/dml2_wrapper.c    | 35 +++++++++++++------
+ 2 files changed, 29 insertions(+), 11 deletions(-)
+
+diff --git a/drivers/gpu/drm/amd/display/dc/dml2/display_mode_core.c b/drivers/gpu/drm/amd/display/dc/dml2/display_mode_core.c
+index 8dabb1ac0b68..be87dc0f0779 100644
+--- a/drivers/gpu/drm/amd/display/dc/dml2/display_mode_core.c
++++ b/drivers/gpu/drm/amd/display/dc/dml2/display_mode_core.c
+@@ -6434,7 +6434,7 @@ static void dml_prefetch_check(struct display_mode_lib_st *mode_lib)
+ 							/* Output */
+ 							&mode_lib->ms.UrgentBurstFactorCursorPre[k],
+ 							&mode_lib->ms.UrgentBurstFactorLumaPre[k],
+-							&mode_lib->ms.UrgentBurstFactorChroma[k],
++							&mode_lib->ms.UrgentBurstFactorChromaPre[k],
+ 							&mode_lib->ms.NotUrgentLatencyHidingPre[k]);
+ 
+ 					mode_lib->ms.cursor_bw_pre[k] = mode_lib->ms.cache_display_cfg.plane.NumberOfCursors[k] * mode_lib->ms.cache_display_cfg.plane.CursorWidth[k] *
+@@ -9190,6 +9190,8 @@ void dml_core_mode_programming(struct display_mode_lib_st *mode_lib, const struc
+ 			&locals->FractionOfUrgentBandwidth,
+ 			&s->dummy_boolean[0]); // dml_bool_t *PrefetchBandwidthSupport
+ 
++
++
+ 		if (s->VRatioPrefetchMoreThanMax != false || s->DestinationLineTimesForPrefetchLessThan2 != false) {
+ 			dml_print("DML::%s: VRatioPrefetchMoreThanMax                   = %u\n", __func__, s->VRatioPrefetchMoreThanMax);
+ 			dml_print("DML::%s: DestinationLineTimesForPrefetchLessThan2    = %u\n", __func__, s->DestinationLineTimesForPrefetchLessThan2);
+@@ -9204,6 +9206,7 @@ void dml_core_mode_programming(struct display_mode_lib_st *mode_lib, const struc
+ 			}
+ 		}
+ 
++
+ 		if (locals->PrefetchModeSupported == true && mode_lib->ms.support.ImmediateFlipSupport == true) {
+ 			locals->BandwidthAvailableForImmediateFlip = CalculateBandwidthAvailableForImmediateFlip(
+ 																	mode_lib->ms.num_active_planes,
+diff --git a/drivers/gpu/drm/amd/display/dc/dml2/dml2_wrapper.c b/drivers/gpu/drm/amd/display/dc/dml2/dml2_wrapper.c
+index 866b0abcff1b..4d64c45930da 100644
+--- a/drivers/gpu/drm/amd/display/dc/dml2/dml2_wrapper.c
++++ b/drivers/gpu/drm/amd/display/dc/dml2/dml2_wrapper.c
+@@ -533,14 +533,21 @@ static bool optimize_pstate_with_svp_and_drr(struct dml2_context *dml2, struct d
+ static bool call_dml_mode_support_and_programming(struct dc_state *context)
+ {
+ 	unsigned int result = 0;
+-	unsigned int min_state;
++	unsigned int min_state = 0;
+ 	int min_state_for_g6_temp_read = 0;
++
++
++	if (!context)
++		return false;
++
+ 	struct dml2_context *dml2 = context->bw_ctx.dml2;
+ 	struct dml2_wrapper_scratch *s = &dml2->v20.scratch;
+ 
+-	min_state_for_g6_temp_read = calculate_lowest_supported_state_for_temp_read(dml2, context);
++	if (!context->streams[0]->sink->link->dc->caps.is_apu) {
++		min_state_for_g6_temp_read = calculate_lowest_supported_state_for_temp_read(dml2, context);
+ 
+-	ASSERT(min_state_for_g6_temp_read >= 0);
++		ASSERT(min_state_for_g6_temp_read >= 0);
++	}
+ 
+ 	if (!dml2->config.use_native_pstate_optimization) {
+ 		result = optimize_pstate_with_svp_and_drr(dml2, context);
+@@ -551,14 +558,20 @@ static bool call_dml_mode_support_and_programming(struct dc_state *context)
+ 	/* Upon trying to sett certain frequencies in FRL, min_state_for_g6_temp_read is reported as -1. This leads to an invalid value of min_state causing crashes later on.
+ 	 * Use the default logic for min_state only when min_state_for_g6_temp_read is a valid value. In other cases, use the value calculated by the DML directly.
+ 	 */
+-	if (min_state_for_g6_temp_read >= 0)
+-		min_state = min_state_for_g6_temp_read > s->mode_support_params.out_lowest_state_idx ? min_state_for_g6_temp_read : s->mode_support_params.out_lowest_state_idx;
+-	else
+-		min_state = s->mode_support_params.out_lowest_state_idx;
+-
+-	if (result)
+-		result = dml_mode_programming(&dml2->v20.dml_core_ctx, min_state, &s->cur_display_config, true);
++	if (!context->streams[0]->sink->link->dc->caps.is_apu) {
++		if (min_state_for_g6_temp_read >= 0)
++			min_state = min_state_for_g6_temp_read > s->mode_support_params.out_lowest_state_idx ? min_state_for_g6_temp_read : s->mode_support_params.out_lowest_state_idx;
++		else
++			min_state = s->mode_support_params.out_lowest_state_idx;
++	}
+ 
++	if (result) {
++		if (!context->streams[0]->sink->link->dc->caps.is_apu) {
++			result = dml_mode_programming(&dml2->v20.dml_core_ctx, min_state, &s->cur_display_config, true);
++		} else {
++			result = dml_mode_programming(&dml2->v20.dml_core_ctx, s->mode_support_params.out_lowest_state_idx, &s->cur_display_config, true);
++		}
++	}
+ 	return result;
+ }
+ 
+@@ -687,6 +700,8 @@ static bool dml2_validate_only(struct dc_state *context)
+ 	build_unoptimized_policy_settings(dml2->v20.dml_core_ctx.project, &dml2->v20.dml_core_ctx.policy);
+ 
+ 	map_dc_state_into_dml_display_cfg(dml2, context, &dml2->v20.scratch.cur_display_config);
++	 if (!dml2->config.skip_hw_state_mapping)
++		 dml2_apply_det_buffer_allocation_policy(dml2, &dml2->v20.scratch.cur_display_config);
+ 
+ 	result = pack_and_call_dml_mode_support_ex(dml2,
+ 		&dml2->v20.scratch.cur_display_config,
+-- 
+2.48.1
+

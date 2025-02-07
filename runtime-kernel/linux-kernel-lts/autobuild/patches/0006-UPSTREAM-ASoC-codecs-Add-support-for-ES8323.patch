@@ -1,7 +1,7 @@
-From a806b3e61cffd1b00c36dab4a44cf57a636920cd Mon Sep 17 00:00:00 2001
+From ab5430c7a781ec7e8939ff2e8720f15702e49bba Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Wed, 9 Oct 2024 15:52:10 +0800
-Subject: [PATCH 006/300] UPSTREAM: ASoC: codecs: Add support for ES8323
+Subject: [PATCH 006/299] UPSTREAM: ASoC: codecs: Add support for ES8323
 
 Add a codec driver for the Everest ES8323. It supports two separate
 audio outputs and two separate audio inputs.
@@ -45,7 +45,7 @@ index 0d9d1d250f2b..bab3617125ff 100644
  	tristate "Everest Semi ES8326 CODEC"
  	depends on I2C
 diff --git a/sound/soc/codecs/Makefile b/sound/soc/codecs/Makefile
-index 54cbc3feae32..62fe972514a4 100644
+index 69cb0b39f220..436719b24163 100644
 --- a/sound/soc/codecs/Makefile
 +++ b/sound/soc/codecs/Makefile
 @@ -125,6 +125,7 @@ snd-soc-es7241-y := es7241.o

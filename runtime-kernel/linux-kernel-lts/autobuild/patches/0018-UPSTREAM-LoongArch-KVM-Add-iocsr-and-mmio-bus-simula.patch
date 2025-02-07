@@ -1,7 +1,7 @@
-From cb7a3758e944b6ff5786cf85ed3465b3f8639a49 Mon Sep 17 00:00:00 2001
+From 42f5c1043970ae95e6569122681a07e9495646ed Mon Sep 17 00:00:00 2001
 From: Xianglai Li <lixianglai@loongson.cn>
 Date: Wed, 13 Nov 2024 16:18:26 +0800
-Subject: [PATCH 018/300] UPSTREAM: LoongArch: KVM: Add iocsr and mmio bus
+Subject: [PATCH 018/299] UPSTREAM: LoongArch: KVM: Add iocsr and mmio bus
  simulation in kernel
 
 Add iocsr and mmio memory read and write simulation to the kernel. When

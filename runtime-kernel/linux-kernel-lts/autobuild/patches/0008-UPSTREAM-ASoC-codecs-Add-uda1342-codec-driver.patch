@@ -1,7 +1,7 @@
-From bf66c6b3d4c9bb2062296312eb03841ac806b4ac Mon Sep 17 00:00:00 2001
+From fc9aedaf20d9567f67545a379de9a7e2ce0f1f2e Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Wed, 9 Oct 2024 15:52:26 +0800
-Subject: [PATCH 008/300] UPSTREAM: ASoC: codecs: Add uda1342 codec driver
+Subject: [PATCH 008/299] UPSTREAM: ASoC: codecs: Add uda1342 codec driver
 
 The UDA1342 is an NXP audio codec, support 2x Stereo audio ADC (4x PGA
 mic inputs), stereo audio DAC, with basic audio processing.
@@ -48,7 +48,7 @@ index bab3617125ff..20b59377a6b9 100644
  	tristate
  	depends on I2C
 diff --git a/sound/soc/codecs/Makefile b/sound/soc/codecs/Makefile
-index 62fe972514a4..add76b50c185 100644
+index 436719b24163..2d97a82c74c6 100644
 --- a/sound/soc/codecs/Makefile
 +++ b/sound/soc/codecs/Makefile
 @@ -320,6 +320,7 @@ snd-soc-ts3a227e-y := ts3a227e.o

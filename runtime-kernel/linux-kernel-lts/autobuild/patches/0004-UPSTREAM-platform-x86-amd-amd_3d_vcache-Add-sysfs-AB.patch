@@ -1,7 +1,7 @@
-From 71e23b13c294fbc3fd48f63331bc5d4e10d93ff5 Mon Sep 17 00:00:00 2001
+From bd0c15727bcd6a0662f0eb295a8b5f2b8dc909b5 Mon Sep 17 00:00:00 2001
 From: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 Date: Tue, 12 Nov 2024 22:33:07 +0530
-Subject: [PATCH 004/300] UPSTREAM: platform/x86/amd: amd_3d_vcache: Add sysfs
+Subject: [PATCH 004/299] UPSTREAM: platform/x86/amd: amd_3d_vcache: Add sysfs
  ABI documentation
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

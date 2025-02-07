@@ -1,0 +1,5 @@
+VER=8.0.1
+SRCS="tbl::https://github.com/bazelbuild/bazel/releases/download/$VER/bazel-$VER-dist.zip"
+CHKSUMS="sha256::399fd28a370012cbf9324cd21de5eef3aec3f278ad58d1e608edee6fb909a04e"
+CHKUPDATE="anitya::id=15227"
+SUBDIR=.

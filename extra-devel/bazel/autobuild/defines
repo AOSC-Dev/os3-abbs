@@ -1,0 +1,8 @@
+PKGNAME=bazel
+PKGSEC=devel
+PKGDEP="libarchive openjdk unzip zip"
+BUILDDEP="bazel protobuf python-3"
+PKGDES="A multi-language build system"
+
+# FIXME: LoongArch64 is not supported by upstream yet
+FAIL_ARCH="@(loongarch64)"

@@ -1,4 +1,5 @@
 VER=20.18.2
+REL=1
 SRCS="tbl::https://nodejs.org/dist/v$VER/node-v$VER.tar.xz"
 CHKSUMS="sha256::69bf81b70f3a95ae0763459f02860c282d7e3a47567c8afaf126cc778176a882"
 CHKUPDATE="anitya::id=369796"

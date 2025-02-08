@@ -1,4 +1,4 @@
-From 0a18355d1989856ac36ea416489e4a87368ce088 Mon Sep 17 00:00:00 2001
+From 30fce67473892b72a52a681c6ce90c9b814308fa Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:35:10 -0600
 Subject: [PATCH 071/299] UPSTREAM: docs: ntsync: Add documentation for the

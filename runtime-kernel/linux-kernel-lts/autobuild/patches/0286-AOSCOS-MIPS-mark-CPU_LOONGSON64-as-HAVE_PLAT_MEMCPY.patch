@@ -1,4 +1,4 @@
-From db00e02c7ca30c165858d80488ecd95f4cc1ec13 Mon Sep 17 00:00:00 2001
+From d10add38d65e42afdbf80622a0895663509f830f Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Thu, 12 Dec 2024 14:09:34 +0800
 Subject: [PATCH 286/299] AOSCOS: MIPS: mark CPU_LOONGSON64 as HAVE_PLAT_MEMCPY

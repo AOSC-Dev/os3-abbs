@@ -1,4 +1,4 @@
-From 078cc59d7ccccfbd6982898a7a7937e202e2becf Mon Sep 17 00:00:00 2001
+From b640f6399155927444d729c872f14278c4ca1559 Mon Sep 17 00:00:00 2001
 From: Miao Wang <shankerwangmiao@gmail.com>
 Date: Tue, 13 Aug 2024 16:05:28 +0800
 Subject: [PATCH 169/299] AOSCOS: loongarch: fix DMA address offset

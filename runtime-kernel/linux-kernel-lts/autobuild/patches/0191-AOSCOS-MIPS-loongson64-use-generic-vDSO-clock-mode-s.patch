@@ -1,4 +1,4 @@
-From 584b5f85a4f4d31f53f38aa75e4e238a618459f3 Mon Sep 17 00:00:00 2001
+From f1d55500e7549be4f0f80dd9230d2ace16e2c556 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 3 Dec 2024 16:56:36 +0800
 Subject: [PATCH 191/299] AOSCOS: MIPS: loongson64: use generic vDSO clock mode

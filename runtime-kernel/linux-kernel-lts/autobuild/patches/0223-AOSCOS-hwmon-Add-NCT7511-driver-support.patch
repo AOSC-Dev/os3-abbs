@@ -1,4 +1,4 @@
-From e8908835c7ba57346e6c62012460cdd8cb133ece Mon Sep 17 00:00:00 2001
+From dc93ccb3ee682a13183777d5f98bd5f61d012ae6 Mon Sep 17 00:00:00 2001
 From: Yao Wang <wangyao@lemote.com>
 Date: Fri, 22 Nov 2019 19:21:01 +0800
 Subject: [PATCH 223/299] AOSCOS: hwmon: Add NCT7511 driver support

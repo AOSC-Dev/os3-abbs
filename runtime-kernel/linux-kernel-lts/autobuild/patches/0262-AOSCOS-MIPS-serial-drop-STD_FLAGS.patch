@@ -1,4 +1,4 @@
-From 4a3e0649656a9b1ce1d96c837dea994b896246a0 Mon Sep 17 00:00:00 2001
+From 8ae483a84b2c7b49be8d25a49881234cb3a29e2a Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 11 Dec 2024 15:47:49 +0800
 Subject: [PATCH 262/299] AOSCOS: MIPS: serial: drop STD_FLAGS

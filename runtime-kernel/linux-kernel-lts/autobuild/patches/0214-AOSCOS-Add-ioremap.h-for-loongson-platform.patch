@@ -1,4 +1,4 @@
-From 9a245bca946b52ad9f50d4c60ef75bc069e2bcce Mon Sep 17 00:00:00 2001
+From 89b03ccedb238476de458ba97ab3f0af232cec9a Mon Sep 17 00:00:00 2001
 From: chenj <chenj@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 214/299] AOSCOS: Add ioremap.h for loongson platform

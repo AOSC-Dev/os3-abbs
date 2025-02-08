@@ -1,4 +1,4 @@
-From 4b1a83d4b0c6bbb93cc2189837c43351df871a56 Mon Sep 17 00:00:00 2001
+From 63166e0d0e7f7b8c0f4bbe53d8ad938dc38740e6 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:46 -0600
 Subject: [PATCH 047/299] UPSTREAM: ntsync: Introduce NTSYNC_IOC_CREATE_MUTEX.

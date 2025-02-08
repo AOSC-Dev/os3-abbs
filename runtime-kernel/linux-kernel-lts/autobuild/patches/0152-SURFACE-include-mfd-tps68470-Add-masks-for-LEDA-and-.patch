@@ -1,4 +1,4 @@
-From 20282574581ec02ca2e51954a0d5611ec30b06a3 Mon Sep 17 00:00:00 2001
+From 4721802145fc64ec444db4c2a17ff67f27617eec Mon Sep 17 00:00:00 2001
 From: Kate Hsuan <hpa@redhat.com>
 Date: Tue, 21 Mar 2023 23:37:17 +0800
 Subject: [PATCH 152/299] SURFACE: include: mfd: tps68470: Add masks for LEDA

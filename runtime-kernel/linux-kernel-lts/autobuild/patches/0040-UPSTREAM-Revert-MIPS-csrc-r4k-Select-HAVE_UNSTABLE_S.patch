@@ -1,4 +1,4 @@
-From 696b3e9441b79a7e8be79b8bd3ca17f09da21c2d Mon Sep 17 00:00:00 2001
+From 299239c7f047167940d085c48ca2cea7d5c91a0c Mon Sep 17 00:00:00 2001
 From: Xi Ruoyao <xry111@xry111.site>
 Date: Mon, 23 Dec 2024 17:20:41 +0800
 Subject: [PATCH 040/299] UPSTREAM: Revert "MIPS: csrc-r4k: Select

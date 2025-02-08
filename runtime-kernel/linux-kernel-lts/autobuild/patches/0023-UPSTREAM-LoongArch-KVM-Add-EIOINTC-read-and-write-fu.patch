@@ -1,4 +1,4 @@
-From 4ba06e0e0723871f40c3c68d3c3ca44f649e1c51 Mon Sep 17 00:00:00 2001
+From abc0dc398726d0ac81a1eadc0821555ad69e071b Mon Sep 17 00:00:00 2001
 From: Xianglai Li <lixianglai@loongson.cn>
 Date: Wed, 13 Nov 2024 16:18:27 +0800
 Subject: [PATCH 023/299] UPSTREAM: LoongArch: KVM: Add EIOINTC read and write

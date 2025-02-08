@@ -1,4 +1,4 @@
-From 75888ad08b44c2cb2ad4392901d21d1b764256ca Mon Sep 17 00:00:00 2001
+From 50c5625446bab4477d25dff114d64e61b791e595 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:42 -0600
 Subject: [PATCH 043/299] UPSTREAM: ntsync: Return the fd from

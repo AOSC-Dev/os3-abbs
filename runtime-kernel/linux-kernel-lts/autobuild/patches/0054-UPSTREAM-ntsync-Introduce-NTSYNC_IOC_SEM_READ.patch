@@ -1,4 +1,4 @@
-From ac94399adb033584d4aff2cd2f5c2c7618b5aa0a Mon Sep 17 00:00:00 2001
+From 894fefed3154a00addd919fb9db3a95857085368 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:53 -0600
 Subject: [PATCH 054/299] UPSTREAM: ntsync: Introduce NTSYNC_IOC_SEM_READ.

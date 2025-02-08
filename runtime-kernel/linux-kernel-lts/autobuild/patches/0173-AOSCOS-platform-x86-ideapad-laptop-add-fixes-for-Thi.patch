@@ -1,4 +1,4 @@
-From 5f492c335a88e4e69a46fda3d4a79ed3ff1df6b3 Mon Sep 17 00:00:00 2001
+From 94240ad1bbe901fd53c665af86da34d104c26273 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <baimingcong@uniontech.com>
 Date: Sat, 17 Aug 2024 11:32:11 +0800
 Subject: [PATCH 173/299] AOSCOS: platform: x86: ideapad-laptop: add fixes for

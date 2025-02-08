@@ -1,4 +1,4 @@
-From 0a1bff4407f93fc5ac66bdbea17ede4a821c2fb3 Mon Sep 17 00:00:00 2001
+From e6563c661cb0419afb9a9d0d089a8b94af5466c9 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:56 -0600
 Subject: [PATCH 057/299] UPSTREAM: ntsync: Introduce alertable waits.

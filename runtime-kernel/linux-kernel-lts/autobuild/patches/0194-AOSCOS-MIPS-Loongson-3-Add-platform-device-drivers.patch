@@ -1,4 +1,4 @@
-From b164f160174af86793bef2810902e963864cd0b7 Mon Sep 17 00:00:00 2001
+From ae6f5f499ff636a6fc51585b3b940519c6fe9f03 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 194/299] AOSCOS: MIPS: Loongson 3: Add platform device drivers

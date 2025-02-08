@@ -1,4 +1,4 @@
-From c8be56036fc4d024067c3a5900a54a65706761fb Mon Sep 17 00:00:00 2001
+From 2ab375af1a1e2b35caed942defff38314f20d6f8 Mon Sep 17 00:00:00 2001
 From: xiangy <xiangy@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 230/299] AOSCOS: add 3g support and ppp config support

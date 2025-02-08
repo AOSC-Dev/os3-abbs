@@ -1,4 +1,4 @@
-From 5f25f45fd52efead5a28e21010edf94deddc5a90 Mon Sep 17 00:00:00 2001
+From c9a988d68f4636249225501df81be793fb4ee7dd Mon Sep 17 00:00:00 2001
 From: Li Wencheng <liwencheng@phytium.com.cn>
 Date: Fri, 20 Oct 2023 18:55:20 +0800
 Subject: [PATCH 109/299] PHYTIUM: net: stmmac: Add a barrier to make sure all

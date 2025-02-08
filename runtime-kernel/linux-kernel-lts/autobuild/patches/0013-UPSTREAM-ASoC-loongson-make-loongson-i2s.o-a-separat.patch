@@ -1,4 +1,4 @@
-From f40bb05f3f82313e761cb78c12fdfce5258c61bb Mon Sep 17 00:00:00 2001
+From 878e9805372ab13dcc20f378b861859c322a6c68 Mon Sep 17 00:00:00 2001
 From: Arnd Bergmann <arnd@arndb.de>
 Date: Tue, 15 Oct 2024 15:09:54 +0000
 Subject: [PATCH 013/299] UPSTREAM: ASoC: loongson: make loongson-i2s.o a

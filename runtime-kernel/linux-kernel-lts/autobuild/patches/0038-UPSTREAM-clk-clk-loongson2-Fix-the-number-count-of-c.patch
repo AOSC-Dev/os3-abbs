@@ -1,4 +1,4 @@
-From 32bda5769bc9d2f788eff19f5fb65cdf7be15d8a Mon Sep 17 00:00:00 2001
+From 951435e9a17710da2de84f9ee6ae20a54afd891a Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Tue, 14 Jan 2025 21:00:29 +0800
 Subject: [PATCH 038/299] UPSTREAM: clk: clk-loongson2: Fix the number count of

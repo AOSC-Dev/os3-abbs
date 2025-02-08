@@ -1,4 +1,4 @@
-From cb2bce8f7a4c1b064ed84fc5b296797bd0e6413b Mon Sep 17 00:00:00 2001
+From 89ed315612e5826dac4db54a93e79ace191ac77a Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:45 -0600
 Subject: [PATCH 046/299] UPSTREAM: ntsync: Introduce NTSYNC_IOC_WAIT_ALL.

@@ -1,4 +1,4 @@
-From 115181a623ee5d8243d52b3f1c97273f06f55f99 Mon Sep 17 00:00:00 2001
+From 623529f0265d033ae99637d0622b534b43b38f6b Mon Sep 17 00:00:00 2001
 From: Jocelyn Falempe <jfalempe@redhat.com>
 Date: Tue, 22 Oct 2024 20:39:49 +0200
 Subject: [PATCH 016/299] UPSTREAM: drm/nouveau: Add drm_panic support for

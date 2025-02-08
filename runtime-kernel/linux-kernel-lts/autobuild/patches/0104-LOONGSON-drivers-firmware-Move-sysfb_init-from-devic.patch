@@ -1,4 +1,4 @@
-From 45da0cda76e049d55d172bf1a9c03e7da232fce9 Mon Sep 17 00:00:00 2001
+From 7baac3c7794f25c37884cf92ba235757b9970209 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Sun, 28 Jan 2024 14:07:46 +0800
 Subject: [PATCH 104/299] LOONGSON: drivers/firmware: Move sysfb_init() from

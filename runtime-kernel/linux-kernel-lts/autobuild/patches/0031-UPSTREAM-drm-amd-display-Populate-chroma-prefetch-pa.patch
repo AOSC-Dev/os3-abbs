@@ -1,4 +1,4 @@
-From 6b02298073ad3880e2ca58b6345b5c34df0a70c6 Mon Sep 17 00:00:00 2001
+From e81bc3bf9d301fa9c6173d5b127da76042d9e7ef Mon Sep 17 00:00:00 2001
 From: Ausef Yousof <Ausef.Yousof@amd.com>
 Date: Wed, 20 Nov 2024 12:38:11 -0500
 Subject: [PATCH 031/299] UPSTREAM: drm/amd/display: Populate chroma prefetch

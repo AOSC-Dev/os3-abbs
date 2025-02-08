@@ -1,4 +1,4 @@
-From 4beeb8696d3b9f963ab1649714fff8eb36d66461 Mon Sep 17 00:00:00 2001
+From b78b56524fb98cc40ff5a407a0882880058c2f74 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 24 Sep 2020 18:07:57 +0800
 Subject: [PATCH 097/299] FROMLIST: MIPS: Crash kernel should be able to see

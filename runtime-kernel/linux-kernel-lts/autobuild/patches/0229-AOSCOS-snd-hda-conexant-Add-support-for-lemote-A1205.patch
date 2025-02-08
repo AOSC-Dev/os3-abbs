@@ -1,4 +1,4 @@
-From d65cd235f751ca2727331f3eae6bac954d545407 Mon Sep 17 00:00:00 2001
+From 532eb9dcefcaeb77ed9627b7baea458b2c3e1ada Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 229/299] AOSCOS: snd/hda/conexant: Add support for lemote

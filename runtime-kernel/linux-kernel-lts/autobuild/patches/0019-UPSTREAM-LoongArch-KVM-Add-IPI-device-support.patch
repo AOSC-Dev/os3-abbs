@@ -1,4 +1,4 @@
-From 868b27f22ebb676bcf9cd85aad975af9c6eb5943 Mon Sep 17 00:00:00 2001
+From 32927b2d751f9279489ab671f804b0c86814be62 Mon Sep 17 00:00:00 2001
 From: Xianglai Li <lixianglai@loongson.cn>
 Date: Wed, 13 Nov 2024 16:18:27 +0800
 Subject: [PATCH 019/299] UPSTREAM: LoongArch: KVM: Add IPI device support

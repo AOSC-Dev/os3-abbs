@@ -1,4 +1,4 @@
-From e22f7d73016b8547cf9241e652e93236a18d66b5 Mon Sep 17 00:00:00 2001
+From fe83f101452f8a1559a5febd64a0abc265d5dcc4 Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Wed, 9 Oct 2024 15:52:38 +0800
 Subject: [PATCH 010/299] UPSTREAM: ASoC: loongson: Add I2S controller driver

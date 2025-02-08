@@ -1,4 +1,4 @@
-From b78f8ad6e29bf6f4890c2484d9507d3488598415 Mon Sep 17 00:00:00 2001
+From 6e678eae7744912577301870d76dd2a71a583822 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:58 -0600
 Subject: [PATCH 059/299] UPSTREAM: selftests: ntsync: Add some tests for mutex

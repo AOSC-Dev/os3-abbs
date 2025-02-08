@@ -1,4 +1,4 @@
-From b3bd0e569a30d3191b259d7dc27a4649365ef2d6 Mon Sep 17 00:00:00 2001
+From 9ac5919ef7d422a8670cb1d927fd76eed55da686 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 10 Dec 2024 16:36:25 +0800
 Subject: [PATCH 237/299] AOSCOS: MIPS: audit: declare function prototypes for

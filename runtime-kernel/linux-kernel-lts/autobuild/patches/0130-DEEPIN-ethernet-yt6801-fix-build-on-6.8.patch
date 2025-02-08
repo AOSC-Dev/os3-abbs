@@ -1,4 +1,4 @@
-From 0b6a63a2e49b2ee76d71abf6a352e7cf441062f7 Mon Sep 17 00:00:00 2001
+From 25af9b2c62312d76b4eecef76bdb66be8bea9649 Mon Sep 17 00:00:00 2001
 From: root <baimingcong@uniontech.com>
 Date: Tue, 23 Jul 2024 11:00:20 +0800
 Subject: [PATCH 130/299] DEEPIN: ethernet: yt6801: fix build on >= 6.8

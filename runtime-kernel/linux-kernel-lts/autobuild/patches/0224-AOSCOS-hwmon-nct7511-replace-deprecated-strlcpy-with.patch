@@ -1,4 +1,4 @@
-From c90beeece9bdedd019c2d99581b926130cdd0ce4 Mon Sep 17 00:00:00 2001
+From de5e5696617cdfa70df42f1736272dfc3827f51d Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Mon, 9 Dec 2024 17:58:37 +0800
 Subject: [PATCH 224/299] AOSCOS: hwmon: nct7511: replace deprecated strlcpy()

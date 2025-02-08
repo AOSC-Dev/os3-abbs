@@ -1,7 +1,7 @@
-From 32d54f8ecbed7acb997981cc1237dd2c6a54bbaa Mon Sep 17 00:00:00 2001
+From d35f772fa14a827390ce38edbbf7746231c94e4e Mon Sep 17 00:00:00 2001
 From: Li Jun <lijun01@kylinos.cn>
 Date: Tue, 7 May 2024 15:43:57 +0800
-Subject: [PATCH 065/315] FROMLIST: LoongArch: Update the flush cache policy
+Subject: [PATCH 065/316] FROMLIST: LoongArch: Update the flush cache policy
 
 fix when LoongArch s3 resume, Can't find image information
 

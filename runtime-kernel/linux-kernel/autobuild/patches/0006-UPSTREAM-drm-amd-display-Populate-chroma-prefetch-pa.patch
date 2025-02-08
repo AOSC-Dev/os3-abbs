@@ -1,7 +1,7 @@
-From 1fc3c61a5e555fc54d8beaec0c46fb67a077f577 Mon Sep 17 00:00:00 2001
+From 4f885b04bbcfffd60c30d984060f0af56a28c9e5 Mon Sep 17 00:00:00 2001
 From: Ausef Yousof <Ausef.Yousof@amd.com>
 Date: Wed, 20 Nov 2024 12:38:11 -0500
-Subject: [PATCH 006/315] UPSTREAM: drm/amd/display: Populate chroma prefetch
+Subject: [PATCH 006/316] UPSTREAM: drm/amd/display: Populate chroma prefetch
  parameters, DET buffer fix
 
 [WHY]

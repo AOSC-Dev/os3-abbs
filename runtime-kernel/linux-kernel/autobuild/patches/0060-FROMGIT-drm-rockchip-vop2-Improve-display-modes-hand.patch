@@ -1,7 +1,7 @@
-From 186f8bf881e2479306c3a28e26d66411a56d62ff Mon Sep 17 00:00:00 2001
+From 4dc3acdc565d9fd6b68a51a6babf1c05a01c84b8 Mon Sep 17 00:00:00 2001
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Date: Tue, 4 Feb 2025 14:40:06 +0200
-Subject: [PATCH 060/315] FROMGIT: drm/rockchip: vop2: Improve display modes
+Subject: [PATCH 060/316] FROMGIT: drm/rockchip: vop2: Improve display modes
  handling on RK3588 HDMI0
 
 The RK3588 specific implementation is currently quite limited in terms

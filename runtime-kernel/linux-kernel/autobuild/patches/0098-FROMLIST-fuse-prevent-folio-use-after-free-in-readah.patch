@@ -1,0 +1,42 @@
+From 607a876a2231895ec88de217f6d19df18dbabe99 Mon Sep 17 00:00:00 2001
+From: Vlastimil Babka <vbabka@suse.cz>
+Date: Fri, 7 Feb 2025 19:35:25 +0100
+Subject: [PATCH 098/316] FROMLIST: fuse: prevent folio use-after-free in
+ readahead
+
+Signed-off-by: Vlastimil Babka <vbabka@suse.cz>
+
+Link: https://lore.kernel.org/all/8f7333f2-1ba9-4df4-bc54-44fd768b3d5b@suse.cz/
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ fs/fuse/file.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/fs/fuse/file.c b/fs/fuse/file.c
+index 7d92a5479998..a40d65ffb94d 100644
+--- a/fs/fuse/file.c
++++ b/fs/fuse/file.c
+@@ -955,8 +955,10 @@ static void fuse_readpages_end(struct fuse_mount *fm, struct fuse_args *args,
+ 		fuse_invalidate_atime(inode);
+ 	}
+ 
+-	for (i = 0; i < ap->num_folios; i++)
++	for (i = 0; i < ap->num_folios; i++) {
+ 		folio_end_read(ap->folios[i], !err);
++		folio_put(ap->folios[i]);
++	}
+ 	if (ia->ff)
+ 		fuse_file_put(ia->ff, false);
+ 
+@@ -1048,7 +1050,7 @@ static void fuse_readahead(struct readahead_control *rac)
+ 		ap = &ia->ap;
+ 
+ 		while (ap->num_folios < cur_pages) {
+-			folio = readahead_folio(rac);
++			folio = __readahead_folio(rac);
+ 			ap->folios[ap->num_folios] = folio;
+ 			ap->descs[ap->num_folios].length = folio_size(folio);
+ 			ap->num_folios++;
+-- 
+2.48.1
+

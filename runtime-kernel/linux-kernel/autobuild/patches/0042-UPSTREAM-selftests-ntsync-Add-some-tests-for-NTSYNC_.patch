@@ -1,7 +1,7 @@
-From 5578460bbb4e098fe3fe1e1a8d898cb5d699f934 Mon Sep 17 00:00:00 2001
+From b34be5c632e78907752824a349a342b559fa6298 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:35:00 -0600
-Subject: [PATCH 042/315] UPSTREAM: selftests: ntsync: Add some tests for
+Subject: [PATCH 042/316] UPSTREAM: selftests: ntsync: Add some tests for
  NTSYNC_IOC_WAIT_ALL.
 
 Test basic synchronous functionality of NTSYNC_IOC_WAIT_ALL, and when objects

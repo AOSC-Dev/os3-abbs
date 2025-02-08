@@ -1,7 +1,7 @@
-From 212a3fb9759fc673149507a60e7b43419a99b37b Mon Sep 17 00:00:00 2001
+From f1e9dae6935a82e7c29c5be4a4cd88af974a1f7d Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:35:10 -0600
-Subject: [PATCH 052/315] UPSTREAM: docs: ntsync: Add documentation for the
+Subject: [PATCH 052/316] UPSTREAM: docs: ntsync: Add documentation for the
  ntsync uAPI.
 
 Add an overall explanation of the driver architecture, and complete and precise

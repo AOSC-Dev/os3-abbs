@@ -1,7 +1,7 @@
-From 1559e1d76e77dc9c83ba38bec769ddc3b49bb569 Mon Sep 17 00:00:00 2001
+From 6d6e431cd903f36469859373aa3ec585b75e66bb Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Mon, 30 Dec 2024 17:31:10 +0800
-Subject: [PATCH 089/315] FROMLIST: drm/ls2kbmc: Add support for Loongson-2K
+Subject: [PATCH 089/316] FROMLIST: drm/ls2kbmc: Add support for Loongson-2K
  BMC display
 
 Adds a driver for the Loongson-2K BMC display as a sub-function of

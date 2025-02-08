@@ -1,7 +1,7 @@
-From 327d7de076c3dfdfcb4846a5a76cef43d3531a50 Mon Sep 17 00:00:00 2001
+From 27c8ad7d86fa20c8c761fdd1c5739384bddba025 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:51 -0600
-Subject: [PATCH 033/315] UPSTREAM: ntsync: Introduce NTSYNC_IOC_EVENT_RESET.
+Subject: [PATCH 033/316] UPSTREAM: ntsync: Introduce NTSYNC_IOC_EVENT_RESET.
 
 This corresponds to the NT syscall NtResetEvent().
 

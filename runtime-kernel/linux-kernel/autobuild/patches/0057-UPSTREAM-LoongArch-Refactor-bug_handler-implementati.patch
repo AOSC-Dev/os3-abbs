@@ -1,7 +1,7 @@
-From d3a3b59c0e8de67a562f714dbeb979abfce0d489 Mon Sep 17 00:00:00 2001
+From 39ff06ee18650ae9e296931fe8f06f8f0bca2c7b Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Sat, 25 Jan 2025 18:51:42 +0800
-Subject: [PATCH 057/315] UPSTREAM: LoongArch: Refactor bug_handler()
+Subject: [PATCH 057/316] UPSTREAM: LoongArch: Refactor bug_handler()
  implementation
 
 1. Early return for user mode triggered exception with all types.

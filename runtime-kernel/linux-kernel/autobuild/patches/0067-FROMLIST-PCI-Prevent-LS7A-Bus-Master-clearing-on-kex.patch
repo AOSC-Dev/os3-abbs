@@ -1,7 +1,7 @@
-From c9f6b2dc53ba53bc21f7ccd75e6557f91550bd49 Mon Sep 17 00:00:00 2001
+From 18a542c93c441e60fe02e4d887366215028af86a Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Sun, 4 Aug 2024 09:24:18 +0800
-Subject: [PATCH 067/315] FROMLIST: PCI: Prevent LS7A Bus Master clearing on
+Subject: [PATCH 067/316] FROMLIST: PCI: Prevent LS7A Bus Master clearing on
  kexec
 
 This is similar to commit 62b6dee1b44a ("PCI/portdrv: Prevent LS7A Bus

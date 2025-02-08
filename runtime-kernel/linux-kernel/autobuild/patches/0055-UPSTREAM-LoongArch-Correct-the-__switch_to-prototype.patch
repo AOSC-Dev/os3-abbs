@@ -1,7 +1,7 @@
-From 385df75c40e8883833b637e48c60ca22684af403 Mon Sep 17 00:00:00 2001
+From 06033120ee7226227a26dced25a10abb5ccecf59 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Sat, 25 Jan 2025 18:51:42 +0800
-Subject: [PATCH 055/315] UPSTREAM: LoongArch: Correct the __switch_to()
+Subject: [PATCH 055/316] UPSTREAM: LoongArch: Correct the __switch_to()
  prototype in comments
 
 Correct the __switch_to() prototype in comments, keep it be the same as

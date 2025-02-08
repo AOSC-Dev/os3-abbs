@@ -1,7 +1,7 @@
-From 801f19b0ff2165ba634631620d7fd69d3a489dd5 Mon Sep 17 00:00:00 2001
+From 94456dd5f653754f8d1f191281d1492b5b2be23d Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:53 -0600
-Subject: [PATCH 035/315] UPSTREAM: ntsync: Introduce NTSYNC_IOC_SEM_READ.
+Subject: [PATCH 035/316] UPSTREAM: ntsync: Introduce NTSYNC_IOC_SEM_READ.
 
 This corresponds to the NT syscall NtQuerySemaphore().
 

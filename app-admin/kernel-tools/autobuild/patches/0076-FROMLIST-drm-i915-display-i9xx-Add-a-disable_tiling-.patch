@@ -1,7 +1,7 @@
-From 4487bb9fe02f782023f76a52a094e63760a359b8 Mon Sep 17 00:00:00 2001
+From 06de5e1f3565c1f21a8a470a87ac540a38f9a857 Mon Sep 17 00:00:00 2001
 From: Jocelyn Falempe <jfalempe@redhat.com>
 Date: Tue, 10 Dec 2024 10:28:42 +0100
-Subject: [PATCH 076/315] FROMLIST: drm/i915/display/i9xx: Add a
+Subject: [PATCH 076/316] FROMLIST: drm/i915/display/i9xx: Add a
  disable_tiling() for i9xx planes
 
 drm_panic draws in linear framebuffer, so it's easier to re-use the

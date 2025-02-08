@@ -1,7 +1,7 @@
-From f696f20ca99aedb3635c62722ddc922ac11b9fe5 Mon Sep 17 00:00:00 2001
+From 49311d219470b451783dc7c2a482ed68be86c30a Mon Sep 17 00:00:00 2001
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Date: Wed, 11 Dec 2024 01:06:16 +0200
-Subject: [PATCH 084/315] FROMLIST: arm64: dts: rockchip: Add HDMI1 node on
+Subject: [PATCH 084/316] FROMLIST: arm64: dts: rockchip: Add HDMI1 node on
  RK3588
 
 Add support for the second HDMI TX port found on RK3588 SoC.

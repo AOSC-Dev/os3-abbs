@@ -1,7 +1,7 @@
-From 9486308813e863b5af16dc5c4d20b314042b2623 Mon Sep 17 00:00:00 2001
+From 0be50c4d87907563496e212755f37664983e7064 Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Sat, 11 Jan 2025 01:22:09 +0800
-Subject: [PATCH 023/315] UPSTREAM: MIPS: Loongson: Add comments for
+Subject: [PATCH 023/316] UPSTREAM: MIPS: Loongson: Add comments for
  interface_info
 
 Clarify meanings of members of interface_info, especially for .size,

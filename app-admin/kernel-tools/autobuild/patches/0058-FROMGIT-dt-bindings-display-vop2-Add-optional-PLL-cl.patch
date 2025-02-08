@@ -1,7 +1,7 @@
-From ff8f20b9cb44ddf74b6faa60b92ef51c403844dc Mon Sep 17 00:00:00 2001
+From 7e8630cd75acce2356cd2a53c84f030d14d578c8 Mon Sep 17 00:00:00 2001
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Date: Tue, 4 Feb 2025 14:40:04 +0200
-Subject: [PATCH 058/315] FROMGIT: dt-bindings: display: vop2: Add optional PLL
+Subject: [PATCH 058/316] FROMGIT: dt-bindings: display: vop2: Add optional PLL
  clock properties
 
 On RK3588, HDMI PHY PLL can be used as an alternative and more accurate

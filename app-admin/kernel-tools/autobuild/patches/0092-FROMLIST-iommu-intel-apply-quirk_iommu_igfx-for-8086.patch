@@ -1,7 +1,7 @@
-From 40aa46bc4a9800ef7addb938ca45d77b1e04291f Mon Sep 17 00:00:00 2001
+From a99eaf3f88016e6398c1d87c5d7abb74ad90f08b Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Mon, 20 Jan 2025 17:35:39 +0800
-Subject: [PATCH 092/315] FROMLIST: iommu: intel: apply quirk_iommu_igfx for
+Subject: [PATCH 092/316] FROMLIST: iommu: intel: apply quirk_iommu_igfx for
  8086:0044 (QM57/QS57)
 
 (I'm not very confident about the approach of this patch but I failed to

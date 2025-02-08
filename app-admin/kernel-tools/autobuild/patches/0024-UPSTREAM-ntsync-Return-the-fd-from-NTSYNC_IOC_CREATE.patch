@@ -1,7 +1,7 @@
-From e3b7286ab89e2b17ec24f02a8c505b2228f21382 Mon Sep 17 00:00:00 2001
+From 13bf885e5c460536306e8312df9f06d12f8e8170 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:42 -0600
-Subject: [PATCH 024/315] UPSTREAM: ntsync: Return the fd from
+Subject: [PATCH 024/316] UPSTREAM: ntsync: Return the fd from
  NTSYNC_IOC_CREATE_SEM.
 
 Simplify the user API a bit by returning the fd as return value from the ioctl

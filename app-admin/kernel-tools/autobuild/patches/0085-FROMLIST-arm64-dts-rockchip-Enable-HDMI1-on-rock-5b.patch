@@ -1,7 +1,7 @@
-From a389e8da1062a372868f6e3c002596b70ea97a90 Mon Sep 17 00:00:00 2001
+From a8d0408e6f06ea755c6ec497808ad9284ccd6e47 Mon Sep 17 00:00:00 2001
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Date: Wed, 11 Dec 2024 01:06:17 +0200
-Subject: [PATCH 085/315] FROMLIST: arm64: dts: rockchip: Enable HDMI1 on
+Subject: [PATCH 085/316] FROMLIST: arm64: dts: rockchip: Enable HDMI1 on
  rock-5b
 
 Add the necessary DT changes to enable the second HDMI output port on

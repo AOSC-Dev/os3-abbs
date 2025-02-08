@@ -5,3 +5,9 @@ BUILDDEP="autoconf-archive gperf"
 PKGSEC=utils
 
 PKGESS=1
+
+# FIXME: reconf failed because it extracts threadlib.m4 "serial 10" from
+# /usr/share/gettext/archive.dir.tar.xz (because
+# AM_GNU_GETTEXT_VERSION([0.19.2]) in configure.ac), overwriting the
+# shipped threadlib.m4 "serial 42".
+RECONF=0

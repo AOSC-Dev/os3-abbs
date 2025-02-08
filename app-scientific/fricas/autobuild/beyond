@@ -1,0 +1,3 @@
+abinfo "Checking fricas build..."
+cd "$BLDDIR"
+make check

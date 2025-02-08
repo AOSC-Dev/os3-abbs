@@ -1,0 +1,6 @@
+PKGNAME=oxipng
+PKGSEC=utils
+PKGDEP="gcc-runtime"
+BUILDDEP="rustc llvm"
+PKGDES="A multithreaded lossless PNG/APNG compression optimizer"
+USECLANG=1

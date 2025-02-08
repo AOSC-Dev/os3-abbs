@@ -43,7 +43,7 @@ popd
 tar -czf "$SRCDIR"/vscode.tar.gz -T /dev/null
 
 abinfo "Packaging ..."
-"$SRCDIR"/package_linux_bin.sh
+"$SRCDIR"/dev/build.sh
 
 abinfo "Switching to SRCDIR ..."
 cd "$SRCDIR"

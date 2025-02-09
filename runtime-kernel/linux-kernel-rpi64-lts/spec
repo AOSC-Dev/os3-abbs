@@ -2,7 +2,7 @@ VER=6.6.69
 # Downstream kernels often rebases upon upstream releases.
 COMMIT=eec7048c4e3aec1aadc21fcffcf6be9f5385f72a
 # Use this for stable releases.
-#REL=1
+REL=1
 
 SRCS="git::commit=${COMMIT}::https://github.com/raspberrypi/linux.git"
 CHKSUMS="SKIP"

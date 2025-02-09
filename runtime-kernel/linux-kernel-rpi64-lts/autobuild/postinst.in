@@ -21,8 +21,10 @@ if [ -x /etc/kernel/postinst.d/apt-auto-removal ]; then
 	/etc/kernel/postinst.d/apt-auto-removal
 fi
 
-if systemd-detect-virt -q -c ; then
-	echo "Running in build environment, skipping kernel update."
+if systemd-detect-virt -q --container ; then
+	if ! systemd-detect-virt -q --chroot ; then
+		echo "Running in a container, skipping kernel update."
+	fi
 elif grep -q /boot/rpi /proc/mounts; then
 	echo "Updating kernel..."
 	cp -r /usr/lib/rpi64/kernel/"$VER"/* /boot/rpi/

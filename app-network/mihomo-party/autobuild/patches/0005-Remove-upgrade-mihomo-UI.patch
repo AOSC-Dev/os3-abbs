@@ -1,25 +1,25 @@
-From dc95490fa32112d04019015f1414a2026ed83069 Mon Sep 17 00:00:00 2001
+From cea21e71ab8101f8420fc23029245af9aee8dc06 Mon Sep 17 00:00:00 2001
 From: miwu04 <mail@alanlin.icu>
 Date: Tue, 17 Dec 2024 00:04:04 +0800
-Subject: [PATCH 4/6] Remove upgrade mihomo UI
+Subject: [PATCH 5/7] Remove upgrade mihomo UI
 
 ---
  src/renderer/src/pages/mihomo.tsx | 33 -------------------------------
  1 file changed, 33 deletions(-)
 
 diff --git a/src/renderer/src/pages/mihomo.tsx b/src/renderer/src/pages/mihomo.tsx
-index d4d1d5b..02b05d0 100644
+index 613bf0d..d128eeb 100644
 --- a/src/renderer/src/pages/mihomo.tsx
 +++ b/src/renderer/src/pages/mihomo.tsx
-@@ -74,39 +74,6 @@ const Mihomo: React.FC = () => {
+@@ -94,39 +94,6 @@ const Mihomo: React.FC = () => {
          <SettingCard>
            <SettingItem
-             title="内核版本"
+             title={t('mihomo.coreVersion')}
 -            actions={
 -              <Button
 -                size="sm"
 -                isIconOnly
--                title="升级内核"
+-                title={t('mihomo.upgradeCore')}
 -                variant="light"
 -                isLoading={upgrading}
 -                onPress={async () => {
@@ -30,13 +30,13 @@ index d4d1d5b..02b05d0 100644
 -                      PubSub.publish('mihomo-core-changed')
 -                    }, 2000)
 -                    if (platform !== 'win32') {
--                      new Notification('内核权限丢失', {
--                        body: '内核升级成功，若要使用虚拟网卡（Tun），请到虚拟网卡页面重新手动授权内核'
+-                      new Notification(t('mihomo.coreAuthLost'), {
+-                        body: t('mihomo.coreUpgradeSuccess')
 -                      })
 -                    }
 -                  } catch (e) {
 -                    if (typeof e === 'string' && e.includes('already using latest version')) {
--                      new Notification('已经是最新版本')
+-                      new Notification(t('mihomo.alreadyLatestVersion'))
 -                    } else {
 -                      alert(e)
 -                    }
@@ -52,5 +52,5 @@ index d4d1d5b..02b05d0 100644
            >
              <Select
 -- 
-2.48.0
+2.48.1
 

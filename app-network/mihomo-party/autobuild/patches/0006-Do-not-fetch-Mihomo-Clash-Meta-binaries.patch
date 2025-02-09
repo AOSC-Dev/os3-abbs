@@ -1,7 +1,7 @@
-From 0d6cf4f3247255afaae0f58c57b052c15294d5d2 Mon Sep 17 00:00:00 2001
+From c7f63b4dc3cf46ac50bdee82bb1a9588d8b79ecd Mon Sep 17 00:00:00 2001
 From: miwu04 <mail@alanlin.icu>
 Date: Tue, 17 Dec 2024 00:10:02 +0800
-Subject: [PATCH 5/6] Do not fetch Mihomo (Clash Meta) binaries We use a system
+Subject: [PATCH 6/7] Do not fetch Mihomo (Clash Meta) binaries We use a system
  copy for this purpose.
 
 ---
@@ -30,5 +30,5 @@ index fec61a9..56862c6 100644
    { name: 'metadb', func: resolveMetadb, retry: 5 },
    { name: 'geosite', func: resolveGeosite, retry: 5 },
 -- 
-2.48.0
+2.48.1
 

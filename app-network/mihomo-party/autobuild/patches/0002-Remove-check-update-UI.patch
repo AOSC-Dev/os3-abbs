@@ -1,16 +1,16 @@
-From 5f4e5eed6ffa96e5875cf45de59f833e5e84ace1 Mon Sep 17 00:00:00 2001
+From 52281b0d17497f7564801dc5ed35784f8c044009 Mon Sep 17 00:00:00 2001
 From: miwu04 <mail@alanlin.icu>
 Date: Sun, 24 Nov 2024 17:50:25 +0800
-Subject: [PATCH 2/6] Remove check update UI
+Subject: [PATCH 2/7] Remove check update UI
 
 ---
  src/main/utils/template.ts                    |  2 +-
- .../src/components/settings/actions.tsx       | 26 -------------------
+ .../src/components/settings/actions.tsx       | 28 -------------------
  .../components/settings/general-config.tsx    | 10 -------
- 3 files changed, 1 insertion(+), 37 deletions(-)
+ 3 files changed, 1 insertion(+), 39 deletions(-)
 
 diff --git a/src/main/utils/template.ts b/src/main/utils/template.ts
-index 6bc3513..e9f04fd 100644
+index 1d7669e..aeb6f9d 100644
 --- a/src/main/utils/template.ts
 +++ b/src/main/utils/template.ts
 @@ -11,7 +11,7 @@ export const defaultConfig: IAppConfig = {
@@ -23,10 +23,10 @@ index 6bc3513..e9f04fd 100644
    useNameserverPolicy: false,
    controlDns: true,
 diff --git a/src/renderer/src/components/settings/actions.tsx b/src/renderer/src/components/settings/actions.tsx
-index 1a80925..0690381 100644
+index 3fa5119..2590549 100644
 --- a/src/renderer/src/components/settings/actions.tsx
 +++ b/src/renderer/src/components/settings/actions.tsx
-@@ -2,7 +2,6 @@ import { Button, Tooltip } from '@nextui-org/react'
+@@ -2,7 +2,6 @@ import { Button, Tooltip } from '@heroui/react'
  import SettingCard from '../base/base-setting-card'
  import SettingItem from '../base/base-setting-item'
  import {
@@ -34,11 +34,11 @@ index 1a80925..0690381 100644
    createHeapSnapshot,
    quitApp,
    quitWithoutCore,
-@@ -35,31 +34,6 @@ const Actions: React.FC = () => {
-             打开引导页面
+@@ -37,33 +36,6 @@ const Actions: React.FC = () => {
+             {t('actions.guide.button')}
            </Button>
          </SettingItem>
--        <SettingItem title="检查更新" divider>
+-        <SettingItem title={t('actions.update.title')} divider>
 -          <Button
 -            size="sm"
 -            isLoading={checkingUpdate}
@@ -51,7 +51,9 @@ index 1a80925..0690381 100644
 -                  setChangelog(version.changelog)
 -                  setOpenUpdate(true)
 -                } else {
--                  new window.Notification('当前已是最新版本', { body: '无需更新' })
+-                  new window.Notification(t('actions.update.upToDate.title'), { 
+-                    body: t('actions.update.upToDate.body') 
+-                  })
 -                }
 -              } catch (e) {
 -                alert(e)
@@ -60,29 +62,29 @@ index 1a80925..0690381 100644
 -              }
 -            }}
 -          >
--            检查更新
+-            {t('actions.update.button')}
 -          </Button>
 -        </SettingItem>
          <SettingItem
-           title="重置软件"
+           title={t('actions.reset.title')}
            actions={
 diff --git a/src/renderer/src/components/settings/general-config.tsx b/src/renderer/src/components/settings/general-config.tsx
-index c595074..f74e4c9 100644
+index 297c755..4d44550 100644
 --- a/src/renderer/src/components/settings/general-config.tsx
 +++ b/src/renderer/src/components/settings/general-config.tsx
-@@ -49,7 +49,6 @@ const GeneralConfig: React.FC = () => {
+@@ -53,7 +53,6 @@ const GeneralConfig: React.FC = () => {
      autoQuitWithoutCoreDelay = 60,
      customTheme = 'default.css',
      envType = [platform === 'win32' ? 'powershell' : 'bash'],
 -    autoCheckUpdate,
-     appTheme = 'system'
+     appTheme = 'system',
+     language = 'zh-CN'
    } = appConfig || {}
- 
-@@ -92,15 +91,6 @@ const GeneralConfig: React.FC = () => {
+@@ -114,15 +113,6 @@ const GeneralConfig: React.FC = () => {
              }}
            />
          </SettingItem>
--        <SettingItem title="自动检查更新" divider>
+-        <SettingItem title={t('settings.autoCheckUpdate')} divider>
 -          <Switch
 -            size="sm"
 -            isSelected={autoCheckUpdate}
@@ -91,9 +93,9 @@ index c595074..f74e4c9 100644
 -            }}
 -          />
 -        </SettingItem>
-         <SettingItem title="静默启动" divider>
+         <SettingItem title={t('settings.silentStart')} divider>
            <Switch
              size="sm"
 -- 
-2.48.0
+2.48.1
 

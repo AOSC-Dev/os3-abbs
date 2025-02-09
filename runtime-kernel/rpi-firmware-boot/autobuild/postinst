@@ -3,9 +3,11 @@
 # In case of building a raw image, the post installation must handle this
 # manually.
 # Check if the system is running in a container.
-if systemd-detect-virt -q -c ; then
-	echo "Running in build environment, skipping firmware update."
-	exit 0
+if systemd-detect-virt -q --container ; then
+	if ! systemd-detect-virt -q --chroot ; then
+		echo "Running in a container, skipping firmware update."
+		exit 0
+	fi
 fi
 
 if ! grep -q "/boot/rpi" /proc/mounts; then

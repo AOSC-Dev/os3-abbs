@@ -1,6 +1,4 @@
 PKGNAME=duktape
 PKGSEC=libs
 PKGDEP="glibc"
-PKGDES="An embeddable Javascript engine, with a focus on portability and compact footprint"
-
-ABTYPE=plainmake
+PKGDES="Embeddable JavaScript runtime and command-line interpreter"

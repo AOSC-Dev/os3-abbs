@@ -16,6 +16,7 @@ MESON_AFTER="-Dalsa=enabled \
              -Dsystem_luajit=false \
              -Denable_update_checker=false"
 
-# FIXME: "terminate called without an active exception" on architectures other
-# than amd64.
+# FIXME: "terminate called without an active exception" on arm64,
+#        "PANIC: unprotected error in call to Lua API" on loongson3,
+#        other architectures has no luajit support.
 FAIL_ARCH="!(amd64)"

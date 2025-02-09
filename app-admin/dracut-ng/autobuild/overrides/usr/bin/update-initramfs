@@ -58,7 +58,8 @@ else
 fi
 
 # Notify bootloader
-if ! systemd-detect-virt -cq; then
+# Note: Both "systemd-detect-virt -q --container" and "systemd-detect-virt -q --chroot" return 0 in arch-chroot.
+if ! systemd-detect-virt -q --container || ( systemd-detect-virt -q --container && systemd-detect-virt -q --chroot ) ; then
 	if [[ -x /usr/bin/grub-mkconfig ]]; then
 		echo -e "\033[36m**\033[0m\tUpdating GRUB for the new kernel..."
 		update-grub

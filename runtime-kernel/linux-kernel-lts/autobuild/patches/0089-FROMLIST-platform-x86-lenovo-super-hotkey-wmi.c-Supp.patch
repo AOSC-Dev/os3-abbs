@@ -1,0 +1,306 @@
+From fd82dd29b3d5400a4e6d9b1f75a4c150b71343cb Mon Sep 17 00:00:00 2001
+From: Jackie Dong <xy-jackie@139.com>
+Date: Wed, 22 Jan 2025 17:09:42 +0800
+Subject: [PATCH 089/300] FROMLIST: platform/x86: lenovo-super-hotkey-wmi.c:
+ Support for mic and audio mute LEDs
+
+Implement Lenovo utility data WMI calls needed to make LEDs
+work on Ideapads that support this GUID.
+This enables the mic and audio LEDs to be updated correctly.
+
+Tested on below samples.
+ThinkBook 13X Gen4 IMH
+ThinkBook 14 G6 ABP
+ThinkBook 16p Gen4-21J8
+ThinkBook 16p Gen8-IRL
+ThinkBook 16p G7+ ASP
+
+Signed-off-by: Jackie Dong <xy-jackie@139.com>
+Suggested-by: Mark Pearson <mpearson-lenovo@squebb.ca>
+
+Link: https://lore.kernel.org/all/20250122090942.6431-1-xy-jackie@139.com/
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ drivers/platform/x86/Kconfig                  |   9 +
+ drivers/platform/x86/Makefile                 |   1 +
+ .../platform/x86/lenovo-super-hotkey-wmi.c    | 236 ++++++++++++++++++
+ 3 files changed, 246 insertions(+)
+ create mode 100644 drivers/platform/x86/lenovo-super-hotkey-wmi.c
+
+diff --git a/drivers/platform/x86/Kconfig b/drivers/platform/x86/Kconfig
+index 3875abba5a79..7e195e5171e4 100644
+--- a/drivers/platform/x86/Kconfig
++++ b/drivers/platform/x86/Kconfig
+@@ -473,6 +473,15 @@ config IDEAPAD_LAPTOP
+ 	  This is a driver for Lenovo IdeaPad netbooks contains drivers for
+ 	  rfkill switch, hotkey, fan control and backlight control.
+ 
++config LENOVO_HOTKEY_WMI
++	tristate "Lenovo Super Hotkey Utility WMI extras driver"
++	depends on ACPI_WMI
++	depends on IDEAPAD_LAPTOP
++	help
++	  This driver provides WMI support for Lenovo customized hotkeys function
++	  of Lenovo NoteBooks which are for Consumer and SMB customers, such as
++	  Ideapad/YOGA/XiaoXin/Gaming/ThinkBook and so on.
++
+ config LENOVO_YMC
+ 	tristate "Lenovo Yoga Tablet Mode Control"
+ 	depends on ACPI_WMI
+diff --git a/drivers/platform/x86/Makefile b/drivers/platform/x86/Makefile
+index e1b142947067..2d172128a6e4 100644
+--- a/drivers/platform/x86/Makefile
++++ b/drivers/platform/x86/Makefile
+@@ -61,6 +61,7 @@ obj-$(CONFIG_UV_SYSFS)       += uv_sysfs.o
+ # IBM Thinkpad and Lenovo
+ obj-$(CONFIG_IBM_RTL)		+= ibm_rtl.o
+ obj-$(CONFIG_IDEAPAD_LAPTOP)	+= ideapad-laptop.o
++obj-$(CONFIG_LENOVO_HOTKEY_WMI)	+= lenovo-super-hotkey-wmi.o
+ obj-$(CONFIG_LENOVO_YMC)	+= lenovo-ymc.o
+ obj-$(CONFIG_SENSORS_HDAPS)	+= hdaps.o
+ obj-$(CONFIG_THINKPAD_ACPI)	+= thinkpad_acpi.o
+diff --git a/drivers/platform/x86/lenovo-super-hotkey-wmi.c b/drivers/platform/x86/lenovo-super-hotkey-wmi.c
+new file mode 100644
+index 000000000000..5f63b29747a4
+--- /dev/null
++++ b/drivers/platform/x86/lenovo-super-hotkey-wmi.c
+@@ -0,0 +1,236 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ *  Lenovo Super Hotkey Utility WMI extras driver for Ideapad laptop
++ *
++ *  Copyright (C) 2025	Lenovo
++ */
++
++#include <linux/leds.h>
++#include <linux/wmi.h>
++#include "ideapad-laptop.h"
++
++/* Lenovo Super Hotkey WMI GUIDs */
++#define LUD_WMI_METHOD_GUID	"CE6C0974-0407-4F50-88BA-4FC3B6559AD8"
++#define LUPKE_WMI_EVENT_GUID	"8FC0DE0C-B4E4-43FD-B0F3-8871711C1294"
++
++/* Lenovo Utility Data WMI method_id */
++#define WMI_LUD_GET_SUPPORT 1
++#define WMI_LUD_SET_FEATURE 2
++
++#define WMI_LUD_GET_MICMUTE_LED_VER   20
++#define WMI_LUD_GET_AUDIOMUTE_LED_VER 26
++
++#define WMI_LUD_SUPPORT_MICMUTE_LED_VER   25
++#define WMI_LUD_SUPPORT_AUDIOMUTE_LED_VER 27
++
++/* Input parameters to mute/unmute audio LED and Mic LED */
++struct wmi_led_args {
++	u8 id;
++	u8 subid;
++	u16 value;
++};
++
++/* Values of input parameters to SetFeature of audio LED and Mic LED */
++enum hotkey_set_feature {
++	MIC_MUTE_LED_ON = 1,
++	MIC_MUTE_LED_OFF,
++	AUDIO_MUTE_LED_ON = 4,
++	AUDIO_MUTE_LED_OFF,
++};
++
++#define IDEAPAD_ACPI_LED_MAX 2
++
++enum ideapad_wmi_event_type {
++	IDEAPAD_WMI_EVENT_FN_KEYS = 1,
++	IDEAPAD_WMI_EVENT_LUD_KEYS,
++};
++
++struct ideapad_wmi_private {
++	enum ideapad_wmi_event_type event;
++	struct led_classdev cdev[IDEAPAD_ACPI_LED_MAX];
++};
++
++static struct wmi_device *led_wdev;
++
++enum mute_led_type {
++	MIC_MUTE,
++	AUDIO_MUTE,
++};
++
++static int ideapad_wmi_mute_led_set(enum mute_led_type led_type, struct led_classdev *led_cdev,
++				    enum led_brightness brightness)
++
++{
++	struct wmi_led_args led_arg = {0, 0, 0};
++	struct acpi_buffer input;
++	acpi_status status;
++
++	switch (led_type) {
++	case MIC_MUTE:
++		led_arg.id = brightness == LED_ON ? MIC_MUTE_LED_ON : MIC_MUTE_LED_OFF;
++		break;
++	case AUDIO_MUTE:
++		led_arg.id = brightness == LED_ON ? AUDIO_MUTE_LED_ON : AUDIO_MUTE_LED_OFF;
++		break;
++	default:
++		return -EINVAL;
++	}
++
++	input.length = sizeof(struct wmi_led_args);
++	input.pointer = &led_arg;
++	status = wmidev_evaluate_method(led_wdev, 0, WMI_LUD_SET_FEATURE, &input, NULL);
++	if (ACPI_FAILURE(status))
++		return -EIO;
++
++	return 0;
++}
++
++static int ideapad_wmi_audiomute_led_set(struct led_classdev *led_cdev,
++					 enum led_brightness brightness)
++
++{
++	return ideapad_wmi_mute_led_set(AUDIO_MUTE, led_cdev, brightness);
++}
++
++static int ideapad_wmi_micmute_led_set(struct led_classdev *led_cdev,
++				       enum led_brightness brightness)
++{
++	return ideapad_wmi_mute_led_set(MIC_MUTE, led_cdev, brightness);
++}
++
++static int ideapad_wmi_led_init(enum mute_led_type led_type, struct device *dev)
++{
++	struct ideapad_wmi_private *wpriv = dev_get_drvdata(dev);
++	struct acpi_buffer output = { ACPI_ALLOCATE_BUFFER, NULL };
++	struct acpi_buffer input;
++	union acpi_object *obj;
++	int led_version, err = 0;
++	unsigned int wmiarg;
++	acpi_status status;
++
++	switch (led_type) {
++	case MIC_MUTE:
++		wmiarg = WMI_LUD_GET_MICMUTE_LED_VER;
++		break;
++	case AUDIO_MUTE:
++		wmiarg = WMI_LUD_GET_AUDIOMUTE_LED_VER;
++		break;
++	default:
++		return -EINVAL;
++	}
++
++	input.length = sizeof(wmiarg);
++	input.pointer = &wmiarg;
++	status = wmidev_evaluate_method(led_wdev, 0, WMI_LUD_GET_SUPPORT, &input, &output);
++	if (ACPI_FAILURE(status))
++		return -EIO;
++
++	obj = output.pointer;
++	led_version = obj->integer.value;
++
++	wpriv->cdev[led_type].max_brightness = LED_ON;
++	wpriv->cdev[led_type].dev = dev;
++	wpriv->cdev[led_type].flags = LED_CORE_SUSPENDRESUME;
++
++	switch (led_type) {
++	case MIC_MUTE:
++		if (led_version != WMI_LUD_SUPPORT_MICMUTE_LED_VER) {
++			err = -EIO;
++			goto led_error;
++		}
++		wpriv->cdev[led_type].name = "platform::micmute";
++		wpriv->cdev[led_type].brightness_set_blocking = &ideapad_wmi_micmute_led_set;
++		wpriv->cdev[led_type].default_trigger = "audio-micmute";
++
++		err = devm_led_classdev_register(dev, &wpriv->cdev[led_type]);
++		if (err < 0)
++			goto led_reg_failed;
++
++		break;
++	case AUDIO_MUTE:
++		if (led_version != WMI_LUD_SUPPORT_AUDIOMUTE_LED_VER) {
++			err = -EIO;
++			goto led_error;
++		}
++		wpriv->cdev[led_type].name = "platform::mute";
++		wpriv->cdev[led_type].brightness_set_blocking = &ideapad_wmi_audiomute_led_set;
++		wpriv->cdev[led_type].default_trigger = "audio-mute";
++
++		err = devm_led_classdev_register(dev, &wpriv->cdev[led_type]);
++		if (err < 0)
++			goto led_reg_failed;
++
++		break;
++	default:
++		err = -EINVAL;
++		dev_err(dev, "Unknown LED type %d\n", led_type);
++		goto led_error;
++	}
++
++	kfree(obj);
++	return 0;
++
++led_reg_failed:
++	dev_err(dev, "Could not register mute LED %d : %d\n", led_type, err);
++	led_classdev_unregister(&wpriv->cdev[led_type]);
++led_error:
++	kfree(obj);
++	return err;
++}
++
++static void ideapad_wmi_leds_setup(struct device *dev)
++{
++	ideapad_wmi_led_init(MIC_MUTE, dev);
++	ideapad_wmi_led_init(AUDIO_MUTE, dev);
++}
++
++static int lenovo_super_hotkey_wmi_probe(struct wmi_device *wdev, const void *context)
++{
++	struct ideapad_wmi_private *wpriv;
++
++	wpriv = devm_kzalloc(&wdev->dev, sizeof(*wpriv), GFP_KERNEL);
++	if (!wpriv)
++		return -ENOMEM;
++
++	*wpriv = *(const struct ideapad_wmi_private *)context;
++
++	dev_set_drvdata(&wdev->dev, wpriv);
++
++	if (wpriv->event == IDEAPAD_WMI_EVENT_LUD_KEYS) {
++		led_wdev = wdev;
++		ideapad_wmi_leds_setup(&wdev->dev);
++	}
++
++	return 0;
++}
++
++static const struct ideapad_wmi_private lsk_wmi_context_fn_keys = {
++	.event = IDEAPAD_WMI_EVENT_FN_KEYS
++};
++
++static const struct ideapad_wmi_private lsk_wmi_context_lud_keys = {
++	.event = IDEAPAD_WMI_EVENT_LUD_KEYS
++};
++
++static const struct wmi_device_id lenovo_super_hotkey_wmi_id_table[] = {
++	{ LUPKE_WMI_EVENT_GUID, &lsk_wmi_context_fn_keys }, /* FN keys */
++	{ LUD_WMI_METHOD_GUID, &lsk_wmi_context_lud_keys }, /* Utility data */
++	{ }
++};
++
++MODULE_DEVICE_TABLE(wmi, lenovo_super_hotkey_wmi_id_table);
++
++static struct wmi_driver lenovo_super_hotkey_wmi_driver = {
++	 .driver = {
++		 .name = "lenovo_super_hotkey_wmi",
++	 },
++	 .id_table = lenovo_super_hotkey_wmi_id_table,
++	 .probe = lenovo_super_hotkey_wmi_probe,
++};
++
++module_wmi_driver(lenovo_super_hotkey_wmi_driver);
++
++MODULE_INFO(depends, "wmi,ideapad-laptop");
++MODULE_AUTHOR("Jackie Dong <dongeg1@lenovo.com>");
++MODULE_DESCRIPTION("Lenovo Super Hotkey Utility WMI extras driver");
++MODULE_LICENSE("GPL");
+-- 
+2.48.1
+

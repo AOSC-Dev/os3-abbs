@@ -1,0 +1,62 @@
+From 95ac9b033e397844f02a1eddd486d0014a12dcd4 Mon Sep 17 00:00:00 2001
+From: Binbin Zhou <zhoubinbin@loongson.cn>
+Date: Tue, 14 Jan 2025 21:00:29 +0800
+Subject: [PATCH 039/300] UPSTREAM: clk: clk-loongson2: Fix the number count of
+ clk provider
+
+Since commit 02fb4f008433 ("clk: clk-loongson2: Fix potential buffer
+overflow in flexible-array member access"), the clk provider register is
+failed.
+
+The count of `clks_num` is shown below:
+
+	for (p = data; p->name; p++)
+		clks_num++;
+
+In fact, `clks_num` represents the number of SoC clocks and should be
+expressed as the maximum value of the clock binding id in use (p->id + 1).
+
+Now we fix it to avoid the following error when trying to register a clk
+provider:
+
+[ 13.409595] of_clk_hw_onecell_get: invalid index 17
+
+Cc: stable@vger.kernel.org
+Cc: Gustavo A. R. Silva <gustavoars@kernel.org>
+Fixes: 02fb4f008433 ("clk: clk-loongson2: Fix potential buffer overflow in flexible-array member access")
+Signed-off-by: Binbin Zhou <zhoubinbin@loongson.cn>
+Link: https://lore.kernel.org/r/82e43d89a9a6791129cf8ea14f4eeb666cd87be4.1736856470.git.zhoubinbin@loongson.cn
+Signed-off-by: Stephen Boyd <sboyd@kernel.org>
+
+(cherry picked from commit 5fb33b6797633ce60908d13dc06c54a101621845)
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ drivers/clk/clk-loongson2.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/clk/clk-loongson2.c b/drivers/clk/clk-loongson2.c
+index 7082b4309c6f..0d9485e83938 100644
+--- a/drivers/clk/clk-loongson2.c
++++ b/drivers/clk/clk-loongson2.c
+@@ -294,7 +294,7 @@ static int loongson2_clk_probe(struct platform_device *pdev)
+ 		return -EINVAL;
+ 
+ 	for (p = data; p->name; p++)
+-		clks_num++;
++		clks_num = max(clks_num, p->id + 1);
+ 
+ 	clp = devm_kzalloc(dev, struct_size(clp, clk_data.hws, clks_num),
+ 			   GFP_KERNEL);
+@@ -309,6 +309,9 @@ static int loongson2_clk_probe(struct platform_device *pdev)
+ 	clp->clk_data.num = clks_num;
+ 	clp->dev = dev;
+ 
++	/* Avoid returning NULL for unused id */
++	memset_p((void **)clp->clk_data.hws, ERR_PTR(-ENOENT), clks_num);
++
+ 	for (i = 0; i < clks_num; i++) {
+ 		p = &data[i];
+ 		switch (p->type) {
+-- 
+2.48.1
+

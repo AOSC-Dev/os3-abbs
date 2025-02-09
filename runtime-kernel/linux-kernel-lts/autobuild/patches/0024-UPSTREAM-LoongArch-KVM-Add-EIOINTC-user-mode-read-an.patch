@@ -1,7 +1,7 @@
 From d01bf72b1308683047b8a49a87b1939d3b73b45b Mon Sep 17 00:00:00 2001
 From: Xianglai Li <lixianglai@loongson.cn>
 Date: Wed, 13 Nov 2024 16:18:27 +0800
-Subject: [PATCH 024/299] UPSTREAM: LoongArch: KVM: Add EIOINTC user mode read
+Subject: [PATCH 024/300] UPSTREAM: LoongArch: KVM: Add EIOINTC user mode read
  and write functions
 
 Implement the communication interface between the user mode programs

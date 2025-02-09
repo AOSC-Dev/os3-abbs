@@ -1,7 +1,7 @@
 From bbfebfdad377bbd76e5cc175a9594affd049777c Mon Sep 17 00:00:00 2001
 From: Mario Limonciello <mario.limonciello@amd.com>
 Date: Sat, 12 Oct 2024 12:45:18 -0500
-Subject: [PATCH 001/299] UPSTREAM: cpufreq/amd-pstate: Use
+Subject: [PATCH 001/300] UPSTREAM: cpufreq/amd-pstate: Use
  amd_pstate_update_min_max_limit() for EPP limits
 
 When the EPP updates are set the maximum capable frequency for the

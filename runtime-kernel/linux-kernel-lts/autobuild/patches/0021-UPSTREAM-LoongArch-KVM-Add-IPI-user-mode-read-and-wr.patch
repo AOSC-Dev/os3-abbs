@@ -1,7 +1,7 @@
 From b7f08403564a000318fc4d79fca5eb80657df646 Mon Sep 17 00:00:00 2001
 From: Xianglai Li <lixianglai@loongson.cn>
 Date: Wed, 13 Nov 2024 16:18:27 +0800
-Subject: [PATCH 021/299] UPSTREAM: LoongArch: KVM: Add IPI user mode read and
+Subject: [PATCH 021/300] UPSTREAM: LoongArch: KVM: Add IPI user mode read and
  write function
 
 Implement the communication interface between the user mode programs

@@ -1,15 +1,7 @@
 From 686f6869c0edfc725e1af2e1e72e30caa7589887 Mon Sep 17 00:00:00 2001
 From: Bingwu Zhang <xtex@aosc.io>
 Date: Sat, 7 Dec 2024 23:56:43 +0800
-Subject: [PATCH 3/3] FROM AOSC: TTM fbdev emulation for Linux 6.13+
-X-Developer-Signature: v=1; a=openpgp-sha256; l=5409; i=xtexchooser@duck.com;
- h=from:subject; bh=+rLvUfeSo5yL2QZg7/YHp54RjssmMnMdIH/tCswBBvY=;
- b=owGbwMvMwCW2U4Ij7wZL9ETG02pJDOkhRf8L3Q/X+l1zYDhZoCS/Pnr5tvNPtq4Kaks5duFbP
- JPGFdXmjlIWBjEuBlkxRZYiwwZvVp10ftFl5bIwc1iZQIYwcHEKwEQElzD84d39be3dDUWTfzS3
- 922c9aYriyd4c4NR2tKSmik7agSOnGZk+KX57nBit8ax2gr92xo/5GZ/kd/96+uWzbWl6dYO0/X
- PcwAA
-X-Developer-Key: i=xtexchooser@duck.com; a=openpgp;
- fpr=7231804B052C670F15A6771DB918086ED8045B91
+Subject: [PATCH 3/4] FROM AOSC: TTM fbdev emulation for Linux 6.13+
 
 Link: https://github.com/torvalds/linux/commit/1000634477d8d178179b1ad45d92e925fabe3deb
 Link: https://github.com/NVIDIA/open-gpu-kernel-modules/issues/749
@@ -21,7 +13,7 @@ Signed-off-by: xtex <xtexchooser@duck.com>
  3 files changed, 81 insertions(+)
 
 diff --git a/nvidia-drm/nvidia-drm-drv.c b/nvidia-drm/nvidia-drm-drv.c
-index 57a4ab82b3fc..2618d48a74af 100644
+index 57a4ab8..2618d48 100644
 --- a/nvidia-drm/nvidia-drm-drv.c
 +++ b/nvidia-drm/nvidia-drm-drv.c
 @@ -1951,7 +1951,60 @@ void nv_drm_update_drm_driver_features(void)
@@ -126,7 +118,7 @@ index 57a4ab82b3fc..2618d48a74af 100644
  
      nv_drm_dev_free(dev);
 diff --git a/nvidia-drm/nvidia-drm-linux.c b/nvidia-drm/nvidia-drm-linux.c
-index 78d4c343fc80..87715c0bf09e 100644
+index 78d4c34..87715c0 100644
 --- a/nvidia-drm/nvidia-drm-linux.c
 +++ b/nvidia-drm/nvidia-drm-linux.c
 @@ -39,8 +39,12 @@ MODULE_PARM_DESC(
@@ -143,7 +135,7 @@ index 78d4c343fc80..87715c0bf09e 100644
  
  /*************************************************************************
 diff --git a/nvidia-drm/nvidia-drm-os-interface.h b/nvidia-drm/nvidia-drm-os-interface.h
-index 71ca5f226ad7..8195af32c39e 100644
+index 71ca5f2..8195af3 100644
 --- a/nvidia-drm/nvidia-drm-os-interface.h
 +++ b/nvidia-drm/nvidia-drm-os-interface.h
 @@ -78,6 +78,11 @@ typedef struct nv_timer nv_drm_timer;
@@ -159,5 +151,5 @@ index 71ca5f226ad7..8195af32c39e 100644
  
  /* Set to true when the atomic modeset feature is enabled. */
 -- 
-2.47.1
+2.48.1
 

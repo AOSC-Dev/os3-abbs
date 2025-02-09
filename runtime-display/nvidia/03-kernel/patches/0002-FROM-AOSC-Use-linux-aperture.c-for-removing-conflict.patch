@@ -1,16 +1,8 @@
 From 8113cd50461f05da52b66934237415dd303ec55c Mon Sep 17 00:00:00 2001
 From: Bingwu Zhang <xtex@aosc.io>
 Date: Sat, 7 Dec 2024 23:01:26 +0800
-Subject: [PATCH 2/3] FROM AOSC: Use linux/aperture.c for removing conflicting
+Subject: [PATCH 2/4] FROM AOSC: Use linux/aperture.c for removing conflicting
  PCI devices on Linux 6.13.0-rc1+
-X-Developer-Signature: v=1; a=openpgp-sha256; l=6111; i=xtexchooser@duck.com;
- h=from:subject; bh=hS408kVBp8zz0JO5do1a5Ut1vawCN67uYWAOfNTDy/w=;
- b=owGbwMvMwCW2U4Ij7wZL9ETG02pJDOkhRf8j7mS/f32ZLdl9b2TWxCs3m5lyr+aoKs8zKJFn7
- /OcNSmho5SFQYyLQVZMkaXIsMGbVSedX3RZuSzMHFYmkCEMXJwCMBHD1YwMhyfeyKryPeXAv2pm
- q5nasVPaO/YZnf4Q8X6PiPPvW3+PcDIy3HF1/3BpUxDXm5sWDPxPGJp/l2X9OHr21zPZv7ZrCmd
- M5AEA
-X-Developer-Key: i=xtexchooser@duck.com; a=openpgp;
- fpr=7231804B052C670F15A6771DB918086ED8045B91
 
 Link: https://github.com/torvalds/linux/commit/689274a56c0c088796d359f6c6267323931a2429
 Link: https://github.com/torvalds/linux/commit/7283f862bd991c8657e9bf1c02db772fcf018f13
@@ -24,7 +16,7 @@ Link: https://github.com/NVIDIA/open-gpu-kernel-modules/issues/749
  5 files changed, 46 insertions(+)
 
 diff --git a/conftest.sh b/conftest.sh
-index fdceda72da33..5a0f39e0b2a7 100755
+index fdceda7..5a0f39e 100755
 --- a/conftest.sh
 +++ b/conftest.sh
 @@ -6615,6 +6615,8 @@ compile_test() {
@@ -61,7 +53,7 @@ index fdceda72da33..5a0f39e0b2a7 100755
              #
              # Determine whether drm_aperture_remove_conflicting_pci_framebuffers
 diff --git a/header-presence-tests.mk b/header-presence-tests.mk
-index 9d5217a9f8b9..b02685418629 100644
+index 9d5217a..b026854 100644
 --- a/header-presence-tests.mk
 +++ b/header-presence-tests.mk
 @@ -34,6 +34,7 @@ NV_HEADER_PRESENCE_TESTS = \
@@ -73,7 +65,7 @@ index 9d5217a9f8b9..b02685418629 100644
    linux/kconfig.h \
    linux/platform/tegra/mc_utils.h \
 diff --git a/nvidia-drm/nvidia-drm-drv.c b/nvidia-drm/nvidia-drm-drv.c
-index 8f905f821444..57a4ab82b3fc 100644
+index 8f905f8..57a4ab8 100644
 --- a/nvidia-drm/nvidia-drm-drv.c
 +++ b/nvidia-drm/nvidia-drm-drv.c
 @@ -65,7 +65,16 @@
@@ -111,7 +103,7 @@ index 8f905f821444..57a4ab82b3fc 100644
              nvKms->framebufferConsoleDisabled(nv_dev->pDevice);
          }
 diff --git a/nvidia-drm/nvidia-drm-os-interface.h b/nvidia-drm/nvidia-drm-os-interface.h
-index a6b0f947e0ab..71ca5f226ad7 100644
+index a6b0f94..71ca5f2 100644
 --- a/nvidia-drm/nvidia-drm-os-interface.h
 +++ b/nvidia-drm/nvidia-drm-os-interface.h
 @@ -63,11 +63,21 @@ typedef struct nv_timer nv_drm_timer;
@@ -137,7 +129,7 @@ index a6b0f947e0ab..71ca5f226ad7 100644
  
  /* Set to true when the atomic modeset feature is enabled. */
 diff --git a/nvidia-drm/nvidia-drm-sources.mk b/nvidia-drm/nvidia-drm-sources.mk
-index 9aaebd04ace2..a4dcad6de609 100644
+index 9aaebd0..a4dcad6 100644
 --- a/nvidia-drm/nvidia-drm-sources.mk
 +++ b/nvidia-drm/nvidia-drm-sources.mk
 @@ -66,6 +66,7 @@ NV_CONFTEST_FUNCTION_COMPILE_TESTS += dma_fence_set_error
@@ -149,5 +141,5 @@ index 9aaebd04ace2..a4dcad6de609 100644
  NV_CONFTEST_FUNCTION_COMPILE_TESTS += drm_fbdev_ttm_setup
  NV_CONFTEST_FUNCTION_COMPILE_TESTS += drm_connector_attach_hdr_output_metadata_property
 -- 
-2.47.1
+2.48.1
 

@@ -1,5 +1,5 @@
 VER=565.77
-REL=1
+REL=2
 
 SRCS__AMD64="file::rename=NVIDIA-Linux-$VER.run::https://us.download.nvidia.com/XFree86/Linux-x86_64/$VER/NVIDIA-Linux-x86_64-$VER.run"
 CHKSUMS__AMD64="sha256::0a7aa742c46bcf34d766982402d17b3db1fdb3bc1b89344d70cd123c1cb3147c"

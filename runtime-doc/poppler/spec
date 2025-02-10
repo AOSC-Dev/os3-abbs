@@ -1,4 +1,4 @@
-VER=25.01.0
+VER=25.02.0
 SRCS="tbl::https://poppler.freedesktop.org/poppler-$VER.tar.xz"
-CHKSUMS="sha256::7eefc122207bbbd72a303c5e0743f4941e8ae861e24dcf0501e18ce1d1414112"
+CHKSUMS="sha256::21234cb2a9647d73c752ce4031e65a79d11a511a835f2798284c2497b8701dee"
 CHKUPDATE="anitya::id=3686"

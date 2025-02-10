@@ -1,6 +1,6 @@
 PKGNAME=sass-listen
 PKGSEC=ruby
 PKGDEP="rb-inotify"
-PKGDES="Listens to file modifications and notifies you about the changes"
+PKGDES="API to provide a file modification notification API the Ruby Sass CLI"
 
 ABHOST=noarch

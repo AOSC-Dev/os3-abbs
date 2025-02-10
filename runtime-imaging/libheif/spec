@@ -1,5 +1,4 @@
-VER=1.17.6
-REL=2
+VER=1.19.5
 SRCS="tbl::https://github.com/strukturag/libheif/releases/download/v${VER}/libheif-${VER}.tar.gz"
-CHKSUMS="sha256::8390baf4913eda0a183e132cec62b875fb2ef507ced5ddddc98dfd2f17780aee"
+CHKSUMS="sha256::d3cf0a76076115a070f9bc87cf5259b333a1f05806500045338798486d0afbaf"
 CHKUPDATE="anitya::id=64439"

@@ -3,8 +3,8 @@ PKGSEC=utils
 PKGDEP="libglvnd glslang mesa dbus x11-lib wayland"
 PKGDEP__AMD64="${PKGDEP} libxnvctrl"
 PKGDEP__ARM64="${PKGDEP__AMD64}"
-BUILDDEP="mako nlohmann-json"
-BUILDDEP__AMD64="${BUILDDEP} nvidia"
+BUILDDEP="mako nlohmann-json spdlog vulkan-headers"
+BUILDDEP__AMD64="${BUILDDEP} nvidia-open"
 BUILDDEP__ARM64="${BUILDDEP__AMD64}"
 PKGDES="A Vulkan and OpenGL overlay for monitoring FPS, temperatures, CPU/GPU load and more"
 

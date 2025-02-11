@@ -1,19 +1,14 @@
-From 77d6797c41b867ccdbe661cbed1d7a10bc7717d5 Mon Sep 17 00:00:00 2001
+From d68333fef7cdb01e07570988bbf3195e7a46ce0e Mon Sep 17 00:00:00 2001
 From: "Node.js GitHub Bot" <github-bot@iojs.org>
 Date: Tue, 28 Jan 2025 05:58:55 -0500
-Subject: [PATCH 2/2] BACKPORT: deps: update corepack to 0.31.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=6204; i=xtexchooser@duck.com;
- h=from:subject; bh=dlv9SZyMJ9zCK2N7Lq3+yXiwXiLZzGxYT8Y+5Eq96BU=;
- b=kA0DAAoWuRgIbtgEW5EByyZiAGenNWfIXUyVHQ9SpmTXEaMMLyPN8/QJO0IeoKfZvqhdAbZPS
- Ih1BAAWCgAdFiEEcjGASwUsZw8VpncduRgIbtgEW5EFAmenNWcACgkQuRgIbtgEW5EKMAEAzoqW
- mz1OESmrfvP7ehLMGrXI8giXnV7zk7DTytPS+NQBAPOcH4ZqfX/yAdsvE49u1lY6khAVHSdYFIe
- JEuNPAmUD
-X-Developer-Key: i=xtexchooser@duck.com; a=openpgp;
- fpr=7231804B052C670F15A6771DB918086ED8045B91
+Subject: [PATCH] UPSTREAM: deps: update corepack to 0.31.0
 
 PR-URL: https://github.com/nodejs/node/pull/56795
 Reviewed-By: Antoine du Hamel <duhamelantoine1995@gmail.com>
 Reviewed-By: Chengzhong Wu <legendecas@gmail.com>
+
+(cherry picked from commit 64ee8a025815553af30d9d273e2f2d07a5eb83ea)
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
 ---
  deps/corepack/CHANGELOG.md          | 22 +++++++++++++++++++
  deps/corepack/README.md             |  2 ++
@@ -180,5 +175,5 @@ index c9c6662e99e6..91b95f31d77b 100644
      "debug": "^4.1.1",
      "esbuild": "^0.21.0",
 -- 
-2.48.1
+2.48.0.rc2.windows.1.472.g0c796d3013.20250123145154
 

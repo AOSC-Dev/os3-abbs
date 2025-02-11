@@ -1,7 +1,7 @@
 From 7068d0fe612392ceb077273f7c8aa02ceef2583e Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Sat, 2 Nov 2024 22:25:37 +0800
-Subject: [PATCH 153/280] AOSCOS: platform/x86: hp-wmi: Mark 8BAB board for
+Subject: [PATCH 153/281] AOSCOS: platform/x86: hp-wmi: Mark 8BAB board for
  OMEN thermal profile
 
 Similar to 3a057bf30e044a51af8e6a8fe8cbfac49e2b9bc5 ("platform/x86:

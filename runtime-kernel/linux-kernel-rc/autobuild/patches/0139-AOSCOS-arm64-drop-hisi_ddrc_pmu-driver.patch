@@ -1,7 +1,7 @@
 From 5cc3eb674eed4a6ba7aea91f1f5eb01d3fd5c8db Mon Sep 17 00:00:00 2001
 From: Icenowy Zheng <uwu@icenowy.me>
 Date: Sun, 22 Sep 2024 04:18:12 +0800
-Subject: [PATCH 139/280] AOSCOS: arm64: drop hisi_ddrc_pmu driver
+Subject: [PATCH 139/281] AOSCOS: arm64: drop hisi_ddrc_pmu driver
 
 hisi_ddrc_pmu is broken and causes Kunpeng 920-based desktop systems to freeze
 during boot-up. Disable this driver to workaround this issue.

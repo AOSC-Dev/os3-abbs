@@ -1,7 +1,7 @@
 From ad47a8091613fc6692a2041f9549d13674039dd0 Mon Sep 17 00:00:00 2001
 From: Dorian Stoll <dorian.stoll@tmsp.io>
 Date: Thu, 30 Jul 2020 13:21:53 +0200
-Subject: [PATCH 115/280] SURFACE: mei: me: Add Icelake device ID for iTouch
+Subject: [PATCH 115/281] SURFACE: mei: me: Add Icelake device ID for iTouch
 
 Signed-off-by: Dorian Stoll <dorian.stoll@tmsp.io>
 Patchset: ipts

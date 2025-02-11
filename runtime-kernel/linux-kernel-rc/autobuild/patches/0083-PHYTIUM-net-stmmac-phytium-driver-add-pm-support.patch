@@ -1,7 +1,7 @@
 From 23588fa6b4ad2920546b07a9fefbf5c5901fb8cf Mon Sep 17 00:00:00 2001
 From: liutianyu1250 <liutianyu1250@phytium.com.cn>
 Date: Thu, 13 Jun 2024 17:50:28 +0800
-Subject: [PATCH 083/280] PHYTIUM: net: stmmac: phytium driver add pm support
+Subject: [PATCH 083/281] PHYTIUM: net: stmmac: phytium driver add pm support
 
 Test S3 with net device open will got this cut log.
 ...

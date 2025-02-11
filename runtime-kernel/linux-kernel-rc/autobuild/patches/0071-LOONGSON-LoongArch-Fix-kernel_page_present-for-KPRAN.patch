@@ -1,7 +1,7 @@
 From 94a884f44d52b98916161a0e08d272266fd4b041 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Sun, 9 Feb 2025 13:04:37 +0800
-Subject: [PATCH 071/280] LOONGSON: LoongArch: Fix kernel_page_present() for
+Subject: [PATCH 071/281] LOONGSON: LoongArch: Fix kernel_page_present() for
  KPRANGE/XKPRANGE
 
 Now kernel_page_present() always return true for KPRANGE/XKPRANGE

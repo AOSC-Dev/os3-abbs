@@ -1,7 +1,7 @@
 From fc7e18a96f8dc470bfb26ebe1aa1fbad1eb96049 Mon Sep 17 00:00:00 2001
 From: WangYuli <wangyuli@uniontech.com>
 Date: Sun, 9 Feb 2025 13:02:57 +0800
-Subject: [PATCH 055/280] FROMLIST: LoongArch: kernel: proc: Use str_yes_no()
+Subject: [PATCH 055/281] FROMLIST: LoongArch: kernel: proc: Use str_yes_no()
  helper function
 
 Remove hard-coded strings by using the str_yes_no() helper function.

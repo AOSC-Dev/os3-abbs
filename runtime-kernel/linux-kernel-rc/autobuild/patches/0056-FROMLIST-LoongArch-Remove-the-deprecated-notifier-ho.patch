@@ -1,7 +1,7 @@
 From b0529b8fc0ff730771e5779282db654b1777f801 Mon Sep 17 00:00:00 2001
 From: WangYuli <wangyuli@uniontech.com>
 Date: Sun, 9 Feb 2025 13:02:58 +0800
-Subject: [PATCH 056/280] FROMLIST: LoongArch: Remove the deprecated notifier
+Subject: [PATCH 056/281] FROMLIST: LoongArch: Remove the deprecated notifier
  hook mechanism
 
 The notifier hook mechanism in proc and cpuinfo is actually unnecessary

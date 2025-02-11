@@ -1,7 +1,7 @@
 From a91c16f93e0c4ed17c35887a2878b56b055dff24 Mon Sep 17 00:00:00 2001
 From: Tiezhu Yang <yangtiezhu@loongson.cn>
 Date: Tue, 17 Dec 2024 09:08:59 +0800
-Subject: [PATCH 035/280] FROMLIST: objtool: Handle PC relative relocation type
+Subject: [PATCH 035/281] FROMLIST: objtool: Handle PC relative relocation type
 
 For the most part, an absolute relocation type is used for rodata.
 In the case of STT_SECTION, reloc->sym->offset is always zero, for

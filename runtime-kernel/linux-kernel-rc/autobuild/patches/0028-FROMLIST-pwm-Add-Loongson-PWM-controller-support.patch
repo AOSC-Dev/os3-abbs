@@ -1,7 +1,7 @@
 From 03fb2d5df3c794b85e66634dd40bc2cd29b66462 Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Tue, 10 Dec 2024 20:37:06 +0800
-Subject: [PATCH 028/280] FROMLIST: pwm: Add Loongson PWM controller support
+Subject: [PATCH 028/281] FROMLIST: pwm: Add Loongson PWM controller support
 
 This commit adds a generic PWM framework driver for the PWM controller
 found on Loongson family chips.

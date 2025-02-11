@@ -1,7 +1,7 @@
 From d956a98d1cf6524ec553ab669abd674f72a2e619 Mon Sep 17 00:00:00 2001
 From: Tiezhu Yang <yangtiezhu@loongson.cn>
 Date: Tue, 14 Jan 2025 21:29:56 +0800
-Subject: [PATCH 045/280] FROMLIST: drm/amd/display: Add ASSERT_BUG() macro
+Subject: [PATCH 045/281] FROMLIST: drm/amd/display: Add ASSERT_BUG() macro
  definition
 
 In order to keep the current ability for the aim of debugging and avoid

@@ -1,7 +1,7 @@
 From 1d08d6d9d06cc52d83f531109ee97995ca2f1f0a Mon Sep 17 00:00:00 2001
 From: Tiezhu Yang <yangtiezhu@loongson.cn>
 Date: Tue, 17 Dec 2024 09:09:02 +0800
-Subject: [PATCH 037/280] FROMLIST: objtool/LoongArch: Add support for goto
+Subject: [PATCH 037/281] FROMLIST: objtool/LoongArch: Add support for goto
  table
 
 The objtool program need to analysis the control flow of each object file

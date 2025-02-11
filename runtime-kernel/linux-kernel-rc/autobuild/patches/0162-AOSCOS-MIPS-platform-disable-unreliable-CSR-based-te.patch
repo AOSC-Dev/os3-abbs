@@ -1,7 +1,7 @@
 From 79b3a24e9785ecb2365bac2ec7c3338c6f936a2b Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Sat, 25 Jan 2025 13:00:30 +0800
-Subject: [PATCH 162/280] AOSCOS: MIPS: platform: disable unreliable CSR-based
+Subject: [PATCH 162/281] AOSCOS: MIPS: platform: disable unreliable CSR-based
  temperature reading
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

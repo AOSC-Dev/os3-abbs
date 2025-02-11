@@ -1,4 +1,4 @@
-From ed8d35a171f5331c5be5a594a9ba1c959f8b1e4f Mon Sep 17 00:00:00 2001
+From 239a81469f41f5b816126e70fef53b9b605fa413 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Mon, 27 Jan 2025 05:00:38 +0800
 Subject: [PATCH 4/5] FROMLIST: feat: strip out unused/unlikely AMDGPU firmware

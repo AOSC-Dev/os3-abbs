@@ -1,0 +1,7 @@
+PKGNAME=arcanist
+PKGSEC=devel
+PKGDES="Command-line tool to work with Phorge servers"
+PKGDEP="php git"
+PKGRECOM="svn hg"
+
+ABSPLITDBG=0

@@ -1,0 +1,4 @@
+VER=2024.35
+SRCS="git::commit=tags/$VER::https://we.phorge.it/source/arcanist.git"
+CHKSUMS="SKIP"
+CHKUPDATE="anitya::id=376712"

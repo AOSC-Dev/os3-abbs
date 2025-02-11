@@ -1,7 +1,7 @@
 From 91c8c1bc53111837164dcbb73926309321ddcce4 Mon Sep 17 00:00:00 2001
 From: PBS <pbs3141@gmail.com>
 Date: Tue, 22 Oct 2024 14:48:31 +0100
-Subject: [PATCH 2/3] Future-proof against poppler 24.10 changes
+Subject: [PATCH 2/4] Future-proof against poppler 24.10 changes
 
 ---
  .../internal/pdfinput/pdf-parser.cpp          | 120 ++++++++----------

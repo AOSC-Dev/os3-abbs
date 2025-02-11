@@ -1,0 +1,128 @@
+From b0529b8fc0ff730771e5779282db654b1777f801 Mon Sep 17 00:00:00 2001
+From: WangYuli <wangyuli@uniontech.com>
+Date: Sun, 9 Feb 2025 13:02:58 +0800
+Subject: [PATCH 056/280] FROMLIST: LoongArch: Remove the deprecated notifier
+ hook mechanism
+
+The notifier hook mechanism in proc and cpuinfo is actually unnecessary
+for LoongArch because it's not used anywhere.
+
+It was originally added to the MIPS code in commit d6d3c9afaab4 ("MIPS:
+MT: proc: Add support for printing VPE and TC ids"), and LoongArch
+then inherited it.
+
+But as the kernel code stands now, this notifier hook mechanism doesn't
+really make sense for either LoongArch or MIPS.
+
+In addition, the seq_file declaration needs to be moved to its proper
+place, as only the show_ipi_list() function in smp.c requires it.
+
+Cc: Thomas Gleixner <tglx@linutronix.de>
+Cc: Tianyang Zhang <zhangtianyang@loongson.cn>
+Cc: Liupu Wang <wangliupu@loongson.cn>
+Cc: Bibo Mao <maobibo@loongson.cn>
+Co-developed-by: Wentao Guan <guanwentao@uniontech.com>
+Signed-off-by: Wentao Guan <guanwentao@uniontech.com>
+Signed-off-by: Yuli Wang <wangyuli@uniontech.com>
+
+Link: https://lore.kernel.org/all/BE6A6E80196F688F+20250209050258.2090416-3-wangyuli@uniontech.com/
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ arch/loongarch/include/asm/cpu-info.h | 21 ---------------------
+ arch/loongarch/include/asm/smp.h      |  1 +
+ arch/loongarch/kernel/proc.c          | 22 ----------------------
+ 3 files changed, 1 insertion(+), 43 deletions(-)
+
+diff --git a/arch/loongarch/include/asm/cpu-info.h b/arch/loongarch/include/asm/cpu-info.h
+index 35e0a230a484..7f5bc0ad9d50 100644
+--- a/arch/loongarch/include/asm/cpu-info.h
++++ b/arch/loongarch/include/asm/cpu-info.h
+@@ -76,27 +76,6 @@ extern const char *__cpu_full_name[];
+ #define cpu_family_string()	__cpu_family[raw_smp_processor_id()]
+ #define cpu_full_name_string()	__cpu_full_name[raw_smp_processor_id()]
+ 
+-struct seq_file;
+-struct notifier_block;
+-
+-extern int register_proc_cpuinfo_notifier(struct notifier_block *nb);
+-extern int proc_cpuinfo_notifier_call_chain(unsigned long val, void *v);
+-
+-#define proc_cpuinfo_notifier(fn, pri)					\
+-({									\
+-	static struct notifier_block fn##_nb = {			\
+-		.notifier_call = fn,					\
+-		.priority = pri						\
+-	};								\
+-									\
+-	register_proc_cpuinfo_notifier(&fn##_nb);			\
+-})
+-
+-struct proc_cpuinfo_notifier_args {
+-	struct seq_file *m;
+-	unsigned long n;
+-};
+-
+ static inline bool cpus_are_siblings(int cpua, int cpub)
+ {
+ 	struct cpuinfo_loongarch *infoa = &cpu_data[cpua];
+diff --git a/arch/loongarch/include/asm/smp.h b/arch/loongarch/include/asm/smp.h
+index 3383c9d24e94..34ba80c312d0 100644
+--- a/arch/loongarch/include/asm/smp.h
++++ b/arch/loongarch/include/asm/smp.h
+@@ -91,6 +91,7 @@ extern void calculate_cpu_foreign_map(void);
+ /*
+  * Generate IPI list text
+  */
++struct seq_file;
+ extern void show_ipi_list(struct seq_file *p, int prec);
+ 
+ static inline void arch_send_call_function_single_ipi(int cpu)
+diff --git a/arch/loongarch/kernel/proc.c b/arch/loongarch/kernel/proc.c
+index 56a230238c9c..cea30768ae92 100644
+--- a/arch/loongarch/kernel/proc.c
++++ b/arch/loongarch/kernel/proc.c
+@@ -13,28 +13,12 @@
+ #include <asm/processor.h>
+ #include <asm/time.h>
+ 
+-/*
+- * No lock; only written during early bootup by CPU 0.
+- */
+-static RAW_NOTIFIER_HEAD(proc_cpuinfo_chain);
+-
+-int __ref register_proc_cpuinfo_notifier(struct notifier_block *nb)
+-{
+-	return raw_notifier_chain_register(&proc_cpuinfo_chain, nb);
+-}
+-
+-int proc_cpuinfo_notifier_call_chain(unsigned long val, void *v)
+-{
+-	return raw_notifier_call_chain(&proc_cpuinfo_chain, val, v);
+-}
+-
+ static int show_cpuinfo(struct seq_file *m, void *v)
+ {
+ 	unsigned long n = (unsigned long) v - 1;
+ 	unsigned int isa = cpu_data[n].isa_level;
+ 	unsigned int version = cpu_data[n].processor_id & 0xff;
+ 	unsigned int fp_version = cpu_data[n].fpu_vers;
+-	struct proc_cpuinfo_notifier_args proc_cpuinfo_notifier_args;
+ 
+ #ifdef CONFIG_SMP
+ 	if (!cpu_online(n))
+@@ -97,12 +81,6 @@ static int show_cpuinfo(struct seq_file *m, void *v)
+ 		      cpu_data[n].watch_ireg_count, cpu_data[n].watch_dreg_count);
+ 	}
+ 
+-	proc_cpuinfo_notifier_args.m = m;
+-	proc_cpuinfo_notifier_args.n = n;
+-
+-	raw_notifier_call_chain(&proc_cpuinfo_chain, 0,
+-				&proc_cpuinfo_notifier_args);
+-
+ 	seq_printf(m, "\n\n");
+ 
+ 	return 0;
+-- 
+2.48.1
+

@@ -1,0 +1,84 @@
+From ef9d3e72051963328b585e3c774371f8dc6280a8 Mon Sep 17 00:00:00 2001
+From: Tiezhu Yang <yangtiezhu@loongson.cn>
+Date: Tue, 17 Dec 2024 09:08:57 +0800
+Subject: [PATCH 033/280] BACKPORT: FROMLIST: objtool: Handle various symbol
+ types of rodata
+
+In the relocation section ".rela.rodata" of each .o file compiled with
+LoongArch toolchain, there are various symbol types such as STT_NOTYPE,
+STT_OBJECT, STT_FUNC in addition to the usual STT_SECTION, it needs to
+use reloc symbol offset instead of reloc addend to find the destination
+instruction in find_jump_table() and add_jump_table().
+
+For the most part, an absolute relocation type is used for rodata. In the
+case of STT_SECTION, reloc->sym->offset is always zero, and for the other
+symbol types, reloc_addend(reloc) is always zero, thus it can use a simple
+statement "reloc->sym->offset + reloc_addend(reloc)" to obtain the symbol
+offset for various symbol types.
+
+Signed-off-by: Tiezhu Yang <yangtiezhu@loongson.cn>
+
+Link: https://lore.kernel.org/all/20241217010905.13054-2-yangtiezhu@loongson.cn/
+[Kexy: Resolved minor conflict in tools/objtool/check.c]
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ tools/objtool/check.c | 14 ++++++++++----
+ 1 file changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/tools/objtool/check.c b/tools/objtool/check.c
+index 3520a45ebde8..9f01bf8ceb05 100644
+--- a/tools/objtool/check.c
++++ b/tools/objtool/check.c
+@@ -1953,6 +1953,7 @@ static int add_jump_table(struct objtool_file *file, struct instruction *insn,
+ 	unsigned int prev_offset = 0;
+ 	struct reloc *reloc = table;
+ 	struct alternative *alt;
++	unsigned long sym_offset;
+ 
+ 	/*
+ 	 * Each @reloc is a switch table relocation which points to the target
+@@ -1970,9 +1971,10 @@ static int add_jump_table(struct objtool_file *file, struct instruction *insn,
+ 		if (prev_offset && reloc_offset(reloc) != prev_offset + 8)
+ 			break;
+ 
++		sym_offset = reloc->sym->offset + reloc_addend(reloc);
++
+ 		/* Detect function pointers from contiguous objects: */
+-		if (reloc->sym->sec == pfunc->sec &&
+-		    reloc_addend(reloc) == pfunc->offset)
++		if (reloc->sym->sec == pfunc->sec && sym_offset == pfunc->offset)
+ 			break;
+ 
+ 		/*
+@@ -1983,7 +1985,7 @@ static int add_jump_table(struct objtool_file *file, struct instruction *insn,
+ 		    reloc_addend(reloc) == pfunc->offset + pfunc->len)
+ 			goto next;
+ 
+-		dest_insn = find_insn(file, reloc->sym->sec, reloc_addend(reloc));
++		dest_insn = find_insn(file, reloc->sym->sec, sym_offset);
+ 		if (!dest_insn)
+ 			break;
+ 
+@@ -2022,6 +2024,7 @@ static void find_jump_table(struct objtool_file *file, struct symbol *func,
+ 	struct reloc *table_reloc;
+ 	struct instruction *dest_insn, *orig_insn = insn;
+ 	unsigned long table_size;
++	unsigned long sym_offset;
+ 
+ 	/*
+ 	 * Backward search using the @first_jump_src links, these help avoid
+@@ -2045,7 +2048,10 @@ static void find_jump_table(struct objtool_file *file, struct symbol *func,
+ 		table_reloc = arch_find_switch_table(file, insn, &table_size);
+ 		if (!table_reloc)
+ 			continue;
+-		dest_insn = find_insn(file, table_reloc->sym->sec, reloc_addend(table_reloc));
++
++		sym_offset = table_reloc->sym->offset + reloc_addend(table_reloc);
++
++		dest_insn = find_insn(file, table_reloc->sym->sec, sym_offset);
+ 		if (!dest_insn || !insn_func(dest_insn) || insn_func(dest_insn)->pfunc != func)
+ 			continue;
+ 
+-- 
+2.48.1
+

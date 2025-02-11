@@ -1,0 +1,48 @@
+From 94a884f44d52b98916161a0e08d272266fd4b041 Mon Sep 17 00:00:00 2001
+From: Huacai Chen <chenhuacai@loongson.cn>
+Date: Sun, 9 Feb 2025 13:04:37 +0800
+Subject: [PATCH 071/280] LOONGSON: LoongArch: Fix kernel_page_present() for
+ KPRANGE/XKPRANGE
+
+Now kernel_page_present() always return true for KPRANGE/XKPRANGE
+addresses, this isn't correct because hibernation (ACPI S4) use it
+to distinguish whether a page is saveable. If all KPRANGE/XKPRANGE
+addresses are considered as saveable, then reserved memory such as
+EFI_RUNTIME_SERVICES_CODE / EFI_RUNTIME_SERVICES_DATA will also be
+saved and restored.
+
+Fix this by returning true only if the KPRANGE/XKPRANGE address is in
+memblock.memory.
+
+Signed-off-by: Huacai Chen <chenhuacai@loongson.cn>
+
+Link: https://github.com/chenhuacai/linux/commit/69bd63c3f4768a6484ac70c4f6b741c8909747e5
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ arch/loongarch/mm/pageattr.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/arch/loongarch/mm/pageattr.c b/arch/loongarch/mm/pageattr.c
+index bf8678248444..99165903908a 100644
+--- a/arch/loongarch/mm/pageattr.c
++++ b/arch/loongarch/mm/pageattr.c
+@@ -3,6 +3,7 @@
+  * Copyright (C) 2024 Loongson Technology Corporation Limited
+  */
+ 
++#include <linux/memblock.h>
+ #include <linux/pagewalk.h>
+ #include <linux/pgtable.h>
+ #include <asm/set_memory.h>
+@@ -167,7 +168,7 @@ bool kernel_page_present(struct page *page)
+ 	unsigned long addr = (unsigned long)page_address(page);
+ 
+ 	if (addr < vm_map_base)
+-		return true;
++		return memblock_is_memory(__pa(addr));
+ 
+ 	pgd = pgd_offset_k(addr);
+ 	if (pgd_none(pgdp_get(pgd)))
+-- 
+2.48.1
+

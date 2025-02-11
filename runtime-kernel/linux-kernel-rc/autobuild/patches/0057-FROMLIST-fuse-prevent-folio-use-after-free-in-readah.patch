@@ -1,0 +1,138 @@
+From 9d176227683690fb6e625be93905c8fa5b67aa59 Mon Sep 17 00:00:00 2001
+From: Vlastimil Babka <vbabka@suse.cz>
+Date: Mon, 10 Feb 2025 09:52:03 +0100
+Subject: [PATCH 057/280] FROMLIST: fuse: prevent folio use-after-free in
+ readahead
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+There have been crash reports in 6.13+ kernels related to FUSE and
+Flatpak, such as from Christian:
+
+ BUG: Bad page state in process rnote  pfn:67587
+ page: refcount:-1 mapcount:0 mapping:0000000000000000 index:0x0 pfn:0x67587
+ flags: 0xfffffc8000020(lru|node=0|zone=1|lastcpupid=0x1fffff)
+ raw: 000fffffc8000020 dead000000000100 dead000000000122 0000000000000000
+ raw: 0000000000000000 0000000000000000 ffffffffffffffff 0000000000000000
+ page dumped because: PAGE_FLAGS_CHECK_AT_PREP flag(s) set
+ CPU: 0 UID: 1000 PID: 1962 Comm: rnote Not tainted 6.14.0-rc1-1-mainline #1 715c0460cf5d3cc18e3178ef3209cee42e97ae1c
+ Hardware name: QEMU Standard PC (Q35 + ICH9, 2009), BIOS unknown 02/02/2022
+ Call Trace:
+
+  dump_stack_lvl+0x5d/0x80
+  bad_page.cold+0x7a/0x91
+  __rmqueue_pcplist+0x200/0xc50
+  get_page_from_freelist+0x2ae/0x1740
+  ? srso_return_thunk+0x5/0x5f
+  ? __pm_runtime_suspend+0x69/0xc0
+  ? srso_return_thunk+0x5/0x5f
+  ? __seccomp_filter+0x303/0x520
+  ? srso_return_thunk+0x5/0x5f
+  __alloc_frozen_pages_noprof+0x184/0x330
+  alloc_pages_mpol+0x7d/0x160
+  folio_alloc_mpol_noprof+0x14/0x40
+  vma_alloc_folio_noprof+0x69/0xb0
+  do_anonymous_page+0x32a/0x8b0
+  ? srso_return_thunk+0x5/0x5f
+  ? ___pte_offset_map+0x1b/0x180
+  __handle_mm_fault+0xb5e/0xfe0
+  handle_mm_fault+0xe2/0x2c0
+  do_user_addr_fault+0x217/0x620
+  exc_page_fault+0x81/0x1b0
+  asm_exc_page_fault+0x26/0x30
+ RIP: 0033:0x7fcfc31c8cf9
+
+Or Mantas:
+
+ list_add corruption. next->prev should be prev (ffff889c8f5bd5f0), but was ffff889940066a10. (next=ffffe3ce8b683548).
+ WARNING: CPU: 3 PID: 2184 at lib/list_debug.c:29 __list_add_valid_or_report+0x62/0xb0
+  spi_intel_pci soundcore nvme_core spi_intel rfkill rtsx_pci nvme_auth cec i8042 video serio wmi
+ CPU: 3 UID: 1000 PID: 2184 Comm: fuse mainloop Tainted: G     U     OE      6.13.1-arch1-1 #1 c1258adae10e6ad423427764ae6ad3679b7d8e8a
+ Tainted: [U]=USER, [O]=OOT_MODULE, [E]=UNSIGNED_MODULE
+ Hardware name: LENOVO 20S6003QPB/20S6003QPB, BIOS N2XET42W (1.32 ) 06/12/2024
+ RIP: 0010:__list_add_valid_or_report+0x62/0xb0
+
+ Call Trace:
+  <TASK>
+  ? __list_add_valid_or_report+0x62/0xb0
+  ? __warn.cold+0x93/0xf6
+  ? __list_add_valid_or_report+0x62/0xb0
+  ? report_bug+0xff/0x140
+  ? handle_bug+0x58/0x90
+  ? exc_invalid_op+0x17/0x70
+  ? asm_exc_invalid_op+0x1a/0x20
+  ? __list_add_valid_or_report+0x62/0xb0
+  free_unref_page_commit.cold+0x9/0x12
+  free_unref_page+0x46e/0x570
+  fuse_copy_page+0x37e/0x6c0
+  fuse_copy_args+0x186/0x210
+  fuse_dev_do_write+0x796/0x12a0
+  fuse_dev_splice_write+0x29d/0x380
+  do_splice+0x308/0x890
+  __do_splice+0x204/0x220
+  __x64_sys_splice+0x84/0xf0
+  do_syscall_64+0x82/0x190
+  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+ RIP: 0033:0x77e0dde36e56
+
+Christian bisected the issue to 3eab9d7bc2f4 ("fuse: convert readahead
+to use folios"). The bug reports suggest a refcount underflow on struct
+page due to a use after free or double free. The bisected commit
+switches fuse_readahead() to readahead_folio() which includes a
+folio_put() and removes folio_put() from fuse_readpages_end(). As a
+result folios on the ap->folios (previously ap->pages) don't have an
+elevated refcount. According to Matthew the folio lock should protect
+them from being freed prematurely. It's unclear why not, but before this
+is fully resolved we can stop the kernels from crashing by having the
+refcount relevated again. Thus switch to __readahead_folio() that does
+not drop the refcount, and reinstate folio_put() in
+fuse_readpages_end().
+
+Fixes: 3eab9d7bc2f4 ("fuse: convert readahead to use folios")
+Reported-by: Christian Heusel <christian@heusel.eu>
+Closes: https://lore.kernel.org/all/2f681f48-00f5-4e09-8431-2b3dbfaa881e@heusel.eu/
+Closes: https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/issues/110
+Reported-by: Mantas Mikulėnas <grawity@gmail.com>
+Closes: https://lore.kernel.org/all/34feb867-09e2-46e4-aa31-d9660a806d1a@gmail.com/
+Closes: https://bugzilla.opensuse.org/show_bug.cgi?id=1236660
+Tested-by: Joanne Koong <joannelkoong@gmail.com>
+Cc: Vlastimil Babka <vbabka@suse.cz>
+Cc: Matthew Wilcox <willy@infradead.org>
+Cc: stable@vger.kernel.org
+Signed-off-by: Vlastimil Babka <vbabka@suse.cz>
+
+Link: https://lore.kernel.org/all/20250210085202.14943-2-vbabka@suse.cz/
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ fs/fuse/file.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/fs/fuse/file.c b/fs/fuse/file.c
+index 7d92a5479998..a40d65ffb94d 100644
+--- a/fs/fuse/file.c
++++ b/fs/fuse/file.c
+@@ -955,8 +955,10 @@ static void fuse_readpages_end(struct fuse_mount *fm, struct fuse_args *args,
+ 		fuse_invalidate_atime(inode);
+ 	}
+ 
+-	for (i = 0; i < ap->num_folios; i++)
++	for (i = 0; i < ap->num_folios; i++) {
+ 		folio_end_read(ap->folios[i], !err);
++		folio_put(ap->folios[i]);
++	}
+ 	if (ia->ff)
+ 		fuse_file_put(ia->ff, false);
+ 
+@@ -1048,7 +1050,7 @@ static void fuse_readahead(struct readahead_control *rac)
+ 		ap = &ia->ap;
+ 
+ 		while (ap->num_folios < cur_pages) {
+-			folio = readahead_folio(rac);
++			folio = __readahead_folio(rac);
+ 			ap->folios[ap->num_folios] = folio;
+ 			ap->descs[ap->num_folios].length = folio_size(folio);
+ 			ap->num_folios++;
+-- 
+2.48.1
+

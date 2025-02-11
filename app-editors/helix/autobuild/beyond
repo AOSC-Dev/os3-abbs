@@ -13,7 +13,7 @@ mv -v "$PKGDIR"/usr/bin/hx "$PKGDIR"/usr/lib/helix
 mv -v "$SRCDIR"/runtime "$PKGDIR"/usr/lib/helix
 
 abinfo "Dropping extraneous executables ..."
-rm -v "$PKGDIR"/usr/bin/*
+rm -fv "$PKGDIR"/usr/bin/*
 
 abinfo "Creating soft link for binaries to /usr/bin ..."
 ln -sv ../lib/helix/hx "$PKGDIR"/usr/bin/hx    # original name

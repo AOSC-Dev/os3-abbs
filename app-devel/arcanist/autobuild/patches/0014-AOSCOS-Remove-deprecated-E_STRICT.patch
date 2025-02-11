@@ -1,7 +1,7 @@
-From 2440ff3905dd00d78437db927aceed2c45e5d46b Mon Sep 17 00:00:00 2001
+From 3a0b3b94a1d57a4820cda1597ae0ce79388731ad Mon Sep 17 00:00:00 2001
 From: xtex <xtexchooser@duck.com>
 Date: Tue, 11 Feb 2025 10:23:46 +0800
-Subject: [PATCH 12/14] AOSCOS: Remove deprecated E_STRICT
+Subject: [PATCH 14/14] AOSCOS: Remove deprecated E_STRICT
 
 This should be dropped once T15989 is resolved.
 ---

@@ -1,7 +1,7 @@
-From d8b413e4f8e73996d34c685c4f4e75966657c16c Mon Sep 17 00:00:00 2001
+From cd9d8a7a6a8cf4e7d949c878e30a4afa4c5b1e4e Mon Sep 17 00:00:00 2001
 From: xtex <xtexchooser@duck.com>
 Date: Tue, 11 Feb 2025 10:52:45 +0800
-Subject: [PATCH 13/14] Skip writing symbol cache to non-writable directories
+Subject: [PATCH 12/14] Skip writing symbol cache to non-writable directories
 
 ---
  src/moduleutils/PhutilLibraryMapBuilder.php | 5 +++++

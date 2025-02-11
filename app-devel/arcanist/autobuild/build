@@ -4,6 +4,10 @@ rm -v "$SRCDIR"/support/xhpast/*.o
 rm -v "$SRCDIR"/support/xhpast/*.a
 rm -v "$SRCDIR"/support/xhpast/xhpast
 
+abinfo "Liberating arcanist ..."
+php -d extension=curl \
+    "$SRCDIR"/bin/arc liberate
+
 abinfo "Installing arcanist ..."
 install -dvm755 "$PKGDIR"/usr/lib/arcanist
 cp -vR "$SRCDIR"/{bin,externals,resources,scripts,src,support,LICENSE} "$PKGDIR"/usr/lib/arcanist/

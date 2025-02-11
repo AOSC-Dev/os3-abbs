@@ -10,6 +10,5 @@ PKGDES="A graphical partition manager"
 #                                 display [default=disabled]
 AUTOTOOLS_AFTER="--enable-nls \
                  --enable-doc \
-                 --enable-online-resize \
                  --enable-libparted-dmraid \
                  --disable-xhost-root"

@@ -1,7 +1,7 @@
 From 78442b2b04c5c4584ab9575d74196923a5d5723c Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Tue, 21 Jan 2025 19:42:25 +0800
-Subject: [PATCH 050/281] FROMLIST: PCI: loongson: Add quirk for OHCI device
+Subject: [PATCH 050/288] FROMLIST: PCI: loongson: Add quirk for OHCI device
  rev 0x02
 
 The OHCI controller (rev 0x02) under LS7A PCI host has a hardware flaw.

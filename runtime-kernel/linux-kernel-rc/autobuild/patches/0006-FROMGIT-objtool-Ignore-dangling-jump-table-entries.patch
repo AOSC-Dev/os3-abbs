@@ -1,7 +1,7 @@
 From 584e1fa2f5c5241e2a6f26bd92049c829c78f179 Mon Sep 17 00:00:00 2001
 From: Josh Poimboeuf <jpoimboe@kernel.org>
 Date: Tue, 14 Jan 2025 13:57:58 -0800
-Subject: [PATCH 006/281] FROMGIT: objtool: Ignore dangling jump table entries
+Subject: [PATCH 006/288] FROMGIT: objtool: Ignore dangling jump table entries
 
 Clang sometimes leaves dangling unused jump table entries which point to
 the end of the function.  Ignore them.

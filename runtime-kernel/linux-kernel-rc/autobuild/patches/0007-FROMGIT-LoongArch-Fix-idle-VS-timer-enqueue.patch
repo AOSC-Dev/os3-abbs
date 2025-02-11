@@ -1,7 +1,7 @@
 From 2cfd341b8d0320de8a238798918c8426e7cf66f4 Mon Sep 17 00:00:00 2001
 From: Marco Crivellari <marco.crivellari@suse.com>
 Date: Sat, 8 Feb 2025 11:19:24 +0100
-Subject: [PATCH 007/281] FROMGIT: LoongArch: Fix idle VS timer enqueue
+Subject: [PATCH 007/288] FROMGIT: LoongArch: Fix idle VS timer enqueue
 
 LoongArch re-enables interrupts on its idle routine and performs a
 TIF_NEED_RESCHED check afterwards before putting the CPU to sleep.

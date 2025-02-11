@@ -1,0 +1,46 @@
+From 2c3c211a86cb05b27944988325c1702c9dd33599 Mon Sep 17 00:00:00 2001
+From: Josef Bacik <josef@toxicpanda.com>
+Date: Mon, 10 Feb 2025 14:06:40 -0500
+Subject: [PATCH 065/288] FROMLIST: fuse: drop extra put of folio when using
+ pipe splice
+
+In 3eab9d7bc2f4 ("fuse: convert readahead to use folios"), I converted
+us to using the new folio readahead code, which drops the reference on
+the folio once it is locked, using an inferred reference on the folio.
+Previously we held a reference on the folio for the entire duration of
+the readpages call.
+
+This is fine, however I failed to catch the case for splice pipe
+responses where we will remove the old folio and splice in the new
+folio.  Here we assumed that there is a reference held on the folio for
+ap->folios, which is no longer the case.
+
+To fix this, simply drop the extra put to keep us consistent with the
+non-splice variation.  This will fix the UAF bug that was reported.
+
+Link: https://lore.kernel.org/linux-fsdevel/2f681f48-00f5-4e09-8431-2b3dbfaa881e@heusel.eu/
+Fixes: 3eab9d7bc2f4 ("fuse: convert readahead to use folios")
+Signed-off-by: Josef Bacik <josef@toxicpanda.com>
+
+Link: https://lore.kernel.org/all/20250210191235.GA2256827@perftesting/
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ fs/fuse/dev.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/fs/fuse/dev.c b/fs/fuse/dev.c
+index 5b5f789b37eb..5bd6e2e184c0 100644
+--- a/fs/fuse/dev.c
++++ b/fs/fuse/dev.c
+@@ -918,8 +918,6 @@ static int fuse_try_move_page(struct fuse_copy_state *cs, struct page **pagep)
+ 	}
+ 
+ 	folio_unlock(oldfolio);
+-	/* Drop ref for ap->pages[] array */
+-	folio_put(oldfolio);
+ 	cs->len = 0;
+ 
+ 	err = 0;
+-- 
+2.48.1
+

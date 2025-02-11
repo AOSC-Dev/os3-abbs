@@ -1,7 +1,7 @@
 From 032794383e000a505b53bf8f1b6ba0adb3bc71f5 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Fri, 31 Jan 2025 18:06:30 +0800
-Subject: [PATCH 051/281] FROMLIST: USB: core: Enable root_hub's remote wakeup
+Subject: [PATCH 051/288] FROMLIST: USB: core: Enable root_hub's remote wakeup
  for wakeup sources
 
 Now we only enable the remote wakeup function for the USB wakeup source

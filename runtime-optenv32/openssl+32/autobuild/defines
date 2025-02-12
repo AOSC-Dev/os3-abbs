@@ -5,7 +5,6 @@ PKGDES="Open Source toolkit for Secure Sockets Layer and Transport Layer Securit
 BUILDDEP="linux+api+32 32subsystem"
 
 NOPARALLEL=1
-NOLTO=1
 ABHOST=noarch
 
 PKGBREAK="""

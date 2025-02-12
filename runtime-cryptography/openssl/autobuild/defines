@@ -13,9 +13,7 @@ PKGDEP__PPC64="${PKGDEP__RETRO}"
 PKGDES="Open Source toolkit for Secure Sockets Layer and Transport Layer Security"
 PKGSEC=libs
 
-NOPARALLEL=1
 AB_FLAGS_O3=1
-NOLTO__LOONGARCH64=1
 
 PKGBREAK="""
 aircrack-ng<=1.5.2-2

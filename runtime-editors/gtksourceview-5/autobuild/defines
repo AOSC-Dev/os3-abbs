@@ -1,10 +1,10 @@
 PKGNAME=gtksourceview-5
 PKGSEC=gnome
 PKGDEP="gtk-4 libxml2"
-BUILDDEP="gi-docgen gobject-introspection gtk-doc intltool vala"
+BUILDDEP="gi-docgen gobject-introspection gtk-doc intltool vala shaderc"
 PKGDES="A text widget adding syntax highlighting and more to GNOME (version 5)"
 
-MESON_AFTER="-Dinstall_tests=false \
+MESON_AFTER="-Dinstall-tests=false \
              -Dvapi=true \
-             -Dgtk_doc=true \
+             -Ddocumentation=true \
              -Dsysprof=false"

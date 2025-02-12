@@ -1,7 +1,7 @@
 PKGNAME=pyqt-builder
 PKGSEC=python
 PKGDEP="python-3"
-BUILDDEP="setuptools"
+BUILDDEP="setuptools-scm"
 PKGDES="PEP 517 compliant PyQt build system"
 
 ABHOST=noarch

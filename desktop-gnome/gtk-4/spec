@@ -1,4 +1,4 @@
-VER=4.17.4
+VER=4.16.12
 SRCS="https://download.gnome.org/sources/gtk/${VER%.*}/gtk-$VER.tar.xz"
-CHKSUMS="sha256::6ae47801d0255a136f52fbb76f1f96836360df7ff539931eabb94ed4f4968cc8"
+CHKSUMS="sha256::ef31bdbd6f082c4401634a20c850b0050c9bf252ef1e079764ee95a2a0c4c95a"
 CHKUPDATE="anitya::id=13942"

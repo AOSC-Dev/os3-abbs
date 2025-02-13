@@ -27,3 +27,5 @@ MESON_AFTER="-Dx11-backend=true \
 
 PKGBREAK="gtk-2<=2.24.32-3 gtk-3<=3.24.24-1"
 PKGREP="gtk-2<=2.24.32-3 gtk-3<=3.24.24-1"
+
+PKGEPOCH=1

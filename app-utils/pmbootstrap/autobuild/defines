@@ -1,0 +1,5 @@
+PKGNAME=pmbootstrap
+PKGSEC=utils
+PKGDEP="python-3 openssl tar git util-linux procps" 
+PKGDES="Command-line tool to install a postmarketOS system environment" 
+ABHOST=noarch

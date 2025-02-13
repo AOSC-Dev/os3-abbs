@@ -1,0 +1,6 @@
+abinfo "Install pmbootstrap ..."
+install -Dvm755 "$SRCDIR"/pmbootstrap.py \
+    "$PKGDIR"/usr/bin/pmbootstrap
+mkdir -pv "$PKGDIR"/usr/lib/python${ABPY3VER}/site-packages
+cp -av "$SRCDIR"/pmb \
+    "$PKGDIR"/usr/lib/python${ABPY3VER}/site-packages/

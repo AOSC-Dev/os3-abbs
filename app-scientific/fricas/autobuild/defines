@@ -5,10 +5,9 @@ PKGSEC=math
 PKGDEP__SBCL="gawk x11-lib sbcl"
 PKGDEP__ECL="gawk x11-lib ecl"
 PKGDEP__AMD64="$PKGDEP__SBCL"
-
-# FIXME: Continue out of heap while build with sbcl on PPC64EL and ARM64
+PKGDEP__ARM64="$PKGDEP__SBCL"
+# FIXME: Hang while build with sbcl on PPC64EL
 #PKGDEP__PPC64EL="$PKGDEP__SBCL"
-#PKGDEP__ARM64="$PKGDEP__SBCL"
 PKGDEP="$PKGDEP__ECL"
 
 # Note: Ref. https://fricas.github.io/install.html#latex-optional
@@ -40,14 +39,13 @@ AUTOTOOLS_AFTER__SBCL=(
     --enable-gmp
 )
 AUTOTOOLS_AFTER__AMD64=("${AUTOTOOLS_AFTER__SBCL[@]}")
-
-# FIXME: Continue out of heap while build with sbcl on PPC64EL and ARM64
-#AUTOTOOLS_AFTER__ARM64="$AUTOTOOLS_AFTER__SBCL"
-#AUTOTOOLS_AFTER__PPC64EL="$AUTOTOOLS_AFTER__SBCL"
+AUTOTOOLS_AFTER__ARM64=("${AUTOTOOLS_AFTER__SBCL[@]}")
+# FIXME: Hang while build with sbcl on PPC64EL
+#AUTOTOOLS_AFTER__PPC64EL=("${AUTOTOOLS_AFTER__SBCL[@]}")
 AUTOTOOLS_AFTER=("${AUTOTOOLS_AFTER__ECL[@]}")
 
 # Note: Else sbcl version of the software will not run,
 # it seems FRICASsys got a lot of things inside.
 ABSTRIP__AMD64=0
-ABSTRIP__PPC64EL=0
+#ABSTRIP__PPC64EL=0
 ABSTRIP__ARM64=0

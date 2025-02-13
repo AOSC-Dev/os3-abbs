@@ -1,7 +1,7 @@
-From 2712e982396f5a405802b6a1b7805b54dd3afc84 Mon Sep 17 00:00:00 2001
+From 1c3a82a38bb1351ba23b518f9a196f1f7984a554 Mon Sep 17 00:00:00 2001
 From: Icenowy Zheng <uwu@icenowy.me>
 Date: Thu, 16 Jan 2025 09:05:31 +0800
-Subject: [PATCH 3/3] FROMLIST: zink: Do not use demote on IMG blobs
+Subject: [PATCH 2/3] FROMLIST: zink: Do not use demote on IMG blobs
 
 The implementation of demote in IMG blobs seems to be a piece of hack,
 and the current use of it in Zink leads to assertion failure with

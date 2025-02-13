@@ -1,0 +1,7 @@
+PKGNAME=ydotool
+PKGSEC=x11
+PKGDEP="systemd"
+BUILDDEP="scdoc"
+PKGDES="Command-line automation tool"
+
+ABTYPE=cmakeninja

@@ -1,0 +1,22 @@
+PKGNAME=beecrypt
+PKGSEC=libs
+PKGDEP="gcc-runtime"
+PKGDES="BeeCrypt cryptography library"
+
+# FIXME: Bindings are long since broken.
+#
+# rng-py.c:322:9: error: initialization of 'void (*)(void *)' from incompatible pointer type 'void (*)(PyObject *)' {aka 'void (*)(struct _object *)'} [-Wincompatible-pointer-types]
+#   322 |         (destructor) rng_free,          /* tp_free */
+#       |         ^
+# rng-py.c:322:9: note: (near initialization for 'rng_Type.tp_free')
+# make[3]: *** [Makefile:402: rng-py.lo] Error 1
+# make[3]: *** Waiting for unfinished jobs....
+# mpw-py.c:2341:9: error: initialization of 'void (*)(void *)' from incompatible pointer type 'void (*)(PyObject *)' {aka 'void (*)(struct _object *)'} [-Wincompatible-pointer-types]
+#  2341 |         (destructor) mpw_free,          /* tp_free */
+#       |         ^
+# mpw-py.c:2341:9: note: (near initialization for 'mpw_Type.tp_free')
+AUTOTOOLS_AFTER=(
+    '--with-python=no'
+)
+
+PKGPROV="libbeecrypt7_spiral libbeecrypt-dev_spiral"

@@ -1,0 +1,36 @@
+From 3496d35fb4f94538c860e035a7d9920a8925e11b Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.io>
+Date: Thu, 13 Feb 2025 18:37:54 +0800
+Subject: [PATCH 4/4] FEDORA: disable broken C++ bindings
+
+Patch by Robert Scheck <robert@fedoraproject.org> for beecrypt >= 4.2.1 to
+avoid linking against libstdc++. This patch is based on an old by Florian
+La Roche <laroche@redhat.com> and Panu Matilainen <pmatilai@redhat.com>.
+
+For further information see Red Hat Bugzilla for bug ID #165080.
+
+Signed-off-by: Robert Scheck <robert@fedoraproject.org>
+
+Link: https://bugzilla.redhat.com/show_bug.cgi?id=165080
+Link: https://src.fedoraproject.org/rpms/beecrypt/blob/7d7dad0a6ecb5aea44fce515f6931a941d6397ff/f/beecrypt-4.2.1-no-c++.patch
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index b7e7869..b08bec8 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -62,7 +62,7 @@ BEECRYPT_OBJECTS = aes.lo base64.lo beecrypt.lo blockmode.lo blockpad.lo blowfis
+ 
+ lib_LTLIBRARIES = libbeecrypt.la
+ 
+-libbeecrypt_la_SOURCES = aes.c base64.c beecrypt.c blockmode.c blockpad.c blowfish.c dhies.c dldp.c dlkp.c dlpk.c dlsvdp-dh.c dsa.c elgamal.c endianness.c entropy.c fips186.c hmac.c hmacmd5.c hmacsha1.c hmacsha224.c hmacsha256.c md4.c md5.c hmacsha384.c hmacsha512.c memchunk.c mp.c mpbarrett.c mpnumber.c mpprime.c mtprng.c pkcs1.c pkcs12.c ripemd128.c ripemd160.c ripemd256.c ripemd320.c rsa.c rsakp.c rsapk.c sha1.c sha224.c sha256.c sha384.c sha512.c sha2k32.c sha2k64.c timestamp.c cppglue.cxx
++libbeecrypt_la_SOURCES = aes.c base64.c beecrypt.c blockmode.c blockpad.c blowfish.c dhies.c dldp.c dlkp.c dlpk.c dlsvdp-dh.c dsa.c elgamal.c endianness.c entropy.c fips186.c hmac.c hmacmd5.c hmacsha1.c hmacsha224.c hmacsha256.c md4.c md5.c hmacsha384.c hmacsha512.c memchunk.c mp.c mpbarrett.c mpnumber.c mpprime.c mtprng.c pkcs1.c pkcs12.c ripemd128.c ripemd160.c ripemd256.c ripemd320.c rsa.c rsakp.c rsapk.c sha1.c sha224.c sha256.c sha384.c sha512.c sha2k32.c sha2k64.c timestamp.c # cppglue.cxx
+ libbeecrypt_la_DEPENDENCIES = $(BEECRYPT_OBJECTS)
+ libbeecrypt_la_LIBADD = blowfishopt.lo mpopt.lo sha1opt.lo $(OPENMP_LIBS)
+ libbeecrypt_la_LDFLAGS = -no-undefined -version-info $(LIBBEECRYPT_LT_CURRENT):$(LIBBEECRYPT_LT_REVISION):$(LIBBEECRYPT_LT_AGE)
+-- 
+2.48.1
+

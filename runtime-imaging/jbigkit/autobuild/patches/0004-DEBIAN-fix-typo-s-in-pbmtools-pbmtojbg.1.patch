@@ -1,0 +1,38 @@
+From ef442145a9cc516b110a8141e38785769e5e2c9d Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.io>
+Date: Thu, 13 Feb 2025 17:20:47 +0800
+Subject: [PATCH 4/5] DEBIAN: fix typo's in pbmtools/pbmtojbg.1
+
+From Debian: jbigkit 2.1-6.1
+
+Signed-off-by: Michael van der Kolff <mvanderkolff@gmail.com>
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ pbmtools/pbmtojbg.1 | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pbmtools/pbmtojbg.1 b/pbmtools/pbmtojbg.1
+index c1c63cd..6d9cd02 100644
+--- a/pbmtools/pbmtojbg.1
++++ b/pbmtools/pbmtojbg.1
+@@ -130,7 +130,7 @@ encoder.)
+ .TP
+ .BI \-t " number"
+ Encode only the specified number of most significant bit planes. This
+-option allows to reduce the depth of an input PGM file if not all
++option allows one to reduce the depth of an input PGM file if not all
+ bits per pixel are needed in the output.
+ .TP
+ .BI \-o " number"
+@@ -174,7 +174,7 @@ stripe and then completes layer 0 before continuing with the next
+ layer and so on. 
+ .TP
+ .BI \-p " number"
+-This option allows to activate or deactivate various optional algorithms
++This option allows one to activate or deactivate various optional algorithms
+ defined in the
+ .I JBIG1
+ standard. Just add the numbers of the following options which you want to
+-- 
+2.48.1
+

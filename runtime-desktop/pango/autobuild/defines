@@ -1,7 +1,7 @@
 PKGNAME=pango
 PKGSEC=libs
 PKGDEP="cairo harfbuzz mesa libthai x11-lib fribidi"
-BUILDDEP="fontconfig gi-docgen gobject-introspection help2man gtk-doc vim"
+BUILDDEP="fontconfig gi-docgen gobject-introspection help2man gtk-doc vim docutils"
 BUILDDEP__RETRO=""
 BUILDDEP__ARMV4="${BUILDDEP__RETRO}"
 BUILDDEP__ARMV6HF="${BUILDDEP__RETRO}"
@@ -15,7 +15,7 @@ PKGDES="System for layout and rendering of internationalized text"
 
 ABSHADOW=0
 
-MESON_AFTER="-Dgtk_doc=true \
+MESON_AFTER="-Ddocumentation=true \
              -Dintrospection=enabled \
              -Dfontconfig=enabled \
              -Dsysprof=disabled \
@@ -24,7 +24,7 @@ MESON_AFTER="-Dgtk_doc=true \
              -Dxft=enabled \
              -Dfreetype=enabled"
 MESON_AFTER__RETRO=" \
-             -Dgtk_doc=false \
+             -Ddocumentation=false \
              -Dintrospection=disabled \
              -Dfontconfig=enabled \
              -Dsysprof=disabled \

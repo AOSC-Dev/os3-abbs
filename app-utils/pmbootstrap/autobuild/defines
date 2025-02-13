@@ -1,0 +1,4 @@
+PKGNAME=pmbootstrap
+ PKGSEC=utils
+ PKGDEP="python-3 openssl tar git util-linux procps" 
+ PKGDES="A cli tool for developing and installing PostmarketOS" 

@@ -1,0 +1,4 @@
+VER=3.2.0
+SRCS="git::commit=tags/v$VER;copy-repo=true::https://gitlab.postmarketos.org/postmarketOS/pmbootstrap" 
+CHKSUMS="SKIP" 
+CHKUPDATE="anitya::id=21200"

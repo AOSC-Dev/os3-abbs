@@ -1,0 +1,4 @@
+abinfo "Install pmbootstrap ..."
+
+install -m 755 pmbootstrap.py "$PKGDIR"/usr/bin/pmbootstrap
+cp -r pmb "$PKGDIR"/usr/lib/python3/dist-packages

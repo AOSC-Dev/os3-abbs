@@ -1,0 +1,9 @@
+PKGNAME=apostrophe
+PKGSEC=editors
+PKGDEP="dconf glib graphene gtk-4 gtksourceview-5 hicolor-icon-theme \
+	libadwaita pango python-3 chardet pygobject-3 webkit2gtk \
+	libspelling pypandoc"
+PKGRECOM="texlive appstream fira-font"
+PKGDES="Markdown editor with distraction-free mode and support for multi-format export"
+
+ABHOST=noarch

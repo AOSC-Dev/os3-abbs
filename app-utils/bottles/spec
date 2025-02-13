@@ -1,4 +1,4 @@
-VER=51.13
+VER=51.17
 SRCS="git::commit=tags/$VER::https://github.com/bottlesdevs/Bottles"
 CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=155688"

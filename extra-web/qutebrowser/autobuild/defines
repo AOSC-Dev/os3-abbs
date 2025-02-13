@@ -1,0 +1,13 @@
+PKGNAME=qutebrowser
+PKGSEC=web
+PKGDEP="jinja2 pygments pyqt6 pyyaml pyqt6-webengine qt-6 python-3"
+BUILDDEP="asciidoc setuptools"
+PKGDES="A keyboard-driven, vim-like browser based on PyQt"
+
+# Note: This package is written purely in Python (architecture-agnostic), but
+# this package is only available for certain architectures.
+#
+# Mark this package as non-noarch and instruct Autobuild to ignore automatic debug
+# symbol stripping.
+ABSPLITDBG=0
+FAIL_ARCH="!(amd64|arm64|loongarch64)"

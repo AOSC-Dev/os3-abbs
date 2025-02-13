@@ -1,0 +1,11 @@
+abinfo "Building qutebrowser ..."
+make -f "$SRCDIR"/misc/Makefile \
+    DESTDIR="$PKGDIR" \
+    PREFIX=/usr \
+    all
+
+abinfo "Installing qutebrowser ..."
+make -f "$SRCDIR"/misc/Makefile \
+    DESTDIR="$PKGDIR" \
+    PREFIX=/usr \
+    install

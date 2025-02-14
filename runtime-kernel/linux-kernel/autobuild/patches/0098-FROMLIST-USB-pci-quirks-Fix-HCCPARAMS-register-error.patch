@@ -1,7 +1,7 @@
 From 90a79010157d1288f2cb593036fe71fae1f702fb Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Sun, 2 Feb 2025 20:49:35 +0800
-Subject: [PATCH 098/317] FROMLIST: USB: pci-quirks: Fix HCCPARAMS register
+Subject: [PATCH 098/319] FROMLIST: USB: pci-quirks: Fix HCCPARAMS register
  error for LS7A EHCI
 
 LS7A EHCI controller doesn't have extended capabilities, so the EECP

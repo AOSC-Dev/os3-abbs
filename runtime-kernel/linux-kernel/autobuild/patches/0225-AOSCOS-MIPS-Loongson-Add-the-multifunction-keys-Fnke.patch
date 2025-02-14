@@ -1,7 +1,7 @@
 From ea4017d3b6fc552d0b9d3e470aba8959102ee0e1 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
-Subject: [PATCH 225/317] AOSCOS: MIPS: Loongson: Add the multifunction keys
+Subject: [PATCH 225/319] AOSCOS: MIPS: Loongson: Add the multifunction keys
  (Fnkey) support.
 
 1, Add special function keys keycode to keycode mapping table.

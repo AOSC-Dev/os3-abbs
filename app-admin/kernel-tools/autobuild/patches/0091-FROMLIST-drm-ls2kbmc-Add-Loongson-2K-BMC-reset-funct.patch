@@ -1,7 +1,7 @@
 From d7f96aaff33d8071bc3c9ed4669151be86054e96 Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Mon, 30 Dec 2024 17:31:36 +0800
-Subject: [PATCH 091/317] FROMLIST: drm/ls2kbmc: Add Loongson-2K BMC reset
+Subject: [PATCH 091/319] FROMLIST: drm/ls2kbmc: Add Loongson-2K BMC reset
  function support
 
 Since the display is a sub-function of the Loongson-2K BMC, when the

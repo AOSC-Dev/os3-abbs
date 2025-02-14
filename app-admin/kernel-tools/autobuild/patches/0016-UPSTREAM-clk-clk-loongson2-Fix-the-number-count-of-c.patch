@@ -1,7 +1,7 @@
 From c2ef7f064c34b0a63f8a54ad67785a574adf946d Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Tue, 14 Jan 2025 21:00:29 +0800
-Subject: [PATCH 016/317] UPSTREAM: clk: clk-loongson2: Fix the number count of
+Subject: [PATCH 016/319] UPSTREAM: clk: clk-loongson2: Fix the number count of
  clk provider
 
 Since commit 02fb4f008433 ("clk: clk-loongson2: Fix potential buffer

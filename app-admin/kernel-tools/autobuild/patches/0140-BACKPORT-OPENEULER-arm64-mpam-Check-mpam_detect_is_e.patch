@@ -1,7 +1,7 @@
 From 0766fb03af51773db5182ccd019aa87c9d7538a7 Mon Sep 17 00:00:00 2001
 From: Zeng Heng <zengheng4@huawei.com>
 Date: Tue, 24 Sep 2024 21:47:53 +0800
-Subject: [PATCH 140/317] BACKPORT: OPENEULER: arm64/mpam: Check
+Subject: [PATCH 140/319] BACKPORT: OPENEULER: arm64/mpam: Check
  mpam_detect_is_enabled() before accessing MPAM registers
 
 hulk inclusion

@@ -1,7 +1,7 @@
 From fc8b3e1255d3d9b30fac5c58d5a4e44c46279109 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jonas=20Dre=C3=9Fler?= <verdre@v0yd.nl>
 Date: Tue, 3 Nov 2020 13:28:04 +0100
-Subject: [PATCH 153/317] SURFACE: mwifiex: Add quirk resetting the PCI bridge
+Subject: [PATCH 153/319] SURFACE: mwifiex: Add quirk resetting the PCI bridge
  on MS Surface devices
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

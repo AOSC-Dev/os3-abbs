@@ -1,7 +1,7 @@
 From e01eaa0019b546e0761d4a33452113f503c37e12 Mon Sep 17 00:00:00 2001
 From: Daniel Scally <dan.scally@ideasonboard.com>
 Date: Thu, 2 Mar 2023 12:59:39 +0000
-Subject: [PATCH 164/317] SURFACE: platform/x86: int3472: Remap reset GPIO for
+Subject: [PATCH 164/319] SURFACE: platform/x86: int3472: Remap reset GPIO for
  INT347E
 
 ACPI _HID INT347E represents the OmniVision 7251 camera sensor. The

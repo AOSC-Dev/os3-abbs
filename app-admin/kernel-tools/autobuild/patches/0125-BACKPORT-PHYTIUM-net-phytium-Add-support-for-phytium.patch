@@ -1,7 +1,7 @@
 From 9d5918efcc94a9f2a61b72c8b612c6319fc9b7c3 Mon Sep 17 00:00:00 2001
 From: Song Wenting <songwenting@phytium.com.cn>
 Date: Mon, 25 Mar 2024 13:55:20 +0800
-Subject: [PATCH 125/317] BACKPORT: PHYTIUM: net: phytium: Add support for
+Subject: [PATCH 125/319] BACKPORT: PHYTIUM: net: phytium: Add support for
  phytium GMAC
 
 This patch provides support for Phytium GMAC controller driver.

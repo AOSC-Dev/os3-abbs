@@ -1,7 +1,7 @@
 From e961c1d14fd5bad42ddf7c798db35515c8f8c84d Mon Sep 17 00:00:00 2001
 From: Jackie Dong <xy-jackie@139.com>
 Date: Wed, 22 Jan 2025 17:09:42 +0800
-Subject: [PATCH 096/317] FROMLIST: platform/x86: lenovo-super-hotkey-wmi.c:
+Subject: [PATCH 096/319] FROMLIST: platform/x86: lenovo-super-hotkey-wmi.c:
  Support for mic and audio mute LEDs
 
 Implement Lenovo utility data WMI calls needed to make LEDs

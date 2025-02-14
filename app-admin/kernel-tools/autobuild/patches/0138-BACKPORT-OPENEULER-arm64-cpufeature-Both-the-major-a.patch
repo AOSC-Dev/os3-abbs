@@ -1,7 +1,7 @@
 From 57bc44d8f550ba12d62e352f128a3af302fe5dde Mon Sep 17 00:00:00 2001
 From: Zeng Heng <zengheng4@huawei.com>
 Date: Sat, 1 Jun 2024 14:38:28 +0800
-Subject: [PATCH 138/317] BACKPORT: OPENEULER: arm64: cpufeature: Both the
+Subject: [PATCH 138/319] BACKPORT: OPENEULER: arm64: cpufeature: Both the
  major and the minor version numbers need to be checked
 
 hulk inclusion

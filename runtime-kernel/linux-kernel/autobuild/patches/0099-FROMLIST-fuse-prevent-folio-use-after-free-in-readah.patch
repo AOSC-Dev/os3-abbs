@@ -1,7 +1,7 @@
 From 5e57f5cce1770eaabad09c427a33dd9d6e8c526e Mon Sep 17 00:00:00 2001
 From: Vlastimil Babka <vbabka@suse.cz>
 Date: Fri, 7 Feb 2025 19:35:25 +0100
-Subject: [PATCH 099/317] FROMLIST: fuse: prevent folio use-after-free in
+Subject: [PATCH 099/319] FROMLIST: fuse: prevent folio use-after-free in
  readahead
 
 Signed-off-by: Vlastimil Babka <vbabka@suse.cz>

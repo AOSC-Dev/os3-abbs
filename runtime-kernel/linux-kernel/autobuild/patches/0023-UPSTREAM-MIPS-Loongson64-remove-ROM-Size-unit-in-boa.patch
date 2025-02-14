@@ -1,7 +1,7 @@
 From 4a21d4cf57355f73b2d5b9a5f7fc510e89a411f8 Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Sat, 11 Jan 2025 01:22:08 +0800
-Subject: [PATCH 023/317] UPSTREAM: MIPS: Loongson64: remove ROM Size unit in
+Subject: [PATCH 023/319] UPSTREAM: MIPS: Loongson64: remove ROM Size unit in
  boardinfo
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

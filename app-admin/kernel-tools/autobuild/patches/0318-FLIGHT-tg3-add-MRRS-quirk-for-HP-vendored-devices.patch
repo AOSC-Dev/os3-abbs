@@ -1,0 +1,90 @@
+From 065d51ce5bd70caa72f46ee52224bc67df4c88a7 Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.io>
+Date: Fri, 14 Feb 2025 20:58:24 +0800
+Subject: [PATCH 318/319] FLIGHT: tg3: add MRRS quirk for HP-vendored devices
+
+On an HP EliteDesk 705 G3 Desktop Mini, the NetXtreme BCM5762 Gigabit
+Ethernet PCIe interface exibits similar hangs with moderate network
+traffic. The kernel logs the following:
+
+[  683.871860] tg3 0000:01:00.0 enp1s0: NETDEV WATCHDOG: CPU: 0: transmit queue 0 timed out 5663 ms
+[  683.871874] tg3 0000:01:00.0 enp1s0: transmit timed out, resetting
+[  686.750600] tg3 0000:01:00.0 enp1s0: 0x00000000: 0x168714e4, 0x00100506, 0x02000010, 0x00000000
+
+... (many lines of packet dump) ...
+
+[  686.751811] tg3 0000:01:00.0 enp1s0: 0: NAPI info [0000003c:0000003c:(01d6:01c8:01ff):0000:(029f:0000:0000:0000)]
+[  686.751817] tg3 0000:01:00.0 enp1s0: 1: Host status block [00000001:000000dd:(0000:0000:0000):(0fff:0000)]
+[  686.751822] tg3 0000:01:00.0 enp1s0: 1: NAPI info [000000dd:000000dd:(0000:0000:01ff):0fff:(07ff:07ff:0000:0000)]
+[  686.751827] tg3 0000:01:00.0 enp1s0: 2: Host status block [00000001:00000023:(01d8:0000:0000):(0000:0000)]
+[  686.751831] tg3 0000:01:00.0 enp1s0: 2: NAPI info [00000023:00000023:(0000:0000:01ff):01d8:(01d8:01d8:0000:0000)]
+[  686.751897] clocksource: Long readout interval, skipping watchdog check: cs_nsec: 2614552269 wd_nsec: 2614572871
+[  686.794627] tg3 0000:01:00.0 enp1s0: Link is down
+[  689.486270] tg3 0000:01:00.0 enp1s0: Link is up at 1000 Mbps, full duplex
+[  689.486311] tg3 0000:01:00.0 enp1s0: Flow control is on for TX and on for RX
+[  689.486328] tg3 0000:01:00.0 enp1s0: EEE is disabled
+
+In Dell's case, the vendor-subsystem pair is found on its AMD Ryzen/
+Threadripper lines of Optiplex and Precision machines (with a southbridge
+modeled Advanced Micro Devices, Inc. [AMD] FCH LPC Bridge, with device ID
+1022:790e).
+
+Similarly in this case, the HP where this issue was first reported is
+based on a platform from the same generation - the AMD PRO A12-8870E R7,
+mated to an AM4 platform, carrying the same southbridge (1022:790e).
+
+Apply the same quirk for BCM5762 found on HP platforms of the same
+generation.
+
+Reported-by: Qing Yun <2680109591@qq.com>
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+
+Link: https://t.me/c/1109254909/758361
+Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
+---
+ drivers/net/ethernet/broadcom/tg3.c | 14 +++++++++-----
+ drivers/net/ethernet/broadcom/tg3.h |  2 ++
+ 2 files changed, 11 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/net/ethernet/broadcom/tg3.c b/drivers/net/ethernet/broadcom/tg3.c
+index 9cc8db10a8d6..c15197c68062 100644
+--- a/drivers/net/ethernet/broadcom/tg3.c
++++ b/drivers/net/ethernet/broadcom/tg3.c
+@@ -10179,12 +10179,16 @@ static int tg3_reset_hw(struct tg3 *tp, bool reset_phy)
+ 
+ 	tw32(GRC_MODE, tp->grc_mode | val);
+ 
+-	/* On one of the AMD platform, MRRS is restricted to 4000 because of
+-	 * south bridge limitation. As a workaround, Driver is setting MRRS
+-	 * to 2048 instead of default 4096.
++	/* On AMD platforms with on-board Tigon3-5762-based ethernet
++	 * controllers, MRRS is restricted to 4000 because of south bridge
++	 * limitation. As a workaround, Driver is setting MRRS to 2048 instead
++	 * of default 4096.
+ 	 */
+-	if (tp->pdev->subsystem_vendor == PCI_VENDOR_ID_DELL &&
+-	    tp->pdev->subsystem_device == TG3PCI_SUBDEVICE_ID_DELL_5762) {
++	if ((tp->pdev->subsystem_vendor == PCI_VENDOR_ID_DELL &&
++	     tp->pdev->subsystem_device == TG3PCI_SUBDEVICE_ID_DELL_5762) ||
++	    (tp->pdev->subsystem_vendor == PCI_VENDOR_ID_HP &&
++	     tp->pdev->subsystem_device == TG3PCI_SUBDEVICE_ID_HP_5762)) {
++		dev_err(&tp->pdev->dev, "Lowering MRRS to 2048 due to platform limitations!");
+ 		val = tr32(TG3PCI_DEV_STATUS_CTRL) & ~MAX_READ_REQ_MASK;
+ 		tw32(TG3PCI_DEV_STATUS_CTRL, val | MAX_READ_REQ_SIZE_2048);
+ 	}
+diff --git a/drivers/net/ethernet/broadcom/tg3.h b/drivers/net/ethernet/broadcom/tg3.h
+index b473f8014d9c..24a6ddb95521 100644
+--- a/drivers/net/ethernet/broadcom/tg3.h
++++ b/drivers/net/ethernet/broadcom/tg3.h
+@@ -106,6 +106,8 @@
+ #define TG3PCI_SUBDEVICE_ID_COMPAQ_CHANGELING	0x007d
+ #define TG3PCI_SUBDEVICE_ID_COMPAQ_NC7780	0x0085
+ #define TG3PCI_SUBDEVICE_ID_COMPAQ_NC7780_2	0x0099
++#define TG3PCI_SUBVENDOR_ID_DELL		PCI_VENDOR_ID_HP
++#define TG3PCI_SUBDEVICE_ID_HP_5762		0x8266
+ #define TG3PCI_SUBVENDOR_ID_IBM			PCI_VENDOR_ID_IBM
+ #define TG3PCI_SUBDEVICE_ID_IBM_5703SAX2	0x0281
+ #define TG3PCI_SUBDEVICE_ID_ACER_57780_A	0x0601
+-- 
+2.48.1
+

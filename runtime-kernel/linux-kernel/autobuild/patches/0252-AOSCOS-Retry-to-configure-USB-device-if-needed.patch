@@ -1,7 +1,7 @@
 From bcbc61a046ecd2d87f30d9a186f9478f10aaa958 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
-Subject: [PATCH 252/317] AOSCOS: Retry to configure USB device if needed
+Subject: [PATCH 252/319] AOSCOS: Retry to configure USB device if needed
 
 [Mingcong Bai: Resolved a minor merge conflict in
 drivers/usb/core/message.c.]

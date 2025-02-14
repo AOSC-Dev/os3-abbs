@@ -1,7 +1,7 @@
 From a92b971f0853712cbd7420f8495757b4ac0c29bb Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Mon, 30 Dec 2024 17:31:09 +0800
-Subject: [PATCH 089/317] FROMLIST: ipmi: Add Loongson-2K BMC support
+Subject: [PATCH 089/319] FROMLIST: ipmi: Add Loongson-2K BMC support
 
 This patch adds Loongson-2K BMC IPMI support.
 

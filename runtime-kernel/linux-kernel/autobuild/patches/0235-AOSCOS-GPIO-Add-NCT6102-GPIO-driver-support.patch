@@ -1,7 +1,7 @@
 From 71d77f3f6bd5cd2ce46232cdc2c3d4fc518420a8 Mon Sep 17 00:00:00 2001
 From: Yao Wang <wangyao@lemote.com>
 Date: Fri, 5 Jan 2018 11:28:18 +0800
-Subject: [PATCH 235/317] AOSCOS: GPIO: Add NCT6102 GPIO driver support
+Subject: [PATCH 235/319] AOSCOS: GPIO: Add NCT6102 GPIO driver support
 
 [Mingcong Bai: Resolved minor merge conflicts in drivers/gpio/Kconfig and
 drivers/gpio/Makefile.]

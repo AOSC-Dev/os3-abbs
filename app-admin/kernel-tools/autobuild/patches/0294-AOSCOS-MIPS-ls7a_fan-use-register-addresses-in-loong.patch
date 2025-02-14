@@ -1,7 +1,7 @@
 From 2e554a7b0943931c1a7be5eec474b7b34b0b6ab6 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 11 Dec 2024 23:29:38 +0800
-Subject: [PATCH 294/317] AOSCOS: MIPS: ls7a_fan: use register addresses in
+Subject: [PATCH 294/319] AOSCOS: MIPS: ls7a_fan: use register addresses in
  loongson.h
 
 Original driver code expects register definition in loongson-pch.h (where

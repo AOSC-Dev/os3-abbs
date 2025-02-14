@@ -1,7 +1,7 @@
 From e7163a74e18325b86957f19117abd7ae0bc4b546 Mon Sep 17 00:00:00 2001
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Date: Mon, 2 Dec 2024 22:00:57 +0200
-Subject: [PATCH 019/317] UPSTREAM: arm64: defconfig: Enable Rockchip
+Subject: [PATCH 019/319] UPSTREAM: arm64: defconfig: Enable Rockchip
  extensions for Synopsys DW HDMI QP
 
 Enable Rockchip specific extensions for Synopsys DesignWare HDMI

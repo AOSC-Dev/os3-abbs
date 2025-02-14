@@ -1,7 +1,7 @@
 From 91d7da9a5b22adc06ac682398e52c0dfe3da9730 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:35:01 -0600
-Subject: [PATCH 044/317] UPSTREAM: selftests: ntsync: Add some tests for
+Subject: [PATCH 044/319] UPSTREAM: selftests: ntsync: Add some tests for
  wakeup signaling with WINESYNC_IOC_WAIT_ANY.
 
 Test contended "wait-for-any" waits, to make sure that scheduling and wakeup

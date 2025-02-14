@@ -1,7 +1,7 @@
 From db41b72364f3649b8971c6642189854973f1ac17 Mon Sep 17 00:00:00 2001
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Date: Wed, 11 Dec 2024 01:06:15 +0200
-Subject: [PATCH 084/317] FROMLIST: arm64: dts: rockchip: Add PHY node for
+Subject: [PATCH 084/319] FROMLIST: arm64: dts: rockchip: Add PHY node for
  HDMI1 TX port on RK3588
 
 In preparation to enable the second HDMI output port found on RK3588

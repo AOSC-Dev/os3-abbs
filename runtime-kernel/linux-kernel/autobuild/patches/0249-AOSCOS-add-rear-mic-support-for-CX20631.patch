@@ -1,7 +1,7 @@
 From 6d56cef857b19eb5c1dc8cc6d86cc9c269bf43b3 Mon Sep 17 00:00:00 2001
 From: Xiang Yu <xiangy@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
-Subject: [PATCH 249/317] AOSCOS: add rear mic support for CX20631
+Subject: [PATCH 249/319] AOSCOS: add rear mic support for CX20631
 
 CX20631 Node1b's default config value should be 0x01A190F0 according to CX20631
 datesheet, but the true value is 0x018xxxxx, this cause PortC can't work as rear

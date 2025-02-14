@@ -1,7 +1,7 @@
 From 43d4586f53e393d506118418d2a3f2f82aabcffc Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:35:08 -0600
-Subject: [PATCH 051/317] UPSTREAM: selftests: ntsync: Add a stress test for
+Subject: [PATCH 051/319] UPSTREAM: selftests: ntsync: Add a stress test for
  contended waits.
 
 Test a more realistic usage pattern, and one with heavy contention, in order to

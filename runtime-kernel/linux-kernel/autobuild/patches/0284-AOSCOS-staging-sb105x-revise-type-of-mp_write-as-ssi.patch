@@ -1,7 +1,7 @@
 From a7d39fffe7facea4b7e94dd37f293b3be3f3202d Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 11 Dec 2024 17:16:44 +0800
-Subject: [PATCH 284/317] AOSCOS: staging: sb105x: revise type of mp_write() as
+Subject: [PATCH 284/319] AOSCOS: staging: sb105x: revise type of mp_write() as
  ssize_t
 
 Per commit 95713967ba52 ("tty: make tty_operations::write()'s count

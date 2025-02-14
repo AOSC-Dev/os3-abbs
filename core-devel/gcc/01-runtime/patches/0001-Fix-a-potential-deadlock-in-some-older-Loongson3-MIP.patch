@@ -1,7 +1,7 @@
-From 86b0a8b18aa2d68b5ed6b8400b353923b6d697e9 Mon Sep 17 00:00:00 2001
+From 125eca237c23635f3d156f90460ee3c1c61a8e3c Mon Sep 17 00:00:00 2001
 From: Paul Hua <paul.hua.gm@gmail.com>
 Date: Fri, 30 Nov 2018 20:45:57 +0800
-Subject: [PATCH 1/2] Fix a potential deadlock in some older Loongson3 MIPS
+Subject: [PATCH 1/4] Fix a potential deadlock in some older Loongson3 MIPS
  processors.
 
 In some older Loongson3 processors there is a LL/SC errata that can
@@ -236,5 +236,5 @@ index e028bc93b40..500da3f46f7 100644
      local-sdata
      long-calls
 -- 
-2.47.1
+2.48.1
 

@@ -1,4 +1,4 @@
-From dfe1065c990bdd6ad34a3fda04e94cf9d8ec1375 Mon Sep 17 00:00:00 2001
+From 58e8508b0b0a13abaf9905e7bb9586b67cb69fa4 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 11 Dec 2024 14:58:57 +0800
 Subject: [PATCH 274/314] AOSCOS: staging: sb105x: replace deprecated strlcpy()

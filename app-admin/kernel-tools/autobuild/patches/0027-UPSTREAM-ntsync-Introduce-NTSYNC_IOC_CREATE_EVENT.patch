@@ -1,4 +1,4 @@
-From 53022280ca12475561fbb351c165a242cab12d3e Mon Sep 17 00:00:00 2001
+From e1aed267f2ef42599054a80831607cf136de4279 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:49 -0600
 Subject: [PATCH 027/314] UPSTREAM: ntsync: Introduce NTSYNC_IOC_CREATE_EVENT.

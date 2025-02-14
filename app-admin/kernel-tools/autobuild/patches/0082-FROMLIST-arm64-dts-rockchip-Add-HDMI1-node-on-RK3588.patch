@@ -1,4 +1,4 @@
-From 4f9482b3cb57e0abe608f025491b3e9a0ef5afb2 Mon Sep 17 00:00:00 2001
+From c744dc8b30aa61b6e1a2fe98cc55eb2156232185 Mon Sep 17 00:00:00 2001
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Date: Wed, 11 Dec 2024 01:06:16 +0200
 Subject: [PATCH 082/314] FROMLIST: arm64: dts: rockchip: Add HDMI1 node on

@@ -1,4 +1,4 @@
-From 66c14fdb1e515383af53d97b2d03c8836b49f1b9 Mon Sep 17 00:00:00 2001
+From 58a9678b6ce170caf7b73b38dd675f329dd2a431 Mon Sep 17 00:00:00 2001
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Date: Tue, 4 Feb 2025 14:40:07 +0200
 Subject: [PATCH 057/314] FROMGIT: arm64: dts: rockchip: Enable HDMI0 PHY clk

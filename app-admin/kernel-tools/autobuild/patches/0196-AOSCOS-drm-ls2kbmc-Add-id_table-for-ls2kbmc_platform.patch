@@ -1,4 +1,4 @@
-From 4113dde580546735a822dc32255ea59565d1d04a Mon Sep 17 00:00:00 2001
+From 508600584758aa0b7524ef5847ddd981cf02f064 Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Tue, 31 Dec 2024 15:56:52 +0800
 Subject: [PATCH 196/314] AOSCOS: drm/ls2kbmc: Add id_table for

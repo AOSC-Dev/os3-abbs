@@ -1,4 +1,4 @@
-From c5459115c523d382c12bd3f9d586ff07e50ae0a2 Mon Sep 17 00:00:00 2001
+From 99bb92f58100537be78297eb1d7ab026e77559b9 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:35:11 -0600
 Subject: [PATCH 049/314] UPSTREAM: ntsync: No longer depend on BROKEN.

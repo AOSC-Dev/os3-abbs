@@ -1,4 +1,4 @@
-From 111f558105671785d868c1e2977ac8e6cd10d987 Mon Sep 17 00:00:00 2001
+From 6a45f9d48972d13dfa4e9b7f46095e551cbabbcf Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jonas=20Dre=C3=9Fler?= <verdre@v0yd.nl>
 Date: Thu, 25 Mar 2021 11:33:02 +0100
 Subject: [PATCH 152/314] SURFACE: Bluetooth: btusb: Lower passive lescan

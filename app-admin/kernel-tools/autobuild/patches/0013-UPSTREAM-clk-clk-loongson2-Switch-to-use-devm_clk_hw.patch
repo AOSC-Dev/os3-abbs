@@ -1,4 +1,4 @@
-From c19c15cfe23e61776d07ea31250c430206a82f16 Mon Sep 17 00:00:00 2001
+From fcc839d0420bf33a671e1da6fb2f1650cfec08bc Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Tue, 14 Jan 2025 21:00:28 +0800
 Subject: [PATCH 013/314] UPSTREAM: clk: clk-loongson2: Switch to use

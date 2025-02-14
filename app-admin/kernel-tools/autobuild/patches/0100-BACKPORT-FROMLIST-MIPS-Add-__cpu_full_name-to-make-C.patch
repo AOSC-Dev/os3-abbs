@@ -1,4 +1,4 @@
-From 405d5276405ef2d931ef2017f2131681c992b3cf Mon Sep 17 00:00:00 2001
+From 4689bf81885ae96607fb8d976282d25969c4f2c7 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 12 Mar 2020 17:40:53 +0800
 Subject: [PATCH 100/314] BACKPORT: FROMLIST: MIPS: Add __cpu_full_name[] to

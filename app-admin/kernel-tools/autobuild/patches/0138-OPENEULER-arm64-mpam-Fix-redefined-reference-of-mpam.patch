@@ -1,4 +1,4 @@
-From 22c9602c6eeec27d86d854ca861d933d127d341e Mon Sep 17 00:00:00 2001
+From b34f32b8fe6c10fe063e5748c37168d685111226 Mon Sep 17 00:00:00 2001
 From: Zeng Heng <zengheng4@huawei.com>
 Date: Thu, 26 Sep 2024 17:28:18 +0800
 Subject: [PATCH 138/314] OPENEULER: arm64/mpam: Fix redefined reference of

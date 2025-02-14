@@ -4,3 +4,4 @@ PKGDES="POSIX 1003.1e capabilities"
 PKGDEP="attr glibc"
 
 NOPARALLEL=1
+PKGEPOCH_SPIRAL=1

@@ -1,0 +1,4 @@
+VER=4.202
+SRCS="git::commit=tags/$VER::https://github.com/mozilla/Fira.git"
+CHKSUMS=SKIP
+CHKUPDATE="anitya::id=376769"

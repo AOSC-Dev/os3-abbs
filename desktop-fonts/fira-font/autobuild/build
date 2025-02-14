@@ -1,0 +1,2 @@
+abinfo "Installing font file..."
+install -Dvm644 "$SRCDIR"/ttf/*.ttf -t "$PKGDIR"/usr/share/fonts/TTF

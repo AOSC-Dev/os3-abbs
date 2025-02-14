@@ -1,0 +1,6 @@
+PKGNAME="fira-font"
+PKGDES="Fira Sans-serif and monospace font from Mozilla"
+PKGDEP="fontconfig"
+PKGSEC="fonts"
+
+ABHOST="noarch"

@@ -1,4 +1,4 @@
-From 88b6318cff4e2d398f88d23426b9ffafb192de7c Mon Sep 17 00:00:00 2001
+From dad6e73dd572b29c399c6ceab0be00816f08d37d Mon Sep 17 00:00:00 2001
 From: PJungkamp <p.jungkamp@gmail.com>
 Date: Fri, 25 Feb 2022 12:04:25 +0100
 Subject: [PATCH 141/296] SURFACE: hid/multitouch: Add support for surface pro

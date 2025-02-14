@@ -1,4 +1,4 @@
-From 817c4f2cb2ec43e4876db028d7aa899b687b653b Mon Sep 17 00:00:00 2001
+From cd87047d0ebb8ead38f9a7cacb57e71a52597fac Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:50 -0600
 Subject: [PATCH 047/296] UPSTREAM: ntsync: Introduce NTSYNC_IOC_EVENT_SET.

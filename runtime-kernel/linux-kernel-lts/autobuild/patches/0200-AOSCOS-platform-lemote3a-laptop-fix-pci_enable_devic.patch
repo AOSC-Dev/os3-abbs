@@ -1,4 +1,4 @@
-From 6dad9b47cc52f8aebd94279e62e6a163f57fd7af Mon Sep 17 00:00:00 2001
+From 18c991e7e1e1b905849e814485112e65b62ea561 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 4 Dec 2024 16:45:30 +0800
 Subject: [PATCH 200/296] AOSCOS: platform: lemote3a-laptop: fix

@@ -1,4 +1,4 @@
-From a26a5518be7d6ebde7388d6bbdf02385963b6aa0 Mon Sep 17 00:00:00 2001
+From ed9e8c8faeb6d85fc27dac52bd03f1d4ed96c972 Mon Sep 17 00:00:00 2001
 From: Hongchen Zhang <zhanghongchen@loongson.cn>
 Date: Thu, 13 Jun 2024 15:42:58 +0800
 Subject: [PATCH 074/296] FROMLIST: PCI: pci_call_probe: call local_pci_probe()

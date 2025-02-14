@@ -1,4 +1,4 @@
-From ec406fde98a78643e776a589a08d19c3c339ab37 Mon Sep 17 00:00:00 2001
+From 480fc808761301f50524fa2133391b2b1b8d465b Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:47 -0600
 Subject: [PATCH 044/296] UPSTREAM: ntsync: Introduce NTSYNC_IOC_MUTEX_UNLOCK.

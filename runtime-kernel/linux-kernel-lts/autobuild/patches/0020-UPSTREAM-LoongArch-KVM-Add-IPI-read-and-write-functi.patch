@@ -1,4 +1,4 @@
-From 758af69ef804a6bc391b93a58eb217607f1e49ff Mon Sep 17 00:00:00 2001
+From cc831dfe0bbbd16f3c12beb7fc7eb765cc44b965 Mon Sep 17 00:00:00 2001
 From: Xianglai Li <lixianglai@loongson.cn>
 Date: Wed, 13 Nov 2024 16:18:27 +0800
 Subject: [PATCH 020/296] UPSTREAM: LoongArch: KVM: Add IPI read and write

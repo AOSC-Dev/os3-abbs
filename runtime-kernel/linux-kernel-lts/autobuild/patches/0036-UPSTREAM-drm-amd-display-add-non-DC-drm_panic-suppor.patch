@@ -1,4 +1,4 @@
-From 52d0039ec949a875b55a61864b6aff4ca645b77c Mon Sep 17 00:00:00 2001
+From 2f15cd196765666bb3e06445679f528b524fdeae Mon Sep 17 00:00:00 2001
 From: Alex Deucher <alexander.deucher@amd.com>
 Date: Thu, 31 Oct 2024 13:51:35 -0400
 Subject: [PATCH 036/296] UPSTREAM: drm/amd/display: add non-DC drm_panic

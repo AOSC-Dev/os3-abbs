@@ -1,4 +1,4 @@
-From 71609b1f5bace104419fb8ddc13db4d8d22a0d07 Mon Sep 17 00:00:00 2001
+From c47ea98509fb9c8b9133bd4b37529c605c635d07 Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Wed, 9 Oct 2024 15:52:10 +0800
 Subject: [PATCH 006/296] UPSTREAM: ASoC: codecs: Add support for ES8323

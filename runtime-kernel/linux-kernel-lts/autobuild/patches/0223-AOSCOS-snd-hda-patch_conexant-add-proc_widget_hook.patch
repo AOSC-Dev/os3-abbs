@@ -1,4 +1,4 @@
-From ea100f2d98bc1f3ec0a0b607da66805dc2a308f1 Mon Sep 17 00:00:00 2001
+From ca7646d2f732f5968586ee92c7d4c3e21c315890 Mon Sep 17 00:00:00 2001
 From: chenj <chenj@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 223/296] AOSCOS: snd/hda/patch_conexant: add proc_widget_hook

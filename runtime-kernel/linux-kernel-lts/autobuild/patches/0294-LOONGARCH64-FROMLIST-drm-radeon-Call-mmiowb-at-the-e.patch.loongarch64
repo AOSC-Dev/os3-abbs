@@ -1,4 +1,4 @@
-From 49298757b214569c970173dd352f97686cd4a9e1 Mon Sep 17 00:00:00 2001
+From f655e0e6ea0103cf79087f0b9d408a479563ef12 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Tue, 20 Feb 2024 15:49:58 +0800
 Subject: [PATCH 294/296] LOONGARCH64: FROMLIST: drm/radeon: Call mmiowb() at

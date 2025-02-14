@@ -1,4 +1,4 @@
-From ad55b9369b3d12c73fb2661f7f0add3202c4be1b Mon Sep 17 00:00:00 2001
+From bf54974431bfc8fa00eea2ae5d7d11b8ddda6cc4 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Sun, 1 Nov 2020 11:33:58 +0800
 Subject: [PATCH 097/296] FROMLIST: MIPS: Loongson64: Enlarge cross-package

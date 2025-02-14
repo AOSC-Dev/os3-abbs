@@ -1,4 +1,4 @@
-From 0566a270f80eec3013a86ec1d0d2b92b4da09ef4 Mon Sep 17 00:00:00 2001
+From 5d52795cb2448cf45f39be12a7bb34e82f12edc1 Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Wed, 9 Oct 2024 15:52:11 +0800
 Subject: [PATCH 007/296] UPSTREAM: ASoC: dt-bindings: Add NXP uda1342 Codec

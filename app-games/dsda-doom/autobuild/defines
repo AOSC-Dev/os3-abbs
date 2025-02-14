@@ -1,0 +1,11 @@
+PKGNAME=dsda-doom
+PKGSEC=games
+PKGDES="An engine for DOOM, Heretic and Hexen"
+# Note: dsda-doom can use dumb (its upstream is at github.com/kode54/dumb)
+# to play various tracker-style formats. Since it is archived, I omitted it 
+# as a dependency. It does not affect the experience of using this software.
+PKGDEP="sdl2 sdl2-image sdl2-mixer sdl2-net fluidsynth portmidi libmad libvorbis libzip glu"
+CMAKE_AFTER=(
+	"-DCMAKE_INSTALL_PREFIX=/usr"
+	"-DCMAKE_BUILD_TYPE=Release"
+)

@@ -1,4 +1,4 @@
-From 34f8150b30e2c6f3108761243bb9fb632af81e70 Mon Sep 17 00:00:00 2001
+From 7b217567b37b801d6e591ea23633b8d2926ef62a Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Wed, 19 Dec 2018 16:31:14 +0800
 Subject: [PATCH 098/314] FROMLIST: scsi: lpfc: Switch memcpy_fromio() to

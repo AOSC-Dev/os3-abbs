@@ -1,4 +1,4 @@
-From 2c6b720cf996209a701f3e18cd6331348c4dde25 Mon Sep 17 00:00:00 2001
+From 1d2d7802c71fa7afe7d7b39c87e1ba7ac96595f3 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Mon, 22 Feb 2021 10:53:47 +0800
 Subject: [PATCH 112/314] LOONGSON: drm/radeon: Workaround radeon driver bug

@@ -1,4 +1,4 @@
-From ca97ed91cd6f9a4754f18274aea603f28e6e3e40 Mon Sep 17 00:00:00 2001
+From dc5454c6f28759056596ba06006e45c0b55c6201 Mon Sep 17 00:00:00 2001
 From: Heiko Stuebner <heiko.stuebner@cherry.de>
 Date: Fri, 6 Dec 2024 11:34:00 +0100
 Subject: [PATCH 071/314] FROMLIST: phy: phy-rockchip-samsung-hdptx: annotate

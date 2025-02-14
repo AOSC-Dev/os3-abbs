@@ -1,4 +1,4 @@
-From cb140c0805b87a0bdf2016692b72f66d46c175ee Mon Sep 17 00:00:00 2001
+From 5087589f5f5b0b6381060005fb63209eba57fa7d Mon Sep 17 00:00:00 2001
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Date: Fri, 13 Sep 2024 17:30:35 +0300
 Subject: [PATCH 170/314] FROMEXT: [WIP] dw-hdmi-qp: Add high TMDS clock ratio

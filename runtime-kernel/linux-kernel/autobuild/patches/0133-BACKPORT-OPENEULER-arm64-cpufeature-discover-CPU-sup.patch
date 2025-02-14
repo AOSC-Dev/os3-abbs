@@ -1,4 +1,4 @@
-From ab97fdd922dc2da4bc4a8bc25528f42121d4cc8b Mon Sep 17 00:00:00 2001
+From 6a23747bce76c6d58c54d13c94dd643bee75c973 Mon Sep 17 00:00:00 2001
 From: James Morse <james.morse@arm.com>
 Date: Mon, 22 Jan 2024 14:57:31 +0800
 Subject: [PATCH 133/314] BACKPORT: OPENEULER: arm64: cpufeature: discover CPU

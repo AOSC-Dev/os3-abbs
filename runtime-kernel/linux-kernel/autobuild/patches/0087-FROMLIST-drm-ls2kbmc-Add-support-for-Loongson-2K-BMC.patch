@@ -1,4 +1,4 @@
-From 443b6cc272348b97cb9f3db751d888150c4436f5 Mon Sep 17 00:00:00 2001
+From 660253a1cff927535cd5ae07d8d37caba4ee5549 Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Mon, 30 Dec 2024 17:31:10 +0800
 Subject: [PATCH 087/314] FROMLIST: drm/ls2kbmc: Add support for Loongson-2K

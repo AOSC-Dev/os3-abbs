@@ -1,4 +1,4 @@
-From 92af4cdf82124c2347ff82e4954fb67afbb33478 Mon Sep 17 00:00:00 2001
+From d2508ee7f528e312213eecffbabcc8c0416cbcb1 Mon Sep 17 00:00:00 2001
 From: Chen Baozi <chenbaozi@phytium.com.cn>
 Date: Fri, 14 Jul 2023 08:34:22 +0800
 Subject: [PATCH 115/314] BACKPORT: PHYTIUM: net: stmmac: Add Phytium GMAC glue

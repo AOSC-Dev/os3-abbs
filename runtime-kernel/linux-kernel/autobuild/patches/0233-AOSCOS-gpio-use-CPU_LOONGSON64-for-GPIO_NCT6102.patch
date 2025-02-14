@@ -1,4 +1,4 @@
-From 638e4a09a68d528d6709aa7a0b915b0fc8c5d954 Mon Sep 17 00:00:00 2001
+From 8d32bdbb602050b97f74947c376f40217ac0ce3b Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Mon, 9 Dec 2024 17:24:26 +0800
 Subject: [PATCH 233/314] AOSCOS: gpio: use CPU_LOONGSON64 for GPIO_NCT6102

@@ -1,4 +1,4 @@
-From c8b904d4844a9b37bd64477c9b66e31429bac614 Mon Sep 17 00:00:00 2001
+From 7c97a3cc21537e2feadf5d83ff5d4e72c60adbbc Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:35:04 -0600
 Subject: [PATCH 042/314] UPSTREAM: selftests: ntsync: Add some tests for

@@ -1,4 +1,4 @@
-From f6488b2a05ea814a7c58d6ec4f0003428e17ef1e Mon Sep 17 00:00:00 2001
+From 55d1a3d626ca75d15f8db9c25ae04e320f9dc516 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Sat, 25 Jan 2025 18:51:33 +0800
 Subject: [PATCH 050/314] UPSTREAM: LoongArch: Correct the cacheinfo sharing

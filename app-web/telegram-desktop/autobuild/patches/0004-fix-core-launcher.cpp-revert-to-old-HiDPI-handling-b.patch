@@ -1,7 +1,7 @@
-From 7078e410339a70e35591df47a6aa1ea5515285fd Mon Sep 17 00:00:00 2001
+From de568f020ced3b10c322b19efff6887a05f16fab Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 9 Apr 2024 22:04:57 +0800
-Subject: [PATCH 4/8] fix(core/launcher.cpp): revert to old HiDPI handling
+Subject: [PATCH 4/9] fix(core/launcher.cpp): revert to old HiDPI handling
  behaviour
 
 The current implementation makes icons blurry in Qt 5 builds, whilst
@@ -13,7 +13,7 @@ Co-authored-by: Henry Chen <chenx97@aosc.io>
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/Telegram/SourceFiles/core/launcher.cpp b/Telegram/SourceFiles/core/launcher.cpp
-index 312ce966..7a445f2c 100644
+index 312ce96673..7a445f2c8e 100644
 --- a/Telegram/SourceFiles/core/launcher.cpp
 +++ b/Telegram/SourceFiles/core/launcher.cpp
 @@ -342,7 +342,9 @@ void Launcher::initHighDpi() {
@@ -28,5 +28,5 @@ index 312ce966..7a445f2c 100644
  
  	if (OptionFractionalScalingEnabled.value()) {
 -- 
-2.47.1
+2.48.1
 

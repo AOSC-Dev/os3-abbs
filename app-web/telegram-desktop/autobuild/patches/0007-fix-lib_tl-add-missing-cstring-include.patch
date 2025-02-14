@@ -1,7 +1,7 @@
-From 5f6c8ca90f8b19cb9077ffdab6651d800baaf5c3 Mon Sep 17 00:00:00 2001
+From 96d88738e15613ff10092c4027c2903349139b56 Mon Sep 17 00:00:00 2001
 From: Kaiyang Wu <self@origincode.me>
 Date: Fri, 1 Nov 2024 23:15:07 -0700
-Subject: [PATCH 7/8] fix(lib_tl): add missing cstring include
+Subject: [PATCH 7/9] fix(lib_tl): add missing cstring include
 
 Signed-off-by: Kaiyang Wu <self@origincode.me>
 ---
@@ -9,7 +9,7 @@ Signed-off-by: Kaiyang Wu <self@origincode.me>
  1 file changed, 1 insertion(+)
 
 diff --git a/Telegram/lib_tl/tl/tl_basic_types.h b/Telegram/lib_tl/tl/tl_basic_types.h
-index 5eadf62a..961f7feb 100644
+index 5eadf62a93..961f7febe0 100644
 --- a/Telegram/lib_tl/tl/tl_basic_types.h
 +++ b/Telegram/lib_tl/tl/tl_basic_types.h
 @@ -10,6 +10,7 @@
@@ -21,5 +21,5 @@ index 5eadf62a..961f7feb 100644
  
  namespace tl {
 -- 
-2.47.1
+2.48.1
 

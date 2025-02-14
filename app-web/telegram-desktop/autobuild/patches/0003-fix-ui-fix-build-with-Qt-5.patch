@@ -1,7 +1,7 @@
-From b953f5c56ab128bde8e8eee4cbf01a4fb69657d7 Mon Sep 17 00:00:00 2001
+From c330f36eae2258614d4258f8c0e0de5343b1c898 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 9 Apr 2024 22:02:32 +0800
-Subject: [PATCH 3/8] fix(ui): fix build with Qt 5
+Subject: [PATCH 3/9] fix(ui): fix build with Qt 5
 
 Co-authored-by: Henry Chen <chenx97@aosc.io>
 ---
@@ -12,7 +12,7 @@ Co-authored-by: Henry Chen <chenx97@aosc.io>
  4 files changed, 8 insertions(+)
 
 diff --git a/Telegram/lib_ui/ui/text/text_entity.cpp b/Telegram/lib_ui/ui/text/text_entity.cpp
-index 810f5764..cd6200f5 100644
+index 810f5764ef..cd6200f555 100644
 --- a/Telegram/lib_ui/ui/text/text_entity.cpp
 +++ b/Telegram/lib_ui/ui/text/text_entity.cpp
 @@ -2417,6 +2417,8 @@ EntityInText::EntityInText(
@@ -25,7 +25,7 @@ index 810f5764..cd6200f5 100644
  		const EntitiesInText &entities,
  		int textLength) {
 diff --git a/Telegram/lib_ui/ui/text/text_entity.h b/Telegram/lib_ui/ui/text/text_entity.h
-index 75b5e8e3..dbbd5303 100644
+index 75b5e8e39c..dbbd530345 100644
 --- a/Telegram/lib_ui/ui/text/text_entity.h
 +++ b/Telegram/lib_ui/ui/text/text_entity.h
 @@ -71,6 +71,8 @@ public:
@@ -38,7 +38,7 @@ index 75b5e8e3..dbbd5303 100644
  		return _type;
  	}
 diff --git a/Telegram/lib_webview/CMakeLists.txt b/Telegram/lib_webview/CMakeLists.txt
-index f4e0bb84..eeed27c7 100644
+index f4e0bb8467..eeed27c7e9 100644
 --- a/Telegram/lib_webview/CMakeLists.txt
 +++ b/Telegram/lib_webview/CMakeLists.txt
 @@ -7,6 +7,7 @@
@@ -50,7 +50,7 @@ index f4e0bb84..eeed27c7 100644
  get_filename_component(src_loc . REALPATH)
  
 diff --git a/Telegram/lib_webview/webview/platform/linux/webview_linux_compositor.cpp b/Telegram/lib_webview/webview/platform/linux/webview_linux_compositor.cpp
-index 24274c37..a57c4fab 100644
+index 24274c3794..a57c4fab1f 100644
 --- a/Telegram/lib_webview/webview/platform/linux/webview_linux_compositor.cpp
 +++ b/Telegram/lib_webview/webview/platform/linux/webview_linux_compositor.cpp
 @@ -54,6 +54,7 @@ private:
@@ -68,5 +68,5 @@ index 24274c37..a57c4fab 100644
 +
 +#include "webview_linux_compositor.moc"
 -- 
-2.47.1
+2.48.1
 

@@ -1,7 +1,7 @@
-From 0175035d9eafe6f776a0de291ef8272a6e0ad5ff Mon Sep 17 00:00:00 2001
+From 32e2e189dd0ababf83e940f1469c1871ffdacaee Mon Sep 17 00:00:00 2001
 From: Kaiyang Wu <self@origincode.me>
 Date: Fri, 1 Nov 2024 23:28:52 -0700
-Subject: [PATCH 8/8] fix(lib_webview): add missing cstdint include
+Subject: [PATCH 8/9] fix(lib_webview): add missing cstdint include
 
 Signed-off-by: Kaiyang Wu <self@origincode.me>
 ---
@@ -9,7 +9,7 @@ Signed-off-by: Kaiyang Wu <self@origincode.me>
  1 file changed, 1 insertion(+)
 
 diff --git a/Telegram/lib_webview/webview/webview_interface.h b/Telegram/lib_webview/webview/webview_interface.h
-index d19d2534..660e5b27 100644
+index 4a92fe3020..3cf6125358 100644
 --- a/Telegram/lib_webview/webview/webview_interface.h
 +++ b/Telegram/lib_webview/webview/webview_interface.h
 @@ -12,6 +12,7 @@
@@ -21,5 +21,5 @@ index d19d2534..660e5b27 100644
  #include <rpl/never.h>
  #include <rpl/producer.h>
 -- 
-2.47.1
+2.48.1
 

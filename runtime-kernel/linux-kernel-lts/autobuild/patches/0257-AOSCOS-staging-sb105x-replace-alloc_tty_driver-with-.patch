@@ -1,4 +1,4 @@
-From c89b398423f8f7f57a3825fd3cbda6a719e000ec Mon Sep 17 00:00:00 2001
+From 764d8c5fc60d80c6ae459838cd479293f36bd7d2 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 11 Dec 2024 15:21:26 +0800
 Subject: [PATCH 257/296] AOSCOS: staging: sb105x: replace alloc_tty_driver()

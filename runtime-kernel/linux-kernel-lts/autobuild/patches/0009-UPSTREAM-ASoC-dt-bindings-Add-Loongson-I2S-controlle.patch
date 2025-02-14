@@ -1,4 +1,4 @@
-From 939deb917681d8a14cd4bf39703ce873b4a3d9a5 Mon Sep 17 00:00:00 2001
+From 9a4f5f8466d5cca126eae481784b0350c5032d85 Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Wed, 9 Oct 2024 15:52:37 +0800
 Subject: [PATCH 009/296] UPSTREAM: ASoC: dt-bindings: Add Loongson I2S

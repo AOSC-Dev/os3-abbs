@@ -1,4 +1,4 @@
-From 5fd0b3ec3ad676ce01fa0bc99a8b3da1f5092005 Mon Sep 17 00:00:00 2001
+From eccb5cca53c4338bac7d4eb66ee592c861323239 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jonas=20Dre=C3=9Fler?= <verdre@v0yd.nl>
 Date: Tue, 3 Nov 2020 13:28:04 +0100
 Subject: [PATCH 134/296] SURFACE: mwifiex: Add quirk resetting the PCI bridge

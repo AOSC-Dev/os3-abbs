@@ -1,4 +1,4 @@
-From 0a77409723a09ffe4dd1ad192a713cd8b0227c04 Mon Sep 17 00:00:00 2001
+From 12696194263986ec701a101613860c2db9052e48 Mon Sep 17 00:00:00 2001
 From: Li Wencheng <liwencheng@phytium.com.cn>
 Date: Mon, 25 Mar 2024 17:38:27 +0800
 Subject: [PATCH 110/296] BACKPORT: PHYTIUM: net/stmmac: Add phytium DWMAC

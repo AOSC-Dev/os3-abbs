@@ -1,4 +1,4 @@
-From ff71cb053146fe1ce5c51b5817c9434aaed28f26 Mon Sep 17 00:00:00 2001
+From 2bce6129369a6feb43511c08b9e4dc042d765810 Mon Sep 17 00:00:00 2001
 From: chenj <chenj@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 224/296] AOSCOS: snd-hda-codec: new symbol

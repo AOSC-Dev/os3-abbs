@@ -1,4 +1,4 @@
-From 7bcff09fa02575e965c2eb393ec676be1176dc65 Mon Sep 17 00:00:00 2001
+From 393b5fe173d13b7cfe02e64099aabffe4fc89f2a Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 212/296] AOSCOS: Fix touchpad status error after STR/STD

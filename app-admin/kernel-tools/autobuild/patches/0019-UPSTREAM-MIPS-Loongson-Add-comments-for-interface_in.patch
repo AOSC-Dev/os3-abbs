@@ -1,4 +1,4 @@
-From 878e6e8b8566ee9a278d6402786d8146ba59e438 Mon Sep 17 00:00:00 2001
+From 3932e051398dfcf28b9baa9edd108d9c06eb7c7a Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Sat, 11 Jan 2025 01:22:09 +0800
 Subject: [PATCH 019/314] UPSTREAM: MIPS: Loongson: Add comments for

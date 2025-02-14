@@ -1,4 +1,4 @@
-From 301d2258798b63be695a8b0623672dc7d0cb796a Mon Sep 17 00:00:00 2001
+From 3c350604b0feeb99f7d1c8a6415d43ef65c6efd1 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 11 Dec 2024 17:22:27 +0800
 Subject: [PATCH 283/314] AOSCOS: staging: sb105x: revise type of

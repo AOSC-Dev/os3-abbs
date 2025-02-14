@@ -1,4 +1,4 @@
-From f89dfd82d6b9cba70ba5992cab959694e324105a Mon Sep 17 00:00:00 2001
+From b090648d1bade4c7734e6488842344fe4f6bfe80 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 4 Dec 2024 15:47:29 +0800
 Subject: [PATCH 213/314] AOSCOS: platform: sd5075: mark non-prototyped

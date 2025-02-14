@@ -1,4 +1,4 @@
-From b4b8ac6b7c1fc9ae1456c204fc8f81f9fd37e3d6 Mon Sep 17 00:00:00 2001
+From 3c2760eadce825f09edd7640112ea8914873c871 Mon Sep 17 00:00:00 2001
 From: Jackie Dong <xy-jackie@139.com>
 Date: Wed, 22 Jan 2025 17:09:42 +0800
 Subject: [PATCH 092/314] FROMLIST: platform/x86: lenovo-super-hotkey-wmi.c:

@@ -1,4 +1,4 @@
-From b173c5d5671a8df2c2cbd8751314f99dee5697b6 Mon Sep 17 00:00:00 2001
+From 6784784f7b3060cbbb1916ecdefc9bb3404cedee Mon Sep 17 00:00:00 2001
 From: Qunqin Zhao <zhaoqunqin@loongson.cn>
 Date: Tue, 14 Jan 2025 16:07:00 +0800
 Subject: [PATCH 014/314] UPSTREAM: ALSA: hda: Add AZX_DCAPS_NO_TCSEL flag for

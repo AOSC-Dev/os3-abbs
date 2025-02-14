@@ -1,4 +1,4 @@
-From 51dd002688ded4eff9170f14ca5d1e9ebcb6813d Mon Sep 17 00:00:00 2001
+From 81cbad6097aab5f5cc83fc619fed3a410cd838d7 Mon Sep 17 00:00:00 2001
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Date: Tue, 4 Feb 2025 14:40:04 +0200
 Subject: [PATCH 054/314] FROMGIT: dt-bindings: display: vop2: Add optional PLL

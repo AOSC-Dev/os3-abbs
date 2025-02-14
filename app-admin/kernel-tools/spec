@@ -1,4 +1,4 @@
-VER=6.13.2
+VER=6.13.3
 
 # Note: For use inside autobuild/.
 __VER="${VER}"
@@ -9,10 +9,10 @@ __VER="${VER}"
 #SRCS="tbl::https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${VER%%.0}.tar.xz"
 
 # Use this for stable RC releases.
-RC=1
+RC=2
 # To RFC: Increment by 0.1 per RC release, i.e., RC3 = 0.3.
 REL=0.${RC}
-COMMIT="50782d9796dc3fc65d1e1b1a90e8887de3338baf"
+COMMIT="ac5999a6c007418f6c9a5f73abba2d28ed8db1a1"
 SRCS="tbl::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git/snapshot/linux-stable-rc-${COMMIT}.tar.gz"
 
 # Use this for mainline RC releases.
@@ -28,5 +28,5 @@ SRCS="tbl::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-r
 #TAG="next-20250124"
 #SRCS="tbl::https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/snapshot/linux-next-${TAG}.tar.gz"
 
-CHKSUMS="sha256::519c323dc3995a5ff6c41c8b70ee438282d53b2cfbdc421116f31ee5f2f85a1e"
+CHKSUMS="sha256::13943ac2612335675c4fc6f502c253949727413bc8329d945d0039c1d2a6d805"
 CHKUPDATE="anitya::id=6501"

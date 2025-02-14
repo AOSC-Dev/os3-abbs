@@ -1,0 +1,8 @@
+# FIXME: Loupe's SVG icon does not render properly under KDE, use a PNG to replace it.
+abinfo "Generating bitmap icon..."
+mkdir -pv "$PKGDIR"/usr/share/pixmaps/
+inkscape -o "$PKGDIR"/usr/share/pixmaps/org.gnome.Loupe.png \
+         -w 512 -h 512 "$SRCDIR"/data/icons/hicolor/scalable/apps/org.gnome.Loupe.svg
+
+abinfo "Deleting SVG icon..."
+rm -v "$PKGDIR"/usr/share/icons/hicolor/scalable/apps/org.gnome.Loupe.svg

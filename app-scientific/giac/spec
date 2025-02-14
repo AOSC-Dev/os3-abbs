@@ -1,4 +1,4 @@
-VER=1.9.0+93
+VER=1.9.0+998
 SRCS="tbl::https://www-fourier.ujf-grenoble.fr/~parisse/debian/dists/stable/main/source/giac_${VER/+/-}.tar.gz"
-CHKSUMS="sha256::153fddf4a27de32300cc3e9e9497875bc52b3ad212f5ff464e711323da5b4c85"
+CHKSUMS="sha256::7f490a56af52c18cfdb53a2370f31fe05d9e96c8456090c541c3f51e049de1e4"
 CHKUPDATE="anitya::id=15278"

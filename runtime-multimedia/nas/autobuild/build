@@ -17,5 +17,11 @@ make install \
 
 if [ -d "$PKGDIR"/usr/lib64 ]; then
     abinfo "Moving /usr/lib64 => /usr/lib ..."
-    mv -v "$PKGDIR"/usr/lib{64,}
+    if [ -d "$PKGDIR"/usr/lib ]; then
+        mv -v "$PKGDIR"/usr/lib64/* \
+            "$PKGDIR"/usr/lib/
+        rm -rv "$PKGDIR"/usr/lib64
+    else
+        mv -v "$PKGDIR"/usr/lib{64,}
+    fi
 fi

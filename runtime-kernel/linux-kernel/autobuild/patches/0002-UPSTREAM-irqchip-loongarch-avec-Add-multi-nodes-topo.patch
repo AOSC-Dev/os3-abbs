@@ -1,4 +1,4 @@
-From b634681a2604fd7e1128b06c7a8c90fb0a14f7c6 Mon Sep 17 00:00:00 2001
+From d468cebf907050e8a6a58869765ed903eaac8997 Mon Sep 17 00:00:00 2001
 From: Tianyang Zhang <zhangtianyang@loongson.cn>
 Date: Sat, 11 Jan 2025 10:37:04 +0800
 Subject: [PATCH 002/314] UPSTREAM: irqchip/loongarch-avec: Add multi-nodes

@@ -1,4 +1,4 @@
-From bfd6ce953ae61dabffce2c51b6473d2819334d51 Mon Sep 17 00:00:00 2001
+From 606dbb8827e1060cb60ab5559b77a5a7d1bf0b56 Mon Sep 17 00:00:00 2001
 From: Jocelyn Falempe <jfalempe@redhat.com>
 Date: Tue, 10 Dec 2024 10:28:46 +0100
 Subject: [PATCH 078/314] FROMLIST: drm/i915: Add drm_panic support for

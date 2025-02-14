@@ -1,4 +1,4 @@
-From 2370f00152c66aca234db580e9e2991e6120599f Mon Sep 17 00:00:00 2001
+From 729f036c5b089f57772e91ed5ed8810ba9c730e4 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Sat, 6 May 2017 09:28:30 +0800
 Subject: [PATCH 262/314] AOSCOS: drm/radeon: Use high performance profile

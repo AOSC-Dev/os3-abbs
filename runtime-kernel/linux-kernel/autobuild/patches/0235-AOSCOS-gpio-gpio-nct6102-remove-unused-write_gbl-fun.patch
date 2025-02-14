@@ -1,4 +1,4 @@
-From 551fbbc8e09bb1f952e4ddebbeb176f95ff2d571 Mon Sep 17 00:00:00 2001
+From 6d903789b86bc912846dea95b6e326a1df8cd862 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Mon, 9 Dec 2024 17:30:53 +0800
 Subject: [PATCH 235/314] AOSCOS: gpio: gpio-nct6102: remove unused write_gbl()

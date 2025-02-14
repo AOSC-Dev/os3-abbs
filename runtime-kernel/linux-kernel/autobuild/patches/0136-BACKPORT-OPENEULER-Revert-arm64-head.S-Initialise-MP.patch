@@ -1,4 +1,4 @@
-From cd1d31730945c1021f3297d10b3258d9abbc4e1b Mon Sep 17 00:00:00 2001
+From af0b3428a1d93643c9b0c39a17198eb4763faf6b Mon Sep 17 00:00:00 2001
 From: Zeng Heng <zengheng4@huawei.com>
 Date: Tue, 24 Sep 2024 21:47:52 +0800
 Subject: [PATCH 136/314] BACKPORT: OPENEULER: Revert "arm64: head.S:

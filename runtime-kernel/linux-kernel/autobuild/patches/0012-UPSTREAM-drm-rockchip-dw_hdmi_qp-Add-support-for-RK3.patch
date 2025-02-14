@@ -1,4 +1,4 @@
-From abb5fb2eb1194492b6b975807a73867ab096400f Mon Sep 17 00:00:00 2001
+From be51500dc96c4d61c6a106abce813997e81fd483 Mon Sep 17 00:00:00 2001
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Date: Wed, 11 Dec 2024 01:06:14 +0200
 Subject: [PATCH 012/314] UPSTREAM: drm/rockchip: dw_hdmi_qp: Add support for

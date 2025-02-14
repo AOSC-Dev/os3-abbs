@@ -1,4 +1,4 @@
-From 47fbe5a3d96770f5e0f09935b6e261732d81a82d Mon Sep 17 00:00:00 2001
+From dcd5360cb87fa682f24b6171ea33ce0b2bc81648 Mon Sep 17 00:00:00 2001
 From: PJungkamp <p.jungkamp@gmail.com>
 Date: Fri, 25 Feb 2022 12:04:25 +0100
 Subject: [PATCH 157/314] BACKPORT: SURFACE: hid/multitouch: Add support for

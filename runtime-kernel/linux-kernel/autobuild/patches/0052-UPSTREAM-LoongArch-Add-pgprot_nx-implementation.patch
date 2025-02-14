@@ -1,4 +1,4 @@
-From 2bc6bae36c997cb5ab47a7be78146155633adb77 Mon Sep 17 00:00:00 2001
+From f852e86463afc654f83ad8ba03cba6aa7f107fd1 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Sat, 25 Jan 2025 18:51:42 +0800
 Subject: [PATCH 052/314] UPSTREAM: LoongArch: Add pgprot_nx() implementation

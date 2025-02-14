@@ -1,4 +1,4 @@
-From eb5ea6f3487b5d96244264b4455398eec8394fef Mon Sep 17 00:00:00 2001
+From 34318009740cdaa0a5d2cda75f8f163d04fc223c Mon Sep 17 00:00:00 2001
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Date: Tue, 4 Feb 2025 14:40:08 +0200
 Subject: [PATCH 058/314] FROMGIT: arm64: dts: rockchip: Add HDMI0 PHY PLL

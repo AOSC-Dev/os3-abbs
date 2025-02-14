@@ -1,4 +1,4 @@
-From 690c18c06d90e1359e9c6fcaa981a17f2207221f Mon Sep 17 00:00:00 2001
+From 89da884504149cddfbf2c52802366cfbb6c1451f Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Mon, 9 Dec 2024 17:34:17 +0800
 Subject: [PATCH 237/314] AOSCOS: gpio: gpio-nct6102: revise gpiochip_add() as

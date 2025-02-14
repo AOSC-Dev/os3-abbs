@@ -1,4 +1,4 @@
-From 173c19e2b24fd927916bcfd909ab284ddf6dc728 Mon Sep 17 00:00:00 2001
+From f699b0f7e30ed5bd33f689cd4ce45b6ca2439e60 Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Sat, 25 Jan 2025 03:03:03 +0800
 Subject: [PATCH 199/314] AOSCOS: MIPS: loongson64: deselect

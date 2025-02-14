@@ -1,4 +1,4 @@
-From 5c645456577aef8fe02f771fbfb83e5bbc09fffe Mon Sep 17 00:00:00 2001
+From 0817559e6a8d9ee929f066321de12a66a09e014b Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 11 Dec 2024 16:19:05 +0800
 Subject: [PATCH 279/314] AOSCOS: staging: sb105x: drop TTY_DRIVER_MAGIC

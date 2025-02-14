@@ -4,4 +4,21 @@ PKGDEP="libsndfile cairo freetype gstreamer jack x11-lib libglvnd"
 BUILDDEP="php"
 PKGSEC=sound
 
+# FIXME: Cannot build with gcc on AMD64.
+# With messages:
+#	
+#	/tmp/ccCb7YFl.s: Assembler messages:
+#	/tmp/ccCb7YFl.s: Error: local label `"10" (instance number 47 of a fb label)' is not defined
+#	make[4]: *** [/tmp/ccqitsKo.mk:23: /tmp/ccbw5cwD.ltrans7.ltrans.o] Error 1
+#	make[4]: *** Waiting for unfinished jobs....
+#	/tmp/ccYSPDAL.s: Assembler messages:
+#	/tmp/ccYSPDAL.s: Error: local label `"10" (instance number 47 of a fb label)' is not defined
+#	make[4]: *** [/tmp/ccKDotND.mk:23: /tmp/cciKDdUu.ltrans7.ltrans.o] Error 1
+#	make[4]: *** Waiting for unfinished jobs....
+#	/tmp/ccSBD3rS.s: Assembler messages:
+#	/tmp/ccSBD3rS.s: Error: local label `"10" (instance number 47 of a fb label)' is not defined
+#	make[4]: *** [/tmp/ccUbNhBs.mk:23: /tmp/ccZ5rg1O.ltrans7.ltrans.o] Error 1
+#	make[4]: *** Waiting for unfinished jobs.... 
+#
+NOLTO__AMD64=1
 ABTYPE=self

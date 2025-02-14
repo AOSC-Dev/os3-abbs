@@ -1,7 +1,7 @@
-From 6d02d47936ac14c5c14ea7d9db6cccddab2410cb Mon Sep 17 00:00:00 2001
+From 176aa090cbac97956e2861f2ba07c409e3148c2a Mon Sep 17 00:00:00 2001
 From: Xianglai Li <lixianglai@loongson.cn>
 Date: Wed, 13 Nov 2024 16:18:26 +0800
-Subject: [PATCH 018/300] UPSTREAM: LoongArch: KVM: Add iocsr and mmio bus
+Subject: [PATCH 018/296] UPSTREAM: LoongArch: KVM: Add iocsr and mmio bus
  simulation in kernel
 
 Add iocsr and mmio memory read and write simulation to the kernel. When
@@ -156,7 +156,7 @@ index 90894f70ff4a..69f3e3782cc9 100644
  }
  
 diff --git a/include/linux/kvm_host.h b/include/linux/kvm_host.h
-index 85fe9d0ebb91..832a440af6d4 100644
+index 2c66ca21801c..3ae0af2165b3 100644
 --- a/include/linux/kvm_host.h
 +++ b/include/linux/kvm_host.h
 @@ -219,6 +219,7 @@ enum kvm_bus {

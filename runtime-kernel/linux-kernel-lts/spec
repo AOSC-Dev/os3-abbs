@@ -1,19 +1,19 @@
-VER=6.12.13
+VER=6.12.14
 
 # Note: For use inside autobuild/.
 __VER="${VER}"
 
 # Use this for stable releases.
-REL=2
+#REL=2
 # Note: In specific cases, `www.kernel.org` is faster than `cdn.kernel.org`. Change the host when appropriate.
-SRCS="tbl::https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${VER%%.0}.tar.xz"
+#SRCS="tbl::https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${VER%%.0}.tar.xz"
 
 # Use this for stable RC releases.
-#RC=2
+RC=1
 # To RFC: Increment by 0.1 per RC release, i.e., RC3 = 0.3.
-#REL=0.${RC}
-#COMMIT="c4de2ac60676d8cbaedb6e7a4b422c65b911f12e"
-#SRCS="tbl::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git/snapshot/linux-stable-rc-${COMMIT}.tar.gz"
+REL=0.${RC}
+COMMIT="fb9a4bb2450b6b0f073a493bd6a1f54f231413e9"
+SRCS="tbl::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git/snapshot/linux-stable-rc-${COMMIT}.tar.gz"
 
 # Use this for mainline RC releases.
 #RC=1
@@ -28,5 +28,5 @@ SRCS="tbl::https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${VER%%.0}.tar.xz"
 #TAG="next-20250124"
 #SRCS="tbl::https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/snapshot/linux-next-${TAG}.tar.gz"
 
-CHKSUMS="sha256::f3ebdeea9e555b4cface44e29670056f4024541e6bd222fbcf776c818974fbba"
+CHKSUMS="sha256::9d93cca9ff2fb43a740dd58e95c96544030fccf0c2f1f269269bfd4773f7bb2d"
 CHKUPDATE="anitya::id=6501"

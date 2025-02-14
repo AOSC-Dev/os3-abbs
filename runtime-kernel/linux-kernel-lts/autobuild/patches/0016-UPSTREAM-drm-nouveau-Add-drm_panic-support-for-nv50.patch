@@ -1,7 +1,7 @@
-From 623529f0265d033ae99637d0622b534b43b38f6b Mon Sep 17 00:00:00 2001
+From 3b0bba6bb431777659ac3476a4c2a46a4d3df7a9 Mon Sep 17 00:00:00 2001
 From: Jocelyn Falempe <jfalempe@redhat.com>
 Date: Tue, 22 Oct 2024 20:39:49 +0200
-Subject: [PATCH 016/300] UPSTREAM: drm/nouveau: Add drm_panic support for
+Subject: [PATCH 016/296] UPSTREAM: drm/nouveau: Add drm_panic support for
  nv50+
 
 Add drm_panic support for nv50+ cards.

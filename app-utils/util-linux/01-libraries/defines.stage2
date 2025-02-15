@@ -2,7 +2,7 @@ PKGNAME=util-linux-runtime
 PKGSEC=utils
 PKGDES="Utilities and management tools for Linux (runtime libraries)"
 PKGDEP="glibc"
-BUILDDEP="asciidoctor coreutils linux-pam systemd"
+BUILDDEP="coreutils linux-pam"
 
 AUTOTOOLS_AFTER="--localstatedir=/run \
                  --enable-fs-paths-extra=/usr/bin \

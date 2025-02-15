@@ -9,9 +9,7 @@ AUTOTOOLS_AFTER="--disable-werror \
                  --enable-threads \
                  --enable-app \
                  --enable-hpack-tools \
-                 --enable-asio-lib \
                  --disable-examples \
-                 --enable-python-bindings \
                  --disable-failmalloc \
                  --disable-lib-only \
                  --disable-http3 \
@@ -26,12 +24,10 @@ AUTOTOOLS_AFTER="--disable-werror \
                  --with-libev \
                  --with-cunit=no \
                  --with-jemalloc \
-                 --with-systemd \
+                 --with-systemd=no \
                  --with-mruby=no \
                  --with-neverbleed=no \
-                 --without-cython \
                  --with-libngtcp2=no \
                  --with-libnghttp3=no \
                  --without-libbpf \
-                 --without-boost \
                  PYTHON=/usr/bin/python3"

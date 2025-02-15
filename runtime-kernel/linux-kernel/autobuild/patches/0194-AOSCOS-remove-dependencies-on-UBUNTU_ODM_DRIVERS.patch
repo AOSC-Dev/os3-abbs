@@ -1,4 +1,4 @@
-From 76d74d23b254911363de27cc4e9548698b84a26d Mon Sep 17 00:00:00 2001
+From f2e0fca16b6cecc83c56588d8b3422d9784f329f Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Thu, 21 Nov 2024 18:53:37 +0800
 Subject: [PATCH 194/314] AOSCOS: remove dependencies on UBUNTU_ODM_DRIVERS

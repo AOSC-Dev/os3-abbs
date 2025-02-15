@@ -1,4 +1,4 @@
-From cbb6f4f2aae34eca5cc2938d34e10f3976d99bee Mon Sep 17 00:00:00 2001
+From 9b2b7bd1120f9bbadf0a44572c93f897ad81481f Mon Sep 17 00:00:00 2001
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Date: Mon, 2 Dec 2024 22:00:57 +0200
 Subject: [PATCH 016/314] UPSTREAM: arm64: defconfig: Enable Rockchip

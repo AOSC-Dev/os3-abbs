@@ -1,4 +1,4 @@
-From e42badbabd4c6aa57863035fa03328cef617e449 Mon Sep 17 00:00:00 2001
+From 40ff92f486d96ea594f9e98d55d4124088aaff86 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <baimingcong@uniontech.com>
 Date: Fri, 28 Jun 2024 14:08:40 +0800
 Subject: [PATCH 146/314] DEEPIN: net: ethernet: fix phytmac on 6.9

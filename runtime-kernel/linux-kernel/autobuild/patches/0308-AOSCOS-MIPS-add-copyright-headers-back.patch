@@ -1,4 +1,4 @@
-From beb189dd2bfd73a8fee4caf3ab792647227cb726 Mon Sep 17 00:00:00 2001
+From d00e0d9318e61c0cb37d49235ce9f9e565fd7e61 Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Tue, 17 Dec 2024 05:45:49 +0800
 Subject: [PATCH 308/314] AOSCOS: MIPS: add copyright headers back

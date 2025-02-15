@@ -1,4 +1,4 @@
-From 49cdd3e6c9d4ba9a17c50bccb3f352a6180cf0b1 Mon Sep 17 00:00:00 2001
+From 131ed14482b64a88d3907386f80abe91e013fbfd Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 266/314] AOSCOS: sm750fb: Disable hw_cursor to avoid screen

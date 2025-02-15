@@ -1,4 +1,4 @@
-From 269eae594e151275755e9a7a307f84ae1e890ab2 Mon Sep 17 00:00:00 2001
+From ebd1a893ad3bba67dea43bddc6ec0b4adc3d825c Mon Sep 17 00:00:00 2001
 From: Jocelyn Falempe <jfalempe@redhat.com>
 Date: Thu, 31 Oct 2024 13:27:03 -0400
 Subject: [PATCH 010/314] UPSTREAM: drm/amd/display: add DC drm_panic support

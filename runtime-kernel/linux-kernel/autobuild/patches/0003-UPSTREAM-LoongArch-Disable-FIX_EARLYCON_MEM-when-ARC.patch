@@ -1,4 +1,4 @@
-From 8ee6b88e4ba10d7779eea02dd3f475574bcfcdac Mon Sep 17 00:00:00 2001
+From ed6eed97489c31b766ad21c369de2b97f8327c25 Mon Sep 17 00:00:00 2001
 From: Jiaxun Yang <jiaxun.yang@flygoat.com>
 Date: Sat, 25 Jan 2025 18:51:33 +0800
 Subject: [PATCH 003/314] UPSTREAM: LoongArch: Disable FIX_EARLYCON_MEM when

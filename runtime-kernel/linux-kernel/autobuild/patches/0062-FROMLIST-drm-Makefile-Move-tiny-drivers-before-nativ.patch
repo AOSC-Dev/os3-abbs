@@ -1,4 +1,4 @@
-From 834979dd66d21535197ec250244e3271d6741930 Mon Sep 17 00:00:00 2001
+From 3a660db47723f01655f6c4a55a882536c96591bd Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Wed, 8 Nov 2023 10:46:13 +0800
 Subject: [PATCH 062/314] FROMLIST: drm/Makefile: Move tiny drivers before

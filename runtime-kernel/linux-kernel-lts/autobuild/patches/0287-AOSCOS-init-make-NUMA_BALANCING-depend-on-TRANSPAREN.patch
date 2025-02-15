@@ -1,4 +1,4 @@
-From 4a09a37bfb6853f50f9db22ea075b52e032f2f7c Mon Sep 17 00:00:00 2001
+From 37ed02cd84c723a3ae167594b4b735c416f7acb0 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Thu, 12 Dec 2024 16:07:57 +0800
 Subject: [PATCH 287/296] AOSCOS: init: make NUMA_BALANCING depend on

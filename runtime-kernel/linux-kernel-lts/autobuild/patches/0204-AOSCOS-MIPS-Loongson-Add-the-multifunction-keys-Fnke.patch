@@ -1,4 +1,4 @@
-From 7a0f50bd166550e6809c6336f7aff53bfbb49dfe Mon Sep 17 00:00:00 2001
+From 9a3fd1a031a8279b0ccb09b7c7582d9f6aac9d64 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 204/296] AOSCOS: MIPS: Loongson: Add the multifunction keys

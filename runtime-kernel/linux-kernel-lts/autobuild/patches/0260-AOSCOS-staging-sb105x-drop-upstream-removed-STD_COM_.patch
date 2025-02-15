@@ -1,4 +1,4 @@
-From a1d7418c1fe9d5b91e76a25e0596add99618d57f Mon Sep 17 00:00:00 2001
+From 983aac80755f18fa2b86ca348594a30272ded8e9 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 11 Dec 2024 16:02:01 +0800
 Subject: [PATCH 260/296] AOSCOS: staging: sb105x: drop upstream-removed

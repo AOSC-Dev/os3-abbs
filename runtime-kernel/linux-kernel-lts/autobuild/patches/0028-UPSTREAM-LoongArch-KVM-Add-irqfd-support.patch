@@ -1,4 +1,4 @@
-From 3a862521243f0d37a6106c376872778ee08cf30e Mon Sep 17 00:00:00 2001
+From fa352037ec9c50185a1305d8cbe73afad9e5a1a5 Mon Sep 17 00:00:00 2001
 From: Xianglai Li <lixianglai@loongson.cn>
 Date: Wed, 13 Nov 2024 16:18:27 +0800
 Subject: [PATCH 028/296] UPSTREAM: LoongArch: KVM: Add irqfd support

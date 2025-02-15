@@ -1,4 +1,4 @@
-From 57fbfb2de5d40df5adb9da0a282b6e621e168524 Mon Sep 17 00:00:00 2001
+From b1bdd86b7dc18f848377d47cffd9fb91e586b11f Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Wed, 9 Oct 2024 15:52:26 +0800
 Subject: [PATCH 008/296] UPSTREAM: ASoC: codecs: Add uda1342 codec driver

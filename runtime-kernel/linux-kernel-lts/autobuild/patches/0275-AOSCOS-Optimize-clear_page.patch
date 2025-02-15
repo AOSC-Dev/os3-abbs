@@ -1,4 +1,4 @@
-From 748410ed64f4f84e4fa9c33c1c823e43ea033d23 Mon Sep 17 00:00:00 2001
+From b6f02bb2b684e2bd4eec5fcc2f9944600002b1ce Mon Sep 17 00:00:00 2001
 From: chenj <chenj@lemote.com>
 Date: Thu, 1 Dec 2016 09:51:35 +0800
 Subject: [PATCH 275/296] AOSCOS: Optimize clear_page

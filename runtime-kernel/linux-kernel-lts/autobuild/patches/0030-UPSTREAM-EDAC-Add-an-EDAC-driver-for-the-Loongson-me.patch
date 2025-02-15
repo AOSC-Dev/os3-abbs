@@ -1,4 +1,4 @@
-From 21f47f20aa4e107973d2fdadb9badcad9dc99d4e Mon Sep 17 00:00:00 2001
+From e5b0fe4930e838fb5aa143b3b85d004f40b2b065 Mon Sep 17 00:00:00 2001
 From: Zhao Qunqin <zhaoqunqin@loongson.cn>
 Date: Thu, 19 Dec 2024 20:48:46 +0800
 Subject: [PATCH 030/296] UPSTREAM: EDAC: Add an EDAC driver for the Loongson

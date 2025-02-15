@@ -1,4 +1,4 @@
-From a08f7889d33fc6541691bf1a2aea00f1af37f880 Mon Sep 17 00:00:00 2001
+From 7527e9b6423a64d177336e182cc7f2a06a790f85 Mon Sep 17 00:00:00 2001
 From: Mario Limonciello <mario.limonciello@amd.com>
 Date: Sat, 12 Oct 2024 12:45:19 -0500
 Subject: [PATCH 002/296] UPSTREAM: cpufreq/amd-pstate: Drop needless EPP

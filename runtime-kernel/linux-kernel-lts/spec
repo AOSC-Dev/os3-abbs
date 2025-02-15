@@ -9,10 +9,10 @@ __VER="${VER}"
 #SRCS="tbl::https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${VER%%.0}.tar.xz"
 
 # Use this for stable RC releases.
-RC=2
+RC=3
 # To RFC: Increment by 0.1 per RC release, i.e., RC3 = 0.3.
 REL=0.${RC}
-COMMIT="a58d06766300ee3c9d11ab5624a75ac7283af746"
+COMMIT="aa95ced31609f49f9342be3c04e538ccf5b2ba18"
 SRCS="tbl::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git/snapshot/linux-stable-rc-${COMMIT}.tar.gz"
 
 # Use this for mainline RC releases.
@@ -28,5 +28,5 @@ SRCS="tbl::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-r
 #TAG="next-20250124"
 #SRCS="tbl::https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/snapshot/linux-next-${TAG}.tar.gz"
 
-CHKSUMS="sha256::ed3bf3b9ab9270fd6b735f86c6f2132d71551f3ee4514448a477a622d0019cc8"
+CHKSUMS="sha256::59d18ea8cab86c5e7a7b82bdfb9bcd5bb58d2a278950a51db8cc971a1d5815a9"
 CHKUPDATE="anitya::id=6501"

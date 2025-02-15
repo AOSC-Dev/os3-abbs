@@ -7,8 +7,17 @@ PKGSEC=admin
 # extra-admin/dbus/autobuild/defines.stage2 for details.
 # Also note that you don't need to change anything related to systemd.
 PKGDEP="glib acl bash kbd libcap linux-pam util-linux-runtime hwdata \
-               aosc-aaa kmod dbus"
+        aosc-aaa kmod dbus"
 BUILDDEP="gperf intltool jinja2 pyelftools"
+BUILDDEP__RETRO="gperf intltool jinja2"
+BUILDDEP__ARMV4="${BUILDDEP__RETRO}"
+BUILDDEP__ARMV6HF="${BUILDDEP__RETRO}"
+BUILDDEP__ARMV7HF="${BUILDDEP__RETRO}"
+BUILDDEP__I486="${BUILDDEP__RETRO}"
+BUILDDEP__LOONGSON2F="${BUILDDEP__RETRO}"
+BUILDDEP__M68K="${BUILDDEP__RETRO}"
+BUILDDEP__POWERPC="${BUILDDEP__RETRO}"
+BUILDDEP__PPC64="${BUILDDEP__RETRO}"
 PKGDES="System and service manager"
 
 ABTYPE=meson

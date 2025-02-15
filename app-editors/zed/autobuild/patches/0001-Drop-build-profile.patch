@@ -1,0 +1,28 @@
+From 177681d297e852f6d79eb9c6fead52b1264e840f Mon Sep 17 00:00:00 2001
+From: eatradish <sakiiily@aosc.io>
+Date: Sat, 15 Feb 2025 18:21:13 +0800
+Subject: [PATCH] Drop build profile
+
+---
+ Cargo.toml | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/Cargo.toml b/Cargo.toml
+index 555190ae7f..2e04ab5e96 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -682,11 +682,6 @@ time_format = { codegen-units = 1 }
+ ui_input = { codegen-units = 1 }
+ zed_actions = { codegen-units = 1 }
+ 
+-[profile.release]
+-debug = "limited"
+-lto = "thin"
+-codegen-units = 1
+-
+ [profile.release.package]
+ zed = { codegen-units = 16 }
+ 
+-- 
+2.48.1
+

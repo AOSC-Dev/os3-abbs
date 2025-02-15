@@ -1,4 +1,4 @@
-VER=6.12
+VER=6.13
 SRCS="https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v$VER.tar.xz"
-CHKSUMS="sha256::9a7d9651ffd52fbe5212a8e4852a3cdb079e3d223fc5504e6a50b0ba96cd20a1"
+CHKSUMS="sha256::65b3f21117a594f80013b432620eecc6a7e2b0c05eab97136ff506c74d73ee9a"
 CHKUPDATE="anitya::id=227"

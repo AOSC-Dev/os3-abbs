@@ -1,4 +1,4 @@
-VER=6.8.3
-SRCS="tbl::https://pypi.io/packages/source/s/sip/sip-$VER.tar.gz"
-CHKSUMS="sha256::888547b018bb24c36aded519e93d3e513d4c6aa0ba55b7cc1affbd45cf10762c"
+VER=6.10.0
+SRCS="pypi::version=$VER::sip"
+CHKSUMS="sha256::fa0515697d4c98dbe04d9e898d816de1427e5b9ae5d0e152169109fd21f5d29c"
 CHKUPDATE="anitya::id=25851"

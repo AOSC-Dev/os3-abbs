@@ -1,4 +1,4 @@
-From ad4b114768b784c78b38be5d35a0bcb15a99d024 Mon Sep 17 00:00:00 2001
+From b5319558539c6fc5b36556eafcb0afd206e7a8ab Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 11 Dec 2024 10:31:17 +0800
 Subject: [PATCH 258/314] AOSCOS: drm: radeon: use rdev_to_drm(rdev)

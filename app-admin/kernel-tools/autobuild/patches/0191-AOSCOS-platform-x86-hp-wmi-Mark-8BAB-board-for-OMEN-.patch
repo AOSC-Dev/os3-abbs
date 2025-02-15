@@ -1,4 +1,4 @@
-From 4ccbc8d871ffa283c6c8312669a4bb5942a50ab3 Mon Sep 17 00:00:00 2001
+From 0338da8c83b233dc545892c5cf1654392b272e4c Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Sat, 2 Nov 2024 22:25:37 +0800
 Subject: [PATCH 191/314] AOSCOS: platform/x86: hp-wmi: Mark 8BAB board for

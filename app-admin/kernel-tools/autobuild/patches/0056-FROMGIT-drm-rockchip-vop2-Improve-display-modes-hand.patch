@@ -1,4 +1,4 @@
-From bbb6e7363e0ae1e4fe414270c7e8790e78795f9e Mon Sep 17 00:00:00 2001
+From 5808a4597dda65b72bec2d7b691e663f59453537 Mon Sep 17 00:00:00 2001
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Date: Tue, 4 Feb 2025 14:40:06 +0200
 Subject: [PATCH 056/314] FROMGIT: drm/rockchip: vop2: Improve display modes

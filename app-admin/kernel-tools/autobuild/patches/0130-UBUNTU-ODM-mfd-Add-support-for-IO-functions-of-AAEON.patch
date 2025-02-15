@@ -1,4 +1,4 @@
-From df65ed1e9d8563e894448e2b23f21362cd3fe801 Mon Sep 17 00:00:00 2001
+From 964efb174932a6f9cbe6a4ef02eaebb04a03b4da Mon Sep 17 00:00:00 2001
 From: Kunyang_Fan <kunyang_fan@asus.com>
 Date: Wed, 16 Jun 2021 13:56:58 +0800
 Subject: [PATCH 130/314] UBUNTU: ODM: mfd: Add support for IO functions of

@@ -1,4 +1,4 @@
-From b7eb1f2862ffca274c91afd29e94d9a5fb1c4762 Mon Sep 17 00:00:00 2001
+From 7bf56e6cab2933281b3387bd07946a09ad3404b2 Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Sun, 22 Sep 2024 03:19:19 +0800
 Subject: [PATCH 173/314] AOSCOS: net: stmmac: Make phytium_dwmac_remove()

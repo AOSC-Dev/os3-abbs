@@ -1,4 +1,4 @@
-From fca349fdc2b95910d3cbca1b4af8b856b4e20bae Mon Sep 17 00:00:00 2001
+From 167425e1dba41e5f8239e47a71398700cc5b8f03 Mon Sep 17 00:00:00 2001
 From: Jiaxun Yang <jiaxun.yang@flygoat.com>
 Date: Sat, 25 Jan 2025 18:51:33 +0800
 Subject: [PATCH 004/314] UPSTREAM: LoongArch: Derive timer max_delta from

@@ -1,4 +1,4 @@
-From b41a314ce9149fa8e37c3965b28214640087a1db Mon Sep 17 00:00:00 2001
+From a20c40892d358be2dc7a58c66e46e74b4ac06ba9 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Sat, 25 Jan 2025 18:51:42 +0800
 Subject: [PATCH 053/314] UPSTREAM: LoongArch: Refactor bug_handler()

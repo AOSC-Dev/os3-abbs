@@ -1,0 +1,11 @@
+diff '--color=auto' -bur qutebrowser-3.4.0/MANIFEST.in qutebrowser-3.4.0-modified/MANIFEST.in
+--- qutebrowser-3.4.0/MANIFEST.in	2024-12-14 12:52:01.000000000 -0800
++++ qutebrowser-3.4.0-modified/MANIFEST.in	2025-02-14 20:30:13.124282496 -0800
+@@ -30,7 +30,6 @@
+ recursive-exclude doc *.asciidoc
+ include doc/qutebrowser.1.asciidoc
+ include doc/changelog.asciidoc
+-prune qutebrowser/3rdparty
+ exclude mypy.ini
+ exclude pyrightconfig.json
+ exclude tox.ini

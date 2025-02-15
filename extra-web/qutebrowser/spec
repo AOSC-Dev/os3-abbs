@@ -1,4 +1,11 @@
 VER=3.4.0
-SRCS="tbl::https://github.com/qutebrowser/qutebrowser/releases/download/v$VER/qutebrowser-$VER.tar.gz"
-CHKSUMS="sha256::814124c0ed337430e613a1da366d5e38904cb2049afb1505971456ca5ca6223e"
+# NOTE: Find the latest pdf.js version in
+# https://github.com/mozilla/pdf.js/releases
+PDFJS_VER=4.10.38
+REL=1
+SRCS="tbl::https://github.com/qutebrowser/qutebrowser/releases/download/v$VER/qutebrowser-$VER.tar.gz \
+      file::rename=pdfjs.zip::https://github.com/mozilla/pdf.js/releases/download/v$PDFJS_VER/pdfjs-$PDFJS_VER-dist.zip"
+CHKSUMS="sha256::814124c0ed337430e613a1da366d5e38904cb2049afb1505971456ca5ca6223e \
+         sha256::32bdd9c5198b77dbaa8f02de81f34476888b3abdd64b9fb5f607f81f01487e6a"
+SUBDIR="qutebrowser-$VER"
 CHKUPDATE="anitya::id=9759"

@@ -1,0 +1,4 @@
+abinfo "Adding bundled pdf.js ..."
+mkdir -pv "$SRCDIR"/qutebrowser/3rdparty/pdfjs
+unzip "$SRCDIR"/../pdfjs.zip \
+    -d "$SRCDIR"/qutebrowser/3rdparty/pdfjs/

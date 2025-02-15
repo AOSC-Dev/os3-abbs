@@ -1,4 +1,4 @@
-From c7e29353e996b2b9e78cffbaea848cd9ed660dff Mon Sep 17 00:00:00 2001
+From 1d84b3bc98be08c8b5fb25dfbbdbfda986066917 Mon Sep 17 00:00:00 2001
 From: Alex Deucher <alexander.deucher@amd.com>
 Date: Tue, 12 Nov 2024 16:19:18 -0500
 Subject: [PATCH 034/296] UPSTREAM: drm/amd/display/dc: add helper for panic

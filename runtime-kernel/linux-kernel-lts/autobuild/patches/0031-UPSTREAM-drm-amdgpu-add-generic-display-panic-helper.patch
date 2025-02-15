@@ -1,4 +1,4 @@
-From 528d1e7068a0ab9739743337cba39a3fca96484b Mon Sep 17 00:00:00 2001
+From 76f62890f5cec7eb5e81cc41bb3cafec856e22e3 Mon Sep 17 00:00:00 2001
 From: Alex Deucher <alexander.deucher@amd.com>
 Date: Wed, 30 Oct 2024 17:27:23 -0400
 Subject: [PATCH 031/296] UPSTREAM: drm/amdgpu: add generic display panic

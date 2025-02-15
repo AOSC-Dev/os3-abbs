@@ -1,4 +1,4 @@
-From c362d887d6259b232db530fb28e92492a2646faf Mon Sep 17 00:00:00 2001
+From 451008584565c03d53d2e88a39c43dd79989086e Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Fri, 3 Nov 2017 09:15:11 +0800
 Subject: [PATCH 247/296] AOSCOS: sm750fb: change default screen resolution

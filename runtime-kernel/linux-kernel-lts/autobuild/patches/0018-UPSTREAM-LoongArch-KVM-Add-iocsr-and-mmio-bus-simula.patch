@@ -1,4 +1,4 @@
-From de4af7e9810f2d788dc40062a1fa79a0a6d9e9e9 Mon Sep 17 00:00:00 2001
+From fa191ef49328c8a0c83e9c7225c1fd4682b086d6 Mon Sep 17 00:00:00 2001
 From: Xianglai Li <lixianglai@loongson.cn>
 Date: Wed, 13 Nov 2024 16:18:26 +0800
 Subject: [PATCH 018/296] UPSTREAM: LoongArch: KVM: Add iocsr and mmio bus

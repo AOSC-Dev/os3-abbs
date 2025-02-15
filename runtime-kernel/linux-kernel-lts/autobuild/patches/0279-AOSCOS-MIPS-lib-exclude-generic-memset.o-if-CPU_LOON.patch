@@ -1,4 +1,4 @@
-From 1e639c0462ea260e590b58c08a9cc951958ec38f Mon Sep 17 00:00:00 2001
+From 87c0f399010703bd2737d37f21c0979be6677379 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Thu, 12 Dec 2024 13:33:50 +0800
 Subject: [PATCH 279/296] AOSCOS: MIPS: lib: exclude generic memset.o if

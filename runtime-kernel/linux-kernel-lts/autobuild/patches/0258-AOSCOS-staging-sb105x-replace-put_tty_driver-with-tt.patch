@@ -1,4 +1,4 @@
-From 30e0a2e6b71a17fd21f4b9db73cf17f9ca0c14fe Mon Sep 17 00:00:00 2001
+From 4cfb7051f24d1ddb3e6ecc15306e1d0e49c579d7 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 11 Dec 2024 15:37:23 +0800
 Subject: [PATCH 258/296] AOSCOS: staging: sb105x: replace put_tty_driver()

@@ -1,4 +1,4 @@
-From a7a3a31c8aa9088616278528bb2785a24728b3dd Mon Sep 17 00:00:00 2001
+From a4550f901839f303f56413cfef6fde267bc2aed8 Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Tue, 10 Dec 2024 20:37:05 +0800
 Subject: [PATCH 079/296] BACKPORT: FROMLIST: dt-bindings: pwm: Add Loongson

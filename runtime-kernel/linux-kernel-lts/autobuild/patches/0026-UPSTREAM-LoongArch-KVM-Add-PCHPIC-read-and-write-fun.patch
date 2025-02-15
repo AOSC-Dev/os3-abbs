@@ -1,4 +1,4 @@
-From 7baa30ab86018eaafff6765225128b53e9a971a8 Mon Sep 17 00:00:00 2001
+From b5cb52b6f324ab51c3cf155760d3b0fb0292e955 Mon Sep 17 00:00:00 2001
 From: Xianglai Li <lixianglai@loongson.cn>
 Date: Wed, 13 Nov 2024 16:18:27 +0800
 Subject: [PATCH 026/296] UPSTREAM: LoongArch: KVM: Add PCHPIC read and write

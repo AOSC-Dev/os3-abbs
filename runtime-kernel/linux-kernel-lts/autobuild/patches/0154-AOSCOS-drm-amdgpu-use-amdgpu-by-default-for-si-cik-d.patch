@@ -1,4 +1,4 @@
-From 23efb53ae48e293b3ea80f736fb2d6525323bba8 Mon Sep 17 00:00:00 2001
+From e56c9e3b689404e026813e6db7bbf0600577196e Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Sun, 22 Sep 2024 00:57:24 +0800
 Subject: [PATCH 154/296] AOSCOS: drm: amdgpu: use amdgpu by default for si/cik

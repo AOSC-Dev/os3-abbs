@@ -1,4 +1,4 @@
-From 175e42e60299499c2cd5694106ae3570385c901f Mon Sep 17 00:00:00 2001
+From 772b0448057daa690da25c1542b0cca1a87208ca Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jonas=20Dre=C3=9Fler?= <verdre@v0yd.nl>
 Date: Thu, 5 Nov 2020 13:09:45 +0100
 Subject: [PATCH 140/296] SURFACE: hid/multitouch: Turn off Type Cover keyboard

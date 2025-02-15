@@ -1,4 +1,4 @@
-From 500f3461a1b2a6370158a5d00b3cf7c19a72cef2 Mon Sep 17 00:00:00 2001
+From 3f950cefa13716206138be75d6f6210355a0ffb2 Mon Sep 17 00:00:00 2001
 From: Jackie Dong <xy-jackie@139.com>
 Date: Thu, 16 Jan 2025 00:25:15 +0800
 Subject: [PATCH 037/296] UPSTREAM: ALSA: hda: Support for Ideapad hotkey mute

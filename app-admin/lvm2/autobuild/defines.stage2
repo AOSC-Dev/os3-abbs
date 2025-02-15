@@ -1,7 +1,7 @@
 PKGNAME=lvm2
 PKGSEC=admin
-PKGDEP="bash readline systemd libaio thin-provisioning-tools"
-PKGDEP__RETRO="bash readline systemd libaio"
+PKGDEP="bash readline libaio thin-provisioning-tools"
+PKGDEP__RETRO="bash readline libaio"
 PKGDEP__ARMV4="${PKGDEP__RETRO}"
 PKGDEP__ARMV6HF="${PKGDEP__RETRO}"
 PKGDEP__ARMV7HF="${PKGDEP__RETRO}"
@@ -26,7 +26,7 @@ AUTOTOOLS_AFTER="--with-udev-prefix=/usr \
                  --with-default-locking-dir=/run/lock/lvm \
                  --with-thin=internal \
                  --with-cache=internal \
-                 --enable-udev-systemd-background-jobs \
+                 --disable-udev-systemd-background-jobs \
                  --disable-dbus-service \
                  --enable-fsadm \
                  --enable-write_install \

@@ -1,4 +1,4 @@
-From a6260304847ff9ad770e0cc8adf659a155e0e138 Mon Sep 17 00:00:00 2001
+From 3d855cca0f82040837a34720c202ca232b71b01a Mon Sep 17 00:00:00 2001
 From: Bibo Mao <maobibo@loongson.cn>
 Date: Mon, 13 Jan 2025 21:37:17 +0800
 Subject: [PATCH 018/314] UPSTREAM: LoongArch: KVM: Add hypercall service

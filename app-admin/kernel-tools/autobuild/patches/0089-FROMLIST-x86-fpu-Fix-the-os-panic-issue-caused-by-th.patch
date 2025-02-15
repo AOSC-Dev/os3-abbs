@@ -1,4 +1,4 @@
-From cffc5ef8a44903497fb0d0aee7db6b22125c9051 Mon Sep 17 00:00:00 2001
+From 8ba9fde3706a88f8ebd58ca1b07867eec9fc7da8 Mon Sep 17 00:00:00 2001
 From: Lyle Li <LyleLi@zhaoxin.com>
 Date: Thu, 2 Jan 2025 15:54:19 +0800
 Subject: [PATCH 089/314] FROMLIST: x86/fpu: Fix the os panic issue caused by

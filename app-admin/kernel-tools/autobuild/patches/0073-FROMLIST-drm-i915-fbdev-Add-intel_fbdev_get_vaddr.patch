@@ -1,4 +1,4 @@
-From 2a7562aa2a141515238fa8c7c6c7ce8dd9d41d7a Mon Sep 17 00:00:00 2001
+From a0bc65c9d38c3ca0e7ae11aebacfcf3b8e7b1f98 Mon Sep 17 00:00:00 2001
 From: Jocelyn Falempe <jfalempe@redhat.com>
 Date: Tue, 10 Dec 2024 10:28:41 +0100
 Subject: [PATCH 073/314] FROMLIST: drm/i915/fbdev: Add intel_fbdev_get_vaddr()

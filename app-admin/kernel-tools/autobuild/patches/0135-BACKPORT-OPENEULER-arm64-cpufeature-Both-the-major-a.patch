@@ -1,4 +1,4 @@
-From b5a490aa90313583e6d40d2ff476e450c72d02f4 Mon Sep 17 00:00:00 2001
+From e37c94453f6a4124e5010de9616c0f418ea2cb4a Mon Sep 17 00:00:00 2001
 From: Zeng Heng <zengheng4@huawei.com>
 Date: Sat, 1 Jun 2024 14:38:28 +0800
 Subject: [PATCH 135/314] BACKPORT: OPENEULER: arm64: cpufeature: Both the

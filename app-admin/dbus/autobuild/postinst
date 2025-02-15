@@ -7,4 +7,6 @@ if [ ! -L /var/lib/dbus/machine-id ]; then
 fi
 
 echo "Setting up dbus group and user ..."
-systemd-sysusers dbus.conf
+if command -v systemd-sysusers > /dev/null; then
+	systemd-sysusers dbus.conf
+fi

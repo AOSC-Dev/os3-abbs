@@ -12,3 +12,9 @@ AUTOTOOLS_AFTER__ARMV7HF="${AUTOTOOLS_AFTER__ARM}"
 AUTOTOOLS_AFTER__LOONGARCH64=" \
                  ${AUTOTOOLS_AFTER} \
                  --enable-loongarch-lsx"
+
+# FIXME: autogen.sh is intended only to generate 'configure' on systems
+# that do not have it.  You have a complete 'configure', if you
+# need to change Makefile.am or configure.ac you also need to
+# run configure with the --enable-maintainer-mode option.
+RECONF=0

@@ -1,0 +1,23 @@
+PKGNAME=tmux
+PKGSEC=utils
+PKGDEP="ncurses libevent libutempter"
+PKGDES="A terminal multiplexer"
+
+# Note: --disable-utf8proc
+#
+# According to tmux's "Installing" documentation:
+#
+# macOS's builtin UTF-8 support is very poor, so it is best to use the
+# utf8proc library if possible. Once it is installed, pass
+# --enable-utf8proc to configure.
+#
+# However, this part of code was not updated in the last 9 years.
+#
+# Disable it for now as it would appear that we don't need it anyway.
+#
+# Link: https://github.com/tmux/tmux/wiki/Installing
+AUTOTOOLS_AFTER="--disable-fuzzing \
+                 --disable-debug \
+                 --enable-utempter \
+                 --disable-utf8proc \
+                 --disable-systemd"

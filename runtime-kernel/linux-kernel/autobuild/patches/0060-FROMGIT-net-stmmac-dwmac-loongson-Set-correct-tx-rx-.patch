@@ -1,4 +1,4 @@
-From 9ff93769b3ad17218314f41f58db6c9564d05fb5 Mon Sep 17 00:00:00 2001
+From 214d8a3f08460c7962de989d7a5031378e32383a Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Mon, 10 Feb 2025 21:43:28 +0800
 Subject: [PATCH 060/314] FROMGIT: net: stmmac: dwmac-loongson: Set correct

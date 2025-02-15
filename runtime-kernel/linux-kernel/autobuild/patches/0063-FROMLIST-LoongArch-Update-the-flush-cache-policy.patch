@@ -1,4 +1,4 @@
-From 7a012a8a0a431989fc413777634f9ba89d95d8e6 Mon Sep 17 00:00:00 2001
+From 7509c5a86cfb56199dc3009085d9b79b5d9b3f9c Mon Sep 17 00:00:00 2001
 From: Li Jun <lijun01@kylinos.cn>
 Date: Tue, 7 May 2024 15:43:57 +0800
 Subject: [PATCH 063/314] FROMLIST: LoongArch: Update the flush cache policy

@@ -1,4 +1,4 @@
-From 0ae8dcdb1b40b1ea09e762ef258ecbbf426ba7d2 Mon Sep 17 00:00:00 2001
+From 41b2a17c49154d602ed489964ab685c279c6ae05 Mon Sep 17 00:00:00 2001
 From: Kate Hsuan <hpa@redhat.com>
 Date: Tue, 21 Mar 2023 23:37:16 +0800
 Subject: [PATCH 164/314] SURFACE: platform: x86: int3472: Add MFD cell for

@@ -1,4 +1,4 @@
-From bfa1c4e84ecf876522ccdef1aeaaf515e74144d6 Mon Sep 17 00:00:00 2001
+From ce41d31349c3b7fdde7c4df668a32d2570225fe3 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Sat, 23 Jun 2018 14:14:24 +0800
 Subject: [PATCH 285/314] AOSCOS: parport: Add support for the WCH384 4S/1P

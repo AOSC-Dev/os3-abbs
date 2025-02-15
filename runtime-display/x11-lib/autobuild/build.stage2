@@ -3,10 +3,10 @@ for package in `cat "$SRCDIR"/autobuild/build-order`; do
     pushd "$package"-*
 
     abinfo "Copying replacement config.* for ${package} ..."
-    cp -v /usr/share/automake-1.16/config.* .
+    cp -v /usr/bin/config.* .
 
     abinfo "Configuring ${package} ..."
-    case $packagedir in
+    case $package in
         libXfont )
             ./configure \
                 ${AUTOTOOLS_DEF[@]} \
@@ -22,21 +22,34 @@ for package in `cat "$SRCDIR"/autobuild/build-order`; do
                 ${AUTOTOOLS_DEF[@]} \
                 --disable-xf86bigfont
             ;;
+        libpciaccess )
+            meson setup $BLDDIR ${MESON_DEF[@]}
+            ;;
         * )
             ./configure ${AUTOTOOLS_DEF[@]}
             ;;
     esac
 
     abinfo "Building ${package} ..."
-    make || return 1
+    case $package in
+        libpciaccess )
+            ninja -C $BLDDIR
+            ;;
+        * )
+            make
+            ;;
+    esac
 
     abinfo "Installing ${package} ..."
-    make install || return 1
-    make DESTDIR="$PKGDIR" install || return 1
+    case $package in
+        libpciaccess )
+            ninja -C $BLDDIR install
+            ;;
+        * )
+            make install
+            ;;
+    esac
     popd
 done
 
-abinfo "Removing some files found in x11-proto..."
-rm -v \
-    "$PKGDIR"/usr/include/X11/extensions/XKBgeom.h \
-    "$PKGDIR"/usr/include/X11/extensions/vldXvMC.h
+mkdir -pv "$PKGDIR"

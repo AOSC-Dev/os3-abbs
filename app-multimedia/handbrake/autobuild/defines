@@ -13,4 +13,4 @@ AB_FLAGS_SPECS=0
 RECONF=0
 
 # FIXME: bundled svt-av1 1.7.0 FTBFS
-FAIL_ARCH="!(amd64|arm64)"
+#FAIL_ARCH="!(amd64|arm64)"

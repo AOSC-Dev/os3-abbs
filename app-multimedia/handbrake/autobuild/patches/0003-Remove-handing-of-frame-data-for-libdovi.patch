@@ -1,0 +1,42 @@
+From: Sebastian Ramacher <sramacher@debian.org>
+Date: Wed, 15 Jan 2025 19:54:51 +0100
+Subject: Remove handing of frame data for libdovi
+
+---
+ libhb/decavcodec.c | 6 ------
+ libhb/encsvtav1.c  | 5 -----
+ 2 files changed, 11 deletions(-)
+
+diff --git a/libhb/decavcodec.c b/libhb/decavcodec.c
+index 811d64e..3e0d23c 100644
+--- a/libhb/decavcodec.c
++++ b/libhb/decavcodec.c
+@@ -1359,12 +1359,6 @@ static hb_buffer_t *copy_frame( hb_work_private_t *pv )
+             int type = AV_FRAME_DATA_DOVI_RPU_BUFFER;
+             sd = av_frame_get_side_data(pv->frame, type);
+ 
+-            if (sd == NULL)
+-            {
+-                type = AV_FRAME_DATA_DOVI_RPU_BUFFER_T35;
+-                sd = av_frame_get_side_data(pv->frame, type);
+-            }
+-
+             if (sd != NULL && sd->size > 0)
+             {
+                 hb_data_t *rpu = hb_data_init(sd->size);
+diff --git a/libhb/encsvtav1.c b/libhb/encsvtav1.c
+index a2f1803..2ef2d1d 100644
+--- a/libhb/encsvtav1.c
++++ b/libhb/encsvtav1.c
+@@ -501,11 +501,6 @@ static int send(hb_work_object_t *w, hb_buffer_t *in)
+                 svt_add_metadata(headerPtr, EB_AV1_METADATA_TYPE_ITUT_T35, payload, playload_size);
+                 av_freep(&payload);
+             }
+-            else if (job->passthru_dynamic_hdr_metadata & DOVI &&
+-                     side_data->type == AV_FRAME_DATA_DOVI_RPU_BUFFER_T35)
+-            {
+-                svt_add_metadata(headerPtr, EB_AV1_METADATA_TYPE_ITUT_T35, side_data->data, side_data->size);
+-            }
+ 
+         }
+     }

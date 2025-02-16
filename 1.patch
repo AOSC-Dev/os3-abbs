@@ -1,0 +1,314 @@
+diff --git a/app-multimedia/handbrake/autobuild/build b/app-multimedia/handbrake/autobuild/build
+index 3221504614..21d8680622 100644
+--- a/app-multimedia/handbrake/autobuild/build
++++ b/app-multimedia/handbrake/autobuild/build
+@@ -11,6 +11,7 @@ abinfo "Configuring Handbrake ..."
+      --prefix=/usr \
+      --enable-x265 \
+      --strip=/usr/bin/true \
++     --disable-df-fetch \
+      --debug=std \
+      ${NVENC}
+ 
+diff --git a/app-multimedia/handbrake/autobuild/defines b/app-multimedia/handbrake/autobuild/defines
+index bac63b7800..18d0f5c31d 100644
+--- a/app-multimedia/handbrake/autobuild/defines
++++ b/app-multimedia/handbrake/autobuild/defines
+@@ -13,4 +13,4 @@ AB_FLAGS_SPECS=0
+ RECONF=0
+ 
+ # FIXME: bundled svt-av1 1.7.0 FTBFS
+-FAIL_ARCH="!(amd64|arm64)"
++#FAIL_ARCH="!(amd64|arm64)"
+diff --git a/app-multimedia/handbrake/autobuild/patches/0001-Remove-embedded-downloaded-copies-of-various-librari.patch b/app-multimedia/handbrake/autobuild/patches/0001-Remove-embedded-downloaded-copies-of-various-librari.patch
+new file mode 100644
+index 0000000000..a3b83ca785
+--- /dev/null
++++ b/app-multimedia/handbrake/autobuild/patches/0001-Remove-embedded-downloaded-copies-of-various-librari.patch
+@@ -0,0 +1,128 @@
++From: Christian Marillat <marillat@debian.org>
++Date: Tue, 17 Apr 2018 21:11:53 +0200
++Subject: Remove embedded/downloaded copies of various libraries
++
++Once this is acceptable, this should be forwarded upstream so that the
++use of system libraries is an option, instead of downloading libraries
++and programs at build time.
++---
++ gtk/meson.build        |  2 ++
++ libhb/module.defs      |  8 ++------
++ make/include/main.defs | 29 -----------------------------
++ test/module.defs       |  6 ++++++
++ 4 files changed, 10 insertions(+), 35 deletions(-)
++
++diff --git a/gtk/meson.build b/gtk/meson.build
++index 83233ce..96ba523 100644
++--- a/gtk/meson.build
+++++ b/gtk/meson.build
++@@ -63,6 +63,8 @@ endif
++ 
++ if get_option('qsv').enabled()
++   ghb_deps += dependency('vpl')
+++  ghb_deps += dependency('libva')
+++  ghb_deps += dependency('libva-drm')
++ endif
++ 
++ if get_option('x265').enabled()
++diff --git a/libhb/module.defs b/libhb/module.defs
++index 177ddef..9362b40 100644
++--- a/libhb/module.defs
+++++ b/libhb/module.defs
++@@ -1,7 +1,7 @@
++ __deps__ := BZIP2 LIBVPX SVT-AV1 FFMPEG FREETYPE LAME LIBASS \
++     LIBDVDREAD LIBDVDNAV LIBICONV LIBTHEORA LIBVORBIS LIBOGG \
++     X264 X265 ZLIB LIBBLURAY FDKAAC LIBVPL LIBGNURX JANSSON \
++-    HARFBUZZ LIBOPUS LIBSPEEX LIBDAV1D LIBJPEGTURBO LIBDOVI
+++    HARFBUZZ LIBOPUS LIBSPEEX LIBDOVI
++ 
++ ifeq (,$(filter $(HOST.system),darwin cygwin mingw))
++     __deps__ += FONTCONFIG
++@@ -118,7 +118,7 @@ LIBHB.lib = $(LIBHB.build/)hb.lib
++ LIBHB.dll.libs = $(foreach n, \
++         ass avformat avfilter avcodec avutil swresample dvdnav dvdread \
++         freetype mp3lame swscale vpx theora vorbis vorbisenc ogg x264 \
++-        bluray jansson harfbuzz opus speex dav1d turbojpeg zimg SvtAv1Enc, \
+++        bluray jansson harfbuzz opus speex SvtAv1Enc, \
++         $(CONTRIB.build/)lib/lib$(n).a )
++ 
++ ifeq (1,$(FEATURE.fdk_aac))
++@@ -130,10 +130,6 @@ LIBHB.GCC.D += ONEVPL_EXPERIMENTAL
++ LIBHB.dll.libs += $(CONTRIB.build/)lib/libvpl.a
++ endif
++ 
++-ifeq (1,$(FEATURE.x265))
++-LIBHB.dll.libs += $(CONTRIB.build/)lib/libx265.a
++-endif
++-
++ ifeq (1,$(FEATURE.libdovi))
++ LIBHB.dll.libs += $(CONTRIB.build/)lib/libdovi.a
++ endif
++diff --git a/make/include/main.defs b/make/include/main.defs
++index e073a22..5b53474 100644
++--- a/make/include/main.defs
+++++ b/make/include/main.defs
++@@ -41,35 +41,10 @@ ifeq (1,$(FEATURE.fdk_aac))
++     MODULES += contrib/fdk-aac
++ endif
++ 
++-ifeq (1,$(FEATURE.x265))
++-    MODULES += contrib/x265
++-    MODULES += contrib/x265_8bit
++-    MODULES += contrib/x265_10bit
++-    MODULES += contrib/x265_12bit
++-endif
++-
++-MODULES += contrib/libdav1d
++-MODULES += contrib/svt-av1
++-MODULES += contrib/zimg
++-MODULES += contrib/ffmpeg
++-MODULES += contrib/libdvdread
++-MODULES += contrib/libdvdnav
++-MODULES += contrib/libbluray
++-
++-ifeq (1,$(FEATURE.qsv))
++-ifeq (,$(filter $(HOST.system),freebsd))
++-    MODULES += contrib/libvpl
++-endif
++-endif
++-
++ ifeq (1,$(FEATURE.vce))
++     MODULES += contrib/amf
++ endif
++ 
++-ifeq (1,$(FEATURE.nvenc))
++-    MODULES += contrib/nvenc
++-endif
++-
++ ifeq (1,$(FEATURE.libdovi))
++     MODULES += contrib/libdovi
++ endif
++@@ -79,10 +54,6 @@ ifneq (,$(filter $(HOST.system),darwin))
++     MODULES += contrib/bin2c
++ endif
++ 
++-ifneq (,$(filter $(HOST.machine),arm64 aarch64))
++-    MODULES += contrib/sse2neon
++-endif
++-
++ ifneq (,$(filter $(HOST.system),cygwin mingw))
++ ifneq ($(HAS.iconv),1)
++     MODULES += contrib/libiconv
++diff --git a/test/module.defs b/test/module.defs
++index 9f803c4..97ac6c0 100644
++--- a/test/module.defs
+++++ b/test/module.defs
++@@ -25,6 +25,12 @@ TEST.pkgconfig_libs += $(foreach m,$(MODULES.NAMES),$($m.OSL.libs))
++ ifeq (1,$(FEATURE.flatpak))
++     TEST.pkgconfig_libs += glib-2.0
++ endif
+++ifeq (1,$(FEATURE.x265))
+++    TEST.pkgconfig_libs += x265
+++endif
+++ifeq (1,$(FEATURE.qsv))
+++  TEST.pkgconfig_libs += libva libva-drm vpl
+++endif
++ 
++ TEST.GCC.pkgconfig = $(shell $(TEST.PKGCONFIG.exe) --libs $(TEST.pkgconfig_libs))
++ 
+diff --git a/app-multimedia/handbrake/autobuild/patches/0002-Do-not-use-contribs.patch b/app-multimedia/handbrake/autobuild/patches/0002-Do-not-use-contribs.patch
+new file mode 100644
+index 0000000000..fb2712b243
+--- /dev/null
++++ b/app-multimedia/handbrake/autobuild/patches/0002-Do-not-use-contribs.patch
+@@ -0,0 +1,29 @@
++From: Sebastian Ramacher <sramacher@debian.org>
++Date: Fri, 1 Dec 2023 23:22:16 +0100
++Subject: Do not use contribs
++
++---
++ gtk/meson.build | 3 ++-
++ 1 file changed, 2 insertions(+), 1 deletion(-)
++
++diff --git a/gtk/meson.build b/gtk/meson.build
++index 96ba523..6b82ced 100644
++--- a/gtk/meson.build
+++++ b/gtk/meson.build
++@@ -20,7 +20,7 @@ if hb_dir == ''
++   hb_dir = meson.current_build_dir() / '..'
++ endif
++ 
++-hb_incdirs = include_directories(hb_dir / 'libhb', hb_dir / 'contrib/include')
+++hb_incdirs = include_directories(hb_dir / 'libhb')
++ 
++ # External dependencies (required)
++ ghb_deps = [
++@@ -51,6 +51,7 @@ ghb_deps = [
++   dependency('vorbis'),
++   dependency('vorbisenc'),
++   dependency('x264'),
+++  dependency('zlib'),
++ ]
++ 
++ if get_option('libdovi').enabled()
+diff --git a/app-multimedia/handbrake/autobuild/patches/0003-Remove-handing-of-frame-data-for-libdovi.patch b/app-multimedia/handbrake/autobuild/patches/0003-Remove-handing-of-frame-data-for-libdovi.patch
+new file mode 100644
+index 0000000000..89d394b9d1
+--- /dev/null
++++ b/app-multimedia/handbrake/autobuild/patches/0003-Remove-handing-of-frame-data-for-libdovi.patch
+@@ -0,0 +1,42 @@
++From: Sebastian Ramacher <sramacher@debian.org>
++Date: Wed, 15 Jan 2025 19:54:51 +0100
++Subject: Remove handing of frame data for libdovi
++
++---
++ libhb/decavcodec.c | 6 ------
++ libhb/encsvtav1.c  | 5 -----
++ 2 files changed, 11 deletions(-)
++
++diff --git a/libhb/decavcodec.c b/libhb/decavcodec.c
++index 811d64e..3e0d23c 100644
++--- a/libhb/decavcodec.c
+++++ b/libhb/decavcodec.c
++@@ -1359,12 +1359,6 @@ static hb_buffer_t *copy_frame( hb_work_private_t *pv )
++             int type = AV_FRAME_DATA_DOVI_RPU_BUFFER;
++             sd = av_frame_get_side_data(pv->frame, type);
++ 
++-            if (sd == NULL)
++-            {
++-                type = AV_FRAME_DATA_DOVI_RPU_BUFFER_T35;
++-                sd = av_frame_get_side_data(pv->frame, type);
++-            }
++-
++             if (sd != NULL && sd->size > 0)
++             {
++                 hb_data_t *rpu = hb_data_init(sd->size);
++diff --git a/libhb/encsvtav1.c b/libhb/encsvtav1.c
++index a2f1803..2ef2d1d 100644
++--- a/libhb/encsvtav1.c
+++++ b/libhb/encsvtav1.c
++@@ -501,11 +501,6 @@ static int send(hb_work_object_t *w, hb_buffer_t *in)
++                 svt_add_metadata(headerPtr, EB_AV1_METADATA_TYPE_ITUT_T35, payload, playload_size);
++                 av_freep(&payload);
++             }
++-            else if (job->passthru_dynamic_hdr_metadata & DOVI &&
++-                     side_data->type == AV_FRAME_DATA_DOVI_RPU_BUFFER_T35)
++-            {
++-                svt_add_metadata(headerPtr, EB_AV1_METADATA_TYPE_ITUT_T35, side_data->data, side_data->size);
++-            }
++ 
++         }
++     }
+diff --git a/app-multimedia/handbrake/autobuild/patches/0004-Remove-ambient-viewing-support.patch b/app-multimedia/handbrake/autobuild/patches/0004-Remove-ambient-viewing-support.patch
+new file mode 100644
+index 0000000000..555810a130
+--- /dev/null
++++ b/app-multimedia/handbrake/autobuild/patches/0004-Remove-ambient-viewing-support.patch
+@@ -0,0 +1,28 @@
++From: Sebastian Ramacher <sramacher@debian.org>
++Date: Fri, 1 Dec 2023 23:02:49 +0100
++Subject: Remove ambient viewing support
++
++Support in x265 is added via contrib patches.
++---
++ libhb/encx265.c | 8 --------
++ 1 file changed, 8 deletions(-)
++
++diff --git a/libhb/encx265.c b/libhb/encx265.c
++index 0b15838..9b71be7 100644
++--- a/libhb/encx265.c
+++++ b/libhb/encx265.c
++@@ -269,14 +269,6 @@ int encx265Init(hb_work_object_t *w, hb_job_t *job)
++         }
++     }
++ 
++-    if (job->ambient.ambient_illuminance.num && job->ambient.ambient_illuminance.den)
++-    {
++-        param->ambientIlluminance = hb_rescale_rational(job->ambient.ambient_illuminance, 10000);
++-        param->ambientLightX = hb_rescale_rational(job->ambient.ambient_light_x, 50000);
++-        param->ambientLightY = hb_rescale_rational(job->ambient.ambient_light_y, 50000);
++-        param->bEmitAmbientViewingEnvironment = 1;
++-    }
++-
++     if (job->chroma_location != AVCHROMA_LOC_UNSPECIFIED)
++     {
++         char chromaLocation[256];
+diff --git a/app-multimedia/handbrake/autobuild/patches/0005-revert-newer-x265-code-changes.patch b/app-multimedia/handbrake/autobuild/patches/0005-revert-newer-x265-code-changes.patch
+new file mode 100644
+index 0000000000..9a673cc946
+--- /dev/null
++++ b/app-multimedia/handbrake/autobuild/patches/0005-revert-newer-x265-code-changes.patch
+@@ -0,0 +1,25 @@
++diff --git a/libhb/encx265.c b/libhb/encx265.c
++index 0b15838ac..94085426d 100644
++--- a/libhb/encx265.c
+++++ b/libhb/encx265.c
++@@ -463,10 +463,10 @@ int encx265Init(hb_work_object_t *w, hb_job_t *job)
++     /* statsfile (but not 2-pass) */
++     if (param->logLevel >= X265_LOG_DEBUG)
++     {
++-        if (param->csvfn[0] == '\0')
+++        if (param->csvfn == NULL)
++         {
++             pv->csvfn = hb_get_temporary_filename("x265.csv");
++-            snprintf(param->csvfn, X265_MAX_STRING_SIZE, "%s", pv->csvfn);
+++            param->csvfn = strdup(pv->csvfn);
++         }
++         else
++         {
++@@ -688,7 +688,6 @@ static hb_buffer_t* x265_encode(hb_work_object_t *w, hb_buffer_t *in)
++     hb_work_private_t *pv = w->private_data;
++     hb_job_t *job         = pv->job;
++     x265_picture pic_in, pic_out;
++-
++     x265_nal *nal;
++     uint32_t nnal;
++     int ret;
+diff --git a/app-multimedia/handbrake/spec b/app-multimedia/handbrake/spec
+index 84fae9f98a..499b28338c 100644
+--- a/app-multimedia/handbrake/spec
++++ b/app-multimedia/handbrake/spec
+@@ -1,4 +1,4 @@
+-VER=1.9.0
++VER=1.9.1
+ SRCS="git::commit=tags/$VER::https://github.com/HandBrake/HandBrake"
+ CHKSUMS="SKIP"
+ CHKUPDATE="anitya::id=9156"

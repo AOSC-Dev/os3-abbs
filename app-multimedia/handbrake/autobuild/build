@@ -11,6 +11,7 @@ abinfo "Configuring Handbrake ..."
      --prefix=/usr \
      --enable-x265 \
      --strip=/usr/bin/true \
+     --disable-df-fetch \
      --debug=std \
      ${NVENC}
 

@@ -1,0 +1,9 @@
+abinfo "Purging unneeded development files ..."
+rm -rv "$PKGDIR"/usr/include/ "$PKGDIR"/usr/lib/pkgconfig/
+abinfo "Purging drirc which conflicts with mainline Mesa ..."
+rm -rv "$PKGDIR"/usr/share/drirc.d/
+abinfo "Priortizing libEGL_mwv207 ..."
+mv -v "$PKGDIR"/usr/share/glvnd/egl_vendor.d/{50,40}_mwv207.json
+abinfo "Symlinking mwv207_dri.so for X server AIGLX support ..."
+mkdir -pv "$PKGDIR"/usr/lib/xorg/modules/dri/
+ln -sfv ../../../mwv207-dri/mwv207_dri.so "$PKGDIR"/usr/lib/xorg/modules/dri/

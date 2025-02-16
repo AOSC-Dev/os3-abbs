@@ -1,0 +1,13 @@
+PKGNAME=mesa-mwv207
+PKGDES="Mesa customized for Jemoic MWV207 (JM9100) GPU"
+PKGSEC=libs
+PKGDEP="libglvnd libdrm wayland x11-lib expat systemd"
+BUILDDEP="mako"
+
+ABTYPE=meson
+MESON_AFTER="-Ddri-drivers-path=/usr/lib/mwv207-dri \
+             -Dglvnd=true -Dglvnd-vendor-name=mwv207 \
+             -Dgallium-drivers=mwv207 -Dvulkan-drivers= \
+             -Dllvm=disabled -Dgbm=enabled \
+             -Dvalgrind=disabled \
+             -Dgallium-va=disabled -Dgallium-vdpau=disabled"

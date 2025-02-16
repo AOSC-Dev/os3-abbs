@@ -12,13 +12,13 @@
 #   This commits causes `asahi' to be injected to local name during build and
 #   doesn't work well with AOSC build scripts, as our script relies on correct
 #   local name from kernel config.
-# - Push your changes to AOSC-Tracking/linux.
+# - Push your changes to AOSC-Tracking/linux, tagging the latest patchset with
+#   REL (use -0 for the initial release).
 #
 # ~cth451
-# ~MingcongBai (revision 20231114)
-# ~cth451 (revised Aug 12 2024)
+# ~MingcongBai (revised Nov. 14, 2023)
+# ~cth451 (revised Aug. 12, 2024)
 
-VER=6.10.3
-SRCS="git::commit=aosc/v${VER}-asahi::https://github.com/AOSC-Tracking/linux.git"
+VER=6.12.12
+SRCS="git::commit=v${VER}-asahi-${REL:-0}::https://github.com/AOSC-Tracking/linux.git"
 CHKSUMS="SKIP"
-

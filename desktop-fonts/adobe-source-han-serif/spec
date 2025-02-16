@@ -1,6 +1,6 @@
-VER=2.002
+VER=2.003
 SRCS="tbl::https://github.com/adobe-fonts/source-han-serif/releases/download/${VER}R/01_SourceHanSerif.ttc.zip \
       file::rename=LICENSE::https://raw.githubusercontent.com/adobe-fonts/source-han-serif/${VER}R/LICENSE.txt"
-CHKSUMS="sha256::3868cbad34109776e2bbf4ec6caaccdab46a41389a720b4be191af4268784df1 \
+CHKSUMS="sha256::6ee689ab57894ae35af604a73e95c372bda0306610ffa179a4708e8cd47a795f \
          sha256::9ff5bb567e1b92c801fc1069e5fbf992ff8efccacb9db94e5959a5b3ba9bb903"
 CHKUPDATE="anitya::id=14493"

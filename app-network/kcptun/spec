@@ -2,3 +2,4 @@ VER=20240906
 SRCS="git::commit=tags/v$VER::https://github.com/xtaci/kcptun"
 CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=14970"
+REL=1

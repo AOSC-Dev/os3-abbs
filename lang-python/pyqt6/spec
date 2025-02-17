@@ -1,4 +1,4 @@
-VER=6.7.0
-SRCS="tbl::https://pypi.python.org/packages/source/P/PyQt6/PyQt6-$VER.tar.gz"
-CHKSUMS="sha256::3d31b2c59dc378ee26e16586d9469842483588142fc377280aad22aaf2fa6235"
+VER=6.8.1
+SRCS="pypi::version=$VER::pyqt6"
+CHKSUMS="sha256::91d937d6166274fafd70f4dee11a8da6dbfdb0da53de05f5d62361ddf775e256"
 CHKUPDATE="anitya::id=149589"

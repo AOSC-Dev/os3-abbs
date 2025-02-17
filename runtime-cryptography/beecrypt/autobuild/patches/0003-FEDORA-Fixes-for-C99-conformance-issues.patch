@@ -1,0 +1,30 @@
+From e11d52fbe0e19caec16ccedb32a991bdf0e7e197 Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.io>
+Date: Thu, 13 Feb 2025 18:33:23 +0800
+Subject: [PATCH 3/4] FEDORA: Fixes for C99 conformance issues
+
+https://fedoraproject.org/wiki/Toolchain/PortingToModernC
+
+Signed-off-by: Peter Fordham <peter.fordham@gmail.com>
+
+Link: https://src.fedoraproject.org/rpms/beecrypt/blob/c063d876b3ac038ba1a624cd9dc0b96bff4ebef0/f/beecrypt-4.2.1-c99.patch
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ blockmode.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/blockmode.c b/blockmode.c
+index 46d1fde..9998c23 100644
+--- a/blockmode.c
++++ b/blockmode.c
+@@ -29,6 +29,7 @@
+ # include "config.h"
+ #endif
+ 
++#include "beecrypt/endianness.h"
+ #include "beecrypt/blockmode.h"
+ 
+ int blockEncryptECB(const blockCipher* bc, blockCipherParam* bp, uint32_t* dst, const uint32_t* src, unsigned int nblocks)
+-- 
+2.48.1
+

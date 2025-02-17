@@ -1,0 +1,82 @@
+From d7b6b953c7cf26d52999b827034ab48395e42a9c Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.io>
+Date: Thu, 13 Feb 2025 18:31:02 +0800
+Subject: [PATCH 2/4] FEDORA: Fixes for C99 conformance issues
+
+https://fedoraproject.org/wiki/Toolchain/PortingToModernC
+
+Signed-off-by: Peter Fordham <peter.fordham@gmail.com>
+
+Link: https://src.fedoraproject.org/rpms/beecrypt/blob/c063d876b3ac038ba1a624cd9dc0b96bff4ebef0/f/beecrypt-4.2.1-autoconf-c99.patch
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ acinclude.m4 | 19 +++++++++++--------
+ 1 file changed, 11 insertions(+), 8 deletions(-)
+
+diff --git a/acinclude.m4 b/acinclude.m4
+index 7df3867..2e0a41c 100644
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -320,6 +320,9 @@ EOF
+             #if HAVE_FCNTL_H
+             # include <fcntl.h>
+             #endif
++            #if HAVE_TIME_H
++            # include <time.h>
++            #endif
+             #if HAVE_STRING_H
+             # include <string.h>
+             #endif
+@@ -338,7 +341,7 @@ EOF
+               int i, rc, fd = open("conftest.aio", O_RDONLY);
+ 
+               if (fd < 0)
+-                exit(1);
++                return 1;
+ 
+               memset(&a, 0, sizeof(struct aiocb));
+ 
+@@ -355,7 +358,7 @@ EOF
+               if (aio_read(&a) < 0)
+               {
+                 perror("aio_read");
+-                exit(1);
++                return 1;
+               }
+               if (aio_suspend(&a_list, 1, &a_timeout) < 0)
+               {
+@@ -368,25 +371,25 @@ EOF
+                   if (aio_suspend(&a_list, 1, &a_timeout) < 0)
+                   {
+                     perror("aio_suspend");
+-                    exit(1);
++                    return 1;
+                   }
+                 }
+                 else
+                 {
+                   perror("aio_suspend");
+-                  exit(1);
++                  return 1;
+                 }
+                 #else
+-                exit(1);
++                return 1;
+                 #endif
+               }
+               if (aio_error(&a) < 0)
+-                exit(1);
++                return 1;
+ 
+               if (aio_return(&a) < 0)
+-                exit(1);
++                return 1;
+ 
+-              exit(0);
++              return 0;
+           ]])],[bc_cv_working_aio=yes],[bc_cv_working_aio=no],[
+             case $target_os in
+               linux* | solaris*)
+-- 
+2.48.1
+

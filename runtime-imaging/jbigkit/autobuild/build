@@ -1,20 +1,27 @@
-unset CPPFLAGS
+abinfo "Building jbigkit ..."
+make \
+    CC="gcc ${CPPFLAGS} ${CFLAGS} ${LDFLAGS}"
 
-make CC="gcc ${CPPFLAGS} ${CFLAGS} ${LDFLAGS}"
+abinfo "Installing runtime libraries ..."
+install -Dvm755 "$SRCDIR"/libjbig/libjbig*.so* \
+    -t "$PKGDIR"/usr/lib/
 
-install -D -m644 libjbig/libjbig.a "$PKGDIR"/usr/lib/libjbig.a
-install -D -m644 libjbig/libjbig85.a "$PKGDIR"/usr/lib/libjbig85.a
-install -D -m644 libjbig/jbig.h "$PKGDIR"/usr/include/jbig.h
-install -D -m644 libjbig/jbig_ar.h "$PKGDIR"/usr/include/jbig_ar.h
-install -D -m644 libjbig/jbig85.h "$PKGDIR"/usr/include/jbig85.h
+abinfo "Installing headers ..."
+install -Dvm644 \
+    "$SRCDIR"/libjbig/jbig.h \
+    "$SRCDIR"/libjbig/jbig_ar.h \
+    "$SRCDIR"/libjbig/jbig85.h \
+    -t "$PKGDIR"/usr/include/
 
-install -d -m755 "$PKGDIR"/usr/share/man/man1
-install -d -m755 "$PKGDIR"/usr/share/man/man5
-install -m644 pbmtools/*.1* "$PKGDIR"/usr/share/man/man1
-install -m644 pbmtools/*.5* "$PKGDIR"/usr/share/man/man5
+abinfo "Installing man pages ..."
+install -Dvm644 "$SRCDIR"/pbmtools/*.1* \
+    -t "$PKGDIR"/usr/share/man/man1/
+install -Dvm644 "$SRCDIR"/pbmtools/*.5* \
+    -t "$PKGDIR"/usr/share/man/man5/
 
-install -D -m755 pbmtools/jbgtopbm "$PKGDIR"/usr/bin/jbgtopbm
-install -D -m755 pbmtools/pbmtojbg "$PKGDIR"/usr/bin/pbmtojbg
-install -D -m755 pbmtools/jbgtopbm85 "$PKGDIR"/usr/bin/jbgtopbm85
-install -D -m755 pbmtools/pbmtojbg85 "$PKGDIR"/usr/bin/pbmtojbg85
-
+abinfo "Installing executables ..."
+for i in jbgtopbm pbmtojbg jbgtopbm85 pbmtojbg85; do
+    abinfo "Installing executable: $i ..."
+    install -Dvm755 "$SRCDIR"/pbmtools/$i \
+        "$PKGDIR"/usr/bin/$i
+done

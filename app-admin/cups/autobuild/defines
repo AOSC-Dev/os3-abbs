@@ -26,4 +26,5 @@ RECONF=0
 # Note: Extra Provides for Spiral (Debian compatibility).
 PKGPROV="cups-bsd_spiral cups-client_spiral cups-common_spiral \
          cups-core-drivers_spiral cups-daemon_spiral cups-ipp-utils_spiral \
-         cups-ppdc_spiral cups-server-common_spiral"
+         cups-ppdc_spiral cups-server-common_spiral cupsys_spiral \
+         libcupsys2_spiral"

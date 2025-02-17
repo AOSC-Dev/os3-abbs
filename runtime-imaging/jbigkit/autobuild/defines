@@ -1,7 +1,4 @@
 PKGNAME=jbigkit
 PKGSEC=libs
 PKGDEP="glibc"
-PKGDES="Data compression library/utilities for bi-level high resolution images"
-
-NOSTATIC=0
-NOLTO=1
+PKGDES="Data compression library/utilities for bi-level high-resolution images"

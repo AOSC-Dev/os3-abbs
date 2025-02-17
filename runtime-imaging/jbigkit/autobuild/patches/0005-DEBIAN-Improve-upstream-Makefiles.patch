@@ -1,0 +1,190 @@
+From 30a74b9a493b53abaab7e47d14b6dc73ac3e32d5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Christian=20G=C3=B6ttsche?= <cgzones@googlemail.com>
+Date: Wed, 5 Oct 2022 18:58:28 +0200
+Subject: [PATCH 5/5] DEBIAN: Improve upstream Makefiles
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* Add install target
+* Build shared library
+* Link binaries against shared library
+* Add missing $(LDFLAGS) for hardening flags
+* Use $(AR) for cross-compilation and options s to avoid ranlib usage
+* Add additional generated files to clean target
+* Adjust LD_LIBRARY_PATH for tests, since they are now dynamically
+  linked
+
+Forwarded: no
+Signed-off-by: Christian Göttsche <cgzones@googlemail.com>
+
+From Debian: jbigkit 2.1-6.1
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ Makefile          | 17 +++++++++++++++--
+ libjbig/Makefile  | 21 ++++++++++++---------
+ pbmtools/Makefile | 33 ++++++++++++++-------------------
+ 3 files changed, 41 insertions(+), 30 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 9f7e3ba..9969b06 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,15 +1,16 @@
+ # Unix makefile for JBIG-KIT
+ 
+ # Select an ANSI/ISO C compiler here, GNU gcc is recommended
+-CC = gcc
++CC ?= gcc
+ 
+ # Options for the compiler: A high optimization level is suggested
+-CFLAGS = -O2 -W -Wno-unused-result
++CFLAGS ?= -O2 -W -Wno-unused-result
+ # CFLAGS = -O -g -W -Wall -Wno-unused-result -ansi -pedantic # -DDEBUG
+ 
+ export CC CFLAGS
+ 
+ VERSION=2.1
++.PHONY: all lib pbm test clean install
+ 
+ all: lib pbm
+ 	@echo "Enter 'make test' in order to start some automatic tests."
+@@ -42,3 +43,15 @@ distribution:
+ release:
+ 	rsync -t jbigkit-$(VERSION).tar.gz $(HOME)/public_html/download/
+ 	rsync -t jbigkit-$(VERSION)/CHANGES $(HOME)/public_html/jbigkit/
++
++install: all
++	install -d $(DESTDIR)/usr/lib/$(DEB_HOST_MULTIARCH)
++	install -m 644 libjbig/*.so.* libjbig/*.a $(DESTDIR)/usr/lib/$(DEB_HOST_MULTIARCH)
++	/sbin/ldconfig -n $(DESTDIR)/usr/lib/$(DEB_HOST_MULTIARCH)
++	ln -s libjbig.so.0 $(DESTDIR)/usr/lib/$(DEB_HOST_MULTIARCH)/libjbig.so
++	install -d $(DESTDIR)/usr/include
++	install -m 644 libjbig/*.h $(DESTDIR)/usr/include
++	install -d $(DESTDIR)/usr/bin
++	install -m 755 pbmtools/jbgtopbm pbmtools/jbgtopbm85 pbmtools/pbmtojbg pbmtools/pbmtojbg85 $(DESTDIR)/usr/bin
++	install -d $(DESTDIR)/usr/share/man/man1
++	install -m 644 pbmtools/*.1 $(DESTDIR)/usr/share/man/man1
+diff --git a/libjbig/Makefile b/libjbig/Makefile
+index f2898f5..72295de 100644
+--- a/libjbig/Makefile
++++ b/libjbig/Makefile
+@@ -1,28 +1,30 @@
+ # Unix makefile for the JBIG-KIT library
+ 
+ # Select an ANSI/ISO C compiler here, GNU gcc is recommended
+-CC = gcc
++CC ?= gcc
+ 
+ # Options for the compiler: A high optimization level is suggested
+-CFLAGS = -g -O -W -Wall -ansi -pedantic # --coverage
++CFLAGS ?= -g -O -W -Wall -ansi -pedantic # --coverage
+ 
+-all: libjbig.a libjbig85.a tstcodec tstcodec85
++all: libjbig.a libjbig.so libjbig85.a tstcodec tstcodec85
+ 
+ tstcodec: tstcodec.o jbig.o jbig_ar.o
+-	$(CC) $(CFLAGS) -o tstcodec tstcodec.o jbig.o jbig_ar.o
++	$(CC) $(CFLAGS) -o tstcodec tstcodec.o jbig.o jbig_ar.o $(LDFLAGS)
+ 
+ tstcodec85: tstcodec85.o jbig85.o jbig_ar.o
+-	$(CC) $(CFLAGS) -o tstcodec85 tstcodec85.o jbig85.o jbig_ar.o
++	$(CC) $(CFLAGS) -o tstcodec85 tstcodec85.o jbig85.o jbig_ar.o $(LDFLAGS)
+ 
+ libjbig.a: jbig.o jbig_ar.o
+ 	rm -f libjbig.a
+-	ar rc libjbig.a jbig.o jbig_ar.o
+-	-ranlib libjbig.a
++	$(AR) rcs $@ jbig.o jbig_ar.o
++
++libjbig.so: jbig.o jbig_ar.o jbig85.o
++	$(CC) -shared -Wl,-soname,libjbig.so.0 -o libjbig.so.0 $+ $(LDFLAGS)
++	ln -sf libjbig.so.0 libjbig.so
+ 
+ libjbig85.a: jbig85.o jbig_ar.o
+ 	rm -f libjbig85.a
+-	ar rc libjbig85.a jbig85.o jbig_ar.o
+-	-ranlib libjbig85.a
++	$(AR) rcs $@ jbig85.o jbig_ar.o
+ 
+ jbig.o: jbig.c jbig.h jbig_ar.h
+ jbig85.o: jbig85.c jbig85.h jbig_ar.h
+@@ -51,5 +53,6 @@ t82test.pbm: tstcodec
+ 
+ clean:
+ 	rm -f *.o *.gcda *.gcno *.gcov *.plist *~ core gmon.out dbg_d\=??.pbm
++	rm -f *.so* *.a *.la
+ 	rm -f t82test.pbm
+ 	rm -f tstcodec tstcodec85
+diff --git a/pbmtools/Makefile b/pbmtools/Makefile
+index d695f69..1b8cc6d 100644
+--- a/pbmtools/Makefile
++++ b/pbmtools/Makefile
+@@ -1,11 +1,12 @@
+ # Unix makefile for the JBIG-KIT PBM tools
+ 
+ # Select an ANSI/ISO C compiler here, e.g. GNU gcc is recommended
+-CC = gcc
++CC ?= gcc
+ 
+ # Options for the compiler
+-CFLAGS = -g -O -W -Wall -Wno-unused-result -ansi -pedantic # --coverage
+-CPPFLAGS = -I../libjbig 
++CFLAGS ?= -g -O -W -Wall -Wno-unused-result -ansi -pedantic # --coverage
++override CPPFLAGS += -I../libjbig
++export LD_LIBRARY_PATH := $(if $(LD_LIBRARY_PATH),$(LD_LIBRARY_PATH):)../libjbig
+ 
+ .SUFFIXES: .1 .5 .txt $(SUFFIXES)
+ .PHONY: txt test test82 test85 clean
+@@ -14,31 +15,23 @@ all: pbmtojbg jbgtopbm pbmtojbg85 jbgtopbm85 txt
+ 
+ txt: pbmtojbg.txt jbgtopbm.txt pbm.txt pgm.txt
+ 
+-pbmtojbg: pbmtojbg.o ../libjbig/libjbig.a
+-	$(CC) $(CFLAGS) -o pbmtojbg pbmtojbg.o -L../libjbig -ljbig
++pbmtojbg: pbmtojbg.o
++	$(CC) $(CFLAGS) -o pbmtojbg pbmtojbg.o -L../libjbig -ljbig $(LDFLAGS)
+ 
+-jbgtopbm: jbgtopbm.o ../libjbig/libjbig.a
+-	$(CC) $(CFLAGS) -o jbgtopbm jbgtopbm.o -L../libjbig -ljbig
++jbgtopbm: jbgtopbm.o
++	$(CC) $(CFLAGS) -o jbgtopbm jbgtopbm.o -L../libjbig -ljbig $(LDFLAGS)
+ 
+-pbmtojbg85: pbmtojbg85.o ../libjbig/libjbig85.a
+-	$(CC) $(CFLAGS) -o pbmtojbg85 pbmtojbg85.o -L../libjbig -ljbig85
++pbmtojbg85: pbmtojbg85.o
++	$(CC) $(CFLAGS) -o pbmtojbg85 pbmtojbg85.o -L../libjbig -ljbig $(LDFLAGS)
+ 
+-jbgtopbm85: jbgtopbm85.o ../libjbig/libjbig85.a
+-	$(CC) $(CFLAGS) -o jbgtopbm85 jbgtopbm85.o -L../libjbig -ljbig85
++jbgtopbm85: jbgtopbm85.o
++	$(CC) $(CFLAGS) -o jbgtopbm85 jbgtopbm85.o -L../libjbig -ljbig $(LDFLAGS)
+ 
+ jbgtopbm.o: jbgtopbm.c ../libjbig/jbig.h
+ pbmtojbg.o: pbmtojbg.c ../libjbig/jbig.h
+ jbgtopbm85.o: jbgtopbm85.c ../libjbig/jbig85.h
+ pbmtojbg85.o: pbmtojbg85.c ../libjbig/jbig85.h
+ 
+-../libjbig/libjbig.a: ../libjbig/jbig.c ../libjbig/jbig.h \
+-	../libjbig/jbig_ar.c ../libjbig/jbig_ar.h
+-	make -C ../libjbig libjbig.a
+-
+-../libjbig/libjbig85.a: ../libjbig/jbig85.c ../libjbig/jbig85.h \
+-	../libjbig/jbig_ar.c ../libjbig/jbig_ar.h
+-	make -C ../libjbig libjbig85.a
+-
+ analyze:
+ 	clang $(CPPFLAGS) --analyze *.c
+ 
+@@ -96,6 +89,8 @@ dotest2g:
+ 	cmp test-$(IMG).pgm ../examples/$(IMG).pgm
+ 
+ test85: pbmtojbg jbgtopbm pbmtojbg85 jbgtopbm85 test-t82.pbm
++	export LD_LIBRARY_PATH=`pwd`/../libjbig
++	echo $(LD_LIBRARY_PATH)
+ 	make IMG=t82 "OPTIONSP=-p 0"      dotest85
+ 	make IMG=t82 "OPTIONSP=-p 8"      dotest85
+ 	make IMG=t82 "OPTIONSP=-p 8 -r"   dotest85b
+-- 
+2.48.1
+

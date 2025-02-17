@@ -1,0 +1,97 @@
+From 8619123ce3e153b6fb812ee58181d64c51e0dbf2 Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.io>
+Date: Thu, 13 Feb 2025 17:01:45 +0800
+Subject: [PATCH 1/5] FEDORA: pbmtools: Fix a number of compiler warnings per
+ feedback from Ubuntu security team (#840608)
+
+Signed-off-by: Fridolin Pokorny <fpokorny@redhat.com>
+
+Link: https://src.fedoraproject.org/rpms/jbigkit/blob/ff20fc858bd1fd3004d300c3c8af353f179c7d9a/f/jbigkit-2.0-warnings.patch
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ pbmtools/pbmtojbg.c   | 24 ++++++++++++++++++++----
+ pbmtools/pbmtojbg85.c | 11 ++++++++---
+ 2 files changed, 28 insertions(+), 7 deletions(-)
+
+diff --git a/pbmtools/pbmtojbg.c b/pbmtools/pbmtojbg.c
+index 90c4581..3efefb9 100644
+--- a/pbmtools/pbmtojbg.c
++++ b/pbmtools/pbmtojbg.c
+@@ -86,7 +86,11 @@ static unsigned long getint(FILE *f)
+       while ((c = getc(f)) != EOF && !(c == 13 || c == 10)) ;
+   if (c != EOF) {
+     ungetc(c, f);
+-    fscanf(f, "%lu", &i);
++    if (fscanf(f, "%lu", &i) != 1) {
++      /* should never fail, since c must be a digit */
++      fprintf(stderr, "Unexpected failure reading digit '%c'\n", c);
++      exit(1);
++    }
+   }
+ 
+   return i;
+@@ -300,7 +304,9 @@ int main (int argc, char **argv)
+     break;
+   case '4':
+     /* PBM raw binary format */
+-    fread(bitmap[0], bitmap_size, 1, fin);
++    if (fread(bitmap[0], bitmap_size, 1, fin) != 1) {
++      /* silence compiler warnings; ferror/feof checked below */
++    }
+     break;
+   case '2':
+   case '5':
+@@ -312,8 +318,18 @@ int main (int argc, char **argv)
+ 	for (j = 0; j < bpp; j++)
+ 	  image[x * bpp + (bpp - 1) - j] = v >> (j * 8);
+       }
+-    } else
+-      fread(image, width * height, bpp, fin);
++    } else {
++      if (fread(image, width * height, bpp, fin) != (size_t) bpp) {
++	if (ferror(fin)) {
++	  fprintf(stderr, "Problem while reading input file '%s", fnin);
++	  perror("'");
++	  exit(1);
++	} else {
++	  fprintf(stderr, "Unexpected end of input file '%s'!\n", fnin);
++	  exit(1);
++	}
++      }
++    }
+     jbg_split_planes(width, height, planes, encode_planes, image, bitmap,
+ 		     use_graycode);
+     free(image);
+diff --git a/pbmtools/pbmtojbg85.c b/pbmtools/pbmtojbg85.c
+index 27bdbbd..651c075 100644
+--- a/pbmtools/pbmtojbg85.c
++++ b/pbmtools/pbmtojbg85.c
+@@ -70,9 +70,12 @@ static unsigned long getint(FILE *f)
+       while ((c = getc(f)) != EOF && !(c == 13 || c == 10)) ;
+   if (c != EOF) {
+     ungetc(c, f);
+-    fscanf(f, "%lu", &i);
++    if (fscanf(f, "%lu", &i) != 1) {
++      /* should never fail, since c must be a digit */
++      fprintf(stderr, "Unexpected failure reading digit '%c'\n", c);
++      exit(1);
++    }
+   }
+-
+   return i;
+ }
+ 
+@@ -237,7 +240,9 @@ int main (int argc, char **argv)
+       break;
+     case '4':
+       /* PBM raw binary format */
+-      fread(next_line, bpl, 1, fin);
++      if (fread(next_line, bpl, 1, fin) != 1) {
++	/* silence compiler warnings; ferror/feof checked below */
++      }
+       break;
+     default:
+       fprintf(stderr, "Unsupported PBM type P%c!\n", type);
+-- 
+2.48.1
+

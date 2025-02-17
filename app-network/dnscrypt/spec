@@ -1,5 +1,4 @@
-VER=2.1.5
-REL=6
+VER=2.1.7
 SRCS="git::commit=tags/$VER::https://github.com/jedisct1/dnscrypt-proxy"
 CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=15546"

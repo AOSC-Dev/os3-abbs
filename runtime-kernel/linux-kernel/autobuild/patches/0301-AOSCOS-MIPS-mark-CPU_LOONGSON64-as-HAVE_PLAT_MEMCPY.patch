@@ -1,7 +1,7 @@
 From 4514e1bb31cbf52a39afab9e3601a815d1f894b1 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Thu, 12 Dec 2024 14:09:34 +0800
-Subject: [PATCH 301/314] AOSCOS: MIPS: mark CPU_LOONGSON64 as HAVE_PLAT_MEMCPY
+Subject: [PATCH 301/315] AOSCOS: MIPS: mark CPU_LOONGSON64 as HAVE_PLAT_MEMCPY
 
 loongson3-memcpy is a platform-specific memcpy implementation, add
 HAVE_PLAT_MEMCPY under CPU_LOONGSON64.

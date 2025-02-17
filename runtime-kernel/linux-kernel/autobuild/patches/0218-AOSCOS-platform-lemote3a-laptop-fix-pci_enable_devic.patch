@@ -1,7 +1,7 @@
 From 27042d0bee11c9cf4d7430d51029c7e777365a0a Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Wed, 4 Dec 2024 16:45:30 +0800
-Subject: [PATCH 218/314] AOSCOS: platform: lemote3a-laptop: fix
+Subject: [PATCH 218/315] AOSCOS: platform: lemote3a-laptop: fix
  pci_enable_device() usage
 
 pci_enable_device() ignores return values.

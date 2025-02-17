@@ -1,7 +1,7 @@
 From 1409e44440fcfe86d3041b4bfa5b21602f7bb44b Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:52 -0600
-Subject: [PATCH 030/314] UPSTREAM: ntsync: Introduce NTSYNC_IOC_EVENT_PULSE.
+Subject: [PATCH 030/315] UPSTREAM: ntsync: Introduce NTSYNC_IOC_EVENT_PULSE.
 
 This corresponds to the NT syscall NtPulseEvent().
 

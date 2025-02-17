@@ -1,7 +1,7 @@
 From 2d98e89f9bb2cf3a1671b672629e08adabef7d34 Mon Sep 17 00:00:00 2001
 From: Josef Bacik <josef@toxicpanda.com>
 Date: Mon, 10 Feb 2025 14:06:40 -0500
-Subject: [PATCH 096/314] FROMLIST: fuse: drop extra put of folio when using
+Subject: [PATCH 096/315] FROMLIST: fuse: drop extra put of folio when using
  pipe splice
 
 In 3eab9d7bc2f4 ("fuse: convert readahead to use folios"), I converted

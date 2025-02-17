@@ -1,7 +1,7 @@
 From 3edc229d5f7f98bce0f3c0e2309f12b8ca8d69a4 Mon Sep 17 00:00:00 2001
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Date: Fri, 13 Sep 2024 17:30:35 +0300
-Subject: [PATCH 170/314] FROMEXT: [WIP] dw-hdmi-qp: Add high TMDS clock ratio
+Subject: [PATCH 170/315] FROMEXT: [WIP] dw-hdmi-qp: Add high TMDS clock ratio
  and scrambling support
 
 Enable use of HDMI 2.0 display modes, e.g. 4K@60Hz, by permitting TMDS

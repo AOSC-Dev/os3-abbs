@@ -1,7 +1,7 @@
 From a78a7b673bebab72c5347fa0bf0f49d7bd0e7be3 Mon Sep 17 00:00:00 2001
 From: Dorian Stoll <dorian.stoll@tmsp.io>
 Date: Sun, 11 Dec 2022 12:00:59 +0100
-Subject: [PATCH 155/314] SURFACE: hid: Add support for Intel Precise Touch and
+Subject: [PATCH 155/315] SURFACE: hid: Add support for Intel Precise Touch and
  Stylus
 
 Based on linux-surface/intel-precise-touch@8abe268

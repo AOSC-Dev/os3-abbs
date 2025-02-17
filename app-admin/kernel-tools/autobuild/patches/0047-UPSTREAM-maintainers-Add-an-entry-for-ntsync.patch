@@ -1,7 +1,7 @@
 From 8db7c57783d46616df3dc7b56981ff6ff278f7ca Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:35:09 -0600
-Subject: [PATCH 047/314] UPSTREAM: maintainers: Add an entry for ntsync.
+Subject: [PATCH 047/315] UPSTREAM: maintainers: Add an entry for ntsync.
 
 Add myself as maintainer, supported by CodeWeavers.
 

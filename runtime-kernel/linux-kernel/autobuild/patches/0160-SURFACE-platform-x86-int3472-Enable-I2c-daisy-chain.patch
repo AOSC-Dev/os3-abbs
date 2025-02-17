@@ -1,7 +1,7 @@
 From 572126fcdcf344e069155f59d0c67f8005b50305 Mon Sep 17 00:00:00 2001
 From: Daniel Scally <djrscally@gmail.com>
 Date: Sun, 10 Oct 2021 20:57:02 +0200
-Subject: [PATCH 160/314] SURFACE: platform/x86: int3472: Enable I2c daisy
+Subject: [PATCH 160/315] SURFACE: platform/x86: int3472: Enable I2c daisy
  chain
 
 The TPS68470 PMIC has an I2C passthrough mode through which I2C traffic

@@ -1,7 +1,7 @@
 From 70703493d806425cbebfc5158ec233b2ff8f30c0 Mon Sep 17 00:00:00 2001
 From: Furong Xu <0x1207@gmail.com>
 Date: Fri, 7 Feb 2025 16:56:39 +0800
-Subject: [PATCH 059/314] FROMGIT: net: stmmac: Apply new page pool parameters
+Subject: [PATCH 059/315] FROMGIT: net: stmmac: Apply new page pool parameters
  when SPH is enabled
 
 Commit df542f669307 ("net: stmmac: Switch to zero-copy in

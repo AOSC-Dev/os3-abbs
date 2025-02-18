@@ -1,7 +1,7 @@
 From 271ef1e291f9d831ca398d164fccd93a295ff87a Mon Sep 17 00:00:00 2001
 From: Ian Rogers <irogers@google.com>
 Date: Mon, 10 Feb 2025 08:51:06 -0800
-Subject: [PATCH 045/286] FROMLIST: perf trace beauty: Add syscalltbl.sh
+Subject: [PATCH 045/287] FROMLIST: perf trace beauty: Add syscalltbl.sh
  generating all system call tables
 
 Rather than generating individual syscall header files generate a

@@ -1,7 +1,7 @@
 From 4c39fd009a17b8b1c6453b6f469e593f1e60503a Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <baimingcong@uniontech.com>
 Date: Sat, 17 Aug 2024 11:32:11 +0800
-Subject: [PATCH 154/286] AOSCOS: platform: x86: ideapad-laptop: add fixes for
+Subject: [PATCH 154/287] AOSCOS: platform: x86: ideapad-laptop: add fixes for
  ThinkBook 14+ (2024 G6+)
 
 This is a patch taken from ideapad-laptop-tb2024g6plus in an attempt to

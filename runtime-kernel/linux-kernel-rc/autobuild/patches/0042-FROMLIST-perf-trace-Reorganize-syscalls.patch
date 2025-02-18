@@ -1,7 +1,7 @@
 From 0845d7e8f0ec84674cd142f0757672b6a97861a7 Mon Sep 17 00:00:00 2001
 From: Ian Rogers <irogers@google.com>
 Date: Mon, 10 Feb 2025 08:51:03 -0800
-Subject: [PATCH 042/286] FROMLIST: perf trace: Reorganize syscalls
+Subject: [PATCH 042/287] FROMLIST: perf trace: Reorganize syscalls
 
 Identify struct syscall information in the syscalls table by a machine
 type and syscall number, not just system call number. Having the

@@ -1,7 +1,7 @@
 From bb708271761a9d2de0094778fe848f0ed367d603 Mon Sep 17 00:00:00 2001
 From: Tiezhu Yang <yangtiezhu@loongson.cn>
 Date: Tue, 14 Jan 2025 21:30:35 +0800
-Subject: [PATCH 037/286] FROMLIST: drm/amd/display: Harden callers of division
+Subject: [PATCH 037/287] FROMLIST: drm/amd/display: Harden callers of division
  functions
 
 There are objtool warnings compiled with the latest mainline LLVM:

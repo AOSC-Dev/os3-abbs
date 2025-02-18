@@ -1,7 +1,7 @@
 From 79c1c14ee366923daf167952ff48e7c126b67546 Mon Sep 17 00:00:00 2001
 From: Masahiro Yamada <masahiroy@kernel.org>
 Date: Mon, 10 Feb 2025 19:21:41 +0900
-Subject: [PATCH 048/286] FROMLIST: LoongArch: KVM: remove unnecessary header
+Subject: [PATCH 048/287] FROMLIST: LoongArch: KVM: remove unnecessary header
  include path
 
 arch/loongarch/kvm/ includes local headers with the double-quote form

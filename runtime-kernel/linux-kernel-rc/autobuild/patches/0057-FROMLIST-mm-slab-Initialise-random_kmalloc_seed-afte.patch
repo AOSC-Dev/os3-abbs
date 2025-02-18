@@ -1,7 +1,7 @@
 From 70aa639da41ac3c4e10f429035419557eed9dec3 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Wed, 12 Feb 2025 22:16:48 +0800
-Subject: [PATCH 057/286] FROMLIST: mm/slab: Initialise random_kmalloc_seed
+Subject: [PATCH 057/287] FROMLIST: mm/slab: Initialise random_kmalloc_seed
  after initcalls
 
 Hibernation assumes the memory layout after resume be the same as that

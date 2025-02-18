@@ -1,7 +1,7 @@
 From ad2f736dae8ba41fa222deb052b1339fdfd48bfa Mon Sep 17 00:00:00 2001
 From: Zeng Heng <zengheng4@huawei.com>
 Date: Thu, 26 Sep 2024 17:28:18 +0800
-Subject: [PATCH 102/286] OPENEULER: arm64/mpam: Fix redefined reference of
+Subject: [PATCH 102/287] OPENEULER: arm64/mpam: Fix redefined reference of
  'mpam_detect_is_enabled'
 
 hulk inclusion

@@ -1,7 +1,7 @@
 From d25e5b7385aba34a52d39a8b04cace07b2fee88f Mon Sep 17 00:00:00 2001
 From: Ian Rogers <irogers@google.com>
 Date: Mon, 10 Feb 2025 08:51:04 -0800
-Subject: [PATCH 043/287] FROMLIST: perf syscalltbl: Remove struct syscalltbl
+Subject: [PATCH 043/288] FROMLIST: perf syscalltbl: Remove struct syscalltbl
 
 The syscalltbl held entries of system call name and number pairs,
 generated from a native syscalltbl at start up. As there are gaps in

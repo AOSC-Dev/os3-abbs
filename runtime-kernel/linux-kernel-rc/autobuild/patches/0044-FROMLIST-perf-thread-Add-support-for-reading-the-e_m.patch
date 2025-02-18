@@ -1,7 +1,7 @@
 From f1c6f5313e941aace3d4208a79f92da0e34a323f Mon Sep 17 00:00:00 2001
 From: Ian Rogers <irogers@google.com>
 Date: Mon, 10 Feb 2025 08:51:05 -0800
-Subject: [PATCH 044/287] FROMLIST: perf thread: Add support for reading the
+Subject: [PATCH 044/288] FROMLIST: perf thread: Add support for reading the
  e_machine type for a thread
 
 Use the executable from /proc/pid/exe and read the e_machine from the

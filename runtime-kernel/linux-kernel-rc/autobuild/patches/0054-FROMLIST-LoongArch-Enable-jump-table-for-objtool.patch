@@ -1,7 +1,7 @@
 From 6f8a1ba1077332f8d01cf0957146448b93bba916 Mon Sep 17 00:00:00 2001
 From: Tiezhu Yang <yangtiezhu@loongson.cn>
 Date: Tue, 11 Feb 2025 19:50:15 +0800
-Subject: [PATCH 054/287] FROMLIST: LoongArch: Enable jump table for objtool
+Subject: [PATCH 054/288] FROMLIST: LoongArch: Enable jump table for objtool
 
 For now, it is time to remove -fno-jump-tables to enable jump table for
 objtool if the compiler has -mannotate-tablejump, otherwise it is better

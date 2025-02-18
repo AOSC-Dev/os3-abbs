@@ -1,7 +1,7 @@
 From 53e7eec201c6312ad72b65b7979264cd4a27a06d Mon Sep 17 00:00:00 2001
 From: Kexy Biscuit <kexybiscuit@aosc.io>
 Date: Tue, 11 Feb 2025 20:58:15 +0800
-Subject: [PATCH 170/287] AOSCOS: objtool: remove duplicate case value
+Subject: [PATCH 170/288] AOSCOS: objtool: remove duplicate case value
  R_PPC64_REL32
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

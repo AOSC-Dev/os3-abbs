@@ -1,7 +1,7 @@
 From 3beb0adcc7c084b8888de5723bfd455b7004c90d Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Wed, 19 Dec 2018 16:31:14 +0800
-Subject: [PATCH 062/287] FROMLIST: scsi: lpfc: Switch memcpy_fromio() to
+Subject: [PATCH 062/288] FROMLIST: scsi: lpfc: Switch memcpy_fromio() to
  __read32_copy()
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

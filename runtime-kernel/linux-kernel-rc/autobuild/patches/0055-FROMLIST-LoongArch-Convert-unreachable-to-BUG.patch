@@ -1,7 +1,7 @@
 From 8b095ee38ce031172927657f3ca1ea670386af91 Mon Sep 17 00:00:00 2001
 From: Tiezhu Yang <yangtiezhu@loongson.cn>
 Date: Tue, 11 Feb 2025 19:50:16 +0800
-Subject: [PATCH 055/287] FROMLIST: LoongArch: Convert unreachable() to BUG()
+Subject: [PATCH 055/288] FROMLIST: LoongArch: Convert unreachable() to BUG()
 
 When compiling on LoongArch, there exists the following objtool
 warning in arch/loongarch/kernel/machine_kexec.o:

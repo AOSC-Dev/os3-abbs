@@ -1,7 +1,7 @@
 From dfb96cfdf6fe2246016d9e21ed1ffa250e3ed5e6 Mon Sep 17 00:00:00 2001
 From: Ian Rogers <irogers@google.com>
 Date: Mon, 10 Feb 2025 08:51:02 -0800
-Subject: [PATCH 041/287] FROMLIST: perf syscalltble: Remove syscall_table.h
+Subject: [PATCH 041/288] FROMLIST: perf syscalltble: Remove syscall_table.h
 
 The definition of "static const char *const syscalltbl[] = {" is done
 in a generated syscalls_32.h or syscalls_64.h that is architecture

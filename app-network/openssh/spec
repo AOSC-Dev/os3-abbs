@@ -1,4 +1,4 @@
-VER=9.9p1
+VER=9.9p2
 SRCS="tbl::https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-$VER.tar.gz"
-CHKSUMS="sha256::b343fbcdbff87f15b1986e6e15d6d4fc9a7d36066be6b7fb507087ba8f966c02"
+CHKSUMS="sha256::91aadb603e08cc285eddf965e1199d02585fa94d994d6cae5b41e1721e215673"
 CHKUPDATE="anitya::id=2565"

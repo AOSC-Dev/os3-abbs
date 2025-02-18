@@ -4,4 +4,7 @@ PKGDEP="gtk-3"
 BUILDDEP="gtk-doc gobject-introspection"
 PKGDES="A library for registering global keyboard shortcuts"
 
+# Note: Extra Provides for Spiral.
+PKGPROV="libkeybinder-3.0_spiral"
+
 AUTOTOOLS_AFTER="--disable-gtk-doc --enable-introspection"

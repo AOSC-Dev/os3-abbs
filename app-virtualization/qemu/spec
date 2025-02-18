@@ -1,5 +1,4 @@
-VER=9.2.0
-REL=1
+VER=9.2.1
 SRCS="tbl::https://download.qemu.org/qemu-${VER/\~/-}.tar.xz"
-CHKSUMS="sha256::f859f0bc65e1f533d040bbe8c92bcfecee5af2c921a6687c652fb44d089bd894"
+CHKSUMS="sha256::b7b0782ead63a5373fdfe08e084d3949a9395ec196180286b841f78a464d169c"
 CHKUPDATE="anitya::id=13607"

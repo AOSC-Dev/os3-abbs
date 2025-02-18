@@ -1,4 +1,4 @@
-VER=4.7.9+git20250218
-SRCS="git::commit=40f52da3692b6dd023bd86906dfa2c700a24ed5c::https://github.com/AOSC-Dev/autobuild4"
+VER=4.7.9+git20250219
+SRCS="git::commit=046d6831da004fbde150e321ba9e727c82416522::https://github.com/AOSC-Dev/autobuild4"
 CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=372345"

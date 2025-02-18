@@ -1,0 +1,10 @@
+PKGNAME=rmpc
+PKGSEC=sound
+PKGDEP="glibc"
+BUILDDEP="rustc llvm"
+PKGDES="A TUI Music Player Daemon client"
+
+USECLANG=1
+
+# FIXME: ld.lld is not yet available.
+NOLTO__LOONGSON3=1

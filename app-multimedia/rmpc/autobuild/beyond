@@ -1,0 +1,11 @@
+abinfo "Installing assets ..."
+install -Dvm644 "$SRCDIR"/target/completions/_rmpc \
+    -t "$PKGDIR"/usr/share/zsh/functions/Completion/Linux/
+install -Dvm644 "$SRCDIR"/target/completions/rmpc.fish \
+    -t "$PKGDIR"/usr/share/fish/vendor_completions.d/
+install -Dvm644 "$SRCDIR"/target/completions/rmpc.bash \
+    -t "$PKGDIR"/usr/share/bash-completion/completions/
+
+abinfo "Installing manpages ..."
+install -Dvm644 "$SRCDIR"/target/man/rmpc.1 \
+    -t "$PKGDIR"/usr/share/man/man1/

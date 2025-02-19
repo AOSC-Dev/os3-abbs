@@ -1,4 +1,4 @@
-VER=6.5
+VER=6.13
 SRCS="tbl::https://github.com/strace/strace/releases/download/v$VER/strace-$VER.tar.xz"
-CHKSUMS="sha256::dfb051702389e1979a151892b5901afc9e93bbc1c70d84c906ade3224ca91980"
+CHKSUMS="sha256::e209daf0ee038ca5adcc4c277e9273b4d51f46a2ff86da575d36742ac3508a17"
 CHKUPDATE="anitya::id=4897"

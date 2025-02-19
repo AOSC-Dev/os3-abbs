@@ -1,0 +1,28 @@
+From df2c1dff7461097c5b42776d1a16e908ef6107b1 Mon Sep 17 00:00:00 2001
+From: Kaiyang Wu <self@origincode.me>
+Date: Wed, 19 Feb 2025 08:58:50 -0800
+Subject: [PATCH 1/2] Remove check for update button
+
+Signed-off-by: Kaiyang Wu <self@origincode.me>
+---
+ chrome/content/zotero/zoteroPane.xhtml | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/chrome/content/zotero/zoteroPane.xhtml b/chrome/content/zotero/zoteroPane.xhtml
+index 18ddf4936..458d68c7c 100644
+--- a/chrome/content/zotero/zoteroPane.xhtml
++++ b/chrome/content/zotero/zoteroPane.xhtml
+@@ -811,10 +811,6 @@
+ 									data-l10n-id="restart-in-troubleshooting-mode-menuitem"
+ 									oncommand="ZoteroStandalone.promptForRestartInTroubleshootingMode();"/>
+ 							<menuseparator/>
+-							<menuitem id="checkForUpdates"
+-									  accesskey="&helpCheckForUpdates.accesskey;"
+-									  label="&helpCheckForUpdates.label;"
+-									  oncommand="Zotero.openCheckForUpdatesWindow();"/>
+ 							<menuitem id="aboutName"
+ 									  accesskey="&aboutProduct.accesskey;"
+ 									  label="&aboutProduct.label;"
+-- 
+2.48.1
+

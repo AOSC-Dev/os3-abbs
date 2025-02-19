@@ -1,7 +1,7 @@
-From 23ccd63fba26553d8b6181b8c6a15f044601c2c6 Mon Sep 17 00:00:00 2001
+From 32533afaa020464af1a35bf32f817bdac2a573fb Mon Sep 17 00:00:00 2001
 From: Kaiyang Wu <self@origincode.me>
 Date: Tue, 21 Jan 2025 14:47:44 -0800
-Subject: [PATCH] Disable updater
+Subject: [PATCH 2/2] Disable updater
 
 Signed-off-by: Kaiyang Wu <self@origincode.me>
 ---

@@ -1,4 +1,4 @@
-VER=1.50.0
-SRCS="https://download.gnome.org/sources/NetworkManager/${VER:0:4}/NetworkManager-$VER.tar.xz"
-CHKSUMS="sha256::fc03e7388a656cebc454c5d89481626122b1975d7c26babc64dc7e488faa66e3"
+VER=1.50.2
+SRCS="tbl::https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/releases/$VER/downloads/NetworkManager-$VER.tar.xz"
+CHKSUMS="sha256::10473be9d3ab89f8a27a68b7bf5bc9557851a5183b74b6241e5e0fa5c6921fef"
 CHKUPDATE="anitya::id=21197"

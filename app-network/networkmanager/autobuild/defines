@@ -39,6 +39,10 @@ ABTYPE=meson
 NOLTO__MIPS64R6EL=1
 
 # Note: We still use wpa_supplicant by default, we find it more reliable.
+# FIXME: Disabling eBPF due to issues with ACB probes, which causes no IPv4 via
+# DHCP.
+# Upstream issue and resolution reference:
+# https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/issues/1485#note_2297552
 MESON_AFTER="-Dsession_tracking_consolekit=false \
              -Dsession_tracking=systemd \
              -Dsuspend_resume=systemd \
@@ -64,7 +68,7 @@ MESON_AFTER="-Dsession_tracking_consolekit=false \
              -Dnmtui=true \
              -Dnm_cloud_setup=true \
              -Dbluez5_dun=true \
-             -Debpf=true \
+             -Debpf=false \
              -Difcfg_rh=false \
              -Difupdown=false \
              -Dconfig_dhcp_default=internal \

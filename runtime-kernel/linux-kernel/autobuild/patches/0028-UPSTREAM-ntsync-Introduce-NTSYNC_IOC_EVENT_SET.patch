@@ -1,7 +1,7 @@
-From be8bb3d6f49ab3480b6a0c081dea66f5adf9ccef Mon Sep 17 00:00:00 2001
+From f382c2e44dc0cb486c7db844b2b6c661af3b7633 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:50 -0600
-Subject: [PATCH 028/314] UPSTREAM: ntsync: Introduce NTSYNC_IOC_EVENT_SET.
+Subject: [PATCH 028/335] UPSTREAM: ntsync: Introduce NTSYNC_IOC_EVENT_SET.
 
 This corresponds to the NT syscall NtSetEvent().
 

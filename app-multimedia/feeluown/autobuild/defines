@@ -5,7 +5,7 @@ PKGRECOM="feeluown-bilibili feeluown-kuwo feeluown-netease feeluown-qqmusic"
 
 PKGDEP="python-3 requests tomlkit typing-extensions qasync \
 	janus pyqt5 pyopengl pydantic mpv mutagen yt-dlp \
-	secretstorage"
+	secretstorage openai-python"
 
 
 PKGBREAK="fuocore feeluown-local feeluown-xiami"

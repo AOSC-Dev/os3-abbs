@@ -1,0 +1,9 @@
+PKGNAME=anyio
+PKGSEC=python
+PKGDEP="python-3 exceptiongroup typing-extensions sniffio idna"
+BUILDDEP="setuptools pep517 python-build wheel poetry python-installer \
+          setuptools-scm"
+PKGDES="A asynchronous event loop implementation for Python"
+
+ABHOST=noarch
+NOPYTHON2=1

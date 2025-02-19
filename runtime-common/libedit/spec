@@ -1,5 +1,5 @@
-VER=20191231+3.1
-REL=2
-SRCS="tbl::https://thrysoee.dk/editline/libedit-${VER/+/-}.tar.gz"
-CHKSUMS="sha256::dbb82cb7e116a5f8025d35ef5b4f7d4a3cdd0a3909a146a39112095a2d229071"
+UPSTREAM_VER=20250104-3.1
+VER=${UPSTREAM_VER/\-/+}
+SRCS="tbl::https://thrysoee.dk/editline/libedit-${UPSTREAM_VER}.tar.gz"
+CHKSUMS="sha256::23792701694550a53720630cd1cd6167101b5773adddcb4104f7345b73a568ac"
 CHKUPDATE="anitya::id=1599"

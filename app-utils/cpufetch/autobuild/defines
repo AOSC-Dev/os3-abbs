@@ -1,0 +1,7 @@
+PKGNAME=cpufetch
+PKGSEC=utils
+PKGDES="A command-line tool displays the CPU information"
+PKGDEP="bash"
+
+# FIXME: These architectures are not supported by upstream.
+FAIL_ARCH="(loongarch64|loongson3)"

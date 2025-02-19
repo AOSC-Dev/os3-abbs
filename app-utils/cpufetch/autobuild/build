@@ -1,0 +1,10 @@
+abinfo "Building cpufetch ..."
+make
+
+abinfo "Installing cpufetch ..."
+install -Dvm755 "$SRCDIR"/cpufetch \
+    "$PKGDIR"/usr/bin/cpufetch
+
+abinfo "Installing man page ..."
+install -Dvm644 "$SRCDIR"/cpufetch.1 \
+    "$PKGDIR"/usr/share/man/man1/cpufetch.1

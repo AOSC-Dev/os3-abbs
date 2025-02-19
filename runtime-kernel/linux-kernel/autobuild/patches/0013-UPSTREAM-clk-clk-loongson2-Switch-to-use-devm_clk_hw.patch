@@ -1,7 +1,7 @@
-From f0b61748fa9ad05173831dd62562f6898dc63e63 Mon Sep 17 00:00:00 2001
+From dacd8cc9bea09fed5f3131f1c6297768870343bb Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Tue, 14 Jan 2025 21:00:28 +0800
-Subject: [PATCH 013/314] UPSTREAM: clk: clk-loongson2: Switch to use
+Subject: [PATCH 013/335] UPSTREAM: clk: clk-loongson2: Switch to use
  devm_clk_hw_register_fixed_rate_parent_data()
 
 Since commit 706ae6446494 ("clk: fixed-rate: add

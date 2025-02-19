@@ -1,7 +1,7 @@
-From 18b43aae37d249a1c107c83c209aafc1fbaba058 Mon Sep 17 00:00:00 2001
+From 6e10889fa9ecdeec962e8c9380b27bdbd9ab9a43 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:35:04 -0600
-Subject: [PATCH 042/314] UPSTREAM: selftests: ntsync: Add some tests for
+Subject: [PATCH 042/335] UPSTREAM: selftests: ntsync: Add some tests for
  auto-reset event state.
 
 Test event-specific ioctls NTSYNC_IOC_EVENT_SET, NTSYNC_IOC_EVENT_RESET,

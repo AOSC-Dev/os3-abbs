@@ -1,0 +1,10 @@
+PKGNAME=openai-python
+PKGSEC=python
+PKGDEP="python-3 httpx anyio typing-extensions pydantic distro sniffio \
+        tqdm jiter websockets numpy pandas"
+BUILDDEP="setuptools pep517 python-build wheel poetry python-installer \
+          hatchling hatch-fancy-pypi-readme"
+PKGDES="OpenAI library for Python"
+
+ABHOST=noarch
+NOPYTHON2=1

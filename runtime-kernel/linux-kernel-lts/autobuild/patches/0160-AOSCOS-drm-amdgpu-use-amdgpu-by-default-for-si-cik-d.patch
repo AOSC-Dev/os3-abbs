@@ -1,7 +1,7 @@
 From 9004ca018e77c462f48cf422f02e48a29ddf245a Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Sun, 22 Sep 2024 00:57:24 +0800
-Subject: [PATCH 160/302] AOSCOS: drm: amdgpu: use amdgpu by default for si/cik
+Subject: [PATCH 160/303] AOSCOS: drm: amdgpu: use amdgpu by default for si/cik
  devices
 
 On LoongArch, radeon causes a memory read violation that crashes

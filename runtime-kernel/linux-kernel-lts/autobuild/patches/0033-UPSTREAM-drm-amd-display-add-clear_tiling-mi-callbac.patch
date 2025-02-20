@@ -1,7 +1,7 @@
 From 60e7ff4165ac3cb5b547664b051f63ac4068976e Mon Sep 17 00:00:00 2001
 From: Alex Deucher <alexander.deucher@amd.com>
 Date: Thu, 31 Oct 2024 13:20:19 -0400
-Subject: [PATCH 033/302] UPSTREAM: drm/amd/display: add clear_tiling mi
+Subject: [PATCH 033/303] UPSTREAM: drm/amd/display: add clear_tiling mi
  callbacks
 
 This adds clear_tiling callbacks to the mi structure that

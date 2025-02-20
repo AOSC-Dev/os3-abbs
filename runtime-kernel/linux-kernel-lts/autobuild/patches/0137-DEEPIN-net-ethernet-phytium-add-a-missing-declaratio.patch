@@ -1,7 +1,7 @@
 From 24a2f08b610f7f747a119e623cab6ab1fbdca1a5 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <baimingcong@uniontech.com>
 Date: Fri, 28 Jun 2024 16:23:20 +0800
-Subject: [PATCH 137/302] DEEPIN: net: ethernet: phytium: add a missing
+Subject: [PATCH 137/303] DEEPIN: net: ethernet: phytium: add a missing
  declaration for *np
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

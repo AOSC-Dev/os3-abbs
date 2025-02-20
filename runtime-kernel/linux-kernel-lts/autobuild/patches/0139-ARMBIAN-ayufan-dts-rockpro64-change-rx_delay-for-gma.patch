@@ -1,7 +1,7 @@
 From 648602e3eb5f00fffa354d134f537900eba98322 Mon Sep 17 00:00:00 2001
 From: Ayufan <ayufan@ayufan.eu>
 Date: Sun, 30 Dec 2018 13:32:47 +0100
-Subject: [PATCH 139/302] ARMBIAN: ayufan: dts: rockpro64: change rx_delay for
+Subject: [PATCH 139/303] ARMBIAN: ayufan: dts: rockpro64: change rx_delay for
  gmac
 
 Change-Id: Ib3899f684188aa1ed1545717af004bba53fe0e07

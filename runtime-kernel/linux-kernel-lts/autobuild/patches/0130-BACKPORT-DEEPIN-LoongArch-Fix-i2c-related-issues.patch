@@ -1,7 +1,7 @@
 From c8daa6214a50fe5bcb26e002fca6d71b1be96f47 Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Fri, 14 Feb 2025 17:50:11 +0800
-Subject: [PATCH 130/302] BACKPORT: DEEPIN: LoongArch: Fix i2c related issues
+Subject: [PATCH 130/303] BACKPORT: DEEPIN: LoongArch: Fix i2c related issues
 
 Signed-off-by: wanghongliang <wanghongliang@loongson.cn>
 Signed-off-by: Binbin Zhou <zhoubinbin@loongson.cn>

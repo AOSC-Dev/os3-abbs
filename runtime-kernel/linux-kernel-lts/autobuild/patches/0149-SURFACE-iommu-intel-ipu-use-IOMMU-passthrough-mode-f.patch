@@ -1,7 +1,7 @@
 From a9901dc540d4d33fb2386d23b9c4b077de02ae71 Mon Sep 17 00:00:00 2001
 From: zouxiaoh <xiaohong.zou@intel.com>
 Date: Fri, 25 Jun 2021 08:52:59 +0800
-Subject: [PATCH 149/302] SURFACE: iommu: intel-ipu: use IOMMU passthrough mode
+Subject: [PATCH 149/303] SURFACE: iommu: intel-ipu: use IOMMU passthrough mode
  for Intel IPUs
 
 Intel IPU(Image Processing Unit) has its own (IO)MMU hardware,

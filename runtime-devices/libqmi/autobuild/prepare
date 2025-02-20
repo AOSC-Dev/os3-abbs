@@ -1,0 +1,4 @@
+abinfo "Creating a python symlink to /usr/bin/python3 ..."
+ln -sv /usr/bin/python3 \
+    "$SRCDIR"/python
+export PATH="$PATH:$SRCDIR"

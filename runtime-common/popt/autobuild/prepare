@@ -1,2 +1,5 @@
 export AUTOTOOLS_DEF="--prefix=/usr --libdir=/usr/lib"
-cp /usr/share/automake-1.16/config.* .
+
+abinfo "Installing replacement config.{guess,sub} ..."
+cp -v /usr/bin/config.{guess,sub} \
+    "$SRCDIR"/

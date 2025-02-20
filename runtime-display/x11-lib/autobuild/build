@@ -52,8 +52,3 @@ for package in `cat "$SRCDIR"/autobuild/build-order`; do
     esac
     popd
 done
-
-abinfo "Removing some files found in x11-proto..."
-rm -v \
-    "$PKGDIR"/usr/include/X11/extensions/XKBgeom.h \
-    "$PKGDIR"/usr/include/X11/extensions/vldXvMC.h

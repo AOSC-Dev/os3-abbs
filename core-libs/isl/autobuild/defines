@@ -1,6 +1,7 @@
 PKGNAME=isl
 PKGSEC=libs
 PKGDEP="gmp"
+BUILDDEP="libtool"
 PKGDES="Library for manipulating sets and relations of integer points bounded by linear constraints"
 
 PKGEPOCH=1

@@ -1,0 +1,30 @@
+From 7390219b8a97ea34a94fa84c6caf9e9bb15cb851 Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.io>
+Date: Fri, 14 Feb 2025 21:48:23 +0800
+Subject: [PATCH 2/2] AOSCOS: Makefile: drop the -s parameter from install
+ commands
+
+Drop the `-s' parameter from all instances of the `install' command to
+prevent install-time stripping. Autobuild will handle stripping.
+
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index df1c3ec..7411776 100644
+--- a/Makefile
++++ b/Makefile
+@@ -14,7 +14,7 @@ endif
+ SUF=86
+ 
+ INSTALL_OPT=-m 755
+-INSTALL_OPTS=-m 755 -s
++INSTALL_OPTS=-m 755
+ MAN_OPTS    =-m 644
+ 
+ MFLAGS= "LIBS=$(LIBS)" \
+-- 
+2.48.1
+

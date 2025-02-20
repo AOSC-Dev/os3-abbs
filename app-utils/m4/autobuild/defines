@@ -4,4 +4,5 @@ BUILDDEP="help2man"
 PKGDES="A macro processor"
 PKGSEC=utils
 
+# FIXME: `bootstrap' does too much, it even synchronises translation.
 RECONF=0

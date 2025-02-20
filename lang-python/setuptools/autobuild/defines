@@ -1,9 +1,10 @@
 PKGNAME=setuptools
 PKGSEC=python
 PKGEPOCH=1
-PKGDEP="setuptools-python2 setuptools-python3"
+PKGDEP="setuptools-python3"
 PKGDES="Easily download, build, install, upgrade, and uninstall Python packages (Transitional Package)"
 PKGREP="setuptools+rt3"
 PKGPROV="setuptools+rt3"
 
 ABHOST=noarch
+ABTYPE=dummy

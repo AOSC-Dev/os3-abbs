@@ -1,0 +1,9 @@
+PKGNAME=pyproject-metadata
+PKGSEC=python
+PKGDEP="packaging python-3"
+BUILDDEP="python-build python-installer wheel flit-core"
+PKGDES="Dataclass for PEP 621 metadata with support for core metadata generation"
+
+ABHOST=noarch
+ABTYPE=pep517
+NOPYTHON2=1

@@ -1,0 +1,4 @@
+VER=0.9.0
+SRCS="pypi::version=$VER::pyproject_metadata"
+CHKSUMS="sha256::8511c00a4cad96686af6a6b4143433298beb96105a9379afdc9b0328f4f260c9"
+CHKUPDATE="anitya::id=255630"

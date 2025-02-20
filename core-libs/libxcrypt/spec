@@ -1,4 +1,4 @@
-VER=4.4.37
+VER=4.4.38
 SRCS="tbl::https://github.com/besser82/libxcrypt/releases/download/v$VER/libxcrypt-$VER.tar.xz"
-CHKSUMS="sha256::902aa2976f959b5ebe55679b1722b8479f8f13cd4ce2ef432b0a84ae298fffd0"
+CHKSUMS="sha256::80304b9c306ea799327f01d9a7549bdb28317789182631f1b54f4511b4206dd6"
 CHKUPDATE="anitya::id=16436"

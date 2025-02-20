@@ -1,0 +1,4 @@
+PKGNAME=fastfetch
+PKGDES="A fast command-line system information tool"
+PKGSEC=utils
+PKGDEP="bash"

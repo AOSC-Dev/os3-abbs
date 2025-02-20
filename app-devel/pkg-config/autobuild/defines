@@ -1,5 +1,5 @@
 PKGNAME=pkg-config
-PKGDES="Packages configure management tool"
+PKGDES="A tool to fetch package configuration parameters"
 PKGDEP="glib"
 PKGSEC=devel
 

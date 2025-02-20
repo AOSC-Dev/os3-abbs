@@ -12,14 +12,9 @@ PKGRECOM__RETRO=" \
           kmod less lrzip lsb-release lsof lz4 lzip lzo lzop man-db nano neofetch \
           pciutils procps psmisc screen sed tmux tar unrar unzip usbutils util-linux \
           which zip"
-PKGRECOM__ARMV4="${PKGRECOM__RETRO}"
-PKGRECOM__ARMV6HF="${PKGRECOM__RETRO}"
-PKGRECOM__ARMV7HF="${PKGRECOM__RETRO}"
 PKGRECOM__I486="${PKGRECOM__RETRO} pcmciautils isapnptools"
-PKGRECOM__LOONGSON2F="${PKGRECOM__RETRO}"
-PKGRECOM__M68K="${PKGRECOM__RETRO}"
-PKGRECOM__POWERPC="${PKGRECOM__RETRO} pcmciautils"
-PKGRECOM__PPC64="${PKGRECOM__RETRO}"
+BUILDDEP="${PKGRECOM}"
+BUILDDEP__I486="${PKGRECOM__I486}"
 PKGDES="Meta package for basic AOSC OS utilities"
 
 VER_NONE=1

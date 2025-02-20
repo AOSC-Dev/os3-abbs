@@ -1,6 +1,6 @@
 PKGNAME=pkg-config
-PKGDES="Packages configure management tool"
-PKGDEP=""
+PKGDES="A tool to fetch package configuration parameters"
+PKGDEP="glibc"
 PKGSEC=devel
 
 NOPYTHON2=1

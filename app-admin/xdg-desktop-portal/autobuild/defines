@@ -1,15 +1,19 @@
 PKGNAME=xdg-desktop-portal
 PKGSEC=admin
 PKGDEP="fuse-3 geoclue2 glib libportal pipewire"
-BUILDDEP="flatpak xmlto docbook-xsl libportal"
+BUILDDEP="flatpak xmlto docbook-xsl libportal sphinx docutils \
+          sphinxext-opengraph sphinx-copybutton furo"
 PKGDES="Portal frontend service to flatpak"
 
-AUTOTOOLS_AFTER="--enable-nls \
-                 --enable-libportal \
-                 --enable-geoclue \
-                 --enable-pipewire \
-                 --enable-docbook-docs \
-                 --disable-coverage \
-                 --disable-installed-tests \
-                 --disable-always-build-tests \
-                 --with-systemd"
+MESON_AFTER=(
+    -Dflatpak-interfaces=enabled
+    -Dgeoclue=enabled
+    -Dgudev=enabled
+    -Dsystemd=enabled
+    -Ddocumentation=enabled
+    -Dtests=disabled
+    -Dinstalled-tests=false
+    -Dman-pages=enabled
+    -Dsandboxed-image-validation=enabled
+    -Dsandboxed-sound-validation=enabled
+)

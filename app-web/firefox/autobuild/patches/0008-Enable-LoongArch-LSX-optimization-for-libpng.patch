@@ -1,7 +1,7 @@
-From 5517734d666761fd476abab61b3527d005e9c66d Mon Sep 17 00:00:00 2001
+From d71c3da12a6150a3a449202a6ba1dc60be8458c2 Mon Sep 17 00:00:00 2001
 From: WANG Xuerui <xen0n@gentoo.org>
 Date: Wed, 4 Sep 2024 16:51:22 +0800
-Subject: [PATCH 10/11] Enable LoongArch LSX optimization for libpng
+Subject: [PATCH 8/9] Enable LoongArch LSX optimization for libpng
 
 Signed-off-by: WANG Xuerui <xen0n@gentoo.org>
 ---

@@ -1,7 +1,7 @@
-From 4f3be0a069c4c082124837bbe23babf58ce43b42 Mon Sep 17 00:00:00 2001
+From 5997a50c2dfbdeb3f7a8eb65fe253fb6f896025d Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 26 Nov 2024 19:46:01 +0800
-Subject: [PATCH 05/11] chore: regenerate libwebrtc moz.build files
+Subject: [PATCH 3/9] chore: regenerate libwebrtc moz.build files
 
 Regenerate moz.build files to incorporate loong64 libwebrtc enablement in
 gn_processor.py.

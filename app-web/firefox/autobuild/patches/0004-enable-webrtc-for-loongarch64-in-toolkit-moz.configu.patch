@@ -1,7 +1,7 @@
-From 78c13501b206f70c18133d59bc0843dcc06897a8 Mon Sep 17 00:00:00 2001
+From 1d0b8be14f5abb654c8953bebadd26051b2a0294 Mon Sep 17 00:00:00 2001
 From: WANG Xuerui <xen0n@gentoo.org>
 Date: Tue, 3 Sep 2024 15:39:18 +0800
-Subject: [PATCH 06/11] enable webrtc for loongarch64 in toolkit/moz.configure
+Subject: [PATCH 4/9] enable webrtc for loongarch64 in toolkit/moz.configure
 
 Signed-off-by: WANG Xuerui <xen0n@gentoo.org>
 ---

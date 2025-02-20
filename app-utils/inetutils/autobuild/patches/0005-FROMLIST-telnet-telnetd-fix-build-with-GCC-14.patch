@@ -1,0 +1,63 @@
+From e67f01c46c07d40f40e40a42c098818594736a4a Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.io>
+Date: Mon, 10 Feb 2025 18:04:09 +0800
+Subject: [PATCH 5/5] FROMLIST: telnet: telnetd: fix build with GCC >= 14
+
+Link: https://savannah.gnu.org/bugs/?65263
+Signed-off-by: Jeffrey Cliff <themusicgod1>
+
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ am/libcurses.m4   | 4 ++++
+ telnet/telnet.c   | 4 ++++
+ telnetd/utility.c | 4 ++++
+ 3 files changed, 12 insertions(+)
+
+diff --git a/am/libcurses.m4 b/am/libcurses.m4
+index 7c8c69a9..40c6aa31 100644
+--- a/am/libcurses.m4
++++ b/am/libcurses.m4
+@@ -135,6 +135,10 @@ AC_DEFUN([IU_LIB_TERMCAP], [
+ 	AC_DEFINE([HAVE_CURSES_TGETENT], 1)
+       fi
+     fi
++    if test "$ac_cv_lib_curses_tgetent" = yes \
++	&& test "$ac_cv_have_decl_tgetent" = no; then
++      AC_DEFINE([HAVE_CURSES_NO_PROTOTYPE_BUT_YES_TGETENT], 1, [curses defined but no prototype])
++    fi
+     if test "$ac_cv_lib_curses_tgetent" = no \
+ 	&& test "$ac_cv_lib_termcap_tgetent" = no; then
+       AC_CHECK_LIB(termlib, tgetent, LIBTERMCAP=-ltermlib)
+diff --git a/telnet/telnet.c b/telnet/telnet.c
+index 8884b6ec..4c340b57 100644
+--- a/telnet/telnet.c
++++ b/telnet/telnet.c
+@@ -758,6 +758,10 @@ mklist (char *buf, char *name)
+  */
+ char termbuf[2048] = { 0 };
+ 
++#ifdef HAVE_CURSES_NO_PROTOTYPE_BUT_YES_TGETENT
++#include <term.h>
++#endif
++
+ static int
+ init_term (char *tname, int *errp)
+ {
+diff --git a/telnetd/utility.c b/telnetd/utility.c
+index 01b94297..69cc9673 100644
+--- a/telnetd/utility.c
++++ b/telnetd/utility.c
+@@ -44,6 +44,10 @@
+ # endif
+ #endif
+ 
++#ifdef HAVE_CURSES_NO_PROTOTYPE_BUT_YES_TGETENT
++#include <term.h>
++#endif
++
+ #if defined HAVE_STREAMSPTY && defined HAVE_GETMSG	\
+   && defined HAVE_STROPTS_H
+ # include <stropts.h>
+-- 
+2.48.1
+

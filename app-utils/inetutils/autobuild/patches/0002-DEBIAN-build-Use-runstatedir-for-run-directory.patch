@@ -1,7 +1,7 @@
-From 4c984652e5cb7c23b42aedafa3528aa1573447ba Mon Sep 17 00:00:00 2001
+From ed7819cc26c9bd2e77e1cde19027548051cc0254 Mon Sep 17 00:00:00 2001
 From: Guillem Jover <guillem@hadrons.org>
 Date: Sun, 5 Sep 2021 05:00:23 +0200
-Subject: [PATCH 2/4] build: Use runstatedir for /run directory
+Subject: [PATCH 2/5] DEBIAN: build: Use runstatedir for /run directory
 
 ---
  paths | 10 +++++-----
@@ -38,5 +38,5 @@ index 6cdd79d1..84d4c1a2 100644
  PATH_RLOGIN	x $(bindir)/rlogin
  PATH_RSH	x $(bindir)/rsh
 -- 
-2.47.0
+2.48.1
 

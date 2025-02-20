@@ -1,7 +1,7 @@
 From 2d5aaddcf9a15d63c04e19e1e8855240ebc6700c Mon Sep 17 00:00:00 2001
 From: Jackie Dong <xy-jackie@139.com>
 Date: Thu, 16 Jan 2025 00:25:15 +0800
-Subject: [PATCH 037/302] UPSTREAM: ALSA: hda: Support for Ideapad hotkey mute
+Subject: [PATCH 037/303] UPSTREAM: ALSA: hda: Support for Ideapad hotkey mute
  LEDs
 
 New ideapad helper file with support for handling FN key mute LEDs.

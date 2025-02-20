@@ -1,7 +1,7 @@
 From d958bb07ccf03188f49afaa57cad6b9bf07004ba Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhc@lemote.com>
 Date: Thu, 12 Mar 2020 17:40:53 +0800
-Subject: [PATCH 094/302] BACKPORT: FROMLIST: MIPS: Add __cpu_full_name[] to
+Subject: [PATCH 094/303] BACKPORT: FROMLIST: MIPS: Add __cpu_full_name[] to
  make CPU names more human-readable
 
 In /proc/cpuinfo, we keep "cpu model" as is, since GCC should use it

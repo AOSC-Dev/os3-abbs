@@ -1,7 +1,7 @@
 From a6e6e712ded68c72d46e396b4d5580c3ad3ed9b4 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Sun, 8 Sep 2024 17:46:04 +0800
-Subject: [PATCH 079/302] FROMLIST: ahci: Marvell controllers prefer DMA for
+Subject: [PATCH 079/303] FROMLIST: ahci: Marvell controllers prefer DMA for
  ATAPI
 
 We use Marvell CD/DVD controllers on many Loongson-based machines. We

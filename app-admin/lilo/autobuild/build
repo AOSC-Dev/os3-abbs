@@ -1,0 +1,7 @@
+abinfo "Building LiLO ..."
+make
+
+abinfo "Installing LiLO ..."
+make install \
+    DESTDIR="$PKGDIR" \
+    PREFIX=/usr

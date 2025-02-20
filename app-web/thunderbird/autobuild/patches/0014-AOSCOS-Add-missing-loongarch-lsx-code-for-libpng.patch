@@ -1,4 +1,4 @@
-From 084ff622eeeba0f7217182cda07b026fd9f7987c Mon Sep 17 00:00:00 2001
+From f23209701a12d6c8e409782f907d862b5c705e54 Mon Sep 17 00:00:00 2001
 From: Jiajie Chen <c@jia.je>
 Date: Tue, 14 May 2024 16:36:09 -0700
 Subject: [PATCH 14/18] AOSCOS: Add missing loongarch lsx code for libpng
@@ -551,5 +551,5 @@ index 1cbb828436..7d50038c28 100644
  #define PNG_PROGRESSIVE_READ_SUPPORTED
  #define PNG_READ_APNG_SUPPORTED
 -- 
-2.47.0
+2.48.1
 

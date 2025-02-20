@@ -1,4 +1,4 @@
-From 73e10600c38c5d123eb130b7f0467a84bb115d3d Mon Sep 17 00:00:00 2001
+From e7078275e4ed20666466cdd7e6135a9ef2c6e09c Mon Sep 17 00:00:00 2001
 From: Icenowy Zheng <uwu@icenowy.me>
 Date: Fri, 9 Aug 2024 08:31:16 +0800
 Subject: [PATCH 18/18] WIP: AOSCOS: Keep unsigned 32-bit parameter
@@ -30,5 +30,5 @@ index ddd6692156..ee2f7ff767 100644
          case nsXPTType::T_U64:
            value = s->val.u64;
 -- 
-2.47.0
+2.48.1
 

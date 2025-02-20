@@ -1,7 +1,9 @@
 PKGNAME=distlib
 PKGSEC=python
 PKGDES="A library which implements low-level functions that relate to packaging and distribution of Python software"
-PKGDEP="python-3 python-2"
+PKGDEP="python-3"
 
 ABHOST=noarch
+
 ABTYPE=python
+NOPYTHON2=1

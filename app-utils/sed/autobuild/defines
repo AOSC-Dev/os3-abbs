@@ -1,6 +1,6 @@
 PKGNAME=sed
 PKGSEC=utils
-PKGDEP="glibc"
+PKGDEP="acl glibc"
 PKGDES="A non-interactive command-line text editor"
 
 AB_FLAGS_O3=1

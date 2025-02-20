@@ -1,6 +1,6 @@
 PKGNAME=vim
 PKGSEC=editors
-PKGDEP="lua python-2 python-3 acl"
+PKGDEP="lua python-3 acl"
 PKGDEP__RETRO="acl"
 PKGDEP__ARMV4="${PKGDEP__RETRO}"
 PKGDEP__ARMV6HF="${PKGDEP__RETRO}"

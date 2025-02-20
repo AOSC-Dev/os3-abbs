@@ -1,4 +1,4 @@
-From 1c3a82a38bb1351ba23b518f9a196f1f7984a554 Mon Sep 17 00:00:00 2001
+From 492747f4f8ca15449d67a5b06d2475372e394e78 Mon Sep 17 00:00:00 2001
 From: Icenowy Zheng <uwu@icenowy.me>
 Date: Thu, 16 Jan 2025 09:05:31 +0800
 Subject: [PATCH 2/3] FROMLIST: zink: Do not use demote on IMG blobs

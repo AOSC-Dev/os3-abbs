@@ -1,4 +1,4 @@
-From 68a86cb8b8a21f065a372351d1d0c7747454eb9a Mon Sep 17 00:00:00 2001
+From cda38cf44e885b1b483d417dc15a6f8fc2a832a8 Mon Sep 17 00:00:00 2001
 From: Mingcong Bai <jeffbai@aosc.io>
 Date: Tue, 12 Mar 2024 00:17:46 +0800
 Subject: [PATCH 3/3] AOSCOS: LOONGARCH64: fix(iris_bufmgr.c): set PAGE_SIZE as

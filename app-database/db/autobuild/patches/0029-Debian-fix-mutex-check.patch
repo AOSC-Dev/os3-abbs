@@ -1,0 +1,42 @@
+Author: Thomas Duetsch <thomas.duetsch@siemens.com>
+Description: It seems the Compiler flag "-Wimplicit-int" is causing some configure steps to fail.
+Date: Tue, 8 Oct 2024 07:18:02 UTC
+---
+--- db5.3-5.3.28+dfsg2.orig/dist/aclocal/mutex.m4
++++ db5.3-5.3.28+dfsg2/dist/aclocal/mutex.m4
+@@ -5,7 +5,7 @@ AC_DEFUN(AM_PTHREADS_SHARED, [
+ AC_TRY_RUN([
+ #include <stdlib.h>
+ #include <pthread.h>
+-main() {
++int main() {
+ 	pthread_cond_t cond;
+ 	pthread_mutex_t mutex;
+ 	pthread_condattr_t condattr;
+@@ -49,7 +49,7 @@ AC_DEFUN(AM_PTHREADS_PRIVATE, [
+ AC_TRY_RUN([
+ #include <stdlib.h>
+ #include <pthread.h>
+-main() {
++int main() {
+ 	pthread_cond_t cond;
+ 	pthread_mutex_t mutex;
+ 	pthread_condattr_t condattr;
+@@ -89,7 +89,7 @@ AC_DEFUN(AM_PTHREADS_CONDVAR_DUPINITCHK,
+ AC_TRY_RUN([
+ #include <stdlib.h>
+ #include <pthread.h>
+-main() {
++int main() {
+ 	pthread_cond_t cond;
+ 	pthread_condattr_t condattr;
+ 	exit(pthread_condattr_init(&condattr) ||
+@@ -110,7 +110,7 @@ AC_DEFUN(AM_PTHREADS_RWLOCKVAR_DUPINITCH
+ AC_TRY_RUN([
+ #include <stdlib.h>
+ #include <pthread.h>
+-main() {
++int main() {
+ 	pthread_rwlock_t rwlock;
+ 	pthread_rwlockattr_t rwlockattr;
+ 	exit(pthread_rwlockattr_init(&rwlockattr) ||

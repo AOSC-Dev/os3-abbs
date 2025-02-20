@@ -1,0 +1,33 @@
+From: Sebastian Ramacher <sramacher@debian.org>
+Date: Wed, 20 Mar 2024 21:27:19 +0100
+Subject: Add missing includes
+
+---
+ dist/aclocal/sequence.m4 | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/dist/aclocal/sequence.m4 b/dist/aclocal/sequence.m4
+index 6e99b93..5aa2f58 100644
+--- a/dist/aclocal/sequence.m4
++++ b/dist/aclocal/sequence.m4
+@@ -43,6 +43,8 @@ AC_DEFUN(AM_SEQUENCE_CONFIGURE, [
+ 	# test, which won't test for the appropriate printf format strings.
+ 	if test "$db_cv_build_sequence" = "yes"; then
+ 		AC_TRY_RUN([
++		#include <string.h>
++		#include <stdio.h>
+ 		main() {
+ 			$db_cv_seq_type l;
+ 			unsigned $db_cv_seq_type u;
+@@ -59,7 +61,10 @@ AC_DEFUN(AM_SEQUENCE_CONFIGURE, [
+ 				return (1);
+ 			return (0);
+ 		}],, [db_cv_build_sequence="no"],
+-		AC_TRY_LINK(,[
++		AC_TRY_LINK([
++		#include <string.h>
++		#include <stdio.h>
++		],[
+ 			$db_cv_seq_type l;
+ 			unsigned $db_cv_seq_type u;
+ 			char buf@<:@100@:>@;

@@ -1,0 +1,16 @@
+Description: Fix an autoconf test for gcc 14
+  This fixes
+    checking for 64-bit integral type support for sequences... no
+Author: Adrian Bunk <bunk@debian.org>
+
+--- db5.3-5.3.28+dfsg2.orig/dist/aclocal/sequence.m4
++++ db5.3-5.3.28+dfsg2/dist/aclocal/sequence.m4
+@@ -45,7 +45,7 @@ AC_DEFUN(AM_SEQUENCE_CONFIGURE, [
+ 		AC_TRY_RUN([
+ 		#include <string.h>
+ 		#include <stdio.h>
+-		main() {
++		int main() {
+ 			$db_cv_seq_type l;
+ 			unsigned $db_cv_seq_type u;
+ 			char buf@<:@100@:>@;

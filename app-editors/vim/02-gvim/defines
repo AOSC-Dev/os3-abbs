@@ -1,6 +1,6 @@
 PKGNAME=gvim
 PKGSEC=editor
-PKGDEP="gpm ruby lua python-2 python-3 tk tcl acl gtk-3 ncurses x11-lib \
+PKGDEP="gpm ruby lua python-3 tk tcl acl gtk-3 ncurses x11-lib \
         libsodium perl"
 PKGDES="VI Improved (with GTK frontend)"
 

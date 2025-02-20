@@ -21,7 +21,7 @@ abinfo "Configuring Vim ..."
     --enable-cscope \
     --enable-netbeans \
     --enable-perlinterp=dynamic \
-    --enable-pythoninterp=dynamic \
+    --enable-pythoninterp=no \
     --enable-python3interp=dynamic \
     --enable-rubyinterp=dynamic \
     --enable-luainterp=dynamic \

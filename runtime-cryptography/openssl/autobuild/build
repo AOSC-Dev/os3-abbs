@@ -6,7 +6,7 @@ elif ab_match_arch "arm64" ; then
 elif ab_match_arch "+(armv4|armv6hf|armv7hf)" ; then
     ARCH_OPTS="linux-armv4"
 elif ab_match_arch "i486" ; then
-    ARCH_OPTS="linux-x86"
+    ARCH_OPTS="linux-x86-latomic"
 elif ab_match_arch "loongarch64"; then
     ARCH_OPTS="linux64-loongarch64"
 elif ab_match_arch "+(loongson2f|loongson3)" ; then

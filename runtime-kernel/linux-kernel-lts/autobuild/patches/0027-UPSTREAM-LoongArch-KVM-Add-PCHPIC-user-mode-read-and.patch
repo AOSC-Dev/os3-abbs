@@ -1,7 +1,7 @@
-From 7aa3c99aba46e2fa37081ec6fe9932c070f35ebe Mon Sep 17 00:00:00 2001
+From 214effd5dfe4fdc05fec0f899604912f492edf22 Mon Sep 17 00:00:00 2001
 From: Xianglai Li <lixianglai@loongson.cn>
 Date: Wed, 13 Nov 2024 16:18:27 +0800
-Subject: [PATCH 027/296] UPSTREAM: LoongArch: KVM: Add PCHPIC user mode read
+Subject: [PATCH 027/302] UPSTREAM: LoongArch: KVM: Add PCHPIC user mode read
  and write functions
 
 Implement the communication interface between the user mode programs

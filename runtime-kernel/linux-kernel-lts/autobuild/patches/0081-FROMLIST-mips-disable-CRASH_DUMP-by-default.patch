@@ -1,7 +1,7 @@
-From c2c1dd183a84347cfb59e96eb4ad87ed3ca42b03 Mon Sep 17 00:00:00 2001
+From 95962b946f6e6f7b329dcf96eea26b5fba0b26bb Mon Sep 17 00:00:00 2001
 From: Icenowy Zheng <uwu@icenowy.me>
 Date: Tue, 17 Dec 2024 01:35:14 +0800
-Subject: [PATCH 081/296] FROMLIST: mips: disable CRASH_DUMP by default
+Subject: [PATCH 081/302] FROMLIST: mips: disable CRASH_DUMP by default
 
 On MIPS, the space of a crash dump kernel needs to be manually specified
 by both the debugee and the crash dump kernel PHYSICAL_START config

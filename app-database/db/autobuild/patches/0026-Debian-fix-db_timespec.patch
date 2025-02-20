@@ -1,0 +1,105 @@
+Description: fix db_timespec as system struct timespec
+ glibc (ILP32 -D_TIME_BITS=64) struct timespec mirrors
+ struct __kernel_timespec, which violates POSIX by the
+ tv_nsec member being “long long” (db5.3 is wrong also
+ as POSIX requires neither order nor no other members’
+ presence); just define db_timespec as struct timespec
+ since it gets cast to it and passed to clock_gettime.
+Author: mirabilos <tg@debian.org>
+Bug-Debian: #1067639
+
+--- a/lang/cxx/stl/dbstl_container.cpp
++++ b/lang/cxx/stl/dbstl_container.cpp
+@@ -7,6 +7,7 @@
+  */
+ 
+ #include <string>
++#include <time.h> /* for struct timespec */
+ 
+ #include "dbstl_container.h"
+ #include "dbstl_resource_manager.h"
+@@ -14,10 +15,7 @@
+ #include "dbstl_utility.h"
+ #include "dbstl_inner_utility.h"
+ 
+-typedef struct {
+-	time_t	tv_sec;				/* seconds */
+-	long	tv_nsec;			/* nanoseconds */
+-} db_timespec;
++typedef struct timespec db_timespec;
+ 
+ extern "C"{
+ void __os_id (DB_ENV *, pid_t *, db_threadid_t*);
+--- a/lang/cxx/stl/dbstl_resource_manager.cpp
++++ b/lang/cxx/stl/dbstl_resource_manager.cpp
+@@ -7,6 +7,7 @@
+  */
+ 
+ #include <assert.h>
++#include <time.h> /* for struct timespec */
+ #include <utility>
+ 
+ #include "dbstl_resource_manager.h"
+@@ -15,10 +16,7 @@
+ 
+ START_NS(dbstl)
+ 
+-typedef struct {
+-	time_t	tv_sec;				/* seconds */
+-	long	tv_nsec;			/* nanoseconds */
+-} db_timespec;
++typedef struct timespec db_timespec;
+ 
+ extern "C"{
+ void __os_id (DB_ENV *, pid_t *, db_threadid_t*);
+--- a/src/dbinc/clock.h
++++ b/src/dbinc/clock.h
+@@ -40,26 +40,13 @@
+ #ifndef _DB_CLOCK_H_
+ #define	_DB_CLOCK_H_
+ 
++#include <time.h> /* for struct timespec */
++
+ #if defined(__cplusplus)
+ extern "C" {
+ #endif
+ 
+-/*
+- * This declaration is POSIX-compatible.  Because there are lots of different
+- * time.h include file patterns out there, it's easier to declare our own name
+- * in all cases than to try and discover if a system has a struct timespec.
+- * For the same reason, and because we'd have to #include <sys/time.h> in db.h,
+- * we don't export any timespec structures in the DB API, even in places where
+- * it would make sense, like the replication statistics information.
+- */
+-typedef struct {
+-	time_t	tv_sec;				/* seconds */
+-#ifdef HAVE_MIXED_SIZE_ADDRESSING
+-	int32_t tv_nsec;
+-#else
+-	long	tv_nsec;			/* nanoseconds */
+-#endif
+-} db_timespec;
++typedef struct timespec db_timespec;
+ 
+ /* Operations on timespecs */
+ #undef	timespecclear
+--- a/test/micro/source/bench.h
++++ b/test/micro/source/bench.h
+@@ -116,14 +116,9 @@
+ 
+ #else /* !DB_TIMEOUT_TO_TIMESPEC */
+ 
+-#if defined(HAVE_CLOCK_GETTIME)
++#include <time.h> /* for struct timespec */
++
+ typedef struct timespec db_timespec;
+-#else
+-typedef struct {
+-	time_t	tv_sec;				/* seconds */
+-	long	tv_nsec;			/* nanoseconds */
+-} db_timespec;
+-#endif
+ 
+ #define	timespecadd(vvp, uvp)						\
+ 	do {								\

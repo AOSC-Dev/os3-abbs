@@ -13,7 +13,8 @@ abinfo "Configuring Berkeley DB..."
                   --enable-dbm       \
                   --enable-cxx       \
                   --enable-shared    \
-                  --disable-tcl
+                  --disable-tcl      \
+                  --with-mutex=POSIX/pthreads/library
 
 # Enables POSIX thread library linkage (in GLibC, no need to remove).
 abinfo "Building threaded runtime libraries..."

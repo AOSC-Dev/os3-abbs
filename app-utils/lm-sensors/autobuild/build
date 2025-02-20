@@ -11,6 +11,10 @@ if ! ab_match_archgroup retro; then
     MAKE_OPTS+=(
         'PROG_EXTRA=sensord'
     )
+else
+    MAKE_OPTS+=(
+        'PROG_EXTRA='
+    )
 fi
 
 abinfo "Building lm-sensors ..."

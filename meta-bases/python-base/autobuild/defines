@@ -1,6 +1,6 @@
 PKGNAME=python-base
 PKGSEC=Bases
-PKGDEP="python-2 python-3"
+PKGDEP="python-3"
 PKGRECOM="pip virtualenv"
 PKGDES="Meta package for AOSC OS Python interpreter and development support"
 

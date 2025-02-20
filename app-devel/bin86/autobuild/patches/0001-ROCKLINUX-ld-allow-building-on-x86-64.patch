@@ -1,0 +1,38 @@
+From 758559c303799bdba45c8c90e24e49480db58ad3 Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.io>
+Date: Fri, 14 Feb 2025 21:44:21 +0800
+Subject: [PATCH 1/2] ROCKLINUX: ld: allow building on x86-64
+
+Original description below:
+
+Allows bin86 to compile on x86_64, which permits lilo to
+be used in a 64-bit system.  I'm dubious about ROCK's attempts to
+automatically add dual-licensing to all their patches, but bin86 is
+already GPL'd.  I've heard from the maintainer that this will be
+included in the next upload.
+
+Signed-off-by: Ken Moffat <ken@kenmoffat.uklinux.net>
+
+Link: https://aur.archlinux.org/cgit/aur.git/tree/bin86-0.16.17-x86_64-1.patch?h=bin86&id=7f8f84df91e38c08f9fbb820592afa17215e9e48
+Signed-off-by: Mingcong Bai <jeffbai@aosc.io>
+---
+ ld/x86_aout.h | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/ld/x86_aout.h b/ld/x86_aout.h
+index 542a70d..421ab1c 100644
+--- a/ld/x86_aout.h
++++ b/ld/x86_aout.h
+@@ -12,6 +12,9 @@
+ #if defined(i386) || defined(__BCC__) || defined(MSDOS)
+ typedef long Long;
+ #define __OUT_OK 1
++#elif defined(__x86_64__)
++typedef int Long;
++#define __OUT_OK 1
+ #else
+ /* Beware: this will probably allow some BE hosts to generate broken files. */
+ #ifdef INT32_MAX
+-- 
+2.48.1
+

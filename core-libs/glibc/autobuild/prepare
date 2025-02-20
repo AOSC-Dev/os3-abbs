@@ -19,3 +19,8 @@ if ab_match_arch m68k; then
     export CFLAGS="-O2 -ggdb"
     export LDFLAGS="-Wl,-build-id=sha1"
 fi
+
+if ab_match_archgroup 32bit; then
+    abinfo "Unsetting _FILE_OFFSET_BITS and _TIME_BITS to fix build ..."
+    export CPPFLAGS="${CPPFLAGS/-D_TIME_BITS=64 -D_FILE_OFFSET_BITS=64/}"
+fi

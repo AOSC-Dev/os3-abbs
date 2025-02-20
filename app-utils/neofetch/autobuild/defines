@@ -2,7 +2,6 @@ PKGNAME=neofetch
 PKGDES="A command-line system information tool"
 PKGSEC=utils
 PKGDEP="bash"
-BUILDDEP="pathlib"
 
 ABHOST=noarch
 PKGEPOCH=2

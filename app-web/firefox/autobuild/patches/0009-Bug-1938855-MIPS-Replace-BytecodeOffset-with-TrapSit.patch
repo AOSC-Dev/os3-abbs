@@ -1,7 +1,7 @@
-From 930843ef2bd534652689e4c1ce56d8332073100b Mon Sep 17 00:00:00 2001
+From ca9cf02649e1738e9c06f407a6dd787d8aa7f72c Mon Sep 17 00:00:00 2001
 From: Xuan Chen <chenx97@aosc.io>
 Date: Tue, 14 Jan 2025 21:41:32 +0000
-Subject: [PATCH 11/11] Bug 1938855 - [MIPS] Replace BytecodeOffset with
+Subject: [PATCH 9/9] Bug 1938855 - [MIPS] Replace BytecodeOffset with
  TrapSiteDesc. r=rhunt
 
 Differential Revision: https://phabricator.services.mozilla.com/D232815

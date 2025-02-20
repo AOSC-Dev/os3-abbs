@@ -1,4 +1,4 @@
-From 5dc4c2c41d578c8be3b9ac63dff8d0f34d04471c Mon Sep 17 00:00:00 2001
+From eab21f89a519806897b9b8abaee243843a2c78c9 Mon Sep 17 00:00:00 2001
 From: Nico Grunbaum <na-g@nostrum.com>
 Date: Sun, 28 Jul 2024 06:49:14 +0000
 Subject: [PATCH 06/18] UPSTREAM: Bug 1905842 - update libyuv to 616bee5420b,
@@ -286,5 +286,5 @@ index b93a8499e1..a4e5b2af0a 100644
  
  void MJpegDecoder::AllocOutputBuffers(int num_outbufs) {
 -- 
-2.47.0
+2.48.1
 

@@ -1,4 +1,4 @@
-From 50d4263b7dc6550e86c44d0c9800fffd34b7b9a4 Mon Sep 17 00:00:00 2001
+From 3ca56906349259735275d08ad336bbd8e2080bd3 Mon Sep 17 00:00:00 2001
 From: Nico Grunbaum <na-g@nostrum.com>
 Date: Sun, 28 Jul 2024 06:49:12 +0000
 Subject: [PATCH 02/18] UPSTREAM: Bug 1905842 - add patch for NEON64 and SVE
@@ -207,5 +207,5 @@ index 9a1fe8b9ad..5f8ce07ab5 100644
      - 02_update_gyp.patch
 +    - 03_add_neon64_and_sve_gyp_targets.patch
 -- 
-2.47.0
+2.48.1
 

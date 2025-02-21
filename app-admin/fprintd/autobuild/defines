@@ -4,3 +4,12 @@ PKGDEP="libfprint polkit dbus-glib"
 BUILDDEP="dbus-python gtk-doc intltool pygobject-3 pycairo pam-wrapper \
           python-dbusmock"
 PKGDES="Application for accessing fingerprint readers and fingerprint authentication"
+
+ABTYPE=meson
+MESON_AFTER=(
+    '-Dpam=true'
+    '-Dman=true'
+    '-Dsystemd=true'
+    '-Dlibsystemd=libsystemd'
+    '-Dgtk_doc=true'
+)

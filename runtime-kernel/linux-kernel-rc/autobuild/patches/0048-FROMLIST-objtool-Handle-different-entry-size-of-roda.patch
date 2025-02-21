@@ -1,7 +1,7 @@
 From 01d12a998739cfd5c96228419f34873086c457da Mon Sep 17 00:00:00 2001
 From: Tiezhu Yang <yangtiezhu@loongson.cn>
 Date: Tue, 11 Feb 2025 19:50:11 +0800
-Subject: [PATCH 048/300] FROMLIST: objtool: Handle different entry size of
+Subject: [PATCH 048/301] FROMLIST: objtool: Handle different entry size of
  rodata
 
 In the most cases, the entry size of rodata is 8 bytes because the

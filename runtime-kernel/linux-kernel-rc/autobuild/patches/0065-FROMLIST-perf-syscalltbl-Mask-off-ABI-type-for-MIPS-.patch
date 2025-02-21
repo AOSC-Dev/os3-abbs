@@ -1,7 +1,7 @@
 From c81d5d3feda967c82d09cb7ce144879ae73f1cb5 Mon Sep 17 00:00:00 2001
 From: Ian Rogers <irogers@google.com>
 Date: Wed, 19 Feb 2025 10:56:57 -0800
-Subject: [PATCH 065/300] FROMLIST: perf syscalltbl: Mask off ABI type for MIPS
+Subject: [PATCH 065/301] FROMLIST: perf syscalltbl: Mask off ABI type for MIPS
  system calls
 
 Arnd Bergmann described that MIPS system calls don't necessarily start

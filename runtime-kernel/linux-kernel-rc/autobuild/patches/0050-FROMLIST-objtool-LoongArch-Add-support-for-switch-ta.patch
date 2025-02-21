@@ -1,7 +1,7 @@
 From c9be7d0b2949ad9dada773f2296b19c26eb77a24 Mon Sep 17 00:00:00 2001
 From: Tiezhu Yang <yangtiezhu@loongson.cn>
 Date: Tue, 11 Feb 2025 19:50:13 +0800
-Subject: [PATCH 050/300] FROMLIST: objtool/LoongArch: Add support for switch
+Subject: [PATCH 050/301] FROMLIST: objtool/LoongArch: Add support for switch
  table
 
 The objtool program need to analysis the control flow of each object file

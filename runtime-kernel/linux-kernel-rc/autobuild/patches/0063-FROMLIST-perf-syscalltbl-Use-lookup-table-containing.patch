@@ -1,7 +1,7 @@
 From c4aaf8531d1fcbe84b082bb0e9dfe1dc0e80958c Mon Sep 17 00:00:00 2001
 From: Ian Rogers <irogers@google.com>
 Date: Wed, 19 Feb 2025 10:56:55 -0800
-Subject: [PATCH 063/300] FROMLIST: perf syscalltbl: Use lookup table
+Subject: [PATCH 063/301] FROMLIST: perf syscalltbl: Use lookup table
  containing multiple architectures
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

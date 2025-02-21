@@ -1,7 +1,7 @@
 From 3a2dbc0485229c3c44f536adfa2e1c86213167cc Mon Sep 17 00:00:00 2001
 From: Ian Rogers <irogers@google.com>
 Date: Wed, 19 Feb 2025 10:56:56 -0800
-Subject: [PATCH 064/300] FROMLIST: perf build: Remove Makefile.syscalls
+Subject: [PATCH 064/301] FROMLIST: perf build: Remove Makefile.syscalls
 
 Now a single beauty file is generated and used by all architectures,
 remove the per-architecture Makefiles, Kbuild files and previous

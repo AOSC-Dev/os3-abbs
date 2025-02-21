@@ -1,7 +1,7 @@
 From 41a9c7fe8ef438d35f3de66b424d046539915232 Mon Sep 17 00:00:00 2001
 From: Namhyung Kim <namhyung@kernel.org>
 Date: Wed, 5 Feb 2025 12:54:40 -0800
-Subject: [PATCH 016/300] FROMGIT: perf trace: Allocate syscall stats only if
+Subject: [PATCH 016/301] FROMGIT: perf trace: Allocate syscall stats only if
  summary is on
 
 The syscall stats are used only when summary is requested.  Let's avoid

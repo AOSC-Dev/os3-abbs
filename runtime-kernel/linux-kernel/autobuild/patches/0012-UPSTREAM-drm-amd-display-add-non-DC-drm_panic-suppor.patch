@@ -1,7 +1,7 @@
-From 8b1cd35450d77a1571f40cf1bd7be5d558b6153b Mon Sep 17 00:00:00 2001
+From c4066406b52b10dc068402c110c3ca79b881a7e3 Mon Sep 17 00:00:00 2001
 From: Alex Deucher <alexander.deucher@amd.com>
 Date: Thu, 31 Oct 2024 13:51:35 -0400
-Subject: [PATCH 012/338] UPSTREAM: drm/amd/display: add non-DC drm_panic
+Subject: [PATCH 012/337] UPSTREAM: drm/amd/display: add non-DC drm_panic
  support
 
 Add support for the drm_panic module, which displays a pretty user

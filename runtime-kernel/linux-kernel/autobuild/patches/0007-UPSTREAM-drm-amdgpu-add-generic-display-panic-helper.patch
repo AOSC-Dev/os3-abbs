@@ -1,7 +1,7 @@
-From 969931a6087182b9c39c126ae137a8e6cb3273cf Mon Sep 17 00:00:00 2001
+From f55631436721f2bfb066401f94ae5ed75fdb33e6 Mon Sep 17 00:00:00 2001
 From: Alex Deucher <alexander.deucher@amd.com>
 Date: Wed, 30 Oct 2024 17:27:23 -0400
-Subject: [PATCH 007/338] UPSTREAM: drm/amdgpu: add generic display panic
+Subject: [PATCH 007/337] UPSTREAM: drm/amdgpu: add generic display panic
  helper code
 
 Pull this out of Jocelyn's patch and make it generic.

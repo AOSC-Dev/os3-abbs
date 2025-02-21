@@ -1,7 +1,7 @@
-From f238a44e07408b8b55aa137d457c4a67835ba34f Mon Sep 17 00:00:00 2001
+From cc84e25e6ba1f36bc6fcb2314b24acebcde40449 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:35:05 -0600
-Subject: [PATCH 044/338] UPSTREAM: selftests: ntsync: Add some tests for
+Subject: [PATCH 044/337] UPSTREAM: selftests: ntsync: Add some tests for
  wakeup signaling with events.
 
 Expand the contended wait tests, which previously only covered events and

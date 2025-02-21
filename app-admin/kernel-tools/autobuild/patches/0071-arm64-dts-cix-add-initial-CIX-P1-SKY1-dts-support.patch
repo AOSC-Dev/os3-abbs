@@ -1,0 +1,345 @@
+From 4ab4480a82b99c3163019803fe68373afea3d10c Mon Sep 17 00:00:00 2001
+From: Peter Chen <peter.chen@cixtech.com>
+Date: Thu, 20 Feb 2025 16:40:20 +0800
+Subject: [PATCH 071/300] arm64: dts: cix: add initial CIX P1(SKY1) dts support
+
+CIX SKY1 SoC is high performance Armv9 SoC designed by Cixtech,
+and Orion O6 is open source motherboard launched by Radxa.
+See below for detail:
+https://docs.radxa.com/en/orion/o6/getting-started/introduction
+
+In this commit, it only adds limited components for running initramfs
+at Orion O6.
+
+Acked-by: Fugang.duan <fugang.duan@cixtech.com>
+Signed-off-by: Peter Chen <peter.chen@cixtech.com>
+---
+ arch/arm64/boot/dts/Makefile              |   1 +
+ arch/arm64/boot/dts/cix/Makefile          |   2 +
+ arch/arm64/boot/dts/cix/sky1-orion-o6.dts |  21 ++
+ arch/arm64/boot/dts/cix/sky1.dtsi         | 264 ++++++++++++++++++++++
+ 4 files changed, 288 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/cix/Makefile
+ create mode 100644 arch/arm64/boot/dts/cix/sky1-orion-o6.dts
+ create mode 100644 arch/arm64/boot/dts/cix/sky1.dtsi
+
+diff --git a/arch/arm64/boot/dts/Makefile b/arch/arm64/boot/dts/Makefile
+index 79b73a21ddc2..8e7ccd0027bd 100644
+--- a/arch/arm64/boot/dts/Makefile
++++ b/arch/arm64/boot/dts/Makefile
+@@ -13,6 +13,7 @@ subdir-y += bitmain
+ subdir-y += blaize
+ subdir-y += broadcom
+ subdir-y += cavium
++subdir-y += cix
+ subdir-y += exynos
+ subdir-y += freescale
+ subdir-y += hisilicon
+diff --git a/arch/arm64/boot/dts/cix/Makefile b/arch/arm64/boot/dts/cix/Makefile
+new file mode 100644
+index 000000000000..ed3713982012
+--- /dev/null
++++ b/arch/arm64/boot/dts/cix/Makefile
+@@ -0,0 +1,2 @@
++# SPDX-License-Identifier: GPL-2.0
++dtb-$(CONFIG_ARCH_CIX) += sky1-orion-o6.dtb
+diff --git a/arch/arm64/boot/dts/cix/sky1-orion-o6.dts b/arch/arm64/boot/dts/cix/sky1-orion-o6.dts
+new file mode 100644
+index 000000000000..dbee1616076d
+--- /dev/null
++++ b/arch/arm64/boot/dts/cix/sky1-orion-o6.dts
+@@ -0,0 +1,21 @@
++// SPDX-License-Identifier: BSD-3-Clause
++/*
++ * Copyright 2025 Cix Technology Group Co., Ltd.
++ *
++ */
++
++/dts-v1/;
++
++#include "sky1.dtsi"
++/ {
++	model = "Radxa Orion O6";
++	compatible = "radxa,orion-o6";
++
++	chosen {
++		stdout-path = &uart2;
++	};
++};
++
++&uart2 {
++	status = "okay";
++};
+diff --git a/arch/arm64/boot/dts/cix/sky1.dtsi b/arch/arm64/boot/dts/cix/sky1.dtsi
+new file mode 100644
+index 000000000000..d98735f782e0
+--- /dev/null
++++ b/arch/arm64/boot/dts/cix/sky1.dtsi
+@@ -0,0 +1,264 @@
++// SPDX-License-Identifier: BSD-3-Clause
++/*
++ * Copyright 2025 Cix Technology Group Co., Ltd.
++ *
++ */
++
++#include <dt-bindings/interrupt-controller/arm-gic.h>
++
++/ {
++	interrupt-parent = <&gic>;
++	#address-cells = <2>;
++	#size-cells = <2>;
++
++	aliases {
++		serial2 = &uart2;
++	};
++
++	cpus {
++		#address-cells = <2>;
++		#size-cells = <0>;
++
++		cpu-map {
++			cluster0 {
++				core0 {
++					cpu = <&CPU0>;
++				};
++				core1 {
++					cpu = <&CPU1>;
++				};
++				core2 {
++					cpu = <&CPU2>;
++				};
++				core3 {
++					cpu = <&CPU3>;
++				};
++				core4 {
++					cpu = <&CPU4>;
++				};
++				core5 {
++					cpu = <&CPU5>;
++				};
++				core6 {
++					cpu = <&CPU6>;
++				};
++				core7 {
++					cpu = <&CPU7>;
++				};
++				core8 {
++					cpu = <&CPU8>;
++				};
++				core9 {
++					cpu = <&CPU9>;
++				};
++				core10 {
++					cpu = <&CPU10>;
++				};
++				core11 {
++					cpu = <&CPU11>;
++				};
++			};
++		};
++
++		CPU0: cpu0@0 {
++			compatible = "arm,armv8";
++			enable-method = "psci";
++			reg = <0x0 0x0>;
++			device_type = "cpu";
++			capacity-dmips-mhz = <403>;
++		};
++
++		CPU1: cpu1@100 {
++			compatible = "arm,armv8";
++			enable-method = "psci";
++			reg = <0x0 0x100>;
++			device_type = "cpu";
++			capacity-dmips-mhz = <403>;
++		};
++
++		CPU2: cpu2@200 {
++			compatible = "arm,armv8";
++			enable-method = "psci";
++			reg = <0x0 0x200>;
++			device_type = "cpu";
++			capacity-dmips-mhz = <403>;
++		};
++
++		CPU3: cpu3@300 {
++			compatible = "arm,armv8";
++			enable-method = "psci";
++			reg = <0x0 0x300>;
++			device_type = "cpu";
++			capacity-dmips-mhz = <403>;
++		};
++
++		CPU4: cpu4@400 {
++			compatible = "arm,armv8";
++			enable-method = "psci";
++			reg = <0x0 0x400>;
++			device_type = "cpu";
++			capacity-dmips-mhz = <1024>;
++		};
++
++		CPU5: cpu5@500 {
++			compatible = "arm,armv8";
++			enable-method = "psci";
++			reg = <0x0 0x500>;
++			device_type = "cpu";
++			capacity-dmips-mhz = <1024>;
++		};
++
++		CPU6: cpu6@600 {
++			compatible = "arm,armv8";
++			enable-method = "psci";
++			reg = <0x0 0x600>;
++			device_type = "cpu";
++			capacity-dmips-mhz = <1024>;
++		};
++
++		CPU7: cpu7@700 {
++			compatible = "arm,armv8";
++			enable-method = "psci";
++			reg = <0x0 0x700>;
++			device_type = "cpu";
++			capacity-dmips-mhz = <1024>;
++		};
++
++		CPU8: cpu8@800 {
++			compatible = "arm,armv8";
++			enable-method = "psci";
++			reg = <0x0 0x800>;
++			device_type = "cpu";
++			capacity-dmips-mhz = <1024>;
++		};
++
++		CPU9: cpu9@900 {
++			compatible = "arm,armv8";
++			enable-method = "psci";
++			reg = <0x0 0x900>;
++			device_type = "cpu";
++			capacity-dmips-mhz = <1024>;
++		};
++
++		CPU10: cpu10@a00 {
++			compatible = "arm,armv8";
++			enable-method = "psci";
++			reg = <0x0 0xa00>;
++			device_type = "cpu";
++			capacity-dmips-mhz = <1024>;
++		};
++
++		CPU11: cpu11@b00 {
++			compatible = "arm,armv8";
++			enable-method = "psci";
++			reg = <0x0 0xb00>;
++			device_type = "cpu";
++			capacity-dmips-mhz = <1024>;
++		};
++	};
++
++	arch_timer: timer {
++		compatible = "arm,armv8-timer";
++		interrupts = <GIC_PPI 13 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_PPI 14 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_PPI 11 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_PPI 10 IRQ_TYPE_LEVEL_LOW>;
++		clock-frequency = <1000000000>;
++		interrupt-parent = <&gic>;
++		arm,no-tick-in-suspend;
++	};
++
++	memory@80000000 {
++		#address-cells = <2>;
++		#size-cells = <2>;
++		device_type = "memory";
++		reg = <0x00000000 0x80000000 0x1 0x00000000>;
++	};
++
++	psci {
++		compatible = "arm,psci-1.0";
++		method = "smc";
++	};
++
++	pmu: pmu {
++		compatible = "arm,armv8-pmuv3";
++		interrupts = <GIC_PPI 7 IRQ_TYPE_LEVEL_LOW>;
++		interrupt-parent = <&gic>;
++		status = "okay";
++	};
++
++	pmu_spe: pmu_spe {
++		compatible = "arm,statistical-profiling-extension-v1";
++		interrupts = <GIC_PPI 5 IRQ_TYPE_LEVEL_LOW>;
++		interrupt-parent = <&gic>;
++		status = "okay";
++	};
++
++	reserved-memory {
++		#address-cells = <2>;
++		#size-cells = <2>;
++		ranges;
++
++		linux,cma {
++			compatible = "shared-dma-pool";
++			reusable;
++			size = <0x0 0x28000000>;
++			linux,cma-default;
++		};
++
++	};
++
++	sky1_fixed_clocks: fixed-clocks {
++		uartclk: uartclk {
++			compatible = "fixed-clock";
++			#clock-cells = <0>;
++			clock-frequency = <100000000>;
++			clock-output-names = "uartclk";
++		};
++
++		uart_apb_pclk: uart_apb_pclk {
++			compatible = "fixed-clock";
++			#clock-cells = <0>;
++			clock-frequency = <200000000>;
++			clock-output-names = "apb_pclk";
++		};
++	};
++
++	soc@0 {
++		compatible = "simple-bus";
++		#address-cells = <2>;
++		#size-cells = <2>;
++		ranges;
++		dma-ranges;
++
++		uart2: uart@040d0000 {
++			compatible = "arm,pl011", "arm,primecell";
++			reg = <0x0 0x040d0000 0x0 0x1000>;
++			interrupts = <GIC_SPI 298 IRQ_TYPE_LEVEL_HIGH>;
++			clock-names = "uartclk", "apb_pclk";
++			clocks = <&uartclk>, <&uart_apb_pclk>;
++			status = "disabled";
++		};
++
++		gic: interrupt-controller@0e001000 {
++			compatible = "arm,gic-v3";
++			#address-cells = <2>;
++			#interrupt-cells = <3>;
++			#size-cells = <2>;
++			ranges;
++			interrupt-controller;
++			#redistributor-regions = <1>;
++			reg = <0x0 0x0e010000 0 0x10000>,	/* GICD */
++			      <0x0 0x0e090000 0 0x300000>;       /* GICR * 12 */
++			redistributor-stride = <0x40000>;
++			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_LOW>;
++			interrupt-parent = <&gic>;
++
++			its_pcie: its@e050000 {
++				compatible = "arm,gic-v3-its";
++				msi-controller;
++				reg = <0x0 0x0e050000 0x0 0x30000>;
++			};
++		};
++	};
++};
+-- 
+2.48.1
+

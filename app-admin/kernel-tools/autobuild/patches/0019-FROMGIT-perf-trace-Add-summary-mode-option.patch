@@ -1,7 +1,7 @@
 From a116a6a3b3c01ef2588629fb1d216443ca48d41c Mon Sep 17 00:00:00 2001
 From: Namhyung Kim <namhyung@kernel.org>
 Date: Wed, 5 Feb 2025 12:54:43 -0800
-Subject: [PATCH 019/300] FROMGIT: perf trace: Add --summary-mode option
+Subject: [PATCH 019/301] FROMGIT: perf trace: Add --summary-mode option
 
 The --summary-mode option will select how to show the syscall summary at
 the end.  By default, it'll show the summary for each thread and it's

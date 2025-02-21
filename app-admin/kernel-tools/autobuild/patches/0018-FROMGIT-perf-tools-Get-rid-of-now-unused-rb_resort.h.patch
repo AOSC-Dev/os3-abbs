@@ -1,7 +1,7 @@
 From 06c426df73a3722b28e993d9d06ee70d7ee2341f Mon Sep 17 00:00:00 2001
 From: Namhyung Kim <namhyung@kernel.org>
 Date: Wed, 5 Feb 2025 12:54:42 -0800
-Subject: [PATCH 018/300] FROMGIT: perf tools: Get rid of now-unused
+Subject: [PATCH 018/301] FROMGIT: perf tools: Get rid of now-unused
  rb_resort.h
 
 It was only used in perf trace and it switched to use hashmap instead.

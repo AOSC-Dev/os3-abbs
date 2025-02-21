@@ -1,7 +1,7 @@
 From d31fe93b5c2a7c5891212422550cd54ba6f50805 Mon Sep 17 00:00:00 2001
 From: Tiezhu Yang <yangtiezhu@loongson.cn>
 Date: Tue, 11 Feb 2025 19:50:10 +0800
-Subject: [PATCH 047/300] FROMLIST: objtool: Handle various symbol types of
+Subject: [PATCH 047/301] FROMLIST: objtool: Handle various symbol types of
  rodata
 
 In the relocation section ".rela.rodata" of each .o file compiled with

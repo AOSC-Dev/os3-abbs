@@ -1,7 +1,7 @@
 From b5e0f66beb39628a93314f6f840edcf2b62a274a Mon Sep 17 00:00:00 2001
 From: Qunqin Zhao <zhaoqunqin@loongson.cn>
 Date: Wed, 19 Feb 2025 10:07:01 +0800
-Subject: [PATCH 022/300] FROMGIT: net: stmmac: dwmac-loongson: Add
+Subject: [PATCH 022/301] FROMGIT: net: stmmac: dwmac-loongson: Add
  fix_soc_reset() callback
 
 Loongson's DWMAC device may take nearly two seconds to complete DMA reset,

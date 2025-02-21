@@ -1,0 +1,31 @@
+From 49773be32378fc1b130cc61cac95e96954a9e2d5 Mon Sep 17 00:00:00 2001
+From: Peter Chen <peter.chen@cixtech.com>
+Date: Thu, 20 Feb 2025 16:40:16 +0800
+Subject: [PATCH 067/300] dt-bindings: vendor-prefixes: Add CIX Technology
+ Group Co., Ltd.
+
+CIX Technology Group Co., Ltd. is a high performance Arm SoC design
+company. Link: https://www.cixtech.com/.
+
+Acked-by: Fugang Duan <fugang.duan@cixtech.com>
+Signed-off-by: Peter Chen <peter.chen@cixtech.com>
+---
+ Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+index 5079ca6ce1d1..5e76223e4570 100644
+--- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
++++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+@@ -302,6 +302,8 @@ patternProperties:
+     description: Cirrus Logic, Inc.
+   "^cisco,.*":
+     description: Cisco Systems, Inc.
++  "^cix,.*":
++    description: CIX Technology Group Co., Ltd.
+   "^clockwork,.*":
+     description: Clockwork Tech LLC
+   "^cloos,.*":
+-- 
+2.48.1
+

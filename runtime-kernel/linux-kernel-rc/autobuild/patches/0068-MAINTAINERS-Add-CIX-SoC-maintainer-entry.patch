@@ -1,0 +1,35 @@
+From bda008c2a42c460afd2e2760ce961ae90c02f979 Mon Sep 17 00:00:00 2001
+From: Peter Chen <peter.chen@cixtech.com>
+Date: Thu, 20 Feb 2025 16:40:17 +0800
+Subject: [PATCH 068/300] MAINTAINERS: Add CIX SoC maintainer entry
+
+Using this entry as the maintainers information for CIX SKY series SoCs.
+
+Acked-by: Fugang Duan <fugang.duan@cixtech.com>
+Signed-off-by: Peter Chen <peter.chen@cixtech.com>
+---
+ MAINTAINERS | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 3c5ec7c3d90d..93448312f553 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -2354,6 +2354,14 @@ F:	arch/arm/boot/compressed/misc-ep93xx.h
+ F:	arch/arm/mach-ep93xx/
+ F:	drivers/iio/adc/ep93xx_adc.c
+ 
++ARM/CIX SKY ARM ARCHITECTURE
++M:	Peter Chen <peter.chen@cixtech.com>
++M:	Fugang Duan <fugang.duan@cixtech.com>
++R:	CIX Linux Kernel Upstream Group <cix-kernel-upstream@cixtech.com>
++L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
++S:	Maintained
++F:	Documentation/devicetree/bindings/arm/cix.yaml
++
+ ARM/CLKDEV SUPPORT
+ M:	Russell King <linux@armlinux.org.uk>
+ L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
+-- 
+2.48.1
+

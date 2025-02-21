@@ -1,16 +1,6 @@
 PKGNAME=gobject-introspection
 PKGSEC=gnome
 PKGDEP="glib mako"
-BUILDDEP="cairo gtk-doc vim markdown sphinx meson"
-PKGDES="Introspection system for GObject-based libraries"
-PKGEPOCH=1
-
-ABTYPE=meson
-MESON_AFTER="-Dcairo=enabled \
-             -Ddoctool=enabled \
-             -Dgtk_doc=true \
-             -Dbuild_introspection_data=true"
-
 PKGDEP__RETRO="glib"
 PKGDEP__ARMV4="$PKGDEP__RETRO"
 PKGDEP__ARMV6HF="$PKGDEP__RETRO"
@@ -19,6 +9,7 @@ PKGDEP__I486="${PKGDEP__RETRO}"
 PKGDEP__LOONGSON2F="${PKGDEP__RETRO}"
 PKGDEP__POWERPC="$PKGDEP__RETRO"
 PKGDEP__PPC64="$PKGDEP__RETRO"
+BUILDDEP="cairo gtk-doc vim markdown sphinx meson"
 BUILDDEP__RETRO="cairo"
 BUILDDEP__ARMV4="$BUILDDEP_RETRO"
 BUILDDEP__ARMV6HF="$BUILDDEP_RETRO"
@@ -27,16 +18,25 @@ BUILDDEP__I486="${BUILDDEP__RETRO}"
 BUILDDEP__LOONGSON2F="${BUILDDEP__RETRO}"
 BUILDDEP__POWERPC="$BUILDDEP_RETRO"
 BUILDDEP__PPC64="$BUILDDEP_RETRO"
+PKGDES="Introspection system for GObject-based libraries"
+PKGEPOCH=1
 
-MESON_AFTER__RETRO=" \
-             -Dcairo=enabled \
-             -Ddoctool=disabled \
-             -Dgtk_doc=false \
-             -Dbuild_introspection_data=true"
-MESON_AFTER__ARMV4="$MESON_AFTER__RETRO"
-MESON_AFTER__ARMV6HF="$MESON_AFTER__RETRO"
-MESON_AFTER__ARMV7HF="${MESON_AFTER__RETRO}"
-MESON_AFTER__I486="${MESON_AFTER__RETRO}"
-MESON_AFTER__LOONGSON2F="${MESON_AFTER__RETRO}"
-MESON_AFTER__POWERPC="$MESON_AFTER__RETRO"
-MESON_AFTER__PPC64="$MESON_AFTER__RETRO"
+ABTYPE=meson
+MESON_AFTER=(
+    '-Dcairo=enabled'
+    '-Ddoctool=enabled'
+    '-Dgtk_doc=true'
+    '-Dbuild_introspection_data=true'
+)
+MESON_AFTER__RETRO=(  
+    "${MESON_AFTER[@]}"
+    '-Ddoctool=disabled'
+    '-Dgtk_doc=false' 
+    '-Dbuild_introspection_data=true' 
+)
+
+# FIXME: glib breaks gobject-introspection <= 1:1.72.0-1 but Spiral
+# provides gobject-introspection:$ARCH = 0:$PKGVER.
+#
+# Spiral should exclude self.
+PKGEPOCH_SPIRAL=1

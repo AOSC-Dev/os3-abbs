@@ -1,7 +1,7 @@
-From 09d1a95026348a60266b586fe525fe8d88b1c80c Mon Sep 17 00:00:00 2001
+From e629fcfca33285e6d52ee6fac5b20b02c170c2f6 Mon Sep 17 00:00:00 2001
 From: Jimmy Hon <honyuenkwun@gmail.com>
 Date: Wed, 8 Jan 2025 23:16:17 -0600
-Subject: [PATCH 060/338] UPSTREAM: arm64: dts: rockchip: Add Orange Pi 5 Max
+Subject: [PATCH 060/337] UPSTREAM: arm64: dts: rockchip: Add Orange Pi 5 Max
  board
 
 The RK3588 Single Board Computer includes

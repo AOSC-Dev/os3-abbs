@@ -1,7 +1,7 @@
-From 5ef9e620375ef594fd61467ab195c0c03c763ad5 Mon Sep 17 00:00:00 2001
+From 0d0a2f37a380613b6b27e42a7361326cfccd90ac Mon Sep 17 00:00:00 2001
 From: Jimmy Hon <honyuenkwun@gmail.com>
 Date: Wed, 8 Jan 2025 23:16:15 -0600
-Subject: [PATCH 058/338] UPSTREAM: arm64: dts: rockchip: refactor common
+Subject: [PATCH 058/337] UPSTREAM: arm64: dts: rockchip: refactor common
  rk3588-orangepi-5.dtsi
 
 Orange Pi now has multiple SBCs using the RK3588.

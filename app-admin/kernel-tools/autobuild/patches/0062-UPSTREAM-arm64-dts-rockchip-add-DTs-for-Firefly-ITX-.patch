@@ -1,7 +1,7 @@
-From 9a2a840f3e85ae7d606413623b95fee09027f206 Mon Sep 17 00:00:00 2001
+From d75574ac0d3345d422fb5c5c54ebaab720039d47 Mon Sep 17 00:00:00 2001
 From: Shimrra Shai <shimrrashai@gmail.com>
 Date: Mon, 16 Dec 2024 15:41:52 -0600
-Subject: [PATCH 062/338] UPSTREAM: arm64: dts: rockchip: add DTs for Firefly
+Subject: [PATCH 062/337] UPSTREAM: arm64: dts: rockchip: add DTs for Firefly
  ITX-3588J and its Core-3588J SoM
 
 Add the device tree and Makefile update.

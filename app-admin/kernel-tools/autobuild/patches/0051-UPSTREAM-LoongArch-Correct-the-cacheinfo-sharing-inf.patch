@@ -1,7 +1,7 @@
-From d43fe90a486e5e71d5832ef2d78f4df82cbf11b8 Mon Sep 17 00:00:00 2001
+From 40660c084d0789bcaece8f7e842a317225eff2b7 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Sat, 25 Jan 2025 18:51:33 +0800
-Subject: [PATCH 051/338] UPSTREAM: LoongArch: Correct the cacheinfo sharing
+Subject: [PATCH 051/337] UPSTREAM: LoongArch: Correct the cacheinfo sharing
  information
 
 SMT cores and their sibling cores share the same L1 and L2 private

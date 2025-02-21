@@ -1,7 +1,7 @@
-From 49151d9d2458fcc8b18deaf4690ef6ef18181a61 Mon Sep 17 00:00:00 2001
+From 49790d7b4a01b7e398fbf48a1fa7da19b0f96713 Mon Sep 17 00:00:00 2001
 From: Bibo Mao <maobibo@loongson.cn>
 Date: Mon, 13 Jan 2025 21:37:17 +0800
-Subject: [PATCH 018/338] UPSTREAM: LoongArch: KVM: Clear LLBCTL if secondary
+Subject: [PATCH 018/337] UPSTREAM: LoongArch: KVM: Clear LLBCTL if secondary
  mmu mapping is changed
 
 LLBCTL is a separated guest CSR register from host, host exception ERET
@@ -37,7 +37,7 @@ Signed-off-by: Kexy Biscuit <kexybiscuit@aosc.io>
  1 file changed, 18 insertions(+)
 
 diff --git a/arch/loongarch/kvm/main.c b/arch/loongarch/kvm/main.c
-index 396fed2665a5..bf9268bf26d5 100644
+index 034402e0948c..f6d3242b9234 100644
 --- a/arch/loongarch/kvm/main.c
 +++ b/arch/loongarch/kvm/main.c
 @@ -245,6 +245,24 @@ void kvm_check_vpid(struct kvm_vcpu *vcpu)

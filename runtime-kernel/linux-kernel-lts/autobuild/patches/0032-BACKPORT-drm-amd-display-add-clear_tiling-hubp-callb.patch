@@ -1,4 +1,4 @@
-From 375ec77e7fccde1a94c972a7dfbb078a453c5e44 Mon Sep 17 00:00:00 2001
+From bdddafff531b893eb0aaa56b8ee9ffdb29c05892 Mon Sep 17 00:00:00 2001
 From: Alex Deucher <alexander.deucher@amd.com>
 Date: Thu, 31 Oct 2024 13:17:06 -0400
 Subject: [PATCH 032/303] BACKPORT: drm/amd/display: add clear_tiling hubp

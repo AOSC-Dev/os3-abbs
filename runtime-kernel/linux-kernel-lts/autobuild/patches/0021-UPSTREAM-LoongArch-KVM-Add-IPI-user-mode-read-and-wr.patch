@@ -1,4 +1,4 @@
-From 3173204685b89da9647e08dedc14b1d3dcae8def Mon Sep 17 00:00:00 2001
+From 529377a33d19d5ed4fd566cbd727c186f2e730e1 Mon Sep 17 00:00:00 2001
 From: Xianglai Li <lixianglai@loongson.cn>
 Date: Wed, 13 Nov 2024 16:18:27 +0800
 Subject: [PATCH 021/303] UPSTREAM: LoongArch: KVM: Add IPI user mode read and

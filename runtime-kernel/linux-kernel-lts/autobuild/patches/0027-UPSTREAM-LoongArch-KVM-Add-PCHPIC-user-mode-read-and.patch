@@ -1,4 +1,4 @@
-From 214effd5dfe4fdc05fec0f899604912f492edf22 Mon Sep 17 00:00:00 2001
+From cfde9cc5c09b6a4e162b8added33dd44a4deff79 Mon Sep 17 00:00:00 2001
 From: Xianglai Li <lixianglai@loongson.cn>
 Date: Wed, 13 Nov 2024 16:18:27 +0800
 Subject: [PATCH 027/303] UPSTREAM: LoongArch: KVM: Add PCHPIC user mode read

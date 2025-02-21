@@ -1,4 +1,4 @@
-From ae5d5b2d08f018b5e7832e1f0377b30ed4522424 Mon Sep 17 00:00:00 2001
+From e487b9b5d36a04785b48cae8c8206ad9338edefe Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:48 -0600
 Subject: [PATCH 045/303] UPSTREAM: ntsync: Introduce NTSYNC_IOC_MUTEX_KILL.

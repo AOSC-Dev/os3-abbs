@@ -1,4 +1,4 @@
-From bf37dfc1f218903fef1000619ffcf8ab51d8d0ae Mon Sep 17 00:00:00 2001
+From 5eeb949ccf9807dba7231dc3e28dcff98a7087ca Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:52 -0600
 Subject: [PATCH 049/303] UPSTREAM: ntsync: Introduce NTSYNC_IOC_EVENT_PULSE.

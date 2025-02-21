@@ -1,4 +1,4 @@
-VER=3.9.0
+VER=3.10.0
 SRCS="tbl::https://github.com/openrazer/openrazer/releases/download/v$VER/openrazer-$VER.tar.xz"
-CHKSUMS="sha256::273ae58a54645e22ddaf65a627d3fac370328e471e095b735dfa3f0021c7cbeb"
+CHKSUMS="sha256::a1df14e09f1ba681be8ef041982e98a56f86d5a1ec31477996f906bcf0c8c217"
 CHKUPDATE="anitya::id=243087"

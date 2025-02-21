@@ -1,4 +1,4 @@
-From 2d77f4b0ffc399b877477863115cd60e848437b9 Mon Sep 17 00:00:00 2001
+From 6771150a3d63c465f8579c8a6bf2a26a222ed0ae Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:35:09 -0600
 Subject: [PATCH 066/303] UPSTREAM: maintainers: Add an entry for ntsync.

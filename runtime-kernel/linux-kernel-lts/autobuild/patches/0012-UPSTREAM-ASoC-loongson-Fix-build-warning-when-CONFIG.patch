@@ -1,4 +1,4 @@
-From 272cb3116230e4babf386d561fb0107297909176 Mon Sep 17 00:00:00 2001
+From 0ae1071f8019d7af10c32cb551b51ede38f590a0 Mon Sep 17 00:00:00 2001
 From: Binbin Zhou <zhoubinbin@loongson.cn>
 Date: Sat, 12 Oct 2024 17:58:40 +0800
 Subject: [PATCH 012/303] UPSTREAM: ASoC: loongson: Fix build warning when

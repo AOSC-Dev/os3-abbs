@@ -1,4 +1,4 @@
-From 7c053224c3e6c949a42cc5be29ec670708cbace4 Mon Sep 17 00:00:00 2001
+From 4fdc3b2f94005e5cc57935386b2a11b1c590eaa3 Mon Sep 17 00:00:00 2001
 From: Huacai Chen <chenhuacai@loongson.cn>
 Date: Fri, 15 Nov 2024 23:06:53 +0800
 Subject: [PATCH 014/303] UPSTREAM: ALSA: hda: Poll jack events for LS7A

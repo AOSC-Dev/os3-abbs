@@ -1,4 +1,4 @@
-From 0f1271bb357e88c371ab2e8930a111210001d35d Mon Sep 17 00:00:00 2001
+From b6b0d27759298c77bcb70bd2e38888fb95822fe4 Mon Sep 17 00:00:00 2001
 From: Furong Xu <0x1207@gmail.com>
 Date: Fri, 7 Feb 2025 16:56:39 +0800
 Subject: [PATCH 069/303] UPSTREAM: net: stmmac: Apply new page pool parameters

@@ -1,4 +1,4 @@
-From aa7cf4a6e6e1b3e7e01a44c51b00085cfc0acac8 Mon Sep 17 00:00:00 2001
+From 8c203ab3c23e6e3027d0f61ac1063b00ebbe6da9 Mon Sep 17 00:00:00 2001
 From: Xianglai Li <lixianglai@loongson.cn>
 Date: Wed, 13 Nov 2024 16:18:27 +0800
 Subject: [PATCH 025/303] UPSTREAM: LoongArch: KVM: Add PCHPIC device support
@@ -187,7 +187,7 @@ index 000000000000..564b7dcbbbed
 +	return kvm_register_device_ops(&kvm_pch_pic_dev_ops, KVM_DEV_TYPE_LOONGARCH_PCHPIC);
 +}
 diff --git a/arch/loongarch/kvm/main.c b/arch/loongarch/kvm/main.c
-index 8de366ade99c..396fed2665a5 100644
+index 7134913d8cfa..034402e0948c 100644
 --- a/arch/loongarch/kvm/main.c
 +++ b/arch/loongarch/kvm/main.c
 @@ -10,6 +10,7 @@

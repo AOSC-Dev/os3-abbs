@@ -1,4 +1,4 @@
-From 6e2368b1f44221d2a1fb20d0b574ea241ccc0c58 Mon Sep 17 00:00:00 2001
+From bd9414ea06dc03dc29d492fa9814165af21756d5 Mon Sep 17 00:00:00 2001
 From: Xianglai Li <lixianglai@loongson.cn>
 Date: Wed, 13 Nov 2024 16:18:27 +0800
 Subject: [PATCH 022/303] UPSTREAM: LoongArch: KVM: Add EIOINTC device support
@@ -302,7 +302,7 @@ index 000000000000..10afa6163643
 +	return kvm_register_device_ops(&kvm_eiointc_dev_ops, KVM_DEV_TYPE_LOONGARCH_EIOINTC);
 +}
 diff --git a/arch/loongarch/kvm/main.c b/arch/loongarch/kvm/main.c
-index 14f3f69c5bb9..8de366ade99c 100644
+index 65b1f3b1f1f1..7134913d8cfa 100644
 --- a/arch/loongarch/kvm/main.c
 +++ b/arch/loongarch/kvm/main.c
 @@ -9,6 +9,7 @@

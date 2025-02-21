@@ -1,4 +1,4 @@
-VER=1.94.4
+VER=1.94.9
 SRCS="https://gitlab.freedesktop.org/libfprint/libfprint/-/archive/v$VER/libfprint-v$VER.tar.gz"
-CHKSUMS="sha256::abb7ae563822dfbf565139d05765b374b3b2d95d3734904c89cd2727ca5fabe4"
+CHKSUMS="sha256::6398e7a28c91b3a16ff17e6a577c7a03692a5de509e8def817396f1120823ecf"
 CHKUPDATE="anitya::id=1615"

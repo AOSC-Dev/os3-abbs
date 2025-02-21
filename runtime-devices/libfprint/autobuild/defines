@@ -5,3 +5,14 @@ BUILDDEP="gobject-introspection gtk-doc"
 PKGDES="Library for fingerprint readers"
 
 PKGBREAK="fingerprint-gui<=1.09+git20181110 fprintd<=0.8.1-1"
+
+ABTYPE=meson
+MESON_AFTER=(
+    '-Ddrivers=all'
+    '-Dintrospection=true'
+    '-Dudev_rules=enabled'
+    '-Dudev_hwdb=enabled'
+    '-Dgtk-examples=false'
+    '-Ddoc=true'
+    '-Dinstalled-tests=false'
+)

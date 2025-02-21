@@ -1,7 +1,7 @@
-From 6da74b3d88735546b7a58a88da0d8bb92f7982d9 Mon Sep 17 00:00:00 2001
+From 7e58e17eaf95f21832bbd7bebb725071d2849e31 Mon Sep 17 00:00:00 2001
 From: Jiaxun Yang <jiaxun.yang@flygoat.com>
 Date: Sat, 25 Jan 2025 18:51:33 +0800
-Subject: [PATCH 004/338] UPSTREAM: LoongArch: Disable FIX_EARLYCON_MEM when
+Subject: [PATCH 004/337] UPSTREAM: LoongArch: Disable FIX_EARLYCON_MEM when
  ARCH_IOREMAP is enabled
 
 When ARCH_IOREMAP is enabled, we are using always accessible DMW for

@@ -1,7 +1,7 @@
-From db32806c2619e5d84cb764c83a4d0ab1a7f5c7a8 Mon Sep 17 00:00:00 2001
+From e9bbf4ab15c0c3d7206c95f9aa42935607a0c4f1 Mon Sep 17 00:00:00 2001
 From: Shimrra Shai <shimrrashai@gmail.com>
 Date: Mon, 16 Dec 2024 15:41:51 -0600
-Subject: [PATCH 061/338] UPSTREAM: dt-bindings: arm: rockchip: Add Firefly
+Subject: [PATCH 061/337] UPSTREAM: dt-bindings: arm: rockchip: Add Firefly
  ITX-3588J board
 
 Document board compatible bindings.

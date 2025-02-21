@@ -1,7 +1,7 @@
-From 71c994bd6c38b0af03b1017a3e80f3b1a56091e8 Mon Sep 17 00:00:00 2001
+From dd1f2381f1909eeac0fe413328478a6649f9b431 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:35:07 -0600
-Subject: [PATCH 046/338] UPSTREAM: selftests: ntsync: Add some tests for
+Subject: [PATCH 046/337] UPSTREAM: selftests: ntsync: Add some tests for
  wakeup signaling via alerts.
 
 Expand the alert tests to cover alerting a thread mid-wait, to test that the

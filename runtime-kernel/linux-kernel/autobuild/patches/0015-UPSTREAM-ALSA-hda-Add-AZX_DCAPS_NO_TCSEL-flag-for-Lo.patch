@@ -1,7 +1,7 @@
-From 8afb02ba21b0eb6deaece258ca5a1c3359380cd4 Mon Sep 17 00:00:00 2001
+From 5fae773248459bac720f6aee8dc06210f7dac58a Mon Sep 17 00:00:00 2001
 From: Qunqin Zhao <zhaoqunqin@loongson.cn>
 Date: Tue, 14 Jan 2025 16:07:00 +0800
-Subject: [PATCH 015/338] UPSTREAM: ALSA: hda: Add AZX_DCAPS_NO_TCSEL flag for
+Subject: [PATCH 015/337] UPSTREAM: ALSA: hda: Add AZX_DCAPS_NO_TCSEL flag for
  Loongson HDA devices
 
 Loongson's HDA devices do not support TCSEL functionality.

@@ -1,7 +1,7 @@
-From 795c9f39b84ee6631dea9c7334b2603433d4e073 Mon Sep 17 00:00:00 2001
+From 239cd7f12ab32b8a3ac8c3abe705c937ce266d31 Mon Sep 17 00:00:00 2001
 From: Jimmy Hon <honyuenkwun@gmail.com>
 Date: Wed, 8 Jan 2025 23:16:16 -0600
-Subject: [PATCH 059/338] UPSTREAM: dt-bindings: arm: rockchip: Add Xunlong
+Subject: [PATCH 059/337] UPSTREAM: dt-bindings: arm: rockchip: Add Xunlong
  Orange Pi 5 Max
 
 Add devicetree binding for the Xunlong Orange Pi 5 Max board.

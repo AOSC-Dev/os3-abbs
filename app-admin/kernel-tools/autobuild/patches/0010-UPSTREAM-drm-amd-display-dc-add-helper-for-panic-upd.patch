@@ -1,7 +1,7 @@
-From 350b05ac9680d2e14de4f7dfe456f75465215d6e Mon Sep 17 00:00:00 2001
+From 1ab295b794eac6a84947e8709666339eade71b6e Mon Sep 17 00:00:00 2001
 From: Alex Deucher <alexander.deucher@amd.com>
 Date: Tue, 12 Nov 2024 16:19:18 -0500
-Subject: [PATCH 010/338] UPSTREAM: drm/amd/display/dc: add helper for panic
+Subject: [PATCH 010/337] UPSTREAM: drm/amd/display/dc: add helper for panic
  updates
 
 Add a DC helper for panic updates.

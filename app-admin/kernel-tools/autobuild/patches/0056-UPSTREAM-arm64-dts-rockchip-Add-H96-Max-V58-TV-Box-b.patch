@@ -1,7 +1,7 @@
-From 3e0495f04c1046cd864d6072d8c6c1485b552766 Mon Sep 17 00:00:00 2001
+From 6b35cd60a0ca1f14e85a74c19e2c3e993def734f Mon Sep 17 00:00:00 2001
 From: Alexey Charkov <alchark@gmail.com>
 Date: Wed, 8 Jan 2025 13:09:08 +0400
-Subject: [PATCH 056/338] UPSTREAM: arm64: dts: rockchip: Add H96 Max V58 TV
+Subject: [PATCH 056/337] UPSTREAM: arm64: dts: rockchip: Add H96 Max V58 TV
  Box based on RK3588 SoC
 
 H96 Max V58 is a compact Rockchip RK3588 based device that ships

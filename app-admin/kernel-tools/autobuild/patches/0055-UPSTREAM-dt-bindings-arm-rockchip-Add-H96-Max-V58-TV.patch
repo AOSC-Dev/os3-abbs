@@ -1,7 +1,7 @@
-From c7e16e200432bd5851ea7a9d7f1f02a290755aeb Mon Sep 17 00:00:00 2001
+From f920865b45b7a494fe9449991408fb9eb6d6a8d3 Mon Sep 17 00:00:00 2001
 From: Alexey Charkov <alchark@gmail.com>
 Date: Wed, 8 Jan 2025 13:09:06 +0400
-Subject: [PATCH 055/338] UPSTREAM: dt-bindings: arm: rockchip: Add H96 Max V58
+Subject: [PATCH 055/337] UPSTREAM: dt-bindings: arm: rockchip: Add H96 Max V58
  TV box
 
 Add Devicetree binding for H96 Max V58: a compact Rockchip RK3588 based

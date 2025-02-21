@@ -1,7 +1,7 @@
-From 3446bc58bb78f9d12f48a19866c10b76aaf8e1a4 Mon Sep 17 00:00:00 2001
+From e62c6a6e2f0e2a31fc51e5ce6d0287127bdcd5a0 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:55 -0600
-Subject: [PATCH 034/338] UPSTREAM: ntsync: Introduce NTSYNC_IOC_EVENT_READ.
+Subject: [PATCH 034/337] UPSTREAM: ntsync: Introduce NTSYNC_IOC_EVENT_READ.
 
 This corresponds to the NT syscall NtQueryEvent().
 

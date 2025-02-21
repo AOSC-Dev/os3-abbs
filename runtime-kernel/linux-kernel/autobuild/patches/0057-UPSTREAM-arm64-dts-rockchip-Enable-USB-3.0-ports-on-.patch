@@ -1,7 +1,7 @@
-From 1716fa076f7799203631fdbea6525b43262ce306 Mon Sep 17 00:00:00 2001
+From eb89c2b6021ad252357e5d7d36a9c312274e3d1e Mon Sep 17 00:00:00 2001
 From: Chen-Yu Tsai <wens@csie.org>
 Date: Sat, 21 Dec 2024 00:12:40 +0800
-Subject: [PATCH 057/338] UPSTREAM: arm64: dts: rockchip: Enable USB 3.0 ports
+Subject: [PATCH 057/337] UPSTREAM: arm64: dts: rockchip: Enable USB 3.0 ports
  on orangepi-5-plus
 
 The Orange Pi 5 Plus has its first USB 3.0 interface on the SoC wired

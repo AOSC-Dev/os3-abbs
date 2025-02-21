@@ -1,7 +1,7 @@
-From afbac6725f6d9b2e27acbbd7a86903454c8ec295 Mon Sep 17 00:00:00 2001
+From 674045c53c414b1ca0336b0633deae28da1a423b Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 13 Dec 2024 13:34:57 -0600
-Subject: [PATCH 036/338] UPSTREAM: selftests: ntsync: Add some tests for
+Subject: [PATCH 036/337] UPSTREAM: selftests: ntsync: Add some tests for
  semaphore state.
 
 Wine has tests for its synchronization primitives, but these are more accessible

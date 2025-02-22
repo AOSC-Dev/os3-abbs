@@ -1,7 +1,7 @@
 From d71c3da12a6150a3a449202a6ba1dc60be8458c2 Mon Sep 17 00:00:00 2001
 From: WANG Xuerui <xen0n@gentoo.org>
 Date: Wed, 4 Sep 2024 16:51:22 +0800
-Subject: [PATCH 8/9] Enable LoongArch LSX optimization for libpng
+Subject: [PATCH 08/22] Enable LoongArch LSX optimization for libpng
 
 Signed-off-by: WANG Xuerui <xen0n@gentoo.org>
 ---
@@ -10,7 +10,7 @@ Signed-off-by: WANG Xuerui <xen0n@gentoo.org>
  2 files changed, 14 insertions(+)
 
 diff --git a/media/libpng/moz.build b/media/libpng/moz.build
-index 6fa28a814a..a316a06237 100644
+index 6fa28a814a75..a316a0623772 100644
 --- a/media/libpng/moz.build
 +++ b/media/libpng/moz.build
 @@ -50,6 +50,13 @@ if CONFIG['INTEL_ARCHITECTURE']:
@@ -28,7 +28,7 @@ index 6fa28a814a..a316a06237 100644
      DEFINES['MOZ_PNG_USE_MIPS_MSA'] = True
      UNIFIED_SOURCES += [
 diff --git a/media/libpng/pnglibconf.h b/media/libpng/pnglibconf.h
-index 1cbb828436..8ef91386ff 100644
+index 1cbb828436de..8ef91386ffe4 100644
 --- a/media/libpng/pnglibconf.h
 +++ b/media/libpng/pnglibconf.h
 @@ -54,6 +54,13 @@

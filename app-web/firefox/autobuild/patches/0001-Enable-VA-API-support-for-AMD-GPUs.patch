@@ -1,14 +1,14 @@
 From 333c637e2ac049dece69f67ce142fb068ba09d2a Mon Sep 17 00:00:00 2001
 From: Jiangjin Wang <kaymw@aosc.io>
 Date: Tue, 14 Nov 2023 18:14:20 -0800
-Subject: [PATCH 1/9] Enable VA-API support for AMD GPUs
+Subject: [PATCH 01/22] Enable VA-API support for AMD GPUs
 
 ---
  widget/gtk/GfxInfo.cpp | 8 --------
  1 file changed, 8 deletions(-)
 
 diff --git a/widget/gtk/GfxInfo.cpp b/widget/gtk/GfxInfo.cpp
-index bc26a3b373..d21714c743 100644
+index bc26a3b373c9..d21714c74316 100644
 --- a/widget/gtk/GfxInfo.cpp
 +++ b/widget/gtk/GfxInfo.cpp
 @@ -1105,14 +1105,6 @@ const nsTArray<GfxDriverInfo>& GfxInfo::GetGfxDriverInfo() {

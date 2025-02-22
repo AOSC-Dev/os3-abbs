@@ -1,7 +1,7 @@
 From ca9cf02649e1738e9c06f407a6dd787d8aa7f72c Mon Sep 17 00:00:00 2001
 From: Xuan Chen <chenx97@aosc.io>
 Date: Tue, 14 Jan 2025 21:41:32 +0000
-Subject: [PATCH 9/9] Bug 1938855 - [MIPS] Replace BytecodeOffset with
+Subject: [PATCH 09/22] Bug 1938855 - [MIPS] Replace BytecodeOffset with
  TrapSiteDesc. r=rhunt
 
 Differential Revision: https://phabricator.services.mozilla.com/D232815
@@ -15,7 +15,7 @@ Differential Revision: https://phabricator.services.mozilla.com/D232815
  6 files changed, 45 insertions(+), 45 deletions(-)
 
 diff --git a/js/src/jit/mips-shared/CodeGenerator-mips-shared.cpp b/js/src/jit/mips-shared/CodeGenerator-mips-shared.cpp
-index 7a4047efb4..d36678a5e6 100644
+index 7a4047efb4ed..d36678a5e65e 100644
 --- a/js/src/jit/mips-shared/CodeGenerator-mips-shared.cpp
 +++ b/js/src/jit/mips-shared/CodeGenerator-mips-shared.cpp
 @@ -440,7 +440,7 @@ void CodeGenerator::visitDivI(LDivI* ins) {
@@ -94,7 +94,7 @@ index 7a4047efb4..d36678a5e6 100644
  }
  
 diff --git a/js/src/jit/mips-shared/LIR-mips-shared.h b/js/src/jit/mips-shared/LIR-mips-shared.h
-index a302be061e..9ca426b00c 100644
+index a302be061e36..9ca426b00c66 100644
 --- a/js/src/jit/mips-shared/LIR-mips-shared.h
 +++ b/js/src/jit/mips-shared/LIR-mips-shared.h
 @@ -192,12 +192,12 @@ class LUDivOrMod : public LBinaryMath<0> {
@@ -114,7 +114,7 @@ index a302be061e..9ca426b00c 100644
  };
  
 diff --git a/js/src/jit/mips32/CodeGenerator-mips32.cpp b/js/src/jit/mips32/CodeGenerator-mips32.cpp
-index 9efe8828fa..3fe833ee1b 100644
+index 9efe8828fae4..3fe833ee1b3b 100644
 --- a/js/src/jit/mips32/CodeGenerator-mips32.cpp
 +++ b/js/src/jit/mips32/CodeGenerator-mips32.cpp
 @@ -81,7 +81,7 @@ void CodeGenerator::visitDivOrModI64(LDivOrModI64* lir) {
@@ -219,7 +219,7 @@ index 9efe8828fa..3fe833ee1b 100644
      }
    }
 diff --git a/js/src/jit/mips32/LIR-mips32.h b/js/src/jit/mips32/LIR-mips32.h
-index da68ad7464..12ba54ed6e 100644
+index da68ad746449..12ba54ed6ef9 100644
 --- a/js/src/jit/mips32/LIR-mips32.h
 +++ b/js/src/jit/mips32/LIR-mips32.h
 @@ -88,12 +88,12 @@ class LDivOrModI64
@@ -255,7 +255,7 @@ index da68ad7464..12ba54ed6e 100644
  };
  
 diff --git a/js/src/jit/mips64/CodeGenerator-mips64.cpp b/js/src/jit/mips64/CodeGenerator-mips64.cpp
-index b1afee8181..03363e6fc2 100644
+index b1afee818128..03363e6fc25e 100644
 --- a/js/src/jit/mips64/CodeGenerator-mips64.cpp
 +++ b/js/src/jit/mips64/CodeGenerator-mips64.cpp
 @@ -139,7 +139,7 @@ void CodeGenerator::visitDivOrModI64(LDivOrModI64* lir) {
@@ -286,7 +286,7 @@ index b1afee8181..03363e6fc2 100644
    }
  
 diff --git a/js/src/jit/mips64/LIR-mips64.h b/js/src/jit/mips64/LIR-mips64.h
-index 4d8228418c..176c526106 100644
+index 4d8228418ce6..176c52610693 100644
 --- a/js/src/jit/mips64/LIR-mips64.h
 +++ b/js/src/jit/mips64/LIR-mips64.h
 @@ -72,12 +72,12 @@ class LDivOrModI64 : public LBinaryMath<1> {

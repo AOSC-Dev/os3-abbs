@@ -1,0 +1,34 @@
+From 9ed99f65b86c6add26bbcbd424e766ab776a7178 Mon Sep 17 00:00:00 2001
+From: alwu <alwu@mozilla.com>
+Date: Mon, 24 Feb 2025 04:27:01 +0000
+Subject: [PATCH 22/22] BACKPORT: Bug 1950032 - enable HEVC playback by default
+ on Linux.
+
+Differential Revision: https://phabricator.services.mozilla.com/D239286
+---
+ modules/libpref/init/StaticPrefList.yaml | 8 --------
+ 1 file changed, 8 deletions(-)
+
+diff --git a/modules/libpref/init/StaticPrefList.yaml b/modules/libpref/init/StaticPrefList.yaml
+index b00d24a723eb..4f4ce6e56d61 100644
+--- a/modules/libpref/init/StaticPrefList.yaml
++++ b/modules/libpref/init/StaticPrefList.yaml
+@@ -11321,15 +11321,7 @@
+ 
+ - name: media.hevc.enabled
+   type: RelaxedAtomicBool
+-#if defined(XP_WIN)
+-  value: true
+-#elif defined(XP_MACOSX)
+-  value: true
+-#elif defined(ANDROID)
+   value: true
+-#else
+-  value: false
+-#endif
+   mirror: always
+ 
+ - name: media.decoder-doctor.testing
+-- 
+2.48.1
+

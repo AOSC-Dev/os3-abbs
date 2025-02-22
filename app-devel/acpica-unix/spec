@@ -1,5 +1,8 @@
-VER=20240322
-SRCS="git::commit=tags/G$VER::https://github.com/acpica/acpica"
-CHKSUMS="SKIP"
+VER=20240927
+# FIXME: Intel decided to use GitHub attachment to host source tarballs.
+# Use the Intel official site for download.
+DOWNID="835687"
+SRCS="tbl::https://downloadmirror.intel.com/${DOWNID}/acpica-unix-${VER}.tar.gz"
+CHKSUMS="sha256::57988fb55541e694dfa3323bd19db74b65d37e942bebef559ed51e8cd9348b43"
 CHKUPDATE="anitya::id=18"
 SUBDIR="acpica-unix/generate/unix"

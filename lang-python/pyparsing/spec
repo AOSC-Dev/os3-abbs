@@ -1,5 +1,4 @@
-VER=2.4.7
-REL=2
-SRCS="tbl::https://github.com/pyparsing/pyparsing/releases/download/pyparsing_${VER}/pyparsing-${VER}.tar.gz"
-CHKSUMS="sha256::c203ec8783bf771a155b207279b9bccb8dea02d8f0c9e5f8ead507bc3246ecc1"
+VER=3.2.1
+SRCS="tbl::https://github.com/pyparsing/pyparsing/releases/download/${VER}/pyparsing-${VER}.tar.gz"
+CHKSUMS="sha256::61980854fd66de3a90028d679a954d5f2623e83144b5afe5ee86f43d762e5f0a"
 CHKUPDATE="anitya::id=3756"

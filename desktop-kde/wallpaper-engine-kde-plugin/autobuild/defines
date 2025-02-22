@@ -1,0 +1,5 @@
+PKGNAME=wallpaper-engine-kde-plugin
+PKGSEC=kde
+PKGDEP="gstreamer plasma-workspace mpv websockets"
+BUILDDEP="extra-cmake-modules"
+PKGDES="Wallpaper Engine plugin for the KDE Plasma Desktop"

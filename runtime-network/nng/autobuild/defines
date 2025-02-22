@@ -1,0 +1,12 @@
+PKGNAME=nng
+PKGDES="A lightweight messaging library"
+PKGDEP="mbedtls"
+PKGSEC=libs
+
+CMAKE_AFTER=(
+    '-DNNG_TESTS=OFF'
+    '-DNNG_TOOLS=ON'
+    '-DNNG_ENABLE_TLS=ON'
+    '-DNNG_TLS_ENGINE=mbed'
+    '-DBUILD_SHARED_LIBS=ON'
+)

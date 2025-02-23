@@ -1,0 +1,2 @@
+abinfo "Renaming NTrace-core to nexttrace"
+mv -v "$PKGDIR"/usr/bin/NTrace-core "$PKGDIR"/usr/bin/nexttrace

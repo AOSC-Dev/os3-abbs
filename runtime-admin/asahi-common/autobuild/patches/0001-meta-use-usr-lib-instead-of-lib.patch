@@ -1,0 +1,60 @@
+From 614c9cf5464163a62b58b68a2119ca6b6e22d5a1 Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.xyz>
+Date: Mon, 13 Nov 2023 09:30:59 +0000
+Subject: [PATCH 01/13] meta: use /usr/lib instead of /lib
+
+No point using a legacy symlink.
+---
+ dracut/modules.d/99asahi-firmware/install-asahi-firmware.sh | 6 +++---
+ dracut/modules.d/99asahi-firmware/module-setup.sh           | 4 ++--
+ functions.sh                                                | 2 +-
+ 3 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/dracut/modules.d/99asahi-firmware/install-asahi-firmware.sh b/dracut/modules.d/99asahi-firmware/install-asahi-firmware.sh
+index f0db4f7..5af8e4b 100755
+--- a/dracut/modules.d/99asahi-firmware/install-asahi-firmware.sh
++++ b/dracut/modules.d/99asahi-firmware/install-asahi-firmware.sh
+@@ -4,9 +4,9 @@
+ type getarg > /dev/null 2>&1 || . /lib/dracut-lib.sh
+ 
+ info ":: Asahi: Installing vendor firmware to root filesystem..."
+-if [ ! -d /sysroot/lib/firmware/vendor ]; then
++if [ ! -d /sysroot/usr/lib/firmware/vendor ]; then
+     warn ":: Asahi: Vendor firmware directory missing on the root filesystem!"
+     return 1
+ fi
+-mount -t tmpfs -o mode=0755 vendorfw /sysroot/lib/firmware/vendor
+-cp -a /vendorfw/* /vendorfw/.vendorfw.manifest /sysroot/lib/firmware/vendor
++mount -t tmpfs -o mode=0755 vendorfw /sysroot/usr/lib/firmware/vendor
++cp -a /vendorfw/* /vendorfw/.vendorfw.manifest /sysroot/usr/lib/firmware/vendor
+diff --git a/dracut/modules.d/99asahi-firmware/module-setup.sh b/dracut/modules.d/99asahi-firmware/module-setup.sh
+index db6ef99..1ca6d51 100755
+--- a/dracut/modules.d/99asahi-firmware/module-setup.sh
++++ b/dracut/modules.d/99asahi-firmware/module-setup.sh
+@@ -25,8 +25,8 @@ installkernel() {
+ 
+ # called by dracut
+ install() {
+-    inst_dir "/lib/firmware"
+-    ln_r "/vendorfw" "/lib/firmware/vendor"
++    inst_dir "/usr/lib/firmware"
++    ln_r "/vendorfw" "/usr/lib/firmware/vendor"
+     asahiscriptsdir="/usr/share/asahi-scripts"
+     inst_dir $asahiscriptsdir
+     $DRACUT_CP -R -L -t "${initdir}/${asahiscriptsdir}" "${dracutsysrootdir}${asahiscriptsdir}"/*
+diff --git a/functions.sh b/functions.sh
+index fd400ff..f061d30 100644
+--- a/functions.sh
++++ b/functions.sh
+@@ -4,7 +4,7 @@
+ 
+ info() {
+     quiet=0
+-    if [ -e /lib/dracut-lib.sh ]; then
++    if [ -e /usr/lib/dracut-lib.sh ]; then
+         if grep -q "rd.debug" /proc/cmdline; then
+             quiet=0
+         elif grep -q "quiet" /proc/cmdline; then
+-- 
+2.48.1
+

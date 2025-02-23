@@ -1,0 +1,38 @@
+From a105d4c65c3d3deda23cd86d92798f42f6717be4 Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.xyz>
+Date: Sun, 12 Nov 2023 20:32:16 +0000
+Subject: [PATCH 05/13] asahi-fwupdate: adapt for AOSC OS
+
+- Use /efi as default ESP mountpoint.
+- Do not umount /efi at the end.
+---
+ asahi-fwupdate | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
+
+diff --git a/asahi-fwupdate b/asahi-fwupdate
+index 1b72655..a10c7c8 100755
+--- a/asahi-fwupdate
++++ b/asahi-fwupdate
+@@ -21,9 +21,9 @@ fi
+ umount=false
+ 
+ if [ -z "$ASAHIFW" ] && [ -z "$VENDORFW" ]; then
+-    mount_sys_esp /run/.system-efi
+-    ASAHIFW="/run/.system-efi/asahi/"
+-    VENDORFW="/run/.system-efi/vendorfw"
++    mount_sys_esp /efi
++    ASAHIFW="/efi/asahi/"
++    VENDORFW="/efi/vendorfw"
+     umount=true
+ fi
+ 
+@@ -48,6 +48,3 @@ rm -rf "$VENDORFW"
+ mv "$VENDORFW".new "$VENDORFW"
+ rm -rf "$VENDORFWTMP"
+ echo "Firmware upgraded"
+-
+-$umount && umount /run/.system-efi
+-true
+-- 
+2.48.1
+

@@ -1,0 +1,79 @@
+From 743b4a8c15db8605b2b8a915b758ba4c305a6c63 Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.xyz>
+Date: Sun, 12 Nov 2023 20:10:46 +0000
+Subject: [PATCH 04/13] first-boot: adapt for AOSC OS
+
+- Handle GRUB installation via the grub-install command (arm64-efi, removable).
+- Set /efi as the default ESP mount point.
+- Source asahi-scripts functions.sh to help mount the ESP partition.
+- Generate fstab with genfstab.
+- Drop Pacman initialisation.
+- Add self-destruction logic. [^1]
+- Resize root filesystem.
+- (Hack) Run update-grub twice. [^2]
+
+[^1] We probably wont package this script but only supply it as a run-once
+     script in the system release image.
+[^2] FIXME: For some reason, without running update-grub twice, the sysroot
+     UUID does not updated according with the new randomised UUID.
+---
+ first-boot | 31 +++++++++++++++++++------------
+ 1 file changed, 19 insertions(+), 12 deletions(-)
+
+diff --git a/first-boot b/first-boot
+index e5be574..c345b8f 100755
+--- a/first-boot
++++ b/first-boot
+@@ -1,12 +1,21 @@
+ #!/bin/sh
+ # SPDX-License-Identifier: MIT
+ 
+-set -e
++if [ -e "$(dirname "$0")"/functions.sh ]; then
++    . "$(dirname "$0")"/functions.sh
++else
++    . /usr/share/asahi-scripts/functions.sh
++fi
++
++mount_sys_esp /efi
+ 
+ root_dev=$(findmnt -n -o SOURCE /)
+-efi_dev=$(findmnt -n -o SOURCE /boot/efi)
++efi_dev=$(findmnt -n -o SOURCE /efi)
+ 
+ if [ -e "$root_dev" ]; then
++    echo "Resizing root filesystem ..."
++    resize2fs "$root_dev"
++
+     echo "Randomizing root filesystem UUID..."
+     tune2fs -U random "$root_dev"
+ 
+@@ -31,17 +40,15 @@ fi
+ 
+ if [ ! -z "$root_uuid" ] && [ ! -z "$efi_uuid" ]; then
+     echo "Regenerating /etc/fstab..."
+-    tee /etc/fstab <<EOF
+-$root_uuid / ext4 rw,relatime,x-systemd.growfs 0 1
+-$efi_uuid /boot/efi vfat rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro    0 2
+-EOF
+-    echo
++    genfstab -p -U / > /etc/fstab
+ fi
+ 
++grub-install --efi-directory=/efi --bootloader-id="AOSC OS" --removable
++update-grub
++# FIXME: For some reason, without running update-grub twice, the sysroot UUID
++# does not updated according with the new randomised UUID.
+ update-grub
+ 
+-echo
+-echo "Initializing Pacman keyring..."
+-pacman-key --init
+-pacman-key --populate archlinuxarm asahilinux
+-echo
++echo "All done, self-destroying ..."
++rm -v /usr/lib/systemd/system/multi-user.target.wants/asahi-first-boot.service
++rm -v $(realpath "$0")
+-- 
+2.48.1
+

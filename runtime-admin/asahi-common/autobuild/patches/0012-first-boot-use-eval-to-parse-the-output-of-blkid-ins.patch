@@ -1,0 +1,44 @@
+From 5b4feb29925bdfc6224606c6f0ed58320446234e Mon Sep 17 00:00:00 2001
+From: Cyan <cyanoxygen@aosc.io>
+Date: Mon, 4 Dec 2023 09:59:42 +0800
+Subject: [PATCH 12/13] first-boot: use eval to parse the output of blkid
+ instead
+
+We do not have to grep it since blkid(8) is called using `-o export'. A
+simple eval will be sufficient, because it will always output shell
+compatible value definitions.
+---
+ first-boot | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/first-boot b/first-boot
+index 403803a..c23bf1e 100755
+--- a/first-boot
++++ b/first-boot
+@@ -19,7 +19,10 @@ if [ -e "$root_dev" ]; then
+     echo "Randomizing root filesystem UUID..."
+     tune2fs -U random "$root_dev"
+ 
+-    root_uuid="$(blkid -c /dev/null "$root_dev" -o export | grep '^UUID=')"
++    # root_uuid="$(blkid -c /dev/null "$root_dev" -o export | grep '^UUID=')"
++    # Use eval to evaluate the output of blkid:
++    eval "$(blkid -c /dev/null "$root_dev" -o export)"
++    root_uuid="$UUID"
+     echo "Root filesystem: $root_uuid"
+     echo
+ fi
+@@ -34,8 +37,9 @@ if [ -e "$efi_dev" ] && \
+     # Generate a 32-bit long UUID
+     efi_uuid=$(dd if=/dev/random bs=4 count=1 status=none | hexdump -e '"%04x"')
+     # Set the above as the new volume ID for the EFI partiton
+-    fatlabel -i "$efi_dev" $efi_uuid
+-    efi_uuid="$(blkid -c /dev/null "$efi_dev" -o export | grep '^UUID=')"
++    fatlabel -i "$efi_dev" "$efi_uuid"
++    eval "$(blkid -c /dev/null "$efi_dev" -o export)"
++    efi_uuid="$UUID"
+     echo "EFI partition: $efi_uuid"
+     echo
+ fi
+-- 
+2.48.1
+

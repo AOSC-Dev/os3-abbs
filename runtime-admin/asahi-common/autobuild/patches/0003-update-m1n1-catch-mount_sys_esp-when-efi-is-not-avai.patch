@@ -1,0 +1,34 @@
+From 5ed67f2a9cdcc9dcbb9a65ab0b214001d178e486 Mon Sep 17 00:00:00 2001
+From: Tianhao Chai <cth451@gmail.com>
+Date: Mon, 13 Nov 2023 23:51:15 -0500
+Subject: [PATCH 03/13] update-m1n1: catch mount_sys_esp when efi is not
+ available
+
+---
+ update-m1n1 | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/update-m1n1 b/update-m1n1
+index 3b33cbd..7eeacae 100755
+--- a/update-m1n1
++++ b/update-m1n1
+@@ -53,7 +53,9 @@ if [ -e "$CONFIG" ]; then
+ fi
+ 
+ if [ -z "$TARGET" ]; then
+-    mount_sys_esp /efi
++    if ! mount_sys_esp /efi; then
++        return 0;
++    fi
+     TARGET="/efi/m1n1/boot.bin"
+ fi
+ 
+@@ -65,3 +67,5 @@ cat "$m1n1config" >>"${TARGET}.new"
+ mv -f "${TARGET}.new" "$TARGET"
+ 
+ echo "m1n1 updated at ${TARGET}"
++
++# :vim set sts=4 ts=4 sw=4 expandtab:
+-- 
+2.48.1
+

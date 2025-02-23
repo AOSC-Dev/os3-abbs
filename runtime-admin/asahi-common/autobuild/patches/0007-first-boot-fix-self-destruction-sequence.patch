@@ -1,0 +1,24 @@
+From da955976ec4b62dec2f9789a437a166a28c6aec3 Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.xyz>
+Date: Mon, 13 Nov 2023 17:51:38 -0800
+Subject: [PATCH 07/13] first-boot: fix self-destruction sequence
+
+---
+ first-boot | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/first-boot b/first-boot
+index c345b8f..8c5b2ea 100755
+--- a/first-boot
++++ b/first-boot
+@@ -50,5 +50,6 @@ update-grub
+ update-grub
+ 
+ echo "All done, self-destroying ..."
+-rm -v /usr/lib/systemd/system/multi-user.target.wants/asahi-first-boot.service
++rm -v /usr/lib/systemd/system/multi-user.target.wants/first-boot.service
++rm -v /usr/lib/systemd/system/first-boot.service
+ rm -v $(realpath "$0")
+-- 
+2.48.1
+

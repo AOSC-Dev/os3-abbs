@@ -1,0 +1,22 @@
+From 480db3cbeb6d97dd128d87b5275ae4879c146ee5 Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.xyz>
+Date: Mon, 13 Nov 2023 20:29:00 -0800
+Subject: [PATCH 08/13] first-boot: fix $0 self-destruction
+
+---
+ first-boot | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/first-boot b/first-boot
+index 8c5b2ea..fb6058e 100755
+--- a/first-boot
++++ b/first-boot
+@@ -52,4 +52,4 @@ update-grub
+ echo "All done, self-destroying ..."
+ rm -v /usr/lib/systemd/system/multi-user.target.wants/first-boot.service
+ rm -v /usr/lib/systemd/system/first-boot.service
+-rm -v $(realpath "$0")
++rm -v "$0"
+-- 
+2.48.1
+

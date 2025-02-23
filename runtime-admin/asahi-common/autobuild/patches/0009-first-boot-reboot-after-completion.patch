@@ -1,0 +1,24 @@
+From b0997abc141551355f849269b944af31def42e90 Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.xyz>
+Date: Mon, 13 Nov 2023 20:30:02 -0800
+Subject: [PATCH 09/13] first-boot: reboot after completion
+
+---
+ first-boot | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/first-boot b/first-boot
+index fb6058e..12bf0b6 100755
+--- a/first-boot
++++ b/first-boot
+@@ -53,3 +53,7 @@ echo "All done, self-destroying ..."
+ rm -v /usr/lib/systemd/system/multi-user.target.wants/first-boot.service
+ rm -v /usr/lib/systemd/system/first-boot.service
+ rm -v "$0"
++
++echo "Rebooting ..."
++sync
++reboot -f
+-- 
+2.48.1
+

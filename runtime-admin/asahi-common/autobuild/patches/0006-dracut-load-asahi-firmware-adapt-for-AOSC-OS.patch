@@ -1,0 +1,41 @@
+From 25ea25b73fc2a1f8411156294bed6f59c52327b8 Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.xyz>
+Date: Sun, 12 Nov 2023 20:33:19 +0000
+Subject: [PATCH 06/13] dracut/load-asahi-firmware: adapt for AOSC OS
+
+- Use /efi as default ESP mountpoint.
+---
+ dracut/modules.d/99asahi-firmware/load-asahi-firmware.sh | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/dracut/modules.d/99asahi-firmware/load-asahi-firmware.sh b/dracut/modules.d/99asahi-firmware/load-asahi-firmware.sh
+index 12be260..2e6afd9 100755
+--- a/dracut/modules.d/99asahi-firmware/load-asahi-firmware.sh
++++ b/dracut/modules.d/99asahi-firmware/load-asahi-firmware.sh
+@@ -30,19 +30,19 @@ fi
+ # If the above exists, hopefully the /dev device exists and this will work
+ info ":: Asahi: Unpacking vendor firmware into initramfs..."
+ 
+-VENDORFW="/run/.system-efi/vendorfw/"
++VENDORFW="/efi/vendorfw/"
+ 
+ (
+     . /usr/share/asahi-scripts/functions.sh
+-    mount_sys_esp /run/.system-efi
++    mount_sys_esp /efi
+ )
+ 
+ if [ ! -e "$VENDORFW/firmware.cpio" ]; then
+     warn ":: Asahi: Vendor firmware not found in ESP."
+-    umount /run/.system-efi
++    umount /efi
+     return 1
+ fi
+ 
+ ( cd /; cpio --quiet -i < "$VENDORFW/firmware.cpio" )
+ info ":: Asahi firmware unpacked successfully"
+-umount /run/.system-efi
++umount /efi
+-- 
+2.48.1
+

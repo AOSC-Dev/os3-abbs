@@ -1,4 +1,4 @@
-VER=20231113
-SRCS="git::commit=tags/v${VER}-aosc::https://github.com/AOSC-Dev/asahi-scripts"
+VER=20250130
+SRCS="git::commit=tags/$VER::https://github.com/AsahiLinux/asahi-scripts"
 CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=370199"

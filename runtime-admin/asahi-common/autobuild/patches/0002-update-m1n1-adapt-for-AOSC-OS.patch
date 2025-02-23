@@ -1,0 +1,55 @@
+From e5733bb2e15c6f7ffed6c1dd31b4d9857dd2e95b Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.xyz>
+Date: Sun, 12 Nov 2023 19:55:38 +0000
+Subject: [PATCH 02/13] update-m1n1: adapt for AOSC OS
+
+- Use /efi as default ESP mount path.
+- Get dtbs from our standard /usr/lib/aosc-os-arm64-boot, taking only the
+  newest kernel version.
+- Skip update if no kernel/device trees were available.
+---
+ update-m1n1 | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/update-m1n1 b/update-m1n1
+index 9dd745c..3b33cbd 100755
+--- a/update-m1n1
++++ b/update-m1n1
+@@ -13,10 +13,16 @@ else
+     . /usr/share/asahi-scripts/functions.sh
+ fi
+ 
++if ! ls -d /usr/lib/aosc-os-arm64-boot/dtbs-kernel-$(basename $(ls -d /usr/lib/modules/*-aosc-asahi | sort -rV | head -1 ))/*.dtb 2>&1 >/dev/null; then
++    echo "No kernel and device tree available, skipping update ..."
++    exit 0
++fi
++
+ : ${SOURCE:="/usr/lib/asahi-boot/"}
+ : ${M1N1:="$SOURCE/m1n1.bin"}
+ : ${U_BOOT:="$SOURCE/u-boot-nodtb.bin"}
+ : ${TARGET:="$1"}
++: ${DTBS:=/usr/lib/aosc-os-arm64-boot/dtbs-kernel-$(basename $(ls -d /usr/lib/modules/*-aosc-asahi | sort -rV | head -1 ))/*.dtb}
+ : ${CONFIG:=/etc/m1n1.conf}
+ 
+ if [ -z "$DTBS" ]; then
+@@ -47,9 +53,8 @@ if [ -e "$CONFIG" ]; then
+ fi
+ 
+ if [ -z "$TARGET" ]; then
+-    mount_sys_esp /run/.system-efi
+-    TARGET="/run/.system-efi/m1n1/boot.bin"
+-    umount=true
++    mount_sys_esp /efi
++    TARGET="/efi/m1n1/boot.bin"
+ fi
+ 
+ cat "$M1N1" $DTBS >"${TARGET}.new"
+@@ -60,5 +65,3 @@ cat "$m1n1config" >>"${TARGET}.new"
+ mv -f "${TARGET}.new" "$TARGET"
+ 
+ echo "m1n1 updated at ${TARGET}"
+-$umount && umount /run/.system-efi
+-true
+-- 
+2.48.1
+

@@ -1,0 +1,8 @@
+abinfo "Building Triforce ..."
+make
+
+abinfo "Installing Triforce ..."
+make install \
+    DESTDIR="$PKGDIR" \
+    PREFIX=/usr \
+    LIBDIR=/usr/lib

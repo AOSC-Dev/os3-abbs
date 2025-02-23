@@ -1,0 +1,15 @@
+PKGNAME=bankstown
+PKGSEC=sound
+PKGDEP="gcc-runtime glibc"
+BUILDDEP="llvm rustc"
+PKGDES="LV2 plugin for three-stage psychoacoustic bass approximation"
+
+USECLANG=1
+
+# FIXME: ld.lld: error: relocation R_MIPS_64 cannot be used against local symbol; recompile with -fPIC
+NOLTO__LOONGSON3=1
+
+# FIXME: lv2-sys-2.0.0/src/linux/unsupported.rs:1
+#
+# The targeted computer architecture is not supported by rust-lv2!
+FAIL_ARCH="!(amd64|arm64)"

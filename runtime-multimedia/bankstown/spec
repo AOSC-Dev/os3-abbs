@@ -1,0 +1,4 @@
+VER=1.1.0
+SRCS="git::commit=tags/$VER::https://github.com/chadmed/bankstown"
+CHKSUMS="SKIP"
+CHKUPDATE="anitya::id=369929"

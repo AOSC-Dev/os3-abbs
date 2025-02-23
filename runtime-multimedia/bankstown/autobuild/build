@@ -1,0 +1,7 @@
+abinfo "Building Bankstown ..."
+make
+
+abinfo "Installing Bankstown ..."
+make install \
+    DESTDIR="$PKGDIR" \
+    LIBDIR=/usr/lib

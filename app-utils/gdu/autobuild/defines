@@ -1,0 +1,7 @@
+PKGNAME="gdu"
+PKGSEC=utils
+PKGDES="A CLI disk usage analyzer"
+PKGDEP="gcc-runtime"
+BUILDDEP="go"
+
+ABSPLITDBG=0

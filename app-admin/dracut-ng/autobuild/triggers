@@ -1,6 +1,7 @@
 interest-noawait /boot
-interest-noawait /usr/lib/modprobe.d
 interest-noawait /etc/modprobe.d
 interest-noawait /usr/lib/dracut
+interest-noawait /usr/lib/firmware
+interest-noawait /usr/lib/modprobe.d
 interest-noawait initrd-systemd-unit-update
 interest-noawait initrd-update

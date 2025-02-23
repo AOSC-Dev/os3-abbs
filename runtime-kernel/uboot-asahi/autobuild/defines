@@ -1,6 +1,8 @@
 PKGNAME=uboot-asahi
 PKGSEC=admin
-PKGDES="U-Boot for Apple Silicon Macs"
+PKGDES="U-Boot for Apple silicon-based Mac devices"
 
 ABSPLITDBG=0
 
+# Note: Only useful for Apple silicon-based Mac devices.
+FAIL_ARCH="!(arm64)"

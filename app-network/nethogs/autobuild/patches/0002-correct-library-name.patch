@@ -1,0 +1,25 @@
+From 6801eed99e9bedbd474da5f67519034b4afcf54c Mon Sep 17 00:00:00 2001
+From: CAB233 <yidaduizuoye@outlook.com>
+Date: Mon, 24 Feb 2025 14:00:36 +0800
+Subject: [PATCH 2/2] correct library name
+
+---
+ src/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/meson.build b/src/meson.build
+index 1329df4..7f6dcba 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -39,7 +39,7 @@ if get_option('enable-libnethogs').enabled()
+     lib_sources = [files('libnethogs.cpp')]
+ 
+     libnethogs = shared_library(
+-        'libnethogs' ,
++        'nethogs' ,
+         sources + lib_sources,
+         cpp_args: c_args,
+         c_args: c_args,
+-- 
+2.48.1
+

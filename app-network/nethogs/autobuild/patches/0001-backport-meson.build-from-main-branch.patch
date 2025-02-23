@@ -1,0 +1,186 @@
+From 25237068849f28243ae8e009ee48e4eecea227be Mon Sep 17 00:00:00 2001
+From: CAB233 <yidaduizuoye@outlook.com>
+Date: Mon, 24 Feb 2025 12:19:11 +0800
+Subject: [PATCH 1/2] backport meson.build from main branch
+
+---
+ meson.build     | 36 ++++++++++----------
+ src/meson.build | 87 ++++++++++++++++++++++---------------------------
+ 2 files changed, 56 insertions(+), 67 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 81d7b59..eb9f16e 100644
+--- a/meson.build
++++ b/meson.build
+@@ -2,14 +2,14 @@
+ # See COPYING for more information about licensing
+ #
+ 
+-project('nethogs',
+-        ['c', 'cpp'],
+-        default_options : ['warning_level=3',
+-                           'cpp_std=c++14']
+-        )
++project(
++    'nethogs',
++    ['c', 'cpp'],
++    default_options: ['warning_level=3', 'cpp_std=c++14'],
++    version: run_command('./determineVersion.sh').stdout().strip(),
++)
+ 
+ cc = meson.get_compiler('cpp')
+-version = run_command('./determineVersion.sh', check: true).stdout().strip()
+ 
+ #######################################
+ ## Dependencies and flags definition ##
+@@ -18,17 +18,12 @@ version = run_command('./determineVersion.sh', check: true).stdout().strip()
+ projectinc = [include_directories('.', 'src')]
+ 
+ # flags
+-c_args = [
+-  '-DVERSION="' + version + '"'
+-]
++c_args = ['-DVERSION="' + meson.project_version() + '"']
+ 
+ # dependencies
+ thread_dep = dependency('threads', required: true)
+ libpcap_dep = dependency('libpcap', required: true)
+-project_deps = [
+-  thread_dep,
+-  libpcap_dep
+-]
++project_deps = [thread_dep, libpcap_dep]
+ 
+ #############################
+ ## Code Compilation        ##
+@@ -38,9 +33,12 @@ subdir('src')
+ #############################
+ ## Pkgconfig definition    ##
+ #############################
+-pkgconfig = import('pkgconfig')
+-pkgconfig_install_dir = join_paths(get_option('libdir'), 'pkgconfig')
+-pkgconfig.generate(libnethogs,
+-                   requires: ['libpcap'],
+-                   version: version
+-                   )
++if get_option('enable-libnethogs').enabled()
++    pkgconfig = import('pkgconfig')
++    pkgconfig_install_dir = join_paths(get_option('libdir'), 'pkgconfig')
++    pkgconfig.generate(
++        libnethogs,
++        requires: ['libpcap'],
++        version: meson.project_version(),
++    )
++endif
+diff --git a/src/meson.build b/src/meson.build
+index 03f1b58..1329df4 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -3,65 +3,56 @@
+ #
+ 
+ sources = [
+-  files([
+-    'connection.cpp',
+-    'conninode.cpp',
+-    'decpcap.c',
+-    'devices.cpp',
+-    'inode2prog.cpp',
+-    'packet.cpp',
+-    'process.cpp',
+-  ])
++    files(
++        'connection.cpp',
++        'conninode.cpp',
++        'decpcap.c',
++        'devices.cpp',
++        'inode2prog.cpp',
++        'packet.cpp',
++        'process.cpp',
++    ),
+ ]
+ 
+ # --- Executable Compilation ---
+ 
+ if get_option('enable-nethogs-app').enabled()
+-  app_sources = [
+-    files([
+-      'main.cpp',
+-      'cui.cpp',
+-    ])
+-  ]
+-
+-  cursespp_dep = dependency('ncurses++', required: true)
+-  curses_dep = dependency('ncurses', required: true)
+-
+-  executable('nethogs',
+-    [app_sources + sources],
+-    include_directories: [projectinc],
+-    cpp_args: c_args,
+-    c_args: c_args,
+-    install: true,
+-    dependencies : [project_deps, cursespp_dep, curses_dep]
+-  )
++    app_sources = [files('cui.cpp', 'main.cpp')]
++
++    cursespp_dep = dependency('ncurses++', required: true)
++    curses_dep = dependency('ncurses', required: true)
++
++    executable(
++        'nethogs',
++        [app_sources + sources],
++        include_directories: [projectinc],
++        cpp_args: c_args,
++        c_args: c_args,
++        install: true,
++        dependencies: [project_deps, cursespp_dep, curses_dep],
++    )
+ endif
+ 
+ # --- Library Compilation ---
+ 
+ if get_option('enable-libnethogs').enabled()
+-  lib_sources = [
+-    files([
+-      'libnethogs.cpp',
+-    ])
+-  ]
++    lib_sources = [files('libnethogs.cpp')]
++
++    libnethogs = shared_library(
++        'libnethogs' ,
++        sources + lib_sources,
++        cpp_args: c_args,
++        c_args: c_args,
++        install: true,
++        soversion: meson.project_version(),
++        include_directories: [projectinc],
++        dependencies: [project_deps],
++    )
+ 
+-  libnethogs = shared_library('libnethogs' ,
+-    sources + lib_sources, 
+-    cpp_args: c_args,
+-    c_args: c_args,
+-    install: true,
+-    soversion: meson.project_version(),
+-    include_directories: [projectinc],
+-    dependencies: [project_deps]
+-  )
+-  
+-  libnethogs_dep = declare_dependency(link_with: libnethogs)
++    libnethogs_dep = declare_dependency(link_with: libnethogs)
+ 
+-  # --- Header Installation ---
++    # --- Header Installation ---
+ 
+-  lib_headers = [
+-    files('libnethogs.h'),
+-  ]
+-  install_headers(lib_headers, subdir : 'libnethogs')
++    lib_headers = [files('libnethogs.h')]
++    install_headers(lib_headers, subdir: 'libnethogs')
+ endif
+-- 
+2.48.1
+

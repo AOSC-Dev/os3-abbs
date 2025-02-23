@@ -1,0 +1,10 @@
+PKGNAME=asahi-audio
+PKGSEC=sound
+PKGDEP="bankstown lsp-plugins pipewire speakersafetyd triforce wireplumber"
+PKGDES="Userspace audio configuration for Apple silicon-based Mac devices"
+
+# Note: Only useful for Apple silicon-based Mac devices.
+FAIL_ARCH="!(arm64)"
+
+# Note: Data-only.
+ABSPLITDBG=0

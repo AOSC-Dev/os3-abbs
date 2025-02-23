@@ -1,0 +1,4 @@
+abinfo "Installing asahi-audio ..."
+make install \
+    DESTDIR="$PKGDIR" \
+    PREFIX=/usr

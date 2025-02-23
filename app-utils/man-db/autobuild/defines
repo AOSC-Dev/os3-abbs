@@ -11,6 +11,7 @@ PKGDEP__LOONGSON2F="${PKGDEP__RETRO}"
 PKGDEP__M68K="${PKGDEP__M68K}"
 PKGDEP__POWERPC="${PKGDEP__RETRO}"
 PKGDEP__PPC64="${PKGDEP__RETRO}"
+BUILDDEP="po4a"
 PKGDES="A collection of utilities for reading and managing man pages"
 
 # Note: --disable-cache-owner allows man-db to use root as the default owner

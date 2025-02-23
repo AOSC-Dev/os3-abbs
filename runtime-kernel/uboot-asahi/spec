@@ -1,5 +1,6 @@
-VER="2023.07.02+3"
-SRCS="git::commit=tags/asahi-v${VER/+/-}::https://github.com/AsahiLinux/u-boot"
+UPSTREAM_VER=2024.10-1
+VER=${UPSTREAM_VER/\-/+}
+SRCS="git::commit=tags/asahi-v${UPSTREAM_VER}::https://github.com/AsahiLinux/u-boot"
 CHKSUMS="SKIP"
 CHKUPDATE="anitya::id=370181"
 

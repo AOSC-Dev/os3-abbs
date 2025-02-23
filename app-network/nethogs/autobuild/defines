@@ -1,4 +1,6 @@
 PKGNAME=nethogs
 PKGSEC=net
-PKGDEP="gcc-runtime libpcap ncurses"
+PKGDEP="gcc-runtime glibc libpcap ncurses"
 PKGDES="A top-like program for monitoring network traffic"
+
+ABTYPE=meson

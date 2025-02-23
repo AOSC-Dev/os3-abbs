@@ -1,0 +1,3 @@
+abinfo "Installing manual ..."
+install -Dvm644 "$SRCDIR"/doc/nethogs.8 \
+    -t "$PKGDIR"/usr/share/man/man8

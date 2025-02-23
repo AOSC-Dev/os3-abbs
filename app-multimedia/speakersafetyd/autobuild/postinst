@@ -1,0 +1,15 @@
+# Borrowed from Debian.
+_systemctl() {
+	if [ -z "$DPKG_ROOT" ] && [ -d /run/systemd/system ]; then
+		systemctl "$@" 1>&2
+	else
+		return 127
+	fi
+}
+
+# Only preset these services for a fresh installation
+# i.e. installing for the first time or after purging
+if [ "$1" = configure ] && [ -z "$2" ]; then
+	_systemctl preset nftables.service || true
+	_systemctl preset firewalld.service || true
+fi

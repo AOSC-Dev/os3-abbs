@@ -1,0 +1,13 @@
+abinfo "Building speakersafetyd ..."
+make
+
+abinfo "Installing speakersafetyd ..."
+make install \
+    DESTDIR="$PKGDIR" \
+    BINDIR=/usr/bin \
+    UNITDIR=/usr/lib/systemd/system \
+    UDEVDIR=/usr/lib/udev/rules.d \
+    TMPFILESDIR=/usr/lib/tmpfiles.d \
+    SHAREDIR=/usr/share \
+    VARDIR=/var
+

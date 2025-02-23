@@ -1,0 +1,10 @@
+PKGNAME=speakersafetyd
+PKGSEC=sound
+PKGDEP="alsa-lib gcc-runtime glibc"
+BUILDDEP="llvm rustc"
+PKGDES="Software Smart Amp implementation for Apple silicon-based Mac devices"
+
+# Note: Only useful for Apple silicon devices.
+FAIL_ARCH="!(arm64)"
+
+USECLANG=1

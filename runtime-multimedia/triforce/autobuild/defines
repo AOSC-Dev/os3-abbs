@@ -1,0 +1,8 @@
+PKGNAME=triforce
+PKGSEC=sound
+PKGDEP="gcc-runtime glibc lv2"
+BUILDDEP="llvm rustc"
+PKGDES="Implements an adaptive beamformer for the microphone arrays found on Apple silicon-based Mac devices"
+
+# Note: Only useful for Apple silicon-based Mac devices.
+FAIL_ARCH="!(arm64)"

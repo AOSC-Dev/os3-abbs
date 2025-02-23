@@ -1,7 +1,8 @@
 PKGNAME="m1n1"
-PKGDES="A bootloader and experimentation playground for Apple Silicon"
-BUILDDEP="imagemagick"
 PKGSEC="admin"
+PKGDEP=""
+BUILDDEP="imagemagick"
+PKGDES="Bootloader payload for Apple silicon-based Mac devices"
 
 ABSPLITDBG=0
 

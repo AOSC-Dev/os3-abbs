@@ -1,7 +1,8 @@
-From c777652de28d16511ac2900574167d88ca275fdd Mon Sep 17 00:00:00 2001
+From 6923f8feb4b81ab97f0b49665a19212d1e0a6e01 Mon Sep 17 00:00:00 2001
 From: Icenowy Zheng <uwu@icenowy.me>
 Date: Tue, 26 Nov 2024 10:50:10 +0800
-Subject: [PATCH 2/3] zink: use lazy descriptors for IMG proprietary drivers
+Subject: [PATCH 4/6] BACKPORT: zink: use lazy descriptors for IMG proprietary
+ drivers
 
 When using Zink with VK_EXT_descriptor_buffer enabled on IMG proprietary
 drivers, the rendering behavior is incorrect and uniforms are not

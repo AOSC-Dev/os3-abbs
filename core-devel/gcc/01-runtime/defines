@@ -30,18 +30,17 @@ PKGDES="GNU Compiler Collection (runtime libraries only)"
 # 13. Enables plugin support;
 # 14. Enables libiberty installation
 #     (you may disable "--enable-install-libiberty" if you really feel the urge...);
-# 15. Enables GNU style linker hash;
-# 16. Disables multilib support 
+# 15. Disables multilib support
 #     (you may remove "--disable-multilib" to enable the support for it, however
 #     you will need a copy of GCC with multilib support to build);
 #     a. AOSC OS uses subsystems to provide binary support for foreign architectures.
-# 17. Enable release level checking;
-# 18. Enables support for GNU indirect function
+# 16. Enable release level checking;
+# 17. Enables support for GNU indirect function
 #     (you may disable this by removing "--enable-gnu-indirect-function");
-# 19. Use the new "cxx11/new" for libstdc++, available since GCC 5. The old
+# 18. Use the new "cxx11/new" for libstdc++, available since GCC 5. The old
 #     "gcc4-compatbile" ABI was used until Core 5.
-# 20. --enable-default-pie enables PIE by default (-fpie or `-fPIE`?).
-# 21. --enable-default-ssp enables --fstack-protector-strong by default.
+# 19. --enable-default-pie enables PIE by default (-fpie or `-fPIE`?).
+# 20. --enable-default-ssp enables --fstack-protector-strong by default.
 
 AUTOTOOLS_STRICT=0
 AUTOTOOLS_AFTER="--prefix=/usr \

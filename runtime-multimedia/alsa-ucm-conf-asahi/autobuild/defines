@@ -1,6 +1,6 @@
 PKGNAME=alsa-ucm-conf-asahi
 PKGSEC=sound
-PKGDES="ALSA Use Case Manager configuration for Apple Silicon devices"
+PKGDES="ALSA Use Case Manager (UCM) configuration for Apple silicon-based Mac devices"
 PKGDEP="alsa-ucm-conf"
 
 # Note: This package is strictly for AArch64 systems.

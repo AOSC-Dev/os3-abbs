@@ -1,11 +1,15 @@
 PKGNAME=asahi-base
 PKGSEC=Bases
-PKGDEP="alsa-ucm-conf-asahi apfs-fuse asahi-common asahi-fwextract \
-        linux+kernel+asahi m1n1 uboot-asahi"
-PKGDES="Meta package for Apple Silicon device support"
+PKGDEP="alsa-ucm-conf-asahi apfs-fuse asahi-audio asahi-common \
+        asahi-fwextract linux+kernel+asahi m1n1 uboot-asahi"
+PKGDES="Meta package for Apple silicon-based Mac devices"
 
 VER_NONE=1
 
 # Note: This package is strictly for AArch64 systems.
 FAIL_ARCH="!(arm64)"
+
+# Note: Meta-package with no architecture-specific binaries.
 ABSPLITDBG=0
+
+ABTYPE=dummy

@@ -1,11 +1,7 @@
 PKGNAME=libtiff
 PKGSEC=libs
-PKGDEP="gcc-runtime libjpeg-turbo zlib xz freeglut libwebp"
-BUILDDEP="glu jbigkit"
-PKGSUG="glu jbigkit"
+PKGDEP="freeglut gcc-runtime glu jbigkit libwebp libjpeg-turbo xz zlib"
 PKGDES="Library for manipulation of TIFF images"
-
-ABSHADOW=no
 
 # Note: For compatibility with Debian applications.
 AUTOTOOLS_AFTER="--enable-ld-version-script"

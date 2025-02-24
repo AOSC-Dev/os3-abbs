@@ -5,6 +5,7 @@ PKGDES="A hex editor with Pattern and YARA Rule support"
 PKGDEP="glfw"
 BUILDDEP="yara fmt nlohmann-json capstone llvm boost zstd"
 
+ABTYPE=cmake
 CMAKE_AFTER="-DUSE_SYSTEM_FMT=ON \
         -DUSE_SYSTEM_YARA=ON \
         -DUSE_SYSTEM_NLOHMANN_JSON=ON \

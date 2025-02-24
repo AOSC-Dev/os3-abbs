@@ -5,7 +5,7 @@ PKGDES="A hex editor with Pattern and YARA Rule support"
 PKGDEP="glfw"
 BUILDDEP="yara fmt nlohmann-json capstone llvm boost zstd"
 
-CMAKE_AFTER=" -DUSE_SYSTEM_FMT=ON \
+CMAKE_AFTER="-DUSE_SYSTEM_FMT=ON \
         -DUSE_SYSTEM_YARA=ON \
         -DUSE_SYSTEM_NLOHMANN_JSON=ON \
         -DUSE_SYSTEM_CAPSTONE=ON \
@@ -17,6 +17,7 @@ CMAKE_AFTER=" -DUSE_SYSTEM_FMT=ON \
         -DIMHEX_ENABLE_UNIT_TESTS=OFF \
         -DIMHEX_PATTERNS_PULL_MASTER=ON \
         -DIMHEX_USE_GTK_FILE_PICKER=OFF \
-        -DLLVM_DIR=/usr/lib/llvm-18"
+        -DLLVM_DIR=/usr/lib/llvm-18 \
+        -DCMAKE_PREFIX_PATH=$(llvm-config --cmakedir)"
 
 CMAKE_AFTER__without_dotnet="$CMAKE_AFTER -DIMHEX_EXCLUDE_PLUGINS=script_loader"

@@ -17,7 +17,7 @@ CMAKE_AFTER="-DUSE_SYSTEM_FMT=ON \
         -DIMHEX_ENABLE_UNIT_TESTS=OFF \
         -DIMHEX_PATTERNS_PULL_MASTER=ON \
         -DIMHEX_USE_GTK_FILE_PICKER=OFF \
-        -DLLVM_DIR=/usr/lib/llvm-18 \
-        -DCMAKE_PREFIX_PATH=$(llvm-config --cmakedir)"
+        -DLLVM_DIR=/usr/lib/llvm-18/lib/cmake/llvm \
+        -DCMAKE_PREFIX_PATH=/usr/lib/llvm-18/lib/cmake/llvm"
 
 CMAKE_AFTER__without_dotnet="$CMAKE_AFTER -DIMHEX_EXCLUDE_PLUGINS=script_loader"

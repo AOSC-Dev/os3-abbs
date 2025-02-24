@@ -1,0 +1,3 @@
+. /usr/share/debconf/confmodule
+
+db_get mise/configuration_hints

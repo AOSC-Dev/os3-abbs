@@ -1,0 +1,3 @@
+abinfo "Installing configuration file ..."
+install -Dvm644 "$SRCDIR"/fan2go-tui.yaml \
+    -t "$PKGDIR"/etc/fan2go-tui

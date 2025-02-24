@@ -1,0 +1,6 @@
+#FIXME: 0.6.2 can not be built successfully on loongarch64, loongson3, ppc64el and riscv64
+VER=0.6.2+git20250223
+__COMMIT="f2bc13da35b0920d75a26c91d8df471120df8067"
+SRCS="git::commit=${__COMMIT}::https://gitlab.com/mission-center-devs/mission-center"
+CHKSUMS="SKIP"
+CHKUPDATE="gitlab::repo=mission-center-devs/mission-center"

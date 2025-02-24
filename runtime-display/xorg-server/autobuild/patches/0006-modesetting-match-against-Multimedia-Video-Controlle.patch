@@ -1,7 +1,7 @@
-From d57964fe30504a3618e0f4ea3f497552bb35fb5a Mon Sep 17 00:00:00 2001
+From 7258ef1c6301c99ebbe9b03eede5ca982bb8ed48 Mon Sep 17 00:00:00 2001
 From: "Liu, Chang" <cl91tp@gmail.com>
 Date: Wed, 8 Nov 2023 13:02:10 +0800
-Subject: [PATCH 6/6] modesetting: match against Multimedia Video Controllers
+Subject: [PATCH 6/7] modesetting: match against Multimedia Video Controllers
  as well
 
 Some GPU devices such as those found in the Loongson 7A2000 bridge
@@ -28,5 +28,5 @@ index 535f49d1d..54eb42d84 100644
      {0, 0, 0},
  };
 -- 
-2.47.1
+2.48.1
 
